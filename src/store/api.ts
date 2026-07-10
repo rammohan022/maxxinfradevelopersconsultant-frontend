@@ -1,0 +1,21 @@
+export const API_ENDPOINTS = {
+    auth: {
+        login: "/auth/login",
+        logout: "/logout",
+        me: "/auth/me",
+        profile: "/auth/profile",
+        changePassword: "/auth/change-password",
+        refresh: "/auth/refresh-token",
+    },
+    blogs: "/blogs",
+    leads: "/leads",
+    practiceArea: "/practice-areas",
+    members: "/members",
+    jobapplication: '/job-applications',
+    careers: "/careers",
+    testimonials: "/testimonials",
+    privacyPolicy: "/privacy-policy",
+    termsConditions: "/terms-conditions",
+    dashboard: "/dashboard",
+    contacts: "/contacts",
+};

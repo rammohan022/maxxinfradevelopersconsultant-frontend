@@ -1,0 +1,5 @@
+export { default as PeopleHeroSection } from './PeopleHeroSection'
+export { default as IntroSection } from './IntroSection'
+export { default as FilterSearchSection } from './FilterSearchSection'
+export { default as RoleTabsSection } from './RoleTabsSection'
+export { default as CTASection } from './CTASection'

@@ -1,0 +1,148 @@
+"use client";
+
+import { useState } from "react";
+import { Plus, Pencil, Trash2, Search } from "lucide-react";
+import Link from "next/link";
+import { useGetPracticeAreasQuery, useDeletePracticeAreaMutation } from "@/services/practice-area";
+import DeleteModal from "../components/DeleteModal";
+import toast from "react-hot-toast";
+
+const PracticeAreaPage = () => {
+  const { data: practiceAreas = [], isLoading, isError } = useGetPracticeAreasQuery();
+  const [deletePracticeArea] = useDeletePracticeAreaMutation();
+  const [search, setSearch] = useState("");
+
+  // Modal State
+  const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
+
+  const filteredAreas = (practiceAreas || []).filter((area: any) =>
+    (area?.title || "").toLowerCase().includes(search.toLowerCase())
+  );
+
+  const handleDelete = async () => {
+    try {
+      await deletePracticeArea(deleteModal.id).unwrap();
+      toast.success("Practice area deleted successfully!");
+      setDeleteModal({ isOpen: false, id: "", name: "" });
+    } catch (err) {
+      console.error("Delete failed:", err);
+      toast.error("Failed to delete practice area.");
+    }
+  };
+
+  if (isLoading) return <div className="p-6 text-center text-slate-500">Loading...</div>;
+  if (isError) return <div className="p-6 text-center text-red-500">Failed to load practice areas</div>;
+
+  return (
+    <>
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-navy">
+            Practice Areas
+          </h1>
+          <p className="text-sm text-slate-500">
+            Manage all practice area / service pages
+          </p>
+        </div>
+
+        <div className="flex gap-3">
+          {/* Search */}
+          <div className="relative">
+            <Search
+              size={16}
+              className="absolute left-3 top-2.5 text-slate-400"
+            />
+            <input
+              type="text"
+              placeholder="Search services..."
+              className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none w-64"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </div>
+          <Link
+            href="/admin/practice-area/create"
+            className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-medium"
+          >
+            <Plus size={16} />
+            Add Practice Area
+          </Link>
+        </div>
+      </div>
+
+      {/* RESPONSIVE Table */}
+      <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead className="bg-slate-50 text-slate-600">
+              <tr>
+                <th className="text-left px-6 py-3 whitespace-nowrap">Service Name</th>
+                <th className="text-left px-6 py-3 min-w-[300px]">Description</th>
+                <th className="text-left px-6 py-3 whitespace-nowrap text-center">Services Count</th>
+                <th className="text-center px-6 py-3 whitespace-nowrap">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {filteredAreas.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="text-center py-10 text-slate-400">
+                    No practice areas found
+                  </td>
+                </tr>
+              ) : (
+                filteredAreas.map((item: any) => (
+                  <tr key={item.id} className="border-t hover:bg-slate-50 transition align-top">
+                    <td className="px-6 py-4 font-semibold text-navy whitespace-nowrap">
+                      {item.title}
+                    </td>
+                    <td className="px-6 py-4 text-slate-500 leading-relaxed min-w-[300px]">
+                      <div className="line-clamp-2">
+                        {item.overview?.replace(/<[^>]*>?/gm, "")}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <span className="bg-slate-100 px-2 py-1 rounded text-xs font-medium">
+                        {item.services?.length || 0} Sub-services
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 text-center">
+                      <div className="flex justify-center gap-2">
+                        <Link
+                          href={`/admin/practice-area/edit?id=${item.id}`}
+                          className="text-slate-400 hover:text-primary p-2 hover:bg-blue-50 rounded-lg transition"
+                          title="Edit"
+                        >
+                          <Pencil size={18} />
+                        </Link>
+                        <button
+                          onClick={() => setDeleteModal({ isOpen: true, id: item.id.toString(), name: item.title })}
+                          className="text-slate-400 hover:text-red-600 p-2 hover:bg-red-50 rounded-lg transition"
+                          title="Delete"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Delete Modal */}
+      <DeleteModal
+        isOpen={deleteModal.isOpen}
+        onClose={() => setDeleteModal({ isOpen: false, id: "", name: "" })}
+        onConfirm={handleDelete}
+        title="Delete Practice Area"
+        itemName={deleteModal.name}
+      />
+    </>
+  );
+};
+
+export default PracticeAreaPage;

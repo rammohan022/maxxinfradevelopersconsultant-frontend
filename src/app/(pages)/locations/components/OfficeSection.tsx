@@ -40,41 +40,40 @@ export default function OfficeSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-12 opacity-0 translate-y-3 transition-all duration-700" data-reveal>
           <h2 className="text-3xl md:text-4xl font-serif-heading font-semibold text-gray-900">
-            Our&nbsp;Pune&nbsp;Office
+            Our&nbsp;Faridabad&nbsp;Office
           </h2>
-          <div className="mx-auto mt-3 h-1 w-16 bg-[#9b1c2c]" />
+          <div className="mx-auto mt-3 h-1 w-16 bg-[#915a2d]" />
         </div>
         <div className="grid md:grid-cols-2 gap-12">
           <div className="opacity-0 translate-y-3 transition-all duration-700" data-reveal>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#9b1c2c]/10">
-                  <MapPin className="h-5 w-5 text-[#9b1c2c]" />
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#915a2d]/10">
+                  <MapPin className="h-5 w-5 text-[#915a2d]" />
                 </span>
                 <div>
                   <div className="font-semibold text-gray-900">Address</div>
                   <div className="text-gray-600">
-                    8th Floor, ICC Trade Tower, Senapati Bapat Rd,
-                    Pune, Maharashtra 411016
+                    7th Floor, Tower 3, RPS 12th Avenue, Main Mathura Road, Sector 27C, Faridabad.
                   </div>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#9b1c2c]/10">
-                  <Phone className="h-5 w-5 text-[#9b1c2c]" />
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#915a2d]/10">
+                  <Phone className="h-5 w-5 text-[#915a2d]" />
                 </span>
                 <div>
                   <div className="font-semibold text-gray-900">Phone</div>
-                  <div className="text-gray-600">+91 20 0000 0000</div>
+                  <div className="text-gray-600">+91 8800177307</div>
                 </div>
               </li>
               <li className="flex items-start gap-4">
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#9b1c2c]/10">
-                  <Mail className="h-5 w-5 text-[#9b1c2c]" />
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#915a2d]/10">
+                  <Mail className="h-5 w-5 text-[#915a2d]" />
                 </span>
                 <div>
                   <div className="font-semibold text-gray-900">Email</div>
-                  <div className="text-gray-600">pune@equitylegalsolutions.com</div>
+                  <div className="text-gray-600">hello@peopleconsultings.com</div>
                 </div>
               </li>
             </ul>

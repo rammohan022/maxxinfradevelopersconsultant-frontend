@@ -5,29 +5,29 @@ import { motion, Variants } from "framer-motion"
 
 const features = [
   {
-    title: 'Court Representation',
-    desc: 'We appear before courts and tribunals across Delhi and NCR, handling matters in accordance with applicable procedural and substantive laws, with an emphasis on careful preparation and responsible legal representation.',
+    title: 'Executive Search',
+    desc: 'We specialize in identifying, assessing, and placing top-tier leadership talent across various industries, ensuring a perfect cultural and strategic fit for your organization.',
     icon: (
       <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
     ),
   },
   {
-    title: 'Legal Documentation Review',
-    desc: 'Legal documents, contracts, pleadings, and case records are reviewed in detail to assess statutory compliance, legal obligations, and potential risks relevant to the matter.',
+    title: 'Compliance & Payroll',
+    desc: 'Navigate complex labor laws seamlessly. Our team manages payroll administration and ensures strict adherence to all statutory compliance and regulatory requirements.',
     icon: (
       <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zm-3 10h6v2h-6v-2zm0-4h6v2h-6v-2z" /></svg>
     ),
   },
   {
-    title: 'Legal Professionals',
-    desc: 'Matters are handled by legal professionals with experience across criminal law, economic and financial offences, regulatory proceedings, cyber law, and family-related disputes.',
+    title: 'Training & Development',
+    desc: 'Empower your workforce with targeted training programs designed to enhance skills, boost productivity, and foster leadership qualities at all organizational levels.',
     icon: (
       <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
     ),
   },
   {
-    title: 'Procedural Resolution',
-    desc: 'Legal assistance is provided with the objective of addressing disputes through appropriate judicial or alternative mechanisms, based on case-specific facts and applicable legal provisions.',
+    title: 'Strategic Consulting',
+    desc: 'Transform your HR operations with our strategic advisory services, focusing on organizational restructuring, performance management, and employee engagement.',
     icon: (
       <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
     ),

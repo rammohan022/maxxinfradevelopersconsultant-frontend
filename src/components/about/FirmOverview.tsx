@@ -40,7 +40,7 @@ const FirmOverview = () => {
 
             <div className="space-y-6 text-gray-600 text-lg leading-relaxed mb-8">
               <p>
-                <strong>Equity and Legal Solutions</strong> is a full-service law firm dedicated to providing strategic, solution-oriented, and result-driven legal services across India. With a strong professional network and multidisciplinary expertise, we cater to individuals, businesses, and corporate entities across diverse sectors.
+                <strong>People Consulting</strong> is a full-service law firm dedicated to providing strategic, solution-oriented, and result-driven legal services across India. With a strong professional network and multidisciplinary expertise, we cater to individuals, businesses, and corporate entities across diverse sectors.
               </p>
 
               <p>
@@ -56,7 +56,7 @@ const FirmOverview = () => {
             <div className="flex flex-wrap items-center gap-6">
               <Link
                 href="/contact-us"
-                className="bg-primary text-white px-8 py-3.5 rounded-lg font-bold hover:bg-primary-dark transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                className="bg-secondary text-white px-8 py-3.5 rounded-lg font-bold hover:bg-secondary-dark transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
               >
                 Contact Us
               </Link>

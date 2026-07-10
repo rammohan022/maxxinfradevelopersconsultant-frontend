@@ -9,10 +9,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#c41e3a',
-        'primary-dark': '#a01830',
-        navy: '#0d2137',
-        'navy-light': '#1a3a52',
+        primary: '#915a2d',
+        'primary-dark': '#734723',
+        secondary: '#f58235',
+        'secondary-dark': '#d36b28',
+        navy: '#3b4d81',
+        'navy-light': '#4c62a1',
+        maroon: {
+          DEFAULT: '#915a2d',
+          500: '#a66a38',
+          600: '#915a2d',
+          700: '#734723',
+          800: '#5c381c',
+          900: '#402713',
+        },
+        red: {
+          50: '#fcf6f0',
+          100: '#f8eadb',
+          200: '#f0d0b3',
+          300: '#e6b083',
+          400: '#da8b54',
+          500: '#f58235',
+          600: '#a66a38',
+          700: '#915a2d',
+          800: '#734723',
+          900: '#5c381c',
+        }
       },
       fontFamily: {
         serif: ['Georgia', 'Cambria', 'Times New Roman', 'serif'],

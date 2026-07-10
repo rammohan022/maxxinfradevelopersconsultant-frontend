@@ -64,7 +64,7 @@ export default function Testimonials() {
           </span>
 
           <h2 className="mt-4 sm:mt-6 text-3xl md:text-4xl lg:text-5xl font-bold text-navy font-serif-heading">
-            Our Clients Trust Us for Reliable Legal Solutions
+            Our Clients Trust Us for Reliable HR Solutions
           </h2>
         </motion.div>
 

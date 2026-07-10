@@ -63,10 +63,10 @@ const ContactSection = () => {
                                             Speak directly with our legal support team
                                         </p>
                                         <a
-                                            href="tel:+91-7070709689"
+                                            href="tel:+918800177307"
                                             className="text-red-700 hover:text-red-400 transition font-medium"
                                         >
-                                            +91-70707 09689
+                                            +91 8800177307
                                         </a>
                                     </div>
                                 </div>
@@ -80,10 +80,10 @@ const ContactSection = () => {
                                             For consultations and general enquiries
                                         </p>
                                         <a
-                                            href="mailto:elsattorney@gmail.com"
+                                            href="mailto:hello@peopleconsultings.com"
                                             className="text-red-700 hover:text-red-400 transition font-medium"
                                         >
-                                            elsattorney@gmail.com
+                                            hello@peopleconsultings.com
                                         </a>
                                     </div>
                                 </div>
@@ -94,8 +94,8 @@ const ContactSection = () => {
                                     <div>
                                         <h4 className="text-lg font-semibold">Office Address</h4>
                                         <p className="text-gray-300 text-sm leading-relaxed">
-                                            28, Upper Ground Floor, <br />
-                                            School Lane, New Delhi – 110001
+                                            243, 2nd Floor, Vipul Trade Centre, <br />
+                                            Sector 48, Sohna Road, Gurgaon, Haryana
                                         </p>
                                     </div>
                                 </div>
@@ -104,7 +104,7 @@ const ContactSection = () => {
                                 <div className="flex flex-col gap-3">
                                     <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
                                     <div className="flex gap-4">
-                                        <a href="#" className="hover:text-red-700 transition">
+                                        <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition">
                                             <Linkedin className="w-5 h-5" />
                                         </a>
                                         <a href="#" className="hover:text-red-700 transition">
@@ -113,7 +113,7 @@ const ContactSection = () => {
                                         <a href="#" className="hover:text-red-700 transition">
                                             <Facebook className="w-5 h-5" />
                                         </a>
-                                        <a href="#" className="hover:text-red-700 transition">
+                                        <a href="https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition">
                                             <Instagram className="w-5 h-5" />
                                         </a>
                                     </div>

@@ -80,7 +80,7 @@ export default function Contact() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -z-0" />
 
             <div className="relative z-10">
-              <motion.span variants={itemVariants} className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-primary border-l-4 border-primary pl-3">
+              <motion.span variants={itemVariants} className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-secondary border-l-4 border-secondary pl-3">
                 Contact Us
               </motion.span>
 
@@ -89,8 +89,8 @@ export default function Contact() {
               </motion.h2>
 
               <motion.p variants={itemVariants} className="mb-6 text-white/80 text-base leading-relaxed">
-                We provide clear, practical legal guidance. Our team is always
-                ready to assist you with your legal matters.
+                We provide clear, practical recruitment and HR guidance. Our team is always
+                ready to assist you with your talent acquisition needs.
               </motion.p>
 
               {/* Contact Details */}
@@ -98,17 +98,17 @@ export default function Contact() {
                 {/* Phone */}
                 <motion.div variants={itemVariants} className="flex items-start gap-5">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-4 w-4 text-primary" />
+                    <Phone className="h-4 w-4 text-secondary" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-1">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-secondary mb-1">
                       Phone
                     </p>
                     <a
-                      href="tel:+911142502484"
+                      href="tel:+918800177307"
                       className="text-lg font-bold transition-colors hover:text-white text-white/90"
                     >
-                      +91-1142502484
+                      +91 8800177307
                     </a>
                   </div>
                 </motion.div>
@@ -116,17 +116,17 @@ export default function Contact() {
                 {/* Email */}
                 <motion.div variants={itemVariants} className="flex items-start gap-5">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-4 w-4 text-primary" />
+                    <Mail className="h-4 w-4 text-secondary" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-1">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-secondary mb-1">
                       E-mail
                     </p>
                     <a
-                      href="mailto:elsattorney@gmail.com"
+                      href="mailto:hello@peopleconsultings.com"
                       className="text-base font-medium transition-colors hover:text-white text-white/90"
                     >
-                      elsattorney@gmail.com
+                      hello@peopleconsultings.com
                     </a>
                   </div>
                 </motion.div>
@@ -134,16 +134,16 @@ export default function Contact() {
                 {/* Address */}
                 <motion.div variants={itemVariants} className="flex items-start gap-5">
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-4 w-4 text-primary" />
+                    <MapPin className="h-4 w-4 text-secondary" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-1">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-secondary mb-1">
                       Address
                     </p>
                     <p className="text-white/90 text-base leading-relaxed max-w-[250px]">
-                      28, Upper Ground Floor,
-                      School Lane,
-                      New Delhi – 110001
+                      243, 2nd Floor, Vipul Trade Centre,
+                      Sector 48, Sohna Road,
+                      Gurgaon, Haryana
                     </p>
                   </div>
                 </motion.div>
@@ -151,24 +151,19 @@ export default function Contact() {
 
               {/* Social */}
               <motion.div variants={itemVariants} className="pt-8 border-t border-white/10">
-                <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
+                <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-secondary">
                   Follow Us
                 </p>
                 <div className="flex gap-3">
-                  {[
-                    { Icon: Facebook, label: 'Facebook' },
-                    { Icon: Twitter, label: 'Twitter' },
-                    { Icon: Linkedin, label: 'LinkedIn' },
-                  ].map(({ Icon, label }) => (
-                    <a
-                      key={label}
-                      href="#"
-                      aria-label={label}
-                      className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all hover:bg-primary hover:border-primary hover:-translate-y-1"
-                    >
-                      <Icon className="h-4 w-4" />
-                    </a>
-                  ))}
+                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all hover:bg-primary hover:border-primary hover:-translate-y-1">
+                    <Facebook className="h-4 w-4" />
+                  </a>
+                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all hover:bg-primary hover:border-primary hover:-translate-y-1">
+                    <Twitter className="h-4 w-4" />
+                  </a>
+                  <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all hover:bg-primary hover:border-primary hover:-translate-y-1">
+                    <Linkedin className="h-4 w-4" />
+                  </a>
                 </div>
               </motion.div>
             </div>
@@ -195,7 +190,7 @@ export default function Contact() {
                 { name: 'fullName', type: 'text', placeholder: 'Your Name', required: true },
                 { name: 'email', type: 'email', placeholder: 'Email Address', required: true },
                 { name: 'phoneNumber', type: 'tel', placeholder: 'Phone Number' },
-                { name: 'subject', type: 'text', placeholder: 'Subject / Practice Area' },
+                { name: 'subject', type: 'text', placeholder: 'Subject / Service Required' },
               ].map(({ name, type, placeholder, required }) => (
                 <div key={name} className="relative group">
                   <input
@@ -213,7 +208,7 @@ export default function Contact() {
 
               <div className="relative group">
                 <textarea
-                  placeholder="Tell us about your case..."
+                  placeholder="Tell us about your requirements..."
                   rows={3}
                   value={form.message}
                   onChange={(e) =>
@@ -227,7 +222,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full rounded-lg bg-primary py-3 font-bold text-white transition-colors hover:bg-primary-dark shadow-lg shadow-primary/20 uppercase tracking-widest mt-2 disabled:bg-gray-400"
+                className="w-full rounded-lg bg-secondary py-3 font-bold text-white transition-colors hover:bg-secondary-dark shadow-lg shadow-secondary/20 uppercase tracking-widest mt-2 disabled:bg-gray-400"
               >
                 {isSubmitting ? "Submitting..." : "Get An Appointment"}
               </motion.button>

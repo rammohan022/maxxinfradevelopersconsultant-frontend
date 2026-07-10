@@ -15,16 +15,16 @@ export default function TopBar() {
         {/* Left: Email & Phone */}
         <div className="flex gap-6">
           <a
-            href="mailto:elsattorney@gmail.com"
+            href="mailto:hello@peopleconsultings.com"
             className="hover:text-primary transition"
           >
-            elsattorney@gmail.com
+            hello@peopleconsultings.com
           </a>
           <a
-            href="tel:+911142502484"
+            href="tel:+918800177307"
             className="hover:text-primary transition"
           >
-            +91-1142502484
+            +91 8800177307
           </a>
         </div>
 
@@ -36,10 +36,10 @@ export default function TopBar() {
           <Link href="#" className="hover:text-primary transition">
             <Twitter size={16} strokeWidth={1.8} />
           </Link>
-          <Link href="#" className="hover:text-primary transition">
+          <Link href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">
             <Linkedin size={16} strokeWidth={1.8} />
           </Link>
-          <Link href="#" className="hover:text-primary transition">
+          <Link href="https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">
             <Instagram size={16} strokeWidth={1.8} />
           </Link>
         </div>

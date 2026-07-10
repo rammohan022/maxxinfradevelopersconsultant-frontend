@@ -9,7 +9,7 @@ const LifeAtCompany = () => {
                         Culture
                     </span>
                     <h2 className="text-3xl lg:text-4xl font-bold text-navy font-serif-heading mb-10">
-                        Life at Equity & Legal Solutions
+                        Life at People Consulting
                     </h2>
                     <p className="text-gray-600 text-lg max-w-3xl mb-12 leading-relaxed">
                         We believe in teamwork, diversity, and a professional environment built on ethics and respect. Our people are our strength—whether you are starting your legal career or bringing years of experience, you will find a place where your contribution is valued and your growth is supported.
@@ -27,7 +27,7 @@ const LifeAtCompany = () => {
                             >
                                 <Image
                                     src={src}
-                                    alt="Life at Equity & Legal Solutions"
+                                    alt="Life at People Consulting"
                                     fill
                                     className="object-cover"
                                     sizes="(max-width: 768px) 50vw, 25vw"

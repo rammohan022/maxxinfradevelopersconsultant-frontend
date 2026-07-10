@@ -7,28 +7,28 @@ import { motion, AnimatePresence, Variants } from 'framer-motion'
 
 const slides = [
   {
-    tag: 'LEGAL ADVISORY & REPRESENTATION',
-    title: "Structured Legal Support",
-    highlight: 'Across Multiple Practice Areas',
-    subtitle: 'Defence Lawyer',
-    desc: '…with experience across diverse legal domains',
-    body: 'Equity and Legal Solutions provides structured legal assistance across criminal, civil, corporate, and regulatory matters. The focus remains on legal clarity, procedural compliance, and informed representation based on applicable law.',
-  },
-  {
-    tag: 'PROFESSIONAL LEGAL APPROACH',
-    title: 'Legal Matters',
-    highlight: 'Handled With Due Process',
-    subtitle: 'Adherence to law at every stage',
-    desc: 'Offer Expert Legal Remedies in Digital Offences and Online Fraud',
-    body: 'Each matter is approached with careful evaluation of facts, documentation, and statutory provisions. Assistance is provided in accordance with established legal procedures, ensuring that every step aligns with applicable regulations and judicial processes.',
-  },
-  {
-    tag: 'LEGAL DOMAIN COVERAGE',
-    title: 'Assistance Across',
-    highlight: 'Diverse Legal Proceedings',
+    tag: 'HR & RECRUITMENT',
+    title: "Aligning Strategy With",
+    highlight: 'People & Culture',
     subtitle: '',
-    desc: 'Criminal, civil, and regulatory matters',
-    body: 'The firm handles matters related to criminal law, financial and economic offences, regulatory proceedings, family disputes, and related legal concerns. Engagement is based on case-specific assessment and lawful representation.',
+    desc: 'Increasing your competitive advantage',
+    body: 'People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes. We help organizations become High Performance workplaces.',
+  },
+  {
+    tag: 'TALENT ACQUISITION',
+    title: 'Connecting Top Talent With',
+    highlight: 'Industry Leaders',
+    subtitle: '',
+    desc: '500+ Active Jobs across all sectors',
+    body: 'Our recruitment strategy focuses on clarity, structure, and navigating a wide range of market conditions to match the right candidates with the right employers effectively.',
+  },
+  {
+    tag: 'CORPORATE TRAINING',
+    title: 'Excellence Through',
+    highlight: 'People',
+    subtitle: '',
+    desc: 'Comprehensive HR Training & Development',
+    body: 'Everything we do is driven by our mission to build a better world by helping organizations become Great Employers to work for all, through comprehensive training and compliance frameworks.',
   },
 ]
 
@@ -51,7 +51,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30"
         style={{
-          backgroundImage: 'url(/img/hero-bg.jpg)',
+          backgroundImage: 'url(/img/hr_hero_bg_1783707638359.png)',
         }}
       />
       {/* Gradient overlay */}
@@ -84,7 +84,7 @@ export default function Hero() {
               className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white font-serif-heading leading-tight mb-4"
             >
               {slides[current].title}{' '}
-              <span className="text-primary">{slides[current].highlight}</span>{' '}
+              <span className="text-secondary">{slides[current].highlight}</span>{' '}
               {slides[current].subtitle}
             </motion.h1>
 
@@ -113,10 +113,10 @@ export default function Hero() {
               className="flex flex-wrap gap-3 sm:gap-4"
             >
               <Link
-                href="/contact-us"
-                className="bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5"
+                href="/submit-cv"
+                className="bg-secondary hover:bg-secondary-dark text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block shadow-lg hover:shadow-secondary/30 hover:-translate-y-0.5"
               >
-                Schedule a Consultation
+                Submit Your CV
               </Link>
               <Link
                 href="/about-us"

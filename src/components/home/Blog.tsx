@@ -44,7 +44,7 @@ export default function Blog() {
           </span>
 
           <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-navy font-serif-heading leading-tight">
-            Insights and Updates from Legal Matters and Developments
+            Insights and Updates on HR and Talent Acquisition
           </h2>
         </motion.div>
 

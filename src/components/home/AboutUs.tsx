@@ -7,17 +7,17 @@ import { motion, Variants } from "framer-motion"
 import { getImageUrl } from "@/lib/utils/imageUtils"
 
 const bulletsLeft = [
-  "Corporate Advisory and Compliance Management",
-  "Mergers and Acquisitions Support",
-  "Foreign Direct Investment and FEMA Compliance",
-  "Private Equity and Venture Capital Transactions",
+  "Strategic Talent Acquisition",
+  "Executive Search & Headhunting",
+  "HR Compliance & Labor Law",
+  "Payroll Management",
 ]
 
 const bulletsRight = [
-  "Joint Ventures and Strategic Arrangements",
-  "Corporate Restructuring and Insolvency Matters",
-  "Commercial Contracts and Documentation",
-  "Litigation and Dispute Resolution",
+  "Employee Engagement Programs",
+  "Corporate Training & Development",
+  "Performance Management Systems",
+  "Organizational Restructuring",
 ]
 
 const containerVariants: Variants = {
@@ -58,16 +58,16 @@ export default function AboutUs() {
             <div className="space-y-3 sm:space-y-4">
               <motion.div variants={imageVariants} className="aspect-[4/5] rounded-2xl bg-navy/80 overflow-hidden relative shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80"
-                  alt="Law firm"
+                  src="/img/hr_about_us_1783707647467.png"
+                  alt="HR Consulting"
                   fill
                   className="object-cover opacity-90 hover:scale-105 hover:opacity-100 transition duration-500"
                 />
               </motion.div>
               <motion.div variants={imageVariants} className="aspect-[4/3] rounded-2xl bg-navy/80 overflow-hidden relative shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=600&q=80"
-                  alt="Legal consultation"
+                  src="/img/hr_training_1783707657031.png"
+                  alt="Corporate Training"
                   fill
                   className="object-cover opacity-90 hover:scale-105 hover:opacity-100 transition duration-500"
                 />
@@ -77,16 +77,16 @@ export default function AboutUs() {
             <div className="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
               <motion.div variants={imageVariants} className="aspect-[4/3] rounded-2xl bg-navy/80 overflow-hidden relative shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80"
-                  alt="Court"
+                  src="/img/hr_hero_bg_1783707638359.png"
+                  alt="Corporate Office"
                   fill
                   className="object-cover opacity-90 hover:scale-105 hover:opacity-100 transition duration-500"
                 />
               </motion.div>
               <motion.div variants={imageVariants} className="aspect-[4/5] rounded-2xl bg-navy/80 overflow-hidden relative shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=600&q=80"
-                  alt="Lawyers"
+                  src="/img/hr_submit_cv_1783707666212.png"
+                  alt="Career Growth"
                   fill
                   className="object-cover opacity-90 hover:scale-105 hover:opacity-100 transition duration-500"
                 />
@@ -106,15 +106,15 @@ export default function AboutUs() {
             </span>
 
             <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-navy font-serif-heading mb-6 leading-tight">
-              Structured Legal Advisory, Every Step of the Process
+              Aligning Strategy With People and Culture
             </h2>
 
             <p className="text-gray-600 mb-6 text-base sm:text-lg leading-relaxed">
-              <strong>Equity and Legal Solutions</strong> is a full-service law firm providing strategic and solution-oriented legal services across India. With a multidisciplinary approach and strong professional network, the firm advises individuals, businesses, and corporate entities across diverse sectors.
+              <strong>People Consulting</strong> is a premier HR and Recruitment agency dedicated to providing strategic, solution-oriented talent acquisition and human resource management services. With a multidisciplinary approach and strong professional network, we cater to businesses and corporate entities across diverse sectors.
             </p>
 
             <p className="text-gray-600 mb-8 text-base sm:text-lg leading-relaxed">
-              The firm assists domestic and international clients in establishing, structuring, and expanding operations in India. Our services include regulatory compliance, investment structuring, commercial transactions, and comprehensive dispute resolution support tailored to the client’s specific requirements.
+              We help organizations streamline their recruitment, training, and labor compliance processes. Our goal is to connect top talent with industry leaders, ensuring High Performance workplaces and long-term organizational success.
             </p>
             <motion.div
               initial="hidden"
@@ -148,9 +148,9 @@ export default function AboutUs() {
 
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white px-8 py-3.5 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center bg-secondary hover:bg-secondary-dark text-white px-8 py-3.5 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-secondary/30 hover:-translate-y-0.5"
             >
-              Schedule a Consultation
+              Contact Us
             </Link>
           </motion.div>
         </div>

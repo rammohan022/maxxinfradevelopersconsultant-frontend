@@ -33,7 +33,7 @@ const ValuesPhilosophy = () => {
   const values = [
     {
       title: "Integrity & Ethics",
-      description: "At Equity and Legal Solutions, integrity is the foundation of our practice. We conduct every matter with honesty, transparency, and strict adherence to professional ethics.",
+      description: "At People Consulting, integrity is the foundation of our practice. We conduct every matter with honesty, transparency, and strict adherence to professional ethics.",
       icon: ShieldCheck,
     },
     {

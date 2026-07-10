@@ -11,46 +11,11 @@ type Branch = {
 
 const branches: Branch[] = [
   {
-    city: 'Mumbai',
+    city: 'Faridabad',
     address:
-      'Nariman Point Complex, 12th Floor\nMumbai - 400021, Maharashtra',
-    email: 'mumbai@lexington.com',
-    phone: '+91 22 6789 0123',
-  },
-  {
-    city: 'Bengaluru',
-    address:
-      'UB City, 8th Floor, Vittal Mallya Road\nBengaluru - 560001, Karnataka',
-    email: 'bengaluru@lexington.com',
-    phone: '+91 80 4567 8901',
-  },
-  {
-    city: 'Hyderabad',
-    address:
-      'Hitech City, Cyber Towers, 6th Floor\nHyderabad - 500081, Telangana',
-    email: 'hyderabad@lexington.com',
-    phone: '+91 40 2345 6789',
-  },
-  {
-    city: 'Chennai',
-    address:
-      'Anna Salai, Express Towers, 10th Floor\nChennai - 600002, Tamil Nadu',
-    email: 'chennai@lexington.com',
-    phone: '+91 44 3456 7890',
-  },
-  {
-    city: 'Kolkata',
-    address:
-      'Park Street, Camac Court, 7th Floor\nKolkata - 700016, West Bengal',
-    email: 'kolkata@lexington.com',
-    phone: '+91 33 4567 8901',
-  },
-  {
-    city: 'Pune',
-    address:
-      'Koregaon Park, Business Plaza, 5th Floor\nPune - 411001, Maharashtra',
-    email: 'pune@lexington.com',
-    phone: '+91 20 5678 9012',
+      '7th Floor, Tower 3, RPS 12th Avenue,\nMain Mathura Road, Sector 27C, Faridabad',
+    email: 'hello@peopleconsultings.com',
+    phone: '+91 8800177307',
   },
 ]
 

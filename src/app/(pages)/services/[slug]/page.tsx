@@ -2,22 +2,12 @@ import PracticeAreaDetailsClient from '../components/PracticeAreaDetailsClient';
 
 // Fallback slug list for static export
 const fallbackPracticeAreas = [
-  'apostille-service',
-  'criminal-cases',
-  'ed-cases',
-  'pmla-cases',
-  'eow-cases',
-  'cyber-crime',
-  'arbitration-adr',
-  'arbitration-alternative-dispute-resolution',
-  'banking-finance',
-  'corporate-commercial',
-  'mergers-acquisitions',
-  'intellectual-property',
-  'real-estate',
-  'labor-employment',
-  'litigation',
-  'white-collar-crime',
+  'hiring-staffing',
+  'hr-training',
+  'labor-compliance',
+  'executive-search',
+  'payroll-management',
+  'hr-consulting',
 ]
 
 export async function generateStaticParams() {

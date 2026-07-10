@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+// Force Next.js rebuild
+import { Inter } from "next/font/google";
 import "./globals.css";
 import "react-quill/dist/quill.snow.css";
 import { ReduxProvider } from "@/store/provider";

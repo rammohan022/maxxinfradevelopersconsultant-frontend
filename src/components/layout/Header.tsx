@@ -18,7 +18,7 @@ const resourceItems = [
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
-  { label: 'Practice Area', href: '/practice-areas', mega: true },
+  { label: 'Our Services', href: '/services', mega: true },
   { label: 'Our People', href: '/our-team' },
   { label: 'Resource Centre', href: '#', dropdown: true },
 ]
@@ -67,10 +67,10 @@ export default function Header() {
           >
             <Image
               src="/img/logo.png"
-              alt="Equity & Legal Solutions"
-              width={scrolled ? 150 : 180}
-              height={40}
-              className="h-20 w-auto transition-all duration-300"
+              alt="People Consulting"
+              width={scrolled ? 200 : 250}
+              height={100}
+              className="h-16 w-auto transition-all duration-300"
               priority
             />
           </Link>
@@ -120,7 +120,7 @@ export default function Header() {
                                 {practiceAreas.map((area) => (
                                   <Link
                                     key={area.id}
-                                    href={`/practice-areas/${area.slug}`}
+                                    href={`/services/${area.slug}`}
                                     onClick={() => setOpenDropdown(false)}
                                     className="group/link flex items-center gap-2 text-sm font-semibold text-navy/80 hover:text-primary transition-all duration-200"
                                   >
@@ -195,10 +195,16 @@ export default function Header() {
           </nav>
 
           {/* ================= DESKTOP CTA ================= */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
+            <Link
+              href="/submit-cv"
+              className="text-navy hover:text-primary font-bold transition-all duration-300"
+            >
+              Submit CV
+            </Link>
             <Link
               href="/contact-us"
-              className="bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 shadow-md shadow-primary/20 hover:shadow-lg hover:-translate-y-0.5"
+              className="bg-secondary hover:bg-secondary-dark text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 shadow-md shadow-secondary/20 hover:shadow-lg hover:-translate-y-0.5"
             >
               Contact Us
             </Link>
@@ -240,7 +246,7 @@ export default function Header() {
                     className="w-full flex justify-between items-center font-semibold text-navy px-4 py-3 hover:bg-gray-50 transition-colors"
                     onClick={() => setMobilePracticeOpen(!mobilePracticeOpen)}
                   >
-                    Practice Area
+                    Our Services
                     <motion.div animate={{ rotate: mobilePracticeOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
                       <ChevronDown size={20} className="text-gray-400" />
                     </motion.div>

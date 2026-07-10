@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Container } from '@/components/ui'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
 import { getImageUrl } from '@/lib/utils/imageUtils'
@@ -23,7 +23,7 @@ import {
   ArrowRight,
   ChevronDown,
 } from 'lucide-react'
-import { useGetPracticeAreasQuery, PracticeArea } from '@/services/practice-area'
+import { PracticeArea } from '@/services/practice-area'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   'apostille-service': FileText,
@@ -50,21 +50,43 @@ const fadeUpVariants: Variants = {
 }
 
 export default function Services() {
-  const { data: areas = [], isLoading, isError } = useGetPracticeAreasQuery()
-  const [selectedPracticeArea, setSelectedPracticeArea] = useState<PracticeArea | null>(null)
+  const areas: PracticeArea[] = [
+    {
+      id: '1',
+      title: 'Hiring & Staffing',
+      slug: 'hiring-staffing',
+      innerImage: '/img/hr_hero_bg_1783707638359.png',
+      overview: 'We provide end-to-end recruitment solutions to help you find the best talent for your organization. Our extensive network and rigorous screening process ensure you get candidates who are not just skilled, but also a great cultural fit.'
+    },
+    {
+      id: '2',
+      title: 'HR Training',
+      slug: 'hr-training',
+      innerImage: '/img/hr_training_1783707657031.png',
+      overview: 'Empower your workforce with our comprehensive corporate training programs. We focus on leadership development, soft skills, and technical training to maximize employee productivity and engagement.'
+    },
+    {
+      id: '3',
+      title: 'Labor Compliance',
+      slug: 'labor-compliance',
+      innerImage: '/img/hr_about_us_1783707647467.png',
+      overview: 'Navigate complex labor laws seamlessly. Our team manages payroll administration and ensures strict adherence to all statutory compliance and regulatory requirements to keep your business risk-free.'
+    },
+    {
+      id: '4',
+      title: 'Executive Search',
+      slug: 'executive-search',
+      innerImage: '/img/hr_hero_bg_1783707638359.png',
+      overview: 'Find visionary leaders to steer your company towards success. We specialize in identifying and placing top-tier C-level executives who align with your strategic goals.'
+    }
+  ]
+
+  const [selectedPracticeArea, setSelectedPracticeArea] = useState<PracticeArea>(areas[0])
   const [openMobileSections, setOpenMobileSections] = useState<Set<string>>(new Set())
 
-  // Initialize with first practice area when data loads
-  useEffect(() => {
-    if (areas.length > 0 && !selectedPracticeArea) {
-      setSelectedPracticeArea(areas[0])
-    }
-  }, [areas, selectedPracticeArea])
+  const activeArea = selectedPracticeArea;
 
-  if (isLoading) return null;
-  if (isError || areas.length === 0) return null;
-
-  const activeArea = selectedPracticeArea || areas[0];
+  // No longer returning null since we use hardcoded data
 
   const handlePracticeAreaSelect = (area: PracticeArea) => {
     setSelectedPracticeArea(area)
@@ -92,13 +114,13 @@ export default function Services() {
           className="mb-10 lg:mb-12"
         >
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-2">
-            Area of Practice
+            Our Services
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold text-navy font-serif-heading leading-tight max-w-3xl">
-            Practice Areas
+            What We Offer
           </h2>
           <p className="mt-3 text-gray-600 max-w-3xl leading-relaxed">
-            Providing legal advisory and representation across multiple domains, assisting individuals and organizations in addressing legal and regulatory matters in accordance with applicable laws.
+            Providing comprehensive HR and recruitment solutions, assisting organizations in addressing talent acquisition, training, and compliance matters efficiently.
           </p>
         </motion.div>
 
@@ -112,7 +134,7 @@ export default function Services() {
         >
           <aside className="w-[320px] flex-shrink-0 bg-navy flex flex-col shadow-2xl z-10">
             <div className="p-5 border-b border-white/10 bg-navy-light/30">
-              <span className="text-white/80 text-xs font-semibold uppercase tracking-widest">Select Practice Area</span>
+              <span className="text-white/80 text-xs font-semibold uppercase tracking-widest">Select Service</span>
             </div>
             <nav className="flex-1 overflow-y-auto py-3 scroll-smooth max-h-[520px] custom-scrollbar">
               {areas.map((area) => {
@@ -158,7 +180,7 @@ export default function Services() {
                 className="absolute inset-0"
               >
                 <Image
-                  src={getImageUrl(activeArea?.innerImage) || "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200&q=80"}
+                  src={activeArea.innerImage || ""}
                   alt={activeArea?.title || ""}
                   fill
                   className="object-cover object-center"
@@ -181,7 +203,7 @@ export default function Services() {
                       dangerouslySetInnerHTML={{ __html: activeArea?.overview || "" }}
                     />
                     <Link
-                      href={`/practice-areas/${activeArea?.slug}`}
+                      href={`/services/${activeArea?.slug}`}
                       className="inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-lg font-semibold hover:bg-white hover:text-navy transition-all duration-300 group shadow-lg"
                     >
                       Learn More
@@ -242,7 +264,7 @@ export default function Services() {
                           className="text-gray-600 text-sm mb-5 line-clamp-4 leading-relaxed"
                           dangerouslySetInnerHTML={{ __html: area.overview || "" }}
                         />
-                        <Link href={`/practice-areas/${area.slug}`} className="inline-flex items-center justify-center w-full gap-2 bg-gray-50 hover:bg-primary hover:text-white text-primary font-semibold py-3 rounded-lg transition-colors">
+                        <Link href={`/services/${area.slug}`} className="inline-flex items-center justify-center w-full gap-2 bg-gray-50 hover:bg-primary hover:text-white text-primary font-semibold py-3 rounded-lg transition-colors">
                           Learn More <ArrowRight className="w-4 h-4" />
                         </Link>
                       </div>

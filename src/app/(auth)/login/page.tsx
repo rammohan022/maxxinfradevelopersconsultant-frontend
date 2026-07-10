@@ -64,9 +64,9 @@ const Login = () => {
         <div className="flex justify-center mb-4">
           <Image
             src="/img/logo.png"
-            alt="Equity & Legal Solutions"
-            width={180}
-            height={60}
+            alt="People Consulting"
+            width={250}
+            height={100}
             priority
             className="h-16 w-auto"
           />

@@ -33,14 +33,14 @@ const CTASection: React.FC = () => {
                 <div className="flex flex-col justify-center gap-4 sm:flex-row">
                     <button
                         type="button"
-                        className="flex items-center justify-center gap-2 rounded-lg bg-red-800 px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-red-900 hover:shadow-xl"
+                        className="flex items-center justify-center gap-2 rounded-lg bg-secondary px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-secondary-dark hover:shadow-xl"
                     >
                         Contact Us
                         <CalendarDays className="h-5 w-5" />
                     </button>
 
                     <a
-                        href="tel:18001234567"
+                        href="tel:+918800177307"
                         className="flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-navy transition-all duration-300 hover:-translate-y-1 hover:bg-gray-100 hover:shadow-xl"
                     >
                         Connect With Us

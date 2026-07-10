@@ -9,7 +9,7 @@ export default function CTAQuote() {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay"
         style={{
-          backgroundImage: 'url(https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80)',
+          backgroundImage: 'url(/img/hr_hero_bg_1783707638359.png)',
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/40" />
@@ -23,7 +23,7 @@ export default function CTAQuote() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-serif-heading mb-6 leading-tight drop-shadow-md">
-              We Fight For Right, Meet Us To Solve Your Legal Problem In Right Way
+              Connecting Exceptional Talent With Leading Global Organizations
             </h2>
             <p className="text-xl md:text-2xl lg:text-3xl text-white leading-relaxed font-serif italic mb-8">
               &quot;Our commitment to excellence format is not just a promise, it&#39;s the foundation of every client relationship we build.&quot;
@@ -47,11 +47,11 @@ export default function CTAQuote() {
               </div>
               <div>
                 <p className="text-white/95 mb-6 text-lg sm:text-xl font-serif italic leading-relaxed">
-                  &quot;Their dedication, expertise, and legal support for their clients are unmatched. They executed my case with professionalism and clarity, making the process seamless.&quot;
+                  &quot;Their dedication, expertise, and recruitment support are unmatched. They found us the perfect leadership team, making the process seamless.&quot;
                 </p>
                 <div className="border-t border-white/20 pt-6">
                   <p className="font-bold text-xl mb-1">N.K. Singh</p>
-                  <p className="text-white/80 text-sm font-medium uppercase tracking-wider">Founder & Managing Director, Equity & Legal Solutions</p>
+                  <p className="text-white/80 text-sm font-medium uppercase tracking-wider">Founder & Managing Director, People Consulting</p>
                 </div>
               </div>
             </div>

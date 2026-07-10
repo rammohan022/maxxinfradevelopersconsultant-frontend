@@ -24,10 +24,10 @@ export default function CyberCrime() {
           Areas of Expertise in Cyber Crime & Online Offences
         </span>
         <h2 className="text-3xl lg:text-4xl font-bold text-navy font-serif-heading mb-4">
-          Facing Cyber Crime? Equity & Legal Solutions Offer Expert Legal Remedies in Digital Offences and Online Fraud
+          Facing Cyber Crime? People Consulting Offer Expert Legal Remedies in Digital Offences and Online Fraud
         </h2>
         <p className="text-gray-600 mb-12 max-w-3xl">
-          At Equity & Legal Solutions, we understand that in today&apos;s digitally connected world, cyber threats are no longer theoretical—they are personal, invasive, and deeply disruptive. With years of experience in both criminal law and cyber jurisprudence, our firm provides clients with dedicated, discreet, and powerful representation in cases of cybercrime. Whether it&apos;s online harassment, identity theft, or financial fraud, our lawyers are equipped with the legal expertise and technological understanding necessary to ensure justice is served.
+          At People Consulting, we understand that in today&apos;s digitally connected world, cyber threats are no longer theoretical—they are personal, invasive, and deeply disruptive. With years of experience in both criminal law and cyber jurisprudence, our firm provides clients with dedicated, discreet, and powerful representation in cases of cybercrime. Whether it&apos;s online harassment, identity theft, or financial fraud, our lawyers are equipped with the legal expertise and technological understanding necessary to ensure justice is served.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {cyberItems.map((item) => (

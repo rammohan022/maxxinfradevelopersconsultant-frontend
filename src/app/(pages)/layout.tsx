@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { TopBar, Header, Footer, DisclaimerModal } from "@/components/layout";
 
 export const metadata: Metadata = {
-  title: "Equity & Legal Solutions | Best Criminal Lawyers in Delhi",
+  title: "People Consulting",
   description:
-    "Leading law firm in Delhi. Criminal, ED, PMLA, Cyber Crime, Family & Divorce lawyers. Call +91-1142502484.",
+    "Leading consulting firm. Corporate, Financial, Legal, and Strategic consulting services. Call +91 8800177307.",
 };
 
 export default function PageLayout({

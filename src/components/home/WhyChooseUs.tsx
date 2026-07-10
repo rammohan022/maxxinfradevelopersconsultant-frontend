@@ -6,24 +6,24 @@ import { motion, Variants } from "framer-motion"
 
 const reasons = [
   {
-    title: "Professional Experience",
-    desc: "Experience spanning over two decades across corporate, civil, criminal, and regulatory matters, including proceedings before courts, tribunals, and statutory authorities.",
+    title: "Industry Expertise",
+    desc: "Experience spanning over two decades across corporate recruitment, executive search, and human resource management.",
   },
   {
-    title: "Integrated Legal Support",
-    desc: "Matters are handled through cross-disciplinary collaboration, enabling coordinated legal assessment and practical solutions across multiple domains.",
+    title: "Integrated HR Solutions",
+    desc: "Matters are handled through cross-disciplinary collaboration, enabling coordinated talent acquisition and training solutions.",
   },
   {
-    title: "Advisory and Representation",
-    desc: "Assistance extends beyond representation to include strategic advisory support in regulatory compliance, government interfaces, and policy-related issues.",
+    title: "End-to-End Compliance",
+    desc: "Assistance extends beyond recruitment to include strategic advisory support in labor compliance, payroll, and policy-related issues.",
   },
 ]
 
 const stats = [
-  { value: "20+", label: "Years Experience" },
-  { value: "1000+", label: "Cases Won" },
-  { value: "50+", label: "Awards Won" },
-  { value: "Top", label: "Law Firm in Delhi" },
+  { value: "500+", label: "Active Jobs" },
+  { value: "3000+", label: "Active Resumes" },
+  { value: "120+", label: "Employer Profiles" },
+  { value: "250+", label: "Positions Matched" },
 ]
 
 const containerVariants: Variants = {
@@ -55,7 +55,7 @@ export default function WhyChooseUs() {
           </span>
 
           <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-navy font-serif-heading leading-tight">
-            A Structured and Integrated Legal Approach
+            A Structured Approach to Talent and Culture
           </h2>
         </motion.div>
 
@@ -67,9 +67,9 @@ export default function WhyChooseUs() {
             variants={containerVariants}
           >
             <motion.p variants={itemVariants} className="text-gray-600 mb-10 text-lg leading-relaxed">
-              In a dynamic legal and business environment, matters often involve overlapping legal, regulatory, and procedural considerations. <strong> Equity and Legal Solutions</strong> follows a coordinated approach that integrates advisory, representation, and compliance support across practice areas.
+              In a dynamic corporate environment, talent acquisition involves overlapping regulatory and procedural considerations. <strong> People Consulting</strong> follows a coordinated approach that integrates recruitment, training, and compliance support across practice areas.
             </motion.p>
-            <motion.p variants={itemVariants} className="text-gray-600 mb-10 text-lg leading-relaxed">The firm focuses on building long-term professional relationships through consistent engagement, clear communication, and partner-level involvement in significant matters.</motion.p>
+            <motion.p variants={itemVariants} className="text-gray-600 mb-10 text-lg leading-relaxed">We focus on building long-term professional relationships through consistent engagement, clear communication, and delivering High Performance workplace solutions.</motion.p>
             <div className="space-y-8">
               {reasons.map((r, i) => (
                 <motion.div variants={itemVariants} key={r.title} className="flex gap-4 sm:gap-6">
@@ -96,7 +96,7 @@ export default function WhyChooseUs() {
           >
             <div className="rounded-2xl overflow-hidden bg-navy/80 relative aspect-[4/3] sm:aspect-video lg:aspect-[4/3] shadow-2xl group">
               <Image
-                src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=800&q=80"
+                src="/img/hr_about_us_1783707647467.png"
                 alt="Our team"
                 fill
                 className="object-cover opacity-90 group-hover:scale-105 transition duration-700"

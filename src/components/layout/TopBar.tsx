@@ -16,13 +16,13 @@ export default function TopBar() {
         <div className="flex gap-6">
           <a
             href="mailto:hello@peopleconsultings.com"
-            className="hover:text-primary transition"
+            className="hover:text-secondary transition"
           >
             hello@peopleconsultings.com
           </a>
           <a
             href="tel:+918800177307"
-            className="hover:text-primary transition"
+            className="hover:text-secondary transition"
           >
             +91 8800177307
           </a>
@@ -30,16 +30,16 @@ export default function TopBar() {
 
         {/* Right: Social Icons */}
         <div className="flex items-center gap-4">
-          <Link href="#" className="hover:text-primary transition">
+          <Link href="#" className="hover:text-secondary transition">
             <Facebook size={16} strokeWidth={1.8} />
           </Link>
-          <Link href="#" className="hover:text-primary transition">
+          <Link href="#" className="hover:text-secondary transition">
             <Twitter size={16} strokeWidth={1.8} />
           </Link>
-          <Link href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">
+          <Link href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition">
             <Linkedin size={16} strokeWidth={1.8} />
           </Link>
-          <Link href="https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition">
+          <Link href="https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition">
             <Instagram size={16} strokeWidth={1.8} />
           </Link>
         </div>

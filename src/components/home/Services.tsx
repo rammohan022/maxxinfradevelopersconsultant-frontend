@@ -156,12 +156,12 @@ export default function Services() {
                     {isActive && (
                       <motion.div
                         layoutId="active-indicator"
-                        className="absolute left-0 top-0 bottom-0 w-1 bg-primary"
+                        className="absolute left-0 top-0 bottom-0 w-1 bg-secondary"
                         initial={false}
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
                     )}
-                    <Icon className={`w-[18px] h-[18px] flex-shrink-0 transition-colors duration-300 ${isActive ? 'text-primary' : 'text-white/50'}`} />
+                    <Icon className={`w-[18px] h-[18px] flex-shrink-0 transition-colors duration-300 ${isActive ? 'text-secondary' : 'text-white/50'}`} />
                     <span className="font-medium text-[15px] leading-snug truncate pr-2">{area.title}</span>
                   </button>
                 )

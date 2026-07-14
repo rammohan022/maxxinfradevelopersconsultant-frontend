@@ -36,7 +36,7 @@ const CareerHero = () => {
 
               <a
                 href="#why-join-us"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 py-3.5 rounded-lg font-semibold transition"
+                className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-6 py-3.5 rounded-lg font-semibold transition"
               >
                 Why Work With Us
               </a>

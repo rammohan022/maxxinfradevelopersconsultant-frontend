@@ -6,8 +6,8 @@ const PracticeAreasPage = () => {
   return (
     <div>
        <Hero
-        title="Practice Areas"
-        subtitle="Offering legal expertise across diverse practice areas to help clients navigate legal challenges and achieve favorable outcomes."
+        title="Our Services"
+        subtitle="Offering comprehensive consulting and strategic solutions to help clients navigate industry challenges and achieve key goals."
       />
       <Services />
       <CallToAction/>

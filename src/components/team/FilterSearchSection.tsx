@@ -64,10 +64,10 @@ const FilterSearchSection = ({
             </div>
           </div>
 
-          {/* Practice Area */}
+          {/* Service */}
           <div className="flex-1 w-full">
             <label className="mb-2.5 block text-sm font-bold uppercase tracking-wider text-gray-700">
-              Practice Area
+              Service
             </label>
             <div className="relative">
               <select
@@ -75,7 +75,7 @@ const FilterSearchSection = ({
                 onChange={(e) => onPracticeAreaChange(e.target.value)}
                 className="w-full rounded-xl border border-gray-200 bg-white px-5 py-3.5 transition-all duration-300 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/10 appearance-none font-medium text-gray-700 cursor-pointer"
               >
-                <option value="">All Practice Areas</option>
+                <option value="">All Services</option>
                 {practiceAreas.map((area) => (
                   <option key={area} value={area}>{area}</option>
                 ))}

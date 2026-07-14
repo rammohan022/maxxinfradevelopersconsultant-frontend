@@ -23,11 +23,12 @@ export default function LeadsPage() {
     name: "",
   });
 
-  const [viewModal, setViewModal] = useState<{ isOpen: boolean; message: string; subject: string; name: string }>({
+  const [viewModal, setViewModal] = useState<{ isOpen: boolean; message: string; subject: string; name: string; source?: string }>({
     isOpen: false,
     message: "",
     subject: "",
     name: "",
+    source: "",
   });
 
   const filteredLeads = leads.filter((lead) => {
@@ -149,7 +150,7 @@ export default function LeadsPage() {
 
                     <td className="px-3 py-2 text-center whitespace-nowrap">
                       <button
-                        onClick={() => setViewModal({ isOpen: true, message: lead.message, subject: lead.subject || "No Subject", name: lead.fullName })}
+                        onClick={() => setViewModal({ isOpen: true, message: lead.message, subject: lead.subject || "No Subject", name: lead.fullName, source: (lead as any).source })}
                         className="text-slate-400 hover:text-secondary transition p-2 hover:bg-slate-50 rounded-lg mr-1"
                         title="View Full Message"
                       >
@@ -199,16 +200,22 @@ export default function LeadsPage() {
                 Enquiry from {viewModal.name}
               </h3>
               <button
-                onClick={() => setViewModal({ isOpen: false, message: "", subject: "", name: "" })}
+                onClick={() => setViewModal({ isOpen: false, message: "", subject: "", name: "", source: "" })}
                 className="text-slate-400 hover:text-slate-600 transition text-lg"
               >
                 ✕
               </button>
             </div>
             <div className="p-4 space-y-3">
-              <div>
-                <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Subject</span>
-                <p className="text-sm font-medium text-slate-700 mt-0.5">{viewModal.subject}</p>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Subject</span>
+                  <p className="text-sm font-medium text-slate-700 mt-0.5">{viewModal.subject}</p>
+                </div>
+                <div>
+                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Source Page</span>
+                  <p className="text-sm font-medium text-slate-700 mt-0.5">{viewModal.source || "/"}</p>
+                </div>
               </div>
               <div>
                 <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Message</span>
@@ -219,7 +226,7 @@ export default function LeadsPage() {
             </div>
             <div className="px-4 py-2.5 bg-slate-50 border-t border-slate-100 flex justify-end">
               <button
-                onClick={() => setViewModal({ isOpen: false, message: "", subject: "", name: "" })}
+                onClick={() => setViewModal({ isOpen: false, message: "", subject: "", name: "", source: "" })}
                 className="px-4 py-2 bg-[rgb(13_33_55)] hover:bg-[rgb(13_33_55)]/90 text-white rounded-lg text-sm font-semibold transition"
               >
                 Close

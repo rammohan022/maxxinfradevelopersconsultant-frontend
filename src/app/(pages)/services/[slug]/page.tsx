@@ -1,4 +1,4 @@
-import PracticeAreaDetailsClient from '../components/PracticeAreaDetailsClient';
+import ServiceDetailsClient from '../components/ServiceDetailsClient';
 
 // Fallback slug list for static export
 const fallbackPracticeAreas = [
@@ -22,7 +22,7 @@ export async function generateStaticParams() {
       }
     }
   } catch (error) {
-    console.error("Failed to fetch practice areas for generateStaticParams:", error);
+    console.error("Failed to fetch services for generateStaticParams:", error);
   }
 
   return fallbackPracticeAreas.map((slug) => ({
@@ -30,6 +30,6 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function PracticeAreaDetails() {
-  return <PracticeAreaDetailsClient />;
+export default function ServiceDetails() {
+  return <ServiceDetailsClient />;
 }

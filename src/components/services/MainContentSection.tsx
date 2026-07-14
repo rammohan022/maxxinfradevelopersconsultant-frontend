@@ -46,7 +46,7 @@ export default function MainContentSection({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await createLead(formData).unwrap();
+      await createLead({ ...formData, source: typeof window !== "undefined" ? window.location.pathname : "" }).unwrap();
       toast.success("Enquiry submitted successfully!");
       setFormData({
         fullName: "",
@@ -219,12 +219,12 @@ export default function MainContentSection({
                     onChange={handleChange}
                     placeholder="Brief message"
                     required
-                    className="w-full resize-none rounded border border-gray-300 px-4 py-2 focus:border-red-700 focus:outline-none"
+                    className="w-full resize-none rounded border border-gray-300 px-4 py-2 focus:border-secondary focus:outline-none"
                   />
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-red-700 px-4 py-3 text-sm font-medium text-white transition hover:opacity-90 disabled:bg-gray-400"
+                    className="w-full bg-secondary px-4 py-3 text-sm font-medium text-white transition hover:bg-secondary-dark disabled:bg-gray-400"
                   >
                     {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
@@ -244,14 +244,14 @@ export default function MainContentSection({
               {/* CTA */}
               <div className="bg-navy p-6 text-white text-center">
                 <h4 className="mb-3 font-serif text-xl font-semibold">
-                  Need Legal Assistance?
+                  Need Expert Assistance?
                 </h4>
                 <p className="mb-4 text-sm text-gray-300">
                   Our experts are ready to help.
                 </p>
                 <a
                   href="/contact-us"
-                  className="block bg-red-700 px-6 py-3 text-center font-medium transition hover:opacity-90"
+                  className="block bg-secondary px-6 py-3 text-center font-medium transition hover:bg-secondary-dark"
                 >
                   Contact Us
                 </a>

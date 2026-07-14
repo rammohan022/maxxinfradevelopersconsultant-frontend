@@ -63,7 +63,7 @@ export default function DisclaimerModal() {
           <div className="mt-8">
             <button
               onClick={handleAgree}
-              className="inline-flex items-center gap-3 rounded-md bg-red-700 px-8 py-3 text-white font-semibold hover:bg-maroon-800 transition"
+              className="inline-flex items-center gap-3 rounded-md bg-secondary px-8 py-3 text-white font-semibold hover:bg-secondary-dark transition"
             >
               I Agree
               <span className="text-lg">→</span>

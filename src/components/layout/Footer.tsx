@@ -10,7 +10,6 @@ const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
   { label: 'Career', href: '/career' },
-  { label: 'Our Team', href: '/our-team' },
   { label: 'Blog', href: '/blog' },
   { label: 'Our Services', href: '/services' },
   { label: 'Contact Us', href: '/contact-us' },
@@ -76,7 +75,7 @@ export default function Footer() {
                 />
               </Link>
               <p className="text-gray-600 mb-8 leading-relaxed text-sm md:text-base pr-4">
-                At People Consulting, we deliver trusted, result-oriented consulting services across diverse practice areas. Our experienced team provides strategic advice and strong representation to clients across industries.
+                At People Consulting, we deliver trusted, result-oriented consulting services across diverse areas. Our experienced team provides strategic advice to clients across industries.
               </p>
               <div className="flex gap-4">
                 <a href="#" className="w-10 h-10 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-primary hover:border-primary hover:text-white transition duration-300 transform hover:-translate-y-1" aria-label="Facebook">
@@ -92,6 +91,21 @@ export default function Footer() {
             </motion.div>
             <motion.div variants={itemVariants}>
               <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
+                Our Services
+                <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
+              </h3>
+              <ul className="space-y-3 font-medium">
+                {practiceAreas.slice(0, 7).map((area) => (
+                  <li key={area.id}>
+                    <Link href={`/services/${area.slug}`} className="text-gray-600 hover:text-secondary transition-colors hover:translate-x-1 inline-flex transform duration-200 text-sm md:text-base">
+                      {area.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
                 Quick Links
                 <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
               </h3>
@@ -100,21 +114,6 @@ export default function Footer() {
                   <li key={l.label}>
                     <Link href={l.href} className="text-gray-600 hover:text-secondary transition-colors hover:translate-x-1 inline-flex transform duration-200 text-sm md:text-base">
                       {l.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
-                Our Location
-                <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
-              </h3>
-              <ul className="space-y-3 font-medium">
-                {locations.map((p) => (
-                  <li key={p}>
-                    <Link href="/contact-us" className="text-gray-600 hover:text-secondary transition-colors hover:translate-x-1 inline-flex transform duration-200 text-sm md:text-base">
-                      {p}
                     </Link>
                   </li>
                 ))}
@@ -147,30 +146,6 @@ export default function Footer() {
               </ul>
             </motion.div>
           </motion.div>
-          {/* Practice Areas Tags */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="pb-10"
-          >
-            <h4 className="text-sm font-bold uppercase tracking-wider text-gray-400 mb-4">
-              Our Services
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              {practiceAreas.map((area) => (
-                <Link
-                  key={area.slug}
-                  href={`/services/${area.slug}`}
-                  className="px-3 py-1.5 rounded border border-gray-200 text-gray-600 text-xs font-medium hover:bg-primary hover:border-primary hover:text-white transition-all duration-200"
-                >
-                  {area.title}
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-
           {/* Copyright */}
           <motion.div
             initial={{ opacity: 0 }}

@@ -18,7 +18,10 @@ export const getImageUrl = (imagePath?: string) => {
                     "http://localhost:3003/";
 
     // Clean base URL to remove trailing slash for consistency
-    const cleanBaseUrl = baseUrlValue.endsWith("/") ? baseUrlValue.slice(0, -1) : baseUrlValue;
+    let cleanBaseUrl = baseUrlValue.endsWith("/") ? baseUrlValue.slice(0, -1) : baseUrlValue;
+    if (cleanBaseUrl.endsWith("/api")) {
+        cleanBaseUrl = cleanBaseUrl.slice(0, -4);
+    }
 
     // Clean image path to ensure it starts with a single slash for comparison
     const normalizedPath = imagePath.startsWith("/") ? imagePath : `/${imagePath}`;

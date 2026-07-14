@@ -33,7 +33,7 @@ const ContactSection = () => {
         e.preventDefault();
 
         try {
-            await createLead(formData).unwrap();
+            await createLead({ ...formData, source: typeof window !== "undefined" ? window.location.pathname : "" }).unwrap();
             toast.success("Enquiry submitted successfully! We'll get back to you soon.");
             setFormData({ fullName: "", email: "", phoneNumber: "", subject: "", message: "" });
         } catch (err) {
@@ -236,7 +236,7 @@ const ContactSection = () => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="w-full bg-red-700 text-white py-2 text-sm rounded-md font-semibold hover:bg-red-900 transition-all disabled:bg-gray-400"
+                                    className="w-full bg-secondary text-white py-2 text-sm rounded-md font-semibold hover:bg-secondary-dark transition-all disabled:bg-gray-400"
                                 >
                                     {isSubmitting ? "Submitting..." : "Submit Enquiry"}
                                 </button>

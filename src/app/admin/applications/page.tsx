@@ -7,6 +7,7 @@ import { useGetCareersQuery } from "@/services/career";
 import DeleteModal from "../components/DeleteModal";
 import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
+import { getImageUrl } from "@/lib/utils/imageUtils";
 
 const ApplicationsListPage = () => {
   const { data: applications = [], isLoading, isError } = useGetJobApplicationsQuery();
@@ -147,13 +148,13 @@ const ApplicationsListPage = () => {
                     <td className="p-4 text-slate-500">
                       <div className="flex items-center gap-1.5">
                         <Calendar size={14} />
-                        {new Date(app.createdAt).toLocaleDateString()}
+                        {new Date(app.createdAt).toLocaleString([], { year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}
                       </div>
                     </td>
                     <td className="p-4">
                       {app.resume ? (
                         <a
-                          href={app.resume}
+                          href={getImageUrl(app.resume)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center gap-1.5 text-secondary hover:underline font-medium"

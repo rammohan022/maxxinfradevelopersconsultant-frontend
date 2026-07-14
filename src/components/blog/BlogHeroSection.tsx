@@ -47,8 +47,8 @@ const BlogHeroSection = () => {
           {/* Description */}
           <p className="max-w-2xl text-xl leading-relaxed text-gray-300">
             Stay informed with the latest legal developments, expert commentary,
-            and in-depth analysis from our experienced attorneys across multiple
-            practice areas.
+            and in-depth analysis from our experienced advisors across multiple
+            services.
           </p>
         </div>
       </Container>

@@ -28,7 +28,7 @@ const CTASection = () => {
     e.preventDefault()
 
     try {
-      await createLead(formData).unwrap()
+      await createLead({ ...formData, source: typeof window !== "undefined" ? window.location.pathname : "" }).unwrap()
       toast.success("Your consultation request has been submitted! We'll get back to you shortly.")
       setFormData({ fullName: "", email: "", phoneNumber: "", subject: "", message: "" })
     } catch (err) {
@@ -143,7 +143,7 @@ const CTASection = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-red-600 py-4 text-lg font-medium text-white transition hover:bg-red-700 disabled:bg-gray-400"
+              className="w-full bg-secondary py-4 text-lg font-medium text-white transition hover:bg-secondary-dark disabled:bg-gray-400"
             >
               {isSubmitting ? "Submitting..." : "Request Consultation"}
             </button>

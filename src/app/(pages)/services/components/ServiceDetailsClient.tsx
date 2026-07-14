@@ -4,7 +4,7 @@ import { useGetServicesQuery } from '@/services/services';
 import { HeroDetails, MainContentSection } from '@/components/services';
 import { useParams } from 'next/navigation';
 
-export default function PracticeAreaDetailsClient() {
+export default function ServiceDetailsClient() {
     const { slug } = useParams();
     const { data: practiceAreas, isLoading } = useGetServicesQuery();
 
@@ -22,7 +22,7 @@ export default function PracticeAreaDetailsClient() {
     if (!area) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-navy text-white">
-                <h1 className="text-4xl font-bold mb-4">Practice Area Not Found</h1>
+                <h1 className="text-4xl font-bold mb-4">Service Not Found</h1>
                 <p className="text-gray-400">The page you are looking for does not exist.</p>
             </div>
         );

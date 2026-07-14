@@ -177,13 +177,13 @@ function BlogDetailsContent() {
                                 </div>
                                 {/* 
                                 <div className="rounded-lg bg-white border border-gray-100 shadow-sm p-6">
-                                    <h3 className="font-serif text-lg font-bold text-navy mb-4">Practice Areas</h3>
+                                    <h3 className="font-serif text-lg font-bold text-navy mb-4">Services</h3>
                                     <div className="flex flex-wrap gap-2">
-                                        {['Corporate', 'Litigation', 'Arbitration', 'IP', 'Tax', 'Regulatory'].map((area) => (
-                                            <Link key={area} href="/practice-areas" className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-navy hover:bg-primary hover:text-white transition">
-                                                {area}
-                                            </Link>
-                                        ))}
+                                         {['Corporate', 'Litigation', 'Arbitration', 'IP', 'Tax', 'Regulatory'].map((area) => (
+                                             <Link key={area} href="/services" className="rounded-full bg-gray-100 px-3 py-1.5 text-xs font-medium text-navy hover:bg-primary hover:text-white transition">
+                                                 {area}
+                                             </Link>
+                                         ))}
                                     </div>
                                 </div> */}
                             </div>
@@ -251,14 +251,14 @@ function BlogDetailsContent() {
                 </div>
                 <Container className="relative z-10 max-w-3xl text-center">
                     <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white mb-4">
-                        Need Legal Assistance? Speak With Our Experts
+                        Need Expert Assistance? Speak With Our Advisors
                     </h2>
                     <p className="text-lg text-gray-300 mb-8">
-                        Our experienced attorneys are ready to provide strategic advice tailored to your needs. Contact us for a confidential consultation.
+                        Our experienced consultants are ready to provide strategic advice tailored to your needs. Contact us for a consultation.
                     </p>
                     <Link
                         href="/contact-us"
-                        className="inline-block bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded font-medium transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-navy"
+                        className="inline-block bg-secondary hover:bg-secondary-dark text-white px-8 py-4 rounded font-medium transition focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-navy"
                     >
                         Contact Us
                     </Link>

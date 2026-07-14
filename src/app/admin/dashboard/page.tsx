@@ -15,8 +15,8 @@ const Dashboard = () => {
   const statsData = [
     { title: "Total Leads", value: stats?.totalLeads || 0, icon: Users },
     { title: "Blog Posts", value: stats?.totalBlogs || 0, icon: FileText },
-    { title: "Services", value: stats?.totalServices || stats?.totalPracticeAreas || 0, icon: Layers },
-    { title: "Teams Members", value: stats?.totalMembers || 0, icon: BarChart3 },
+    { title: "Job Posted", value: (stats as any)?.totalCareers || 0, icon: Layers },
+    { title: "Job Applications", value: (stats as any)?.totalApplications || 0, icon: BarChart3 },
   ];
 
   if (isLoading) {

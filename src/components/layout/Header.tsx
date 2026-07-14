@@ -19,7 +19,6 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
   { label: 'Our Services', href: '/services', mega: true },
-  { label: 'Our Team', href: '/our-team' },
   { label: 'Resource Centre', href: '#', dropdown: true },
 ]
 
@@ -316,9 +315,7 @@ export default function Header() {
                   </AnimatePresence>
                 </div>
 
-                <Link href="/our-team" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
-                  Our Team
-                </Link>
+
 
                 <Link href="/career" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
                   Career
@@ -328,7 +325,7 @@ export default function Header() {
                   <Link
                     href="/contact-us"
                     onClick={() => setMobileOpen(false)}
-                    className="flex items-center justify-center w-full bg-primary text-white py-3 rounded-lg font-bold shadow-md shadow-primary/20 active:scale-95 transition-transform"
+                    className="flex items-center justify-center w-full bg-secondary text-white py-3 rounded-lg font-bold shadow-md shadow-secondary/20 active:scale-95 transition-transform"
                   >
                     Contact Us
                   </Link>

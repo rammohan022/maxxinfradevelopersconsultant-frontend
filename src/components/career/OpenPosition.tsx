@@ -211,7 +211,7 @@ const OpenPosition = () => {
                       <button
                         type="button"
                         onClick={() => openApplyModal(job)}
-                        className="inline-block bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded font-medium transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                        className="inline-block bg-secondary hover:bg-secondary-dark text-white px-5 py-2.5 rounded font-medium transition focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2"
                       >
                         Apply
                       </button>
@@ -233,7 +233,7 @@ const OpenPosition = () => {
           aria-labelledby="apply-modal-title"
         >
           <div
-            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-lg bg-white shadow-xl"
+            className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg bg-white shadow-xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sticky top-0 flex items-center justify-between border-b border-gray-100 bg-white px-6 py-4">
@@ -243,7 +243,7 @@ const OpenPosition = () => {
               <button
                 type="button"
                 onClick={closeApplyModal}
-                className="p-2 text-gray-500 hover:text-navy rounded focus:outline-none focus:ring-2 focus:ring-primary"
+                className="p-2 text-gray-500 hover:text-navy rounded focus:outline-none focus:ring-2 focus:ring-secondary"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
@@ -262,7 +262,7 @@ const OpenPosition = () => {
                   </p>
                   <button
                     onClick={closeApplyModal}
-                    className="mt-8 bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-medium transition"
+                    className="mt-8 bg-secondary hover:bg-secondary-dark text-white px-8 py-3 rounded-lg font-medium transition"
                   >
                     Got it, thanks!
                   </button>
@@ -276,59 +276,68 @@ const OpenPosition = () => {
                     </p>
                   </div>
                   <form onSubmit={handleApplySubmit} className="space-y-4">
-                    <div>
-                      <label htmlFor="apply-name" className="mb-1.5 block text-sm font-medium text-gray-700">
-                        Full Name *
-                      </label>
-                      <input
-                        id="apply-name"
-                        name="apply-name"
-                        type="text"
-                        required
-                        placeholder="Your full name"
-                        className="w-full border border-gray-300 px-4 py-3 rounded transition focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                      />
+                    {/* Row 1: Name and Email */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="apply-name" className="mb-1.5 block text-sm font-medium text-gray-700">
+                          Full Name *
+                        </label>
+                        <input
+                          id="apply-name"
+                          name="apply-name"
+                          type="text"
+                          required
+                          placeholder="Your full name"
+                          className="w-full border border-gray-300 px-4 py-2 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="apply-email" className="mb-1.5 block text-sm font-medium text-gray-700">
+                          Email *
+                        </label>
+                        <input
+                          id="apply-email"
+                          name="apply-email"
+                          type="email"
+                          required
+                          placeholder="your@email.com"
+                          className="w-full border border-gray-300 px-4 py-2 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <label htmlFor="apply-email" className="mb-1.5 block text-sm font-medium text-gray-700">
-                        Email *
-                      </label>
-                      <input
-                        id="apply-email"
-                        name="apply-email"
-                        type="email"
-                        required
-                        placeholder="your@email.com"
-                        className="w-full border border-gray-300 px-4 py-3 rounded transition focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                      />
+
+                    {/* Row 2: Phone and Resume */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="apply-phone" className="mb-1.5 block text-sm font-medium text-gray-700">
+                          Phone *
+                        </label>
+                        <input
+                          id="apply-phone"
+                          name="apply-phone"
+                          type="tel"
+                          required
+                          placeholder="+91 00000 00000"
+                          className="w-full border border-gray-300 px-4 py-2 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="apply-resume" className="mb-1.5 block text-sm font-medium text-gray-700">
+                          Resume / CV *
+                        </label>
+                        <input
+                          id="apply-resume"
+                          name="apply-resume"
+                          type="file"
+                          required
+                          accept=".pdf,.doc,.docx"
+                          className="w-full border border-gray-300 px-4 py-1 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:bg-secondary/10 file:text-secondary file:font-medium file:cursor-pointer"
+                        />
+                        <p className="mt-1 text-[10px] text-gray-500">PDF or DOC, max 5MB</p>
+                      </div>
                     </div>
-                    <div>
-                      <label htmlFor="apply-phone" className="mb-1.5 block text-sm font-medium text-gray-700">
-                        Phone *
-                      </label>
-                      <input
-                        id="apply-phone"
-                        name="apply-phone"
-                        type="tel"
-                        required
-                        placeholder="+91 00000 00000"
-                        className="w-full border border-gray-300 px-4 py-3 rounded transition focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="apply-resume" className="mb-1.5 block text-sm font-medium text-gray-700">
-                        Resume / CV *
-                      </label>
-                      <input
-                        id="apply-resume"
-                        name="apply-resume"
-                        type="file"
-                        required
-                        accept=".pdf,.doc,.docx"
-                        className="w-full border border-gray-300 px-4 py-3 rounded transition focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-primary/10 file:text-primary file:font-medium file:cursor-pointer"
-                      />
-                      <p className="mt-1 text-xs text-gray-500">PDF or DOC, max 5MB</p>
-                    </div>
+
+                    {/* Row 3: Cover Letter */}
                     <div>
                       <label htmlFor="apply-message" className="mb-1.5 block text-sm font-medium text-gray-700">
                         Cover letter / Message
@@ -338,7 +347,7 @@ const OpenPosition = () => {
                         name="apply-message"
                         rows={4}
                         placeholder="Briefly tell us about your experience and why you are interested in this role (optional)."
-                        className="w-full border border-gray-300 px-4 py-3 rounded transition focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary resize-none"
+                        className="w-full border border-gray-300 px-4 py-3 rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary resize-none"
                       />
                     </div>
                     <div className="flex flex-col-reverse sm:flex-row gap-3 pt-2">
@@ -353,7 +362,7 @@ const OpenPosition = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex-1 bg-primary hover:bg-primary-dark text-white px-5 py-3 rounded font-medium transition focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 flex items-center justify-center gap-2 disabled:opacity-70"
+                        className="flex-1 bg-secondary hover:bg-secondary-dark text-white px-5 py-3 rounded font-medium transition focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 flex items-center justify-center gap-2 disabled:opacity-70"
                       >
                         {isSubmitting ? (
                           <>

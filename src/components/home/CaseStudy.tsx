@@ -3,110 +3,88 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Container } from "@/components/ui"
-import { motion, Variants } from "framer-motion"
+import { motion } from "framer-motion"
 
 const cases = [
   {
-    title: "Real Estate Issue",
-    desc: "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment.",
+    title: "Tech Startup Scaling",
+    desc: "Helped a high-growth tech platform hire 50+ engineers and operations staff in under 3 months, aligning culture and compliance.",
+    img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80",
   },
   {
-    title: "Money Laundering",
-    desc: "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment.",
+    title: "Labor Compliance Audit",
+    desc: "Conducted a complete HR and payroll audit for a multi-state retail group, resolving key regulatory issues and restructuring contract models.",
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80",
   },
   {
-    title: "Critical Murder Case",
-    desc: "On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment.",
+    title: "Leadership Alignment",
+    desc: "Designed and implemented a custom executive training and performance management curriculum for a national logistics provider.",
+    img: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
   },
 ]
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-}
-
 export default function CaseStudy() {
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-navy text-white relative overflow-hidden">
+    <section className="py-16 md:py-24 bg-slate-50 text-slate-900 relative overflow-hidden" id="case-studies">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] -z-0 mix-blend-screen" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-[100px] -z-0" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-0" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] -z-0" />
 
       <Container className="relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
           className="text-center md:text-left max-w-3xl mb-12 sm:mb-16"
         >
-          <span className="inline-block text-primary font-bold text-sm uppercase tracking-widest mb-3 border-l-4 border-primary pl-3">
-            Case Study
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+            Case Studies
           </span>
 
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold font-serif-heading leading-tight drop-shadow-md">
-            We Are Providing Top Services With Excellent Performance
+          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 leading-tight">
+            Delivering measurable growth and organizational alignment
           </h2>
         </motion.div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          variants={containerVariants}
-          className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8"
-        >
+        {/* Render cards directly with Tailwind transition effects to prevent visibility issues */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 lg:gap-8">
           {cases.map((c) => (
-            <motion.div
-              variants={itemVariants}
+            <div
               key={c.title}
-              whileHover={{ y: -8, transition: { duration: 0.2 } }}
-              className="group rounded-2xl overflow-hidden bg-navy-light/40 border border-white/10 hover:border-primary/50 transition-colors backdrop-blur-sm shadow-xl"
+              className="group rounded-2xl overflow-hidden bg-white border border-slate-200/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl backdrop-blur-sm shadow-md flex flex-col justify-between"
             >
-              <div className="aspect-video bg-navy relative overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80"
-                  alt={c.title}
-                  fill
-                  className="object-cover opacity-70 group-hover:scale-105 group-hover:opacity-90 transition-all duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-light to-transparent opacity-80" />
+              <div>
+                <div className="aspect-video relative overflow-hidden">
+                  <Image
+                    src={c.img}
+                    alt={c.title}
+                    fill
+                    className="object-cover opacity-90 group-hover:scale-105 transition-all duration-700"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-40" />
+                </div>
+
+                <div className="p-6 lg:p-8">
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+                    {c.title}
+                  </h3>
+                  <p className="text-slate-600 mb-6 text-sm lg:text-base leading-relaxed line-clamp-3">
+                    {c.desc}
+                  </p>
+                </div>
               </div>
 
-              <div className="p-6 lg:p-8">
-                <h3 className="text-xl lg:text-2xl font-bold font-serif-heading mb-3 group-hover:text-primary transition-colors">
-                  {c.title}
-                </h3>
-                <p className="text-white/70 mb-6 text-sm lg:text-base leading-relaxed line-clamp-3">
-                  {c.desc}
-                </p>
-                <Link href="#contact" className="inline-flex items-center text-primary font-semibold hover:text-white transition-colors group/link text-sm uppercase tracking-wider">
+              <div className="px-6 pb-6 lg:px-8 lg:pb-8">
+                <Link href="#contact" className="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors group/link text-sm uppercase tracking-wider">
                   Read More
                   <span className="ml-2 group-hover/link:translate-x-1 transition-transform">→</span>
                 </Link>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex gap-2 mt-12 justify-center"
-        >
-          <span className="w-8 h-1.5 rounded-full bg-primary" />
-          <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
-          <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
-        </motion.div>
+        </div>
       </Container>
     </section>
   )

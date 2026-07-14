@@ -123,7 +123,7 @@ export default function Hero() {
                 </Link>
                 <Link
                   href="/about-us"
-                  className="border-2 border-navy text-navy hover:bg-navy hover:text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block bg-white"
+                  className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block bg-white"
                 >
                   Learn More
                 </Link>

@@ -49,7 +49,7 @@ const itemVariants: Variants = {
 
 export default function FeatureCards() {
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-white">
+    <section className="py-12 md:py-16 lg:py-20 bg-slate-50">
       <Container>
         <motion.div
           variants={containerVariants}
@@ -65,10 +65,10 @@ export default function FeatureCards() {
               whileHover={{ y: -6, transition: { duration: 0.2 } }}
               className="group p-6 sm:p-8 rounded-xl border border-gray-100 hover:shadow-xl hover:border-primary/20 transition-all duration-300 text-center bg-white"
             >
-              <div className="text-primary mb-5 flex justify-start group-hover:scale-110 transition-transform duration-300">
+              <div className="text-secondary mb-5 flex justify-start group-hover:scale-110 transition-transform duration-300">
                 {f.icon}
               </div>
-              <h3 className="text-lg sm:text-xl text-start font-bold text-navy font-serif-heading mb-3">{f.title}</h3>
+              <h3 className="text-lg sm:text-xl text-start font-bold text-navy mb-3">{f.title}</h3>
               <p className="text-gray-600 text-start text-sm sm:text-base leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}

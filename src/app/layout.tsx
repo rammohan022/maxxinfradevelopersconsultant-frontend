@@ -19,6 +19,8 @@ export const metadata: Metadata = {
   },
 };
 
+const inter = Inter({ subsets: ["latin"] });
+
 export default function RootLayout({
   children,
 }: {
@@ -26,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased w-full overflow-x-hidden">
+      <body className={`${inter.className} antialiased w-full overflow-x-hidden`}>
         <ReduxProvider>
           <ToastProvider />
           <main className="w-full">{children}</main>

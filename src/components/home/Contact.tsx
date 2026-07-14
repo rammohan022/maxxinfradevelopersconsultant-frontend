@@ -58,7 +58,7 @@ export default function Contact() {
   return (
     <section className="relative bg-gray-50 py-8 md:py-12 lg:py-16 overflow-hidden" id="contact">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-navy/5 -skew-x-12 transform origin-top-right hidden lg:block" />
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 transform origin-top-right hidden lg:block" />
       <div
         className="absolute inset-0 bg-cover bg-center opacity-5 mix-blend-multiply"
         style={{
@@ -75,20 +75,20 @@ export default function Contact() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={containerVariants}
-            className="bg-navy p-6 sm:p-8 lg:p-10 text-white relative"
+            className="bg-white border-r border-slate-100 p-6 sm:p-8 lg:p-10 text-slate-800 relative"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -z-0" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -z-0" />
 
             <div className="relative z-10">
               <motion.span variants={itemVariants} className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-secondary border-l-4 border-secondary pl-3">
                 Contact Us
               </motion.span>
 
-              <motion.h2 variants={itemVariants} className="mb-4 font-serif-heading text-2xl font-bold lg:text-3xl xl:text-4xl leading-tight">
+              <motion.h2 variants={itemVariants} className="mb-4 text-2xl font-bold lg:text-3xl xl:text-4xl leading-tight text-slate-900">
                 Let us know your concern, we are happy to help you.
               </motion.h2>
 
-              <motion.p variants={itemVariants} className="mb-6 text-white/80 text-base leading-relaxed">
+              <motion.p variants={itemVariants} className="mb-6 text-slate-600 text-base leading-relaxed">
                 We provide clear, practical recruitment and HR guidance. Our team is always
                 ready to assist you with your talent acquisition needs.
               </motion.p>
@@ -106,7 +106,7 @@ export default function Contact() {
                     </p>
                     <a
                       href="tel:+918800177307"
-                      className="text-lg font-bold transition-colors hover:text-white text-white/90"
+                      className="text-lg font-bold transition-colors hover:text-primary text-slate-700"
                     >
                       +91 8800177307
                     </a>
@@ -124,7 +124,7 @@ export default function Contact() {
                     </p>
                     <a
                       href="mailto:hello@peopleconsultings.com"
-                      className="text-base font-medium transition-colors hover:text-white text-white/90"
+                      className="text-base font-medium transition-colors hover:text-primary text-slate-700"
                     >
                       hello@peopleconsultings.com
                     </a>
@@ -140,7 +140,7 @@ export default function Contact() {
                     <p className="text-sm font-semibold uppercase tracking-wider text-secondary mb-1">
                       Address
                     </p>
-                    <p className="text-white/90 text-base leading-relaxed max-w-[250px]">
+                    <p className="text-slate-700 text-base leading-relaxed max-w-[250px]">
                       243, 2nd Floor, Vipul Trade Centre,
                       Sector 48, Sohna Road,
                       Gurgaon, Haryana
@@ -150,18 +150,18 @@ export default function Contact() {
               </div>
 
               {/* Social */}
-              <motion.div variants={itemVariants} className="pt-8 border-t border-white/10">
+              <motion.div variants={itemVariants} className="pt-8 border-t border-slate-100">
                 <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-secondary">
                   Follow Us
                 </p>
-                <div className="flex gap-3">
-                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all hover:bg-primary hover:border-primary hover:-translate-y-1">
+                <div className="flex gap-3 text-slate-500">
+                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1">
                     <Facebook className="h-4 w-4" />
                   </a>
-                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all hover:bg-primary hover:border-primary hover:-translate-y-1">
+                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1">
                     <Twitter className="h-4 w-4" />
                   </a>
-                  <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white/5 border border-white/10 transition-all hover:bg-primary hover:border-primary hover:-translate-y-1">
+                  <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1">
                     <Linkedin className="h-4 w-4" />
                   </a>
                 </div>
@@ -181,7 +181,7 @@ export default function Contact() {
               Contact Form
             </span>
 
-            <h2 className="mb-6 font-serif-heading text-2xl font-bold text-navy lg:text-3xl">
+            <h2 className="mb-6 text-2xl font-bold text-slate-900 lg:text-3xl">
               Get A Flexible Schedule
             </h2>
 

@@ -1,128 +1,106 @@
 'use client'
 
-import Image from "next/image"
 import { Container } from "@/components/ui"
-import { motion, Variants } from "framer-motion"
-
-const reasons = [
-  {
-    title: "Industry Expertise",
-    desc: "Experience spanning over two decades across corporate recruitment, executive search, and human resource management.",
-  },
-  {
-    title: "Integrated HR Solutions",
-    desc: "Matters are handled through cross-disciplinary collaboration, enabling coordinated talent acquisition and training solutions.",
-  },
-  {
-    title: "End-to-End Compliance",
-    desc: "Assistance extends beyond recruitment to include strategic advisory support in labor compliance, payroll, and policy-related issues.",
-  },
-]
-
-const stats = [
-  { value: "500+", label: "Active Jobs" },
-  { value: "3000+", label: "Active Resumes" },
-  { value: "120+", label: "Employer Profiles" },
-  { value: "250+", label: "Positions Matched" },
-]
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-}
+import { motion } from "framer-motion"
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-gray-50 overflow-hidden">
+    <section className="py-16 md:py-24 bg-white overflow-hidden" id="why-choose-us">
       <Container>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
-        >
-          <span className="inline-block text-primary font-bold text-sm uppercase tracking-widest mb-3">
-            WHY US
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+            Why Choose Us
           </span>
-
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-navy font-serif-heading leading-tight">
-            A Structured Approach to Talent and Culture
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+            Most agencies fill positions.{' '}
+            <span className="text-secondary">People Consulting builds high performance teams.</span>
           </h2>
-        </motion.div>
+          <p className="mt-4 text-slate-600 max-w-xl mx-auto text-base sm:text-lg">
+            Traditional staffing agencies stop at delivering resumes. We optimize your entire recruitment operations, employee compliance, and team training workflows.
+          </p>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={containerVariants}
-          >
-            <motion.p variants={itemVariants} className="text-gray-600 mb-10 text-lg leading-relaxed">
-              In a dynamic corporate environment, talent acquisition involves overlapping regulatory and procedural considerations. <strong> People Consulting</strong> follows a coordinated approach that integrates recruitment, training, and compliance support across practice areas.
-            </motion.p>
-            <motion.p variants={itemVariants} className="text-gray-600 mb-10 text-lg leading-relaxed">We focus on building long-term professional relationships through consistent engagement, clear communication, and delivering High Performance workplace solutions.</motion.p>
-            <div className="space-y-8">
-              {reasons.map((r, i) => (
-                <motion.div variants={itemVariants} key={r.title} className="flex gap-4 sm:gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-xl font-serif-heading mt-1">
-                    0{i + 1}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-navy font-serif-heading mb-2">
-                      {r.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">{r.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
+        {/* Comparison Grid */}
+        <div className="max-w-5xl mx-auto">
+          {/* Header Row */}
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-slate-200/50 justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-500"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-600">Traditional Agency</span>
             </div>
-          </motion.div>
+            <div className="flex items-center gap-2 px-4 py-3 rounded-xl bg-primary/10 border border-primary/20 justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 12 16"></polyline><line x1="16" y1="12" x2="8" y2="12"></line></svg>
+              <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-primary">People Consulting Model</span>
+            </div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="flex flex-col h-full justify-between gap-8 mt-4 lg:mt-0"
-          >
-            <div className="rounded-2xl overflow-hidden bg-navy/80 relative aspect-[4/3] sm:aspect-video lg:aspect-[4/3] shadow-2xl group">
-              <Image
-                src="/img/hr_about_us_1783707647467.png"
-                alt="Our team"
-                fill
-                className="object-cover opacity-90 group-hover:scale-105 transition duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent opacity-60" />
+          {/* Comparison Cards */}
+          <div className="flex flex-col gap-3">
+            {/* Card 1 */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 mt-1 flex-shrink-0"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span className="text-sm sm:text-base text-slate-500 leading-snug">
+                  Focuses on transactional placements to hit quarterly sales quotas.
+                </span>
+              </div>
+              <div className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-primary/20 shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 flex-shrink-0"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                <span className="text-sm sm:text-base text-slate-800 font-medium leading-snug">
+                  Focuses on matching candidate capabilities with culture and strategy for long-term retention.
+                </span>
+              </div>
             </div>
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-              className="grid grid-cols-2 gap-4 sm:gap-6"
-            >
-              {stats.map((s) => (
-                <motion.div
-                  variants={itemVariants}
-                  key={s.label}
-                  className="flex flex-col items-center justify-center p-6 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all text-center"
-                >
-                  <span className="text-primary font-bold text-3xl sm:text-4xl font-serif-heading mb-2">{s.value}</span>
-                  <span className="font-semibold text-navy/80 text-sm sm:text-base">{s.label}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
+            {/* Card 2 */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 mt-1 flex-shrink-0"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span className="text-sm sm:text-base text-slate-500 leading-snug">
+                  Relies on automated resume matching without validation of practical skills.
+                </span>
+              </div>
+              <div className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-primary/20 shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 flex-shrink-0"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                <span className="text-sm sm:text-base text-slate-800 font-medium leading-snug">
+                  Conducts detailed screening and validation against custom requirements for client roles.
+                </span>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 mt-1 flex-shrink-0"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span className="text-sm sm:text-base text-slate-500 leading-snug">
+                  Disconnects once the candidate signs the offer letter, offering zero post-hire alignment.
+                </span>
+              </div>
+              <div className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-primary/20 shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 flex-shrink-0"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                <span className="text-sm sm:text-base text-slate-800 font-medium leading-snug">
+                  Provides ongoing HR compliance advisory, training programs, and performance support.
+                </span>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-slate-100 shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-slate-400 mt-1 flex-shrink-0"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span className="text-sm sm:text-base text-slate-500 leading-snug">
+                  Unpredictable billing and high fee percentages with minimal advisory value.
+                </span>
+              </div>
+              <div className="flex items-start gap-3 p-5 rounded-2xl bg-white border border-primary/20 shadow-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary mt-1 flex-shrink-0"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
+                <span className="text-sm sm:text-base text-slate-800 font-medium leading-snug">
+                  Transparent agreements and clear pricing linked directly to deliverables and placement success.
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

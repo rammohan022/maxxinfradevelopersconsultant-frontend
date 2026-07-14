@@ -104,7 +104,7 @@ export default function Services() {
   }
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gray-50/50">
+    <section className="py-12 md:py-16 lg:py-20 bg-slate-50">
       <Container>
         <motion.div
           initial="hidden"
@@ -116,7 +116,7 @@ export default function Services() {
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-2">
             Our Services
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-navy font-serif-heading leading-tight max-w-3xl">
+          <h2 className="text-3xl lg:text-4xl font-bold text-navy leading-tight max-w-3xl">
             What We Offer
           </h2>
           <p className="mt-3 text-gray-600 max-w-3xl leading-relaxed">
@@ -132,9 +132,9 @@ export default function Services() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="hidden lg:flex rounded-2xl overflow-hidden shadow-xl border border-gray-100 min-h-[560px] bg-white"
         >
-          <aside className="w-[320px] flex-shrink-0 bg-navy flex flex-col shadow-2xl z-10">
-            <div className="p-5 border-b border-white/10 bg-navy-light/30">
-              <span className="text-white/80 text-xs font-semibold uppercase tracking-widest">Select Service</span>
+          <aside className="w-[320px] flex-shrink-0 bg-white border-r border-slate-100 flex flex-col shadow-xl z-10">
+            <div className="p-5 border-b border-slate-100 bg-slate-50/50">
+              <span className="text-slate-500 text-xs font-semibold uppercase tracking-widest">Select Service</span>
             </div>
             <nav className="flex-1 overflow-y-auto py-3 scroll-smooth max-h-[520px] custom-scrollbar">
               {areas.map((area) => {
@@ -149,8 +149,8 @@ export default function Services() {
                     key={area.id}
                     onClick={() => handlePracticeAreaSelect(area)}
                     className={`w-full flex items-center gap-4 px-6 py-3.5 text-left transition-all duration-300 relative overflow-hidden ${isActive
-                      ? 'text-white bg-white/10'
-                      : 'text-white/70 hover:bg-white/5 hover:text-white/90'
+                      ? 'text-primary bg-primary/5 font-semibold'
+                      : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
                       }`}
                   >
                     {isActive && (
@@ -161,8 +161,8 @@ export default function Services() {
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
                     )}
-                    <Icon className={`w-[18px] h-[18px] flex-shrink-0 transition-colors duration-300 ${isActive ? 'text-secondary' : 'text-white/50'}`} />
-                    <span className="font-medium text-[15px] leading-snug truncate pr-2">{area.title}</span>
+                    <Icon className={`w-[18px] h-[18px] flex-shrink-0 transition-colors duration-300 ${isActive ? 'text-primary' : 'text-slate-400'}`} />
+                    <span className="text-[15px] leading-snug truncate pr-2">{area.title}</span>
                   </button>
                 )
               })}
@@ -186,7 +186,7 @@ export default function Services() {
                   className="object-cover object-center"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent" />
 
                 <div className="absolute inset-0 flex items-center p-12">
                   <motion.div
@@ -195,7 +195,7 @@ export default function Services() {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     className="max-w-2xl bg-white rounded-lg p-4"
                   >
-                    <h3 className="text-3xl lg:text-4xl font-bold font-serif-heading mb-4 drop-shadow-md">
+                    <h3 className="text-3xl lg:text-4xl font-bold mb-4 drop-shadow-md">
                       {activeArea?.title}
                     </h3>
                     <div
@@ -204,7 +204,7 @@ export default function Services() {
                     />
                     <Link
                       href={`/services/${activeArea?.slug}`}
-                      className="inline-flex items-center gap-2 bg-primary text-white px-7 py-3.5 rounded-lg font-semibold hover:bg-white hover:text-navy transition-all duration-300 group shadow-lg"
+                      className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-white px-7 py-3.5 rounded-lg font-semibold transition-all duration-300 group shadow-lg hover:shadow-secondary/30"
                     >
                       Learn More
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -264,7 +264,7 @@ export default function Services() {
                           className="text-gray-600 text-sm mb-5 line-clamp-4 leading-relaxed"
                           dangerouslySetInnerHTML={{ __html: area.overview || "" }}
                         />
-                        <Link href={`/services/${area.slug}`} className="inline-flex items-center justify-center w-full gap-2 bg-gray-50 hover:bg-primary hover:text-white text-primary font-semibold py-3 rounded-lg transition-colors">
+                        <Link href={`/services/${area.slug}`} className="inline-flex items-center justify-center w-full gap-2 bg-gray-50 hover:bg-secondary hover:text-white text-secondary font-semibold py-3 rounded-lg transition-colors">
                           Learn More <ArrowRight className="w-4 h-4" />
                         </Link>
                       </div>

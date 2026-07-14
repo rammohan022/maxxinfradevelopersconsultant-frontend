@@ -9,7 +9,7 @@ import { Container } from "@/components/ui";
 
 export default function TopBar() {
   return (
-    <div className="bg-navy text-white py-2 text-sm hidden lg:block">
+    <div className="bg-slate-50 border-b border-slate-100 text-slate-600 py-2.5 text-sm hidden lg:block">
       <Container className="flex justify-between items-center">
 
         {/* Left: Email & Phone */}

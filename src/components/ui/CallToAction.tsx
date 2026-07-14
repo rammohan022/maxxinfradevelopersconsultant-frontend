@@ -7,13 +7,13 @@ const CTASection: React.FC = () => {
     return (
         <section
             id="cta-section"
-            className="relative overflow-hidden bg-navy py-20"
+            className="relative overflow-hidden bg-gray-50 border-y border-gray-100 py-20"
         >
             {/* Background Image */}
-            <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0 opacity-5">
                 <Image
-                    src="/img/cta-bg.png"
-                    alt="elegant legal pattern, scales of justice, subtle background texture"
+                    src="/img/hr_hero_bg_1783707638359.png"
+                    alt="abstract corporate office background, professional network and growth"
                     fill
                     priority
                     className="object-cover"
@@ -21,12 +21,12 @@ const CTASection: React.FC = () => {
             </div>
             {/* Content */}
             <Container className="relative z-10 max-w-4xl text-center">
-                <h2 className="mb-6 font-serif text-4xl font-bold text-white">
-                    Your Voice In Court, Your Partner In Law.
+                <h2 className="mb-6 font-serif text-4xl font-bold text-navy">
+                    Empowering Your Business Through Top Talent.
                 </h2>
 
-                <p className="mb-8 text-xl leading-relaxed text-gray-300">
-                    Legal matters can involve multiple considerations and procedural requirements. You may connect with us to discuss the nature of your matter and understand the applicable legal process.
+                <p className="mb-8 text-xl leading-relaxed text-gray-600">
+                    We help organizations streamline their recruitment, training, and labor compliance processes. Partner with us to build high-performance workplaces and connect with industry-leading professionals.
                 </p>
 
                 {/* CTA Buttons */}
@@ -41,7 +41,7 @@ const CTASection: React.FC = () => {
 
                     <a
                         href="tel:+918800177307"
-                        className="flex items-center justify-center gap-2 rounded-lg bg-white px-8 py-4 font-semibold text-navy transition-all duration-300 hover:-translate-y-1 hover:bg-gray-100 hover:shadow-xl"
+                        className="flex items-center justify-center gap-2 rounded-lg bg-white border border-gray-200 px-8 py-4 font-semibold text-gray-700 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50 hover:shadow-xl hover:text-navy"
                     >
                         Connect With Us
                         <Phone className="h-5 w-5" />

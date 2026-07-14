@@ -19,7 +19,7 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
   { label: 'Our Services', href: '/services', mega: true },
-  { label: 'Our People', href: '/our-team' },
+  { label: 'Our Team', href: '/our-team' },
   { label: 'Resource Centre', href: '#', dropdown: true },
 ]
 
@@ -92,13 +92,13 @@ export default function Header() {
                     <div className="flex items-center gap-1 cursor-pointer">
                       <Link
                         href={item.href!}
-                        className="text-navy hover:text-primary font-semibold py-2 transition-colors"
+                        className="text-slate-800 hover:text-primary font-semibold py-2 transition-colors"
                       >
                         {item.label}
                       </Link>
                       <button
                         type="button"
-                        className="p-1 text-navy group-hover:text-primary transition-colors"
+                        className="p-1 text-slate-800 group-hover:text-primary transition-colors"
                       >
                         <ChevronDown size={16} className={`transition-transform duration-300 ${openDropdown ? 'rotate-180' : ''}`} />
                       </button>
@@ -122,7 +122,7 @@ export default function Header() {
                                     key={area.id}
                                     href={`/services/${area.slug}`}
                                     onClick={() => setOpenDropdown(false)}
-                                    className="group/link flex items-center gap-2 text-sm font-semibold text-navy/80 hover:text-primary transition-all duration-200"
+                                    className="group/link flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-primary transition-all duration-200"
                                   >
                                     <ChevronRight
                                       size={16}
@@ -148,10 +148,10 @@ export default function Header() {
                       onMouseLeave={() => setResourceOpen(false)}
                     >
                       <div className="flex items-center gap-1 cursor-pointer">
-                        <span className="text-navy hover:text-primary font-semibold py-2 transition-colors">
+                        <span className="text-slate-800 hover:text-primary font-semibold py-2 transition-colors">
                           {item.label}
                         </span>
-                        <ChevronDown size={16} className={`text-navy group-hover:text-primary transition-all duration-300 ${resourceOpen ? 'rotate-180' : ''}`} />
+                        <ChevronDown size={16} className={`text-slate-800 group-hover:text-primary transition-all duration-300 ${resourceOpen ? 'rotate-180' : ''}`} />
                       </div>
 
                       <AnimatePresence>
@@ -167,7 +167,7 @@ export default function Header() {
                               <Link
                                 key={res.label}
                                 href={res.href}
-                                className={`block px-5 py-3 text-sm font-semibold text-navy/80 hover:bg-gray-50 hover:text-primary transition-colors ${index !== resourceItems.length - 1
+                                className={`block px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-gray-50 hover:text-primary transition-colors ${index !== resourceItems.length - 1
                                   ? 'border-b border-gray-100'
                                   : ''
                                   }`}
@@ -185,7 +185,7 @@ export default function Header() {
                   /* ================= NORMAL LINK ================= */
                   <Link
                     href={item.href!}
-                    className="text-navy hover:text-primary font-semibold py-2 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
+                    className="text-slate-800 hover:text-primary font-semibold py-2 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary hover:after:w-full after:transition-all after:duration-300"
                   >
                     {item.label}
                   </Link>
@@ -198,7 +198,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-4">
             <Link
               href="/submit-cv"
-              className="text-navy hover:text-primary font-bold transition-all duration-300"
+              className="text-slate-800 hover:text-primary font-bold transition-all duration-300"
             >
               Submit CV
             </Link>
@@ -212,7 +212,7 @@ export default function Header() {
 
           {/* ================= MOBILE TOGGLE ================= */}
           <button
-            className="lg:hidden p-2 text-navy hover:text-primary transition-colors focus:outline-none"
+            className="lg:hidden p-2 text-slate-800 hover:text-primary transition-colors focus:outline-none"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Menu"
           >
@@ -237,13 +237,13 @@ export default function Header() {
               className="lg:hidden border-t border-gray-100 overflow-hidden"
             >
               <div className="py-4 space-y-2">
-                <Link href="/" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-navy hover:bg-gray-50 rounded-lg">Home</Link>
-                <Link href="/about-us" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-navy hover:bg-gray-50 rounded-lg">About Us</Link>
+                <Link href="/" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">Home</Link>
+                <Link href="/about-us" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">About Us</Link>
 
                 {/* Mobile Practice Accordion */}
                 <div className="rounded-lg overflow-hidden">
                   <button
-                    className="w-full flex justify-between items-center font-semibold text-navy px-4 py-3 hover:bg-gray-50 transition-colors"
+                    className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:bg-gray-50 transition-colors"
                     onClick={() => setMobilePracticeOpen(!mobilePracticeOpen)}
                   >
                     Our Services
@@ -264,7 +264,7 @@ export default function Header() {
                           {practiceAreas.map((area) => (
                             <Link
                               key={area.id}
-                              href={`/practice-areas/${area.slug}`}
+                              href={`/services/${area.slug}`}
                               className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary py-2 transition-colors leading-snug"
                               onClick={() => setMobileOpen(false)}
                             >
@@ -281,7 +281,7 @@ export default function Header() {
                 {/* Mobile Resource Accordion */}
                 <div className="rounded-lg overflow-hidden">
                   <button
-                    className="w-full flex justify-between items-center font-semibold text-navy px-4 py-3 hover:bg-gray-50 transition-colors"
+                    className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:bg-gray-50 transition-colors"
                     onClick={() => setMobileResourceOpen(!mobileResourceOpen)}
                   >
                     Resource Centre
@@ -316,11 +316,11 @@ export default function Header() {
                   </AnimatePresence>
                 </div>
 
-                <Link href="/our-team" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-navy hover:bg-gray-50 rounded-lg">
-                  Our People
+                <Link href="/our-team" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
+                  Our Team
                 </Link>
 
-                <Link href="/career" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-navy hover:bg-gray-50 rounded-lg">
+                <Link href="/career" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
                   Career
                 </Link>
 

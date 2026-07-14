@@ -1,5 +1,19 @@
-import { Hero, FeatureCards, AboutUs, Services, WhyChooseUs, CaseStudy, CTAQuote, Contact, Testimonials, Attorneys, Partners, Blog } from '@/components/home'
-import { CallToAction } from '@/components/ui'
+import {
+  Hero,
+  FeatureCards,
+  AboutUs,
+  Services,
+  WhyChooseUs,
+  IndustriesServe,
+  OurProcess,
+  CoreValues,
+  CorporateTraining,
+  CaseStudy,
+  Blog,
+  FAQs,
+  Contact,
+  FloatingButtons,
+} from '@/components/home'
 
 export default function Home() {
   return (
@@ -8,15 +22,16 @@ export default function Home() {
       <FeatureCards />
       <AboutUs />
       <Services />
-      <CallToAction />
       <WhyChooseUs />
-      {/* <CaseStudy /> */}
-      <CTAQuote />
-      <Contact />
-      <Testimonials />
-      <Attorneys />
-      {/* <Partners /> */}
+      <IndustriesServe />
+      <OurProcess />
+      <CoreValues />
+      <CorporateTraining />
+      <CaseStudy />
       <Blog />
+      <FAQs />
+      <Contact />
+      <FloatingButtons />
     </>
   )
 }

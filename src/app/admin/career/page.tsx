@@ -5,12 +5,17 @@ import { Plus, Pencil, Trash2, Search } from "lucide-react";
 import Link from "next/link";
 import { useGetCareersQuery, useDeleteCareerMutation } from "@/services/career";
 import DeleteModal from "../components/DeleteModal";
+import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
 
 const CareerListPage = () => {
   const { data: careers = [], isLoading, isError } = useGetCareersQuery();
   const [deleteCareer] = useDeleteCareerMutation();
   const [search, setSearch] = useState("");
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   // Modal State
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
@@ -21,11 +26,20 @@ const CareerListPage = () => {
     (career.location || "").toLowerCase().includes(search.toLowerCase())
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredCareers.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentCareers = filteredCareers.slice(indexOfFirstItem, indexOfLastItem);
+
   const handleDelete = async () => {
     try {
       await deleteCareer(deleteModal.id).unwrap();
       toast.success("Career opportunity deleted successfully!");
       setDeleteModal({ isOpen: false, id: "", name: "" });
+      if (currentCareers.length === 1 && currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      }
     } catch (err) {
       console.error("Delete failed:", err);
       toast.error("Failed to delete career.");
@@ -67,7 +81,10 @@ const CareerListPage = () => {
               placeholder="Search jobs..."
               className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none w-64"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setCurrentPage(1);
+              }}
             />
           </div>
           <Link
@@ -93,14 +110,14 @@ const CareerListPage = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredCareers.length === 0 ? (
+              {currentCareers.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="text-center p-10 text-gray-400">
                     No career opportunities found.
                   </td>
                 </tr>
               ) : (
-                filteredCareers.map((career) => (
+                currentCareers.map((career) => (
                   <tr key={career.id} className="border-b hover:bg-slate-50 transition">
                     <td className="p-4 font-medium text-[rgb(13_33_55)]">{career.title}</td>
                     <td className="p-4 text-slate-500 whitespace-nowrap">{career.department}</td>
@@ -134,6 +151,16 @@ const CareerListPage = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination Controls */}
+        <AdminPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+          totalResults={filteredCareers.length}
+          indexOfFirst={indexOfFirstItem}
+          indexOfLast={indexOfLastItem}
+        />
       </div>
 
       {/* Delete Modal */}

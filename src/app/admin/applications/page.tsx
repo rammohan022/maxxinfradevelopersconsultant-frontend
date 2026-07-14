@@ -5,6 +5,7 @@ import { Trash2, Search, FileText, ExternalLink, Calendar, User, Mail, Phone } f
 import { useGetJobApplicationsQuery, useDeleteJobApplicationMutation } from "@/services/jobApplication";
 import { useGetCareersQuery } from "@/services/career";
 import DeleteModal from "../components/DeleteModal";
+import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
 
 const ApplicationsListPage = () => {
@@ -12,6 +13,10 @@ const ApplicationsListPage = () => {
   const { data: careers = [] } = useGetCareersQuery();
   const [deleteApplication] = useDeleteJobApplicationMutation();
   const [search, setSearch] = useState("");
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   // Modal State
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
@@ -28,11 +33,20 @@ const ApplicationsListPage = () => {
     (getJobTitle(app.jobId)).toLowerCase().includes(search.toLowerCase())
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredApplications.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentApplications = filteredApplications.slice(indexOfFirstItem, indexOfLastItem);
+
   const handleDelete = async () => {
     try {
       await deleteApplication(deleteModal.id).unwrap();
       toast.success("Application deleted successfully!");
       setDeleteModal({ isOpen: false, id: "", name: "" });
+      if (currentApplications.length === 1 && currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      }
     } catch (err) {
       console.error("Delete failed:", err);
       toast.error("Failed to delete application.");
@@ -74,7 +88,10 @@ const ApplicationsListPage = () => {
               placeholder="Search applications..."
               className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none w-64"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setCurrentPage(1);
+              }}
             />
           </div>
         </div>
@@ -95,14 +112,14 @@ const ApplicationsListPage = () => {
               </tr>
             </thead>
             <tbody>
-              {filteredApplications.length === 0 ? (
+              {currentApplications.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="text-center p-10 text-gray-400">
                     No applications found.
                   </td>
                 </tr>
               ) : (
-                filteredApplications.map((app) => (
+                currentApplications.map((app) => (
                   <tr key={app.id} className="border-b hover:bg-slate-50 transition">
                     <td className="p-4">
                       <div className="flex items-center gap-3">
@@ -164,6 +181,16 @@ const ApplicationsListPage = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination Controls */}
+        <AdminPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+          totalResults={filteredApplications.length}
+          indexOfFirst={indexOfFirstItem}
+          indexOfLast={indexOfLastItem}
+        />
       </div>
 
       {/* Delete Modal */}

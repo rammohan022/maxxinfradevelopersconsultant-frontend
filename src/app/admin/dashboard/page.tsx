@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import SideNav from "@/components/layout/SideNav";
 import { Users, FileText, Layers, BarChart3, Loader2 } from "lucide-react";
 import { useGetDashboardStatsQuery } from "@/services/dashboard";
@@ -72,14 +73,23 @@ const Dashboard = () => {
 
       {/* Content */}
       <div className="bg-white rounded-xl p-3 shadow-sm border">
-        <h3 className="text-lg font-semibold text-[rgb(13_33_55)] mb-4">
-          Recent Leads
-        </h3>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-semibold text-[rgb(13_33_55)]">
+            Recent Leads
+          </h3>
+          <Link
+            href="/admin/leads"
+            className="px-3 py-1.5 bg-secondary text-white text-xs font-semibold rounded-lg hover:bg-secondary-dark transition shadow-sm"
+          >
+            View All
+          </Link>
+        </div>
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-slate-500 border-b">
               <th className="pb-2">Name</th>
-              <th className="pb-2">Email</th>
+              <th className="pb-2">Contact Info</th>
+              <th className="pb-2">Subject</th>
               <th className="pb-2">Status</th>
             </tr>
           </thead>
@@ -88,8 +98,14 @@ const Dashboard = () => {
               stats.latestLeads.map((lead) => (
                 <tr key={lead.id} className="border-b last:border-0 hover:bg-slate-50 transition">
                   <td className="py-2 font-medium">{lead.fullName}</td>
-                  <td className="text-slate-500">
-                    {lead.email}
+                  <td className="text-slate-500 py-2">
+                    <div>{lead.email}</div>
+                    {lead.phoneNumber && (
+                      <div className="text-xs text-slate-400">{lead.phoneNumber}</div>
+                    )}
+                  </td>
+                  <td className="py-2 text-slate-500 italic">
+                    {lead.subject || "No Subject"}
                   </td>
                   <td>
                     <span className="px-3 py-1 rounded-full text-xs bg-emerald-100 text-emerald-700">
@@ -100,7 +116,7 @@ const Dashboard = () => {
               ))
             ) : (
               <tr>
-                <td colSpan={3} className="py-8 text-center text-slate-500">
+                <td colSpan={4} className="py-8 text-center text-slate-500">
                   No recent leads found.
                 </td>
               </tr>

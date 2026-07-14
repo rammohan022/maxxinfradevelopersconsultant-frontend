@@ -5,12 +5,17 @@ import { Plus, Pencil, Trash2, Search } from "lucide-react";
 import Link from "next/link";
 import { useGetTestimonialsQuery, useDeleteTestimonialMutation } from "@/services/testimonial";
 import DeleteModal from "../components/DeleteModal";
+import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
 
 export default function TestimonialListPage() {
   const { data: testimonials = [], isLoading, isError } = useGetTestimonialsQuery();
   const [deleteTestimonial] = useDeleteTestimonialMutation();
   const [search, setSearch] = useState("");
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   // Modal State
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
@@ -20,11 +25,20 @@ export default function TestimonialListPage() {
     (item.caseType || "").toLowerCase().includes(search.toLowerCase())
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredTestimonials.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentTestimonials = filteredTestimonials.slice(indexOfFirstItem, indexOfLastItem);
+
   const handleDelete = async () => {
     try {
       await deleteTestimonial(deleteModal.id).unwrap();
       toast.success("Testimonial deleted successfully!");
       setDeleteModal({ isOpen: false, id: "", name: "" });
+      if (currentTestimonials.length === 1 && currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      }
     } catch (err) {
       console.error("Delete failed:", err);
       toast.error("Failed to delete testimonial.");
@@ -66,7 +80,10 @@ export default function TestimonialListPage() {
               placeholder="Search testimonials..."
               className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none w-64"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setCurrentPage(1);
+              }}
             />
           </div>
           <Link
@@ -82,7 +99,7 @@ export default function TestimonialListPage() {
       <div className="bg-white rounded-xl border shadow overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="bg-slate-50 border-b text-slate-600">
+            <thead className="bg-slate-50 text-slate-600">
               <tr>
                 <th className="p-4 text-left whitespace-nowrap">Name</th>
                 <th className="p-4 text-left whitespace-nowrap">Case Type</th>
@@ -93,14 +110,14 @@ export default function TestimonialListPage() {
             </thead>
 
             <tbody>
-              {filteredTestimonials.length === 0 ? (
+              {currentTestimonials.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="text-center p-10 text-gray-400">
                     No testimonials found.
                   </td>
                 </tr>
               ) : (
-                filteredTestimonials.map((item) => (
+                currentTestimonials.map((item) => (
                   <tr key={item.id} className="border-b hover:bg-slate-50 transition">
                     <td className="p-4 font-medium text-[rgb(13_33_55)]">{item.clientName}</td>
                     <td className="p-4 text-slate-500 whitespace-nowrap">{item.caseType}</td>
@@ -139,6 +156,16 @@ export default function TestimonialListPage() {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination Controls */}
+        <AdminPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+          totalResults={filteredTestimonials.length}
+          indexOfFirst={indexOfFirstItem}
+          indexOfLast={indexOfLastItem}
+        />
       </div>
 
       {/* Delete Modal */}

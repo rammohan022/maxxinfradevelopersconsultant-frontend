@@ -5,12 +5,17 @@ import { Plus, Pencil, Trash2, Search } from "lucide-react";
 import Link from "next/link";
 import { useGetServicesQuery, useDeleteServiceMutation } from "@/services/services";
 import DeleteModal from "../components/DeleteModal";
+import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
 
 const ServicesPage = () => {
   const { data: practiceAreas = [], isLoading, isError } = useGetServicesQuery();
   const [deleteService] = useDeleteServiceMutation();
   const [search, setSearch] = useState("");
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   // Modal State
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
@@ -19,11 +24,20 @@ const ServicesPage = () => {
     (area?.title || "").toLowerCase().includes(search.toLowerCase())
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredAreas.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentAreas = filteredAreas.slice(indexOfFirstItem, indexOfLastItem);
+
   const handleDelete = async () => {
     try {
       await deleteService(deleteModal.id).unwrap();
       toast.success("Service deleted successfully!");
       setDeleteModal({ isOpen: false, id: "", name: "" });
+      if (currentAreas.length === 1 && currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      }
     } catch (err) {
       console.error("Delete failed:", err);
       toast.error("Failed to delete service.");
@@ -58,7 +72,10 @@ const ServicesPage = () => {
               placeholder="Search services..."
               className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none w-64"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setCurrentPage(1);
+              }}
             />
           </div>
           <Link
@@ -85,14 +102,14 @@ const ServicesPage = () => {
             </thead>
 
             <tbody>
-              {filteredAreas.length === 0 ? (
+              {currentAreas.length === 0 ? (
                 <tr>
                   <td colSpan={4} className="text-center py-10 text-slate-400">
                     No practice areas found
                   </td>
                 </tr>
               ) : (
-                filteredAreas.map((item: any) => (
+                currentAreas.map((item: any) => (
                   <tr key={item.id} className="border-t hover:bg-slate-50 transition align-top">
                     <td className="px-3 py-2 font-semibold text-[rgb(13_33_55)] whitespace-nowrap">
                       {item.title}
@@ -131,6 +148,16 @@ const ServicesPage = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination Controls */}
+        <AdminPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+          totalResults={filteredAreas.length}
+          indexOfFirst={indexOfFirstItem}
+          indexOfLast={indexOfLastItem}
+        />
       </div>
 
       {/* Delete Modal */}

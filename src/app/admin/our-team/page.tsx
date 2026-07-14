@@ -6,6 +6,7 @@ import { Plus, Pencil, Trash2, Search } from "lucide-react";
 import { useGetMembersQuery, useDeleteMemberMutation } from "@/services/member";
 import Image from "next/image";
 import DeleteModal from "../components/DeleteModal";
+import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 
@@ -13,6 +14,10 @@ export default function OurTeamPage() {
   const { data: members = [], isLoading, isError } = useGetMembersQuery();
   const [deleteMember] = useDeleteMemberMutation();
   const [search, setSearch] = useState("");
+
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   // Modal State
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
@@ -22,11 +27,20 @@ export default function OurTeamPage() {
     (member.designation || "").toLowerCase().includes(search.toLowerCase())
   );
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredMembers.length / itemsPerPage);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentMembers = filteredMembers.slice(indexOfFirstItem, indexOfLastItem);
+
   const handleDelete = async () => {
     try {
       await deleteMember(deleteModal.id).unwrap();
       toast.success("Team member removed successfully!");
       setDeleteModal({ isOpen: false, id: "", name: "" });
+      if (currentMembers.length === 1 && currentPage > 1) {
+        setCurrentPage(currentPage - 1);
+      }
     } catch (err) {
       console.error("Delete failed:", err);
       toast.error("Failed to delete team member.");
@@ -56,7 +70,10 @@ export default function OurTeamPage() {
               placeholder="Search team..."
               className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none w-64"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                setCurrentPage(1);
+              }}
             />
           </div>
           <Link
@@ -81,12 +98,12 @@ export default function OurTeamPage() {
               </tr>
             </thead>
             <tbody>
-              {filteredMembers.length === 0 ? (
+              {currentMembers.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="p-10 text-center text-slate-400">No team members found.</td>
                 </tr>
               ) : (
-                filteredMembers.map((member) => (
+                currentMembers.map((member) => (
                   <tr key={member.id} className="border-b hover:bg-slate-50 transition">
                     <td className="p-4 flex items-center gap-3 whitespace-nowrap">
                       <div className="relative w-10 h-10 overflow-hidden rounded-full border bg-slate-100 flex-shrink-0">
@@ -131,6 +148,16 @@ export default function OurTeamPage() {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination Controls */}
+        <AdminPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+          totalResults={filteredMembers.length}
+          indexOfFirst={indexOfFirstItem}
+          indexOfLast={indexOfLastItem}
+        />
       </div>
 
       {/* Delete Modal */}

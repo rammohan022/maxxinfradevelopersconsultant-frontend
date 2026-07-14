@@ -15,11 +15,11 @@ import { removeAuthToken } from "@/lib/utils/TokenHelper";
 
 const navItems = [
   { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
+  { name: "Services", href: "/admin/services", icon: Layers },
+  { name: "Job Post", href: "/admin/career", icon: Users },
+  { name: "Job Applications", href: "/admin/applications", icon: FileText },
   { name: "Leads", href: "/admin/leads", icon: Users },
   { name: "Blog Posts", href: "/admin/blogs", icon: FileText },
-  { name: "Services", href: "/admin/services", icon: Layers },
-  { name: "Career Opportunities", href: "/admin/career", icon: Users },
-  { name: "Job Applications", href: "/admin/applications", icon: FileText },
   { name: "Our Team", href: "/admin/our-team", icon: Users },
   { name: "Testimonials", href: "/admin/testimonials", icon: Users },
   { name: "Privacy Policy", href: "/admin/privacy-policy", icon: FileText },
@@ -41,17 +41,16 @@ const SideNav = () => {
       className="w-64 max-h-screen sticky top-0 text-white flex flex-col justify-between"
       style={{ backgroundColor: "rgb(13 33 55)" }}
     >
-      {/* Top Section */}
       <div>
         {/* Logo */}
-        <div className="px-6 py-5 border-b border-white/10">
+        <div className="px-4 py-3 border-b border-white/10 flex justify-center">
           <Link href="/admin/dashboard">
-            <Image 
-              src="/img/logo.png" 
-              alt="Logo" 
-              width={150} 
-              height={40} 
-              className="h-10 w-auto"
+            <Image
+              src="/img/logo.png"
+              alt="Logo"
+              width={220}
+              height={60}
+              className="h-16 w-auto object-contain"
             />
           </Link>
         </div>
@@ -76,7 +75,7 @@ const SideNav = () => {
       <div className="border-t border-white/10">
         <button
           onClick={handleLogout}
-          className="w-full flex items-center text-red-700 gap-3 px-6 py-4 font-semibold hover:bg-red-500/20 transition"
+          className="w-full flex items-center text-red-500 gap-3 px-6 py-4 font-semibold hover:bg-red-500/10 transition"
         >
           <LogOut size={18} />
           Logout

@@ -66,7 +66,7 @@ export default function LeadsPage() {
             <input
               type="text"
               placeholder="Search leads..."
-              className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none w-64"
+              className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none w-64"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />

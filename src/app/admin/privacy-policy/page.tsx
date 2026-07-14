@@ -37,7 +37,7 @@ export default function PrivacyPolicyPage() {
 
         <Link
           href="/admin/privacy-policy/create"
-          className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition"
+          className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition"
         >
           <Plus size={18} /> Add Policy
         </Link>
@@ -79,7 +79,7 @@ export default function PrivacyPolicyPage() {
                     <div className="flex justify-center gap-3">
                       <Link
                         href={`/admin/privacy-policy/edit?id=${policy.id}`}
-                        className="text-slate-400 hover:text-primary p-2 hover:bg-blue-50 rounded-lg transition"
+                        className="text-slate-400 hover:text-secondary p-2 hover:bg-blue-50 rounded-lg transition"
                       >
                         <Pencil size={18} />
                       </Link>

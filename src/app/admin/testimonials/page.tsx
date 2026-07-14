@@ -64,14 +64,14 @@ export default function TestimonialListPage() {
             <input
               type="text"
               placeholder="Search testimonials..."
-              className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none w-64"
+              className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none w-64"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
           <Link
             href="/admin/testimonials/create"
-            className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-medium"
+            className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
           >
             <Plus size={18} /> Add Testimonial
           </Link>
@@ -119,7 +119,7 @@ export default function TestimonialListPage() {
                       <div className="flex justify-center gap-2">
                         <Link
                           href={`/admin/testimonials/edit?id=${item.id}`}
-                          className="text-slate-400 hover:text-primary p-2 hover:bg-blue-50 rounded-lg transition"
+                          className="text-slate-400 hover:text-secondary p-2 hover:bg-blue-50 rounded-lg transition"
                           title="Edit"
                         >
                           <Pencil size={18} />

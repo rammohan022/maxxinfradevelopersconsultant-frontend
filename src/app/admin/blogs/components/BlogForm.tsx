@@ -99,7 +99,7 @@ export default function BlogForm({
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
             />
           </div>
 
@@ -114,7 +114,7 @@ export default function BlogForm({
               value={slug}
               onChange={(e) => setSlug(e.target.value)}
               placeholder="e.g. navigating-mergers-and-acquisitions"
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
             />
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function BlogForm({
               required
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
             />
           </div>
 
@@ -143,7 +143,7 @@ export default function BlogForm({
               type="number"
               value={displayOrder}
               onChange={(e) => setDisplayOrder(parseInt(e.target.value) || 0)}
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
             />
           </div>
 
@@ -166,7 +166,7 @@ export default function BlogForm({
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-primary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"
+                className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
               />
             </div>
           </div>
@@ -195,7 +195,7 @@ export default function BlogForm({
           <select
             value={status}
             onChange={(e) => setStatus(e.target.value)}
-            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
           >
             <option value="Draft">Draft</option>
             <option value="Published">Published</option>
@@ -207,7 +207,7 @@ export default function BlogForm({
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition disabled:opacity-50"
+            className="bg-secondary text-white px-6 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
           >
             {isLoading ? "Saving..." : (isEdit ? "Update Blog" : "Create Blog")}
           </button>

@@ -37,7 +37,7 @@ export default function TermsConditionsPage() {
 
         <Link
           href="/admin/terms-conditions/create"
-          className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition"
+          className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition"
         >
           <Plus size={18} /> Add Document
         </Link>
@@ -79,7 +79,7 @@ export default function TermsConditionsPage() {
                     <div className="flex justify-center gap-3">
                       <Link
                         href={`/admin/terms-conditions/edit?id=${doc.id}`}
-                        className="text-slate-400 hover:text-primary p-2 hover:bg-blue-50 rounded-lg transition"
+                        className="text-slate-400 hover:text-secondary p-2 hover:bg-blue-50 rounded-lg transition"
                       >
                         <Pencil size={18} />
                       </Link>

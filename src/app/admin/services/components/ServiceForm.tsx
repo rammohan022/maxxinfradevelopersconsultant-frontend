@@ -152,7 +152,7 @@ export default function ServiceForm({
                             type="file"
                             accept="image/*"
                             onChange={handleFileChange}
-                            className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-primary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"
+                            className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
                         />
                     </div>
                 </div>
@@ -184,7 +184,7 @@ export default function ServiceForm({
                         <button type="button" onClick={() => removeService(i)} className="text-red-500 text-sm">Remove</button>
                     </div>
                 ))}
-                <button type="button" onClick={addService} className="text-sm text-primary font-medium hover:underline">+ Add Service</button>
+                <button type="button" onClick={addService} className="text-sm text-secondary font-medium hover:underline">+ Add Service</button>
             </section>
 
             {/* Approach */}
@@ -229,13 +229,13 @@ export default function ServiceForm({
                         />
                     </div>
                 ))}
-                <button type="button" onClick={addFaq} className="text-sm text-primary font-medium hover:underline">+ Add FAQ</button>
+                <button type="button" onClick={addFaq} className="text-sm text-secondary font-medium hover:underline">+ Add FAQ</button>
             </section>
 
             {/* Action Buttons */}
             <div className="flex gap-4 pt-4 justify-end">
                 <button type="button" onClick={() => router.push("/admin/practice-area")} className="px-6 py-2 border rounded-xl hover:bg-slate-50">Cancel</button>
-                <button type="submit" disabled={isLoading} className="px-10 py-2 bg-primary text-white rounded-xl hover:bg-primary-dark disabled:opacity-50">
+                <button type="submit" disabled={isLoading} className="px-10 py-2 bg-secondary text-white rounded-xl hover:bg-secondary-dark disabled:opacity-50">
                     {isLoading ? "Saving..." : (isEdit ? "Update" : "Save")}
                 </button>
             </div>

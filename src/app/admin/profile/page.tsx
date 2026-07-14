@@ -91,8 +91,8 @@ export default function Profile() {
         <button
           onClick={() => setActiveTab("profile")}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition ${activeTab === "profile"
-            ? "border-b-2 border-primary text-primary"
-            : "text-slate-500 hover:text-primary"
+            ? "border-b-2 border-secondary text-secondary"
+            : "text-slate-500 hover:text-secondary"
             }`}
         >
           <User size={16} />
@@ -102,8 +102,8 @@ export default function Profile() {
         <button
           onClick={() => setActiveTab("password")}
           className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition ${activeTab === "password"
-            ? "border-b-2 border-primary text-primary"
-            : "text-slate-500 hover:text-primary"
+            ? "border-b-2 border-secondary text-secondary"
+            : "text-slate-500 hover:text-secondary"
             }`}
         >
           <Lock size={16} />
@@ -127,7 +127,7 @@ export default function Profile() {
                 value={form.fullName}
                 onChange={handleChange}
                 required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
               />
             </div>
 
@@ -141,7 +141,7 @@ export default function Profile() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
               />
             </div>
 
@@ -155,7 +155,7 @@ export default function Profile() {
                 value={form.phoneNumber}
                 onChange={handleChange}
                 required
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
               />
             </div>
 
@@ -163,7 +163,7 @@ export default function Profile() {
               <button
                 type="submit"
                 disabled={isUpdating}
-                className="bg-primary font-medium text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition disabled:opacity-50"
+                className="bg-secondary font-medium text-white px-6 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
               >
                 {isUpdating ? "Updating..." : "Update Profile"}
               </button>
@@ -187,7 +187,7 @@ export default function Profile() {
                 onChange={handlePasswordChange}
                 required
                 placeholder="Enter current password"
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
               />
             </div>
 
@@ -202,7 +202,7 @@ export default function Profile() {
                 onChange={handlePasswordChange}
                 required
                 placeholder="Enter new password"
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
               />
             </div>
 
@@ -217,14 +217,14 @@ export default function Profile() {
                 onChange={handlePasswordChange}
                 required
                 placeholder="Confirm new password"
-                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none"
+                className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={isChangingPassword}
-              className="bg-primary font-medium text-white px-6 py-2 rounded-lg hover:bg-primary-dark transition disabled:opacity-50"
+              className="bg-secondary font-medium text-white px-6 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
             >
               {isChangingPassword ? "Changing..." : "Change Password"}
             </button>

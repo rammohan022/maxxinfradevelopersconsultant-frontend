@@ -87,7 +87,7 @@ export default function CareerForm({
                         required
                         value={form.title}
                         onChange={handleChange}
-                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary outline-none"
+                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                     />
                 </div>
 
@@ -100,7 +100,7 @@ export default function CareerForm({
                         required
                         value={form.department}
                         onChange={handleChange}
-                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary outline-none"
+                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                     />
                 </div>
             </div>
@@ -115,7 +115,7 @@ export default function CareerForm({
                         required
                         value={form.location}
                         onChange={handleChange}
-                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary outline-none"
+                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                     />
                 </div>
 
@@ -127,7 +127,7 @@ export default function CareerForm({
                         required
                         value={form.jobType}
                         onChange={handleChange}
-                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary outline-none"
+                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                     >
                         <option value="">Select Type</option>
                         <option value="Full-time">Full-time</option>
@@ -149,7 +149,7 @@ export default function CareerForm({
                     placeholder="e.g. 2–5 years"
                     value={form.experience}
                     onChange={handleChange}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary outline-none"
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                 />
             </div>
 
@@ -164,7 +164,7 @@ export default function CareerForm({
                     rows={4}
                     value={form.description}
                     onChange={handleChange}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary outline-none"
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                 />
             </div>
 
@@ -175,7 +175,7 @@ export default function CareerForm({
                     name="status"
                     value={form.isActive ? "Open" : "Closed"}
                     onChange={handleChange}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary outline-none"
+                    className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                 >
                     <option value="Open">Open</option>
                     <option value="Closed">Closed</option>
@@ -194,7 +194,7 @@ export default function CareerForm({
                 <button
                     type="submit"
                     disabled={isLoading}
-                    className="bg-primary text-white px-8 py-2 rounded-lg hover:bg-primary-dark transition disabled:opacity-50"
+                    className="bg-secondary text-white px-8 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
                 >
                     {isLoading ? "Saving..." : (isEdit ? "Update Career" : "Save Career")}
                 </button>

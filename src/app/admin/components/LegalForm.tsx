@@ -66,7 +66,7 @@ export default function LegalForm({
                         required
                         value={form.title}
                         onChange={handleChange}
-                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-primary outline-none"
+                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                     />
                 </div>
 
@@ -108,7 +108,7 @@ export default function LegalForm({
                 <button
                     type="submit"
                     disabled={isLoading}
-                    className="px-10 py-2 bg-primary text-white rounded-xl hover:bg-primary-dark disabled:opacity-50"
+                    className="px-10 py-2 bg-secondary text-white rounded-xl hover:bg-secondary-dark disabled:opacity-50"
                 >
                     {isLoading ? "Saving..." : (isEdit ? "Update Document" : "Save Document")}
                 </button>

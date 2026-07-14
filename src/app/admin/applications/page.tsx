@@ -72,7 +72,7 @@ const ApplicationsListPage = () => {
             <input
               type="text"
               placeholder="Search applications..."
-              className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-primary outline-none w-64"
+              className="pl-9 pr-3 py-2 border rounded-lg text-sm focus:ring-2 focus:ring-secondary outline-none w-64"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -106,7 +106,7 @@ const ApplicationsListPage = () => {
                   <tr key={app.id} className="border-b hover:bg-slate-50 transition">
                     <td className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold">
+                        <div className="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold">
                           {app.fullName.charAt(0)}
                         </div>
                         <div className="font-medium text-navy">{app.fullName}</div>
@@ -139,7 +139,7 @@ const ApplicationsListPage = () => {
                           href={app.resume}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 text-primary hover:underline font-medium"
+                          className="flex items-center gap-1.5 text-secondary hover:underline font-medium"
                         >
                           <FileText size={16} />
                           View CV

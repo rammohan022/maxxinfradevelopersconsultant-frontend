@@ -121,7 +121,7 @@ export default function ServiceForm({
     const isLoading = isCreating || isUpdating;
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow space-y-8">
+        <form onSubmit={handleSubmit} className="bg-white p-3 rounded-xl border shadow space-y-3">
             {/* Hero */}
             <section className="space-y-4">
                 <h2 className="text-lg font-semibold border-b pb-2">Hero Section</h2>
@@ -234,7 +234,7 @@ export default function ServiceForm({
 
             {/* Action Buttons */}
             <div className="flex gap-4 pt-4 justify-end">
-                <button type="button" onClick={() => router.push("/admin/practice-area")} className="px-6 py-2 border rounded-xl hover:bg-slate-50">Cancel</button>
+                <button type="button" onClick={() => router.push("/admin/practice-area")} className="px-3 py-2 border rounded-xl hover:bg-slate-50">Cancel</button>
                 <button type="submit" disabled={isLoading} className="px-10 py-2 bg-secondary text-white rounded-xl hover:bg-secondary-dark disabled:opacity-50">
                     {isLoading ? "Saving..." : (isEdit ? "Update" : "Save")}
                 </button>

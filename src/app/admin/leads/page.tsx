@@ -38,17 +38,17 @@ export default function LeadsPage() {
   };
 
   if (isLoading) {
-    return <div className="p-6 text-center text-slate-500">Loading leads...</div>;
+    return <div className="p-3 text-center text-slate-500">Loading leads...</div>;
   }
 
   if (isError) {
-    return <div className="p-6 text-center text-red-500">Error loading leads. Please try again later.</div>;
+    return <div className="p-3 text-center text-red-500">Error loading leads. Please try again later.</div>;
   }
 
   return (
     <div>
       {/* Page Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">
             Leads Management
@@ -80,12 +80,12 @@ export default function LeadsPage() {
           <table className="w-full text-sm">
             <thead className="bg-slate-50 text-slate-600">
               <tr>
-                <th className="text-left px-6 py-3 whitespace-nowrap">Date</th>
-                <th className="text-left px-6 py-3 whitespace-nowrap">Name</th>
-                <th className="text-left px-6 py-3 whitespace-nowrap">Contact Info</th>
-                <th className="text-left px-6 py-3 whitespace-nowrap">Subject</th>
-                <th className="text-left px-6 py-3 min-w-[300px]">Message</th>
-                <th className="text-center px-6 py-3 whitespace-nowrap">Actions</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap">Date</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap">Name</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap">Contact Info</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap">Subject</th>
+                <th className="text-left px-3 py-2 min-w-[300px]">Message</th>
+                <th className="text-center px-3 py-2 whitespace-nowrap">Actions</th>
               </tr>
             </thead>
 
@@ -105,24 +105,24 @@ export default function LeadsPage() {
                     key={lead.id}
                     className="border-t hover:bg-slate-50 transition align-top"
                   >
-                    <td className="px-6 py-4 whitespace-nowrap text-slate-500">
+                    <td className="px-3 py-2 whitespace-nowrap text-slate-500">
                       {new Date(lead.createdAt).toLocaleDateString()}
                     </td>
-                    <td className="px-6 py-4 font-medium whitespace-nowrap">
+                    <td className="px-3 py-2 font-medium whitespace-nowrap">
                       {lead.fullName}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 py-2 whitespace-nowrap">
                       <div className="text-slate-600">{lead.email}</div>
                       <div className="text-slate-400 text-xs">{lead.phoneNumber}</div>
                     </td>
-                    <td className="px-6 py-4 italic text-slate-600">
+                    <td className="px-3 py-2 italic text-slate-600">
                       {lead.subject || "No Subject"}
                     </td>
-                    <td className="px-6 py-4 text-slate-500 leading-relaxed min-w-[300px]">
+                    <td className="px-3 py-2 text-slate-500 leading-relaxed min-w-[300px]">
                       {lead.message}
                     </td>
 
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-3 py-2 text-center">
                       <button
                         onClick={() => setDeleteModal({ isOpen: true, id: lead.id, name: lead.fullName })}
                         className="text-slate-400 hover:text-red-600 transition p-2 hover:bg-red-50 rounded-lg"

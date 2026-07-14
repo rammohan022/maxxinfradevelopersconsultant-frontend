@@ -12,7 +12,10 @@ export default function CreateTermsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Create Terms & Conditions</h1>
+      <div className="mb-3">
+        <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Create Terms & Conditions</h1>
+        <p className="text-gray-500 text-sm">Draft a new version of the terms and conditions</p>
+      </div>
       <LegalForm type="terms" onSave={handleSave} isLoading={isLoading} />
     </div>
   );

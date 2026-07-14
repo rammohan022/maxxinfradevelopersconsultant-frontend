@@ -7,6 +7,8 @@ import dynamic from "next/dynamic";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
+import { showSuccess, showError } from "@/lib/utils/toast";
+
 interface LegalFormProps {
     initialData?: any;
     isEdit?: boolean;
@@ -48,17 +50,17 @@ export default function LegalForm({
         e.preventDefault();
         try {
             await onSave(form);
-            alert(`${type === "privacy" ? "Privacy Policy" : "Terms & Conditions"} saved successfully!`);
+            showSuccess(`${type === "privacy" ? "Privacy Policy" : "Terms & Conditions"} saved successfully!`);
             router.push(`/admin/${type === "privacy" ? "privacy-policy" : "terms-conditions"}`);
         } catch (err) {
             console.error("Save failed:", err);
-            alert("Failed to save document.");
+            showError(err, "Failed to save document.");
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+        <form onSubmit={handleSubmit} className="bg-white p-3 rounded-xl border shadow space-y-3">
+            <div className="grid md:grid-cols-2 gap-3">
                 <div>
                     <label className="block text-sm font-medium mb-1">Document Title</label>
                     <input
@@ -66,10 +68,23 @@ export default function LegalForm({
                         required
                         value={form.title}
                         onChange={handleChange}
-                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
+                        placeholder="Enter document title (e.g. Terms & Conditions)"
+                        className="w-full border rounded-lg px-3 py-2 h-10 focus:ring-1 focus:ring-secondary outline-none"
                     />
                 </div>
 
+                <div>
+                    <label className="block text-sm font-medium mb-1">Status</label>
+                    <select
+                        name="status"
+                        value={form.status}
+                        onChange={handleChange}
+                        className="w-full border rounded-lg px-3 py-2 h-10 focus:ring-1 focus:ring-secondary outline-none bg-white"
+                    >
+                        <option value="Draft">Draft</option>
+                        <option value="Published">Published</option>
+                    </select>
+                </div>
             </div>
 
             <div>
@@ -84,24 +99,11 @@ export default function LegalForm({
                 </div>
             </div>
 
-            <div className="w-48">
-                <label className="block text-sm font-medium mb-1">Status</label>
-                <select
-                    name="status"
-                    value={form.status}
-                    onChange={handleChange}
-                    className="w-full border rounded-lg px-3 py-2"
-                >
-                    <option value="Draft">Draft</option>
-                    <option value="Published">Published</option>
-                </select>
-            </div>
-
             <div className="flex gap-4 pt-4 justify-end">
                 <button
                     type="button"
                     onClick={() => router.back()}
-                    className="px-6 py-2 border rounded-xl hover:bg-slate-50"
+                    className="px-3 py-2 border rounded-xl hover:bg-slate-50"
                 >
                     Cancel
                 </button>

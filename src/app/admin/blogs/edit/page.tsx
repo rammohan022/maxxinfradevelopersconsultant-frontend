@@ -12,12 +12,12 @@ export default function EditBlogPage() {
     skip: !id,
   });
 
-  if (isLoading) return <div className="p-6 text-center text-slate-500">Loading blog details...</div>;
-  if (!id || isError || !blog) return <div className="p-6 text-center text-red-500">Error loading blog post.</div>;
+  if (isLoading) return <div className="p-3 text-center text-slate-500">Loading blog details...</div>;
+  if (!id || isError || !blog) return <div className="p-3 text-center text-red-500">Error loading blog post.</div>;
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6 text-navy">
+      <h1 className="text-2xl font-bold mb-3 text-[rgb(13_33_55)]">
         Edit Blog Post
       </h1>
 

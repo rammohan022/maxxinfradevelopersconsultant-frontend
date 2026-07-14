@@ -8,6 +8,8 @@ import { useRouter } from "next/navigation";
 import { getAuthToken } from "@/lib/utils/TokenHelper";
 import { useEffect } from "react";
 
+import { showSuccess, showError } from "@/lib/utils/toast";
+
 const Login = () => {
   const router = useRouter();
   const [login, { isLoading }] = useLoginMutation();
@@ -43,12 +45,13 @@ const Login = () => {
       const res = await login(form).unwrap();
 
       console.log("Login success:", res);
+      showSuccess("Logged in successfully!");
 
       // redirect after login
       router.push("/admin/dashboard");
     } catch (error: any) {
       console.error("Login error:", error);
-      alert(error?.data?.message || "Login failed");
+      showError(error, "Login failed");
     }
   };
 

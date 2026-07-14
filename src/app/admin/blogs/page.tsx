@@ -32,12 +32,12 @@ export default function BlogListPage() {
   };
 
   if (isLoading) {
-    return <div className="p-6 text-center text-slate-500">Loading blogs...</div>;
+    return <div className="p-3 text-center text-slate-500">Loading blogs...</div>;
   }
 
   if (isError) {
     return (
-      <div className="p-6 text-center text-red-500">
+      <div className="p-3 text-center text-red-500">
         Error loading blogs. Please try again later.
       </div>
     );
@@ -46,9 +46,9 @@ export default function BlogListPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-navy">
+          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">
             Blog Posts Management
           </h1>
           <p className="text-sm text-slate-500">Manage your legal insights and news articles</p>
@@ -71,7 +71,7 @@ export default function BlogListPage() {
           </div>
           <Link
             href="/admin/blogs/create"
-            className="flex items-center font-medium gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm"
+            className="flex items-center font-medium gap-2 bg-secondary text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition text-sm"
           >
             <Plus size={16} />
             Add Blog
@@ -85,11 +85,11 @@ export default function BlogListPage() {
           <table className="w-full text-sm">
             <thead className="bg-slate-50 text-slate-600">
               <tr>
-                <th className="px-6 py-3 text-left whitespace-nowrap">Title</th>
-                <th className="px-6 py-3 text-left whitespace-nowrap">Category</th>
-                <th className="px-6 py-3 text-left whitespace-nowrap">Date</th>
-                <th className="px-6 py-3 text-left whitespace-nowrap">Status</th>
-                <th className="px-6 py-3 text-center whitespace-nowrap">Actions</th>
+                <th className="px-3 py-2 text-left whitespace-nowrap">Title</th>
+                <th className="px-3 py-2 text-left whitespace-nowrap">Category</th>
+                <th className="px-3 py-2 text-left whitespace-nowrap">Date</th>
+                <th className="px-3 py-2 text-left whitespace-nowrap">Status</th>
+                <th className="px-3 py-2 text-center whitespace-nowrap">Actions</th>
               </tr>
             </thead>
 
@@ -103,12 +103,12 @@ export default function BlogListPage() {
               ) : (
                 filteredBlogs.map((blog) => (
                   <tr key={blog.id} className="border-t hover:bg-slate-50 transition align-top">
-                    <td className="px-6 py-4 font-medium text-navy">{blog.title}</td>
-                    <td className="px-6 py-4 text-slate-500 whitespace-nowrap">{blog.category}</td>
-                    <td className="px-6 py-4 text-slate-500 whitespace-nowrap">
+                    <td className="px-3 py-2 font-medium text-[rgb(13_33_55)]">{blog.title}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap">{blog.category}</td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap">
                       {blog.createdAt ? new Date(blog.createdAt).toLocaleDateString() : "N/A"}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-3 py-2 whitespace-nowrap">
                       <span
                         className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase ${blog.status === "Published"
                           ? "bg-emerald-100 text-emerald-700"
@@ -118,7 +118,7 @@ export default function BlogListPage() {
                         {blog.status}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-3 py-2 text-center">
                       <div className="flex justify-center gap-2">
                         <Link
                           href={`/admin/blogs/edit?id=${blog.id}`}

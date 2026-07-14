@@ -2,6 +2,7 @@
 
 import { MapPin, Phone, Mail } from "lucide-react"
 import { useEffect, useState } from "react"
+import { showSuccess } from "@/lib/utils/toast"
 
 export default function OfficeSection() {
   const [form, setForm] = useState({
@@ -17,7 +18,7 @@ export default function OfficeSection() {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert("Thank you. We will get in touch shortly.")
+    showSuccess("Thank you. We will get in touch shortly.")
   }
 
   useEffect(() => {

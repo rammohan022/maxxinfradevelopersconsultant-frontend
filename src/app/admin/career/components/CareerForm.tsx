@@ -75,7 +75,7 @@ export default function CareerForm({
     return (
         <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-xl shadow border space-y-5"
+            className="bg-white p-3 rounded-xl shadow border space-y-5"
         >
             <div className="grid md:grid-cols-2 gap-5">
                 {/* Title */}
@@ -87,6 +87,7 @@ export default function CareerForm({
                         required
                         value={form.title}
                         onChange={handleChange}
+                        placeholder="e.g. HR Executive"
                         className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                     />
                 </div>
@@ -100,6 +101,7 @@ export default function CareerForm({
                         required
                         value={form.department}
                         onChange={handleChange}
+                        placeholder="e.g. Human Resources"
                         className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                     />
                 </div>
@@ -115,6 +117,7 @@ export default function CareerForm({
                         required
                         value={form.location}
                         onChange={handleChange}
+                        placeholder="e.g. Pune, India"
                         className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                     />
                 </div>
@@ -164,6 +167,7 @@ export default function CareerForm({
                     rows={4}
                     value={form.description}
                     onChange={handleChange}
+                    placeholder="Enter detailed job description, responsibilities, and requirements..."
                     className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
                 />
             </div>
@@ -187,7 +191,7 @@ export default function CareerForm({
                 <button
                     type="button"
                     onClick={() => router.push("/admin/career")}
-                    className="border px-6 py-2 rounded-lg hover:bg-slate-50 transition"
+                    className="border px-3 py-2 rounded-lg hover:bg-slate-50 transition"
                 >
                     Cancel
                 </button>

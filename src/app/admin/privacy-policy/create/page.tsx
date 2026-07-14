@@ -12,7 +12,10 @@ export default function CreatePrivacyPolicyPage() {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-6">Create Privacy Policy</h1>
+            <div className="mb-3">
+                <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Create Privacy Policy</h1>
+                <p className="text-gray-500 text-sm">Draft a new version of the privacy policy</p>
+            </div>
             <LegalForm type="privacy" onSave={handleSave} isLoading={isLoading} />
         </div>
     );

@@ -33,12 +33,12 @@ const CareerListPage = () => {
   };
 
   if (isLoading) {
-    return <div className="p-6 text-center text-slate-500">Loading career opportunities...</div>;
+    return <div className="p-3 text-center text-slate-500">Loading career opportunities...</div>;
   }
 
   if (isError) {
     return (
-      <div className="p-6 text-center text-red-500">
+      <div className="p-3 text-center text-red-500">
         Error loading career opportunities. Please try again later.
       </div>
     );
@@ -47,9 +47,9 @@ const CareerListPage = () => {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-navy">Career Opportunities</h1>
+          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Career Opportunities</h1>
           <p className="text-gray-500 text-sm">
             Manage all job openings listed on website
           </p>
@@ -72,7 +72,7 @@ const CareerListPage = () => {
           </div>
           <Link
             href="/admin/career/create"
-            className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
+            className="flex items-center gap-2 bg-secondary text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
           >
             <Plus size={18} /> Add Career
           </Link>
@@ -102,7 +102,7 @@ const CareerListPage = () => {
               ) : (
                 filteredCareers.map((career) => (
                   <tr key={career.id} className="border-b hover:bg-slate-50 transition">
-                    <td className="p-4 font-medium text-navy">{career.title}</td>
+                    <td className="p-4 font-medium text-[rgb(13_33_55)]">{career.title}</td>
                     <td className="p-4 text-slate-500 whitespace-nowrap">{career.department}</td>
                     <td className="p-4 text-slate-500 whitespace-nowrap">{career.location}</td>
                     <td className="p-4 whitespace-nowrap">

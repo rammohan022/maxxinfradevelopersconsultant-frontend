@@ -37,7 +37,7 @@ export default function DeleteModal({
                         exit={{ scale: 0.95, opacity: 0, y: 20 }}
                         className="relative w-full max-w-md overflow-hidden rounded-2xl bg-white shadow-2xl"
                     >
-                        <div className="p-6">
+                        <div className="p-3">
                             <div className="flex items-center justify-between mb-4">
                                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
                                     <AlertTriangle className="h-6 w-6 text-red-600" />
@@ -50,7 +50,7 @@ export default function DeleteModal({
                                 </button>
                             </div>
 
-                            <h3 className="text-xl font-bold text-slate-900 mb-2">
+                            <h3 className="text-xl font-bold text-[rgb(13_33_55)] mb-2">
                                 {title}
                             </h3>
                             <p className="text-sm text-gray-500">
@@ -61,14 +61,14 @@ export default function DeleteModal({
                             <div className="flex gap-3 mt-6">
                                 <button
                                     onClick={onClose}
-                                    className="flex-1 rounded-xl border border-slate-200 py-3 font-semibold text-slate-600 hover:bg-slate-50 transition"
+                                    className="flex-1 rounded-xl border border-slate-200 py-2 font-semibold text-slate-600 hover:bg-slate-50 transition"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     onClick={onConfirm}
                                     disabled={isLoading}
-                                    className="flex-1 rounded-xl bg-red-600 py-3 font-semibold text-white hover:bg-red-700 transition disabled:opacity-50"
+                                    className="flex-1 rounded-xl bg-red-600 py-2 font-semibold text-white hover:bg-red-700 transition disabled:opacity-50"
                                 >
                                     {isLoading ? "Deleting..." : "Delete Item"}
                                 </button>

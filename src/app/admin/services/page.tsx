@@ -30,15 +30,15 @@ const ServicesPage = () => {
     }
   };
 
-  if (isLoading) return <div className="p-6 text-center text-slate-500">Loading...</div>;
-  if (isError) return <div className="p-6 text-center text-red-500">Failed to load services</div>;
+  if (isLoading) return <div className="p-3 text-center text-slate-500">Loading...</div>;
+  if (isError) return <div className="p-3 text-center text-red-500">Failed to load services</div>;
 
   return (
     <>
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-navy">
+          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">
             Services
           </h1>
           <p className="text-sm text-slate-500">
@@ -63,7 +63,7 @@ const ServicesPage = () => {
           </div>
           <Link
             href="/admin/services/create"
-            className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
+            className="flex items-center gap-2 bg-secondary text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
           >
             <Plus size={16} />
             Add Service
@@ -77,10 +77,10 @@ const ServicesPage = () => {
           <table className="w-full text-sm">
             <thead className="bg-slate-50 text-slate-600">
               <tr>
-                <th className="text-left px-6 py-3 whitespace-nowrap">Service Name</th>
-                <th className="text-left px-6 py-3 min-w-[300px]">Description</th>
-                <th className="text-left px-6 py-3 whitespace-nowrap text-center">Services Count</th>
-                <th className="text-center px-6 py-3 whitespace-nowrap">Actions</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap">Service Name</th>
+                <th className="text-left px-3 py-2 min-w-[300px]">Description</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap text-center">Services Count</th>
+                <th className="text-center px-3 py-2 whitespace-nowrap">Actions</th>
               </tr>
             </thead>
 
@@ -94,20 +94,20 @@ const ServicesPage = () => {
               ) : (
                 filteredAreas.map((item: any) => (
                   <tr key={item.id} className="border-t hover:bg-slate-50 transition align-top">
-                    <td className="px-6 py-4 font-semibold text-navy whitespace-nowrap">
+                    <td className="px-3 py-2 font-semibold text-[rgb(13_33_55)] whitespace-nowrap">
                       {item.title}
                     </td>
-                    <td className="px-6 py-4 text-slate-500 leading-relaxed min-w-[300px]">
+                    <td className="px-3 py-2 text-slate-500 leading-relaxed min-w-[300px]">
                       <div className="line-clamp-2">
                         {item.overview?.replace(/<[^>]*>?/gm, "")}
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-3 py-2 text-center">
                       <span className="bg-slate-100 px-2 py-1 rounded text-xs font-medium">
                         {item.services?.length || 0} Sub-services
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-3 py-2 text-center">
                       <div className="flex justify-center gap-2">
                         <Link
                           href={`/admin/services/edit?id=${item.id}`}

@@ -12,12 +12,12 @@ export default function EditServicePage() {
         skip: !id,
     });
 
-    if (isLoading) return <div className="p-6 text-center text-slate-500">Loading service details...</div>;
-    if (!id || isError || !area) return <div className="p-6 text-center text-red-500">Error loading service.</div>;
+    if (isLoading) return <div className="p-3 text-center text-slate-500">Loading service details...</div>;
+    if (!id || isError || !area) return <div className="p-3 text-center text-red-500">Error loading service.</div>;
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-6 text-navy">Edit Service</h1>
+            <h1 className="text-2xl font-bold mb-3 text-[rgb(13_33_55)]">Edit Service</h1>
             <ServiceForm initialData={area} isEdit />
         </div>
     );

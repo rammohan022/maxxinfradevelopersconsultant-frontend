@@ -5,19 +5,20 @@ import Image from "next/image";
 
 const TermsHero = () => {
   return (
-    <section className="relative h-[400px] overflow-hidden bg-navy">
+    <section className="relative h-[400px] overflow-hidden bg-[rgb(13_33_55)]">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1920&q=80"
-          alt="Legal agreement and terms concept"
+          src="/img/hr_hero_bg_1783707638359.png"
+          alt="Recruitment team candidate interview and consulting"
           fill
-          className="object-cover opacity-30"
+          priority
+          className="object-cover opacity-35"
         />
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/95 to-navy/70" />
+      <div className="absolute inset-0 bg-[rgb(13_33_55)]/75" />
 
       {/* Content */}
       <Container className="relative flex h-full flex-col justify-center">
@@ -35,16 +36,16 @@ const TermsHero = () => {
               <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
             </svg>
 
-            <span className="font-medium text-gold">
+            <span className="font-medium text-secondary">
               Terms & Conditions
             </span>
           </nav>
 
-          <h1 className="mb-6 font-serif-heading text-5xl md:text-6xl font-bold text-white">
+          <h1 className="mb-6 font-serif-heading text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
             Terms & Conditions
           </h1>
 
-          <p className="max-w-2xl text-xl text-gray-300 leading-relaxed">
+          <p className="max-w-2xl text-xl text-gray-200 leading-relaxed drop-shadow-md">
             Please read these terms carefully before using our website or
             engaging with our legal services.
           </p>

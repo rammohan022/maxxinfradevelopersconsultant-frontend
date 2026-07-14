@@ -103,14 +103,14 @@ export default function MemberForm({
     return (
         <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-xl border shadow space-y-6"
+            className="bg-white p-3 rounded-xl border shadow space-y-3"
         >
             {/* Profile Image */}
             <div>
                 <label className="block text-sm font-medium mb-2">
                     Profile Image
                 </label>
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3">
                     {preview ? (
                         <div className="relative w-32 h-32">
                             <Image
@@ -129,12 +129,12 @@ export default function MemberForm({
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
-                        className="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
+                        className="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
                     />
                 </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-3">
                 {/* Name */}
                 <div>
                     <label className="block text-sm font-medium mb-1">Full Name</label>
@@ -143,6 +143,7 @@ export default function MemberForm({
                         required
                         value={form.fullName}
                         onChange={handleChange}
+                        placeholder="e.g. Jane Doe"
                         className="w-full border rounded-lg px-3 py-2"
                     />
                 </div>
@@ -155,12 +156,13 @@ export default function MemberForm({
                         required
                         value={form.designation}
                         onChange={handleChange}
+                        placeholder="e.g. Managing Director"
                         className="w-full border rounded-lg px-3 py-2"
                     />
                 </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-3">
                 {/* Category */}
                 <div>
                     <label className="block text-sm font-medium mb-1">Category</label>
@@ -187,12 +189,13 @@ export default function MemberForm({
                         name="practiceArea"
                         value={form.practiceArea}
                         onChange={handleChange}
+                        placeholder="e.g. HR Training"
                         className="w-full border rounded-lg px-3 py-2"
                     />
                 </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-3">
                 {/* Location */}
                 <div>
                     <label className="block text-sm font-medium mb-1">Location</label>
@@ -200,6 +203,7 @@ export default function MemberForm({
                         name="location"
                         value={form.location}
                         onChange={handleChange}
+                        placeholder="e.g. Gurgaon, India"
                         className="w-full border rounded-lg px-3 py-2"
                     />
                 </div>
@@ -225,6 +229,7 @@ export default function MemberForm({
                     rows={4}
                     value={form.shortBio}
                     onChange={handleChange}
+                    placeholder="Enter short bio details..."
                     className="w-full border rounded-lg px-3 py-2"
                 />
             </div>
@@ -248,7 +253,7 @@ export default function MemberForm({
                 <button
                     type="button"
                     onClick={() => router.push("/admin/our-team")}
-                    className="border px-6 py-2 rounded-lg hover:bg-slate-50 transition"
+                    className="border px-3 py-2 rounded-lg hover:bg-slate-50 transition"
                 >
                     Cancel
                 </button>

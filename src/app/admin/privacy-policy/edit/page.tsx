@@ -18,12 +18,12 @@ export default function EditPrivacyPolicyPage() {
         return updatePolicy({ id, data }).unwrap();
     };
 
-    if (isFetching) return <div className="p-6 text-center text-slate-500">Loading document...</div>;
-    if (!id || !policy) return <div className="p-6 text-center text-red-500">Document not found.</div>;
+    if (isFetching) return <div className="p-3 text-center text-slate-500">Loading document...</div>;
+    if (!id || !policy) return <div className="p-3 text-center text-red-500">Document not found.</div>;
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-6">Edit Privacy Policy</h1>
+            <h1 className="text-2xl font-bold mb-3">Edit Privacy Policy</h1>
             <LegalForm
                 type="privacy"
                 initialData={policy}

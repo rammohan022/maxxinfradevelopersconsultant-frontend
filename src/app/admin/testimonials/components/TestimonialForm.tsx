@@ -97,12 +97,12 @@ export default function TestimonialForm({
     return (
         <form
             onSubmit={handleSubmit}
-            className="bg-white p-6 rounded-xl shadow border space-y-6"
+            className="bg-white p-3 rounded-xl shadow border space-y-3"
         >
             {/* Client Image */}
             <div>
                 <label className="block text-sm font-medium mb-2">Client Image</label>
-                <div className="flex items-center gap-6">
+                <div className="flex items-center gap-3">
                     {preview ? (
                         <div className="relative w-32 h-32">
                             <Image
@@ -119,12 +119,12 @@ export default function TestimonialForm({
                         type="file"
                         accept="image/*"
                         onChange={handleFileChange}
-                        className="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
+                        className="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
                     />
                 </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-3">
                 {/* Name */}
                 <div className="md:col-span-2">
                     <label className="block text-sm font-medium mb-1">Client Name</label>
@@ -133,6 +133,7 @@ export default function TestimonialForm({
                         required
                         value={form.clientName}
                         onChange={handleChange}
+                        placeholder="e.g. John Smith"
                         className="w-full border rounded-lg px-3 py-2"
                     />
                 </div>
@@ -145,7 +146,7 @@ export default function TestimonialForm({
                     name="caseType"
                     value={form.caseType}
                     onChange={handleChange}
-                    placeholder="e.g. Corporate Law Case"
+                    placeholder="e.g. Corporate Advisory"
                     className="w-full border rounded-lg px-3 py-2"
                 />
             </div>
@@ -159,11 +160,12 @@ export default function TestimonialForm({
                     rows={4}
                     value={form.testimonialText}
                     onChange={handleChange}
+                    placeholder="Enter what client said about our services..."
                     className="w-full border rounded-lg px-3 py-2"
                 />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-3">
                 {/* Rating */}
                 <div>
                     <label className="block text-sm font-medium mb-1">Rating</label>
@@ -211,7 +213,7 @@ export default function TestimonialForm({
                 <button
                     type="button"
                     onClick={() => router.push("/admin/testimonials")}
-                    className="border px-6 py-2 rounded-lg hover:bg-slate-50 transition"
+                    className="border px-3 py-2 rounded-lg hover:bg-slate-50 transition"
                 >
                     Cancel
                 </button>

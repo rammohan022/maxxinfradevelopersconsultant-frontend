@@ -33,14 +33,14 @@ export default function OurTeamPage() {
     }
   };
 
-  if (isLoading) return <div className="p-6 text-center text-slate-500">Loading team...</div>;
-  if (isError) return <div className="p-6 text-center text-red-500">Error loading team members.</div>;
+  if (isLoading) return <div className="p-3 text-center text-slate-500">Loading team...</div>;
+  if (isError) return <div className="p-3 text-center text-red-500">Error loading team members.</div>;
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-navy">Team Members</h1>
+          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Team Members</h1>
           <p className="text-gray-500 text-sm">Manage your legal professionals and staff</p>
         </div>
 
@@ -61,7 +61,7 @@ export default function OurTeamPage() {
           </div>
           <Link
             href="/admin/our-team/create"
-            className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
+            className="flex items-center gap-2 bg-secondary text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
           >
             <Plus size={18} /> Add Member
           </Link>
@@ -97,7 +97,7 @@ export default function OurTeamPage() {
                           className="object-cover"
                         />
                       </div>
-                      <span className="font-medium text-navy">{member.fullName}</span>
+                      <span className="font-medium text-[rgb(13_33_55)]">{member.fullName}</span>
                     </td>
                     <td className="p-4 text-slate-500 whitespace-nowrap">{member.designation}</td>
                     <td className="p-4 text-slate-500 whitespace-nowrap">{member.category || "N/A"}</td>

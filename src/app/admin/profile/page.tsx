@@ -76,21 +76,26 @@ export default function Profile() {
     }
   };
 
-  if (isLoading) return <div className="p-6 text-center text-slate-500">Loading profile...</div>;
-  if (isError) return <div className="p-6 text-center text-red-500">Error loading profile information.</div>;
+  if (isLoading) return <div className="p-3 text-center text-slate-500">Loading profile...</div>;
+  if (isError) return <div className="p-3 text-center text-red-500">Error loading profile information.</div>;
 
   return (
     <>
       {/* Page Title */}
-      <h1 className="text-2xl font-bold text-[rgb(13_33_55)] mb-6">
-        Admin Profile
-      </h1>
+      <div className="mb-3">
+        <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">
+          Admin Profile
+        </h1>
+        <p className="text-gray-500 text-sm">
+          View and update your personal information and password settings
+        </p>
+      </div>
 
       {/* Tabs */}
-      <div className="flex border-b mb-6">
+      <div className="flex border-b mb-3">
         <button
           onClick={() => setActiveTab("profile")}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition ${activeTab === "profile"
+          className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition ${activeTab === "profile"
             ? "border-b-2 border-secondary text-secondary"
             : "text-slate-500 hover:text-secondary"
             }`}
@@ -101,7 +106,7 @@ export default function Profile() {
 
         <button
           onClick={() => setActiveTab("password")}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-medium transition ${activeTab === "password"
+          className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition ${activeTab === "password"
             ? "border-b-2 border-secondary text-secondary"
             : "text-slate-500 hover:text-secondary"
             }`}
@@ -113,10 +118,10 @@ export default function Profile() {
 
       {/* ================= PROFILE TAB ================= */}
       {activeTab === "profile" && (
-        <div className="bg-white p-6 rounded-xl shadow-sm border">
+        <div className="bg-white p-3 rounded-xl shadow-sm border">
 
 
-          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div>
               <label className="block text-sm font-medium mb-1">
                 Full Name
@@ -159,11 +164,11 @@ export default function Profile() {
               />
             </div>
 
-            <div className="md:col-span-2">
+            <div className="md:col-span-2 flex justify-end">
               <button
                 type="submit"
                 disabled={isUpdating}
-                className="bg-secondary font-medium text-white px-6 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
+                className="bg-secondary font-medium text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
               >
                 {isUpdating ? "Updating..." : "Update Profile"}
               </button>
@@ -174,8 +179,8 @@ export default function Profile() {
 
       {/* ================= PASSWORD TAB ================= */}
       {activeTab === "password" && (
-        <div className="bg-white p-6 rounded-xl shadow-sm border">
-          <form onSubmit={handlePasswordSubmit} className="grid gap-6 max-w-md">
+        <div className="bg-white p-3 rounded-xl shadow-sm border">
+          <form onSubmit={handlePasswordSubmit} className="grid gap-3 max-w-md">
             <div>
               <label className="block text-sm font-medium mb-1">
                 Current Password
@@ -221,13 +226,15 @@ export default function Profile() {
               />
             </div>
 
-            <button
-              type="submit"
-              disabled={isChangingPassword}
-              className="bg-secondary font-medium text-white px-6 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
-            >
-              {isChangingPassword ? "Changing..." : "Change Password"}
-            </button>
+            <div className="flex justify-end">
+              <button
+                type="submit"
+                disabled={isChangingPassword}
+                className="bg-secondary font-medium text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
+              >
+                {isChangingPassword ? "Changing..." : "Change Password"}
+              </button>
+            </div>
           </form>
         </div>
       )}

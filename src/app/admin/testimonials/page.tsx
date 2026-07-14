@@ -32,12 +32,12 @@ export default function TestimonialListPage() {
   };
 
   if (isLoading) {
-    return <div className="p-6 text-center text-slate-500">Loading testimonials...</div>;
+    return <div className="p-3 text-center text-slate-500">Loading testimonials...</div>;
   }
 
   if (isError) {
     return (
-      <div className="p-6 text-center text-red-500">
+      <div className="p-3 text-center text-red-500">
         Error loading testimonials. Please try again later.
       </div>
     );
@@ -46,9 +46,9 @@ export default function TestimonialListPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-navy">Testimonials</h1>
+          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Testimonials</h1>
           <p className="text-gray-500 text-sm">
             Manage client testimonials displayed on website
           </p>
@@ -71,7 +71,7 @@ export default function TestimonialListPage() {
           </div>
           <Link
             href="/admin/testimonials/create"
-            className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
+            className="flex items-center gap-2 bg-secondary text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-medium"
           >
             <Plus size={18} /> Add Testimonial
           </Link>
@@ -102,7 +102,7 @@ export default function TestimonialListPage() {
               ) : (
                 filteredTestimonials.map((item) => (
                   <tr key={item.id} className="border-b hover:bg-slate-50 transition">
-                    <td className="p-4 font-medium text-navy">{item.clientName}</td>
+                    <td className="p-4 font-medium text-[rgb(13_33_55)]">{item.clientName}</td>
                     <td className="p-4 text-slate-500 whitespace-nowrap">{item.caseType}</td>
                     <td className="p-4 text-amber-500 whitespace-nowrap">
                       {"★".repeat(item.rating || 5)}

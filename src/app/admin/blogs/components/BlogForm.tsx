@@ -86,9 +86,9 @@ export default function BlogForm({
   const isLoading = isCreating || isUpdating;
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border">
-      <form onSubmit={handleSubmit} className="grid gap-6">
-        <div className="grid md:grid-cols-2 gap-6">
+    <div className="bg-white p-3 rounded-xl shadow-sm border">
+      <form onSubmit={handleSubmit} className="grid gap-3">
+        <div className="grid md:grid-cols-2 gap-3">
           {/* Title */}
           <div>
             <label className="block text-sm font-medium mb-1">
@@ -99,6 +99,7 @@ export default function BlogForm({
               required
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              placeholder="Enter blog title"
               className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
             />
           </div>
@@ -119,7 +120,7 @@ export default function BlogForm({
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-3">
           {/* Category */}
           <div>
             <label className="block text-sm font-medium mb-1">
@@ -130,6 +131,7 @@ export default function BlogForm({
               required
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              placeholder="e.g. Corporate Law"
               className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
             />
           </div>
@@ -207,14 +209,14 @@ export default function BlogForm({
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-secondary text-white px-6 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
+            className="bg-secondary text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
           >
             {isLoading ? "Saving..." : (isEdit ? "Update Blog" : "Create Blog")}
           </button>
           <button
             type="button"
             onClick={() => router.push("/admin/blogs")}
-            className="border px-6 py-2 rounded-lg hover:bg-slate-50 transition"
+            className="border px-3 py-2 rounded-lg hover:bg-slate-50 transition"
           >
             Cancel
           </button>

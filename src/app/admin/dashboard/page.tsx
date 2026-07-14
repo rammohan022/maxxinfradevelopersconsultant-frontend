@@ -36,8 +36,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="mb-6">
-        <h1 className="text-4xl font-bold text-[rgb(13_33_55)]">
+      <div className="mb-3">
+        <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">
           CMS Dashboard
         </h1>
         <p className="text-sm text-slate-500">
@@ -46,13 +46,13 @@ const Dashboard = () => {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
         {statsData.map((item, index) => {
           const Icon = item.icon;
           return (
             <div
               key={index}
-              className="bg-white rounded-xl p-5 shadow-sm border"
+              className="bg-white rounded-xl p-3 shadow-sm border"
             >
               <div className="flex items-center justify-between">
                 <div>
@@ -71,11 +71,10 @@ const Dashboard = () => {
       </div>
 
       {/* Content */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border">
+      <div className="bg-white rounded-xl p-3 shadow-sm border">
         <h3 className="text-lg font-semibold text-[rgb(13_33_55)] mb-4">
           Recent Leads
         </h3>
-
         <table className="w-full text-sm">
           <thead>
             <tr className="text-left text-slate-500 border-b">
@@ -88,7 +87,7 @@ const Dashboard = () => {
             {stats?.latestLeads && stats.latestLeads.length > 0 ? (
               stats.latestLeads.map((lead) => (
                 <tr key={lead.id} className="border-b last:border-0 hover:bg-slate-50 transition">
-                  <td className="py-3 font-medium">{lead.fullName}</td>
+                  <td className="py-2 font-medium">{lead.fullName}</td>
                   <td className="text-slate-500">
                     {lead.email}
                   </td>

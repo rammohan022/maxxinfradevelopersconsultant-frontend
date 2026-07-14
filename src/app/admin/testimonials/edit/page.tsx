@@ -12,12 +12,12 @@ export default function EditTestimonialPage() {
         skip: !id,
     });
 
-    if (isLoading) return <div className="p-6 text-center text-slate-500">Loading testimonial details...</div>;
-    if (!id || isError || !testimonial) return <div className="p-6 text-center text-red-500">Error loading testimonial.</div>;
+    if (isLoading) return <div className="p-3 text-center text-slate-500">Loading testimonial details...</div>;
+    if (!id || isError || !testimonial) return <div className="p-3 text-center text-red-500">Error loading testimonial.</div>;
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-6 text-navy">Edit Testimonial</h1>
+            <h1 className="text-2xl font-bold mb-3 text-[rgb(13_33_55)]">Edit Testimonial</h1>
             <TestimonialForm initialData={testimonial} isEdit />
         </div>
     );

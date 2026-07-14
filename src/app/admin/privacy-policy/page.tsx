@@ -24,20 +24,20 @@ export default function PrivacyPolicyPage() {
     }
   };
 
-  if (isLoading) return <div className="p-6 text-center text-slate-500">Loading policies...</div>;
-  if (isError) return <div className="p-6 text-center text-red-500">Error loading privacy policies.</div>;
+  if (isLoading) return <div className="p-3 text-center text-slate-500">Loading policies...</div>;
+  if (isError) return <div className="p-3 text-center text-red-500">Error loading privacy policies.</div>;
 
   return (
     <>
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-3">
         <div>
-          <h1 className="text-2xl font-bold text-navy">Privacy Policy Management</h1>
+          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Privacy Policy Management</h1>
           <p className="text-gray-500 text-sm">Manage website privacy policies</p>
         </div>
 
         <Link
           href="/admin/privacy-policy/create"
-          className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition"
+          className="flex items-center gap-2 bg-secondary text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition"
         >
           <Plus size={18} /> Add Policy
         </Link>

@@ -40,23 +40,23 @@ const ApplicationsListPage = () => {
   };
 
   if (isLoading) {
-    return <div className="p-6 text-center text-slate-500">Loading applications...</div>;
+    return <div className="p-3 text-center text-slate-500">Loading applications...</div>;
   }
 
   if (isError) {
     return (
-      <div className="p-6 text-center text-red-500">
+      <div className="p-3 text-center text-red-500">
         Error loading applications. Please try again later.
       </div>
     );
   }
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-navy">Job Applications</h1>
+          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Job Applications</h1>
           <p className="text-gray-500 text-sm">
             View and manage all job applications received
           </p>
@@ -109,7 +109,7 @@ const ApplicationsListPage = () => {
                         <div className="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold">
                           {app.fullName.charAt(0)}
                         </div>
-                        <div className="font-medium text-navy">{app.fullName}</div>
+                        <div className="font-medium text-[rgb(13_33_55)]">{app.fullName}</div>
                       </div>
                     </td>
                     <td className="p-4">

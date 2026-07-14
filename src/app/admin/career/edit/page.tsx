@@ -12,12 +12,12 @@ export default function EditCareerPage() {
         skip: !id,
     });
 
-    if (isLoading) return <div className="p-6 text-center text-slate-500">Loading career details...</div>;
-    if (!id || isError || !career) return <div className="p-6 text-center text-red-500">Error loading career opportunity.</div>;
+    if (isLoading) return <div className="p-3 text-center text-slate-500">Loading career details...</div>;
+    if (!id || isError || !career) return <div className="p-3 text-center text-red-500">Error loading career opportunity.</div>;
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-6 text-navy">Edit Career Opportunity</h1>
+            <h1 className="text-2xl font-bold mb-3 text-[rgb(13_33_55)]">Edit Career Opportunity</h1>
             <CareerForm initialData={career} isEdit />
         </div>
     );

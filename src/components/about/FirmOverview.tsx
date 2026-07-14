@@ -3,20 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui";
-import { motion, Variants } from "framer-motion"
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2 },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-}
+import { motion } from "framer-motion"
 
 const FirmOverview = () => {
   return (
@@ -34,22 +21,18 @@ const FirmOverview = () => {
               Who We Are
             </div>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-navy font-serif-heading mb-6 leading-tight">
-              Leading Corporate Law Firm Serving India&apos;s Business Landscape
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+              Leading HR & Recruitment Consulting Firm Serving Indian Businesses
             </h2>
 
-            <div className="space-y-6 text-gray-600 text-lg leading-relaxed mb-8">
+            <div className="space-y-6 text-slate-600 text-lg leading-relaxed mb-8">
               <p>
-                <strong>People Consulting</strong> is a full-service law firm dedicated to providing strategic, solution-oriented, and result-driven legal services across India. With a strong professional network and multidisciplinary expertise, we cater to individuals, businesses, and corporate entities across diverse sectors.
+                <strong>People Consulting</strong> is a premier human resources and talent acquisition agency dedicated to providing strategic, compliance-aligned, and result-driven workforce solutions across India. With a strong professional network and cross-disciplinary expertise, we cater to startups, scaling mid-market businesses, and large enterprise entities.
               </p>
 
               <p>
-                We advise domestic as well as international clients on establishing, structuring, and expanding their operations in India. Our firm offers comprehensive support in regulatory compliance, investment structuring, and commercial transactions, enabling clients to navigate India’s evolving legal and business environment with clarity and confidence.
+                We advise domestic and international clients on building high-performance teams, streamlining payroll operations, and navigating statutory labor compliance guidelines with confidence and structural clarity.
               </p>
-
-              {/* <p>
-                Our corporate practice handles complex and high-value transactions including mergers and acquisitions, foreign direct investment (FDI), private equity transactions, joint ventures, and strategic commercial arrangements. We combine technical legal precision with practical commercial understanding to safeguard our clients’ interests.
-              </p> */}
             </div>
 
             {/* CTA */}
@@ -62,10 +45,10 @@ const FirmOverview = () => {
               </Link>
 
               <Link
-                href="/practice-areas"
-                className="text-primary font-bold hover:text-navy transition-colors flex items-center group uppercase tracking-wider text-sm"
+                href="/services"
+                className="text-primary font-bold hover:text-primary-dark transition-colors flex items-center group uppercase tracking-wider text-sm"
               >
-                <span>Our Practice Areas</span>
+                <span>Explore Our Services</span>
                 <svg
                   className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"
                   fill="currentColor"
@@ -91,11 +74,11 @@ const FirmOverview = () => {
             <div className="h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl relative group">
               <Image
                 src="/img/about-us.jpg"
-                alt="Professional corporate lawyers in modern office"
+                alt="Professional human resource team in modern office"
                 fill
                 className="object-cover group-hover:scale-105 transition duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-60" />
             </div>
 
             {/* EXPERIENCE BADGE */}
@@ -104,11 +87,11 @@ const FirmOverview = () => {
               whileInView={{ opacity: 1, y: 0, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", bounce: 0.5, delay: 0.3 }}
-              className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 bg-navy text-white p-6 sm:p-8 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs border border-white/10 backdrop-blur-sm"
+              className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 bg-white border border-slate-200 text-slate-900 p-6 sm:p-8 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs backdrop-blur-sm"
             >
-              <div className="text-4xl sm:text-5xl font-bold mb-1 sm:mb-2 font-serif-heading text-primary">25+</div>
-              <div className="text-gray-200 text-sm sm:text-base font-medium leading-tight">
-                Years of Legal Excellence
+              <div className="text-4xl sm:text-5xl font-bold mb-1 sm:mb-2 text-primary">15+</div>
+              <div className="text-slate-600 text-sm sm:text-base font-medium leading-tight">
+                Years of Consulting Excellence
               </div>
             </motion.div>
           </motion.div>

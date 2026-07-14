@@ -3,12 +3,7 @@
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { Container } from "@/components/ui";
-import {
-  ShieldCheck,
-  Users,
-  Award,
-  Handshake,
-} from "lucide-react";
+import { ShieldCheck, Users, Award } from "lucide-react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -33,23 +28,23 @@ const ValuesPhilosophy = () => {
   const values = [
     {
       title: "Integrity & Ethics",
-      description: "At People Consulting, integrity is the foundation of our practice. We conduct every matter with honesty, transparency, and strict adherence to professional ethics.",
+      description: "At People Consulting, integrity is the foundation of our operations. We conduct every search and advisory mandate with honesty, transparency, and strict adherence to professional ethics.",
       icon: ShieldCheck,
     },
     {
       title: "Diversity & Inclusion",
-      description: "We reflect the diversity of the society we serve, actively promoting an inclusive work environment where different experiences strengthen our ability to solve complex legal problems.",
+      description: "We reflect the diversity of the businesses we serve, actively promoting inclusive recruitment methodologies to source the best minds and build balanced teams.",
       icon: Users,
     },
     {
       title: "Excellence & Growth",
-      description: "We are committed to delivering exceptional legal work, focusing on continuous learning, accountability, and forward-looking strategies in an ever-changing legal landscape.",
+      description: "We are committed to delivering exceptional HR solutions, focusing on continuous learning, operational accountability, and strategic alignment in an ever-changing regulatory and talent landscape.",
       icon: Award,
     },
   ];
 
   return (
-    <section id="values-philosophy" className="py-16 md:py-24 bg-gray-50 overflow-hidden">
+    <section id="values-philosophy" className="py-16 md:py-24 bg-slate-50 overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* ================= IMAGE ================= */}
@@ -62,11 +57,11 @@ const ValuesPhilosophy = () => {
           >
             <Image
               src="/img/values-philosophy.png"
-              alt="Diverse legal team collaboration in modern law office"
+              alt="Diverse HR consulting team collaboration in modern office"
               fill
               className="object-cover group-hover:scale-105 transition duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
           </motion.div>
 
           {/* ================= CONTENT ================= */}
@@ -81,7 +76,7 @@ const ValuesPhilosophy = () => {
               <div className="text-primary text-sm font-bold uppercase tracking-widest mb-4 border-l-4 border-primary pl-3">
                 Our Values
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy font-serif-heading leading-tight">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
                 Built on Integrity, Excellence, and Trust
               </h2>
             </motion.div>
@@ -93,24 +88,23 @@ const ValuesPhilosophy = () => {
               viewport={{ once: true, amount: 0.1 }}
               className="space-y-6 sm:space-y-8"
             >
-              {values.map((item, index) => {
+              {values.map((item) => {
                 const Icon = item.icon;
 
                 return (
                   <motion.div
-                    key={index}
                     variants={itemVariants}
-                    className="flex items-start group p-4 sm:p-5 rounded-xl border border-transparent hover:border-gray-100 hover:bg-white hover:shadow-lg transition-all duration-300 -mx-4 sm:-mx-5"
+                    key={item.title}
+                    className="flex gap-4 sm:gap-6 items-start"
                   >
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white border border-gray-100 shadow-sm rounded-xl flex items-center justify-center flex-shrink-0 mr-5 sm:mr-6 group-hover:bg-primary group-hover:border-primary group-hover:scale-110 transition-all duration-300">
-                      <Icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary group-hover:text-white transition-colors" strokeWidth={1.8} />
+                    <div className="w-12 h-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-6 h-6" />
                     </div>
-
                     <div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-navy font-serif-heading mb-2 sm:mb-3 group-hover:text-primary transition-colors">
+                      <h3 className="text-xl font-bold text-slate-900 mb-2">
                         {item.title}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
+                      <p className="text-slate-600 leading-relaxed">
                         {item.description}
                       </p>
                     </div>

@@ -7,7 +7,7 @@ import { useRef } from "react";
 import {
   CalendarDays,
   Building2,
-  Gavel,
+  Briefcase,
   Factory,
 } from "lucide-react";
 
@@ -21,7 +21,7 @@ interface StatItem {
 const stats: StatItem[] = [
   {
     label: "Years of Experience",
-    value: 25,
+    value: 15,
     suffix: "+",
     icon: CalendarDays,
   },
@@ -31,10 +31,10 @@ const stats: StatItem[] = [
     icon: Building2,
   },
   {
-    label: "Practice Areas",
-    value: 15,
+    label: "Consulting Services",
+    value: 12,
     suffix: "+",
-    icon: Gavel,
+    icon: Briefcase,
   },
   {
     label: "Industries Served",
@@ -92,10 +92,10 @@ const itemVariants: Variants = {
 
 const StatsAchievements = () => {
   return (
-    <section id="stats-achievements" className="py-16 md:py-24 bg-navy relative overflow-hidden">
+    <section id="stats-achievements" className="py-16 md:py-24 bg-white relative overflow-hidden border-t border-b border-slate-100">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[80px] -z-0" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[80px] -z-0" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] -z-0" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[80px] -z-0" />
 
       <Container className="relative z-10">
         <motion.div
@@ -114,15 +114,15 @@ const StatsAchievements = () => {
                 variants={itemVariants}
                 className="text-center group"
               >
-                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white/5 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300 shadow-lg">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 bg-slate-50 border border-slate-200 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/10 group-hover:border-primary/20 transition-all duration-300 shadow-md">
                   <Icon className="w-10 h-10 sm:w-12 sm:h-12 text-primary group-hover:scale-110 transition-transform duration-300" strokeWidth={1.5} />
                 </div>
 
-                <div className="text-4xl sm:text-5xl font-bold text-white mb-3 font-serif-heading drop-shadow-md">
+                <div className="text-4xl sm:text-5xl font-bold text-slate-900 mb-3 drop-shadow-sm">
                   <Counter value={stat.value} suffix={stat.suffix} />
                 </div>
 
-                <div className="text-gray-300 text-sm sm:text-base font-semibold uppercase tracking-wider group-hover:text-white transition-colors">
+                <div className="text-slate-500 text-sm sm:text-base font-semibold uppercase tracking-wider group-hover:text-primary transition-colors">
                   {stat.label}
                 </div>
               </motion.div>

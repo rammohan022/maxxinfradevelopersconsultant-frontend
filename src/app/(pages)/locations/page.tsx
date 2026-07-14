@@ -1,5 +1,5 @@
 import HeroSection from "./components/HeroSection"
-import { PracticeArea } from "@/services/practice-area"
+import { Service } from "@/services/services"
 import Services from "@/components/home/Services"
 import OfficeSection from "./components/OfficeSection"
 import AwardsSection from "./components/AwardsSection"

@@ -34,10 +34,10 @@ const PracticeAreaHero = ({ title, subtitle }: PracticeAreaHeroProps) => {
           </Link>
           <span>/</span>
           <Link
-            href="/practice-areas"
+            href="/services"
             className="hover:text-red-600 transition"
           >
-            Practice Areas
+            Our Services
           </Link>
         </div>
 

@@ -1,12 +1,12 @@
 "use client";
 
-import { useGetPracticeAreasQuery } from '@/services/practice-area';
+import { useGetServicesQuery } from '@/services/services';
 import { HeroDetails, MainContentSection } from '@/components/services';
 import { useParams } from 'next/navigation';
 
 export default function PracticeAreaDetailsClient() {
     const { slug } = useParams();
-    const { data: practiceAreas, isLoading } = useGetPracticeAreasQuery();
+    const { data: practiceAreas, isLoading } = useGetServicesQuery();
 
     if (isLoading) {
         return (

@@ -33,8 +33,8 @@ const HeroSection = ({ title, slug, innerImage }: HeroSectionProps) => {
             Home
           </Link>
           <span>/</span>
-          <Link href="/practice-areas" className="hover:text-white">
-            Practice Areas
+          <Link href="/services" className="hover:text-white">
+            Our Services
           </Link>
           <span>/</span>
           <span className="text-white capitalize">

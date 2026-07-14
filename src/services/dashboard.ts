@@ -15,6 +15,7 @@ export interface DashboardLead {
 export interface DashboardStats {
     totalLeads: number;
     totalBlogs: number;
+    totalServices: number;
     totalPracticeAreas: number;
     totalMembers: number;
     latestLeads: DashboardLead[];

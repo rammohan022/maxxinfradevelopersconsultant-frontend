@@ -23,7 +23,7 @@ export const baseApi = createApi({
     "Blog",
     "Lead",
     "Member",
-    "PracticeArea",
+    "Service",
     "Career",
     "Testimonial",
     "User",

@@ -23,7 +23,7 @@ import {
   ArrowRight,
   ChevronDown,
 } from 'lucide-react'
-import { PracticeArea } from '@/services/practice-area'
+import { useGetServicesQuery, Service } from '@/services/services'
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   'apostille-service': FileText,
@@ -42,6 +42,10 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   'labor-employment': Users,
   'litigation': Landmark,
   'white-collar-crime': BriefcaseBusiness,
+  'hiring-staffing': Users,
+  'hr-training': Briefcase,
+  'labor-compliance': Shield,
+  'executive-search': Briefcase,
 }
 
 const fadeUpVariants: Variants = {
@@ -50,7 +54,7 @@ const fadeUpVariants: Variants = {
 }
 
 export default function Services() {
-  const areas: PracticeArea[] = [
+  const fallbackAreas: Service[] = [
     {
       id: '1',
       title: 'Hiring & Staffing',
@@ -81,15 +85,16 @@ export default function Services() {
     }
   ]
 
-  const [selectedPracticeArea, setSelectedPracticeArea] = useState<PracticeArea>(areas[0])
+  const { data: apiAreas = [] } = useGetServicesQuery()
+  const areas = apiAreas.length > 0 ? apiAreas : fallbackAreas
+
+  const [selectedAreaId, setSelectedAreaId] = useState<string | null>(null)
   const [openMobileSections, setOpenMobileSections] = useState<Set<string>>(new Set())
 
-  const activeArea = selectedPracticeArea;
+  const activeArea = areas.find(a => a.id === selectedAreaId) || areas[0]
 
-  // No longer returning null since we use hardcoded data
-
-  const handlePracticeAreaSelect = (area: PracticeArea) => {
-    setSelectedPracticeArea(area)
+  const handlePracticeAreaSelect = (area: Service) => {
+    setSelectedAreaId(area.id)
   }
 
   const toggleMobileSection = (id: string) => {

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Container } from '@/components/ui'
 import { useState, useRef, useEffect } from 'react'
 import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react'
-import { useGetPracticeAreasQuery } from '@/services/practice-area'
+import { useGetServicesQuery } from '@/services/services'
 import { motion, AnimatePresence } from 'framer-motion'
 
 /* ================= RESOURCE ITEMS ================= */
@@ -31,7 +31,7 @@ export default function Header() {
   const [mobileResourceOpen, setMobileResourceOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
-  const { data: practiceAreas = [] } = useGetPracticeAreasQuery()
+  const { data: practiceAreas = [] } = useGetServicesQuery()
   const closeTimeout = useRef<NodeJS.Timeout | null>(null)
 
   // Add scroll listener for header styling

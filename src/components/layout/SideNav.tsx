@@ -17,7 +17,7 @@ const navItems = [
   { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
   { name: "Leads", href: "/admin/leads", icon: Users },
   { name: "Blog Posts", href: "/admin/blogs", icon: FileText },
-  { name: "Practice Areas", href: "/admin/practice-area", icon: Layers },
+  { name: "Services", href: "/admin/services", icon: Layers },
   { name: "Career Opportunities", href: "/admin/career", icon: Users },
   { name: "Job Applications", href: "/admin/applications", icon: FileText },
   { name: "Our Team", href: "/admin/our-team", icon: Users },

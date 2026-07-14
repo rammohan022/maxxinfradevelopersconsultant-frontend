@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/ui'
 import { motion } from 'framer-motion'
-import { useGetPracticeAreasQuery } from '@/services/practice-area'
+import { useGetServicesQuery } from '@/services/services'
 
 const quickLinks = [
   { label: 'Home', href: '/' },
@@ -41,7 +41,7 @@ const itemVariants = {
 }
 
 export default function Footer() {
-  const { data: practiceAreas = [] } = useGetPracticeAreasQuery()
+  const { data: practiceAreas = [] } = useGetServicesQuery()
   return (
     <>
       <iframe

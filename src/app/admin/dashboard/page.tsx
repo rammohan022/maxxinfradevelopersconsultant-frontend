@@ -14,7 +14,7 @@ const Dashboard = () => {
   const statsData = [
     { title: "Total Leads", value: stats?.totalLeads || 0, icon: Users },
     { title: "Blog Posts", value: stats?.totalBlogs || 0, icon: FileText },
-    { title: "Practice Areas", value: stats?.totalPracticeAreas || 0, icon: Layers },
+    { title: "Services", value: stats?.totalServices || stats?.totalPracticeAreas || 0, icon: Layers },
     { title: "Teams Members", value: stats?.totalMembers || 0, icon: BarChart3 },
   ];
 
@@ -41,7 +41,7 @@ const Dashboard = () => {
           CMS Dashboard
         </h1>
         <p className="text-sm text-slate-500">
-          Manage leads, blogs, and practice areas from one place
+          Manage leads, blogs, and services from one place
         </p>
       </div>
 

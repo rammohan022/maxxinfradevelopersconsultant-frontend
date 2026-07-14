@@ -11,12 +11,12 @@ import {
 import { StatsAchievements } from '@/components/about';
 import MemberCard from "@/components/team/MemberCard";
 import { useGetMembersQuery } from "@/services/member";
-import { useGetPracticeAreasQuery } from "@/services/practice-area";
+import { useGetServicesQuery } from "@/services/services";
 import { Container } from "@/components/ui";
 
 const OurTeamPage = () => {
   const { data: members = [], isLoading: loadingMembers } = useGetMembersQuery();
-  const { data: practiceAreas = [] } = useGetPracticeAreasQuery();
+  const { data: practiceAreas = [] } = useGetServicesQuery();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedPracticeArea, setSelectedPracticeArea] = useState("");

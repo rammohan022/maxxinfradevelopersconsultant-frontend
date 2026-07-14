@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Container } from "@/components/ui";
-import { FAQ } from "@/services/practice-area";
+import { FAQ } from "@/services/services";
 import { useCreateLeadMutation } from "@/services/lead";
 import toast from "react-hot-toast";
 

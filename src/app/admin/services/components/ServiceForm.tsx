@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
-import { useCreatePracticeAreaMutation, useUpdatePracticeAreaMutation } from "@/services/practice-area";
+import { useCreateServiceMutation, useUpdateServiceMutation } from "@/services/services";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
@@ -11,18 +11,18 @@ import { getImageUrl } from "@/lib/utils/imageUtils";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 import "react-quill/dist/quill.snow.css";
 
-interface PracticeAreaFormProps {
+interface ServiceFormProps {
     initialData?: any;
     isEdit?: boolean;
 }
 
-export default function PracticeAreaForm({
+export default function ServiceForm({
     initialData,
     isEdit = false,
-}: PracticeAreaFormProps) {
+}: ServiceFormProps) {
     const router = useRouter();
-    const [createPracticeArea, { isLoading: isCreating }] = useCreatePracticeAreaMutation();
-    const [updatePracticeArea, { isLoading: isUpdating }] = useUpdatePracticeAreaMutation();
+    const [createService, { isLoading: isCreating }] = useCreateServiceMutation();
+    const [updateService, { isLoading: isUpdating }] = useUpdateServiceMutation();
 
     const [form, setForm] = useState({
         title: "",
@@ -105,16 +105,16 @@ export default function PracticeAreaForm({
 
         try {
             if (isEdit && initialData?.id) {
-                await updatePracticeArea({ id: initialData.id, data: formData }).unwrap();
-                toast.success("Practice area updated successfully!");
+                await updateService({ id: initialData.id, data: formData }).unwrap();
+                toast.success("Service updated successfully!");
             } else {
-                await createPracticeArea(formData).unwrap();
-                toast.success("Practice area created successfully!");
+                await createService(formData).unwrap();
+                toast.success("Service created successfully!");
             }
-            router.push("/admin/practice-area");
+            router.push("/admin/services");
         } catch (err) {
-            console.error("Failed to save practice area:", err);
-            toast.error("Failed to save practice area.");
+            console.error("Failed to save service:", err);
+            toast.error("Failed to save service.");
         }
     };
 

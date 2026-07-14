@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { Plus, Pencil, Trash2, Search } from "lucide-react";
 import Link from "next/link";
-import { useGetPracticeAreasQuery, useDeletePracticeAreaMutation } from "@/services/practice-area";
+import { useGetServicesQuery, useDeleteServiceMutation } from "@/services/services";
 import DeleteModal from "../components/DeleteModal";
 import toast from "react-hot-toast";
 
-const PracticeAreaPage = () => {
-  const { data: practiceAreas = [], isLoading, isError } = useGetPracticeAreasQuery();
-  const [deletePracticeArea] = useDeletePracticeAreaMutation();
+const ServicesPage = () => {
+  const { data: practiceAreas = [], isLoading, isError } = useGetServicesQuery();
+  const [deleteService] = useDeleteServiceMutation();
   const [search, setSearch] = useState("");
 
   // Modal State
@@ -21,17 +21,17 @@ const PracticeAreaPage = () => {
 
   const handleDelete = async () => {
     try {
-      await deletePracticeArea(deleteModal.id).unwrap();
-      toast.success("Practice area deleted successfully!");
+      await deleteService(deleteModal.id).unwrap();
+      toast.success("Service deleted successfully!");
       setDeleteModal({ isOpen: false, id: "", name: "" });
     } catch (err) {
       console.error("Delete failed:", err);
-      toast.error("Failed to delete practice area.");
+      toast.error("Failed to delete service.");
     }
   };
 
   if (isLoading) return <div className="p-6 text-center text-slate-500">Loading...</div>;
-  if (isError) return <div className="p-6 text-center text-red-500">Failed to load practice areas</div>;
+  if (isError) return <div className="p-6 text-center text-red-500">Failed to load services</div>;
 
   return (
     <>
@@ -39,10 +39,10 @@ const PracticeAreaPage = () => {
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-navy">
-            Practice Areas
+            Services
           </h1>
           <p className="text-sm text-slate-500">
-            Manage all practice area / service pages
+            Manage all service pages
           </p>
         </div>
 
@@ -62,11 +62,11 @@ const PracticeAreaPage = () => {
             />
           </div>
           <Link
-            href="/admin/practice-area/create"
+            href="/admin/services/create"
             className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition text-sm font-medium"
           >
             <Plus size={16} />
-            Add Practice Area
+            Add Service
           </Link>
         </div>
       </div>
@@ -110,7 +110,7 @@ const PracticeAreaPage = () => {
                     <td className="px-6 py-4 text-center">
                       <div className="flex justify-center gap-2">
                         <Link
-                          href={`/admin/practice-area/edit?id=${item.id}`}
+                          href={`/admin/services/edit?id=${item.id}`}
                           className="text-slate-400 hover:text-primary p-2 hover:bg-blue-50 rounded-lg transition"
                           title="Edit"
                         >
@@ -138,11 +138,11 @@ const PracticeAreaPage = () => {
         isOpen={deleteModal.isOpen}
         onClose={() => setDeleteModal({ isOpen: false, id: "", name: "" })}
         onConfirm={handleDelete}
-        title="Delete Practice Area"
+        title="Delete Service"
         itemName={deleteModal.name}
       />
     </>
   );
 };
 
-export default PracticeAreaPage;
+export default ServicesPage;

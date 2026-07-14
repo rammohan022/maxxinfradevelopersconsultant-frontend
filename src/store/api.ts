@@ -9,7 +9,7 @@ export const API_ENDPOINTS = {
     },
     blogs: "/blogs",
     leads: "/leads",
-    practiceArea: "/practice-areas",
+    services: "/services",
     members: "/members",
     jobapplication: '/job-applications',
     careers: "/careers",

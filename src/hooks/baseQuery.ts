@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { getAuthToken } from "@/lib/utils/TokenHelper";
+import { getAuthToken, removeAuthToken } from "@/lib/utils/TokenHelper";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
@@ -16,9 +16,25 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
+const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
+  let result = await baseQuery(args, api, extraOptions);
+
+  if (result.error && result.error.status === 401) {
+    // Clear cookies/tokens
+    removeAuthToken();
+
+    // Redirect to login if on client side
+    if (typeof window !== "undefined") {
+      window.location.href = "/login";
+    }
+  }
+
+  return result;
+};
+
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery,
+  baseQuery: baseQueryWithReauth,
   tagTypes: [
     "Blog",
     "Lead",

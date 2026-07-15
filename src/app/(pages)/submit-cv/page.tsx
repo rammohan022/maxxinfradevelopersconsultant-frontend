@@ -1,8 +1,65 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import { Container } from '@/components/ui';
-import { CheckCircle, Briefcase, FileText, Send } from 'lucide-react';
+import { CheckCircle, Briefcase, FileText, Send, Loader2 } from 'lucide-react';
+import { useCreateJobApplicationMutation } from '@/services/jobApplication';
+import toast from 'react-hot-toast';
 
 export default function SubmitCVPage() {
+  const [createJobApplication, { isLoading }] = useCreateJobApplicationMutation();
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phoneNumber: '',
+    experience: '',
+    industry: '',
+    resume: '',
+    message: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!formData.fullName || !formData.email || !formData.phoneNumber || !formData.resume) {
+      toast.error('Please fill in all required fields.');
+      return;
+    }
+
+    try {
+      await createJobApplication({
+        fullName: formData.fullName,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        experience: formData.experience || undefined,
+        industry: formData.industry || undefined,
+        resume: formData.resume,
+        message: formData.message || undefined,
+      }).unwrap();
+
+      toast.success('Your CV application has been submitted successfully!');
+      
+      // Reset form
+      setFormData({
+        fullName: '',
+        email: '',
+        phoneNumber: '',
+        experience: '',
+        industry: '',
+        resume: '',
+        message: '',
+      });
+    } catch (error: any) {
+      console.error('Failed to submit CV:', error);
+      toast.error(error?.data?.message || 'Failed to submit application. Please try again.');
+    }
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen pb-20">
       {/* Hero Section */}
@@ -31,38 +88,86 @@ export default function SubmitCVPage() {
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-200/60 p-8 md:p-10">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Application Details</h2>
             
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name <span className="text-secondary">*</span></label>
-                  <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400" placeholder="John Doe" required />
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400"
+                    placeholder="John Doe"
+                    required
+                    disabled={isLoading}
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address <span className="text-secondary">*</span></label>
-                  <input type="email" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400" placeholder="john@example.com" required />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400"
+                    placeholder="john@example.com"
+                    required
+                    disabled={isLoading}
+                  />
                 </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Phone Number <span className="text-secondary">*</span></label>
-                  <input type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400" placeholder="+91 9876543210" required />
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400"
+                    placeholder="+91 9876543210"
+                    required
+                    disabled={isLoading}
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">Total Experience</label>
-                  <select className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all appearance-none text-slate-950">
-                    <option value="">Select Experience</option>
-                    <option value="0-2">0 - 2 Years</option>
-                    <option value="3-5">3 - 5 Years</option>
-                    <option value="6-10">6 - 10 Years</option>
-                    <option value="10+">10+ Years</option>
-                  </select>
+                  <div className="relative">
+                    <select
+                      name="experience"
+                      value={formData.experience}
+                      onChange={handleChange}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all appearance-none text-slate-950"
+                      disabled={isLoading}
+                    >
+                      <option value="">Select Experience</option>
+                      <option value="0-2">0 - 2 Years</option>
+                      <option value="3-5">3 - 5 Years</option>
+                      <option value="6-10">6 - 10 Years</option>
+                      <option value="10+">10+ Years</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">Current/Target Industry</label>
-                <input type="text" className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400" placeholder="e.g. IT, Finance, Manufacturing" />
+                <input
+                  type="text"
+                  name="industry"
+                  value={formData.industry}
+                  onChange={handleChange}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400"
+                  placeholder="e.g. IT, Finance, Manufacturing"
+                  disabled={isLoading}
+                />
               </div>
 
               <div>
@@ -71,7 +176,16 @@ export default function SubmitCVPage() {
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <FileText className="h-5 w-5 text-slate-400" />
                   </div>
-                  <input type="url" className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-11 pr-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400" placeholder="Paste Google Drive or Dropbox link to your CV" required />
+                  <input
+                    type="url"
+                    name="resume"
+                    value={formData.resume}
+                    onChange={handleChange}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-11 pr-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400"
+                    placeholder="Paste Google Drive or Dropbox link to your CV"
+                    required
+                    disabled={isLoading}
+                  />
                 </div>
                 <p className="text-xs text-slate-500 mt-2 flex items-center gap-1">
                   Please ensure the link is publicly accessible.
@@ -80,11 +194,31 @@ export default function SubmitCVPage() {
               
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-2">Cover Letter / Message (Optional)</label>
-                <textarea rows={4} className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none text-slate-950 placeholder-slate-400" placeholder="Tell us briefly about your career goals..."></textarea>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none text-slate-950 placeholder-slate-400"
+                  placeholder="Tell us briefly about your career goals..."
+                  disabled={isLoading}
+                ></textarea>
               </div>
 
-              <button type="submit" className="w-full bg-secondary hover:bg-secondary-dark text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99] shadow-lg shadow-secondary/20">
-                Submit Application <Send className="w-5 h-5" />
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full bg-secondary hover:bg-secondary-dark text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all hover:scale-[1.01] active:scale-[0.99] shadow-lg shadow-secondary/20 disabled:opacity-75 disabled:cursor-not-allowed"
+              >
+                {isLoading ? (
+                  <>
+                    Submitting... <Loader2 className="w-5 h-5 animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Submit Application <Send className="w-5 h-5" />
+                  </>
+                )}
               </button>
             </form>
           </div>

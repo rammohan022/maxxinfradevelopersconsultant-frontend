@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Trash2, Search, FileText, ExternalLink, Calendar, User, Mail, Phone } from "lucide-react";
+import React, { useState } from "react";
+import { Trash2, Search, FileText, ExternalLink, Calendar, Mail, Phone, ChevronDown, ChevronUp } from "lucide-react";
 import { useGetJobApplicationsQuery, useDeleteJobApplicationMutation } from "@/services/jobApplication";
 import { useGetCareersQuery } from "@/services/career";
 import DeleteModal from "../components/DeleteModal";
@@ -14,6 +14,7 @@ const ApplicationsListPage = () => {
   const { data: careers = [] } = useGetCareersQuery();
   const [deleteApplication] = useDeleteJobApplicationMutation();
   const [search, setSearch] = useState("");
+  const [expandedAppId, setExpandedAppId] = useState<string | null>(null);
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +24,8 @@ const ApplicationsListPage = () => {
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
 
   // Map jobId to job title
-  const getJobTitle = (jobId: string) => {
+  const getJobTitle = (jobId?: string) => {
+    if (!jobId) return "General CV Submission";
     const job = careers.find((j) => j.id === jobId);
     return job ? job.title : "Unknown Position";
   };
@@ -121,62 +123,102 @@ const ApplicationsListPage = () => {
                 </tr>
               ) : (
                 currentApplications.map((app) => (
-                  <tr key={app.id} className="border-b hover:bg-slate-50 transition">
-                    <td className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold">
-                          {app.fullName.charAt(0)}
+                  <React.Fragment key={app.id}>
+                    <tr className="border-b hover:bg-slate-50 transition">
+                      <td className="p-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold">
+                            {app.fullName.charAt(0)}
+                          </div>
+                          <div className="font-medium text-[rgb(13_33_55)]">{app.fullName}</div>
                         </div>
-                        <div className="font-medium text-[rgb(13_33_55)]">{app.fullName}</div>
-                      </div>
-                    </td>
-                    <td className="p-4">
-                      <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs font-semibold">
-                        {getJobTitle(app.jobId)}
-                      </span>
-                    </td>
-                    <td className="p-4">
-                      <div className="flex flex-col gap-1 text-slate-500">
-                        <span className="flex items-center gap-1.5">
-                          <Mail size={12} /> {app.email}
+                      </td>
+                      <td className="p-4">
+                        <span className={`px-2 py-1 rounded text-xs font-semibold ${app.jobId ? 'bg-blue-50 text-blue-700' : 'bg-emerald-50 text-emerald-700'}`}>
+                          {getJobTitle(app.jobId)}
                         </span>
-                        <span className="flex items-center gap-1.5">
-                          <Phone size={12} /> {app.phoneNumber}
-                        </span>
-                      </div>
-                    </td>
-                    <td className="p-4 text-slate-500">
-                      <div className="flex items-center gap-1.5">
-                        <Calendar size={14} />
-                        {new Date(app.createdAt).toLocaleString([], { year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}
-                      </div>
-                    </td>
-                    <td className="p-4">
-                      {app.resume ? (
-                        <a
-                          href={getImageUrl(app.resume)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 text-secondary hover:underline font-medium"
-                        >
-                          <FileText size={16} />
-                          View CV
-                          <ExternalLink size={12} />
-                        </a>
-                      ) : (
-                        <span className="text-slate-400">No file</span>
-                      )}
-                    </td>
-                    <td className="p-4 text-center">
-                      <button
-                        onClick={() => setDeleteModal({ isOpen: true, id: app.id, name: app.fullName })}
-                        className="text-slate-400 hover:text-red-600 p-2 hover:bg-red-50 rounded-lg transition"
-                        title="Delete Application"
-                      >
-                        <Trash2 size={18} />
-                      </button>
-                    </td>
-                  </tr>
+                      </td>
+                      <td className="p-4">
+                        <div className="flex flex-col gap-1 text-slate-500">
+                          <span className="flex items-center gap-1.5">
+                            <Mail size={12} /> {app.email}
+                          </span>
+                          <span className="flex items-center gap-1.5">
+                            <Phone size={12} /> {app.phoneNumber}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="p-4 text-slate-500">
+                        <div className="flex items-center gap-1.5">
+                          <Calendar size={14} />
+                          {new Date(app.createdAt).toLocaleString([], { year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+                        </div>
+                      </td>
+                      <td className="p-4">
+                        {app.resume ? (
+                          <a
+                            href={app.resume.startsWith('http') ? app.resume : getImageUrl(app.resume)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-secondary hover:underline font-medium"
+                          >
+                            <FileText size={16} />
+                            View CV
+                            <ExternalLink size={12} />
+                          </a>
+                        ) : (
+                          <span className="text-slate-400">No CV</span>
+                        )}
+                      </td>
+                      <td className="p-4 text-center">
+                        <div className="flex items-center justify-center gap-2">
+                          <button
+                            onClick={() => setExpandedAppId(expandedAppId === app.id ? null : app.id)}
+                            className="text-slate-400 hover:text-secondary p-2 hover:bg-slate-50 rounded-lg transition"
+                            title="View details (Cover Letter, Experience, etc.)"
+                          >
+                            {expandedAppId === app.id ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                          </button>
+                          <button
+                            onClick={() => setDeleteModal({ isOpen: true, id: app.id, name: app.fullName })}
+                            className="text-slate-400 hover:text-red-600 p-2 hover:bg-red-50 rounded-lg transition"
+                            title="Delete Application"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                    {expandedAppId === app.id && (
+                      <tr className="bg-slate-50/50 border-b">
+                        <td colSpan={6} className="p-4">
+                          <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm max-w-4xl mx-auto space-y-4">
+                            <h4 className="font-bold text-slate-800 text-base border-b pb-2">Application Details</h4>
+                            <div className="grid md:grid-cols-2 gap-4">
+                              {app.experience && (
+                                <div>
+                                  <span className="text-xs text-slate-500 uppercase tracking-wider block font-semibold">Total Experience</span>
+                                  <span className="text-slate-700 text-sm">{app.experience} Years</span>
+                                </div>
+                              )}
+                              {app.industry && (
+                                <div>
+                                  <span className="text-xs text-slate-500 uppercase tracking-wider block font-semibold">Target Industry</span>
+                                  <span className="text-slate-700 text-sm">{app.industry}</span>
+                                </div>
+                              )}
+                            </div>
+                            <div>
+                              <span className="text-xs text-slate-500 uppercase tracking-wider block font-semibold mb-1">Cover Letter / Message</span>
+                              <div className="p-3 bg-slate-50 rounded border border-slate-200 text-slate-700 text-sm whitespace-pre-wrap leading-relaxed">
+                                {app.message || <em className="text-slate-400">No message provided by the applicant.</em>}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    )}
+                  </React.Fragment>
                 ))
               )}
             </tbody>

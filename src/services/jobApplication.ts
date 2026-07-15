@@ -6,9 +6,11 @@ export interface JobApplication {
     fullName: string;
     email: string;
     phoneNumber: string;
-    resume: string; // URL to the resume file
+    resume: string; // URL to the resume file or link
     message?: string;
-    jobId: string;
+    jobId?: string;
+    experience?: string;
+    industry?: string;
     status?: string;
     createdAt: string;
     updatedAt: string;
@@ -18,9 +20,11 @@ export interface CreateJobApplicationDto {
     fullName: string;
     email: string;
     phoneNumber: string;
-    resume: File;
+    resume: File | string;
     message?: string;
-    jobId: string;
+    jobId?: string;
+    experience?: string;
+    industry?: string;
 }
 
 export const jobApplicationApi = baseApi.injectEndpoints({
@@ -39,11 +43,11 @@ export const jobApplicationApi = baseApi.injectEndpoints({
             }),
             providesTags: (result, error, id) => [{ type: "JobApplication", id }],
         }),
-        createJobApplication: builder.mutation<JobApplication, FormData>({
-            query: (formData) => ({
+        createJobApplication: builder.mutation<JobApplication, FormData | CreateJobApplicationDto>({
+            query: (body) => ({
                 url: API_ENDPOINTS.jobapplication,
                 method: "POST",
-                body: formData,
+                body: body,
             }),
             invalidatesTags: ["JobApplication"],
         }),

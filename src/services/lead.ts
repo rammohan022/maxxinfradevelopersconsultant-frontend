@@ -8,6 +8,7 @@ export interface Lead {
     phoneNumber: string;
     subject?: string;
     message: string;
+    source?: string;
     createdAt: string;
     updatedAt: string;
 }
@@ -18,6 +19,7 @@ export interface CreateLeadDto {
     phoneNumber: string;
     subject?: string;
     message: string;
+    source?: string;
 }
 
 export const leadApi = baseApi.injectEndpoints({

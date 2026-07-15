@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import { TopBar, Header, Footer, DisclaimerModal } from "@/components/layout";
+import { TopBar, Header, Footer } from "@/components/layout";
 
 export const metadata: Metadata = {
   title: "People Consulting",
@@ -17,7 +17,6 @@ export default function PageLayout({
       <>
         <TopBar />
         <Header />
-        <DisclaimerModal />
         <main className="w-full">
           {children}
         </main>

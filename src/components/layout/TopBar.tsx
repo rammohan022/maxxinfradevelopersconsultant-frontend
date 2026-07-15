@@ -21,20 +21,20 @@ export default function TopBar() {
   const twitter = adminProfile?.twitterUrl || "";
 
   return (
-    <div className="bg-slate-50 border-b border-slate-100 text-slate-600 py-2.5 text-sm hidden lg:block">
+    <div className="bg-secondary text-white py-2.5 text-sm hidden lg:block">
       <Container className="flex justify-between items-center">
 
         {/* Left: Email & Phone */}
-        <div className="flex gap-6">
+        <div className="flex gap-6 font-medium">
           <a
             href={`mailto:${email}`}
-            className="hover:text-secondary transition"
+            className="hover:text-white/80 transition"
           >
             {email}
           </a>
           <a
             href={`tel:${phone.replace(/\s+/g, '')}`}
-            className="hover:text-secondary transition"
+            className="hover:text-white/80 transition"
           >
             {phone}
           </a>
@@ -43,22 +43,22 @@ export default function TopBar() {
         {/* Right: Social Icons */}
         <div className="flex items-center gap-4">
           {facebook && (
-            <Link href={facebook} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition">
+            <Link href={facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition">
               <Facebook size={16} strokeWidth={1.8} />
             </Link>
           )}
           {twitter && (
-            <Link href={twitter} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition">
+            <Link href={twitter} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition">
               <Twitter size={16} strokeWidth={1.8} />
             </Link>
           )}
           {linkedin && (
-            <Link href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition">
+            <Link href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition">
               <Linkedin size={16} strokeWidth={1.8} />
             </Link>
           )}
           {instagram && (
-            <Link href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition">
+            <Link href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition">
               <Instagram size={16} strokeWidth={1.8} />
             </Link>
           )}

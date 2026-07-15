@@ -14,33 +14,40 @@ export default function SubmitCVPage() {
     phoneNumber: '',
     experience: '',
     industry: '',
-    resume: '',
     message: '',
   });
+  const [resumeFile, setResumeFile] = useState<File | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setResumeFile(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.fullName || !formData.email || !formData.phoneNumber || !formData.resume) {
-      toast.error('Please fill in all required fields.');
+    if (!formData.fullName || !formData.email || !formData.phoneNumber || !resumeFile) {
+      toast.error('Please fill in all required fields and upload your resume.');
       return;
     }
 
     try {
-      await createJobApplication({
-        fullName: formData.fullName,
-        email: formData.email,
-        phoneNumber: formData.phoneNumber,
-        experience: formData.experience || undefined,
-        industry: formData.industry || undefined,
-        resume: formData.resume,
-        message: formData.message || undefined,
-      }).unwrap();
+      const data = new FormData();
+      data.append('fullName', formData.fullName);
+      data.append('email', formData.email);
+      data.append('phoneNumber', formData.phoneNumber);
+      if (formData.experience) data.append('experience', formData.experience);
+      if (formData.industry) data.append('industry', formData.industry);
+      if (formData.message) data.append('message', formData.message);
+      data.append('resume', resumeFile);
+
+      await createJobApplication(data).unwrap();
 
       toast.success('Your CV application has been submitted successfully!');
       
@@ -51,9 +58,12 @@ export default function SubmitCVPage() {
         phoneNumber: '',
         experience: '',
         industry: '',
-        resume: '',
         message: '',
       });
+      setResumeFile(null);
+      // Reset the file input element visually
+      const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
     } catch (error: any) {
       console.error('Failed to submit CV:', error);
       toast.error(error?.data?.message || 'Failed to submit application. Please try again.');
@@ -171,24 +181,20 @@ export default function SubmitCVPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2">Resume / CV Link <span className="text-secondary">*</span></label>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Resume / CV File <span className="text-secondary">*</span></label>
                 <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                    <FileText className="h-5 w-5 text-slate-400" />
-                  </div>
                   <input
-                    type="url"
+                    type="file"
                     name="resume"
-                    value={formData.resume}
-                    onChange={handleChange}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-lg pl-11 pr-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400"
-                    placeholder="Paste Google Drive or Dropbox link to your CV"
+                    accept=".pdf,.doc,.docx"
+                    onChange={handleFileChange}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-slate-950 placeholder-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"
                     required
                     disabled={isLoading}
                   />
                 </div>
-                <p className="text-xs text-slate-500 mt-2 flex items-center gap-1">
-                  Please ensure the link is publicly accessible.
+                <p className="text-xs text-slate-500 mt-2">
+                  Supports PDF, DOC, DOCX formats. Max file size: 5MB.
                 </p>
               </div>
               

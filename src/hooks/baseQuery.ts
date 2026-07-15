@@ -30,6 +30,7 @@ export const baseApi = createApi({
     "Legal",
     "Profile",
     "JobApplication",
+    "WebsiteLink",
   ],
   endpoints: () => ({}),
 });

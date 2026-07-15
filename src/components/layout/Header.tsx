@@ -10,8 +10,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 /* ================= RESOURCE ITEMS ================= */
 const resourceItems = [
-  { label: 'Blogs/Articles', href: '/blog' },
-  { label: 'Career', href: '/career' },
+  { label: 'Open Positions', href: '/career' },
+  { label: 'Submit CV', href: '/submit-cv' },
 ]
 
 /* ================= NAV ITEMS ================= */
@@ -19,7 +19,8 @@ const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
   { label: 'Our Services', href: '/services', mega: true },
-  { label: 'Resource Centre', href: '#', dropdown: true },
+  { label: 'Careers', href: '#', dropdown: true },
+  { label: 'Blogs/Articles', href: '/blog' },
 ]
 
 export default function Header() {
@@ -196,12 +197,6 @@ export default function Header() {
           {/* ================= DESKTOP CTA ================= */}
           <div className="hidden lg:flex items-center gap-4">
             <Link
-              href="/submit-cv"
-              className="text-slate-800 hover:text-primary font-bold transition-all duration-300"
-            >
-              Submit CV
-            </Link>
-            <Link
               href="/contact-us"
               className="bg-secondary hover:bg-secondary-dark text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 shadow-md shadow-secondary/20 hover:shadow-lg hover:-translate-y-0.5"
             >
@@ -283,7 +278,7 @@ export default function Header() {
                     className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:bg-gray-50 transition-colors"
                     onClick={() => setMobileResourceOpen(!mobileResourceOpen)}
                   >
-                    Resource Centre
+                    Careers
                     <motion.div animate={{ rotate: mobileResourceOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
                       <ChevronDown size={20} className="text-gray-400" />
                     </motion.div>
@@ -317,8 +312,8 @@ export default function Header() {
 
 
 
-                <Link href="/career" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
-                  Career
+                <Link href="/blog" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
+                  Blogs/Articles
                 </Link>
 
                 <div className="p-4 pt-6 mt-2 border-t border-gray-100">

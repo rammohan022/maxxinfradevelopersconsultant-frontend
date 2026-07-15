@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Container } from '@/components/ui'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
+import { useGetWebsiteLinksQuery } from '@/services/websiteLink'
 
 const slides = [
   {
@@ -41,6 +42,7 @@ const slideVariants: Variants = {
 }
 
 export default function Hero() {
+  const { data: externalLinks = [] } = useGetWebsiteLinksQuery()
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
@@ -136,7 +138,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="flex gap-2 mt-12"
+            className="flex gap-2 mt-12 mb-2"
           >
             {slides.map((_, i) => (
               <button
@@ -148,6 +150,31 @@ export default function Hero() {
               />
             ))}
           </motion.div>
+
+          {/* Associated Portals/Links */}
+          {externalLinks && externalLinks.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="mt-8 pt-6 border-t border-slate-200/50 flex flex-wrap items-center gap-3"
+            >
+              <span className="text-xs sm:text-sm font-bold text-slate-800 uppercase tracking-wider">Associated Portals:</span>
+              <div className="flex flex-wrap gap-2.5">
+                {externalLinks.map((link) => (
+                  <a
+                    key={link.id}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-slate-100/80 hover:bg-primary hover:text-white px-3 py-1.5 rounded-md font-semibold text-slate-700 hover:scale-[1.02] active:scale-[0.98] transition-all text-xs border border-slate-200"
+                  >
+                    {link.title}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
       </Container>
     </section>

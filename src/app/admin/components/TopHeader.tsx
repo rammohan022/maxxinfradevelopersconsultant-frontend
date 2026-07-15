@@ -5,6 +5,7 @@ import { useGetProfileQuery } from "@/services/auth";
 import { removeAuthToken } from "@/lib/utils/TokenHelper";
 import { User, LogOut, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { getImageUrl } from "@/lib/utils/imageUtils";
 
 export default function TopHeader() {
   const { data: profile } = useGetProfileQuery();
@@ -37,8 +38,12 @@ export default function TopHeader() {
           onClick={() => setDropdownOpen(!dropdownOpen)}
           className="flex items-center gap-2 hover:bg-slate-50 p-1.5 rounded-lg transition"
         >
-          <div className="w-9 h-9 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold">
-            {profile?.name?.charAt(0).toUpperCase() || <User size={18} />}
+          <div className="w-9 h-9 rounded-full bg-secondary/10 text-secondary flex items-center justify-center font-bold overflow-hidden border">
+            {profile?.profilePhoto ? (
+              <img src={getImageUrl(profile.profilePhoto)} alt="Avatar" className="w-full h-full object-cover" />
+            ) : (
+              profile?.name?.charAt(0).toUpperCase() || <User size={18} />
+            )}
           </div>
           <div className="text-left hidden md:block">
             <div className="text-sm font-semibold text-slate-800 leading-tight">

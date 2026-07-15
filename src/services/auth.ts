@@ -20,12 +20,22 @@ export interface Profile {
   name: string;
   phoneNumber: string;
   role: string;
+  profilePhoto?: string;
+  facebookUrl?: string;
+  linkedinUrl?: string;
+  instagramUrl?: string;
+  twitterUrl?: string;
 }
 
 export interface UpdateProfileRequest {
   fullName: string;
   email: string;
   phoneNumber: string;
+  profilePhoto?: string;
+  facebookUrl?: string;
+  linkedinUrl?: string;
+  instagramUrl?: string;
+  twitterUrl?: string;
 }
 
 export interface ChangePasswordRequest {
@@ -87,9 +97,20 @@ export const authApi = baseApi.injectEndpoints({
     }),
 
     /* =========================
+       GET ADMIN PROFILE (PUBLIC)
+    ========================= */
+    getAdminProfile: builder.query<Profile, void>({
+      query: () => ({
+        url: API_ENDPOINTS.auth.adminProfile,
+        method: "GET",
+      }),
+      providesTags: ["Profile"],
+    }),
+
+    /* =========================
        UPDATE PROFILE
     ========================= */
-    updateProfile: builder.mutation<Profile, UpdateProfileRequest>({
+    updateProfile: builder.mutation<Profile, FormData>({
       query: (body) => ({
         url: API_ENDPOINTS.auth.profile,
         method: "PUT",
@@ -116,6 +137,7 @@ export const {
   useLoginMutation,
   useLogoutMutation,
   useGetProfileQuery,
+  useGetAdminProfileQuery,
   useUpdateProfileMutation,
   useChangePasswordMutation,
 } = authApi;

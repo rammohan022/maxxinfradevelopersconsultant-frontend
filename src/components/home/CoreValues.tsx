@@ -12,7 +12,7 @@ const values = [
 
 export default function CoreValues() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50" id="core-values">
+    <section className="py-16 md:py-14 bg-slate-50" id="core-values">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">

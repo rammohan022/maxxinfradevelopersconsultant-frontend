@@ -47,7 +47,6 @@ const navItems: NavItem[] = [
       { name: "Job Applications", href: "/admin/applications" },
     ],
   },
-  { name: "Leads", href: "/admin/leads", icon: Users },
   {
     name: "Blogs",
     icon: FileText,
@@ -56,6 +55,7 @@ const navItems: NavItem[] = [
       { name: "Blog Categories", href: "/admin/blog-categories" },
     ],
   },
+  { name: "Leads", href: "/admin/leads", icon: Users },
   { name: "Compliance Library", href: "/admin/website-links", icon: Globe },
   { name: "Testimonials", href: "/admin/testimonials", icon: Users },
   { name: "Privacy Policy", href: "/admin/privacy-policy", icon: FileText },
@@ -137,8 +137,8 @@ const SideNav = () => {
                             key={sIdx}
                             href={sub.href}
                             className={`block py-2 text-xs transition ${isSubActive
-                                ? "text-secondary font-bold"
-                                : "text-white/70 hover:text-white"
+                              ? "text-secondary font-bold"
+                              : "text-white/70 hover:text-white"
                               }`}
                           >
                             {sub.name}

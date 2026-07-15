@@ -8,15 +8,36 @@ import { useGetTestimonialsQuery } from "@/services/testimonial";
 import { motion, AnimatePresence } from "framer-motion";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 
+const defaultTestimonials = [
+  {
+    id: 1,
+    clientName: "Rakesh Sharma",
+    clientImage: "",
+    testimonialText: "People Consulting helped us hire 10+ software engineers in record time. Their support and responsiveness were outstanding throughout the entire recruitment process.",
+    rating: 5,
+    caseType: "IT Staffing",
+  },
+  {
+    id: 2,
+    clientName: "Meera Nair",
+    clientImage: "",
+    testimonialText: "The corporate training programs conducted by People Consulting have greatly improved our team's productivity and alignment. Highly recommended partner for HR solutions.",
+    rating: 5,
+    caseType: "Corporate Training",
+  }
+];
+
 export default function Testimonials() {
-  const { data: testimonials = [], isLoading, isError } = useGetTestimonialsQuery();
+  const { data: apiTestimonials = [], isLoading, isError } = useGetTestimonialsQuery();
   const [index, setIndex] = useState(0);
+
+  const testimonials = (!isError && apiTestimonials && apiTestimonials.length > 0) ? apiTestimonials : defaultTestimonials;
 
   useEffect(() => {
     setIndex(0);
   }, [testimonials]);
 
-  if (isLoading || isError || testimonials.length === 0) return null;
+  if (isLoading) return null;
 
   const getVisibleCount = () => {
     if (typeof window !== 'undefined') {
@@ -46,7 +67,7 @@ export default function Testimonials() {
   const visibleTestimonials = testimonials.slice(index, index + visibleCount);
 
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-gray-100 overflow-hidden relative">
+    <section className="py-12 md:py-16 lg:py-14 bg-gray-100 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-0" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-navy/5 rounded-full blur-3xl -z-0" />
 

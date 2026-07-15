@@ -53,7 +53,7 @@ const RecognitionAwards = () => {
   return (
     <section
       id="recognition-awards"
-      className="py-16 md:py-20 lg:py-24 bg-gray-50 overflow-hidden"
+      className="py-16 md:py-20 lg:py-14 bg-gray-50 overflow-hidden"
     >
       <Container>
         {/* ================= HEADER ================= */}

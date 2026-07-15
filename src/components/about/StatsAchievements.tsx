@@ -92,7 +92,7 @@ const itemVariants: Variants = {
 
 const StatsAchievements = () => {
   return (
-    <section id="stats-achievements" className="py-16 md:py-24 bg-white relative overflow-hidden border-t border-b border-slate-100">
+    <section id="stats-achievements" className="py-16 md:py-14 bg-white relative overflow-hidden border-t border-b border-slate-100">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] -z-0" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[80px] -z-0" />

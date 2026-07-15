@@ -35,7 +35,7 @@ export default function CorporateTraining() {
   }
 
   return (
-    <section className="py-16 md:py-24 bg-white text-slate-900" id="corporate-training">
+    <section className="py-16 md:py-14 bg-white text-slate-900" id="corporate-training">
       <Container>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Programs Info */}

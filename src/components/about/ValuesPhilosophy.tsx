@@ -44,7 +44,7 @@ const ValuesPhilosophy = () => {
   ];
 
   return (
-    <section id="values-philosophy" className="py-16 md:py-24 bg-slate-50 overflow-hidden">
+    <section id="values-philosophy" className="py-16 md:py-14 bg-slate-50 overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* ================= IMAGE ================= */}

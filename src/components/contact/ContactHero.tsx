@@ -10,8 +10,8 @@ const ContactHero: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src="/img/contact-hero-bg.png"
-          alt="elegant law office interior with mahogany bookshelves filled with legal books, dark wood desk, professional atmosphere, cinematic lighting"
+          src="/img/contact-hero-bg-v2.png"
+          alt="modern, bright corporate office interior with professional business consulting environment"
           fill
           className="object-cover"
         />

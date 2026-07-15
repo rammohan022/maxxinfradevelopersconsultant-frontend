@@ -62,7 +62,7 @@ export default function Hero() {
       {/* Gradient overlay to ensure text readability on mobile/tablet */}
       <div className="absolute inset-0 bg-white/90 md:bg-white/40 lg:bg-transparent z-0" />
 
-      <Container className="relative w-full py-16 lg:py-24 z-10">
+      <Container className="relative w-full py-16 lg:py-14 z-10">
         <div className="max-w-xl lg:max-w-2xl flex flex-col justify-center min-h-[400px]">
           <AnimatePresence mode="wait">
             <motion.div

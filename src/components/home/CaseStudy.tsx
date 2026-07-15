@@ -25,7 +25,7 @@ const cases = [
 
 export default function CaseStudy() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50 text-slate-900 relative overflow-hidden" id="case-studies">
+    <section className="py-16 md:py-14 bg-slate-50 text-slate-900 relative overflow-hidden" id="case-studies">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px] -z-0" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[100px] -z-0" />

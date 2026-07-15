@@ -48,8 +48,8 @@ const ContactSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                     {/* Contact Info */}
                     <div>
-                        <div className="bg-navy p-10 text-white h-full">
-                            <h3 className="text-3xl font-serif font-bold mb-8">
+                        <div className="bg-gray-50 p-10 text-slate-800 h-full border border-gray-100">
+                            <h3 className="text-3xl font-serif font-bold text-slate-900 mb-8">
                                 Contact Information
                             </h3>
 
@@ -58,9 +58,9 @@ const ContactSection = () => {
                                 <div className="flex items-start gap-4">
                                     <Phone className="w-5 h-5 text-red-700 mt-1" />
                                     <div>
-                                        <h4 className="text-lg font-semibold">Call Us</h4>
-                                        <p className="text-gray-300 text-sm">
-                                            Speak directly with our legal support team
+                                        <h4 className="text-lg font-semibold text-slate-900">Call Us</h4>
+                                        <p className="text-gray-600 text-sm">
+                                            Speak directly with our support team
                                         </p>
                                         <a
                                             href="tel:+918800177307"
@@ -70,13 +70,13 @@ const ContactSection = () => {
                                         </a>
                                     </div>
                                 </div>
-                                <div className="border-b border-gray-600/60"></div>
+                                <div className="border-b border-gray-200"></div>
                                 {/* Email */}
                                 <div className="flex items-start gap-4">
                                     <Mail className="w-5 h-5 text-red-700 mt-1" />
                                     <div>
-                                        <h4 className="text-lg font-semibold">Email Address</h4>
-                                        <p className="text-gray-300 text-sm">
+                                        <h4 className="text-lg font-semibold text-slate-900">Email Address</h4>
+                                        <p className="text-gray-600 text-sm">
                                             For consultations and general enquiries
                                         </p>
                                         <a
@@ -87,23 +87,23 @@ const ContactSection = () => {
                                         </a>
                                     </div>
                                 </div>
-                                <div className="border-b border-gray-600/60"></div>
+                                <div className="border-b border-gray-200"></div>
                                 {/* Address */}
                                 <div className="flex items-start gap-4">
                                     <MapPin className="w-5 h-5 text-red-700 mt-1" />
                                     <div>
-                                        <h4 className="text-lg font-semibold">Office Address</h4>
-                                        <p className="text-gray-300 text-sm leading-relaxed">
+                                        <h4 className="text-lg font-semibold text-slate-900">Office Address</h4>
+                                        <p className="text-gray-600 text-sm leading-relaxed">
                                             243, 2nd Floor, Vipul Trade Centre, <br />
                                             Sector 48, Sohna Road, Gurgaon, Haryana
                                         </p>
                                     </div>
                                 </div>
-                                <div className="border-b border-gray-600/60"></div>
+                                <div className="border-b border-gray-200"></div>
                                 {/* Social Media */}
                                 <div className="flex flex-col gap-3">
-                                    <h4 className="text-lg font-semibold mb-3">Follow Us</h4>
-                                    <div className="flex gap-4">
+                                    <h4 className="text-lg font-semibold text-slate-900 mb-3">Follow Us</h4>
+                                    <div className="flex gap-4 text-gray-600">
                                         <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition">
                                             <Linkedin className="w-5 h-5" />
                                         </a>
@@ -125,7 +125,7 @@ const ContactSection = () => {
                     {/* Contact Form */}
                     <div>
                         <div className="bg-white shadow border border-gray-100 p-14">
-                            <h2 className="text-2xl font-serif font-bold text-navy mb-1">
+                            <h2 className="text-2xl font-serif font-bold text-slate-900 mb-1">
                                 Get In Touch
                             </h2>
                             <p className="text-sm text-gray-600 mb-4">
@@ -191,7 +191,7 @@ const ContactSection = () => {
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
-                                        placeholder="Legal Consultation Request"
+                                        placeholder="HR Consulting / Recruitment Enquiry"
                                         required
                                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-700 focus:border-transparent transition"
                                     />
@@ -207,7 +207,7 @@ const ContactSection = () => {
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
-                                        placeholder="Please describe your legal matter in detail..."
+                                        placeholder="Please describe your requirements in detail..."
                                         required
                                         className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-700 focus:border-transparent transition"
                                     />

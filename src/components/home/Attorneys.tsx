@@ -25,7 +25,7 @@ export default function Attorneys() {
   if (isLoading || isError || members.length === 0) return null;
 
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-gray-50/50">
+    <section className="py-12 md:py-16 lg:py-14 bg-gray-50/50">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

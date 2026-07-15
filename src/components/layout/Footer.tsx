@@ -119,7 +119,7 @@ export default function Footer() {
                 {practiceAreas.slice(0, 7).map((area) => (
                   <li key={area.id}>
                     <Link href={`/services/${area.slug}`} className="text-gray-600 hover:text-secondary transition-colors hover:translate-x-1 inline-flex transform duration-200 text-sm md:text-base">
-                      {area.title}
+                      {area.title.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')}
                     </Link>
                   </li>
                 ))}

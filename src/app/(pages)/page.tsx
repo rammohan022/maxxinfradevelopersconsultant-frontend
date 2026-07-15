@@ -8,6 +8,7 @@ import {
   OurProcess,
   CoreValues,
   CorporateTraining,
+  Testimonials,
   Blog,
   FAQs,
   Contact,
@@ -26,6 +27,7 @@ export default function Home() {
       <OurProcess />
       <CoreValues />
       <CorporateTraining />
+      <Testimonials />
       <Blog />
       <FAQs />
       <Contact />

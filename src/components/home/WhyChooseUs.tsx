@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-16 md:py-24 bg-white overflow-hidden" id="why-choose-us">
+    <section className="py-16 md:py-14 bg-white overflow-hidden" id="why-choose-us">
       <Container>
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">

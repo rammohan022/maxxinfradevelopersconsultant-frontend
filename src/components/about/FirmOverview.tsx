@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 
 const FirmOverview = () => {
   return (
-    <section id="firm-overview" className="py-16 md:py-20 lg:py-24 bg-white overflow-hidden">
+    <section id="firm-overview" className="py-16 md:py-20 lg:py-14 bg-white overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* LEFT CONTENT */}

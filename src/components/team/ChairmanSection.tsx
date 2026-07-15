@@ -21,7 +21,7 @@ const itemVariants: Variants = {
 const ChairmanSection = () => {
   return (
     <>
-      <section className="bg-gray-50 py-16 md:py-20 lg:py-24">
+      <section className="bg-gray-50 py-16 md:py-20 lg:py-14">
         <Container>
           {/* Section Header */}
           <motion.div
@@ -164,7 +164,7 @@ const ChairmanSection = () => {
         </Container>
       </section>
 
-      <section className="bg-white py-16 md:py-20 lg:py-24">
+      <section className="bg-white py-16 md:py-20 lg:py-14">
         <Container>
           {/* Section Header */}
           <motion.div

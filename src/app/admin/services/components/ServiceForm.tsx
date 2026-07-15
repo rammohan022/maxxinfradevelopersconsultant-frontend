@@ -27,6 +27,8 @@ export default function ServiceForm({
     const [form, setForm] = useState({
         title: "",
         slug: "",
+        category: "",
+        position: "",
         innerImage: "",
         overview: "",
         approach: "",
@@ -44,6 +46,8 @@ export default function ServiceForm({
             setForm({
                 title: initialData.title || "",
                 slug: initialData.slug || "",
+                category: initialData.category || "",
+                position: initialData.position !== undefined ? initialData.position.toString() : "0",
                 innerImage: initialData.innerImage || "",
                 overview: initialData.overview || "",
                 approach: initialData.approach || "",
@@ -92,6 +96,8 @@ export default function ServiceForm({
         const formData = new FormData();
         formData.append("title", form.title);
         formData.append("slug", form.slug);
+        formData.append("category", form.category);
+        formData.append("position", form.position || "0");
         formData.append("overview", form.overview);
         formData.append("approach", form.approach);
         formData.append("quoteText", form.quoteText);
@@ -121,18 +127,26 @@ export default function ServiceForm({
     const isLoading = isCreating || isUpdating;
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-3 rounded-xl border shadow space-y-3">
+        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow space-y-5">
             {/* Hero */}
-            <section className="space-y-4">
-                <h2 className="text-lg font-semibold border-b pb-2">Hero Section</h2>
-                <div className="grid md:grid-cols-2 gap-4">
+            <section className="space-y-4 pb-4 border-b">
+                <h2 className="text-lg font-bold text-slate-800">Hero Section</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     <div>
                         <label className="block text-sm font-medium mb-1">Title</label>
-                        <input name="title" required value={form.title} onChange={handleChange} className="w-full border rounded-lg px-3 py-2" />
+                        <input name="title" required value={form.title} onChange={handleChange} className="w-full border rounded-lg px-3 py-2 text-sm" />
                     </div>
                     <div>
                         <label className="block text-sm font-medium mb-1">Slug</label>
-                        <input name="slug" required value={form.slug} onChange={handleChange} className="w-full border rounded-lg px-3 py-2" />
+                        <input name="slug" required value={form.slug} onChange={handleChange} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium mb-1">Category</label>
+                        <input name="category" value={form.category} onChange={handleChange} placeholder="e.g. Legal, HR" className="w-full border rounded-lg px-3 py-2 text-sm" />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium mb-1">Position (Order)</label>
+                        <input type="number" name="position" value={form.position} onChange={handleChange} placeholder="e.g. 1" className="w-full border rounded-lg px-3 py-2 text-sm" />
                     </div>
                 </div>
                 <div>
@@ -159,16 +173,16 @@ export default function ServiceForm({
             </section>
 
             {/* Overview */}
-            <section className="space-y-4">
-                <h2 className="text-lg font-semibold border-b pb-2">Overview</h2>
-                <div className="mb-12">
-                    <ReactQuill theme="snow" value={form.overview} onChange={(val) => setForm(p => ({ ...p, overview: val }))} className="bg-white h-[200px]" />
+            <section className="space-y-4 pb-10 border-b">
+                <h2 className="text-lg font-bold text-slate-800">Overview</h2>
+                <div className="h-[200px]">
+                    <ReactQuill theme="snow" value={form.overview} onChange={(val) => setForm(p => ({ ...p, overview: val }))} className="bg-white h-[150px]" />
                 </div>
             </section>
 
             {/* Services */}
-            <section className="space-y-4 pt-8">
-                <h2 className="text-lg font-semibold border-b pb-2">Key Areas of Service</h2>
+            <section className="space-y-4 pb-4 border-b">
+                <h2 className="text-lg font-bold text-slate-800">Key Areas of Service</h2>
                 {services.map((item, i) => (
                     <div key={i} className="flex gap-2">
                         <input
@@ -179,30 +193,30 @@ export default function ServiceForm({
                                 setServices(copy);
                             }}
                             placeholder={`Service ${i + 1}`}
-                            className="flex-1 border rounded-lg px-3 py-2"
+                            className="flex-1 border rounded-lg px-3 py-2 text-sm"
                         />
-                        <button type="button" onClick={() => removeService(i)} className="text-red-500 text-sm">Remove</button>
+                        <button type="button" onClick={() => removeService(i)} className="text-red-500 text-sm hover:underline">Remove</button>
                     </div>
                 ))}
                 <button type="button" onClick={addService} className="text-sm text-secondary font-medium hover:underline">+ Add Service</button>
             </section>
 
             {/* Approach */}
-            <section className="space-y-4">
-                <h2 className="text-lg font-semibold border-b pb-2">Our Approach</h2>
-                <textarea name="approach" rows={3} value={form.approach} onChange={handleChange} className="w-full border rounded-lg px-3 py-2" />
+            <section className="space-y-4 pb-4 border-b">
+                <h2 className="text-lg font-bold text-slate-800">Our Approach</h2>
+                <textarea name="approach" rows={3} value={form.approach} onChange={handleChange} className="w-full border rounded-lg px-3 py-2 text-sm" />
             </section>
 
             {/* Quote */}
-            <section className="space-y-4 text-sm">
-                <h2 className="text-lg font-semibold border-b pb-2 text-base">Client Quote</h2>
-                <textarea name="quoteText" rows={2} value={form.quoteText} onChange={handleChange} placeholder="Quote text..." className="w-full border rounded-lg px-3 py-2" />
-                <input name="quoteAuthor" value={form.quoteAuthor} onChange={handleChange} placeholder="Author name & designation" className="w-full border rounded-lg px-3 py-2 mt-2" />
+            <section className="space-y-4 pb-4 border-b">
+                <h2 className="text-lg font-bold text-slate-800">Client Quote</h2>
+                <textarea name="quoteText" rows={2} value={form.quoteText} onChange={handleChange} placeholder="Quote text..." className="w-full border rounded-lg px-3 py-2 text-sm" />
+                <input name="quoteAuthor" value={form.quoteAuthor} onChange={handleChange} placeholder="Author name & designation" className="w-full border rounded-lg px-3 py-2 text-sm" />
             </section>
 
             {/* FAQs */}
-            <section className="space-y-4">
-                <h2 className="text-lg font-semibold border-b pb-2">FAQs</h2>
+            <section className="space-y-4 pb-4 border-b">
+                <h2 className="text-lg font-bold text-slate-800">FAQs</h2>
                 {faqs.map((faq, i) => (
                     <div key={i} className="p-4 border rounded-lg bg-slate-50 space-y-2 relative">
                         <button type="button" onClick={() => removeFaq(i)} className="absolute top-2 right-2 text-red-500 text-xs">Remove</button>
@@ -214,7 +228,7 @@ export default function ServiceForm({
                                 setFaqs(copy);
                             }}
                             placeholder="Question"
-                            className="w-full border rounded-lg px-3 py-2 bg-white"
+                            className="w-full border rounded-lg px-3 py-2 bg-white text-sm"
                         />
                         <textarea
                             value={faq.answer}
@@ -225,7 +239,7 @@ export default function ServiceForm({
                             }}
                             rows={2}
                             placeholder="Answer"
-                            className="w-full border rounded-lg px-3 py-2 bg-white"
+                            className="w-full border rounded-lg px-3 py-2 bg-white text-sm"
                         />
                     </div>
                 ))}
@@ -234,8 +248,8 @@ export default function ServiceForm({
 
             {/* Action Buttons */}
             <div className="flex gap-4 pt-4 justify-end">
-                <button type="button" onClick={() => router.push("/admin/practice-area")} className="px-3 py-2 border rounded-xl hover:bg-slate-50">Cancel</button>
-                <button type="submit" disabled={isLoading} className="px-10 py-2 bg-secondary text-white rounded-xl hover:bg-secondary-dark disabled:opacity-50">
+                <button type="button" onClick={() => router.push("/admin/services")} className="px-4 py-2 border rounded-xl hover:bg-slate-50 text-sm">Cancel</button>
+                <button type="submit" disabled={isLoading} className="px-10 py-2 bg-secondary text-white rounded-xl hover:bg-secondary-dark disabled:opacity-50 text-sm font-semibold">
                     {isLoading ? "Saving..." : (isEdit ? "Update" : "Save")}
                 </button>
             </div>

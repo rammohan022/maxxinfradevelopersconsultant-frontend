@@ -10,6 +10,8 @@ export interface Service {
   id: string;
   title: string;
   slug: string;
+  category?: string;
+  position?: number;
   innerImage?: string;
   overview?: string;
   approach?: string;
@@ -24,6 +26,8 @@ export interface Service {
 export interface CreateServiceDto {
   title: string;
   slug: string;
+  category?: string;
+  position?: number;
   innerImage?: string;
   overview?: string;
   approach?: string;

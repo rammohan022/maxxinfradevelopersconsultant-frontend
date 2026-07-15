@@ -95,6 +95,8 @@ const ServicesPage = () => {
             <thead className="bg-slate-50 text-slate-600">
               <tr>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Service Name</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap">Category</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap text-center">Position</th>
                 <th className="text-left px-3 py-2 min-w-[300px]">Description</th>
                 <th className="text-left px-3 py-2 whitespace-nowrap text-center">Services Count</th>
                 <th className="text-center px-3 py-2 whitespace-nowrap">Actions</th>
@@ -113,6 +115,12 @@ const ServicesPage = () => {
                   <tr key={item.id} className="border-t hover:bg-slate-50 transition align-top">
                     <td className="px-3 py-2 font-semibold text-[rgb(13_33_55)] whitespace-nowrap">
                       {item.title}
+                    </td>
+                    <td className="px-3 py-2 text-slate-500 whitespace-nowrap font-medium">
+                      {item.category || <span className="text-slate-300 italic text-xs">None</span>}
+                    </td>
+                    <td className="px-3 py-2 text-center text-slate-500 font-semibold">
+                      {item.position !== undefined ? item.position : 0}
                     </td>
                     <td className="px-3 py-2 text-slate-500 leading-relaxed min-w-[300px]">
                       <div className="line-clamp-2">

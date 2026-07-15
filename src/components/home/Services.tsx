@@ -185,7 +185,7 @@ export default function Services() {
                 className="absolute inset-0"
               >
                 <Image
-                  src={activeArea.innerImage || ""}
+                  src={getImageUrl(activeArea.innerImage) || ""}
                   alt={activeArea?.title || ""}
                   fill
                   className="object-cover object-center"

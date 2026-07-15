@@ -49,7 +49,7 @@ const navItems: NavItem[] = [
   },
   { name: "Leads", href: "/admin/leads", icon: Users },
   { name: "Blog Posts", href: "/admin/blogs", icon: FileText },
-  { name: "Website Links", href: "/admin/website-links", icon: Globe },
+  { name: "Compliance Library", href: "/admin/website-links", icon: Globe },
   { name: "Testimonials", href: "/admin/testimonials", icon: Users },
   { name: "Privacy Policy", href: "/admin/privacy-policy", icon: FileText },
   { name: "Terms & Conditions", href: "/admin/terms-conditions", icon: FileText },

@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Container } from "@/components/ui"
 import { useGetBlogsQuery } from "@/services/blog"
+import { useGetAdminProfileQuery } from "@/services/auth"
 import { motion, Variants } from "framer-motion"
 import { ArrowRight, CalendarDays } from "lucide-react"
 import { getImageUrl } from "@/lib/utils/imageUtils"
@@ -23,8 +24,11 @@ const itemVariants: Variants = {
 
 export default function Blog() {
   const { data: blogs = [], isLoading, isError } = useGetBlogsQuery();
+  const { data: adminProfile } = useGetAdminProfileQuery();
 
   if (isLoading || isError || blogs.length === 0) return null;
+
+  const authorName = adminProfile?.name || "People Consulting";
 
   // Show only last 3 blogs
   const latestBlogs = [...blogs].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 3);
@@ -76,7 +80,7 @@ export default function Blog() {
 
               <div className="p-6 sm:p-8 flex flex-col flex-1">
                 <p className="text-xs font-semibold text-primary mb-3 uppercase tracking-wider">
-                  By Admin
+                  By {authorName}
                 </p>
                 <h3 className="text-xl lg:text-2xl font-bold text-navy font-serif-heading mb-4 line-clamp-2 group-hover:text-primary transition-colors leading-snug">
                   <Link href={`/blog/${post.slug || post.id}`}>

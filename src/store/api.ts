@@ -16,6 +16,7 @@ export const API_ENDPOINTS = {
     careers: "/careers",
     testimonials: "/testimonials",
     websiteLinks: "/website-links",
+    serviceCategories: "/service-categories",
     privacyPolicy: "/privacy-policy",
     termsConditions: "/terms-conditions",
     dashboard: "/dashboard",

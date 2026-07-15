@@ -34,6 +34,16 @@ export default function Header() {
   const { data: practiceAreas = [] } = useGetServicesQuery()
   const closeTimeout = useRef<NodeJS.Timeout | null>(null)
 
+  // Group services by category
+  const servicesByCategory = (practiceAreas || []).reduce<Record<string, typeof practiceAreas>>((acc, service) => {
+    const cat = service.category || "General Services";
+    if (!acc[cat]) {
+      acc[cat] = [];
+    }
+    acc[cat].push(service);
+    return acc;
+  }, {});
+
   // Add scroll listener for header styling
   useEffect(() => {
     const handleScroll = () => {
@@ -116,20 +126,29 @@ export default function Header() {
                           >
                             <div className="bg-white shadow-2xl border-t-2 border-primary rounded-xl p-8 relative overflow-hidden">
                               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
-                              <div className="grid grid-cols-3 gap-x-10 gap-y-5 relative z-10">
-                                {practiceAreas.map((area) => (
-                                  <Link
-                                    key={area.id}
-                                    href={`/services/${area.slug}`}
-                                    onClick={() => setOpenDropdown(false)}
-                                    className="group/link flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-primary transition-all duration-200"
-                                  >
-                                    <ChevronRight
-                                      size={16}
-                                      className="text-primary/40 group-hover/link:text-primary group-hover/link:translate-x-1 transition-all"
-                                    />
-                                    <span>{area.title}</span>
-                                  </Link>
+                              <div className="grid grid-cols-3 gap-x-10 gap-y-8 relative z-10">
+                                {Object.entries(servicesByCategory).map(([category, items]) => (
+                                  <div key={category} className="space-y-3">
+                                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b pb-1">
+                                      {category}
+                                    </h4>
+                                    <div className="space-y-2">
+                                      {items.map((area) => (
+                                        <Link
+                                          key={area.id}
+                                          href={`/services/${area.slug}`}
+                                          onClick={() => setOpenDropdown(false)}
+                                          className="group/link flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-primary transition-all duration-200"
+                                        >
+                                          <ChevronRight
+                                            size={14}
+                                            className="text-primary/40 group-hover/link:text-primary group-hover/link:translate-x-1 transition-all"
+                                          />
+                                          <span>{area.title}</span>
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
                                 ))}
                               </div>
                             </div>
@@ -254,17 +273,26 @@ export default function Header() {
                         exit={{ height: 0, opacity: 0 }}
                         className="bg-gray-50/50"
                       >
-                        <div className="px-6 py-2 grid gap-1 border-l-2 border-primary/20 ml-6 my-2">
-                          {practiceAreas.map((area) => (
-                            <Link
-                              key={area.id}
-                              href={`/services/${area.slug}`}
-                              className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary py-2 transition-colors leading-snug"
-                              onClick={() => setMobileOpen(false)}
-                            >
-                              <ChevronRight size={14} className="text-primary/50" />
-                              <span>{area.title}</span>
-                            </Link>
+                        <div className="px-6 py-3 ml-6 my-2 space-y-4 border-l-2 border-primary/20">
+                          {Object.entries(servicesByCategory).map(([category, items]) => (
+                            <div key={category} className="space-y-2">
+                              <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                                {category}
+                              </span>
+                              <div className="space-y-1">
+                                {items.map((area) => (
+                                  <Link
+                                    key={area.id}
+                                    href={`/services/${area.slug}`}
+                                    className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary py-1.5 transition-colors leading-snug"
+                                    onClick={() => setMobileOpen(false)}
+                                  >
+                                    <ChevronRight size={12} className="text-primary/50" />
+                                    <span>{area.title}</span>
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
                           ))}
                         </div>
                       </motion.div>

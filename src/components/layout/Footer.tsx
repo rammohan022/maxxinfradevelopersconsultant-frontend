@@ -176,7 +176,7 @@ export default function Footer() {
             className="border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left"
           >
             <p className="text-gray-500 text-sm font-medium">
-              © {new Date().getFullYear()} People Consulting. All rights reserved.
+              © {new Date().getFullYear()} People Consulting. All rights reserved. | Developed by <a href="https://webexbytes.com" target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition-colors font-semibold">webexbytes</a>
             </p>
             <div className="flex gap-8 text-sm font-medium">
               <Link href="/privacy-policy" className="text-gray-500 hover:text-secondary transition-colors">Privacy Policy</Link>

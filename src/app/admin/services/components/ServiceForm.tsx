@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useCreateServiceMutation, useUpdateServiceMutation } from "@/services/services";
+import { useGetServiceCategoriesQuery } from "@/services/serviceCategory";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
@@ -21,6 +22,7 @@ export default function ServiceForm({
     isEdit = false,
 }: ServiceFormProps) {
     const router = useRouter();
+    const { data: categories = [] } = useGetServiceCategoriesQuery();
     const [createService, { isLoading: isCreating }] = useCreateServiceMutation();
     const [updateService, { isLoading: isUpdating }] = useUpdateServiceMutation();
 
@@ -142,7 +144,19 @@ export default function ServiceForm({
                     </div>
                     <div>
                         <label className="block text-sm font-medium mb-1">Category</label>
-                        <input name="category" value={form.category} onChange={handleChange} placeholder="e.g. Legal, HR" className="w-full border rounded-lg px-3 py-2 text-sm" />
+                        <select
+                            name="category"
+                            value={form.category}
+                            onChange={(e) => setForm(p => ({ ...p, category: e.target.value }))}
+                            className="w-full border rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary"
+                        >
+                            <option value="">Select Category</option>
+                            {categories.map((cat) => (
+                                <option key={cat.id} value={cat.name}>
+                                    {cat.name}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div>
                         <label className="block text-sm font-medium mb-1">Position (Order)</label>

@@ -10,6 +10,8 @@ export interface BlogPost {
     status: "Draft" | "Published";
     displayOrder?: number;
     blogImage?: string;
+    metaTitle?: string;
+    metaDescription?: string;
     createdAt: string;
     updatedAt: string;
 }
@@ -22,6 +24,8 @@ export interface CreateBlogDto {
     status?: "Draft" | "Published";
     displayOrder?: number;
     blogImage?: File;
+    metaTitle?: string;
+    metaDescription?: string;
 }
 
 export interface UpdateBlogDto {
@@ -32,6 +36,8 @@ export interface UpdateBlogDto {
     status?: "Draft" | "Published";
     displayOrder?: number;
     blogImage?: File;
+    metaTitle?: string;
+    metaDescription?: string;
 }
 
 export const blogApi = baseApi.injectEndpoints({

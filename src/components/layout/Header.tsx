@@ -20,7 +20,7 @@ const navItems = [
   { label: 'About Us', href: '/about-us' },
   { label: 'Our Services', href: '/services', mega: true },
   { label: 'Careers', href: '#', dropdown: true },
-  { label: 'Blogs/Articles', href: '/blog' },
+  { label: 'Blogs & Articles', href: '/blog' },
 ]
 
 export default function Header() {
@@ -341,7 +341,7 @@ export default function Header() {
 
 
                 <Link href="/blog" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
-                  Blogs/Articles
+                  Blogs & Articles
                 </Link>
 
                 <div className="p-4 pt-6 mt-2 border-t border-gray-100">

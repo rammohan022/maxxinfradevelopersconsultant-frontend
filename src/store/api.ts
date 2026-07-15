@@ -9,6 +9,7 @@ export const API_ENDPOINTS = {
         adminProfile: "/auth/admin-profile",
     },
     blogs: "/blogs",
+    blogCategories: "/blog-categories",
     leads: "/leads",
     services: "/services",
     members: "/members",

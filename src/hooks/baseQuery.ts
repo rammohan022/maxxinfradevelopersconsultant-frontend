@@ -48,6 +48,7 @@ export const baseApi = createApi({
     "JobApplication",
     "WebsiteLink",
     "ServiceCategory",
+    "BlogCategory",
   ],
   endpoints: () => ({}),
 });

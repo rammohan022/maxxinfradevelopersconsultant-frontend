@@ -73,11 +73,27 @@ export default function ServiceForm({
         }
     }, [initialData]);
 
+const slugify = (text: string) => {
+    return text
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/[^\w\-]+/g, "")
+        .replace(/\-\-+/g, "-");
+};
+
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
         const { name, value } = e.target;
-        setForm((prev) => ({ ...prev, [name]: value }));
+        setForm((prev) => {
+            const next = { ...prev, [name]: value };
+            if (name === "title" && !isEdit) {
+                next.slug = slugify(value);
+            }
+            return next;
+        });
     };
 
     const addService = () => setServices([...services, ""]);

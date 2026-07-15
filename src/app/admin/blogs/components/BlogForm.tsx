@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useCreateBlogMutation, useUpdateBlogMutation } from "@/services/blog";
+import { useGetBlogCategoriesQuery } from "@/services/blogCategory";
 import toast from "react-hot-toast";
 import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
@@ -16,6 +17,16 @@ interface BlogFormProps {
   isEdit?: boolean;
 }
 
+const slugify = (text: string) => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-");
+};
+
 export default function BlogForm({
   initialData,
   isEdit = false,
@@ -23,6 +34,7 @@ export default function BlogForm({
   const router = useRouter();
   const [createBlog, { isLoading: isCreating }] = useCreateBlogMutation();
   const [updateBlog, { isLoading: isUpdating }] = useUpdateBlogMutation();
+  const { data: categories = [] } = useGetBlogCategoriesQuery();
 
   const [title, setTitle] = useState(initialData?.title || "");
   const [category, setCategory] = useState(initialData?.category || "");
@@ -32,6 +44,10 @@ export default function BlogForm({
   const [displayOrder, setDisplayOrder] = useState<number>(initialData?.displayOrder || 0);
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string>(initialData?.blogImage || "");
+  
+  // Meta fields
+  const [metaTitle, setMetaTitle] = useState(initialData?.metaTitle || "");
+  const [metaDescription, setMetaDescription] = useState(initialData?.metaDescription || "");
 
   useEffect(() => {
     if (initialData) {
@@ -42,6 +58,8 @@ export default function BlogForm({
       setSlug(initialData.slug || "");
       setDisplayOrder(initialData.displayOrder || 0);
       setPreview(initialData.blogImage || "");
+      setMetaTitle(initialData.metaTitle || "");
+      setMetaDescription(initialData.metaDescription || "");
     }
   }, [initialData]);
 
@@ -63,6 +81,8 @@ export default function BlogForm({
     formData.append("content", content);
     formData.append("status", status);
     formData.append("displayOrder", displayOrder.toString());
+    formData.append("metaTitle", metaTitle);
+    formData.append("metaDescription", metaDescription);
 
     if (imageFile) {
       formData.append("blogImage", imageFile);
@@ -86,27 +106,32 @@ export default function BlogForm({
   const isLoading = isCreating || isUpdating;
 
   return (
-    <div className="bg-white p-3 rounded-xl shadow-sm border">
-      <form onSubmit={handleSubmit} className="grid gap-3">
+    <div className="bg-white p-4 rounded-xl shadow-sm border">
+      <form onSubmit={handleSubmit} className="grid gap-4">
+        {/* Title and Slug */}
         <div className="grid md:grid-cols-2 gap-3">
-          {/* Title */}
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <label className="block text-sm font-semibold mb-1">
               Blog Title
             </label>
             <input
               type="text"
               required
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => {
+                const val = e.target.value;
+                setTitle(val);
+                if (!isEdit) {
+                  setSlug(slugify(val));
+                }
+              }}
               placeholder="Enter blog title"
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
+              className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
             />
           </div>
 
-          {/* Slug */}
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <label className="block text-sm font-semibold mb-1">
               Slug (URL part)
             </label>
             <input
@@ -115,47 +140,51 @@ export default function BlogForm({
               value={slug}
               onChange={(e) => setSlug(e.target.value)}
               placeholder="e.g. navigating-mergers-and-acquisitions"
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
+              className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
             />
           </div>
         </div>
 
+        {/* Category, Display Order, Blog Image */}
         <div className="grid md:grid-cols-3 gap-3">
-          {/* Category */}
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <label className="block text-sm font-semibold mb-1">
               Category
             </label>
-            <input
-              type="text"
-              required
+            <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              placeholder="e.g. Corporate Law"
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
-            />
+              className="w-full border rounded-lg px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+              required
+            >
+              <option value="">Select Category</option>
+              {categories.map((cat) => (
+                <option key={cat.id} value={cat.name}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
           </div>
 
-          {/* Display Order */}
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <label className="block text-sm font-semibold mb-1">
               Display Order
             </label>
             <input
               type="number"
               value={displayOrder}
               onChange={(e) => setDisplayOrder(parseInt(e.target.value) || 0)}
-              className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
+              className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <label className="block text-sm font-semibold mb-1">
               Blog Image
             </label>
             <div className="flex items-center gap-4">
               {preview && (
-                <div className="relative w-16 h-16 rounded overflow-hidden border">
+                <div className="relative w-10 h-10 rounded overflow-hidden border flex-shrink-0">
                   <Image
                     src={getImageUrl(preview)}
                     alt="Preview"
@@ -168,18 +197,50 @@ export default function BlogForm({
                 type="file"
                 accept="image/*"
                 onChange={handleFileChange}
-                className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
+                className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none text-xs file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
               />
             </div>
           </div>
         </div>
 
-        {/* Rich Text Editor */}
+        {/* SEO Metadata Section */}
+        <div className="border-t pt-4">
+          <h3 className="text-sm font-bold text-slate-800 mb-3">SEO Search Settings</h3>
+          <div className="grid md:grid-cols-2 gap-3">
+            <div>
+              <label className="block text-xs font-semibold text-slate-600 mb-1">
+                Meta Title
+              </label>
+              <input
+                type="text"
+                value={metaTitle}
+                onChange={(e) => setMetaTitle(e.target.value)}
+                placeholder="Enter meta title for search engines"
+                className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+              />
+            </div>
+
+            <div>
+              <label className="block text-xs font-semibold text-slate-600 mb-1">
+                Meta Description
+              </label>
+              <textarea
+                value={metaDescription}
+                onChange={(e) => setMetaDescription(e.target.value)}
+                placeholder="Enter meta description for search result snippet"
+                rows={1}
+                className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all resize-none"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Content Editor */}
         <div>
-          <label className="block text-sm font-medium mb-2">
+          <label className="block text-sm font-semibold mb-2">
             Blog Content
           </label>
-          <div className="bg-white min-h-[300px]">
+          <div className="bg-white min-h-[320px]">
             <ReactQuill
               theme="snow"
               value={content}
@@ -191,32 +252,32 @@ export default function BlogForm({
 
         {/* Status */}
         <div className="w-48">
-          <label className="block text-sm font-medium mb-1">
+          <label className="block text-sm font-semibold mb-1">
             Status
           </label>
           <select
             value={status}
-            onChange={(e) => setStatus(e.target.value)}
-            className="w-full border rounded-lg px-3 py-2 focus:ring-2 focus:ring-secondary outline-none"
+            onChange={(e) => setStatus(e.target.value as "Draft" | "Published")}
+            className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
           >
             <option value="Draft">Draft</option>
             <option value="Published">Published</option>
           </select>
         </div>
 
-        {/* Submit */}
-        <div className="flex gap-4">
+        {/* Submit Actions */}
+        <div className="flex gap-2 border-t pt-4">
           <button
             type="submit"
             disabled={isLoading}
-            className="bg-secondary text-white px-3 py-2 rounded-lg hover:bg-secondary-dark transition disabled:opacity-50"
+            className="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark text-sm font-semibold transition disabled:opacity-50"
           >
-            {isLoading ? "Saving..." : (isEdit ? "Update Blog" : "Create Blog")}
+            {isLoading ? "Saving..." : (isEdit ? "Update" : "Create")}
           </button>
           <button
             type="button"
             onClick={() => router.push("/admin/blogs")}
-            className="border px-3 py-2 rounded-lg hover:bg-slate-50 transition"
+            className="border px-4 py-2 rounded-lg text-sm font-semibold hover:bg-slate-50 transition"
           >
             Cancel
           </button>

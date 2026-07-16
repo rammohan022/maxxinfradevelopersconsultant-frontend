@@ -8,14 +8,19 @@ const BlogHeroSection = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/img/blog-hero-bg.png"
-          alt="Elegant chess pieces on wooden board in dramatic lighting, corporate law concept"
+          src="/img/contact-hero-bg-v2.png"
+          alt="Modern workspace, human resource consulting background"
           fill
-          className="object-cover opacity-30"
+          className="object-cover"
         />
       </div>
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy/95 to-navy/70" />
+      <div
+        className="
+          absolute inset-0
+          bg-[linear-gradient(to_right,rgba(15,28,46,0.9),rgba(15,28,46,0.6))]
+        "
+      />
       {/* Content */}
       <Container className="relative flex h-full flex-col justify-center">
         <div className="max-w-3xl">
@@ -41,14 +46,12 @@ const BlogHeroSection = () => {
           </nav>
           {/* Heading */}
           <h1 className="mb-6 font-serif text-6xl font-bold leading-tight text-white">
-            Legal Insights &amp; <br />
-            Expert Analysis
+            People &amp; HR Insights
           </h1>
           {/* Description */}
           <p className="max-w-2xl text-xl leading-relaxed text-gray-300">
-            Stay informed with the latest legal developments, expert commentary,
-            and in-depth analysis from our experienced advisors across multiple
-            services.
+            Stay informed with the latest human resource developments, recruitment trends,
+            and expert talent strategies from our experienced advisors.
           </p>
         </div>
       </Container>

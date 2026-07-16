@@ -68,7 +68,7 @@ export default function Contact() {
       />
 
       <Container className="relative">
-        <div className="grid items-stretch lg:grid-cols-2 rounded-2xl overflow-hidden shadow-2xl">
+        <div className="grid items-stretch lg:grid-cols-2 rounded-2xl overflow-hidden shadow">
           {/* Left Info */}
           <motion.div
             initial="hidden"

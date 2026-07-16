@@ -117,41 +117,13 @@ export default function AboutUs() {
               We help organizations streamline their recruitment, training, and labor compliance processes. Our goal is to connect top talent with industry leaders, ensuring High Performance workplaces and long-term organizational success.
             </p>
 
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={containerVariants}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-10"
-            >
-              <ul className="space-y-3">
-                {bulletsLeft.map((b) => (
-                  <motion.li variants={itemVariants} key={b} className="flex text-sm items-center gap-3 text-slate-700 font-medium">
-                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </div>
-                    {b}
-                  </motion.li>
-                ))}
-              </ul>
 
-              <ul className="space-y-3">
-                {bulletsRight.map((b) => (
-                  <motion.li variants={itemVariants} key={b} className="flex text-sm items-center gap-3 text-slate-700 font-medium">
-                    <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    </div>
-                    {b}
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
 
             <Link
-              href="#contact"
+              href="/about-us"
               className="inline-flex items-center justify-center bg-secondary hover:bg-secondary-dark text-white px-8 py-3.5 rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-secondary/30 hover:scale-[1.02]"
             >
-              Contact Us
+              Read More
             </Link>
           </motion.div>
         </div>

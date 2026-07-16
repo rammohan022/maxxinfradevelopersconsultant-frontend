@@ -1,4 +1,6 @@
 import { Hero, FirmOverview, WhyChooseUs, ValuesPhilosophy, StatsAchievements, RecognitionAwards } from '@/components/about'
+import { CallToAction } from '@/components/ui'
+
 const AboutPage = () => {
   return (
     <>
@@ -8,6 +10,7 @@ const AboutPage = () => {
       <ValuesPhilosophy />
       <StatsAchievements />
       {/* <RecognitionAwards /> */}
+      <CallToAction />
     </>
   );
 };

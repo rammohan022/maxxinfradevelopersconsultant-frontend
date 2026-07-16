@@ -14,6 +14,7 @@ import {
   Contact,
   FloatingButtons,
 } from '@/components/home'
+import { CallToAction } from '@/components/ui'
 
 export default function Home() {
   return (
@@ -22,9 +23,11 @@ export default function Home() {
       <FeatureCards />
       <AboutUs />
       <Services />
+            <CallToAction />
       <WhyChooseUs />
       <IndustriesServe />
       <OurProcess />
+            <CallToAction />
       <CoreValues />
       <CorporateTraining />
       <Testimonials />

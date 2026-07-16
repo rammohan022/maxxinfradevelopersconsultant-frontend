@@ -24,6 +24,22 @@ const defaultTestimonials = [
     testimonialText: "The corporate training programs conducted by People Consulting have greatly improved our team's productivity and alignment. Highly recommended partner for HR solutions.",
     rating: 5,
     caseType: "Corporate Training",
+  },
+  {
+    id: 3,
+    clientName: "Vikram Malhotra",
+    clientImage: "",
+    testimonialText: "Outstanding executive search service! They understood our leadership requirements perfectly and delivered top-tier candidates within a few weeks.",
+    rating: 5,
+    caseType: "Executive Search",
+  },
+  {
+    id: 4,
+    clientName: "Priya Sen",
+    clientImage: "",
+    testimonialText: "Their payroll and compliance outsourcing services have freed up our internal teams to focus on core growth. Very professional and highly recommended.",
+    rating: 5,
+    caseType: "Payroll Management",
   }
 ];
 
@@ -52,19 +68,22 @@ export default function Testimonials() {
     if (index + visibleCount >= testimonials.length) {
       setIndex(0);
     } else {
-      setIndex(index + (testimonials.length > 1 ? visibleCount : 1));
+      setIndex(index + 1);
     }
   };
 
   const prev = () => {
-    if (index - visibleCount < 0) {
-      setIndex(Math.max(0, testimonials.length - (testimonials.length > 1 ? visibleCount : 1)));
+    if (index - 1 < 0) {
+      setIndex(testimonials.length - visibleCount);
     } else {
-      setIndex(index - visibleCount);
+      setIndex(index - 1);
     }
   };
 
   const visibleTestimonials = testimonials.slice(index, index + visibleCount);
+
+  // Calculate slide pages for dots
+  const totalSlides = testimonials.length - visibleCount + 1;
 
   return (
     <section className="py-12 md:py-16 lg:py-14 bg-gray-100 overflow-hidden relative">
@@ -100,39 +119,43 @@ export default function Testimonials() {
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: -50, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="flex flex-col sm:flex-row bg-white shadow-xl rounded-2xl overflow-hidden hover:shadow-primary/10 transition-shadow duration-300"
+                  className="flex flex-col bg-white shadow-xl rounded-2xl p-6 sm:p-8 hover:shadow-primary/10 transition-all duration-300 relative"
                 >
-                  {/* Image */}
-                  <div className="relative h-48 sm:h-auto sm:w-40 lg:w-48 flex-shrink-0 bg-gray-200 overflow-hidden group">
-                    <Image
-                      src={getImageUrl(item.clientImage) || "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=600&q=80"}
-                      alt={item.clientName}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent sm:hidden" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6 sm:p-8 bg-white flex flex-col justify-between flex-1 relative">
-                    <Quote className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 text-primary/10 -z-0" />
-                    <p className="text-base leading-relaxed text-gray-700 line-clamp-4 relative z-10 font-medium italic">
+                  <Quote className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 text-primary/10 -z-0" />
+                  
+                  {/* Testimonial Text */}
+                  <div className="flex-1">
+                    <p className="text-base leading-relaxed text-gray-700 line-clamp-4 relative z-10 font-medium italic mb-6">
                       &quot;{item.testimonialText}&quot;
                     </p>
+                  </div>
 
-                    <div className="mt-6 pt-4 border-t border-gray-100 relative z-10">
-                      <div className="flex items-center gap-1 mb-2">
+                  {/* Client Info Section with Avatar */}
+                  <div className="pt-4 border-t border-gray-100 relative z-10 flex items-center gap-4">
+                    {/* Avatar Image */}
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0 border-2 border-slate-50 shadow-sm bg-gray-100">
+                      <Image
+                        src={getImageUrl(item.clientImage) || "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=200&q=80"}
+                        alt={item.clientName}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+
+                    {/* Meta */}
+                    <div>
+                      <div className="flex items-center gap-1 mb-0.5">
                         {[...Array(5)].map((_, i) => (
-                          <span key={i} className={`text-lg ${i < (item.rating || 5) ? 'text-yellow-400' : 'text-gray-200'}`}>
+                          <span key={i} className={`text-sm ${i < (item.rating || 5) ? 'text-yellow-400' : 'text-gray-200'}`}>
                             ★
                           </span>
                         ))}
                       </div>
 
-                      <h4 className="text-lg font-bold text-navy font-serif-heading">
+                      <h4 className="text-base font-bold text-navy leading-tight">
                         {item.clientName}
                       </h4>
-                      <p className="text-primary text-sm font-semibold uppercase tracking-wider mt-1">
+                      <p className="text-primary text-xs font-semibold uppercase tracking-wider mt-0.5">
                         {item.caseType}
                       </p>
                     </div>
@@ -142,30 +165,47 @@ export default function Testimonials() {
             </AnimatePresence>
           </div>
 
-          {/* Arrows */}
+          {/* Controls: Arrows + Dots */}
           {testimonials.length > visibleCount && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="flex justify-center gap-4 mt-12"
-            >
-              <button
-                onClick={prev}
-                className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-primary hover:text-white text-navy transition-all duration-300 transform hover:-translate-y-1"
-                aria-label="Previous Testimonial"
+            <div className="mt-12 flex flex-col items-center gap-6">
+              {/* Arrows */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="flex gap-4"
               >
-                <ChevronLeft className="w-6 h-6" />
-              </button>
+                <button
+                  onClick={prev}
+                  className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-primary hover:text-white text-navy transition-all duration-300 transform hover:-translate-y-0.5"
+                  aria-label="Previous Testimonial"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
 
-              <button
-                onClick={next}
-                className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-primary hover:text-white text-navy transition-all duration-300 transform hover:-translate-y-1"
-                aria-label="Next Testimonial"
-              >
-                <ChevronRight className="w-6 h-6" />
-              </button>
-            </motion.div>
+                <button
+                  onClick={next}
+                  className="w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-primary hover:text-white text-navy transition-all duration-300 transform hover:-translate-y-0.5"
+                  aria-label="Next Testimonial"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </motion.div>
+
+              {/* Dots */}
+              <div className="flex gap-2">
+                {[...Array(totalSlides)].map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    onClick={() => setIndex(dotIdx)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === dotIdx ? 'bg-primary w-6' : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Go to slide ${dotIdx + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           )}
         </div>
       </Container>

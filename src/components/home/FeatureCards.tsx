@@ -3,75 +3,129 @@
 import { Container } from "@/components/ui"
 import { motion, Variants } from "framer-motion"
 
-const features = [
+const partners = [
   {
-    title: 'Executive Search',
-    desc: 'We specialize in identifying, assessing, and placing top-tier leadership talent across various industries, ensuring a perfect cultural and strategic fit for your organization.',
-    icon: (
-      <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
-    ),
-  },
-  {
-    title: 'Compliance & Payroll',
-    desc: 'Navigate complex labor laws seamlessly. Our team manages payroll administration and ensures strict adherence to all statutory compliance and regulatory requirements.',
-    icon: (
-      <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 2l5 5h-5V4zm-3 10h6v2h-6v-2zm0-4h6v2h-6v-2z" /></svg>
-    ),
+    name: 'Warner Bros. Discovery',
+    logo: (
+      <svg viewBox="0 0 140 35" className="h-9 w-auto" xmlns="http://www.w3.org/2000/svg">
+        <text x="5" y="14" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="10" fill="#1e3a8a" letterSpacing="0.5">WARNER BROS.</text>
+        <text x="5" y="27" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="11" fill="#0284c7" letterSpacing="0.5">DISCOVERY</text>
+      </svg>
+    )
   },
   {
-    title: 'Training & Development',
-    desc: 'Empower your workforce with targeted training programs designed to enhance skills, boost productivity, and foster leadership qualities at all organizational levels.',
-    icon: (
-      <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" /></svg>
-    ),
+    name: 'Deloitte',
+    logo: (
+      <svg viewBox="0 0 120 30" className="h-8 w-auto" xmlns="http://www.w3.org/2000/svg">
+        <text x="5" y="22" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="20" fill="#000000">Deloitte</text>
+        <circle cx="94" cy="20" r="3.5" fill="#86BC25" />
+      </svg>
+    )
   },
   {
-    title: 'Strategic Consulting',
-    desc: 'Transform your HR operations with our strategic advisory services, focusing on organizational restructuring, performance management, and employee engagement.',
-    icon: (
-      <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
-    ),
+    name: 'Wipro',
+    logo: (
+      <svg viewBox="0 0 120 40" className="h-9 w-auto" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(20, 20)">
+          <circle cx="-8" cy="-8" r="3.5" fill="#5F259F"/>
+          <circle cx="0" cy="-11" r="3" fill="#005A9C"/>
+          <circle cx="8" cy="-8" r="3.5" fill="#008542"/>
+          <circle cx="11" cy="0" r="3" fill="#FFBC00"/>
+          <circle cx="8" cy="8" r="3.5" fill="#E4002B"/>
+          <circle cx="0" cy="11" r="3" fill="#D3007D"/>
+          <circle cx="-8" cy="8" r="3.5" fill="#00A9E0"/>
+          <circle cx="-11" cy="0" r="3" fill="#7C2529"/>
+        </g>
+        <text x="45" y="26" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="16" fill="#121212">wipro</text>
+      </svg>
+    )
   },
-];
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.15 },
+  {
+    name: 'Sterlite',
+    logo: (
+      <svg viewBox="0 0 130 35" className="h-9 w-auto" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(5, 5) scale(0.8)">
+          <path d="M5 25 C 10 10, 25 10, 30 20 C 25 25, 15 25, 5 25 Z" fill="#005A9C"/>
+          <path d="M15 15 C 20 5, 35 5, 35 15 C 30 20, 20 20, 15 15 Z" fill="#FF8200"/>
+        </g>
+        <text x="45" y="23" fontFamily="Arial, sans-serif" fontWeight="700" fontSize="17" fill="#0E4B82">Sterlite</text>
+      </svg>
+    )
   },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
+  {
+    name: 'Coca-Cola',
+    logo: (
+      <svg viewBox="0 0 130 35" className="h-9 w-auto" xmlns="http://www.w3.org/2000/svg">
+        <text x="10" y="27" fontFamily="'Brush Script MT', cursive, sans-serif" fontWeight="bold" fontStyle="italic" fontSize="26" fill="#F40009">Coca-Cola</text>
+      </svg>
+    )
+  },
+  {
+    name: 'Raymond',
+    logo: (
+      <svg viewBox="0 0 120 32" className="h-8 w-auto" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="32" rx="3" fill="#D81E05" />
+        <text x="60" y="21" fontFamily="Georgia, serif" fontWeight="900" fontSize="13" fill="white" textAnchor="middle" letterSpacing="1">RAYMOND</text>
+      </svg>
+    )
+  },
+  {
+    name: 'HDFC Bank',
+    logo: (
+      <svg viewBox="0 0 140 35" className="h-9 w-auto" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(5, 5)">
+          <rect width="25" height="25" fill="#003366" />
+          <rect x="10" y="3" width="5" height="19" fill="#E31E24" />
+          <rect x="3" y="10" width="19" height="5" fill="#E31E24" />
+          <rect x="11" y="4" width="3" height="17" fill="white" />
+          <rect x="4" y="11" width="17" height="3" fill="white" />
+        </g>
+        <text x="38" y="18" fontFamily="Arial, sans-serif" fontWeight="bold" fontSize="13" fill="#003366">HDFC BANK</text>
+        <text x="38" y="28" fontFamily="Arial, sans-serif" fontSize="6.5" fill="#666666">We understand your world</text>
+      </svg>
+    )
+  }
+]
 
 export default function FeatureCards() {
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-slate-50">
+    <section className="py-12 md:py-16 bg-white border-b border-gray-100 overflow-hidden">
       <Container>
+        <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            A leading HR service provider
+          </h2>
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+            Join hands with People Consulting, your HR partner with a rich experience of over 5 years in collaborating with organizations. Our comprehensive end-to-end{" "}
+            <a href="#" className="text-blue-600 hover:underline font-semibold">
+              HR services
+            </a>{" "}
+            and solutions are driven by deep domain expertise, ensuring you get the best support for your HR needs
+          </p>
+        </div>
+
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="relative w-full overflow-hidden py-4"
         >
-          {features.map((f) => (
-            <motion.div
-              key={f.title}
-              variants={itemVariants}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group p-6 sm:p-8 rounded-xl border border-gray-100 hover:shadow-xl hover:border-primary/20 transition-all duration-300 text-center bg-white"
-            >
-              <div className="text-secondary mb-5 flex justify-start group-hover:scale-110 transition-transform duration-300">
-                {f.icon}
+          {/* Edge fading gradients */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+          {/* Marquee Container */}
+          <div className="flex gap-4 sm:gap-6 animate-marquee hover:[animation-play-state:paused]">
+            {[...partners, ...partners, ...partners].map((p, idx) => (
+              <div
+                key={`${p.name}-${idx}`}
+                className="flex items-center justify-center bg-gray-50/80 hover:bg-white border border-gray-100 hover:border-gray-200 shadow-sm hover:shadow-md rounded-lg px-6 py-4 w-44 h-16 transition-all duration-200 cursor-pointer shrink-0"
+              >
+                {p.logo}
               </div>
-              <h3 className="text-lg sm:text-xl text-start font-bold text-navy mb-3">{f.title}</h3>
-              <p className="text-gray-600 text-start text-sm sm:text-base leading-relaxed">{f.desc}</p>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </motion.div>
       </Container>
     </section>

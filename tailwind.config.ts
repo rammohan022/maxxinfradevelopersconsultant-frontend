@@ -13,8 +13,8 @@ const config: Config = {
         'primary-dark': '#734723',
         secondary: '#f58235',
         'secondary-dark': '#d36b28',
-        navy: '#3b4d81',
-        'navy-light': '#4c62a1',
+        navy: '#121214',
+        'navy-light': '#252529',
         maroon: {
           DEFAULT: '#915a2d',
           500: '#a66a38',

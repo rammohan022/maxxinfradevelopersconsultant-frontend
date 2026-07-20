@@ -16,14 +16,17 @@ html {
 }
 
 /* Swiper Pagination Dots */
-.awards-swiper .swiper-pagination-bullet {
-  background-color: #991b1b; /* red-800 */
+.swiper-pagination-bullet {
+  background-color: #3b4d81 !important;
   opacity: 0.4;
+  transition: all 0.3s ease;
 }
 
-.awards-swiper .swiper-pagination-bullet-active {
-  background-color: #991b1b; /* red-800 */
-  opacity: 1;
+.swiper-pagination-bullet-active {
+  background-color: #f58235 !important;
+  opacity: 1 !important;
+  width: 1.5rem !important;
+  border-radius: 9999px !important;
 }
 
 /* Infinite Marquee Scroll */

@@ -7,12 +7,10 @@ import { Download, FileText, CheckCircle2 } from "lucide-react"
 import { toast } from "react-hot-toast"
 
 const programs = [
-  "Leadership & Strategic Management Training",
-  "Statutory Compliance & Labor Law Updates",
-  "Diversity, Equity & Inclusion (DEI) Workshops",
-  "Performance & OKR Goal Alignment Training",
-  "Soft Skills, Communication & Sales Training",
-  "Conflict Resolution & Team Building Seminars",
+  { title: "Leadership & Strategic Management", desc: "Build cross-functional management capabilities and strategic vision." },
+  { title: "Statutory Compliance & Labor Law", desc: "Keep internal teams aligned with legal compliance updates." },
+  { title: "Diversity, Equity & Inclusion (DEI)", desc: "Foster inclusive culture, employee compliance, and trust." },
+  { title: "Performance & OKR Goal Alignment", desc: "Align team execution and track productivity metrics efficiently." },
 ]
 
 export default function CorporateTraining() {
@@ -40,24 +38,29 @@ export default function CorporateTraining() {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Programs Info */}
           <div className="lg:col-span-7">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
               Training Programs
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
               Corporate training programs tailored for <span className="text-secondary">workplace excellence</span>
             </h2>
-            <p className="text-slate-600 text-base sm:text-lg mb-8 leading-relaxed">
+            <p className="text-slate-600 text-sm sm:text-base mb-8 leading-relaxed">
               We design and deliver interactive curriculum focused on building operational skills, understanding legal compliance updates, and fostering cross-functional leadership.
             </p>
 
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {programs.map((prog) => (
-                <li key={prog} className="flex items-start gap-3 text-slate-700 text-sm sm:text-base font-medium">
-                  <CheckCircle2 className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
-                  <span>{prog}</span>
-                </li>
+                <div key={prog.title} className="p-4 rounded-xl border border-slate-100 bg-slate-50/50 hover:shadow-md transition-all duration-300">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-bold text-slate-900 text-sm sm:text-base leading-snug">{prog.title}</h4>
+                      <p className="text-slate-500 text-xs mt-1 leading-relaxed">{prog.desc}</p>
+                    </div>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Form Card */}

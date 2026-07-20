@@ -78,9 +78,9 @@ export default function Header() {
             <Image
               src="/img/logo.png"
               alt="People Consulting"
-              width={scrolled ? 200 : 250}
-              height={100}
-              className="h-16 w-auto transition-all duration-300"
+              width={scrolled ? 180 : 220}
+              height={90}
+              className="h-11 sm:h-12 w-auto transition-all duration-300"
               priority
             />
           </Link>

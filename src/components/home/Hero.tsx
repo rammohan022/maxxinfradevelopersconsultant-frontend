@@ -77,7 +77,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.4 }}
-                className="inline-block text-navy text-xs sm:text-sm font-semibold mb-4 tracking-widest uppercase border-l-4 border-secondary pl-3 bg-slate-100/90 py-1 pr-3 rounded-r-md"
+                className="inline-block text-primary text-xs sm:text-sm font-bold mb-4 tracking-widest uppercase border-l-4 border-secondary pl-3 bg-slate-100/90 py-1 pr-3 rounded-r-md"
               >
                 {slides[current].tag}
               </motion.span>
@@ -86,7 +86,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 font-serif-heading leading-tight mb-4"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-primary leading-tight mb-4"
               >
                 {slides[current].title}{' '}
                 <span className="text-secondary">{slides[current].highlight}</span>{' '}
@@ -97,7 +97,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.4 }}
-                className="text-lg sm:text-xl text-navy font-semibold mb-2"
+                className="text-base sm:text-lg text-slate-800 font-semibold mb-2"
               >
                 {slides[current].desc}
               </motion.p>

@@ -1,11 +1,12 @@
 "use client";
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Container } from "@/components/ui"
 import { useGetBlogsQuery } from "@/services/blog"
 import { useGetAdminProfileQuery } from "@/services/auth"
-import { motion, Variants } from "framer-motion"
+import { motion, AnimatePresence, Variants } from "framer-motion"
 import { ArrowRight, CalendarDays } from "lucide-react"
 import { getImageUrl } from "@/lib/utils/imageUtils"
 
@@ -25,6 +26,7 @@ const itemVariants: Variants = {
 export default function Blog() {
   const { data: blogs = [], isLoading, isError } = useGetBlogsQuery();
   const { data: adminProfile } = useGetAdminProfileQuery();
+  const [expandedBlogIds, setExpandedBlogIds] = useState<Record<string, boolean>>({});
 
   if (isLoading || isError || blogs.length === 0) return null;
 
@@ -32,6 +34,13 @@ export default function Blog() {
 
   // Show only last 3 blogs
   const latestBlogs = [...blogs].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()).slice(0, 3);
+
+  const toggleExpandBlog = (id: string) => {
+    setExpandedBlogIds((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   return (
     <section className="py-6 md:py-8 lg:py-14 bg-white">
@@ -47,7 +56,7 @@ export default function Blog() {
             Latest Blog
           </span>
 
-          <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-navy font-serif-heading leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Insights and Updates on HR and Talent Acquisition
           </h2>
         </motion.div>
@@ -65,7 +74,10 @@ export default function Blog() {
               key={post.id}
               className="rounded-2xl overflow-hidden bg-white border border-gray-100 hover:shadow-xl hover:shadow-primary/5 hover:border-primary/10 transition-all duration-300 h-full flex flex-col group transform hover:-translate-y-1"
             >
-              <div className="aspect-[16/10] bg-navy/5 overflow-hidden relative">
+              <div 
+                onClick={() => toggleExpandBlog(post.id)} 
+                className="aspect-[16/10] bg-navy/5 overflow-hidden relative block cursor-pointer"
+              >
                 <Image
                   src={getImageUrl(post.blogImage) || "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80"}
                   alt={post.title}
@@ -82,16 +94,24 @@ export default function Blog() {
                 <p className="text-xs font-semibold text-primary mb-3 uppercase tracking-wider">
                   By {authorName}
                 </p>
-                <h3 className="text-xl lg:text-2xl font-bold text-navy font-serif-heading mb-4 line-clamp-2 group-hover:text-primary transition-colors leading-snug">
+                <h3 className="text-xl lg:text-2xl font-bold text-navy mb-4 line-clamp-3 group-hover:text-primary transition-colors leading-snug">
                   <Link href={`/blog/${post.slug || post.id}`}>
                     {post.title}
                   </Link>
                 </h3>
 
-                <div
-                  className="text-gray-600 mb-6 line-clamp-3 text-sm sm:text-base leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150) + "..." }}
-                />
+                <AnimatePresence>
+                  {expandedBlogIds[post.id] && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="text-slate-600 mb-6 text-sm sm:text-base leading-relaxed overflow-hidden"
+                      dangerouslySetInnerHTML={{ __html: post.content.substring(0, 150) + "..." }}
+                    />
+                  )}
+                </AnimatePresence>
+
                 <div className="mt-auto pt-4 border-t border-gray-100">
                   <Link href={`/blog/${post.slug || post.id}`} className="inline-flex items-center gap-2 text-primary font-bold hover:text-navy transition-colors text-sm uppercase tracking-wider">
                     Read More

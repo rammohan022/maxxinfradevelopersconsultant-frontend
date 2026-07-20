@@ -1,7 +1,14 @@
 'use client'
 
+import { useState } from "react"
 import { Container } from "@/components/ui"
-import { Cpu, HeartPulse, Building2, Factory, ShoppingCart, Briefcase } from "lucide-react"
+import { Cpu, HeartPulse, Building2, Factory, ShoppingCart, Briefcase, ArrowLeft, ArrowRight } from "lucide-react"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Autoplay, Pagination, Navigation } from "swiper/modules"
+import { motion } from "framer-motion"
+
+import "swiper/css"
+import "swiper/css/pagination"
 
 const industries = [
   { name: "IT & Technology", icon: Cpu, desc: "Software engineering, product development, cloud operations, and leadership talent." },
@@ -13,38 +20,82 @@ const industries = [
 ]
 
 export default function IndustriesServe() {
+  const [prevEl, setPrevEl] = useState<HTMLButtonElement | null>(null);
+  const [nextEl, setNextEl] = useState<HTMLButtonElement | null>(null);
+
   return (
-    <section className="py-16 md:py-14 bg-slate-50" id="industries">
+    <section className="py-16 md:py-14 bg-slate-50 overflow-hidden" id="industries">
       <Container>
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
             Industries We Serve
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Specialized recruitment across <span className="text-secondary">six core sectors</span>
           </h2>
-          <p className="mt-4 text-slate-600 max-w-xl mx-auto text-base sm:text-lg">
+          <p className="mt-4 text-slate-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
             Our search team brings sector-specific compliance knowledge and deep candidate networks to deliver optimal placements.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {industries.map((ind) => {
-            const Icon = ind.icon
-            return (
-              <div
-                key={ind.name}
-                className="group p-6 rounded-2xl border border-slate-100 bg-white hover:shadow-xl hover:border-primary/20 transition-all duration-300 transform hover:-translate-y-1"
-              >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-6 h-6" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3">{ind.name}</h3>
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed">{ind.desc}</p>
-              </div>
-            )
-          })}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="relative px-4 sm:px-12"
+        >
+          <Swiper
+            modules={[Autoplay, Pagination, Navigation]}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            navigation={{
+              prevEl,
+              nextEl,
+            }}
+            pagination={{ clickable: true, dynamicBullets: true }}
+            spaceBetween={24}
+            breakpoints={{
+              0: { slidesPerView: 1 },
+              640: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className="pb-12"
+          >
+            {industries.map((ind) => {
+              const Icon = ind.icon
+              return (
+                <SwiperSlide key={ind.name}>
+                  <div className="group p-6 rounded-2xl border border-slate-100 bg-white hover:shadow-xl hover:border-primary/20 transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col min-h-[220px]">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3">{ind.name}</h3>
+                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">{ind.desc}</p>
+                  </div>
+                </SwiperSlide>
+              )
+            })}
+          </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          <button 
+            ref={setPrevEl}
+            className="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none"
+          >
+            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
+          <button 
+            ref={setNextEl}
+            className="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none"
+          >
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+          </button>
+        </motion.div>
       </Container>
     </section>
   )

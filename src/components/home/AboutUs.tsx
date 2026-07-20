@@ -43,54 +43,24 @@ export default function AboutUs() {
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          {/* Image Grid */}
+          {/* Single Image */}
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
-            variants={containerVariants}
-            className="grid grid-cols-2 gap-3 sm:gap-4 relative"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative aspect-[4/3] w-full rounded-2xl bg-slate-100 overflow-hidden shadow-xl"
           >
             {/* Background Blob */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/5 rounded-full blur-3xl -z-10" />
 
-            <div className="space-y-3 sm:space-y-4">
-              <motion.div variants={imageVariants} className="aspect-[4/5] rounded-2xl bg-slate-100 overflow-hidden relative shadow-lg">
-                <Image
-                  src="/img/hr_about_us_1783707647467.png"
-                  alt="HR Consulting"
-                  fill
-                  className="object-cover opacity-90 hover:scale-105 hover:opacity-100 transition duration-500"
-                />
-              </motion.div>
-              <motion.div variants={imageVariants} className="aspect-[4/3] rounded-2xl bg-slate-100 overflow-hidden relative shadow-lg">
-                <Image
-                  src="/img/hr_training_1783707657031.png"
-                  alt="Corporate Training"
-                  fill
-                  className="object-cover opacity-90 hover:scale-105 hover:opacity-100 transition duration-500"
-                />
-              </motion.div>
-            </div>
-
-            <div className="space-y-3 sm:space-y-4 pt-8 sm:pt-12">
-              <motion.div variants={imageVariants} className="aspect-[4/3] rounded-2xl bg-slate-100 overflow-hidden relative shadow-lg">
-                <Image
-                  src="/img/hr_hero_bg_1783707638359.png"
-                  alt="Corporate Office"
-                  fill
-                  className="object-cover opacity-90 hover:scale-105 hover:opacity-100 transition duration-500"
-                />
-              </motion.div>
-              <motion.div variants={imageVariants} className="aspect-[4/5] rounded-2xl bg-slate-100 overflow-hidden relative shadow-lg">
-                <Image
-                  src="/img/hr_submit_cv_1783707666212.png"
-                  alt="Career Growth"
-                  fill
-                  className="object-cover opacity-90 hover:scale-105 hover:opacity-100 transition duration-500"
-                />
-              </motion.div>
-            </div>
+            <Image
+              src="/img/hr_about_us_1783707647467.png"
+              alt="People Consulting"
+              fill
+              className="object-cover hover:scale-105 transition-transform duration-500"
+              priority
+            />
           </motion.div>
 
           {/* Text Content */}
@@ -100,24 +70,22 @@ export default function AboutUs() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
               About Us
             </span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
               Aligning Strategy With{' '}
               <span className="text-secondary">People & Culture</span>
             </h2>
 
-            <p className="text-slate-600 mb-6 text-base sm:text-lg leading-relaxed">
+            <p className="text-slate-600 mb-6 text-sm sm:text-base leading-relaxed">
               <strong>People Consulting</strong> is a premier HR and Recruitment agency dedicated to providing strategic, solution-oriented talent acquisition and human resource management services. With a multidisciplinary approach and strong professional network, we cater to businesses and corporate entities across diverse sectors.
             </p>
 
-            <p className="text-slate-600 mb-8 text-base sm:text-lg leading-relaxed">
+            <p className="text-slate-600 mb-8 text-sm sm:text-base leading-relaxed">
               We help organizations streamline their recruitment, training, and labor compliance processes. Our goal is to connect top talent with industry leaders, ensuring High Performance workplaces and long-term organizational success.
             </p>
-
-
 
             <Link
               href="/about-us"

@@ -3,9 +3,7 @@ import {
   FeatureCards,
   AboutUs,
   Services,
-  WhyChooseUs,
   IndustriesServe,
-  OurProcess,
   CoreValues,
   CorporateTraining,
   Testimonials,
@@ -23,11 +21,8 @@ export default function Home() {
       <FeatureCards />
       <AboutUs />
       <Services />
-            <CallToAction />
-      <WhyChooseUs />
+      <CallToAction />
       <IndustriesServe />
-      <OurProcess />
-            <CallToAction />
       <CoreValues />
       <CorporateTraining />
       <Testimonials />

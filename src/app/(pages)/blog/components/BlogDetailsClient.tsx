@@ -57,21 +57,21 @@ function BlogDetailsContent() {
             <section className="relative min-h-[400px] overflow-hidden bg-navy flex flex-col justify-center">
                 <div className="absolute inset-0">
                     <Image
-                        src="/img/blog-hero-bg.png"
-                        alt=""
+                        src="/img/contact-hero-bg-v2.png"
+                        alt="Modern workspace background matching main blog"
                         fill
-                        className="object-cover opacity-30"
+                        className="object-cover"
                         priority
                     />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-r from-navy/95 to-navy/70" />
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,28,46,0.9),rgba(15,28,46,0.6))]" />
                 <div className="relative z-10 mx-auto w-full max-w-7xl py-16 px-4 sm:px-5 lg:px-6">
                     <nav className="mb-6 flex items-center gap-2 text-sm text-gray-300" aria-label="Breadcrumb">
                         <Link href="/" className="transition hover:text-white">Home</Link>
-                        <span className="text-gray-500" aria-hidden>/</span>
+                        <span className="text-gray-400" aria-hidden="true">&gt;</span>
                         <Link href="/blog" className="transition hover:text-white">Blog</Link>
-                        <span className="text-gray-500" aria-hidden>/</span>
-                        <span className="font-medium text-primary truncate max-w-[200px] sm:max-w-none" aria-current="page">{article.title}</span>
+                        <span className="text-gray-400" aria-hidden="true">&gt;</span>
+                        <span className="font-medium text-white truncate max-w-[200px] sm:max-w-none" aria-current="page">{article.title}</span>
                     </nav>
                     <h1 className="font-serif capitalize text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
                         {article.title}
@@ -81,7 +81,7 @@ function BlogDetailsContent() {
                     </p>
                     <div className="flex flex-wrap items-center gap-4 text-sm text-gray-300 mt-6">
                         <span className="flex items-center gap-1.5">
-                            <Calendar className="w-4 h-4 text-primary" />
+                            <Calendar className="w-4 h-4 text-secondary" />
                             {formattedDate}
                         </span>
                         {article.category && (

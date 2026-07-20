@@ -11,8 +11,9 @@ html {
   scroll-behavior: smooth;
 }
 
+.font-serif,
 .font-serif-heading {
-  font-family: inherit;
+  font-family: inherit !important;
 }
 
 /* Swiper Pagination Dots */
@@ -49,5 +50,30 @@ html {
   display: flex;
   width: max-content;
   animation: marquee 25s linear infinite reverse;
+}
+
+/* 3D Card Flip utilities */
+.perspective-1000 {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+.group:hover .group-hover\:rotate-y-180 {
+  transform: rotateY(180deg) !important;
+  -webkit-transform: rotateY(180deg) !important;
+}
+.group:hover .group-hover\:pointer-events-none {
+  pointer-events: none !important;
 }
 

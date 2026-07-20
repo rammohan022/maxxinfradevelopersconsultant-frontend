@@ -21,7 +21,7 @@ const CTASection: React.FC = () => {
             </div>
             {/* Content */}
             <Container className="relative z-10 max-w-4xl text-center">
-                <h2 className="mb-6 font-serif text-4xl font-bold text-navy">
+                <h2 className="mb-6 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
                     Empowering Your Business Through Top Talent.
                 </h2>
 

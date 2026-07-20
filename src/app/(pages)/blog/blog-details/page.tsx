@@ -277,10 +277,10 @@ function BlogDetailsContent() {
             <section className="relative overflow-hidden bg-navy py-16 lg:py-20">
                 <div className="absolute inset-0">
                     <Image
-                        src="/img/blog-hero-bg.png"
-                        alt=""
+                        src="/img/contact-hero-bg-v2.png"
+                        alt="Modern workspace consulting background"
                         fill
-                        className="object-cover opacity-10"
+                        className="object-cover opacity-30"
                     />
                 </div>
                 <Container className="relative z-10 max-w-3xl text-center">

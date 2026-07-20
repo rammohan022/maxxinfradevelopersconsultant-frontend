@@ -1,0 +1,31 @@
+<IfModule mod_headers.c>
+    Header always set X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Skip existing files and folders
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Serve HTML files for static routes (e.g., /about-us -> /about-us.html)
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^(.*)$ $1.html [L]
+
+    # Serve index.html for nested routes (e.g., /about-us/ -> /about-us/index.html)
+    RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+    RewriteRule ^(.*)$ $1/index.html [L]
+
+    # Redirect any wrong URL (not matching files, folders, or HTML files) to /404/
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{DOCUMENT_ROOT}/$1.html !-f
+    RewriteCond %{DOCUMENT_ROOT}/$1/index.html !-f
+    RewriteRule ^(.*)$ /404/ [R=302,L]
+</IfModule>
+
+# Handle default 404 documents
+ErrorDocument 404 /404/

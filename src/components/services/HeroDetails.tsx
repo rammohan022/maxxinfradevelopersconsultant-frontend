@@ -16,7 +16,7 @@ const HeroSection = ({ title, slug, innerImage }: HeroSectionProps) => {
       {/* Background Image */}
       <div className="absolute inset-0 overflow-hidden">
         <Image
-          src={getImageUrl(innerImage) || "/img/practice-details-bg.png"}
+          src={getImageUrl(innerImage) || "/img/contact-hero-bg-v2.png"}
           alt={title}
           fill
           className="object-cover opacity-30"
@@ -32,11 +32,11 @@ const HeroSection = ({ title, slug, innerImage }: HeroSectionProps) => {
           <Link href="/" className="hover:text-white">
             Home
           </Link>
-          <span>/</span>
+          <span className="text-gray-400">&gt;</span>
           <Link href="/services" className="hover:text-white">
             Our Services
           </Link>
-          <span>/</span>
+          <span className="text-gray-400">&gt;</span>
           <span className="text-white capitalize">
             {slug.replace(/[-\u2013\u2014]/g, " ")}
           </span>

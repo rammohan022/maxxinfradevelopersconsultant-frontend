@@ -17,8 +17,8 @@ const PracticeAreaHero = ({ title, subtitle }: PracticeAreaHeroProps) => {
       {/* ================= BACKGROUND IMAGE ================= */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/img/practice-hero-bg.png"
-          alt="Law library with legal books and classical statues"
+          src="/img/contact-hero-bg-v2.png"
+          alt="Modern workspace, human resource consulting background"
           fill
           priority
           className="object-cover opacity-30"
@@ -29,13 +29,13 @@ const PracticeAreaHero = ({ title, subtitle }: PracticeAreaHeroProps) => {
       <div className="relative z-10 mx-auto max-w-5xl text-center px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
         <div className="text-gray-300 text-sm mb-4 flex items-center justify-center space-x-2">
-          <Link href="/" className="hover:text-red-600 transition">
+          <Link href="/" className="hover:text-white transition">
             Home
           </Link>
-          <span>/</span>
+          <span className="text-gray-400">&gt;</span>
           <Link
             href="/services"
-            className="hover:text-red-600 transition"
+            className="hover:text-white transition"
           >
             Our Services
           </Link>

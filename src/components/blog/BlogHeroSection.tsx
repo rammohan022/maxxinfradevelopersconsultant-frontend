@@ -45,7 +45,7 @@ const BlogHeroSection = () => {
             </span>
           </nav>
           {/* Heading */}
-          <h1 className="mb-6 font-serif text-6xl font-bold leading-tight text-white">
+          <h1 className="mb-6 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight text-white">
             People &amp; HR Insights
           </h1>
           {/* Description */}

@@ -85,7 +85,7 @@ function BlogDetailsContent() {
                         <span className="text-gray-400" aria-hidden="true">&gt;</span>
                         <span className="font-medium text-white truncate max-w-[200px] sm:max-w-none" aria-current="page">{article.title}</span>
                     </nav>
-                    <h1 className="font-serif capitalize text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-white mb-4">
+                    <h1 className="font-serif capitalize text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight text-white mb-4">
                         {article.title}
                     </h1>
                     <p className="text-lg md:text-xl text-gray-300 mb-6 leading-relaxed max-w-4xl line-clamp-2">

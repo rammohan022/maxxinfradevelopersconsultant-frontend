@@ -35,7 +35,7 @@ const HeroAbout = () => {
         </div>
 
         {/* Heading */}
-        <h1 className="text-white text-5xl md:text-6xl font-bold leading-tight mb-6">
+        <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight mb-6">
           A Trusted HR Consulting Partner with Decades of Excellence
         </h1>
 

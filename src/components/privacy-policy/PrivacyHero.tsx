@@ -45,7 +45,7 @@ const PrivacyHeroSection = () => {
           </nav>
 
           {/* Heading */}
-          <h1 className="mb-6 font-serif-heading text-6xl md:text-7xl font-bold leading-tight text-white drop-shadow-lg">
+          <h1 className="mb-6 font-serif-heading text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight text-white drop-shadow-lg">
             Privacy Policy
           </h1>
 

@@ -37,7 +37,7 @@ const ContactHero: React.FC = () => {
           <span className="text-gray-300">Contact Us</span>
         </div>
 
-        <h1 className="text-6xl font-serif font-bold mb-6">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-serif font-bold mb-6">
           Contact Us
         </h1>
 

@@ -42,7 +42,7 @@ const PracticeAreaHero = ({ title, subtitle }: PracticeAreaHeroProps) => {
         </div>
 
         {/* Title */}
-        <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight mb-6">
           {title}
         </h1>
 

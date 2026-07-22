@@ -26,7 +26,7 @@ const TeamHeroSection = () => {
         </div>
 
         {/* Heading */}
-        <h1 className="mb-4 font-serif text-5xl font-bold text-white">
+        <h1 className="mb-4 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white">
           Our People
         </h1>
 

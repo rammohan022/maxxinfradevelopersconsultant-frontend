@@ -41,7 +41,7 @@ const TermsHero = () => {
             </span>
           </nav>
 
-          <h1 className="mb-6 font-serif-heading text-5xl md:text-6xl font-bold text-white drop-shadow-lg">
+          <h1 className="mb-6 font-serif-heading text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white drop-shadow-lg">
             Terms & Conditions
           </h1>
 

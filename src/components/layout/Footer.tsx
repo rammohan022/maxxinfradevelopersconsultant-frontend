@@ -12,19 +12,15 @@ const quickLinks = [
   { label: 'About Us', href: '/about-us' },
   { label: 'Career', href: '/career' },
   { label: 'Blog', href: '/blog' },
-  { label: 'Our Services', href: '/services' },
   { label: 'Contact Us', href: '/contact-us' },
 ]
 
-
-const locations = [
-  'Delhi',
-  'Gurugram',
-  'Pune',
-  'Hyderabad',
-  'Chandigarh',
-  'Bengaluru',
-  'Mumbai',
+const calculatorLinks = [
+  { label: 'Salary Calculator', href: '/salary-calculator' },
+  { label: 'Gratuity Calculator', href: '/gratuity-calculator' },
+  { label: 'Open Positions', href: '/career' },
+  { label: 'Submit Resume / CV', href: '/submit-cv' },
+  { label: 'Our Executive Team', href: '/our-team' },
 ]
 
 const containerVariants = {
@@ -51,6 +47,16 @@ export default function Footer() {
   const instagram = adminProfile?.instagramUrl || "https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2";
   const twitter = adminProfile?.twitterUrl || "";
 
+  // Group services by category (same as Header mega menu)
+  const servicesByCategory = (practiceAreas || []).reduce<Record<string, typeof practiceAreas>>((acc, service) => {
+    const cat = service.category || "General Services";
+    if (!acc[cat]) {
+      acc[cat] = [];
+    }
+    acc[cat].push(service);
+    return acc;
+  }, {});
+
   return (
     <>
       <iframe
@@ -67,13 +73,16 @@ export default function Footer() {
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-100 via-transparent to-transparent pointer-events-none" />
         <Container className="relative z-10">
+          
+          {/* Top 4-Column Layout */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={containerVariants}
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16"
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12"
           >
+            {/* Column 1: Company Profile & Social Links */}
             <motion.div variants={itemVariants} className="lg:col-span-1">
               <Link href="/" className="block mb-6 transition-opacity hover:opacity-90">
                 <Image
@@ -110,21 +119,25 @@ export default function Footer() {
                 )}
               </div>
             </motion.div>
+
+            {/* Column 2: Calculators & HR Utilities */}
             <motion.div variants={itemVariants}>
               <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
-                Our Services
+                Calculators & Tools
                 <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
               </h3>
               <ul className="space-y-3 font-medium">
-                {practiceAreas.slice(0, 7).map((area) => (
-                  <li key={area.id}>
-                    <Link href={`/services/${area.slug}`} className="text-gray-600 hover:text-secondary transition-colors hover:translate-x-1 inline-flex transform duration-200 text-sm md:text-base">
-                      {area.title.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ')}
+                {calculatorLinks.map((calc) => (
+                  <li key={calc.label}>
+                    <Link href={calc.href} className="text-gray-600 hover:text-secondary transition-colors hover:translate-x-1 inline-flex transform duration-200 text-sm md:text-base">
+                      {calc.label}
                     </Link>
                   </li>
                 ))}
               </ul>
             </motion.div>
+
+            {/* Column 3: Quick Links */}
             <motion.div variants={itemVariants}>
               <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
                 Quick Links
@@ -140,6 +153,8 @@ export default function Footer() {
                 ))}
               </ul>
             </motion.div>
+
+            {/* Column 4: Contact Info */}
             <motion.div variants={itemVariants}>
               <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
                 Contact Info
@@ -167,12 +182,47 @@ export default function Footer() {
               </ul>
             </motion.div>
           </motion.div>
-          {/* Copyright */}
+
+          {/* Full-Width Categorized Services Section (Full Row at Bottom) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="border-t border-gray-200/80 pt-8 pb-10 mb-6"
+          >
+            <h3 className="text-base font-bold text-slate-900 mb-6 uppercase tracking-wider text-slate-500">
+              Our Services
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+              {Object.entries(servicesByCategory).map(([category, items]) => (
+                <div key={category} className="space-y-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-secondary border-b border-gray-100 pb-2">
+                    {category}
+                  </h4>
+                  <ul className="space-y-2 text-sm font-medium">
+                    {items.map((area) => (
+                      <li key={area.id}>
+                        <Link
+                          href={`/services/${area.slug}`}
+                          className="text-gray-600 hover:text-primary transition-colors text-sm"
+                        >
+                          {area.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Copyright Bar */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.5, duration: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
             className="border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left"
           >
             <p className="text-gray-500 text-sm font-medium">

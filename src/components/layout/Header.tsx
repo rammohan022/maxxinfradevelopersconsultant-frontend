@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/ui'
 import { useState, useRef, useEffect } from 'react'
-import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react'
+import { ChevronDown, ChevronRight, Menu, X, Calculator } from 'lucide-react'
 import { useGetServicesQuery } from '@/services/services'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -14,6 +14,12 @@ const resourceItems = [
   { label: 'Submit CV', href: '/submit-cv' },
 ]
 
+/* ================= CALCULATORS DROPDOWN ITEMS ================= */
+const moreItems = [
+  { label: 'Salary Calculator', href: '/salary-calculator', icon: Calculator },
+  { label: 'Gratuity Calculator', href: '/gratuity-calculator', icon: Calculator },
+]
+
 /* ================= NAV ITEMS ================= */
 const navItems = [
   { label: 'Home', href: '/' },
@@ -21,14 +27,17 @@ const navItems = [
   { label: 'Our Services', href: '/services', mega: true },
   { label: 'Careers', href: '#', dropdown: true },
   { label: 'Blogs & Articles', href: '/blog' },
+  { label: 'Calculators', href: '#', moreDropdown: true },
 ]
 
 export default function Header() {
   const [openDropdown, setOpenDropdown] = useState(false)
   const [resourceOpen, setResourceOpen] = useState(false)
+  const [moreOpen, setMoreOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [mobilePracticeOpen, setMobilePracticeOpen] = useState(false)
   const [mobileResourceOpen, setMobileResourceOpen] = useState(false)
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   const { data: practiceAreas = [] } = useGetServicesQuery()
@@ -159,47 +168,88 @@ export default function Header() {
                   </>
                 ) : item.dropdown ? (
 
-                  /* ================= RESOURCE DROPDOWN ================= */
-                  <>
-                    <div
-                      className="relative"
-                      onMouseEnter={() => setResourceOpen(true)}
-                      onMouseLeave={() => setResourceOpen(false)}
-                    >
-                      <div className="flex items-center gap-1 cursor-pointer">
-                        <span className="text-slate-800 hover:text-primary font-semibold py-2 transition-colors">
-                          {item.label}
-                        </span>
-                        <ChevronDown size={16} className={`text-slate-800 group-hover:text-primary transition-all duration-300 ${resourceOpen ? 'rotate-180' : ''}`} />
-                      </div>
-
-                      <AnimatePresence>
-                        {resourceOpen && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute top-full left-0 mt-4 w-60 bg-white shadow-xl border-t-2 border-primary rounded-xl overflow-hidden"
-                          >
-                            {resourceItems.map((res, index) => (
-                              <Link
-                                key={res.label}
-                                href={res.href}
-                                className={`block px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-gray-50 hover:text-primary transition-colors ${index !== resourceItems.length - 1
-                                  ? 'border-b border-gray-100'
-                                  : ''
-                                  }`}
-                              >
-                                {res.label}
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                  /* ================= CAREERS DROPDOWN ================= */
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setResourceOpen(true)}
+                    onMouseLeave={() => setResourceOpen(false)}
+                  >
+                    <div className="flex items-center gap-1 cursor-pointer">
+                      <span className="text-slate-800 hover:text-primary font-semibold py-2 transition-colors">
+                        {item.label}
+                      </span>
+                      <ChevronDown size={16} className={`text-slate-800 group-hover:text-primary transition-all duration-300 ${resourceOpen ? 'rotate-180' : ''}`} />
                     </div>
 
-                  </>
+                    <AnimatePresence>
+                      {resourceOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-4 w-60 bg-white shadow-xl border-t-2 border-primary rounded-xl overflow-hidden"
+                        >
+                          {resourceItems.map((res, index) => (
+                            <Link
+                              key={res.label}
+                              href={res.href}
+                              className={`block px-5 py-3 text-sm font-semibold text-slate-700 hover:bg-gray-50 hover:text-primary transition-colors ${index !== resourceItems.length - 1
+                                ? 'border-b border-gray-100'
+                                : ''
+                                }`}
+                            >
+                              {res.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : item.moreDropdown ? (
+
+                  /* ================= CALCULATORS DROPDOWN ================= */
+                  <div
+                    className="relative"
+                    onMouseEnter={() => setMoreOpen(true)}
+                    onMouseLeave={() => setMoreOpen(false)}
+                  >
+                    <div className="flex items-center gap-1 cursor-pointer">
+                      <span className="text-slate-800 hover:text-primary font-semibold py-2 transition-colors">
+                        {item.label}
+                      </span>
+                      <ChevronDown size={16} className={`text-slate-800 group-hover:text-primary transition-all duration-300 ${moreOpen ? 'rotate-180' : ''}`} />
+                    </div>
+
+                    <AnimatePresence>
+                      {moreOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full right-0 mt-4 w-60 bg-white shadow-xl border-t-2 border-primary rounded-xl overflow-hidden z-50"
+                        >
+                          <div className="py-1">
+                            {moreItems.map((mItem, index) => {
+                              const IconComponent = mItem.icon
+                              return (
+                                <Link
+                                  key={mItem.label}
+                                  href={mItem.href}
+                                  onClick={() => setMoreOpen(false)}
+                                  className={`flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-primary transition-colors ${index !== moreItems.length - 1 ? 'border-b border-gray-100' : ''}`}
+                                >
+                                  <IconComponent className="w-4 h-4 text-secondary shrink-0" />
+                                  <span>{mItem.label}</span>
+                                </Link>
+                              )
+                            })}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 ) : (
                   /* ================= NORMAL LINK ================= */
                   <Link
@@ -300,7 +350,7 @@ export default function Header() {
                   </AnimatePresence>
                 </div>
 
-                {/* Mobile Resource Accordion */}
+                {/* Mobile Careers Accordion */}
                 <div className="rounded-lg overflow-hidden">
                   <button
                     className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:bg-gray-50 transition-colors"
@@ -338,11 +388,50 @@ export default function Header() {
                   </AnimatePresence>
                 </div>
 
-
-
                 <Link href="/blog" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
                   Blogs & Articles
                 </Link>
+
+                {/* Mobile Calculators Accordion */}
+                <div className="rounded-lg overflow-hidden">
+                  <button
+                    className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:bg-gray-50 transition-colors"
+                    onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
+                  >
+                    Calculators
+                    <motion.div animate={{ rotate: mobileMoreOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
+                      <ChevronDown size={20} className="text-gray-400" />
+                    </motion.div>
+                  </button>
+
+                  <AnimatePresence>
+                    {mobileMoreOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="bg-gray-50/50"
+                      >
+                        <div className="px-6 py-2 grid gap-1 border-l-2 border-primary/20 ml-6 my-2">
+                          {moreItems.map((mItem) => {
+                            const IconComp = mItem.icon
+                            return (
+                              <Link
+                                key={mItem.label}
+                                href={mItem.href}
+                                className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary py-2 transition-colors"
+                                onClick={() => setMobileOpen(false)}
+                              >
+                                <IconComp size={14} className="text-secondary" />
+                                <span>{mItem.label}</span>
+                              </Link>
+                            )
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 <div className="p-4 pt-6 mt-2 border-t border-gray-100">
                   <Link

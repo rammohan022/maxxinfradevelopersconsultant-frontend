@@ -1,14 +1,10 @@
-import { BlogHeroSection, LatestArticlesSection } from "@/components/blog"
-import { Pagination } from "@/components/ui"
+import { BlogHeroSection, LatestArticlesSection } from '@/components/blog'
 
-const Blog = ()=>{
-    return(
-        <>
-         <BlogHeroSection/>
-         <LatestArticlesSection/>
-         <Pagination/>
-        </>
-    )
+export default function Blog() {
+  return (
+    <>
+      <BlogHeroSection />
+      <LatestArticlesSection />
+    </>
+  )
 }
-
-export default Blog

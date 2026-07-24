@@ -16,7 +16,7 @@ const LifeAtCompany = () => {
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
-                            'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=400&q=80',
+                            '/img/career-hero.png',
                             'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=80',
                             'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80',
                             'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80',

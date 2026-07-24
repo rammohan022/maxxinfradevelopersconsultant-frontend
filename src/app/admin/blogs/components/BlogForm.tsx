@@ -97,9 +97,14 @@ export default function BlogForm({
         toast.success("Blog created successfully!");
       }
       router.push("/admin/blogs");
-    } catch (err) {
+    } catch (err: any) {
       console.error("Failed to save blog:", err);
-      toast.error("Failed to save blog. Please check your input.");
+      const errorMessage =
+        err?.data?.message ||
+        (Array.isArray(err?.data?.message) ? err.data.message.join(", ") : null) ||
+        err?.message ||
+        "Failed to save blog. Please check your input.";
+      toast.error(errorMessage);
     }
   };
 

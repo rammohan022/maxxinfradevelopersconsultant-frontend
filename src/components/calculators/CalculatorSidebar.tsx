@@ -7,6 +7,7 @@ import { TrendingUp, ArrowRight, ChevronRight, Calculator } from 'lucide-react'
 const availableCalculators = [
   { name: 'Salary & Take-Home Calculator', href: '/salary-calculator' },
   { name: 'Gratuity & Exit Benefit Calculator', href: '/gratuity-calculator' },
+  { name: 'Attrition Rate Calculator', href: '/attrition-calculator' },
 ]
 
 export default function CalculatorSidebar({ currentPath }: { currentPath?: string }) {

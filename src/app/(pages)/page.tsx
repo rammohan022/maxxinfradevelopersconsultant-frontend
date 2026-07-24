@@ -21,8 +21,8 @@ export default function Home() {
       <FeatureCards />
       <AboutUs />
       <Services />
-      <CallToAction />
       <IndustriesServe />
+      <CallToAction />
       <CoreValues />
       <CorporateTraining />
       <Testimonials />

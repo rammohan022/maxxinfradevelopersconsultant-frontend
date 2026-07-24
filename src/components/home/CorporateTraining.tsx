@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Container } from "@/components/ui"
 import { motion } from "framer-motion"
-import { Download, FileText, CheckCircle2 } from "lucide-react"
+import { Calendar, FileText, CheckCircle2, Send } from "lucide-react"
 import { toast } from "react-hot-toast"
 
 const programs = [
@@ -11,6 +11,8 @@ const programs = [
   { title: "Statutory Compliance & Labor Law", desc: "Keep internal teams aligned with legal compliance updates." },
   { title: "Diversity, Equity & Inclusion (DEI)", desc: "Foster inclusive culture, employee compliance, and trust." },
   { title: "Performance & OKR Goal Alignment", desc: "Align team execution and track productivity metrics efficiently." },
+  { title: "Soft Skills & Team Communication", desc: "Enhance interpersonal collaboration, emotional intelligence, and synergy." },
+  { title: "POSH & Harassment Prevention", desc: "Ensure safe, respectful workplaces in compliance with statutory POSH laws." },
 ]
 
 export default function CorporateTraining() {
@@ -26,10 +28,9 @@ export default function CorporateTraining() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-      toast.success("Brochure downloaded successfully!")
-      window.open("/docs/company_profile.pdf", "_blank")
+      toast.success("Demo request submitted successfully! Our team will get in touch shortly.")
       setFormData({ name: "", email: "", company: "" })
-    }, 1500)
+    }, 1200)
   }
 
   return (
@@ -54,7 +55,7 @@ export default function CorporateTraining() {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="font-bold text-slate-900 text-sm sm:text-base leading-snug">{prog.title}</h4>
+                      <h4 className="font-semibold text-slate-900 text-sm sm:text-base leading-snug">{prog.title}</h4>
                       <p className="text-slate-500 text-xs mt-1 leading-relaxed">{prog.desc}</p>
                     </div>
                   </div>
@@ -68,11 +69,11 @@ export default function CorporateTraining() {
             <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-xl">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-                  <FileText className="w-5 h-5" />
+                  <Calendar className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">Company Profile</h3>
-                  <p className="text-xs text-slate-500">Download our compliance & training guide</p>
+                  <h3 className="text-lg font-bold text-slate-900">Need Expert Assistance?</h3>
+                  <p className="text-xs text-slate-500">Book a personalized training demo for your team</p>
                 </div>
               </div>
 
@@ -120,11 +121,11 @@ export default function CorporateTraining() {
                   className="w-full inline-flex items-center justify-center font-semibold rounded-xl bg-secondary text-white hover:bg-secondary-dark transition-colors px-6 py-3.5 mt-2 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 shadow-md"
                 >
                   {loading ? (
-                    <span>Downloading...</span>
+                    <span>Submitting...</span>
                   ) : (
                     <>
-                      <Download className="w-5 h-5 mr-2" />
-                      Download Company Profile
+                      <Send className="w-4 h-4 mr-2" />
+                      Book a Demo
                     </>
                   )}
                 </button>

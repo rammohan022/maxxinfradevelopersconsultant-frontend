@@ -18,6 +18,7 @@ const quickLinks = [
 const calculatorLinks = [
   { label: 'Salary Calculator', href: '/salary-calculator' },
   { label: 'Gratuity Calculator', href: '/gratuity-calculator' },
+  { label: 'Attrition Rate Calculator', href: '/attrition-calculator' },
   { label: 'Open Positions', href: '/career' },
   { label: 'Submit Resume / CV', href: '/submit-cv' },
   { label: 'Our Executive Team', href: '/our-team' },

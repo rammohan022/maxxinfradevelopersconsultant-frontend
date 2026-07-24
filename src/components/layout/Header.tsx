@@ -7,6 +7,7 @@ import { useState, useRef, useEffect } from 'react'
 import { ChevronDown, ChevronRight, Menu, X, Calculator } from 'lucide-react'
 import { useGetServicesQuery } from '@/services/services'
 import { motion, AnimatePresence } from 'framer-motion'
+import { slugifyCategory } from '@/lib/utils/slugUtils'
 
 /* ================= RESOURCE ITEMS ================= */
 const resourceItems = [
@@ -18,6 +19,7 @@ const resourceItems = [
 const moreItems = [
   { label: 'Salary Calculator', href: '/salary-calculator', icon: Calculator },
   { label: 'Gratuity Calculator', href: '/gratuity-calculator', icon: Calculator },
+  { label: 'Attrition Rate Calculator', href: '/attrition-calculator', icon: Calculator },
 ]
 
 /* ================= NAV ITEMS ================= */
@@ -131,16 +133,21 @@ export default function Header() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 15 }}
                             transition={{ duration: 0.2 }}
-                            className="w-[800px]"
+                            className="w-[1050px]"
                           >
                             <div className="bg-white shadow-2xl border-t-2 border-primary rounded-xl p-8 relative overflow-hidden">
                               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
-                              <div className="grid grid-cols-3 gap-x-10 gap-y-8 relative z-10">
+                              <div className="grid grid-cols-4 gap-x-6 gap-y-8 relative z-10">
                                 {Object.entries(servicesByCategory).map(([category, items]) => (
                                   <div key={category} className="space-y-3">
-                                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 border-b pb-1">
-                                      {category}
-                                    </h4>
+                                    <Link
+                                       href={`/services/category/${slugifyCategory(category)}`}
+                                       onClick={() => setOpenDropdown(false)}
+                                       className="group/cat flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-primary border-b pb-1 transition-colors"
+                                     >
+                                       <span>{category}</span>
+                                       <ChevronRight size={12} className="opacity-0 group-hover/cat:opacity-100 transition-opacity" />
+                                     </Link>
                                     <div className="space-y-2">
                                       {items.map((area) => (
                                         <Link
@@ -326,9 +333,14 @@ export default function Header() {
                         <div className="px-6 py-3 ml-6 my-2 space-y-4 border-l-2 border-primary/20">
                           {Object.entries(servicesByCategory).map(([category, items]) => (
                             <div key={category} className="space-y-2">
-                              <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                                {category}
-                              </span>
+                              <Link
+                                href={`/services/category/${slugifyCategory(category)}`}
+                                onClick={() => setMobileOpen(false)}
+                                className="flex items-center justify-between text-[11px] font-bold uppercase tracking-wider text-slate-500 hover:text-primary py-0.5 transition-colors"
+                              >
+                                <span>{category}</span>
+                                <ChevronRight size={12} />
+                              </Link>
                               <div className="space-y-1">
                                 {items.map((area) => (
                                   <Link

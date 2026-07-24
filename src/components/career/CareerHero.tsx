@@ -47,8 +47,8 @@ const CareerHero = () => {
           <div className="relative hidden lg:block">
             <div className="relative h-[420px] w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60">
               <Image
-                src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&q=80"
-                alt="Consulting team working"
+                src="/img/career-hero.png"
+                alt="Consulting team collaborating in modern office"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

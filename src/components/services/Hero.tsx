@@ -8,47 +8,35 @@ interface PracticeAreaHeroProps {
 
 const PracticeAreaHero = ({ title, subtitle }: PracticeAreaHeroProps) => {
   return (
-    <section
-      className="relative h-[480px] flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundColor: "rgb(15 23 42 / var(--tw-bg-opacity, 1))",
-      }}
-    >
-      {/* ================= BACKGROUND IMAGE ================= */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/img/contact-hero-bg-v2.png"
-          alt="Modern workspace, human resource consulting background"
-          fill
-          priority
-          className="object-cover opacity-30"
-        />
-      </div>
+    <section className="relative py-16 lg:py-24 bg-gradient-to-b from-slate-100 via-white to-slate-50 border-b border-slate-200 flex items-center justify-center overflow-hidden">
+      {/* Background decoration blobs */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] -z-0" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[80px] -z-0" />
 
       {/* ================= CONTENT ================= */}
       <div className="relative z-10 mx-auto max-w-5xl text-center px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <div className="text-gray-300 text-sm mb-4 flex items-center justify-center space-x-2">
-          <Link href="/" className="hover:text-white transition">
+        <div className="text-slate-500 text-sm font-semibold mb-4 flex items-center justify-center space-x-2">
+          <Link href="/" className="hover:text-primary transition">
             Home
           </Link>
-          <span className="text-gray-400">&gt;</span>
+          <span className="text-slate-400">&gt;</span>
           <Link
             href="/services"
-            className="hover:text-white transition"
+            className="hover:text-primary transition"
           >
             Our Services
           </Link>
         </div>
 
         {/* Title */}
-        <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight mb-6">
+        <h1 className="text-slate-900 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
           {title}
         </h1>
 
         {/* Subtitle */}
         {subtitle && (
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+          <p className="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
             {subtitle}
           </p>
         )}

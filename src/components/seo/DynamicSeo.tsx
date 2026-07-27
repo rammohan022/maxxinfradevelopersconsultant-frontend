@@ -1,13 +1,48 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { useGetSeoByPathQuery, useGetGlobalSeoQuery } from "@/services/seo";
+import { usePathname, useRouter } from "next/navigation";
+import { useGetSeoByPathQuery, useGetGlobalSeoQuery, useGetActiveSeoRedirectsQuery } from "@/services/seo";
 import { useEffect } from "react";
 
 export default function DynamicSeo() {
   const pathname = usePathname();
+  const router = useRouter();
   const { data: pageSeo } = useGetSeoByPathQuery(pathname || "/");
   const { data: globalSeo } = useGetGlobalSeoQuery();
+  const { data: activeRedirects = [] } = useGetActiveSeoRedirectsQuery();
+
+  // 0. HANDLE 301 / 302 DYNAMIC URL REDIRECTS
+  useEffect(() => {
+    if (!pathname || !activeRedirects || activeRedirects.length === 0) return;
+
+    let cleanPath = pathname;
+    if (cleanPath.length > 1 && cleanPath.endsWith("/")) {
+      cleanPath = cleanPath.slice(0, -1);
+    }
+
+    const matchedRedirect = activeRedirects.find((r) => {
+      if (!r.isActive) return false;
+      let src = r.sourcePath ? r.sourcePath.trim() : "";
+      if (src.length > 1 && src.endsWith("/")) src = src.slice(0, -1);
+      return src.toLowerCase() === cleanPath.toLowerCase();
+    });
+
+    if (matchedRedirect && matchedRedirect.targetPath) {
+      const target = matchedRedirect.targetPath.trim();
+      let targetClean = target;
+      if (targetClean.length > 1 && targetClean.endsWith("/")) {
+        targetClean = targetClean.slice(0, -1);
+      }
+
+      if (targetClean.toLowerCase() !== cleanPath.toLowerCase()) {
+        if (target.startsWith("http://") || target.startsWith("https://")) {
+          window.location.href = target;
+        } else {
+          router.replace(target);
+        }
+      }
+    }
+  }, [pathname, activeRedirects, router]);
 
   useEffect(() => {
     // Helper to create or update meta tag

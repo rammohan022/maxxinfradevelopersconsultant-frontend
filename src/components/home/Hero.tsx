@@ -18,6 +18,8 @@ const defaultSlides = [
     body: 'People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes. We help organizations become High Performance workplaces.',
     ctaText: 'Explore Services',
     ctaLink: '/services',
+    secondaryCtaText: 'Learn More',
+    secondaryCtaLink: '/about-us',
     image: '/img/recruitment_banner.png',
   },
   {
@@ -29,6 +31,8 @@ const defaultSlides = [
     body: 'Our recruitment strategy focuses on clarity, structure, and navigating a wide range of market conditions to match the right candidates with the right employers effectively.',
     ctaText: 'View Openings',
     ctaLink: '/career',
+    secondaryCtaText: 'Learn More',
+    secondaryCtaLink: '/about-us',
     image: '/img/recruitment_banner.png',
   },
   {
@@ -40,6 +44,8 @@ const defaultSlides = [
     body: 'Everything we do is driven by our mission to build a better world by helping organizations become Great Employers to work for all, through comprehensive training and compliance frameworks.',
     ctaText: 'Contact Us',
     ctaLink: '/contact-us',
+    secondaryCtaText: 'Learn More',
+    secondaryCtaLink: '/about-us',
     image: '/img/recruitment_banner.png',
   },
 ]
@@ -59,14 +65,16 @@ export default function Hero() {
 
   const activeSlides = apiBanners.length > 0
     ? apiBanners.map((b) => ({
-        tag: 'FEATURED SOLUTION',
+        tag: b.tag || 'HR & RECRUITMENT',
         title: b.title,
-        highlight: '',
+        highlight: b.highlight || '',
         subtitle: b.subtitle || '',
-        desc: b.subtitle || 'People Consulting HR Services',
-        body: b.subtitle || 'Empowering people and transforming organizations with strategic HR solutions.',
+        desc: b.subtitle || '',
+        body: b.description || b.subtitle || 'People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes.',
         ctaText: b.ctaText || 'Explore Services',
         ctaLink: b.ctaLink || '/services',
+        secondaryCtaText: b.secondaryCtaText || 'Learn More',
+        secondaryCtaLink: b.secondaryCtaLink || '/about-us',
         image: b.image ? getImageUrl(b.image) : '/img/recruitment_banner.png',
       }))
     : defaultSlides;
@@ -101,14 +109,16 @@ export default function Hero() {
               exit="exit"
               transition={{ duration: 0.5, ease: 'easeInOut' }}
             >
-              <motion.span
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.4 }}
-                className="inline-block text-primary text-xs sm:text-sm font-bold mb-4 tracking-widest uppercase border-l-4 border-secondary pl-3 bg-slate-100/90 py-1 pr-3 rounded-r-md"
-              >
-                {activeSlide.tag}
-              </motion.span>
+              {activeSlide.tag && (
+                <motion.span
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1, duration: 0.4 }}
+                  className="inline-block text-primary text-xs sm:text-sm font-bold mb-4 tracking-widest uppercase border-l-4 border-secondary pl-3 bg-slate-100/90 py-1 pr-3 rounded-r-md"
+                >
+                  {activeSlide.tag}
+                </motion.span>
+              )}
 
               <motion.h1
                 initial={{ opacity: 0, y: 15 }}
@@ -117,27 +127,33 @@ export default function Hero() {
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-primary leading-tight mb-4"
               >
                 {activeSlide.title}{' '}
-                <span className="text-secondary">{activeSlide.highlight}</span>{' '}
+                {activeSlide.highlight && (
+                  <span className="text-secondary">{activeSlide.highlight}</span>
+                )}{' '}
                 {activeSlide.subtitle}
               </motion.h1>
 
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                className="text-base sm:text-lg text-slate-800 font-semibold mb-2"
-              >
-                {activeSlide.desc}
-              </motion.p>
+              {activeSlide.desc && (
+                <motion.p
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.4 }}
+                  className="text-base sm:text-lg text-slate-800 font-semibold mb-2"
+                >
+                  {activeSlide.desc}
+                </motion.p>
+              )}
 
-              <motion.p
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-                className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl leading-relaxed"
-              >
-                {activeSlide.body}
-              </motion.p>
+              {activeSlide.body && (
+                <motion.p
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.4 }}
+                  className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl leading-relaxed"
+                >
+                  {activeSlide.body}
+                </motion.p>
+              )}
 
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
@@ -145,18 +161,22 @@ export default function Hero() {
                 transition={{ delay: 0.5, duration: 0.4 }}
                 className="flex flex-wrap gap-3 sm:gap-4"
               >
-                <Link
-                  href={activeSlide.ctaLink}
-                  className="bg-secondary hover:bg-secondary-dark text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block shadow-md hover:shadow-secondary/20 hover:-translate-y-0.5"
-                >
-                  {activeSlide.ctaText}
-                </Link>
-                <Link
-                  href="/about-us"
-                  className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block bg-white"
-                >
-                  Learn More
-                </Link>
+                {activeSlide.ctaText && activeSlide.ctaLink && (
+                  <Link
+                    href={activeSlide.ctaLink}
+                    className="bg-secondary hover:bg-secondary-dark text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block shadow-md hover:shadow-secondary/20 hover:-translate-y-0.5"
+                  >
+                    {activeSlide.ctaText}
+                  </Link>
+                )}
+                {activeSlide.secondaryCtaText && activeSlide.secondaryCtaLink && (
+                  <Link
+                    href={activeSlide.secondaryCtaLink}
+                    className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block bg-white"
+                  >
+                    {activeSlide.secondaryCtaText}
+                  </Link>
+                )}
               </motion.div>
             </motion.div>
           </AnimatePresence>

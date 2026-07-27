@@ -10,6 +10,7 @@ import {
   Facebook,
   Twitter,
   Linkedin,
+  Instagram,
 } from 'lucide-react'
 import { useCreateLeadMutation } from '@/services/lead'
 import toast from 'react-hot-toast'
@@ -131,38 +132,36 @@ export default function Contact() {
                   </div>
                 </motion.div>
 
-                {/* Address */}
-                <motion.div variants={itemVariants} className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="h-4 w-4 text-secondary" />
+                <motion.div variants={itemVariants} className="flex items-start gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-slate-200 text-secondary shadow-sm">
+                    <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-secondary mb-1">
-                      Address
-                    </p>
-                    <p className="text-slate-700 text-base leading-relaxed max-w-[250px]">
-                      243, 2nd Floor, Vipul Trade Centre,
-                      Sector 48, Sohna Road,
-                      Gurgaon, Haryana
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Location</p>
+                    <p className="text-slate-800 font-medium text-base">
+                      India
                     </p>
                   </div>
                 </motion.div>
               </div>
 
               {/* Social */}
-              <motion.div variants={itemVariants} className="pt-8 border-t border-slate-100">
+              <motion.div variants={itemVariants} className="pt-8 border-t border-slate-200">
                 <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-secondary">
                   Follow Us
                 </p>
                 <div className="flex gap-3 text-slate-500">
-                  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1">
+                  <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="LinkedIn">
+                    <Linkedin className="h-4 w-4" />
+                  </a>
+                  <a href="https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoGl2" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="Instagram">
+                    <Instagram className="h-4 w-4" />
+                  </a>
+                  <a href="https://www.facebook.com/Weablywork" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="Facebook">
                     <Facebook className="h-4 w-4" />
                   </a>
-                  <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1">
+                  <a href="#" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="Twitter">
                     <Twitter className="h-4 w-4" />
-                  </a>
-                  <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-50 border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1">
-                    <Linkedin className="h-4 w-4" />
                   </a>
                 </div>
               </motion.div>

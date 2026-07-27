@@ -104,17 +104,17 @@ const ContactSection = () => {
                                 <div className="flex flex-col gap-3">
                                     <h4 className="text-lg font-semibold text-slate-900 mb-3">Follow Us</h4>
                                     <div className="flex gap-4 text-gray-600">
-                                        <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition">
+                                        <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition" aria-label="LinkedIn">
                                             <Linkedin className="w-5 h-5" />
                                         </a>
-                                        <a href="#" className="hover:text-red-700 transition">
-                                            <Twitter className="w-5 h-5" />
+                                        <a href="https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition" aria-label="Instagram">
+                                            <Instagram className="w-5 h-5" />
                                         </a>
-                                        <a href="#" className="hover:text-red-700 transition">
+                                        <a href="https://www.facebook.com/Weablywork" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition" aria-label="Facebook">
                                             <Facebook className="w-5 h-5" />
                                         </a>
-                                        <a href="https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition">
-                                            <Instagram className="w-5 h-5" />
+                                        <a href="#" className="hover:text-red-700 transition" aria-label="Twitter">
+                                            <Twitter className="w-5 h-5" />
                                         </a>
                                     </div>
                                 </div>

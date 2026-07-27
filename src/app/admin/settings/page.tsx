@@ -5,13 +5,13 @@ import { useGetSiteSettingsQuery, useUpdateSiteSettingsMutation } from "@/servic
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
-import { Save, Plus, Trash2, Globe, Phone, Share2, Menu } from "lucide-react";
+import { Save, Plus, Trash2, Globe, Phone, Share2, Menu, Sparkles, Key } from "lucide-react";
 
 export default function SiteSettingsPage() {
   const { data: settings, isLoading } = useGetSiteSettingsQuery();
   const [updateSettings, { isLoading: isSaving }] = useUpdateSiteSettingsMutation();
 
-  const [activeTab, setActiveTab] = useState<"general" | "contact" | "social" | "menus">("general");
+  const [activeTab, setActiveTab] = useState<"general" | "contact" | "social" | "menus" | "ai">("general");
 
   const [form, setForm] = useState({
     siteName: "",
@@ -20,6 +20,13 @@ export default function SiteSettingsPage() {
     officeAddress: "",
     workingHours: "",
     logo: "",
+  });
+
+  const [aiKeys, setAiKeys] = useState({
+    geminiApiKey: "",
+    openaiApiKey: "",
+    openrouterApiKey: "",
+    defaultAiProvider: "gemini",
   });
 
   const [socialLinks, setSocialLinks] = useState({
@@ -44,6 +51,12 @@ export default function SiteSettingsPage() {
         officeAddress: settings.officeAddress || "",
         workingHours: settings.workingHours || "",
         logo: settings.logo || "",
+      });
+      setAiKeys({
+        geminiApiKey: settings.geminiApiKey || "",
+        openaiApiKey: settings.openaiApiKey || "",
+        openrouterApiKey: settings.openrouterApiKey || "",
+        defaultAiProvider: settings.defaultAiProvider || "gemini",
       });
       setSocialLinks({
         facebook: settings.socialLinks?.facebook || "",
@@ -81,6 +94,10 @@ export default function SiteSettingsPage() {
     formData.append("contactEmail", form.contactEmail);
     formData.append("officeAddress", form.officeAddress);
     formData.append("workingHours", form.workingHours);
+    formData.append("geminiApiKey", aiKeys.geminiApiKey);
+    formData.append("openaiApiKey", aiKeys.openaiApiKey);
+    formData.append("openrouterApiKey", aiKeys.openrouterApiKey);
+    formData.append("defaultAiProvider", aiKeys.defaultAiProvider);
     formData.append("socialLinks", JSON.stringify(socialLinks));
     formData.append("headerMenu", JSON.stringify(headerMenu));
 
@@ -90,7 +107,7 @@ export default function SiteSettingsPage() {
 
     try {
       await updateSettings(formData).unwrap();
-      toast.success("Site settings updated successfully!");
+      toast.success("Site settings & AI Keys updated successfully!");
     } catch (err) {
       console.error(err);
       toast.error("Failed to update site settings.");
@@ -158,10 +175,92 @@ export default function SiteSettingsPage() {
         >
           <Menu size={16} /> Navigation Menus
         </button>
+        <button
+          onClick={() => setActiveTab("ai")}
+          className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 transition ${
+            activeTab === "ai"
+              ? "border-purple-600 text-purple-600"
+              : "border-transparent text-slate-500 hover:text-slate-700"
+          }`}
+        >
+          <Sparkles size={16} className="text-purple-600 animate-pulse" /> 🤖 AI Configuration
+        </button>
       </div>
 
       {/* Content Form */}
       <form onSubmit={handleSave} className="bg-white p-6 rounded-xl border shadow space-y-6">
+        {activeTab === "ai" && (
+          <div className="space-y-5">
+            <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 text-xs text-purple-800 space-y-1">
+              <p className="font-bold text-sm flex items-center gap-1.5 text-purple-900">
+                <Sparkles size={16} /> Multi-Provider AI Engine Setup
+              </p>
+              <p>
+                Configure your API Keys for <strong>Google Gemini</strong>, <strong>OpenAI</strong>, or <strong>OpenRouter</strong>.
+                AI tools across the portal (Blog Generator, Meta Description, SEO Title, FAQ Generator, Image Alt Text, Content Rewrite, and Grammar Fixer) will use your default provider key automatically.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1">
+                  <Key size={14} className="text-purple-600" /> Default AI Provider
+                </label>
+                <select
+                  value={aiKeys.defaultAiProvider}
+                  onChange={(e) => setAiKeys({ ...aiKeys, defaultAiProvider: e.target.value })}
+                  className="w-full border rounded-lg px-3 py-2 text-xs font-bold bg-white text-slate-800"
+                >
+                  <option value="gemini">Google Gemini (Recommended / Fast & Free Tier)</option>
+                  <option value="openai">OpenAI (GPT-4o-mini)</option>
+                  <option value="openrouter">OpenRouter (Universal Router)</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Google Gemini API Key
+                </label>
+                <input
+                  type="password"
+                  value={aiKeys.geminiApiKey}
+                  onChange={(e) => setAiKeys({ ...aiKeys, geminiApiKey: e.target.value })}
+                  placeholder="AIzaSy..."
+                  className="w-full border rounded-lg px-3 py-2 text-xs font-mono"
+                />
+                <span className="text-[10px] text-slate-400">Get key from Google AI Studio (aistudio.google.com)</span>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  OpenAI API Key
+                </label>
+                <input
+                  type="password"
+                  value={aiKeys.openaiApiKey}
+                  onChange={(e) => setAiKeys({ ...aiKeys, openaiApiKey: e.target.value })}
+                  placeholder="sk-..."
+                  className="w-full border rounded-lg px-3 py-2 text-xs font-mono"
+                />
+                <span className="text-[10px] text-slate-400">Get key from OpenAI Platform (platform.openai.com)</span>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  OpenRouter API Key
+                </label>
+                <input
+                  type="password"
+                  value={aiKeys.openrouterApiKey}
+                  onChange={(e) => setAiKeys({ ...aiKeys, openrouterApiKey: e.target.value })}
+                  placeholder="sk-or-..."
+                  className="w-full border rounded-lg px-3 py-2 text-xs font-mono"
+                />
+                <span className="text-[10px] text-slate-400">Get key from OpenRouter Dashboard (openrouter.ai)</span>
+              </div>
+            </div>
+          </div>
+        )}
         {activeTab === "general" && (
           <div className="space-y-4">
             <div>
@@ -251,6 +350,15 @@ export default function SiteSettingsPage() {
               />
             </div>
             <div>
+              <label className="block text-sm font-medium mb-1">Instagram URL</label>
+              <input
+                type="url"
+                value={socialLinks.instagram}
+                onChange={(e) => setSocialLinks({ ...socialLinks, instagram: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+            <div>
               <label className="block text-sm font-medium mb-1">Facebook URL</label>
               <input
                 type="url"
@@ -265,15 +373,6 @@ export default function SiteSettingsPage() {
                 type="url"
                 value={socialLinks.twitter}
                 onChange={(e) => setSocialLinks({ ...socialLinks, twitter: e.target.value })}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Instagram URL</label>
-              <input
-                type="url"
-                value={socialLinks.instagram}
-                onChange={(e) => setSocialLinks({ ...socialLinks, instagram: e.target.value })}
                 className="w-full border rounded-lg px-3 py-2 text-sm"
               />
             </div>

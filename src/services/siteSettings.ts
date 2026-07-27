@@ -20,6 +20,10 @@ export interface SiteSettings {
   };
   headerMenu?: { name: string; href: string }[];
   footerMenu?: { title: string; links: { name: string; href: string }[] }[];
+  geminiApiKey?: string;
+  openaiApiKey?: string;
+  openrouterApiKey?: string;
+  defaultAiProvider?: string;
 }
 
 export const siteSettingsApi = baseApi.injectEndpoints({

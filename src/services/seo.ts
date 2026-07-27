@@ -69,7 +69,7 @@ export const seoApi = baseApi.injectEndpoints({
         method: "GET",
         params: { path },
       }),
-      providesTags: (result, error, path) => [{ type: "SeoSettings", id: path }],
+      providesTags: (result, error, path) => [{ type: "SeoSettings", id: path }, "SeoSettings"],
     }),
     getSeoById: builder.query<SeoSettings, string>({
       query: (id) => ({
@@ -127,6 +127,13 @@ export const seoApi = baseApi.injectEndpoints({
       }),
       providesTags: ["SeoSettings"],
     }),
+    getActiveSeoRedirects: builder.query<SeoRedirect[], void>({
+      query: () => ({
+        url: `${API_ENDPOINTS.seo}/redirects/active`,
+        method: "GET",
+      }),
+      providesTags: ["SeoSettings"],
+    }),
     createSeoRedirect: builder.mutation<SeoRedirect, CreateSeoRedirectDto>({
       query: (body) => ({
         url: `${API_ENDPOINTS.seo}/redirects`,
@@ -164,6 +171,7 @@ export const {
   useGetGlobalSeoQuery,
   useUpdateGlobalSeoMutation,
   useGetSeoRedirectsQuery,
+  useGetActiveSeoRedirectsQuery,
   useCreateSeoRedirectMutation,
   useUpdateSeoRedirectMutation,
   useDeleteSeoRedirectMutation,

@@ -9,6 +9,8 @@ import toast from "react-hot-toast";
 import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
+import { Sparkles } from "lucide-react";
+import AiModal, { AiToolType } from "@/components/ai/AiModal";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -48,6 +50,12 @@ export default function BlogForm({
   // Meta fields
   const [metaTitle, setMetaTitle] = useState(initialData?.metaTitle || "");
   const [metaDescription, setMetaDescription] = useState(initialData?.metaDescription || "");
+
+  const [aiModal, setAiModal] = useState<{
+    isOpen: boolean;
+    tool: AiToolType;
+    input: string;
+  }>({ isOpen: false, tool: "blog", input: "" });
 
   useEffect(() => {
     if (initialData) {
@@ -98,7 +106,7 @@ export default function BlogForm({
       }
       router.push("/admin/blogs");
     } catch (err: any) {
-      console.error("Failed to save blog:", err);
+      console.error("Submit error:", err);
       const errorMessage =
         err?.data?.message ||
         (Array.isArray(err?.data?.message) ? err.data.message.join(", ") : null) ||
@@ -111,7 +119,34 @@ export default function BlogForm({
   const isLoading = isCreating || isUpdating;
 
   return (
-    <div className="bg-white p-4 rounded-xl shadow-sm border">
+    <div className="bg-white p-4 rounded-xl shadow-sm border space-y-4">
+      {/* Top AI Action Banner */}
+      <div className="bg-purple-50 border border-purple-200 rounded-xl p-3.5 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2 text-purple-900">
+          <Sparkles className="text-purple-600 animate-bounce" size={18} />
+          <div>
+            <p className="text-xs font-bold">AI Content Assistant 🤖</p>
+            <p className="text-[11px] text-purple-700">Generate blog posts, meta descriptions, or fix grammar instantly</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={() => setAiModal({ isOpen: true, tool: "blog", input: title || "HR Consulting Trends" })}
+            className="flex items-center gap-1.5 bg-purple-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-purple-700 shadow transition"
+          >
+            <Sparkles size={14} /> AI Blog Generator
+          </button>
+          <button
+            type="button"
+            onClick={() => setAiModal({ isOpen: true, tool: "grammar", input: content })}
+            className="flex items-center gap-1.5 bg-white text-purple-700 border border-purple-300 px-3 py-1.5 rounded-lg text-xs font-bold hover:bg-purple-100 transition"
+          >
+            Proofread & Fix Grammar
+          </button>
+        </div>
+      </div>
+
       <form onSubmit={handleSubmit} className="grid gap-4">
         {/* Title and Slug */}
         <div className="grid md:grid-cols-2 gap-3">
@@ -288,6 +323,31 @@ export default function BlogForm({
           </button>
         </div>
       </form>
+
+      {/* AI Assistant Modal */}
+      <AiModal
+        isOpen={aiModal.isOpen}
+        onClose={() => setAiModal((prev) => ({ ...prev, isOpen: false }))}
+        initialTool={aiModal.tool}
+        initialInput={aiModal.input}
+        onApply={(result) => {
+          if (aiModal.tool === "blog" && result?.title) {
+            setTitle(result.title);
+            setSlug(slugify(result.title));
+            if (result.excerpt) setMetaDescription(result.excerpt);
+            if (result.content) setContent(result.content);
+            toast.success("AI generated blog content applied!");
+          } else if (typeof result === "string") {
+            if (aiModal.tool === "grammar" || aiModal.tool === "rewrite") {
+              setContent(result);
+              toast.success("Content updated with AI result!");
+            } else if (aiModal.tool === "metaDescription") {
+              setMetaDescription(result);
+              toast.success("Meta Description updated!");
+            }
+          }
+        }}
+      />
     </div>
   );
 }

@@ -14,9 +14,11 @@ import {
   Sliders,
   Image as ImageIcon,
   FolderOpen,
+  User,
 } from "lucide-react";
 import { removeAuthToken } from "@/lib/utils/TokenHelper";
 import { useGetProfileQuery } from "@/services/auth";
+import { getImageUrl } from "@/lib/utils/imageUtils";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
@@ -37,7 +39,17 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard, allowedRoles: ["admin"], permissionKey: "dashboard" },
-  { name: "Hero Banners", href: "/admin/banners", icon: Sliders, allowedRoles: ["admin"], permissionKey: "banners" },
+  {
+    name: "Website Content",
+    icon: Sliders,
+    allowedRoles: ["admin"],
+    permissionKey: "banners",
+    subItems: [
+      { name: "Hero Banners", href: "/admin/banners" },
+      { name: "Testimonials", href: "/admin/testimonials" },
+      { name: "Media Library", href: "/admin/media" },
+    ],
+  },
   {
     name: "Services",
     icon: Layers,
@@ -68,16 +80,30 @@ const navItems: NavItem[] = [
       { name: "Blog Categories", href: "/admin/blog-categories" },
     ],
   },
-  { name: "Media Library", href: "/admin/media", icon: FolderOpen, allowedRoles: ["admin"], permissionKey: "media" },
   { name: "Leads", href: "/admin/leads", icon: Users, allowedRoles: ["admin"], permissionKey: "leads" },
-  { name: "Compliance Library", href: "/admin/website-links", icon: Globe, allowedRoles: ["admin"], permissionKey: "settings" },
-  { name: "SEO Settings", href: "/admin/seo", icon: Globe, allowedRoles: ["admin"], permissionKey: "seo" },
-  { name: "Site Settings", href: "/admin/settings", icon: Settings, allowedRoles: ["admin"], permissionKey: "settings" },
   { name: "Team & Roles", href: "/admin/users", icon: Users, allowedRoles: ["admin"], permissionKey: "users" },
-  { name: "Testimonials", href: "/admin/testimonials", icon: Users, allowedRoles: ["admin"], permissionKey: "testimonials" },
-  { name: "Privacy Policy", href: "/admin/privacy-policy", icon: FileText, allowedRoles: ["admin"], permissionKey: "legal" },
-  { name: "Terms & Conditions", href: "/admin/terms-conditions", icon: FileText, allowedRoles: ["admin"], permissionKey: "legal" },
-  { name: "Profile", href: "/admin/profile", icon: Settings, allowedRoles: ["admin", "hr", "editor"] },
+  {
+    name: "Legal Pages",
+    icon: FileText,
+    allowedRoles: ["admin"],
+    permissionKey: "legal",
+    subItems: [
+      { name: "Privacy Policy", href: "/admin/privacy-policy" },
+      { name: "Terms & Conditions", href: "/admin/terms-conditions" },
+    ],
+  },
+  {
+    name: "Settings",
+    icon: Settings,
+    allowedRoles: ["admin"],
+    permissionKey: "settings",
+    subItems: [
+      { name: "🤖 AI API Keys & Tools", href: "/admin/ai-settings" },
+      { name: "Site & Logo Settings", href: "/admin/settings" },
+      { name: "SEO Settings", href: "/admin/seo" },
+      { name: "Compliance Library", href: "/admin/website-links" },
+    ],
+  },
 ];
 
 const SideNav = () => {
@@ -89,17 +115,20 @@ const SideNav = () => {
 
   const visibleNavItems = navItems.filter((item) => {
     if (userRole === "admin" || userRole === "superadmin") return true;
-    if (item.name === "Profile") return true;
-    if (item.permissionKey && permissions.includes(item.permissionKey)) return true;
+    if (item.name === "Dashboard") return true;
+    if (item.permissionKey && (permissions.includes(item.permissionKey) || item.permissionKey === "dashboard")) return true;
     if (item.allowedRoles && item.allowedRoles.some((r) => r.toLowerCase() === userRole)) return true;
     return false;
   });
 
   // Track open state for dropdown menus
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
+    "Website Content": pathname.startsWith("/admin/banners") || pathname.startsWith("/admin/testimonials") || pathname.startsWith("/admin/media"),
     Services: pathname.startsWith("/admin/services") || pathname.startsWith("/admin/service-categories"),
     Careers: pathname.startsWith("/admin/career") || pathname.startsWith("/admin/applications"),
     Blogs: pathname.startsWith("/admin/blogs") || pathname.startsWith("/admin/blog-categories"),
+    "Legal Pages": pathname.startsWith("/admin/privacy-policy") || pathname.startsWith("/admin/terms-conditions"),
+    Settings: pathname.startsWith("/admin/settings") || pathname.startsWith("/admin/seo") || pathname.startsWith("/admin/website-links"),
   });
 
   const toggleMenu = (name: string) => {
@@ -194,14 +223,41 @@ const SideNav = () => {
         </nav>
       </div>
 
-      {/* Bottom Logout */}
-      <div className="border-t border-white/10 sticky bottom-0" style={{ backgroundColor: "rgb(13 33 55)" }}>
+      {/* Bottom User Profile & Logout */}
+      <div className="border-t border-white/10 sticky bottom-0 p-3 flex items-center justify-between gap-2" style={{ backgroundColor: "rgb(13 33 55)" }}>
+        <Link
+          href="/admin/profile"
+          className={`flex items-center gap-2.5 min-w-0 flex-1 p-1.5 rounded-lg hover:bg-white/10 transition group/user ${pathname === "/admin/profile" ? "bg-white/10 font-bold" : ""}`}
+          title="View My Profile"
+        >
+          <div className="w-8 h-8 rounded-full overflow-hidden bg-slate-700 shrink-0 border border-white/20 relative flex items-center justify-center">
+            {profile?.profilePhoto ? (
+              <Image
+                src={getImageUrl(profile.profilePhoto)}
+                alt={profile.name || "User"}
+                fill
+                className="object-cover"
+              />
+            ) : (
+              <User size={16} className="text-white/80" />
+            )}
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-xs font-semibold text-white truncate group-hover/user:text-secondary transition">
+              {profile?.name || "My Profile"}
+            </p>
+            <p className="text-[10px] text-white/50 truncate capitalize">
+              {profile?.role || "Admin"}
+            </p>
+          </div>
+        </Link>
+
         <button
           onClick={handleLogout}
-          className="w-full flex items-center text-red-500 gap-3 px-6 py-4 font-semibold hover:bg-red-500/10 transition"
+          className="p-2 rounded-lg text-slate-400 hover:text-red-400 hover:bg-red-500/10 transition shrink-0"
+          title="Logout"
         >
           <LogOut size={18} />
-          Logout
         </button>
       </div>
     </aside>

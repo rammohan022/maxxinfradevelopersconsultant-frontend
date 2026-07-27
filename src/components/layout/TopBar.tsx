@@ -42,24 +42,24 @@ export default function TopBar() {
 
         {/* Right: Social Icons */}
         <div className="flex items-center gap-4">
-          {facebook && (
-            <Link href={facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition">
-              <Facebook size={16} strokeWidth={1.8} />
-            </Link>
-          )}
-          {twitter && (
-            <Link href={twitter} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition">
-              <Twitter size={16} strokeWidth={1.8} />
-            </Link>
-          )}
           {linkedin && (
-            <Link href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition">
+            <Link href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition" aria-label="LinkedIn">
               <Linkedin size={16} strokeWidth={1.8} />
             </Link>
           )}
           {instagram && (
-            <Link href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition">
+            <Link href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition" aria-label="Instagram">
               <Instagram size={16} strokeWidth={1.8} />
+            </Link>
+          )}
+          {facebook && (
+            <Link href={facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition" aria-label="Facebook">
+              <Facebook size={16} strokeWidth={1.8} />
+            </Link>
+          )}
+          {twitter && (
+            <Link href={twitter} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition" aria-label="Twitter">
+              <Twitter size={16} strokeWidth={1.8} />
             </Link>
           )}
         </div>

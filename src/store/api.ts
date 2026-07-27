@@ -26,4 +26,5 @@ export const API_ENDPOINTS = {
     siteSettings: "/site-settings",
     banners: "/banners",
     media: "/media",
+    ai: "/ai",
 };

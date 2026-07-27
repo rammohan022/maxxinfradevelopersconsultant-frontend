@@ -3,11 +3,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/ui'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { ChevronDown, ChevronRight, Menu, X, Calculator } from 'lucide-react'
 import { useGetServicesQuery } from '@/services/services'
 import { useGetServiceCategoriesQuery } from '@/services/serviceCategory'
 import { useGetSiteSettingsQuery } from '@/services/siteSettings'
+import { useGetSeoSettingsQuery } from '@/services/seo'
 import { getImageUrl } from '@/lib/utils/imageUtils'
 import { motion, AnimatePresence } from 'framer-motion'
 import { slugifyCategory } from '@/lib/utils/slugUtils'
@@ -25,8 +26,8 @@ const moreItems = [
   { label: 'Attrition Rate Calculator', href: '/attrition-calculator', icon: Calculator },
 ]
 
-/* ================= NAV ITEMS ================= */
-const navItems = [
+/* ================= DEFAULT NAV ITEMS ================= */
+const defaultNavItems = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
   { label: 'Our Services', href: '/services', mega: true },
@@ -48,7 +49,57 @@ export default function Header() {
   const { data: practiceAreas = [] } = useGetServicesQuery()
   const { data: serviceCategories = [] } = useGetServiceCategoriesQuery()
   const { data: siteSettings } = useGetSiteSettingsQuery()
+  const { data: seoList = [] } = useGetSeoSettingsQuery()
   const closeTimeout = useRef<NodeJS.Timeout | null>(null)
+
+  // Dynamic navbar item names based on CMS (siteSettings.headerMenu and seoSettings pageName)
+  const navItems = useMemo(() => {
+    const cmsHeaderMap = (siteSettings?.headerMenu || []).reduce<Record<string, string>>((acc, item) => {
+      if (item.href && item.name) {
+        acc[item.href] = item.name;
+        if (item.href === '/about-us' || item.href === '/about') {
+          acc['/about-us'] = item.name;
+          acc['/about'] = item.name;
+        }
+        if (item.href === '/career' || item.href === '/careers') {
+          acc['/career'] = item.name;
+          acc['/careers'] = item.name;
+        }
+        if (item.href === '/contact-us' || item.href === '/contact') {
+          acc['/contact-us'] = item.name;
+          acc['/contact'] = item.name;
+        }
+      }
+      return acc;
+    }, {});
+
+    const seoPageNameMap = (seoList || []).reduce<Record<string, string>>((acc, item) => {
+      if (item.pagePath && item.pageName) {
+        acc[item.pagePath] = item.pageName;
+        if (item.pagePath === '/about-us' || item.pagePath === '/about') {
+          acc['/about-us'] = item.pageName;
+          acc['/about'] = item.pageName;
+        }
+        if (item.pagePath === '/career' || item.pagePath === '/careers') {
+          acc['/career'] = item.pageName;
+          acc['/careers'] = item.pageName;
+        }
+        if (item.pagePath === '/contact-us' || item.pagePath === '/contact') {
+          acc['/contact-us'] = item.pageName;
+          acc['/contact'] = item.pageName;
+        }
+      }
+      return acc;
+    }, {});
+
+    return defaultNavItems.map((item) => {
+      const dynamicLabel = cmsHeaderMap[item.href] || seoPageNameMap[item.href];
+      return {
+        ...item,
+        label: dynamicLabel || item.label,
+      };
+    });
+  }, [siteSettings?.headerMenu, seoList]);
 
   // Map category names to positions
   const categoryPositionMap = (serviceCategories || []).reduce<Record<string, number>>((acc, cat) => {
@@ -327,8 +378,12 @@ export default function Header() {
               className="lg:hidden border-t border-gray-100 overflow-hidden"
             >
               <div className="py-4 space-y-2">
-                <Link href="/" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">Home</Link>
-                <Link href="/about-us" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">About Us</Link>
+                <Link href="/" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
+                  {navItems.find((i) => i.href === '/')?.label || 'Home'}
+                </Link>
+                <Link href="/about-us" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
+                  {navItems.find((i) => i.href === '/about-us')?.label || 'About Us'}
+                </Link>
 
                 {/* Mobile Practice Accordion */}
                 <div className="rounded-lg overflow-hidden">
@@ -336,7 +391,7 @@ export default function Header() {
                     className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:bg-gray-50 transition-colors"
                     onClick={() => setMobilePracticeOpen(!mobilePracticeOpen)}
                   >
-                    Our Services
+                    {navItems.find((i) => i.mega)?.label || 'Our Services'}
                     <motion.div animate={{ rotate: mobilePracticeOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
                       <ChevronDown size={20} className="text-gray-400" />
                     </motion.div>
@@ -388,7 +443,7 @@ export default function Header() {
                     className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:bg-gray-50 transition-colors"
                     onClick={() => setMobileResourceOpen(!mobileResourceOpen)}
                   >
-                    Careers
+                    {navItems.find((i) => i.dropdown)?.label || 'Careers'}
                     <motion.div animate={{ rotate: mobileResourceOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
                       <ChevronDown size={20} className="text-gray-400" />
                     </motion.div>
@@ -421,7 +476,7 @@ export default function Header() {
                 </div>
 
                 <Link href="/blog" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:bg-gray-50 rounded-lg">
-                  Blogs & Articles
+                  {navItems.find((i) => i.href === '/blog')?.label || 'Blogs & Articles'}
                 </Link>
 
                 {/* Mobile Calculators Accordion */}
@@ -430,7 +485,7 @@ export default function Header() {
                     className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:bg-gray-50 transition-colors"
                     onClick={() => setMobileMoreOpen(!mobileMoreOpen)}
                   >
-                    Calculators
+                    {navItems.find((i) => i.moreDropdown)?.label || 'Calculators'}
                     <motion.div animate={{ rotate: mobileMoreOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
                       <ChevronDown size={20} className="text-gray-400" />
                     </motion.div>

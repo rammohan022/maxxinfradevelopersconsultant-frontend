@@ -42,7 +42,7 @@ export default function AdminUsersPage() {
     password: "",
     phoneNumber: "",
     role: "hr" as UserRoleType,
-    permissions: ["careers"] as string[],
+    permissions: ["dashboard", "careers"] as string[],
     isActive: true,
   });
 
@@ -54,22 +54,23 @@ export default function AdminUsersPage() {
   );
 
   const handleRoleChange = (newRole: UserRoleType) => {
-    let defaultPerms: string[] = [];
+    let defaultPerms: string[] = ["dashboard"];
     if (newRole === "admin") {
       defaultPerms = ALL_MODULES.map((m) => m.key);
     } else if (newRole === "hr") {
-      defaultPerms = ["careers"];
+      defaultPerms = ["dashboard", "careers"];
     } else if (newRole === "editor") {
-      defaultPerms = ["blogs"];
+      defaultPerms = ["dashboard", "blogs"];
     }
     setForm((prev) => ({ ...prev, role: newRole, permissions: defaultPerms }));
   };
 
   const handlePermissionToggle = (key: string) => {
+    if (key === "dashboard") return;
     setForm((prev) => {
       const exists = prev.permissions.includes(key);
       const updated = exists ? prev.permissions.filter((p) => p !== key) : [...prev.permissions, key];
-      return { ...prev, permissions: updated };
+      return { ...prev, permissions: Array.from(new Set(["dashboard", ...updated])) };
     });
   };
 
@@ -82,7 +83,7 @@ export default function AdminUsersPage() {
         password: "",
         phoneNumber: user.phoneNumber || "",
         role: user.role,
-        permissions: user.permissions || (user.role === "admin" ? ALL_MODULES.map(m => m.key) : user.role === "hr" ? ["careers"] : ["blogs"]),
+        permissions: Array.from(new Set(["dashboard", ...(user.permissions || (user.role === "admin" ? ALL_MODULES.map(m => m.key) : user.role === "hr" ? ["careers"] : ["blogs"]))])),
         isActive: user.isActive,
       });
     } else {
@@ -93,7 +94,7 @@ export default function AdminUsersPage() {
         password: "",
         phoneNumber: "",
         role: "hr",
-        permissions: ["careers"],
+        permissions: ["dashboard", "careers"],
         isActive: true,
       });
     }
@@ -112,6 +113,7 @@ export default function AdminUsersPage() {
             permissions: form.permissions,
             isActive: form.isActive,
             ...(form.password ? { password: form.password } : {}),
+            ...(form.phoneNumber && form.phoneNumber.trim() ? { phoneNumber: form.phoneNumber.trim() } : {}),
           },
         }).unwrap();
         toast.success("User role & permissions updated!");
@@ -120,17 +122,16 @@ export default function AdminUsersPage() {
           name: form.name,
           email: form.email,
           password: form.password,
-          phoneNumber: form.phoneNumber,
           role: form.role,
           permissions: form.permissions,
           isActive: form.isActive,
+          ...(form.phoneNumber && form.phoneNumber.trim() ? { phoneNumber: form.phoneNumber.trim() } : {}),
         }).unwrap();
         toast.success("Team member created successfully!");
       }
       setModalOpen(false);
     } catch (err) {
-      console.error(err);
-      toast.error("Failed to save user.");
+      console.error("User save error:", err);
     }
   };
 
@@ -140,7 +141,7 @@ export default function AdminUsersPage() {
       await deleteUser(id).unwrap();
       toast.success("User removed successfully!");
     } catch (err) {
-      toast.error("Failed to remove user.");
+      console.error("User delete error:", err);
     }
   };
 
@@ -241,22 +242,26 @@ export default function AdminUsersPage() {
                     </span>
                   </td>
                   <td className="p-3 text-center">
-                    <div className="flex justify-center gap-2">
-                      <button
-                        onClick={() => handleOpenModal(u)}
-                        className="text-slate-400 hover:text-secondary p-1.5 rounded hover:bg-blue-50"
-                        title="Edit Permissions"
-                      >
-                        <Pencil size={18} />
-                      </button>
-                      <button
-                        onClick={() => handleDelete(u.id, u.email)}
-                        className="text-slate-400 hover:text-red-600 p-1.5 rounded hover:bg-red-50"
-                        title="Delete User"
-                      >
-                        <Trash2 size={18} />
-                      </button>
-                    </div>
+                    {u.role === "admin" ? (
+                      <span className="text-xs font-medium text-slate-400 font-mono">—</span>
+                    ) : (
+                      <div className="flex justify-center gap-2">
+                        <button
+                          onClick={() => handleOpenModal(u)}
+                          className="text-slate-400 hover:text-secondary p-1.5 rounded hover:bg-blue-50"
+                          title="Edit Permissions"
+                        >
+                          <Pencil size={18} />
+                        </button>
+                        <button
+                          onClick={() => handleDelete(u.id, u.email)}
+                          className="text-slate-400 hover:text-red-600 p-1.5 rounded hover:bg-red-50"
+                          title="Delete User"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))
@@ -337,17 +342,21 @@ export default function AdminUsersPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-2 max-h-44 overflow-y-auto p-1">
                   {ALL_MODULES.map((mod) => {
-                    const isChecked = form.permissions.includes(mod.key) || form.role === "admin";
+                    const isDefault = mod.key === "dashboard";
+                    const isChecked = form.permissions.includes(mod.key) || form.role === "admin" || isDefault;
+                    const isDisabled = form.role === "admin" || isDefault;
                     return (
-                      <label key={mod.key} className="flex items-center gap-2 text-xs text-slate-700 cursor-pointer hover:bg-white p-1 rounded border border-transparent hover:border-slate-200">
+                      <label key={mod.key} className={`flex items-center gap-2 text-xs text-slate-700 cursor-pointer hover:bg-white p-1 rounded border border-transparent hover:border-slate-200 ${isDefault ? "opacity-90 font-medium" : ""}`}>
                         <input
                           type="checkbox"
                           checked={isChecked}
-                          disabled={form.role === "admin"}
+                          disabled={isDisabled}
                           onChange={() => handlePermissionToggle(mod.key)}
                           className="rounded text-secondary focus:ring-secondary"
                         />
-                        <span>{mod.label}</span>
+                        <span>
+                          {mod.label} {isDefault && <span className="text-[10px] text-secondary font-bold">(Default)</span>}
+                        </span>
                       </label>
                     );
                   })}

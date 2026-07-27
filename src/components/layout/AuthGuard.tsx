@@ -8,7 +8,7 @@ import { ShieldAlert, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 const MODULE_PERMISSIONS_MAP: { prefix: string; permissionKey: string; allowedRoles?: string[] }[] = [
-  { prefix: "/admin/dashboard", permissionKey: "dashboard", allowedRoles: ["admin"] },
+  { prefix: "/admin/dashboard", permissionKey: "dashboard", allowedRoles: ["admin", "hr", "editor"] },
   { prefix: "/admin/banners", permissionKey: "banners", allowedRoles: ["admin"] },
   { prefix: "/admin/services", permissionKey: "services", allowedRoles: ["admin"] },
   { prefix: "/admin/service-categories", permissionKey: "services", allowedRoles: ["admin"] },
@@ -65,7 +65,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
 
     const match = MODULE_PERMISSIONS_MAP.find((m) => pathname.startsWith(m.prefix));
 
-    if (match && pathname !== "/admin/profile") {
+    if (match && pathname !== "/admin/profile" && match.permissionKey !== "dashboard") {
       const hasRoleAccess = match.allowedRoles?.some((r) => r.toLowerCase() === userRole);
       const hasPermissionAccess = userPermissions.includes(match.permissionKey);
 

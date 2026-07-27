@@ -3,11 +3,16 @@ import { API_ENDPOINTS } from "@/store/api";
 
 export interface Banner {
   id: string;
+  tag?: string;
   title: string;
+  highlight?: string;
   subtitle?: string;
+  description?: string;
   image?: string;
   ctaText?: string;
   ctaLink?: string;
+  secondaryCtaText?: string;
+  secondaryCtaLink?: string;
   position?: number;
   isActive?: boolean;
   createdAt?: string;
@@ -44,6 +49,7 @@ export const bannersApi = baseApi.injectEndpoints({
       query: (id) => ({
         url: `${API_ENDPOINTS.banners}/${id}`,
         method: "DELETE",
+        body: id,
       }),
       invalidatesTags: ["Banner"],
     }),

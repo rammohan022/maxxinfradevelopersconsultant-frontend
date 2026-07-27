@@ -38,18 +38,22 @@ import {
 } from "@/services/seo";
 import DeleteModal from "../components/DeleteModal";
 import AdminPagination from "../components/AdminPagination";
+import AiModal, { AiToolType } from "@/components/ai/AiModal";
 import toast from "react-hot-toast";
 
 const PRESET_PAGES = [
   { name: "Global Default (Fallback)", path: "default" },
   { name: "Home Page", path: "/" },
-  { name: "About Us", path: "/about-us" },
+  { name: "About Us (/about-us)", path: "/about-us" },
+  { name: "About Us (/about)", path: "/about" },
   { name: "Our Services", path: "/services" },
-  { name: "Careers & Jobs", path: "/career" },
+  { name: "Careers & Jobs (/career)", path: "/career" },
+  { name: "Careers & Jobs (/careers)", path: "/careers" },
   { name: "Submit CV / Resume", path: "/submit-cv" },
   { name: "Our Executive Team", path: "/our-team" },
   { name: "Blog & Articles", path: "/blog" },
-  { name: "Contact Us", path: "/contact-us" },
+  { name: "Contact Us (/contact-us)", path: "/contact-us" },
+  { name: "Contact Us (/contact)", path: "/contact" },
   { name: "Salary Calculator", path: "/salary-calculator" },
   { name: "Gratuity Calculator", path: "/gratuity-calculator" },
   { name: "Attrition Rate Calculator", path: "/attrition-calculator" },
@@ -80,6 +84,13 @@ export default function AdminSeoPage() {
   /* ================= STATE ================= */
   const [search, setSearch] = useState("");
   const [activeModalTab, setActiveModalTab] = useState<"meta" | "og" | "advanced">("meta");
+
+  const [aiModal, setAiModal] = useState<{
+    isOpen: boolean;
+    tool: AiToolType;
+    input: string;
+    fieldToUpdate?: "metaTitle" | "metaDescription";
+  }>({ isOpen: false, tool: "metaDescription", input: "" });
 
   // Pagination State for Page Meta
   const [currentPage, setCurrentPage] = useState(1);
@@ -885,7 +896,16 @@ export default function AdminSeoPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Meta Title</label>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="block text-xs font-bold text-slate-700">Meta Title</label>
+                      <button
+                        type="button"
+                        onClick={() => setAiModal({ isOpen: true, tool: "seoTitle", input: formModal.pageName, fieldToUpdate: "metaTitle" })}
+                        className="text-[11px] font-bold text-purple-600 hover:text-purple-800 flex items-center gap-1 bg-purple-50 px-2 py-0.5 rounded border border-purple-200"
+                      >
+                        <Sparkles size={12} /> AI Generate Title
+                      </button>
+                    </div>
                     <input
                       type="text"
                       value={formModal.metaTitle}
@@ -895,7 +915,16 @@ export default function AdminSeoPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">Meta Description</label>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="block text-xs font-bold text-slate-700">Meta Description</label>
+                      <button
+                        type="button"
+                        onClick={() => setAiModal({ isOpen: true, tool: "metaDescription", input: formModal.metaTitle || formModal.pageName, fieldToUpdate: "metaDescription" })}
+                        className="text-[11px] font-bold text-purple-600 hover:text-purple-800 flex items-center gap-1 bg-purple-50 px-2 py-0.5 rounded border border-purple-200"
+                      >
+                        <Sparkles size={12} /> AI Generate Description
+                      </button>
+                    </div>
                     <textarea
                       rows={3}
                       value={formModal.metaDescription}
@@ -1078,6 +1107,21 @@ export default function AdminSeoPage() {
         onConfirm={handleDeleteConfirm}
         title="Delete Item"
         itemName={deleteModal.name}
+      />
+
+      {/* AI Assistant Modal */}
+      <AiModal
+        isOpen={aiModal.isOpen}
+        onClose={() => setAiModal((prev) => ({ ...prev, isOpen: false }))}
+        initialTool={aiModal.tool}
+        initialInput={aiModal.input}
+        onApply={(result) => {
+          if (aiModal.fieldToUpdate === "metaTitle") {
+            setFormModal((prev) => ({ ...prev, metaTitle: typeof result === "string" ? result : result.seoTitle || prev.metaTitle }));
+          } else if (aiModal.fieldToUpdate === "metaDescription") {
+            setFormModal((prev) => ({ ...prev, metaDescription: typeof result === "string" ? result : result.metaDescription || prev.metaDescription }));
+          }
+        }}
       />
     </div>
   );

@@ -23,8 +23,12 @@ import {
 import toast from "react-hot-toast";
 import AdminPagination from "../components/AdminPagination";
 import DeleteModal from "../components/DeleteModal";
+import { useGetProfileQuery } from "@/services/auth";
 
 export default function ActivityLogsAdminPage() {
+  const { data: profile, isLoading: isProfileLoading } = useGetProfileQuery();
+  const userRole = (profile?.role || "").toLowerCase();
+
   const [search, setSearch] = useState("");
   const [selectedModule, setSelectedModule] = useState("ALL");
   const [selectedAction, setSelectedAction] = useState("ALL");
@@ -32,13 +36,16 @@ export default function ActivityLogsAdminPage() {
   const [clearModalOpen, setClearModalOpen] = useState(false);
   const itemsPerPage = 20;
 
-  const { data, isLoading } = useGetActivityLogsQuery({
-    search: search || undefined,
-    module: selectedModule,
-    action: selectedAction,
-    page: currentPage,
-    limit: itemsPerPage,
-  });
+  const { data, isLoading } = useGetActivityLogsQuery(
+    {
+      search: search || undefined,
+      module: selectedModule,
+      action: selectedAction,
+      page: currentPage,
+      limit: itemsPerPage,
+    },
+    { skip: userRole !== "admin" && userRole !== "superadmin" }
+  );
 
   const [clearLogs, { isLoading: isClearing }] = useClearActivityLogsMutation();
 
@@ -115,7 +122,19 @@ export default function ActivityLogsAdminPage() {
     }).format(date);
   };
 
-  if (isLoading) return <div className="p-6 text-center text-slate-500">Loading activity logs...</div>;
+  if (isProfileLoading || isLoading) return <div className="p-6 text-center text-slate-500">Loading activity logs...</div>;
+
+  if (profile && userRole !== "admin" && userRole !== "superadmin") {
+    return (
+      <div className="p-12 text-center bg-white rounded-2xl border shadow-xs my-8 space-y-3">
+        <Shield size={48} className="mx-auto text-red-500" />
+        <h2 className="text-xl font-bold text-slate-800">Access Restricted</h2>
+        <p className="text-sm text-slate-500 max-w-md mx-auto">
+          Activity & Audit Logs are strictly restricted to Admin users. You do not have permission to view this page.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6 pb-12">

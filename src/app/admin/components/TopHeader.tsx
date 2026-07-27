@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useGetProfileQuery } from "@/services/auth";
+import { useGetProfileQuery, useLogoutMutation } from "@/services/auth";
 import { removeAuthToken } from "@/lib/utils/TokenHelper";
 import { User, LogOut, ChevronDown } from "lucide-react";
 import Link from "next/link";
@@ -9,12 +9,21 @@ import { getImageUrl } from "@/lib/utils/imageUtils";
 
 export default function TopHeader() {
   const { data: profile } = useGetProfileQuery();
+  const [logoutApi] = useLogoutMutation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handleLogout = () => {
-    removeAuthToken();
-    window.location.href = "/login";
+  const handleLogout = async () => {
+    try {
+      await logoutApi().unwrap();
+    } catch (err) {
+      console.error("Logout API call error:", err);
+    } finally {
+      removeAuthToken();
+      if (typeof window !== "undefined") {
+        window.location.href = "/login";
+      }
+    }
   };
 
   useEffect(() => {

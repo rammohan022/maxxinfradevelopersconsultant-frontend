@@ -18,7 +18,7 @@ import {
   History,
 } from "lucide-react";
 import { removeAuthToken } from "@/lib/utils/TokenHelper";
-import { useGetProfileQuery } from "@/services/auth";
+import { useGetProfileQuery, useLogoutMutation } from "@/services/auth";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 import Image from "next/image";
 import Link from "next/link";
@@ -112,10 +112,15 @@ const SideNav = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { data: profile } = useGetProfileQuery();
+  const [logoutApi] = useLogoutMutation();
   const userRole = (profile?.role || "admin").toLowerCase();
   const permissions: string[] = (profile as any)?.permissions || [];
 
   const visibleNavItems = navItems.filter((item) => {
+    // Activity Logs is exclusively for Admin only
+    if (item.name === "Activity Logs") {
+      return userRole === "admin" || userRole === "superadmin";
+    }
     if (userRole === "admin" || userRole === "superadmin") return true;
     if (item.name === "Dashboard") return true;
     if (item.permissionKey && (permissions.includes(item.permissionKey) || item.permissionKey === "dashboard")) return true;
@@ -137,9 +142,17 @@ const SideNav = () => {
     setOpenMenus((prev) => ({ ...prev, [name]: !prev[name] }));
   };
 
-  const handleLogout = () => {
-    removeAuthToken();
-    window.location.href = "/login";
+  const handleLogout = async () => {
+    try {
+      await logoutApi().unwrap();
+    } catch (err) {
+      console.error("Logout API call error:", err);
+    } finally {
+      removeAuthToken();
+      if (typeof window !== "undefined") {
+        window.location.href = "/login";
+      }
+    }
   };
 
   return (

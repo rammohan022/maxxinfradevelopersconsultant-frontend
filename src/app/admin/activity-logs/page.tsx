@@ -22,12 +22,14 @@ import {
 } from "lucide-react";
 import toast from "react-hot-toast";
 import AdminPagination from "../components/AdminPagination";
+import DeleteModal from "../components/DeleteModal";
 
 export default function ActivityLogsAdminPage() {
   const [search, setSearch] = useState("");
   const [selectedModule, setSelectedModule] = useState("ALL");
   const [selectedAction, setSelectedAction] = useState("ALL");
   const [currentPage, setCurrentPage] = useState(1);
+  const [clearModalOpen, setClearModalOpen] = useState(false);
   const itemsPerPage = 20;
 
   const { data, isLoading } = useGetActivityLogsQuery({
@@ -40,11 +42,11 @@ export default function ActivityLogsAdminPage() {
 
   const [clearLogs, { isLoading: isClearing }] = useClearActivityLogsMutation();
 
-  const handleClearLogs = async () => {
-    if (!confirm("Are you sure you want to clear all activity log history?")) return;
+  const handleClearLogsConfirm = async () => {
     try {
       await clearLogs().unwrap();
       toast.success("Activity logs history cleared successfully!");
+      setClearModalOpen(false);
     } catch (err) {
       console.error(err);
       toast.error("Failed to clear activity logs.");
@@ -129,7 +131,7 @@ export default function ActivityLogsAdminPage() {
         </div>
 
         <button
-          onClick={handleClearLogs}
+          onClick={() => setClearModalOpen(true)}
           disabled={isClearing || logs.length === 0}
           className="flex items-center gap-1.5 border border-red-300 text-red-600 hover:bg-red-50 px-4 py-2 rounded-xl text-xs font-bold transition disabled:opacity-50"
         >
@@ -277,6 +279,16 @@ export default function ActivityLogsAdminPage() {
           indexOfLast={Math.min(currentPage * itemsPerPage, totalLogs)}
         />
       )}
+
+      {/* Clear Logs Modal */}
+      <DeleteModal
+        isOpen={clearModalOpen}
+        onClose={() => setClearModalOpen(false)}
+        onConfirm={handleClearLogsConfirm}
+        title="Clear Activity Logs History"
+        itemName="All Activity Log Entries"
+        isLoading={isClearing}
+      />
     </div>
   );
 }

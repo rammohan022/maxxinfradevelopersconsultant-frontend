@@ -11,6 +11,7 @@ import {
 } from "@/services/users";
 import { UserPlus, Pencil, Trash2, Shield, Users as UsersIcon, CheckCircle, XCircle, Search, Key } from "lucide-react";
 import toast from "react-hot-toast";
+import DeleteModal from "../components/DeleteModal";
 
 const ALL_MODULES = [
   { key: "dashboard", label: "Dashboard Analytics" },
@@ -30,11 +31,12 @@ export default function AdminUsersPage() {
   const { data: users = [], isLoading } = useGetUsersQuery();
   const [createUser, { isLoading: isCreating }] = useCreateUserMutation();
   const [updateUser] = useUpdateUserMutation();
-  const [deleteUser] = useDeleteUserMutation();
+  const [deleteUser, { isLoading: isDeleting }] = useDeleteUserMutation();
 
   const [search, setSearch] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [editingUser, setEditingUser] = useState<UserItem | null>(null);
+  const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
 
   const [form, setForm] = useState({
     name: "",
@@ -135,11 +137,11 @@ export default function AdminUsersPage() {
     }
   };
 
-  const handleDelete = async (id: string, email: string) => {
-    if (!confirm(`Are you sure you want to delete user ${email}?`)) return;
+  const handleDeleteConfirm = async () => {
     try {
-      await deleteUser(id).unwrap();
+      await deleteUser(deleteModal.id).unwrap();
       toast.success("User removed successfully!");
+      setDeleteModal({ isOpen: false, id: "", name: "" });
     } catch (err) {
       console.error("User delete error:", err);
     }
@@ -254,7 +256,7 @@ export default function AdminUsersPage() {
                           <Pencil size={18} />
                         </button>
                         <button
-                          onClick={() => handleDelete(u.id, u.email)}
+                          onClick={() => setDeleteModal({ isOpen: true, id: u.id, name: u.email })}
                           className="text-slate-400 hover:text-red-600 p-1.5 rounded hover:bg-red-50"
                           title="Delete User"
                         >
@@ -383,6 +385,16 @@ export default function AdminUsersPage() {
           </div>
         </div>
       )}
+
+      {/* Delete Confirmation Modal */}
+      <DeleteModal
+        isOpen={deleteModal.isOpen}
+        onClose={() => setDeleteModal({ isOpen: false, id: "", name: "" })}
+        onConfirm={handleDeleteConfirm}
+        title="Remove Team Member"
+        itemName={deleteModal.name}
+        isLoading={isDeleting}
+      />
     </div>
   );
 }

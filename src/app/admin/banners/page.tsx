@@ -12,15 +12,17 @@ import { Plus, Pencil, Trash2, Sliders, CheckCircle, XCircle } from "lucide-reac
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
+import DeleteModal from "../components/DeleteModal";
 
 export default function BannersAdminPage() {
   const { data: banners = [], isLoading } = useGetBannersQuery();
   const [createBanner] = useCreateBannerMutation();
   const [updateBanner] = useUpdateBannerMutation();
-  const [deleteBanner] = useDeleteBannerMutation();
+  const [deleteBanner, { isLoading: isDeleting }] = useDeleteBannerMutation();
 
   const [modalOpen, setModalOpen] = useState(false);
   const [editingBanner, setEditingBanner] = useState<Banner | null>(null);
+  const [deleteModal, setDeleteModal] = useState({ isOpen: false, id: "", name: "" });
 
   const [form, setForm] = useState({
     tag: "",
@@ -111,11 +113,11 @@ export default function BannersAdminPage() {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this hero banner?")) return;
+  const handleDeleteConfirm = async () => {
     try {
-      await deleteBanner(id).unwrap();
+      await deleteBanner(deleteModal.id).unwrap();
       toast.success("Hero Banner deleted successfully!");
+      setDeleteModal({ isOpen: false, id: "", name: "" });
     } catch (err) {
       console.error(err);
     }
@@ -205,7 +207,7 @@ export default function BannersAdminPage() {
                         <Pencil size={18} />
                       </button>
                       <button
-                        onClick={() => handleDelete(b.id)}
+                        onClick={() => setDeleteModal({ isOpen: true, id: b.id, name: b.title })}
                         className="text-slate-400 hover:text-red-600 p-1.5 rounded hover:bg-red-50"
                         title="Delete Banner"
                       >
@@ -394,6 +396,16 @@ export default function BannersAdminPage() {
           </div>
         </div>
       )}
+
+      {/* Delete Confirmation Modal */}
+      <DeleteModal
+        isOpen={deleteModal.isOpen}
+        onClose={() => setDeleteModal({ isOpen: false, id: "", name: "" })}
+        onConfirm={handleDeleteConfirm}
+        title="Delete Hero Banner"
+        itemName={deleteModal.name}
+        isLoading={isDeleting}
+      />
     </div>
   );
 }

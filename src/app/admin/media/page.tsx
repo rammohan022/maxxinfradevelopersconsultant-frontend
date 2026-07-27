@@ -11,15 +11,21 @@ import { Search, Upload, Copy, Trash2, Check, FileText, Image as ImageIcon } fro
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
+import DeleteModal from "../components/DeleteModal";
 
 export default function MediaLibraryPage() {
   const [search, setSearch] = useState("");
   const { data: mediaFiles = [], isLoading } = useGetMediaFilesQuery({ search });
   const [uploadMediaFile, { isLoading: isUploading }] = useUploadMediaFileMutation();
-  const [deleteMediaFile] = useDeleteMediaFileMutation();
+  const [deleteMediaFile, { isLoading: isDeleting }] = useDeleteMediaFileMutation();
 
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [selectedItem, setSelectedItem] = useState<MediaItem | null>(null);
+  const [deleteModal, setDeleteModal] = useState<{ isOpen: boolean; folder: string; filename: string }>({
+    isOpen: false,
+    folder: "",
+    filename: "",
+  });
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -44,12 +50,12 @@ export default function MediaLibraryPage() {
     setTimeout(() => setCopiedId(null), 2000);
   };
 
-  const handleDelete = async (folder: string, filename: string) => {
-    if (!confirm("Are you sure you want to delete this media file?")) return;
+  const handleDeleteConfirm = async () => {
     try {
-      await deleteMediaFile({ folder, filename }).unwrap();
+      await deleteMediaFile({ folder: deleteModal.folder, filename: deleteModal.filename }).unwrap();
       toast.success("Media file deleted!");
-      if (selectedItem?.filename === filename) setSelectedItem(null);
+      if (selectedItem?.filename === deleteModal.filename) setSelectedItem(null);
+      setDeleteModal({ isOpen: false, folder: "", filename: "" });
     } catch (err) {
       toast.error("Failed to delete media file.");
     }
@@ -140,7 +146,7 @@ export default function MediaLibraryPage() {
                       {copiedId === file.id ? "Copied" : "Copy"}
                     </button>
                     <button
-                      onClick={() => handleDelete(file.folder, file.filename)}
+                      onClick={() => setDeleteModal({ isOpen: true, folder: file.folder, filename: file.filename })}
                       className="text-slate-400 hover:text-red-600 p-1 rounded hover:bg-red-50"
                       title="Delete"
                     >
@@ -193,7 +199,7 @@ export default function MediaLibraryPage() {
                 <Copy size={14} /> Copy Public URL
               </button>
               <button
-                onClick={() => handleDelete(selectedItem.folder, selectedItem.filename)}
+                onClick={() => setDeleteModal({ isOpen: true, folder: selectedItem.folder, filename: selectedItem.filename })}
                 className="flex items-center gap-2 border border-red-200 text-red-600 px-4 py-2 rounded-lg hover:bg-red-50 text-xs font-bold"
               >
                 <Trash2 size={14} /> Delete Asset
@@ -202,6 +208,16 @@ export default function MediaLibraryPage() {
           </div>
         </div>
       )}
+
+      {/* Delete Confirmation Modal */}
+      <DeleteModal
+        isOpen={deleteModal.isOpen}
+        onClose={() => setDeleteModal({ isOpen: false, folder: "", filename: "" })}
+        onConfirm={handleDeleteConfirm}
+        title="Delete Media File"
+        itemName={deleteModal.filename}
+        isLoading={isDeleting}
+      />
     </div>
   );
 }

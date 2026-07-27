@@ -30,6 +30,7 @@ export default function ServiceForm({
         title: "",
         slug: "",
         category: "",
+        status: "Published",
         position: "",
         innerImage: "",
         overview: "",
@@ -49,6 +50,7 @@ export default function ServiceForm({
                 title: initialData.title || "",
                 slug: initialData.slug || "",
                 category: initialData.category || "",
+                status: initialData.status || "Published",
                 position: initialData.position !== undefined ? initialData.position.toString() : "0",
                 innerImage: initialData.innerImage || "",
                 overview: initialData.overview || "",
@@ -115,6 +117,7 @@ const slugify = (text: string) => {
         formData.append("title", form.title);
         formData.append("slug", form.slug);
         formData.append("category", form.category);
+        formData.append("status", form.status);
         formData.append("position", form.position || "0");
         formData.append("overview", form.overview);
         formData.append("approach", form.approach);
@@ -149,7 +152,7 @@ const slugify = (text: string) => {
             {/* Hero */}
             <section className="space-y-4 pb-4 border-b">
                 <h2 className="text-lg font-bold text-slate-800">Hero Section</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-4">
                     <div>
                         <label className="block text-sm font-medium mb-1">Title</label>
                         <input name="title" required value={form.title} onChange={handleChange} className="w-full border rounded-lg px-3 py-2 text-sm" />
@@ -172,6 +175,18 @@ const slugify = (text: string) => {
                                     {cat.name}
                                 </option>
                             ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium mb-1">Status</label>
+                        <select
+                            name="status"
+                            value={form.status}
+                            onChange={(e) => setForm(p => ({ ...p, status: e.target.value }))}
+                            className="w-full border rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary"
+                        >
+                            <option value="Published">Published</option>
+                            <option value="Draft">Draft</option>
                         </select>
                     </div>
                     <div>

@@ -42,6 +42,7 @@ export default function ServiceCategoriesListPage() {
     id: "",
     name: "",
     slug: "",
+    position: 0,
   });
 
   const filteredCategories = (categories || []).filter((item) =>
@@ -62,6 +63,7 @@ export default function ServiceCategoriesListPage() {
       id: "",
       name: "",
       slug: "",
+      position: 0,
     });
   };
 
@@ -72,6 +74,7 @@ export default function ServiceCategoriesListPage() {
       id: item.id,
       name: item.name,
       slug: item.slug,
+      position: item.position ?? 0,
     });
   };
 
@@ -87,6 +90,7 @@ export default function ServiceCategoriesListPage() {
         await createCategory({
           name: formModal.name,
           slug: formModal.slug,
+          position: Number(formModal.position) || 0,
         }).unwrap();
         toast.success("Service category created successfully!");
       } else {
@@ -95,6 +99,7 @@ export default function ServiceCategoriesListPage() {
           data: {
             name: formModal.name,
             slug: formModal.slug,
+            position: Number(formModal.position) || 0,
           },
         }).unwrap();
         toast.success("Service category updated successfully!");
@@ -178,6 +183,7 @@ export default function ServiceCategoriesListPage() {
               <tr>
                 <th className="p-4 text-left whitespace-nowrap">Category Name</th>
                 <th className="p-4 text-left whitespace-nowrap">Slug</th>
+                <th className="p-4 text-center whitespace-nowrap">Position</th>
                 <th className="p-4 text-center whitespace-nowrap">Actions</th>
               </tr>
             </thead>
@@ -185,7 +191,7 @@ export default function ServiceCategoriesListPage() {
             <tbody>
               {currentCategories.length === 0 ? (
                 <tr>
-                  <td colSpan={3} className="text-center p-10 text-gray-400">
+                  <td colSpan={4} className="text-center p-10 text-gray-400">
                     No service categories found.
                   </td>
                 </tr>
@@ -199,6 +205,7 @@ export default function ServiceCategoriesListPage() {
                       </div>
                     </td>
                     <td className="p-4 text-slate-500 font-mono text-xs">{item.slug}</td>
+                    <td className="p-4 text-center font-semibold text-slate-700">{item.position ?? 0}</td>
                     <td className="p-4 text-center">
                       <div className="flex justify-center gap-2">
                         <button
@@ -286,6 +293,19 @@ export default function ServiceCategoriesListPage() {
                   onChange={(e) => setFormModal((prev) => ({ ...prev, slug: slugify(e.target.value) }))}
                   className="w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all"
                   required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
+                  Position / Order
+                </label>
+                <input
+                  type="number"
+                  placeholder="e.g. 1"
+                  value={formModal.position}
+                  onChange={(e) => setFormModal((prev) => ({ ...prev, position: Number(e.target.value) }))}
+                  className="w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all"
                 />
               </div>
 

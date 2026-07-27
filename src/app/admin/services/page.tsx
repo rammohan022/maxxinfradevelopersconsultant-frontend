@@ -96,9 +96,10 @@ const ServicesPage = () => {
               <tr>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Service Name</th>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Category</th>
-                <th className="text-left px-3 py-2 whitespace-nowrap text-center">Position</th>
+                <th className="text-center px-3 py-2 whitespace-nowrap">Status</th>
+                <th className="text-center px-3 py-2 whitespace-nowrap">Position</th>
                 <th className="text-left px-3 py-2 min-w-[300px]">Description</th>
-                <th className="text-left px-3 py-2 whitespace-nowrap text-center">Services Count</th>
+                <th className="text-center px-3 py-2 whitespace-nowrap">Services Count</th>
                 <th className="text-center px-3 py-2 whitespace-nowrap">Actions</th>
               </tr>
             </thead>
@@ -106,8 +107,8 @@ const ServicesPage = () => {
             <tbody>
               {currentAreas.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="text-center py-10 text-slate-400">
-                    No practice areas found
+                  <td colSpan={7} className="text-center py-10 text-slate-400">
+                    No services found
                   </td>
                 </tr>
               ) : (
@@ -118,6 +119,15 @@ const ServicesPage = () => {
                     </td>
                     <td className="px-3 py-2 text-slate-500 whitespace-nowrap font-medium">
                       {item.category || <span className="text-slate-300 italic text-xs">None</span>}
+                    </td>
+                    <td className="px-3 py-2 text-center whitespace-nowrap">
+                      <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
+                        item.status === 'Draft' 
+                          ? 'bg-amber-100 text-amber-700 border border-amber-300' 
+                          : 'bg-emerald-100 text-emerald-700 border border-emerald-300'
+                      }`}>
+                        {item.status || 'Published'}
+                      </span>
                     </td>
                     <td className="px-3 py-2 text-center text-slate-500 font-semibold">
                       {item.position !== undefined ? item.position : 0}

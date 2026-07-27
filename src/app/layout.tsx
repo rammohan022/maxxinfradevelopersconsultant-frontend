@@ -5,10 +5,11 @@ import "./globals.css";
 import "react-quill/dist/quill.snow.css";
 import { ReduxProvider } from "@/store/provider";
 import ToastProvider from "@/components/ui/ToastProvider";
+import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "People Consulting",
-  description: "People Consulting Services",
+  title: "People Consulting | Top Corporate HR & Staffing Solutions",
+  description: "People Consulting provides trusted HR consulting, talent recruitment, executive search, labor compliance, and payroll management solutions.",
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased w-full overflow-x-hidden`}>
+        <OrganizationJsonLd />
         <ReduxProvider>
           <ToastProvider />
           <main className="w-full">{children}</main>

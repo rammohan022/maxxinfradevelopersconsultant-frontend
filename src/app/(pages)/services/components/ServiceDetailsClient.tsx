@@ -19,7 +19,7 @@ export default function ServiceDetailsClient() {
     const normalizeSlug = (s: string) => s.replace(/[\u2013\u2014]/g, '-').toLowerCase();
     const area = practiceAreas?.find((a) => normalizeSlug(a.slug) === normalizeSlug(slug as string));
 
-    if (!area) {
+    if (!area || area.status === 'Draft') {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-navy text-white">
                 <h1 className="text-4xl font-bold mb-4">Service Not Found</h1>

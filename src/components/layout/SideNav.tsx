@@ -11,11 +11,15 @@ import {
   Globe,
   ChevronDown,
   ChevronRight,
+  Sliders,
+  Image as ImageIcon,
+  FolderOpen,
 } from "lucide-react";
+import { removeAuthToken } from "@/lib/utils/TokenHelper";
+import { useGetProfileQuery } from "@/services/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { removeAuthToken } from "@/lib/utils/TokenHelper";
 
 interface SubItem {
   name: string;
@@ -27,13 +31,18 @@ interface NavItem {
   href?: string;
   icon: any;
   subItems?: SubItem[];
+  allowedRoles?: string[];
+  permissionKey?: string;
 }
 
 const navItems: NavItem[] = [
-  { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
+  { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard, allowedRoles: ["admin"], permissionKey: "dashboard" },
+  { name: "Hero Banners", href: "/admin/banners", icon: Sliders, allowedRoles: ["admin"], permissionKey: "banners" },
   {
     name: "Services",
     icon: Layers,
+    allowedRoles: ["admin"],
+    permissionKey: "services",
     subItems: [
       { name: "All Services", href: "/admin/services" },
       { name: "Categories", href: "/admin/service-categories" },
@@ -42,6 +51,8 @@ const navItems: NavItem[] = [
   {
     name: "Careers",
     icon: Users,
+    allowedRoles: ["admin", "hr"],
+    permissionKey: "careers",
     subItems: [
       { name: "Job Posts", href: "/admin/career" },
       { name: "Job Applications", href: "/admin/applications" },
@@ -50,22 +61,39 @@ const navItems: NavItem[] = [
   {
     name: "Blogs",
     icon: FileText,
+    allowedRoles: ["admin", "editor"],
+    permissionKey: "blogs",
     subItems: [
       { name: "Blog Posts", href: "/admin/blogs" },
       { name: "Blog Categories", href: "/admin/blog-categories" },
     ],
   },
-  { name: "Leads", href: "/admin/leads", icon: Users },
-  { name: "Compliance Library", href: "/admin/website-links", icon: Globe },
-  { name: "Testimonials", href: "/admin/testimonials", icon: Users },
-  { name: "Privacy Policy", href: "/admin/privacy-policy", icon: FileText },
-  { name: "Terms & Conditions", href: "/admin/terms-conditions", icon: FileText },
-  { name: "Profile", href: "/admin/profile", icon: Settings },
+  { name: "Media Library", href: "/admin/media", icon: FolderOpen, allowedRoles: ["admin"], permissionKey: "media" },
+  { name: "Leads", href: "/admin/leads", icon: Users, allowedRoles: ["admin"], permissionKey: "leads" },
+  { name: "Compliance Library", href: "/admin/website-links", icon: Globe, allowedRoles: ["admin"], permissionKey: "settings" },
+  { name: "SEO Settings", href: "/admin/seo", icon: Globe, allowedRoles: ["admin"], permissionKey: "seo" },
+  { name: "Site Settings", href: "/admin/settings", icon: Settings, allowedRoles: ["admin"], permissionKey: "settings" },
+  { name: "Team & Roles", href: "/admin/users", icon: Users, allowedRoles: ["admin"], permissionKey: "users" },
+  { name: "Testimonials", href: "/admin/testimonials", icon: Users, allowedRoles: ["admin"], permissionKey: "testimonials" },
+  { name: "Privacy Policy", href: "/admin/privacy-policy", icon: FileText, allowedRoles: ["admin"], permissionKey: "legal" },
+  { name: "Terms & Conditions", href: "/admin/terms-conditions", icon: FileText, allowedRoles: ["admin"], permissionKey: "legal" },
+  { name: "Profile", href: "/admin/profile", icon: Settings, allowedRoles: ["admin", "hr", "editor"] },
 ];
 
 const SideNav = () => {
   const router = useRouter();
   const pathname = usePathname();
+  const { data: profile } = useGetProfileQuery();
+  const userRole = (profile?.role || "admin").toLowerCase();
+  const permissions: string[] = (profile as any)?.permissions || [];
+
+  const visibleNavItems = navItems.filter((item) => {
+    if (userRole === "admin" || userRole === "superadmin") return true;
+    if (item.name === "Profile") return true;
+    if (item.permissionKey && permissions.includes(item.permissionKey)) return true;
+    if (item.allowedRoles && item.allowedRoles.some((r) => r.toLowerCase() === userRole)) return true;
+    return false;
+  });
 
   // Track open state for dropdown menus
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
@@ -104,7 +132,7 @@ const SideNav = () => {
 
         {/* Menu */}
         <nav className="flex-1 mt-4 space-y-1">
-          {navItems.map((item, index) => {
+          {visibleNavItems.map((item, index) => {
             const Icon = item.icon;
             const hasSubItems = !!item.subItems;
             const isOpen = openMenus[item.name];

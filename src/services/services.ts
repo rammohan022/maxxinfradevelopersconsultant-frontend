@@ -1,6 +1,8 @@
 import { baseApi } from "@/hooks/baseQuery";
 import { API_ENDPOINTS } from "@/store/api";
 
+export type ServiceStatus = "Draft" | "Published";
+
 export interface FAQ {
   question: string;
   answer: string;
@@ -11,6 +13,7 @@ export interface Service {
   title: string;
   slug: string;
   category?: string;
+  status?: ServiceStatus;
   position?: number;
   innerImage?: string;
   overview?: string;
@@ -27,6 +30,7 @@ export interface CreateServiceDto {
   title: string;
   slug: string;
   category?: string;
+  status?: ServiceStatus;
   position?: number;
   innerImage?: string;
   overview?: string;

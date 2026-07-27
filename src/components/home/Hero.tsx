@@ -5,8 +5,10 @@ import Link from 'next/link'
 import { Container } from '@/components/ui'
 import { motion, AnimatePresence, Variants } from 'framer-motion'
 import { useGetWebsiteLinksQuery } from '@/services/websiteLink'
+import { useGetBannersQuery } from '@/services/banners'
+import { getImageUrl } from '@/lib/utils/imageUtils'
 
-const slides = [
+const defaultSlides = [
   {
     tag: 'HR & RECRUITMENT',
     title: "Aligning Strategy With",
@@ -14,6 +16,9 @@ const slides = [
     subtitle: '',
     desc: 'Increasing your competitive advantage',
     body: 'People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes. We help organizations become High Performance workplaces.',
+    ctaText: 'Explore Services',
+    ctaLink: '/services',
+    image: '/img/recruitment_banner.png',
   },
   {
     tag: 'TALENT ACQUISITION',
@@ -22,6 +27,9 @@ const slides = [
     subtitle: '',
     desc: '500+ Active Jobs across all sectors',
     body: 'Our recruitment strategy focuses on clarity, structure, and navigating a wide range of market conditions to match the right candidates with the right employers effectively.',
+    ctaText: 'View Openings',
+    ctaLink: '/career',
+    image: '/img/recruitment_banner.png',
   },
   {
     tag: 'CORPORATE TRAINING',
@@ -30,6 +38,9 @@ const slides = [
     subtitle: '',
     desc: 'Comprehensive HR Training & Development',
     body: 'Everything we do is driven by our mission to build a better world by helping organizations become Great Employers to work for all, through comprehensive training and compliance frameworks.',
+    ctaText: 'Contact Us',
+    ctaLink: '/contact-us',
+    image: '/img/recruitment_banner.png',
   },
 ]
 
@@ -43,20 +54,37 @@ const slideVariants: Variants = {
 
 export default function Hero() {
   const { data: externalLinks = [] } = useGetWebsiteLinksQuery()
+  const { data: apiBanners = [] } = useGetBannersQuery({ activeOnly: true })
   const [current, setCurrent] = useState(0)
 
+  const activeSlides = apiBanners.length > 0
+    ? apiBanners.map((b) => ({
+        tag: 'FEATURED SOLUTION',
+        title: b.title,
+        highlight: '',
+        subtitle: b.subtitle || '',
+        desc: b.subtitle || 'People Consulting HR Services',
+        body: b.subtitle || 'Empowering people and transforming organizations with strategic HR solutions.',
+        ctaText: b.ctaText || 'Explore Services',
+        ctaLink: b.ctaLink || '/services',
+        image: b.image ? getImageUrl(b.image) : '/img/recruitment_banner.png',
+      }))
+    : defaultSlides;
+
   useEffect(() => {
-    const t = setInterval(() => setCurrent((c) => (c + 1) % slides.length), 6000)
+    const t = setInterval(() => setCurrent((c) => (c + 1) % activeSlides.length), 6000)
     return () => clearInterval(t)
-  }, [])
+  }, [activeSlides.length])
+
+  const activeSlide = activeSlides[current] || activeSlides[0]
 
   return (
     <section className="relative min-h-[650px] lg:min-h-[700px] flex items-center bg-white overflow-hidden border-b border-slate-200">
       {/* Background Banner Image */}
       <div
-        className="absolute inset-0 bg-cover bg-right md:bg-center bg-no-repeat opacity-95"
+        className="absolute inset-0 bg-cover bg-right md:bg-center bg-no-repeat opacity-95 transition-all duration-700"
         style={{
-          backgroundImage: 'url(/img/recruitment_banner.png)',
+          backgroundImage: `url(${activeSlide.image})`,
         }}
       />
       {/* Gradient overlay to ensure text readability on mobile/tablet */}
@@ -79,7 +107,7 @@ export default function Hero() {
                 transition={{ delay: 0.1, duration: 0.4 }}
                 className="inline-block text-primary text-xs sm:text-sm font-bold mb-4 tracking-widest uppercase border-l-4 border-secondary pl-3 bg-slate-100/90 py-1 pr-3 rounded-r-md"
               >
-                {slides[current].tag}
+                {activeSlide.tag}
               </motion.span>
 
               <motion.h1
@@ -88,9 +116,9 @@ export default function Hero() {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-primary leading-tight mb-4"
               >
-                {slides[current].title}{' '}
-                <span className="text-secondary">{slides[current].highlight}</span>{' '}
-                {slides[current].subtitle}
+                {activeSlide.title}{' '}
+                <span className="text-secondary">{activeSlide.highlight}</span>{' '}
+                {activeSlide.subtitle}
               </motion.h1>
 
               <motion.p
@@ -99,7 +127,7 @@ export default function Hero() {
                 transition={{ delay: 0.3, duration: 0.4 }}
                 className="text-base sm:text-lg text-slate-800 font-semibold mb-2"
               >
-                {slides[current].desc}
+                {activeSlide.desc}
               </motion.p>
 
               <motion.p
@@ -108,7 +136,7 @@ export default function Hero() {
                 transition={{ delay: 0.4, duration: 0.4 }}
                 className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl leading-relaxed"
               >
-                {slides[current].body}
+                {activeSlide.body}
               </motion.p>
 
               <motion.div
@@ -118,10 +146,10 @@ export default function Hero() {
                 className="flex flex-wrap gap-3 sm:gap-4"
               >
                 <Link
-                  href="/submit-cv"
+                  href={activeSlide.ctaLink}
                   className="bg-secondary hover:bg-secondary-dark text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block shadow-md hover:shadow-secondary/20 hover:-translate-y-0.5"
                 >
-                  Submit Your CV
+                  {activeSlide.ctaText}
                 </Link>
                 <Link
                   href="/about-us"
@@ -140,7 +168,7 @@ export default function Hero() {
             transition={{ delay: 0.6 }}
             className="flex gap-2 mt-12 mb-2"
           >
-            {slides.map((_, i) => (
+            {activeSlides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrent(i)}

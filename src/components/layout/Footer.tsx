@@ -4,12 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/ui'
 import { motion } from 'framer-motion'
-import { useGetServicesQuery } from '@/services/services'
 import { useGetAdminProfileQuery } from '@/services/auth'
+import { useGetSiteSettingsQuery } from '@/services/siteSettings'
+import { getImageUrl } from '@/lib/utils/imageUtils'
 
 const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
+  { label: 'Services', href: '/services' },
   { label: 'Career', href: '/career' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact Us', href: '/contact-us' },
@@ -38,25 +40,15 @@ const itemVariants = {
 }
 
 export default function Footer() {
-  const { data: practiceAreas = [] } = useGetServicesQuery()
   const { data: adminProfile } = useGetAdminProfileQuery()
+  const { data: siteSettings } = useGetSiteSettingsQuery()
 
-  const email = adminProfile?.email || "hello@peopleconsultings.com";
-  const phone = adminProfile?.phoneNumber || "+91 8800177307";
-  const facebook = adminProfile?.facebookUrl || "#";
-  const linkedin = adminProfile?.linkedinUrl || "https://www.linkedin.com/company/people-consulting-services/";
-  const instagram = adminProfile?.instagramUrl || "https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2";
-  const twitter = adminProfile?.twitterUrl || "";
-
-  // Group services by category (same as Header mega menu)
-  const servicesByCategory = (practiceAreas || []).reduce<Record<string, typeof practiceAreas>>((acc, service) => {
-    const cat = service.category || "General Services";
-    if (!acc[cat]) {
-      acc[cat] = [];
-    }
-    acc[cat].push(service);
-    return acc;
-  }, {});
+  const email = siteSettings?.contactEmail || adminProfile?.email || "hello@peopleconsultings.com";
+  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 8800177307";
+  const facebook = siteSettings?.socialLinks?.facebook || adminProfile?.facebookUrl || "#";
+  const linkedin = siteSettings?.socialLinks?.linkedin || adminProfile?.linkedinUrl || "https://www.linkedin.com/company/people-consulting-services/";
+  const instagram = siteSettings?.socialLinks?.instagram || adminProfile?.instagramUrl || "https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoMGl2";
+  const twitter = siteSettings?.socialLinks?.twitter || adminProfile?.twitterUrl || "";
 
   return (
     <>
@@ -182,40 +174,6 @@ export default function Footer() {
                 </li>
               </ul>
             </motion.div>
-          </motion.div>
-
-          {/* Full-Width Categorized Services Section (Full Row at Bottom) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="border-t border-gray-200/80 pt-8 pb-10 mb-6"
-          >
-            <h3 className="text-base font-bold text-slate-900 mb-6 uppercase tracking-wider text-slate-500">
-              Our Services
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-              {Object.entries(servicesByCategory).map(([category, items]) => (
-                <div key={category} className="space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-secondary border-b border-gray-100 pb-2">
-                    {category}
-                  </h4>
-                  <ul className="space-y-2 text-sm font-medium">
-                    {items.map((area) => (
-                      <li key={area.id}>
-                        <Link
-                          href={`/services/${area.slug}`}
-                          className="text-gray-600 hover:text-primary transition-colors text-sm"
-                        >
-                          {area.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
           </motion.div>
 
           {/* Copyright Bar */}

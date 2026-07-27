@@ -1,17 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getAuthToken, removeAuthToken } from "@/lib/utils/TokenHelper";
+import toast from "react-hot-toast";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
   credentials: "include",
-  prepareHeaders: (headers, { getState }) => {
+  prepareHeaders: (headers) => {
     const token = getAuthToken();
-
     if (token) {
       headers.set("authorization", `Bearer ${token}`);
     }
-
-    // Let fetchBaseQuery auto-detect Content-Type (JSON vs FormData)
     return headers;
   },
 });
@@ -19,13 +17,45 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
   let result = await baseQuery(args, api, extraOptions);
 
-  if (result.error && result.error.status === 401) {
-    // Clear cookies/tokens
-    removeAuthToken();
+  if (result.error) {
+    const status = result.error.status;
+    const errorData: any = result.error.data;
 
-    // Redirect to login if on client side
-    if (typeof window !== "undefined") {
-      window.location.href = "/login";
+    let errorMessage = "An unexpected error occurred.";
+
+    if (errorData) {
+      if (typeof errorData.message === "string") {
+        errorMessage = errorData.message;
+      } else if (Array.isArray(errorData.message)) {
+        errorMessage = errorData.message.join("; ");
+      } else if (typeof errorData.error === "string") {
+        errorMessage = errorData.error;
+      }
+    } else if ("error" in result.error && typeof (result.error as any).error === "string") {
+      errorMessage = (result.error as any).error;
+    }
+
+    // Log to console for debugging
+    console.error(`[API Request Error ${status}]`, {
+      endpoint: typeof args === "string" ? args : args.url,
+      method: typeof args === "string" ? "GET" : args.method || "GET",
+      status,
+      message: errorMessage,
+      rawError: result.error,
+    });
+
+    if (status === 401) {
+      removeAuthToken();
+      if (typeof window !== "undefined") {
+        toast.error("Session expired. Please log in again.");
+        window.location.href = "/login";
+      }
+    } else if (status !== "FETCH_ERROR" && typeof window !== "undefined") {
+      // Auto toast error for mutating requests or API failures
+      const isMutation = typeof args === "object" && args.method && args.method !== "GET";
+      if (isMutation) {
+        toast.error(`Error (${status}): ${errorMessage}`);
+      }
     }
   }
 
@@ -49,6 +79,10 @@ export const baseApi = createApi({
     "WebsiteLink",
     "ServiceCategory",
     "BlogCategory",
+    "SeoSettings",
+    "SiteSettings",
+    "Banner",
+    "Media",
   ],
   endpoints: () => ({}),
 });

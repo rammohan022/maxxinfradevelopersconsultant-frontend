@@ -4,10 +4,12 @@ import { API_ENDPOINTS } from "@/store/api";
 export interface CreateServiceCategoryDto {
     name: string;
     slug: string;
+    position?: number;
 }
 
 export interface ServiceCategory extends CreateServiceCategoryDto {
     id: string;
+    position: number;
     createdAt: string;
     updatedAt: string;
 }

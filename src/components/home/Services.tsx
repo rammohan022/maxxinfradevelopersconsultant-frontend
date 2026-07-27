@@ -90,7 +90,8 @@ export default function Services() {
   ]
 
   const { data: apiAreas = [] } = useGetServicesQuery()
-  const areas = apiAreas.length > 0 ? apiAreas : fallbackAreas
+  const publishedApiAreas = (apiAreas || []).filter((s) => s.status !== 'Draft')
+  const areas = publishedApiAreas.length > 0 ? publishedApiAreas : fallbackAreas
 
   // Extract categories dynamically from services data
   const categoriesList = useMemo(() => {

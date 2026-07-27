@@ -22,4 +22,8 @@ export const API_ENDPOINTS = {
     termsConditions: "/terms-conditions",
     dashboard: "/dashboard",
     contacts: "/contacts",
+    seo: "/seo",
+    siteSettings: "/site-settings",
+    banners: "/banners",
+    media: "/media",
 };

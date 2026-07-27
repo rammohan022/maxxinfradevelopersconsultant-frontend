@@ -1,6 +1,7 @@
 
 import type { Metadata } from "next";
 import { TopBar, Header, Footer } from "@/components/layout";
+import DynamicSeo from "@/components/seo/DynamicSeo";
 
 export const metadata: Metadata = {
   title: "People Consulting",
@@ -15,6 +16,7 @@ export default function PageLayout({
 }) {
   return (
       <>
+        <DynamicSeo />
         <TopBar />
         <Header />
         <main className="w-full">

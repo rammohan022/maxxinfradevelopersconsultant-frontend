@@ -34,7 +34,8 @@ export default function CategoryServicesClient() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   // Fetch services and categories
-  const { data: allServices = [], isLoading: isServicesLoading } = useGetServicesQuery();
+  const { data: rawServices = [], isLoading: isServicesLoading } = useGetServicesQuery();
+  const allServices = useMemo(() => (rawServices || []).filter((s) => s.status !== 'Draft'), [rawServices]);
   const { data: categories = [], isLoading: isCategoriesLoading } = useGetServiceCategoriesQuery();
 
   // Find active category info

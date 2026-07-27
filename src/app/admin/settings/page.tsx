@@ -1,0 +1,340 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useGetSiteSettingsQuery, useUpdateSiteSettingsMutation } from "@/services/siteSettings";
+import toast from "react-hot-toast";
+import Image from "next/image";
+import { getImageUrl } from "@/lib/utils/imageUtils";
+import { Save, Plus, Trash2, Globe, Phone, Share2, Menu } from "lucide-react";
+
+export default function SiteSettingsPage() {
+  const { data: settings, isLoading } = useGetSiteSettingsQuery();
+  const [updateSettings, { isLoading: isSaving }] = useUpdateSiteSettingsMutation();
+
+  const [activeTab, setActiveTab] = useState<"general" | "contact" | "social" | "menus">("general");
+
+  const [form, setForm] = useState({
+    siteName: "",
+    contactPhone: "",
+    contactEmail: "",
+    officeAddress: "",
+    workingHours: "",
+    logo: "",
+  });
+
+  const [socialLinks, setSocialLinks] = useState({
+    facebook: "",
+    twitter: "",
+    linkedin: "",
+    instagram: "",
+    youtube: "",
+    whatsapp: "",
+  });
+
+  const [headerMenu, setHeaderMenu] = useState<{ name: string; href: string }[]>([]);
+  const [logoFile, setLogoFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState("");
+
+  useEffect(() => {
+    if (settings) {
+      setForm({
+        siteName: settings.siteName || "People Consulting",
+        contactPhone: settings.contactPhone || "",
+        contactEmail: settings.contactEmail || "",
+        officeAddress: settings.officeAddress || "",
+        workingHours: settings.workingHours || "",
+        logo: settings.logo || "",
+      });
+      setSocialLinks({
+        facebook: settings.socialLinks?.facebook || "",
+        twitter: settings.socialLinks?.twitter || "",
+        linkedin: settings.socialLinks?.linkedin || "",
+        instagram: settings.socialLinks?.instagram || "",
+        youtube: settings.socialLinks?.youtube || "",
+        whatsapp: settings.socialLinks?.whatsapp || "",
+      });
+      setHeaderMenu(settings.headerMenu || [
+        { name: "Home", href: "/" },
+        { name: "About Us", href: "/about-us" },
+        { name: "Services", href: "/services" },
+        { name: "Careers", href: "/career" },
+        { name: "Blogs", href: "/blog" },
+        { name: "Contact Us", href: "/contact-us" },
+      ]);
+      if (settings.logo) setPreview(settings.logo);
+    }
+  }, [settings]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setLogoFile(file);
+      setPreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("siteName", form.siteName);
+    formData.append("contactPhone", form.contactPhone);
+    formData.append("contactEmail", form.contactEmail);
+    formData.append("officeAddress", form.officeAddress);
+    formData.append("workingHours", form.workingHours);
+    formData.append("socialLinks", JSON.stringify(socialLinks));
+    formData.append("headerMenu", JSON.stringify(headerMenu));
+
+    if (logoFile) {
+      formData.append("logo", logoFile);
+    }
+
+    try {
+      await updateSettings(formData).unwrap();
+      toast.success("Site settings updated successfully!");
+    } catch (err) {
+      console.error(err);
+      toast.error("Failed to update site settings.");
+    }
+  };
+
+  if (isLoading) return <div className="p-4 text-center text-slate-500">Loading settings...</div>;
+
+  return (
+    <div className="space-y-5">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Site Settings</h1>
+          <p className="text-sm text-slate-500">Manage branding, contact info, social links, and navigation</p>
+        </div>
+        <button
+          onClick={handleSave}
+          disabled={isSaving}
+          className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-bold shadow"
+        >
+          <Save size={18} />
+          {isSaving ? "Saving..." : "Save Settings"}
+        </button>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex border-b border-slate-200 gap-2">
+        <button
+          onClick={() => setActiveTab("general")}
+          className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 transition ${
+            activeTab === "general"
+              ? "border-secondary text-secondary"
+              : "border-transparent text-slate-500 hover:text-slate-700"
+          }`}
+        >
+          <Globe size={16} /> General & Logo
+        </button>
+        <button
+          onClick={() => setActiveTab("contact")}
+          className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 transition ${
+            activeTab === "contact"
+              ? "border-secondary text-secondary"
+              : "border-transparent text-slate-500 hover:text-slate-700"
+          }`}
+        >
+          <Phone size={16} /> Contact Details
+        </button>
+        <button
+          onClick={() => setActiveTab("social")}
+          className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 transition ${
+            activeTab === "social"
+              ? "border-secondary text-secondary"
+              : "border-transparent text-slate-500 hover:text-slate-700"
+          }`}
+        >
+          <Share2 size={16} /> Social Media Links
+        </button>
+        <button
+          onClick={() => setActiveTab("menus")}
+          className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 transition ${
+            activeTab === "menus"
+              ? "border-secondary text-secondary"
+              : "border-transparent text-slate-500 hover:text-slate-700"
+          }`}
+        >
+          <Menu size={16} /> Navigation Menus
+        </button>
+      </div>
+
+      {/* Content Form */}
+      <form onSubmit={handleSave} className="bg-white p-6 rounded-xl border shadow space-y-6">
+        {activeTab === "general" && (
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">Site Title / Brand Name</label>
+              <input
+                type="text"
+                value={form.siteName}
+                onChange={(e) => setForm({ ...form, siteName: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Website Logo</label>
+              <div className="flex items-center gap-4">
+                {preview && (
+                  <div className="relative w-32 h-16 rounded overflow-hidden border bg-slate-50 p-2 flex items-center justify-center">
+                    <Image
+                      src={getImageUrl(preview)}
+                      alt="Logo preview"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                )}
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleFileChange}
+                  className="w-full border rounded-lg px-3 py-1.5 text-sm"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Working Hours</label>
+              <input
+                type="text"
+                value={form.workingHours}
+                onChange={(e) => setForm({ ...form, workingHours: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+                placeholder="e.g. Mon - Fri: 9:00 AM - 6:00 PM"
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "contact" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">Primary Phone Number</label>
+              <input
+                type="text"
+                value={form.contactPhone}
+                onChange={(e) => setForm({ ...form, contactPhone: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Support Email Address</label>
+              <input
+                type="email"
+                value={form.contactEmail}
+                onChange={(e) => setForm({ ...form, contactEmail: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium mb-1">Office Address</label>
+              <textarea
+                rows={3}
+                value={form.officeAddress}
+                onChange={(e) => setForm({ ...form, officeAddress: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "social" && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">LinkedIn URL</label>
+              <input
+                type="url"
+                value={socialLinks.linkedin}
+                onChange={(e) => setSocialLinks({ ...socialLinks, linkedin: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Facebook URL</label>
+              <input
+                type="url"
+                value={socialLinks.facebook}
+                onChange={(e) => setSocialLinks({ ...socialLinks, facebook: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Twitter / X URL</label>
+              <input
+                type="url"
+                value={socialLinks.twitter}
+                onChange={(e) => setSocialLinks({ ...socialLinks, twitter: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">Instagram URL</label>
+              <input
+                type="url"
+                value={socialLinks.instagram}
+                onChange={(e) => setSocialLinks({ ...socialLinks, instagram: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium mb-1">WhatsApp Contact Number / Link</label>
+              <input
+                type="text"
+                value={socialLinks.whatsapp}
+                onChange={(e) => setSocialLinks({ ...socialLinks, whatsapp: e.target.value })}
+                className="w-full border rounded-lg px-3 py-2 text-sm"
+              />
+            </div>
+          </div>
+        )}
+
+        {activeTab === "menus" && (
+          <div className="space-y-4">
+            <h2 className="text-md font-bold text-slate-700">Header Menu Navigation Items</h2>
+            {headerMenu.map((item, index) => (
+              <div key={index} className="flex gap-3 items-center">
+                <input
+                  type="text"
+                  placeholder="Link Title"
+                  value={item.name}
+                  onChange={(e) => {
+                    const copy = [...headerMenu];
+                    copy[index].name = e.target.value;
+                    setHeaderMenu(copy);
+                  }}
+                  className="flex-1 border rounded-lg px-3 py-2 text-sm"
+                />
+                <input
+                  type="text"
+                  placeholder="Target URL (e.g. /about-us)"
+                  value={item.href}
+                  onChange={(e) => {
+                    const copy = [...headerMenu];
+                    copy[index].href = e.target.value;
+                    setHeaderMenu(copy);
+                  }}
+                  className="flex-1 border rounded-lg px-3 py-2 text-sm"
+                />
+                <button
+                  type="button"
+                  onClick={() => setHeaderMenu(headerMenu.filter((_, i) => i !== index))}
+                  className="text-red-500 hover:text-red-700 p-2"
+                >
+                  <Trash2 size={18} />
+                </button>
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={() => setHeaderMenu([...headerMenu, { name: "", href: "" }])}
+              className="flex items-center gap-2 text-secondary font-bold text-sm hover:underline"
+            >
+              <Plus size={16} /> Add Navigation Link
+            </button>
+          </div>
+        )}
+      </form>
+    </div>
+  );
+}

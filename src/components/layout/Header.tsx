@@ -6,6 +6,9 @@ import { Container } from '@/components/ui'
 import { useState, useRef, useEffect } from 'react'
 import { ChevronDown, ChevronRight, Menu, X, Calculator } from 'lucide-react'
 import { useGetServicesQuery } from '@/services/services'
+import { useGetServiceCategoriesQuery } from '@/services/serviceCategory'
+import { useGetSiteSettingsQuery } from '@/services/siteSettings'
+import { getImageUrl } from '@/lib/utils/imageUtils'
 import { motion, AnimatePresence } from 'framer-motion'
 import { slugifyCategory } from '@/lib/utils/slugUtils'
 
@@ -43,10 +46,20 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
 
   const { data: practiceAreas = [] } = useGetServicesQuery()
+  const { data: serviceCategories = [] } = useGetServiceCategoriesQuery()
+  const { data: siteSettings } = useGetSiteSettingsQuery()
   const closeTimeout = useRef<NodeJS.Timeout | null>(null)
 
-  // Group services by category
-  const servicesByCategory = (practiceAreas || []).reduce<Record<string, typeof practiceAreas>>((acc, service) => {
+  // Map category names to positions
+  const categoryPositionMap = (serviceCategories || []).reduce<Record<string, number>>((acc, cat) => {
+    acc[cat.name] = cat.position ?? 0;
+    return acc;
+  }, {});
+
+  // Group published services by category
+  const servicesByCategory = (practiceAreas || [])
+    .filter((service) => service.status !== 'Draft')
+    .reduce<Record<string, typeof practiceAreas>>((acc, service) => {
     const cat = service.category || "General Services";
     if (!acc[cat]) {
       acc[cat] = [];
@@ -54,6 +67,13 @@ export default function Header() {
     acc[cat].push(service);
     return acc;
   }, {});
+
+  const sortedServicesByCategory = Object.entries(servicesByCategory).sort(([catA], [catB]) => {
+    const posA = categoryPositionMap[catA] ?? 999;
+    const posB = categoryPositionMap[catB] ?? 999;
+    if (posA !== posB) return posA - posB;
+    return catA.localeCompare(catB);
+  });
 
   // Add scroll listener for header styling
   useEffect(() => {
@@ -87,8 +107,8 @@ export default function Header() {
             className="flex items-center hover:opacity-90 transition-opacity"
           >
             <Image
-              src="/img/logo.png"
-              alt="People Consulting"
+              src={siteSettings?.logo ? getImageUrl(siteSettings.logo) : "/img/logo.png"}
+              alt={siteSettings?.siteName || "People Consulting"}
               width={scrolled ? 180 : 220}
               height={90}
               className="h-11 sm:h-12 w-auto transition-all duration-300"
@@ -138,7 +158,7 @@ export default function Header() {
                             <div className="bg-white shadow-2xl border-t-2 border-primary rounded-xl p-8 relative overflow-hidden">
                               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10" />
                               <div className="grid grid-cols-4 gap-x-6 gap-y-8 relative z-10">
-                                {Object.entries(servicesByCategory).map(([category, items]) => (
+                                {sortedServicesByCategory.map(([category, items]) => (
                                   <div key={category} className="space-y-3">
                                     <Link
                                        href={`/services/category/${slugifyCategory(category)}`}
@@ -331,7 +351,7 @@ export default function Header() {
                         className="bg-gray-50/50"
                       >
                         <div className="px-6 py-3 ml-6 my-2 space-y-4 border-l-2 border-primary/20">
-                          {Object.entries(servicesByCategory).map(([category, items]) => (
+                          {sortedServicesByCategory.map(([category, items]) => (
                             <div key={category} className="space-y-2">
                               <Link
                                 href={`/services/category/${slugifyCategory(category)}`}

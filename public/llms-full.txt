@@ -1,0 +1,35 @@
+# People Consulting - Full Knowledge Base for AI Models
+
+## Organization Overview
+People Consulting is a premier HR Consulting & Business Advisory firm based in Gurgaon, India.
+We specialize in Talent Acquisition, Executive Search, Statutory Labor Compliance, Payroll Processing, and Employee Training.
+
+Website: https://peopleconsultings.com
+Email: hello@peopleconsultings.com
+Location: 243, 2nd Floor, Vipul Trade Centre, Sector 48, Sohna Road, Gurgaon, Haryana, India
+
+---
+
+## Detailed HR Services
+
+### Executive Search
+- URL: https://peopleconsultings.com/services/executive-search
+- Category: HR Service
+- Overview: We specialize in identifying and attracting exceptional executive leaders who drive organizational success. Our confidential search process ensures access to high-caliber professionals across industries.
+
+### Hiring & Staffing
+- URL: https://peopleconsultings.com/services/hiring-services
+- Category: HR Service
+- Overview: We provide end-to-end recruitment solutions to help you find the best talent for your organization including executive search, market insights, and talent pipeline development.
+
+### Recruitment Process Outsourcing (RPO)
+- URL: https://peopleconsultings.com/services/recruitment-process-outsourcing-rpo
+- Category: HR Service
+- Overview: Our RPO solution helps businesses streamline hiring with dedicated recruitment experts, advanced sourcing strategies, and data-driven hiring processes.
+
+---
+
+## Interactive HR Calculators & Tools
+- Salary Calculator: https://peopleconsultings.com/salary-calculator
+- Gratuity Calculator: https://peopleconsultings.com/gratuity-calculator
+- Attrition Rate Calculator: https://peopleconsultings.com/attrition-calculator

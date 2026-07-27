@@ -27,4 +27,5 @@ export const API_ENDPOINTS = {
     banners: "/banners",
     media: "/media",
     ai: "/ai",
+    activityLogs: "/activity-logs",
 };

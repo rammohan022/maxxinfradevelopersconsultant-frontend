@@ -15,6 +15,7 @@ import {
   Image as ImageIcon,
   FolderOpen,
   User,
+  History,
 } from "lucide-react";
 import { removeAuthToken } from "@/lib/utils/TokenHelper";
 import { useGetProfileQuery } from "@/services/auth";
@@ -92,6 +93,7 @@ const navItems: NavItem[] = [
       { name: "Terms & Conditions", href: "/admin/terms-conditions" },
     ],
   },
+  { name: "Activity Logs", href: "/admin/activity-logs", icon: History, allowedRoles: ["admin"], permissionKey: "logs" },
   {
     name: "Settings",
     icon: Settings,

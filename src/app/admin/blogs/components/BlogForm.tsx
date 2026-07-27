@@ -5,11 +5,12 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useCreateBlogMutation, useUpdateBlogMutation } from "@/services/blog";
 import { useGetBlogCategoriesQuery } from "@/services/blogCategory";
+import { useGenerateBlogMutation } from "@/services/ai";
 import toast from "react-hot-toast";
 import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
-import { Sparkles } from "lucide-react";
+import { Sparkles, RefreshCw } from "lucide-react";
 import AiModal, { AiToolType } from "@/components/ai/AiModal";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -36,6 +37,7 @@ export default function BlogForm({
   const router = useRouter();
   const [createBlog, { isLoading: isCreating }] = useCreateBlogMutation();
   const [updateBlog, { isLoading: isUpdating }] = useUpdateBlogMutation();
+  const [generateBlog, { isLoading: isGeneratingAi }] = useGenerateBlogMutation();
   const { data: categories = [] } = useGetBlogCategoriesQuery();
 
   const [title, setTitle] = useState(initialData?.title || "");
@@ -56,6 +58,25 @@ export default function BlogForm({
     tool: AiToolType;
     input: string;
   }>({ isOpen: false, tool: "blog", input: "" });
+
+  const handleDirectAiGenerate = async () => {
+    if (!title.trim()) {
+      toast.error("Please enter a Blog Title first!");
+      return;
+    }
+    toast.loading("Generating blog content with AI...", { id: "ai-gen" });
+    try {
+      const res = await generateBlog({ topic: title, keywords: category }).unwrap();
+      if (res.content) setContent(res.content);
+      if (res.title && !title) setTitle(res.title);
+      if (res.excerpt && !metaDescription) setMetaDescription(res.excerpt);
+      if (!slug && title) setSlug(slugify(title));
+      toast.success("AI Blog Content generated & filled into editor!", { id: "ai-gen" });
+    } catch (err: any) {
+      console.error(err);
+      toast.error("AI Generation failed. Please check AI Settings API keys.", { id: "ai-gen" });
+    }
+  };
 
   useEffect(() => {
     if (initialData) {
@@ -277,9 +298,27 @@ export default function BlogForm({
 
         {/* Content Editor */}
         <div>
-          <label className="block text-sm font-semibold mb-2">
-            Blog Content
-          </label>
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-semibold text-slate-800">
+              Blog Content
+            </label>
+            <button
+              type="button"
+              onClick={handleDirectAiGenerate}
+              disabled={isGeneratingAi}
+              className="flex items-center gap-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-3.5 py-1.5 rounded-lg text-xs font-bold shadow transition disabled:opacity-60"
+            >
+              {isGeneratingAi ? (
+                <>
+                  <RefreshCw size={14} className="animate-spin" /> Generating Content...
+                </>
+              ) : (
+                <>
+                  <Sparkles size={14} className="text-yellow-300 animate-pulse" /> ✨ Auto-Generate Content with AI
+                </>
+              )}
+            </button>
+          </div>
           <div className="bg-white min-h-[320px]">
             <ReactQuill
               theme="snow"

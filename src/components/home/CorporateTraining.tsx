@@ -118,6 +118,18 @@ export default function CorporateTraining() {
                   />
                 </div>
 
+                <div className="flex items-start gap-2.5 pt-1 pb-1">
+                  <input
+                    id="pf-consent"
+                    type="checkbox"
+                    required
+                    className="mt-0.5 h-4 w-4 text-secondary rounded border-slate-300 focus:ring-secondary accent-secondary cursor-pointer flex-shrink-0"
+                  />
+                  <label htmlFor="pf-consent" className="text-xs text-slate-600 leading-snug cursor-pointer select-none">
+                    I agree to the Terms of Service and Privacy Policy.
+                  </label>
+                </div>
+
                 <button
                   type="submit"
                   disabled={loading}

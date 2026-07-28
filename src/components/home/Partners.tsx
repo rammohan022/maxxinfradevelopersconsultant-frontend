@@ -35,7 +35,7 @@ export default function Partners() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
         >
-          <span className="inline-block text-primary font-bold text-sm uppercase tracking-widest mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-3">
             Our Partner
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">

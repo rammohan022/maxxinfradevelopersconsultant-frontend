@@ -34,7 +34,7 @@ export default function FAQs() {
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-3">
             FAQs
           </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-primary leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Frequently Asked <span className="text-secondary">Questions</span>
           </h2>
           <p className="mt-3 text-slate-600 text-sm sm:text-base">

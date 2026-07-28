@@ -73,7 +73,7 @@ html {
   font-weight: 700 !important;
   margin-top: 1.5rem !important;
   margin-bottom: 0.75rem !important;
-  color: #0d2137 !important;
+  color: #3b4d81 !important;
 }
 
 .rich-text-content h2 {
@@ -82,7 +82,7 @@ html {
   font-weight: 700 !important;
   margin-top: 1.25rem !important;
   margin-bottom: 0.5rem !important;
-  color: #0d2137 !important;
+  color: #3b4d81 !important;
 }
 
 .rich-text-content h3 {
@@ -91,7 +91,7 @@ html {
   font-weight: 700 !important;
   margin-top: 1rem !important;
   margin-bottom: 0.5rem !important;
-  color: #0d2137 !important;
+  color: #3b4d81 !important;
 }
 
 .rich-text-content h4 {
@@ -100,7 +100,7 @@ html {
   font-weight: 600 !important;
   margin-top: 0.75rem !important;
   margin-bottom: 0.25rem !important;
-  color: #0d2137 !important;
+  color: #3b4d81 !important;
 }
 
 .rich-text-content p {
@@ -127,7 +127,7 @@ html {
 
 .rich-text-content strong {
   font-weight: 700 !important;
-  color: #0f172a !important;
+  color: #3b4d81 !important;
 }
 .rotate-y-180 {
   transform: rotateY(180deg);

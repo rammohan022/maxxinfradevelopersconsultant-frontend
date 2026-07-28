@@ -99,7 +99,7 @@ export default function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <span className="text-sm uppercase tracking-widest text-primary font-bold border-b-2 border-primary pb-1">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest">
             Testimonials
           </span>
 

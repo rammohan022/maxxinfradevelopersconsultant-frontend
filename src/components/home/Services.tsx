@@ -13,7 +13,7 @@ export default function Services() {
           
           {/* Left Column: Heading & Description */}
           <div className="lg:col-span-5 space-y-6">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[rgb(13_33_55)] leading-tight tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
               Discover what we do
             </h2>
 

@@ -3,7 +3,7 @@ import { getAuthToken, removeAuthToken } from "@/lib/utils/TokenHelper";
 import toast from "react-hot-toast";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3003/",
   credentials: "include",
   prepareHeaders: (headers) => {
     const token = getAuthToken();

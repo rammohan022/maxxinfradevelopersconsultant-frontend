@@ -8,7 +8,6 @@ import {
   Mail,
   MapPin,
   Facebook,
-  Twitter,
   Linkedin,
   Instagram,
 } from 'lucide-react'
@@ -24,8 +23,8 @@ const containerVariants = {
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 }
 
 export default function Contact() {
@@ -42,17 +41,14 @@ export default function Contact() {
     e.preventDefault()
     try {
       await createLead({
-        fullName: form.fullName,
-        email: form.email,
-        phoneNumber: form.phoneNumber,
-        subject: form.subject,
-        message: form.message,
+        ...form,
+        source: typeof window !== "undefined" ? window.location.pathname : "",
       }).unwrap()
-      toast.success("Your enquiry has been submitted! We'll get back to you soon.")
+      toast.success("Enquiry submitted successfully! We'll get back to you soon.")
       setForm({ fullName: '', email: '', phoneNumber: '', subject: '', message: '' })
     } catch (err) {
       console.error('Submission error:', err)
-      toast.error('Failed to submit. Please try again later.')
+      toast.error('Failed to submit enquiry. Please try again later.')
     }
   }
 
@@ -85,7 +81,7 @@ export default function Contact() {
                 Contact Us
               </motion.span>
 
-              <motion.h2 variants={itemVariants} className="mb-4 text-2xl font-bold lg:text-3xl xl:text-4xl leading-tight text-slate-900">
+              <motion.h2 variants={itemVariants} className="mb-4 text-2xl font-bold lg:text-3xl xl:text-4xl leading-tight text-primary">
                 Let us know your concern, we are happy to help you.
               </motion.h2>
 
@@ -160,9 +156,6 @@ export default function Contact() {
                   <a href="https://www.facebook.com/Weablywork" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="Facebook">
                     <Facebook className="h-4 w-4" />
                   </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="Twitter">
-                    <Twitter className="h-4 w-4" />
-                  </a>
                 </div>
               </motion.div>
             </div>
@@ -176,7 +169,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="bg-white p-6 sm:p-8 lg:p-10 relative"
           >
-            <span className="inline-block text-sm font-bold uppercase tracking-widest text-primary mb-3">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-3">
               Contact Form
             </span>
 
@@ -215,6 +208,18 @@ export default function Contact() {
                   }
                   className="w-full resize-none rounded-lg bg-gray-50 border border-gray-200 px-4 py-3 outline-none transition-all duration-300 focus:bg-white focus:border-primary focus:ring-4 focus:ring-primary/10 placeholder:text-gray-400 font-medium text-sm"
                 />
+              </div>
+
+              <div className="flex items-start gap-2.5 pt-1 pb-1">
+                <input
+                  id="hc-consent"
+                  type="checkbox"
+                  required
+                  className="mt-0.5 h-4 w-4 text-secondary rounded border-gray-300 focus:ring-secondary accent-secondary cursor-pointer flex-shrink-0"
+                />
+                <label htmlFor="hc-consent" className="text-xs text-gray-600 leading-snug cursor-pointer select-none">
+                  I agree to the Terms of Service and Privacy Policy.
+                </label>
               </div>
 
               <motion.button

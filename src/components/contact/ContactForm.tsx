@@ -113,9 +113,6 @@ const ContactSection = () => {
                                         <a href="https://www.facebook.com/Weablywork" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition" aria-label="Facebook">
                                             <Facebook className="w-5 h-5" />
                                         </a>
-                                        <a href="#" className="hover:text-red-700 transition" aria-label="Twitter">
-                                            <Twitter className="w-5 h-5" />
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -214,21 +211,15 @@ const ContactSection = () => {
                                 </div>
 
                                 {/* Terms */}
-                                <div className="flex items-start gap-2">
+                                <div className="flex items-start gap-2.5 pt-1 pb-1">
                                     <input
+                                        id="cf-consent"
                                         type="checkbox"
                                         required
-                                        className="mt-1 h-3.5 w-3.5 text-red-700 border-gray-300 rounded focus:ring-red-700"
+                                        className="mt-0.5 h-4 w-4 text-secondary rounded border-gray-300 focus:ring-secondary accent-secondary cursor-pointer flex-shrink-0"
                                     />
-                                    <label className="text-xs text-gray-600 leading-snug">
-                                        I agree to the{" "}
-                                        <a href="#" className="text-red-700 hover:underline">
-                                            Terms
-                                        </a>{" "}
-                                        and{" "}
-                                        <a href="#" className="text-red-700 hover:underline">
-                                            Privacy Policy
-                                        </a>
+                                    <label htmlFor="cf-consent" className="text-xs text-gray-600 leading-snug cursor-pointer select-none">
+                                        I agree to the Terms of Service and Privacy Policy.
                                     </label>
                                 </div>
 

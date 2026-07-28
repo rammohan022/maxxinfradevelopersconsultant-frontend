@@ -28,46 +28,47 @@ export default function FAQs() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="py-16 md:py-14 bg-slate-50" id="faqs">
-      <Container className="max-w-4xl">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+    <section className="py-14 md:py-16 bg-slate-50" id="faqs">
+      <Container>
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-3">
             FAQs
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary leading-tight">
             Frequently Asked <span className="text-secondary">Questions</span>
           </h2>
-          <p className="mt-4 text-slate-600 text-base sm:text-lg">
+          <p className="mt-3 text-slate-600 text-sm sm:text-base">
             Find answers to common questions about our search methodology, training modules, and compliance workflows.
           </p>
         </div>
 
-        <div className="space-y-4">
+        {/* Compact 2-Column FAQ Grid */}
+        <div className="grid md:grid-cols-2 gap-4.5 sm:gap-5 items-start">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx
             return (
               <div
                 key={idx}
-                className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
+                className="bg-white rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all overflow-hidden"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full flex items-center justify-between p-6 text-left"
+                  className="w-full flex items-center justify-between px-5 py-4 text-left"
                 >
-                  <span className="font-bold text-primary text-base sm:text-lg pr-4">{faq.q}</span>
-                  <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0">
-                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                  <span className="font-semibold text-primary text-sm sm:text-base pr-3 leading-snug">{faq.q}</span>
+                  <div className="w-7 h-7 rounded-md bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0">
+                    {isOpen ? <Minus className="w-3.5 h-3.5 text-secondary" /> : <Plus className="w-3.5 h-3.5" />}
                   </div>
                 </button>
-                <AnimatePresence initial={false}>
+                <AnimatePresence>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <div className="px-6 pb-6 pt-2 border-t border-slate-50 text-slate-600 text-sm sm:text-base leading-relaxed">
+                      <div className="px-5 pb-4 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
                         {faq.a}
                       </div>
                     </motion.div>

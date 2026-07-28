@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
@@ -12,6 +12,7 @@ import { slugifyCategory, unslugifyCategory } from '@/lib/utils/slugUtils';
 import { getImageUrl } from '@/lib/utils/imageUtils';
 import {
   ChevronRight,
+  ChevronLeft,
   Search,
   CheckCircle2,
   Sparkles,
@@ -25,18 +26,26 @@ import {
   BookOpen,
 } from 'lucide-react';
 
+const ITEMS_PER_PAGE = 12;
+
 export default function CategoryServicesClient() {
   const params = useParams();
   const router = useRouter();
   const rawCategorySlug = (params?.categorySlug as string) || '';
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
 
   // Fetch services and categories
   const { data: rawServices = [], isLoading: isServicesLoading } = useGetServicesQuery();
   const allServices = useMemo(() => (rawServices || []).filter((s) => s.status !== 'Draft'), [rawServices]);
   const { data: categories = [], isLoading: isCategoriesLoading } = useGetServiceCategoriesQuery();
+
+  // Reset page number on filter or search change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [rawCategorySlug, searchTerm]);
 
   // Extract all distinct categories from backend services + serviceCategories table
   const availableCategories = useMemo(() => {
@@ -63,40 +72,31 @@ export default function CategoryServicesClient() {
     return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
   }, [categories, allServices]);
 
-  // Default to first category if no rawCategorySlug is specified
-  const effectiveCategorySlug = useMemo(() => {
-    if (rawCategorySlug) return rawCategorySlug;
-    return availableCategories[0]?.slug || '';
-  }, [rawCategorySlug, availableCategories]);
-
-  // Find active category info
-  const activeCategoryObj = useMemo(() => {
-    return categories.find(
-      (c) => c.slug === effectiveCategorySlug || slugifyCategory(c.name) === effectiveCategorySlug
-    );
-  }, [categories, effectiveCategorySlug]);
-
+  // Active Category Name
   const activeCategoryName = useMemo(() => {
+    if (!rawCategorySlug) return 'All Services';
+    const activeCategoryObj = categories.find(
+      (c) => c.slug === rawCategorySlug || slugifyCategory(c.name) === rawCategorySlug
+    );
     if (activeCategoryObj) return activeCategoryObj.name;
-    // Fallback search across allServices category string
     const matchingService = allServices.find(
-      (s) => s.category && slugifyCategory(s.category) === effectiveCategorySlug
+      (s) => s.category && slugifyCategory(s.category) === rawCategorySlug
     );
     if (matchingService?.category) return matchingService.category;
-    return unslugifyCategory(effectiveCategorySlug) || 'Services';
-  }, [activeCategoryObj, allServices, effectiveCategorySlug]);
+    return unslugifyCategory(rawCategorySlug) || 'Services';
+  }, [rawCategorySlug, categories, allServices]);
 
-  // Filter services belonging to this category
+  // Filter services belonging to this category or all services
   const categoryServices = useMemo(() => {
-    if (!effectiveCategorySlug) return allServices;
+    if (!rawCategorySlug) return allServices;
     return allServices.filter((s) => {
       const serviceCatSlug = slugifyCategory(s.category || 'General Services');
       return (
-        serviceCatSlug === effectiveCategorySlug ||
+        serviceCatSlug === rawCategorySlug ||
         s.category?.toLowerCase().trim() === activeCategoryName.toLowerCase().trim()
       );
     });
-  }, [allServices, effectiveCategorySlug, activeCategoryName]);
+  }, [allServices, rawCategorySlug, activeCategoryName]);
 
   // Apply search filtering
   const filteredServices = useMemo(() => {
@@ -106,8 +106,16 @@ export default function CategoryServicesClient() {
       (s) =>
         s.title.toLowerCase().includes(term) ||
         (s.overview && s.overview.toLowerCase().includes(term))
-      );
+    );
   }, [categoryServices, searchTerm]);
+
+  // Pagination calculation
+  const totalPages = Math.ceil(filteredServices.length / ITEMS_PER_PAGE);
+
+  const paginatedServices = useMemo(() => {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filteredServices.slice(start, start + ITEMS_PER_PAGE);
+  }, [filteredServices, currentPage]);
 
   // Aggregate FAQs from services in this category
   const categoryFaqs = useMemo(() => {
@@ -142,50 +150,65 @@ export default function CategoryServicesClient() {
   return (
     <div className="bg-slate-50 min-h-screen pb-12">
       {/* HERO SECTION */}
-      <section className="relative bg-gradient-to-b from-slate-100 via-white to-slate-50 border-b border-slate-200 text-slate-900 overflow-hidden py-14 lg:py-20">
-        {/* Decorative background blurs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-[100px] pointer-events-none" />
+      <section className="relative py-16 lg:py-24 overflow-hidden bg-[rgb(13_33_55)] min-h-[380px] flex items-center">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/img/services_hero_bg_clean.png"
+            alt={activeCategoryName}
+            fill
+            priority
+            className="object-cover opacity-60"
+          />
+        </div>
 
-        <Container className="relative z-10">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs sm:text-sm text-slate-600 mb-6 flex-wrap font-medium">
-            <Link href="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <ChevronRight size={14} className="text-slate-400" />
-            <Link href="/services" className="hover:text-primary transition-colors">
-              Our Services
-            </Link>
-            <ChevronRight size={14} className="text-slate-400" />
-            <span className="text-primary font-bold">{activeCategoryName}</span>
-          </nav>
+        {/* Dark Overlay with Heavy Left Gradient for Maximum Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(13_33_55)]/95 via-[rgb(13_33_55)]/80 to-[rgb(13_33_55)]/50" />
 
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/5 border border-primary/15 text-primary text-xs font-bold uppercase tracking-widest mb-6">
+        {/* Content */}
+        <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left">
+          <div className="max-w-3xl w-full text-left">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-200 mb-4 flex-wrap font-medium">
+              <Link href="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+              <span className="text-gray-400">&gt;</span>
+              <Link href="/services" className="hover:text-white transition-colors">
+                Our Services
+              </Link>
+              {rawCategorySlug && (
+                <>
+                  <span className="text-gray-400">&gt;</span>
+                  <span className="font-bold text-secondary">{activeCategoryName}</span>
+                </>
+              )}
+            </nav>
+
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-secondary text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-md">
               <Layers size={14} />
               <span>Service Category</span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 tracking-tight uppercase drop-shadow-lg">
               {activeCategoryName}
             </h1>
 
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed mb-8">
+            <p className="text-gray-100 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl font-normal drop-shadow-md">
               Explore our specialized consulting services under{' '}
-              <span className="text-slate-900 font-semibold">{activeCategoryName}</span>. Built to empower your organization with expert guidance, seamless compliance, and strategic excellence.
+              <span className="text-white font-bold">{activeCategoryName}</span>. Built to empower your organization with expert guidance, seamless compliance, and strategic excellence.
             </p>
 
             {/* Quick stats pills */}
             <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm">
-              <div className="px-4 py-2 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center gap-2 text-slate-700">
+              <div className="px-4 py-2 rounded-xl bg-white/15 border border-white/25 text-white backdrop-blur-md flex items-center gap-2 shadow-md">
                 <Sparkles size={16} className="text-secondary" />
                 <span>
-                  <strong className="text-slate-900 font-bold">{categoryServices.length}</strong> Specialized Services Available
+                  <strong className="text-white font-bold">{categoryServices.length}</strong> Specialized Services Available
                 </span>
               </div>
-              <div className="px-4 py-2 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center gap-2 text-slate-700">
-                <ShieldCheck size={16} className="text-emerald-600" />
+              <div className="px-4 py-2 rounded-xl bg-white/15 border border-white/25 text-white backdrop-blur-md flex items-center gap-2 shadow-md">
+                <ShieldCheck size={16} className="text-emerald-400" />
                 <span>100% Industry Compliant & Certified</span>
               </div>
             </div>
@@ -200,8 +223,27 @@ export default function CategoryServicesClient() {
             {/* Category Filter Tabs */}
             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 scroll-smooth">
 
+              {/* All Services Tab */}
+              <Link
+                href="/services"
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
+                  !rawCategorySlug
+                    ? 'bg-primary text-white shadow-md shadow-primary/20'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
+              >
+                <span>All Services</span>
+                <span
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
+                    !rawCategorySlug ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
+                  }`}
+                >
+                  {allServices.length}
+                </span>
+              </Link>
+
               {availableCategories.map((cat) => {
-                const isActive = cat.slug === effectiveCategorySlug;
+                const isActive = cat.slug === rawCategorySlug;
                 return (
                   <Link
                     key={cat.slug}
@@ -260,7 +302,7 @@ export default function CategoryServicesClient() {
               {activeCategoryName} Offerings
             </h2>
             <p className="text-slate-500 text-xs sm:text-sm mt-1">
-              Showing {filteredServices.length} {filteredServices.length === 1 ? 'service' : 'services'}
+              Showing {paginatedServices.length} of {filteredServices.length} {filteredServices.length === 1 ? 'service' : 'services'}
             </p>
           </div>
         </div>
@@ -299,37 +341,36 @@ export default function CategoryServicesClient() {
             {searchTerm ? (
               <button
                 onClick={() => setSearchTerm('')}
-                className="px-5 py-2.5 bg-primary text-white text-xs font-semibold rounded-lg hover:bg-primary-dark transition"
+                className="px-5 py-2.5 bg-primary text-white rounded-xl text-xs font-bold hover:bg-primary-dark transition"
               >
                 Clear Search
               </button>
             ) : (
               <Link
-                href="/services"
-                className="inline-block px-5 py-2.5 bg-primary text-white text-xs font-semibold rounded-lg hover:bg-primary-dark transition"
+                href="/contact-us"
+                className="px-5 py-2.5 bg-primary text-white rounded-xl text-xs font-bold hover:bg-primary-dark transition inline-block"
               >
-                View All Services
+                Request Custom Solution
               </Link>
             )}
           </div>
         )}
 
-        {/* Services List Grid */}
+        {/* Services Cards */}
         {!isServicesLoading && filteredServices.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredServices.map((service, index) => {
-              const imageSrc = getImageUrl(service.innerImage) || '/img/hr_hero_bg_1783707638359.png';
+            {paginatedServices.map((service) => {
+              const imageSrc = getImageUrl(service.innerImage);
+              const catName = service.category || 'General Services';
+              const catSlug = slugifyCategory(catName);
 
               return (
-                <motion.div
+                <div
                   key={service.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.08 }}
-                  className="group bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex flex-col overflow-hidden transform hover:-translate-y-1"
+                  className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex flex-col overflow-hidden group transform hover:-translate-y-1"
                 >
-                  {/* Card Image Banner */}
-                  <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                  {/* Card Header Image */}
+                  <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
                     <Image
                       src={imageSrc}
                       alt={service.title}
@@ -337,150 +378,136 @@ export default function CategoryServicesClient() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent" />
-                    
-                    {/* Badge */}
-                    <span className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-md text-primary font-bold text-[11px] uppercase tracking-wider rounded-full shadow-sm">
-                      {activeCategoryName}
-                    </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+
+                    {/* Category Tag Badge */}
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-primary text-[11px] font-bold uppercase tracking-wider shadow-sm">
+                        <Layers size={12} className="text-secondary" />
+                        <span>{catName}</span>
+                      </span>
+                    </div>
+
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-4 left-4 right-4 z-10">
+                      <h3 className="text-lg font-bold text-white leading-snug drop-shadow-md">
+                        {service.title}
+                      </h3>
+                    </div>
                   </div>
 
                   {/* Card Content */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-xl font-bold text-primary transition-colors mb-3">
-                      {service.title}
-                    </h3>
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                      {/* Overview */}
+                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-6">
+                        {service.overview
+                          ? service.overview.replace(/<[^>]*>?/gm, '')
+                          : 'Professional HR consulting and workforce compliance solutions for modern enterprises.'}
+                      </p>
+                    </div>
 
-                    {/* Overview snippet */}
-                    <div
-                      className="text-slate-600 text-sm leading-relaxed mb-6 line-clamp-3 flex-1"
-                      dangerouslySetInnerHTML={{ __html: service.overview || '' }}
-                    />
-
-                    {/* Included Key Offerings / Bullet Highlights */}
-                    {service.services && Array.isArray(service.services) && service.services.length > 0 && (
-                      <div className="mb-6 pt-4 border-t border-slate-100 space-y-2">
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
-                          Key Offerings
-                        </span>
-                        {service.services.slice(0, 3).map((item, idx) => (
-                          <div key={idx} className="flex items-start gap-2 text-xs text-slate-700">
-                            <CheckCircle2 size={14} className="text-secondary shrink-0 mt-0.5" />
-                            <span className="line-clamp-1">{item}</span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Action Button */}
+                    {/* Card Footer Link */}
                     <Link
                       href={`/services/${service.slug}`}
-                      className="mt-auto flex items-center justify-between w-full py-3 px-4 rounded-xl bg-slate-50 group-hover:bg-primary group-hover:text-white text-slate-800 text-xs sm:text-sm font-bold transition-all duration-300"
+                      className="inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider group/link transition-colors"
                     >
                       <span>Explore Service Details</span>
-                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={14} className="transform group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
         )}
+
+        {/* Pagination Controls */}
+        {!isServicesLoading && totalPages > 1 && (
+          <div className="mt-12 flex items-center justify-center gap-2">
+            <button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+              className="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm"
+              aria-label="Previous Page"
+            >
+              <ChevronLeft size={18} />
+            </button>
+
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+              <button
+                key={pageNum}
+                onClick={() => setCurrentPage(pageNum)}
+                className={`w-10 h-10 rounded-xl text-xs sm:text-sm font-bold transition-all ${
+                  currentPage === pageNum
+                    ? 'bg-primary text-white shadow-md shadow-primary/20 scale-105'
+                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                {pageNum}
+              </button>
+            ))}
+
+            <button
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+              disabled={currentPage === totalPages}
+              className="p-2.5 rounded-xl border border-slate-200 bg-white text-slate-700 hover:bg-slate-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors shadow-sm"
+              aria-label="Next Page"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        )}
       </Container>
 
-      {/* WHY CHOOSE US FOR THIS CATEGORY */}
-      <section className="py-16 bg-white border-t border-b border-slate-200">
-        <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-secondary font-bold text-xs uppercase tracking-widest">
-              Why Partner With Us
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-primary mt-2">
-              Why Choose People Consulting for {activeCategoryName}?
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
-                <Zap size={24} />
-              </div>
-              <h3 className="text-lg font-bold text-primary mb-2">Tailored Execution</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                We customize solutions specifically to your business framework, operational scale, and growth objectives.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition">
-              <div className="w-12 h-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-4">
-                <ShieldCheck size={24} />
-              </div>
-              <h3 className="text-lg font-bold text-primary mb-2">Statutory Risk Mitigation</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Our team ensures complete adherence to all regulatory standards, giving you 100% peace of mind.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4">
-                <Award size={24} />
-              </div>
-              <h3 className="text-lg font-bold text-primary mb-2">Proven Track Record</h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
-                Over a decade of industry expertise delivering quantifiable results across corporate sectors nationwide.
-              </p>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* CATEGORY FAQS (If Any Exist) */}
+      {/* CATEGORY FAQs SECTION */}
       {categoryFaqs.length > 0 && (
-        <section className="py-16 bg-slate-50">
-          <Container className="max-w-4xl">
+        <section className="py-16 bg-white border-t border-slate-200">
+          <Container>
             <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-3">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-50 border border-secondary/20 text-secondary text-xs font-bold uppercase tracking-widest mb-3">
                 <HelpCircle size={14} />
                 <span>Frequently Asked Questions</span>
-              </div>
+              </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-primary">
-                Got Questions About {activeCategoryName}?
+                Common Questions about {activeCategoryName}
               </h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="grid md:grid-cols-2 gap-4.5 sm:gap-5 items-start">
               {categoryFaqs.map((faq, index) => {
                 const isOpen = openFaqIndex === index;
                 return (
                   <div
                     key={index}
-                    className="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm transition"
+                    className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50 transition-colors"
                   >
                     <button
                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                      className="w-full flex items-center justify-between p-5 text-left font-semibold text-slate-900 hover:text-primary transition"
+                      className="w-full px-5 py-4 text-left flex items-center justify-between gap-3 font-semibold text-slate-800 text-sm sm:text-base hover:text-primary transition-colors leading-snug"
                     >
-                      <span className="text-base">{faq.question}</span>
+                      <span>{faq.question}</span>
                       <ChevronDown
                         size={18}
-                        className={`text-slate-400 transition-transform duration-300 shrink-0 ml-4 ${
-                          isOpen ? 'rotate-180 text-primary' : ''
+                        className={`text-slate-400 shrink-0 transition-transform duration-200 ${
+                          isOpen ? 'rotate-180 text-secondary' : ''
                         }`}
                       />
                     </button>
+
                     <AnimatePresence>
                       {isOpen && (
                         <motion.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3 }}
+                          transition={{ duration: 0.2 }}
                         >
-                          <div className="px-5 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-3">
+                          <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 pt-3">
                             <p>{faq.answer}</p>
                             {faq.serviceTitle && (
-                              <span className="inline-block mt-3 text-[11px] font-semibold text-slate-400">
-                                Related to: {faq.serviceTitle}
+                              <span className="inline-block mt-2 text-[11px] font-bold text-secondary uppercase tracking-wider">
+                                Related Service: {faq.serviceTitle}
                               </span>
                             )}
                           </div>
@@ -495,7 +522,7 @@ export default function CategoryServicesClient() {
         </section>
       )}
 
-      {/* CTA SECTION */}
+      {/* CALL TO ACTION */}
       <CallToAction />
     </div>
   );

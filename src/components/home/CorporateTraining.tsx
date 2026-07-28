@@ -34,12 +34,12 @@ export default function CorporateTraining() {
   }
 
   return (
-    <section className="py-16 md:py-14 bg-white text-slate-900" id="corporate-training">
+    <section className="py-16 md:py-20 bg-slate-50 text-slate-900" id="corporate-training">
       <Container>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Programs Info */}
           <div className="lg:col-span-7">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
               Training Programs
             </span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
@@ -49,14 +49,17 @@ export default function CorporateTraining() {
               We design and deliver interactive curriculum focused on building operational skills, understanding legal compliance updates, and fostering cross-functional leadership.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {programs.map((prog) => (
-                <div key={prog.title} className="p-4 rounded-xl border border-slate-100 bg-slate-50/50 hover:shadow-md transition-all duration-300">
-                  <div className="flex items-start gap-3">
+                <div
+                  key={prog.title}
+                  className="p-5 sm:p-6 rounded-2xl border border-slate-200/80 bg-white shadow-lg shadow-slate-200/70 hover:shadow-xl hover:shadow-slate-300/80 transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="flex items-start gap-3.5">
                     <CheckCircle2 className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-primary text-sm sm:text-base leading-snug">{prog.title}</h4>
-                      <p className="text-slate-500 text-xs mt-1 leading-relaxed">{prog.desc}</p>
+                      <h4 className="font-bold text-primary text-base leading-snug">{prog.title}</h4>
+                      <p className="text-slate-500 text-xs sm:text-sm mt-1.5 leading-relaxed font-normal">{prog.desc}</p>
                     </div>
                   </div>
                 </div>
@@ -66,7 +69,7 @@ export default function CorporateTraining() {
 
           {/* Form Card */}
           <div className="lg:col-span-5">
-            <div className="p-8 rounded-2xl border border-slate-200 bg-white shadow-xl">
+            <div className="p-8 rounded-2xl border border-slate-200/80 bg-white shadow-2xl shadow-slate-200/80">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
                   <Calendar className="w-5 h-5" />
@@ -108,7 +111,7 @@ export default function CorporateTraining() {
                     id="pf-company"
                     type="text"
                     required
-                    placeholder="Enter your organization"
+                    placeholder="Enter company name"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-secondary transition-colors"
@@ -118,14 +121,14 @@ export default function CorporateTraining() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full inline-flex items-center justify-center font-semibold rounded-xl bg-secondary text-white hover:bg-secondary-dark transition-colors px-6 py-3.5 mt-2 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 shadow-md"
+                  className="w-full py-3.5 px-6 rounded-xl bg-secondary hover:bg-secondary-dark text-white font-bold text-sm shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {loading ? (
-                    <span>Submitting...</span>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   ) : (
                     <>
-                      <Send className="w-4 h-4 mr-2" />
-                      Book a Demo
+                      <span>Request Training Demo</span>
+                      <Send size={16} />
                     </>
                   )}
                 </button>

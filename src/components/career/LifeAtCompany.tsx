@@ -8,7 +8,7 @@ const LifeAtCompany = () => {
                     <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
                         Culture
                     </span>
-                    <h2 className="text-3xl lg:text-4xl font-bold text-navy font-serif-heading mb-10">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-10">
                         Life at People Consulting
                     </h2>
                     <p className="text-gray-600 text-lg max-w-3xl mb-12 leading-relaxed">

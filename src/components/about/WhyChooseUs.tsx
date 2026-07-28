@@ -84,7 +84,7 @@ const WhyChooseUs = () => {
           <div className="text-red-700 text-sm font-semibold uppercase tracking-wider mb-4">
             Our Strengths
           </div>
-          <h2 className="text-4xl font-bold text-slate-900 mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-6">
             Why Leading Businesses Choose Us
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">
@@ -115,7 +115,7 @@ const WhyChooseUs = () => {
                   <Icon className="w-7 h-7 text-red-700" strokeWidth={1.8} />
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-900 mb-4">
+                <h3 className="text-xl font-bold text-primary mb-4">
                   {item.title}
                 </h3>
 

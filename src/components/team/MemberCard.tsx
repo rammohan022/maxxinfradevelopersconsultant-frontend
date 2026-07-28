@@ -30,7 +30,7 @@ const MemberCard = ({ member }: MemberCardProps) => {
             </div>
 
             <div className="p-6 relative bg-white flex flex-col h-full">
-                <h3 className="mb-1 font-serif-heading text-xl md:text-2xl font-bold text-navy group-hover:text-primary transition-colors line-clamp-1">
+                <h3 className="mb-1 font-serif-heading text-xl md:text-2xl font-bold text-primary transition-colors line-clamp-1">
                     {member.fullName}
                 </h3>
                 <p className="mb-4 text-xs font-semibold text-primary uppercase tracking-wider">

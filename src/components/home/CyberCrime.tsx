@@ -23,7 +23,7 @@ export default function CyberCrime() {
         <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
           Areas of Expertise in Cyber Crime & Online Offences
         </span>
-        <h2 className="text-3xl lg:text-4xl font-bold text-navy font-serif-heading mb-4">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-4">
           Facing Cyber Crime? People Consulting Offer Expert Legal Remedies in Digital Offences and Online Fraud
         </h2>
         <p className="text-gray-600 mb-12 max-w-3xl">

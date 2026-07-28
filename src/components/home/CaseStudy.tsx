@@ -42,7 +42,7 @@ export default function CaseStudy() {
             Case Studies
           </span>
 
-          <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-slate-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Delivering measurable growth and organizational alignment
           </h2>
         </motion.div>
@@ -67,7 +67,7 @@ export default function CaseStudy() {
                 </div>
 
                 <div className="p-6 lg:p-8">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-bold text-primary mb-3 transition-colors">
                     {c.title}
                   </h3>
                   <p className="text-slate-600 mb-6 text-sm lg:text-base leading-relaxed line-clamp-3">

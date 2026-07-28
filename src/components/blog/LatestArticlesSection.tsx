@@ -33,7 +33,7 @@ const LatestArticlesSection = () => {
           <span className="inline-block text-primary font-bold text-xs uppercase tracking-widest mb-2">
             Articles & Insights
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Latest Publications
           </h2>
         </div>

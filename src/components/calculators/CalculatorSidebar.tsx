@@ -28,7 +28,7 @@ export default function CalculatorSidebar({ currentPath }: { currentPath?: strin
             <TrendingUp className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-slate-900 leading-snug">
+            <h3 className="text-base font-bold text-primary leading-snug">
               Payroll Restructuring & Advisory
             </h3>
             <p className="text-xs text-slate-600 mt-1 leading-relaxed">

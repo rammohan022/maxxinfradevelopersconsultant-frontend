@@ -24,7 +24,7 @@ const hiringSteps = [
                   <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
                     How We Hire
                   </span>
-                  <h2 className="text-3xl lg:text-4xl font-bold text-navy font-serif-heading mb-12">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-12">
                     Our Hiring Process
                   </h2>
                   <div className="relative">
@@ -46,7 +46,7 @@ const hiringSteps = [
                             <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3 shrink-0 mx-auto">
                               <Icon className="w-5 h-5" strokeWidth={1.5} />
                             </div>
-                            <h3 className="text-lg font-bold text-navy font-serif-heading mb-2 text-center">
+                            <h3 className="text-lg font-bold text-primary mb-2 text-center">
                               {item.title}
                             </h3>
                             <p className="text-gray-600 text-sm leading-relaxed text-center">

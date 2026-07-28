@@ -115,7 +115,7 @@ export default function Footer() {
 
             {/* Column 2: Calculators & HR Utilities */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
+              <h3 className="text-xl font-bold text-primary mb-6 relative inline-block">
                 Calculators & Tools
                 <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
               </h3>
@@ -132,7 +132,7 @@ export default function Footer() {
 
             {/* Column 3: Quick Links */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
+              <h3 className="text-xl font-bold text-primary mb-6 relative inline-block">
                 Quick Links
                 <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
               </h3>
@@ -149,7 +149,7 @@ export default function Footer() {
 
             {/* Column 4: Contact Info */}
             <motion.div variants={itemVariants}>
-              <h3 className="text-xl font-bold text-slate-900 mb-6 relative inline-block">
+              <h3 className="text-xl font-bold text-primary mb-6 relative inline-block">
                 Contact Info
                 <span className="absolute -bottom-2 left-0 w-1/2 h-0.5 bg-primary rounded-full"></span>
               </h3>

@@ -11,7 +11,7 @@ export default function GratuityCalculatorPageView() {
       <Container>
         {/* Main Header (Compact & Small) */}
         <div className="mb-6">
-          <h1 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
             Gratuity Calculator
           </h1>
           <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">

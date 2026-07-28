@@ -151,7 +151,7 @@ function BlogDetailsContent() {
                                 </div>
 
                                 <div className="rounded-lg bg-white border border-gray-100 shadow-sm p-6">
-                                    <h3 className="font-serif text-lg font-bold text-navy mb-4">Categories</h3>
+                                    <h3 className="font-serif text-lg font-bold text-primary mb-4">Categories</h3>
                                     <ul className="space-y-2">
                                         {Array.from(new Set(blogs.map(b => b.category).filter(Boolean))).map((cat) => (
                                             <li key={cat}>
@@ -164,12 +164,12 @@ function BlogDetailsContent() {
                                 </div>
 
                                 <div className="rounded-lg bg-white border border-gray-100 shadow-sm p-6">
-                                    <h3 className="font-serif text-lg font-bold text-navy mb-4">Recent Posts</h3>
+                                    <h3 className="font-serif text-lg font-bold text-primary mb-4">Recent Posts</h3>
                                     <ul className="space-y-4">
                                         {recentBlogsList.map((post) => (
                                             <li key={post.id}>
                                                 <Link href={`/blog/${post.slug || post.id}`} className="group block">
-                                                    <span className="font-medium text-navy text-sm group-hover:text-primary transition line-clamp-2">{post.title}</span>
+                                                    <span className="font-medium text-slate-800 text-sm group-hover:text-primary transition line-clamp-2">{post.title}</span>
                                                     <span className="text-xs text-gray-500 mt-0.5 block">
                                                         {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                                                     </span>
@@ -189,7 +189,7 @@ function BlogDetailsContent() {
                 <section className="py-12 lg:py-16 bg-white">
                     <Container>
                         <div className="mb-12 flex items-center justify-between">
-                            <h2 className="font-serif text-3xl font-bold text-navy">Related Articles</h2>
+                            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">Related Articles</h2>
                             <div className="ml-8 h-1 flex-1 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
                         </div>
                         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -205,7 +205,7 @@ function BlogDetailsContent() {
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                         <div className="absolute bottom-4 left-4">
-                                            <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-navy">{item.category || "Legal"}</span>
+                                            <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-primary">{item.category || "Legal"}</span>
                                         </div>
                                     </div>
                                     <div className="space-y-4 p-6 flex flex-col flex-1">
@@ -213,7 +213,7 @@ function BlogDetailsContent() {
                                             <Calendar className="h-4 w-4 text-primary" />
                                             <span>{new Date(item.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                         </div>
-                                        <h3 className="font-serif text-xl font-bold leading-tight text-navy transition-colors group-hover:text-primary">
+                                        <h3 className="font-serif text-xl font-bold leading-tight text-primary transition-colors">
                                             {item.title}
                                         </h3>
                                         <div className="leading-relaxed text-gray-600 text-sm line-clamp-2" dangerouslySetInnerHTML={{ __html: item.content.substring(0, 100) }} />

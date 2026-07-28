@@ -40,7 +40,7 @@ const CTASection = () => {
   return (
     <section id="cta-section" className="bg-white py-20">
       <Container className="max-w-4xl text-center">
-        <h2 className="mb-6 font-serif text-4xl font-bold text-navy-900">
+        <h2 className="mb-6 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
           Schedule a Consultation
         </h2>
 

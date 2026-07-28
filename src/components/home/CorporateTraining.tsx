@@ -55,7 +55,7 @@ export default function CorporateTraining() {
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
                     <div>
-                      <h4 className="font-semibold text-slate-900 text-sm sm:text-base leading-snug">{prog.title}</h4>
+                      <h4 className="font-semibold text-primary text-sm sm:text-base leading-snug">{prog.title}</h4>
                       <p className="text-slate-500 text-xs mt-1 leading-relaxed">{prog.desc}</p>
                     </div>
                   </div>
@@ -72,7 +72,7 @@ export default function CorporateTraining() {
                   <Calendar className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900">Need Expert Assistance?</h3>
+                  <h3 className="text-lg font-bold text-primary">Need Expert Assistance?</h3>
                   <p className="text-xs text-slate-500">Book a personalized training demo for your team</p>
                 </div>
               </div>

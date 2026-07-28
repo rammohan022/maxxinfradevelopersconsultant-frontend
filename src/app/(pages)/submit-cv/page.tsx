@@ -80,7 +80,7 @@ export default function SubmitCVPage() {
             <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">
               Join Our Network
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-6">
               Submit Your CV
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
@@ -96,7 +96,7 @@ export default function SubmitCVPage() {
           
           {/* Form Column */}
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-200/60 p-8 md:p-10">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Application Details</h2>
+            <h2 className="text-2xl font-bold text-primary mb-6">Application Details</h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
@@ -232,7 +232,7 @@ export default function SubmitCVPage() {
           {/* Sidebar */}
           <div className="lg:col-span-1 space-y-6">
             <div className="bg-white rounded-2xl shadow-lg border border-slate-200/60 p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4">Why Submit Your CV?</h3>
+              <h3 className="text-xl font-bold text-primary mb-4">Why Submit Your CV?</h3>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />

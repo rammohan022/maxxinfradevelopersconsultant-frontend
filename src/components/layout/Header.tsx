@@ -32,7 +32,7 @@ const defaultNavItems = [
   { label: 'About Us', href: '/about-us' },
   { label: 'Our Services', href: '/services', mega: true },
   { label: 'Careers', href: '#', dropdown: true },
-  { label: 'Blogs & Articles', href: '/blog' },
+  { label: 'Blogs', href: '/blog' },
   { label: 'Calculators', href: '#', moreDropdown: true },
 ]
 
@@ -52,27 +52,8 @@ export default function Header() {
   const { data: seoList = [] } = useGetSeoSettingsQuery()
   const closeTimeout = useRef<NodeJS.Timeout | null>(null)
 
-  // Dynamic navbar item names based on CMS (siteSettings.headerMenu and seoSettings pageName)
+  // Dynamic navbar item names based on SEO Settings (seoList pageName)
   const navItems = useMemo(() => {
-    const cmsHeaderMap = (siteSettings?.headerMenu || []).reduce<Record<string, string>>((acc, item) => {
-      if (item.href && item.name) {
-        acc[item.href] = item.name;
-        if (item.href === '/about-us' || item.href === '/about') {
-          acc['/about-us'] = item.name;
-          acc['/about'] = item.name;
-        }
-        if (item.href === '/career' || item.href === '/careers') {
-          acc['/career'] = item.name;
-          acc['/careers'] = item.name;
-        }
-        if (item.href === '/contact-us' || item.href === '/contact') {
-          acc['/contact-us'] = item.name;
-          acc['/contact'] = item.name;
-        }
-      }
-      return acc;
-    }, {});
-
     const seoPageNameMap = (seoList || []).reduce<Record<string, string>>((acc, item) => {
       if (item.pagePath && item.pageName) {
         acc[item.pagePath] = item.pageName;
@@ -93,13 +74,13 @@ export default function Header() {
     }, {});
 
     return defaultNavItems.map((item) => {
-      const dynamicLabel = cmsHeaderMap[item.href] || seoPageNameMap[item.href];
+      const dynamicLabel = seoPageNameMap[item.href];
       return {
         ...item,
         label: dynamicLabel || item.label,
       };
     });
-  }, [siteSettings?.headerMenu, seoList]);
+  }, [seoList]);
 
   // Map category names to positions
   const categoryPositionMap = (serviceCategories || []).reduce<Record<string, number>>((acc, cat) => {
@@ -111,13 +92,13 @@ export default function Header() {
   const servicesByCategory = (practiceAreas || [])
     .filter((service) => service.status !== 'Draft')
     .reduce<Record<string, typeof practiceAreas>>((acc, service) => {
-    const cat = service.category || "General Services";
-    if (!acc[cat]) {
-      acc[cat] = [];
-    }
-    acc[cat].push(service);
-    return acc;
-  }, {});
+      const cat = service.category || "General Services";
+      if (!acc[cat]) {
+        acc[cat] = [];
+      }
+      acc[cat].push(service);
+      return acc;
+    }, {});
 
   const sortedServicesByCategory = Object.entries(servicesByCategory).sort(([catA], [catB]) => {
     const posA = categoryPositionMap[catA] ?? 999;
@@ -212,13 +193,13 @@ export default function Header() {
                                 {sortedServicesByCategory.map(([category, items]) => (
                                   <div key={category} className="space-y-3">
                                     <Link
-                                       href={`/services/category/${slugifyCategory(category)}`}
-                                       onClick={() => setOpenDropdown(false)}
-                                       className="group/cat flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-primary border-b pb-1 transition-colors"
-                                     >
-                                       <span>{category}</span>
-                                       <ChevronRight size={12} className="opacity-0 group-hover/cat:opacity-100 transition-opacity" />
-                                     </Link>
+                                      href={`/services/category/${slugifyCategory(category)}`}
+                                      onClick={() => setOpenDropdown(false)}
+                                      className="group/cat flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 hover:text-primary border-b pb-1 transition-colors"
+                                    >
+                                      <span>{category}</span>
+                                      <ChevronRight size={12} className="opacity-0 group-hover/cat:opacity-100 transition-opacity" />
+                                    </Link>
                                     <div className="space-y-2">
                                       {items.map((area) => (
                                         <Link

@@ -72,7 +72,7 @@ export default function CoreValues() {
                     <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-5">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{val.name}</h3>
+                    <h3 className="text-lg font-bold text-primary mb-2">{val.name}</h3>
                     <p className="text-slate-600 text-sm leading-relaxed">{val.desc}</p>
                   </div>
                 </SwiperSlide>

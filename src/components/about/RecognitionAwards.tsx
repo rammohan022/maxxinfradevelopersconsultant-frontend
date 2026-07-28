@@ -67,7 +67,7 @@ const RecognitionAwards = () => {
           <div className="text-primary text-sm font-bold uppercase tracking-widest mb-4">
             Recognition
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy font-serif-heading mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-6">
             Awards & Accolades
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
@@ -114,7 +114,7 @@ const RecognitionAwards = () => {
                     />
                   </div>
 
-                  <h3 className="text-base font-bold text-navy font-serif-heading group-hover:text-primary transition-colors">
+                  <h3 className="text-base font-bold text-primary transition-colors">
                     {award.title}
                   </h3>
                   <p className="text-sm text-gray-500 mt-2 font-medium">

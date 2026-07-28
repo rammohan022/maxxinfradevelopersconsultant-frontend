@@ -34,7 +34,7 @@ export default function FAQs() {
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
             FAQs
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Frequently Asked <span className="text-secondary">Questions</span>
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
@@ -54,7 +54,7 @@ export default function FAQs() {
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className="w-full flex items-center justify-between p-6 text-left"
                 >
-                  <span className="font-bold text-slate-900 text-base sm:text-lg pr-4">{faq.q}</span>
+                  <span className="font-bold text-primary text-base sm:text-lg pr-4">{faq.q}</span>
                   <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0">
                     {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                   </div>

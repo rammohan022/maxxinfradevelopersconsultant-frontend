@@ -92,7 +92,7 @@ export default function FeatureCards() {
     <section className="py-12 md:py-16 bg-white border-b border-gray-100 overflow-hidden">
       <Container>
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4 leading-tight">
             A leading HR service provider
           </h2>
           <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">

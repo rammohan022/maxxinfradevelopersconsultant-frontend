@@ -7,7 +7,7 @@ export default function AttritionContent() {
     <div className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm space-y-8">
       {/* Overview Section */}
       <div>
-        <h2 className="text-xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+        <h2 className="text-xl font-bold text-primary mb-3 flex items-center gap-2">
           <Calculator className="w-5 h-5 text-secondary" />
           Understanding Employee Attrition Rate
         </h2>
@@ -18,7 +18,7 @@ export default function AttritionContent() {
 
       {/* Formula & Calculation Method */}
       <div className="bg-slate-50 p-6 rounded-xl border border-slate-200 space-y-4">
-        <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+        <h3 className="text-base font-bold text-primary flex items-center gap-2">
           <HelpCircle className="w-5 h-5 text-primary" />
           Attrition Rate Formula
         </h3>
@@ -34,7 +34,7 @@ export default function AttritionContent() {
 
       {/* Why Attrition Rate Matters */}
       <div className="space-y-4">
-        <h3 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+        <h3 className="text-lg font-bold text-primary flex items-center gap-2">
           <TrendingDown className="w-5 h-5 text-secondary" />
           Key Strategies to Reduce High Attrition
         </h3>

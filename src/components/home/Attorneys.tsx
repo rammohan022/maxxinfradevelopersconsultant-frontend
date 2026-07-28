@@ -38,7 +38,7 @@ export default function Attorneys() {
             Our Team
           </span>
 
-          <h2 className="text-3xl lg:text-4xl xl:text-4xl font-bold text-navy font-serif-heading leading-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Together We Achieve, Together We Succeed
           </h2>
         </motion.div>
@@ -67,7 +67,7 @@ export default function Attorneys() {
               </div>
 
               <div className="p-6 text-center relative bg-white">
-                <h3 className="text-xl font-bold text-navy font-serif-heading mb-1 transition-colors group-hover:text-primary">
+                <h3 className="text-xl font-bold text-primary mb-1 transition-colors">
                   {m.fullName}
                 </h3>
                 <p className="text-primary font-semibold text-sm uppercase tracking-wider">{m.designation}</p>

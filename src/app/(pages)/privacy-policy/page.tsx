@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
   if (isError || !policy) return (
     <div className="py-20 text-center text-red-700 font-serif">
       <Container>
-        <h2 className="text-3xl font-bold mb-4">Privacy Policy</h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-4">Privacy Policy</h2>
         <p>Our privacy policy is currently being updated. Please check back soon.</p>
       </Container>
     </div>
@@ -29,7 +29,7 @@ const PrivacyPolicy = () => {
       <section className="py-20 bg-white">
         <Container>
           <div className="max-w-5xl mx-auto">
-            <h1 className="text-4xl font-serif font-bold text-navy mb-8 border-b pb-4">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-8 border-b pb-4">
               {policy.title}
             </h1>
 

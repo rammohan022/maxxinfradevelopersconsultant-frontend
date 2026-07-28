@@ -74,7 +74,7 @@ export default function IndustriesServe() {
                     <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3">{ind.name}</h3>
+                    <h3 className="text-lg sm:text-xl font-bold text-primary mb-3">{ind.name}</h3>
                     <p className="text-slate-600 text-sm sm:text-base leading-relaxed">{ind.desc}</p>
                   </div>
                 </SwiperSlide>

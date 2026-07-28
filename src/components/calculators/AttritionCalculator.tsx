@@ -130,7 +130,7 @@ export default function AttritionCalculator() {
         {/* SUMMARY BREAKDOWN CARD */}
         {hasCalculated && calculatedRate !== '' && (
           <div className="mt-6 p-5 bg-slate-50 rounded-xl border border-slate-200 space-y-3 text-xs sm:text-sm">
-            <h4 className="font-bold text-slate-900 border-b border-slate-200 pb-2">
+            <h4 className="font-bold text-primary border-b border-slate-200 pb-2">
               Attrition Calculation Summary
             </h4>
             <div className="grid grid-cols-2 gap-2 text-slate-600">

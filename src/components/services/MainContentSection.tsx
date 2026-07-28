@@ -77,7 +77,7 @@ export default function MainContentSection({
             {/* Overview */}
             {overview && (
               <div className="mb-12">
-                <h2 className="mb-2 font-serif text-3xl font-semibold text-navy">
+                <h2 className="mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
                   Overview
                 </h2>
                 <div className="mb-6 h-1 w-16 bg-red-700" />
@@ -91,7 +91,7 @@ export default function MainContentSection({
             {/* Services */}
             {services && services.length > 0 && (
               <div className="mb-12 border-l-4 border-red-700 bg-gray-50 p-6 sm:p-8">
-                <h3 className="mb-6 font-serif text-2xl font-semibold text-navy">
+                <h3 className="mb-6 font-serif text-2xl font-semibold text-primary">
                   Key Areas of Service Include
                 </h3>
                 <ul className="space-y-3 text-gray-700">
@@ -108,7 +108,7 @@ export default function MainContentSection({
             {/* Approach */}
             {approach && (
               <div className="mb-12">
-                <h3 className="mb-2 font-serif text-2xl font-semibold text-navy">
+                <h3 className="mb-2 font-serif text-2xl font-semibold text-primary">
                   Our Approach
                 </h3>
                 <div className="mb-6 h-1 w-16 bg-red-700" />
@@ -136,7 +136,7 @@ export default function MainContentSection({
             {/* FAQ */}
             {validFaqs.length > 0 && (
               <div className="mb-12">
-                <h3 className="mb-2 font-serif text-2xl font-semibold text-navy">
+                <h3 className="mb-2 font-serif text-2xl font-semibold text-primary">
                   Frequently Asked Questions
                 </h3>
                 <div className="mb-6 h-1 w-16 bg-red-700" />
@@ -147,7 +147,7 @@ export default function MainContentSection({
                       onClick={() => toggleFaq(idx)}
                       className="flex w-full items-center justify-between px-4 sm:px-6 py-4 text-left hover:bg-gray-50"
                     >
-                      <span className="font-medium text-navy">
+                      <span className="font-medium text-primary">
                         {faq.question}
                       </span>
                       <span className="text-red-700">
@@ -171,7 +171,7 @@ export default function MainContentSection({
             <div className="space-y-6 lg:sticky lg:top-24">
               {/* Contact Form */}
               <div className="border border-gray-200 bg-white p-6">
-                <h4 className="mb-4 font-semibold text-navy">
+                <h4 className="mb-4 font-semibold text-primary">
                   Request a Consultation
                 </h4>
 
@@ -233,7 +233,7 @@ export default function MainContentSection({
 
               {/* Search/Links placeholder */}
               {/* <div className="border border-gray-200 bg-white p-6">
-                <h4 className="mb-4 font-semibold text-navy">Search</h4>
+                <h4 className="mb-4 font-semibold text-primary">Search</h4>
                 <input
                   type="text"
                   placeholder="Search services..."

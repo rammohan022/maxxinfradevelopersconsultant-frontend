@@ -25,7 +25,7 @@ const BranchOffices: React.FC = () => {
       <Container>
         {/* Heading */}
         <div className="mb-6">
-          <h2 className="mb-4 text-4xl font-bold text-navy">
+          <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Our Other Offices
           </h2>
           <p className="text-lg text-gray-600">
@@ -42,7 +42,7 @@ const BranchOffices: React.FC = () => {
             >
               {/* Header */}
               <div className="mb-3 flex items-center justify-between">
-                <h3 className="text-2xl font-bold text-navy">
+                <h3 className="text-xl font-bold text-primary">
                   {branch.city}
                 </h3>
                 <div className="rounded-full bg-maroon p-3">

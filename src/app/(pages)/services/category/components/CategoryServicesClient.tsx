@@ -145,7 +145,7 @@ export default function CategoryServicesClient() {
               <span>Service Category</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight mb-4">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-4">
               {activeCategoryName}
             </h1>
 
@@ -240,7 +240,7 @@ export default function CategoryServicesClient() {
         {/* Results Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+            <h2 className="text-xl sm:text-2xl font-bold text-primary">
               {activeCategoryName} Offerings
             </h2>
             <p className="text-slate-500 text-xs sm:text-sm mt-1">
@@ -274,7 +274,7 @@ export default function CategoryServicesClient() {
             <div className="w-16 h-16 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-4">
               <BookOpen size={28} />
             </div>
-            <h3 className="text-lg font-bold text-slate-800 mb-2">No Services Found</h3>
+            <h3 className="text-lg font-bold text-primary mb-2">No Services Found</h3>
             <p className="text-slate-600 text-sm mb-6">
               {searchTerm
                 ? `No services matching "${searchTerm}" found under ${activeCategoryName}.`
@@ -331,7 +331,7 @@ export default function CategoryServicesClient() {
 
                   {/* Card Content */}
                   <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-primary transition-colors mb-3">
+                    <h3 className="text-xl font-bold text-primary transition-colors mb-3">
                       {service.title}
                     </h3>
 
@@ -379,7 +379,7 @@ export default function CategoryServicesClient() {
             <span className="text-secondary font-bold text-xs uppercase tracking-widest">
               Why Partner With Us
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mt-2">
               Why Choose People Consulting for {activeCategoryName}?
             </h2>
           </div>
@@ -389,7 +389,7 @@ export default function CategoryServicesClient() {
               <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4">
                 <Zap size={24} />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Tailored Execution</h3>
+              <h3 className="text-lg font-bold text-primary mb-2">Tailored Execution</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 We customize solutions specifically to your business framework, operational scale, and growth objectives.
               </p>
@@ -399,7 +399,7 @@ export default function CategoryServicesClient() {
               <div className="w-12 h-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-4">
                 <ShieldCheck size={24} />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Statutory Risk Mitigation</h3>
+              <h3 className="text-lg font-bold text-primary mb-2">Statutory Risk Mitigation</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Our team ensures complete adherence to all regulatory standards, giving you 100% peace of mind.
               </p>
@@ -409,7 +409,7 @@ export default function CategoryServicesClient() {
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center mb-4">
                 <Award size={24} />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Proven Track Record</h3>
+              <h3 className="text-lg font-bold text-primary mb-2">Proven Track Record</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
                 Over a decade of industry expertise delivering quantifiable results across corporate sectors nationwide.
               </p>
@@ -427,7 +427,7 @@ export default function CategoryServicesClient() {
                 <HelpCircle size={14} />
                 <span>Frequently Asked Questions</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+              <h2 className="text-2xl sm:text-3xl font-bold text-primary">
                 Got Questions About {activeCategoryName}?
               </h2>
             </div>

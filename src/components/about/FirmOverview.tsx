@@ -21,7 +21,7 @@ const FirmOverview = () => {
               Who We Are
             </div>
 
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 mb-6 leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-6">
               Leading HR & Recruitment Consulting Firm Serving Indian Businesses
             </h2>
 

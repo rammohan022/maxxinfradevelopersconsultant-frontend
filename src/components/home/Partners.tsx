@@ -38,7 +38,7 @@ export default function Partners() {
           <span className="inline-block text-primary font-bold text-sm uppercase tracking-widest mb-3">
             Our Partner
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-navy font-serif-heading">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Trusted By Many Front Line Teams Everywhere
           </h2>
         </motion.div>

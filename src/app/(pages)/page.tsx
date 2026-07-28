@@ -18,7 +18,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <FeatureCards />
       <AboutUs />
       <Services />
       <IndustriesServe />
@@ -27,6 +26,7 @@ export default function Home() {
       <CorporateTraining />
       <Testimonials />
       <Blog />
+      <FeatureCards />
       <FAQs />
       <Contact />
       <FloatingButtons />

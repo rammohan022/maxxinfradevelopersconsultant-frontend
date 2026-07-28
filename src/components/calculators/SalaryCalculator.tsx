@@ -298,7 +298,7 @@ export default function SalaryCalculator() {
 
           {/* Single Tone Component Distribution Bar */}
           <div className="bg-[#fef8f4] p-5 rounded-2xl border border-secondary/30 space-y-3">
-            <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center justify-between">
+            <h3 className="text-xs font-bold text-primary uppercase tracking-wider flex items-center justify-between">
               Salary Distribution
               <span className="text-slate-400 font-normal">100% CTC</span>
             </h3>

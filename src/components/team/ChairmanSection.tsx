@@ -31,7 +31,7 @@ const ChairmanSection = () => {
             transition={{ duration: 0.5 }}
             className="mb-12 sm:mb-16 text-center lg:text-left"
           >
-            <h2 className="mb-4 font-serif-heading text-3xl md:text-4xl lg:text-5xl font-bold text-navy">
+            <h2 className="mb-4 font-serif-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
               Leadership
             </h2>
             <div className="h-1.5 w-24 bg-primary mx-auto lg:mx-0 rounded-full" />
@@ -58,7 +58,7 @@ const ChairmanSection = () => {
               </div>
 
               <div className="p-8 relative bg-white">
-                <h3 className="mb-1 font-serif-heading text-2xl font-bold text-navy group-hover:text-primary transition-colors">
+                <h3 className="mb-1 font-serif-heading text-2xl font-bold text-primary transition-colors">
                   Rajesh K. Mehta
                 </h3>
                 <p className="mb-4 text-sm font-semibold text-primary uppercase tracking-wider">
@@ -97,7 +97,7 @@ const ChairmanSection = () => {
               </div>
 
               <div className="p-8 relative bg-white">
-                <h3 className="mb-1 font-serif-heading text-2xl font-bold text-navy group-hover:text-primary transition-colors">
+                <h3 className="mb-1 font-serif-heading text-2xl font-bold text-primary transition-colors">
                   Priya Sharma
                 </h3>
                 <p className="mb-4 text-sm font-semibold text-primary uppercase tracking-wider">
@@ -136,7 +136,7 @@ const ChairmanSection = () => {
               </div>
 
               <div className="p-8 relative bg-white">
-                <h3 className="mb-1 font-serif-heading text-2xl font-bold text-navy group-hover:text-primary transition-colors">
+                <h3 className="mb-1 font-serif-heading text-2xl font-bold text-primary transition-colors">
                   Vikram Desai
                 </h3>
                 <p className="mb-4 text-sm font-semibold text-primary uppercase tracking-wider">
@@ -174,7 +174,7 @@ const ChairmanSection = () => {
             transition={{ duration: 0.5 }}
             className="mb-12 sm:mb-16 text-center lg:text-left"
           >
-            <h2 className="mb-4 font-serif-heading text-3xl md:text-4xl lg:text-5xl font-bold text-navy">
+            <h2 className="mb-4 font-serif-heading text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
               Senior Partners
             </h2>
             <div className="h-1.5 w-24 bg-primary mx-auto lg:mx-0 rounded-full" />
@@ -201,7 +201,7 @@ const ChairmanSection = () => {
               </div>
 
               <div className="p-6 relative bg-white">
-                <h3 className="mb-1 font-serif-heading text-xl font-bold text-navy group-hover:text-primary transition-colors">
+                <h3 className="mb-1 font-serif-heading text-xl font-bold text-primary transition-colors">
                   Anil Kumar
                 </h3>
                 <p className="mb-3 text-xs font-semibold text-primary uppercase tracking-wider">
@@ -238,7 +238,7 @@ const ChairmanSection = () => {
               </div>
 
               <div className="p-6 relative bg-white">
-                <h3 className="mb-1 font-serif-heading text-xl font-bold text-navy group-hover:text-primary transition-colors">
+                <h3 className="mb-1 font-serif-heading text-xl font-bold text-primary transition-colors">
                   Meera Iyer
                 </h3>
                 <p className="mb-3 text-xs font-semibold text-primary uppercase tracking-wider">
@@ -275,7 +275,7 @@ const ChairmanSection = () => {
               </div>
 
               <div className="p-6 relative bg-white">
-                <h3 className="mb-1 font-serif-heading text-xl font-bold text-navy group-hover:text-primary transition-colors">
+                <h3 className="mb-1 font-serif-heading text-xl font-bold text-primary transition-colors">
                   Sanjay Reddy
                 </h3>
                 <p className="mb-3 text-xs font-semibold text-primary uppercase tracking-wider">
@@ -312,7 +312,7 @@ const ChairmanSection = () => {
               </div>
 
               <div className="p-6 relative bg-white">
-                <h3 className="mb-1 font-serif-heading text-xl font-bold text-navy group-hover:text-primary transition-colors">
+                <h3 className="mb-1 font-serif-heading text-xl font-bold text-primary transition-colors">
                   Kavita Nair
                 </h3>
                 <p className="mb-3 text-xs font-semibold text-primary uppercase tracking-wider">

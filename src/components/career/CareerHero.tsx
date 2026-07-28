@@ -17,7 +17,7 @@ const CareerHero = () => {
               Careers
             </span>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-slate-900 leading-tight mb-5">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-5">
               Build Your Career With Us
             </h1>
 

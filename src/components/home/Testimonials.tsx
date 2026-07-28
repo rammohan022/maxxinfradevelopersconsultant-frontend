@@ -103,7 +103,7 @@ export default function Testimonials() {
             Testimonials
           </span>
 
-          <h2 className="mt-4 sm:mt-6 text-3xl md:text-4xl lg:text-5xl font-bold text-navy font-serif-heading">
+          <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
             Our Clients Trust Us for Reliable HR Solutions
           </h2>
         </motion.div>
@@ -152,7 +152,7 @@ export default function Testimonials() {
                         ))}
                       </div>
 
-                      <h4 className="text-base font-bold text-navy leading-tight">
+                      <h4 className="text-base font-bold text-primary leading-tight">
                         {item.clientName}
                       </h4>
                       <p className="text-primary text-xs font-semibold uppercase tracking-wider mt-0.5">

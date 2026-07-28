@@ -49,7 +49,7 @@ const ContactSection = () => {
                     {/* Contact Info */}
                     <div>
                         <div className="bg-gray-50 p-10 text-slate-800 h-full border border-gray-100">
-                            <h3 className="text-3xl font-serif font-bold text-slate-900 mb-8">
+                            <h3 className="text-2xl font-serif font-bold text-primary mb-8">
                                 Contact Information
                             </h3>
 
@@ -58,7 +58,7 @@ const ContactSection = () => {
                                 <div className="flex items-start gap-4">
                                     <Phone className="w-5 h-5 text-red-700 mt-1" />
                                     <div>
-                                        <h4 className="text-lg font-semibold text-slate-900">Call Us</h4>
+                                        <h4 className="text-lg font-semibold text-primary">Call Us</h4>
                                         <p className="text-gray-600 text-sm">
                                             Speak directly with our support team
                                         </p>
@@ -75,7 +75,7 @@ const ContactSection = () => {
                                 <div className="flex items-start gap-4">
                                     <Mail className="w-5 h-5 text-red-700 mt-1" />
                                     <div>
-                                        <h4 className="text-lg font-semibold text-slate-900">Email Address</h4>
+                                        <h4 className="text-lg font-semibold text-primary">Email Address</h4>
                                         <p className="text-gray-600 text-sm">
                                             For consultations and general enquiries
                                         </p>
@@ -92,7 +92,7 @@ const ContactSection = () => {
                                 <div className="flex items-start gap-4">
                                     <MapPin className="w-5 h-5 text-red-700 mt-1" />
                                     <div>
-                                        <h4 className="text-lg font-semibold text-slate-900">Office Address</h4>
+                                        <h4 className="text-lg font-semibold text-primary">Office Address</h4>
                                         <p className="text-gray-600 text-sm leading-relaxed">
                                             243, 2nd Floor, Vipul Trade Centre, <br />
                                             Sector 48, Sohna Road, Gurgaon, Haryana
@@ -102,7 +102,7 @@ const ContactSection = () => {
                                 <div className="border-b border-gray-200"></div>
                                 {/* Social Media */}
                                 <div className="flex flex-col gap-3">
-                                    <h4 className="text-lg font-semibold text-slate-900 mb-3">Follow Us</h4>
+                                    <h4 className="text-lg font-semibold text-primary mb-3">Follow Us</h4>
                                     <div className="flex gap-4 text-gray-600">
                                         <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="hover:text-red-700 transition" aria-label="LinkedIn">
                                             <Linkedin className="w-5 h-5" />
@@ -125,7 +125,7 @@ const ContactSection = () => {
                     {/* Contact Form */}
                     <div>
                         <div className="bg-white shadow border border-gray-100 p-14">
-                            <h2 className="text-2xl font-serif font-bold text-slate-900 mb-1">
+                            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-1">
                                 Get In Touch
                             </h2>
                             <p className="text-sm text-gray-600 mb-4">

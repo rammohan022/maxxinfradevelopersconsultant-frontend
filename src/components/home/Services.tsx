@@ -234,7 +234,7 @@ export default function Services() {
                   </div>
 
                   {/* Service Title */}
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-primary transition-colors leading-snug">
+                  <h3 className="text-lg font-bold text-primary mb-3 transition-colors leading-snug">
                     {area.title}
                   </h3>
 

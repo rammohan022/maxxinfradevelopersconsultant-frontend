@@ -180,7 +180,7 @@ export default function Contact() {
               Contact Form
             </span>
 
-            <h2 className="mb-6 text-2xl font-bold text-slate-900 lg:text-3xl">
+            <h2 className="mb-6 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
               Get A Flexible Schedule
             </h2>
 

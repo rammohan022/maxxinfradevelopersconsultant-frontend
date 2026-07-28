@@ -109,7 +109,7 @@ const OpenPosition = () => {
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
             Join Our Team
           </span>
-          <h2 className="text-3xl lg:text-4xl font-bold text-navy font-serif-heading mb-10">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-10">
             Open Positions
           </h2>
 
@@ -189,7 +189,7 @@ const OpenPosition = () => {
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-xl font-bold text-navy font-serif-heading mb-2">
+                      <h3 className="text-xl font-bold text-primary mb-2">
                         {job.title}
                       </h3>
                       <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-3">
@@ -237,7 +237,7 @@ const OpenPosition = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="sticky top-0 flex items-center justify-between border-b border-gray-100 bg-white px-6 py-4">
-              <h2 id="apply-modal-title" className="text-xl font-bold text-navy font-serif-heading">
+              <h2 id="apply-modal-title" className="text-xl font-bold text-primary">
                 Apply for Position
               </h2>
               <button
@@ -255,7 +255,7 @@ const OpenPosition = () => {
                   <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
-                  <h3 className="text-2xl font-bold text-navy mb-2">Application Received!</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-2">Application Received!</h3>
                   <p className="text-gray-600">
                     Thank you for applying for the <strong>{selectedJob.title}</strong> position. 
                     Our team will review your application and get back to you soon.

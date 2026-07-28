@@ -41,6 +41,9 @@ export default function ServiceForm({
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [preview, setPreview] = useState<string>("");
 
+    const [contentImageFile, setContentImageFile] = useState<File | null>(null);
+    const [contentImagePreview, setContentImagePreview] = useState<string>("");
+
     const [services, setServices] = useState<string[]>([""]);
     const [faqs, setFaqs] = useState([{ question: "", answer: "" }]);
 
@@ -71,6 +74,9 @@ export default function ServiceForm({
             setFaqs(initialFaqs.length > 0 ? initialFaqs : [{ question: "", answer: "" }]);
             if (initialData.innerImage) {
                 setPreview(initialData.innerImage);
+            }
+            if (initialData.contentImage) {
+                setContentImagePreview(initialData.contentImage);
             }
         }
     }, [initialData]);
@@ -111,6 +117,14 @@ const slugify = (text: string) => {
         }
     };
 
+    const handleContentFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setContentImageFile(file);
+            setContentImagePreview(URL.createObjectURL(file));
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData = new FormData();
@@ -128,6 +142,9 @@ const slugify = (text: string) => {
 
         if (imageFile) {
             formData.append("innerImage", imageFile);
+        }
+        if (contentImageFile) {
+            formData.append("contentImage", contentImageFile);
         }
 
         try {
@@ -195,7 +212,7 @@ const slugify = (text: string) => {
                     </div>
                 </div>
                 <div>
-                    <label className="block text-sm font-medium mb-1">Inner Image</label>
+                    <label className="block text-sm font-medium mb-1">Hero Background Image (Inner Image)</label>
                     <div className="flex items-center gap-4">
                         {preview && (
                             <div className="relative w-16 h-16 rounded overflow-hidden border flex-shrink-0">
@@ -219,9 +236,31 @@ const slugify = (text: string) => {
 
             {/* Overview */}
             <section className="space-y-4 pb-10 border-b">
-                <h2 className="text-lg font-bold text-slate-800">Overview</h2>
-                <div className="h-[200px]">
+                <h2 className="text-lg font-bold text-slate-800">Overview & Content Image</h2>
+                <div className="h-[200px] mb-6">
                     <ReactQuill theme="snow" value={form.overview} onChange={(val) => setForm(p => ({ ...p, overview: val }))} className="bg-white h-[150px]" />
+                </div>
+                <div className="pt-8">
+                    <label className="block text-sm font-medium mb-1 text-slate-700">Overview Bottom Image (Content Image)</label>
+                    <p className="text-xs text-slate-500 mb-2">Displays right below the Overview section on the Service detail page.</p>
+                    <div className="flex items-center gap-4">
+                        {contentImagePreview && (
+                            <div className="relative w-20 h-16 rounded overflow-hidden border flex-shrink-0">
+                                <Image
+                                    src={getImageUrl(contentImagePreview)}
+                                    alt="Content Preview"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        )}
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleContentFileChange}
+                            className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
+                        />
+                    </div>
                 </div>
             </section>
 

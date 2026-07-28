@@ -358,19 +358,20 @@ export default function CategoryServicesClient() {
 
         {/* Services Cards */}
         {!isServicesLoading && filteredServices.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {paginatedServices.map((service) => {
               const imageSrc = getImageUrl(service.innerImage);
-              const catName = service.category || 'General Services';
-              const catSlug = slugifyCategory(catName);
 
               return (
                 <div
                   key={service.id}
-                  className="bg-white rounded-2xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-primary/30 transition-all duration-300 flex flex-col overflow-hidden group transform hover:-translate-y-1"
+                  className="group flex flex-col space-y-4"
                 >
-                  {/* Card Header Image */}
-                  <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
+                  {/* Top Image with Rounded Corners */}
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="relative h-56 sm:h-64 w-full rounded-3xl overflow-hidden block shadow-sm group-hover:shadow-md transition-all duration-300 bg-slate-100"
+                  >
                     <Image
                       src={imageSrc}
                       alt={service.title}
@@ -378,42 +379,30 @@ export default function CategoryServicesClient() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                  </Link>
 
-                    {/* Category Tag Badge */}
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-primary text-[11px] font-bold uppercase tracking-wider shadow-sm">
-                        <Layers size={12} className="text-secondary" />
-                        <span>{catName}</span>
-                      </span>
-                    </div>
+                  {/* Title & Overview Text Below Image */}
+                  <div className="space-y-3 px-1 flex-1 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <Link href={`/services/${service.slug}`} className="block">
+                        <h3 className="text-xl font-bold text-sky-700 hover:text-primary transition-colors leading-snug">
+                          {service.title}
+                        </h3>
+                      </Link>
 
-                    {/* Title Overlay */}
-                    <div className="absolute bottom-4 left-4 right-4 z-10">
-                      <h3 className="text-lg font-bold text-white leading-snug drop-shadow-md">
-                        {service.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Card Content */}
-                  <div className="p-6 flex-1 flex flex-col justify-between">
-                    <div>
-                      {/* Overview */}
-                      <p className="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-3 mb-6">
+                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 font-normal">
                         {service.overview
                           ? service.overview.replace(/<[^>]*>?/gm, '')
                           : 'Professional HR consulting and workforce compliance solutions for modern enterprises.'}
                       </p>
                     </div>
 
-                    {/* Card Footer Link */}
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider group/link transition-colors"
+                      className="inline-flex items-center gap-2 text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider group/link transition-colors pt-1"
                     >
                       <span>Explore Service Details</span>
-                      <ArrowRight size={14} className="transform group-hover/link:translate-x-1 transition-transform" />
+                      <ArrowRight size={14} className="transform group-hover/link:translate-x-1.5 transition-transform" />
                     </Link>
                   </div>
                 </div>

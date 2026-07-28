@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui";
 import { FAQ } from "@/services/services";
 import { useCreateLeadMutation } from "@/services/lead";
+import { getImageUrl } from "@/lib/utils/imageUtils";
 import toast from "react-hot-toast";
 
 interface MainContentSectionProps {
   title?: string; // Added to auto-fill subject
   overview?: string;
+  contentImage?: string;
   services?: string[];
   approach?: string;
   quoteText?: string;
@@ -19,6 +22,7 @@ interface MainContentSectionProps {
 export default function MainContentSection({
   title,
   overview,
+  contentImage,
   services,
   approach,
   quoteText,
@@ -82,8 +86,21 @@ export default function MainContentSection({
                 </h2>
                 <div className="mb-6 h-1 w-16 bg-red-700" />
                 <div
-                  className="leading-relaxed text-gray-700 space-y-4"
+                  className="leading-relaxed text-slate-700 rich-text-content space-y-4"
                   dangerouslySetInnerHTML={{ __html: overview }}
+                />
+              </div>
+            )}
+
+            {/* Content Image (Overview Bottom Image) */}
+            {contentImage && (
+              <div className="mb-12 relative h-72 sm:h-[400px] w-full rounded-2xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100">
+                <Image
+                  src={getImageUrl(contentImage)}
+                  alt={title || "Service Overview Image"}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
                 />
               </div>
             )}
@@ -113,7 +130,7 @@ export default function MainContentSection({
                 </h3>
                 <div className="mb-6 h-1 w-16 bg-red-700" />
                 <div
-                  className="leading-relaxed text-gray-700"
+                  className="leading-relaxed text-slate-700 rich-text-content space-y-4"
                   dangerouslySetInnerHTML={{ __html: approach }}
                 />
               </div>

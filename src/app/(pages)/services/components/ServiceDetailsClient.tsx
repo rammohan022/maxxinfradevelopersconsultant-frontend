@@ -38,6 +38,7 @@ export default function ServiceDetailsClient() {
             <MainContentSection
                 title={area.title}
                 overview={area.overview}
+                contentImage={area.contentImage}
                 services={area.services}
                 approach={area.approach}
                 quoteText={area.quoteText}

@@ -16,6 +16,7 @@ export interface Service {
   status?: ServiceStatus;
   position?: number;
   innerImage?: string;
+  contentImage?: string;
   overview?: string;
   approach?: string;
   quoteText?: string;
@@ -33,6 +34,7 @@ export interface CreateServiceDto {
   status?: ServiceStatus;
   position?: number;
   innerImage?: string;
+  contentImage?: string;
   overview?: string;
   approach?: string;
   quoteText?: string;

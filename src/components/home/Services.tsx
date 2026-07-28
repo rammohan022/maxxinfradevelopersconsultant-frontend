@@ -1,266 +1,89 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { Container } from '@/components/ui'
-import { motion, AnimatePresence, Variants } from 'framer-motion'
-import { slugifyCategory } from '@/lib/utils/slugUtils'
-import {
-  Scale,
-  Gavel,
-  FileText,
-  Shield,
-  Building2,
-  Briefcase,
-  Users,
-  Landmark,
-  Banknote,
-  Lock,
-  BriefcaseBusiness,
-  Home,
-  Smartphone,
-  ArrowRight,
-  Sparkles,
-  Layers,
-} from 'lucide-react'
-import { useGetServicesQuery, Service } from '@/services/services'
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  'apostille-service': FileText,
-  'criminal-cases': Gavel,
-  'ed-cases': Shield,
-  'pmla-cases': Lock,
-  'eow-cases': BriefcaseBusiness,
-  'cyber-crime': Smartphone,
-  'arbitration-adr': Scale,
-  'banking-finance': Banknote,
-  'corporate-commercial': Building2,
-  'mergers-acquisitions': Briefcase,
-  'intellectual-property': FileText,
-  'real-estate': Home,
-  'labor-employment': Users,
-  'litigation': Landmark,
-  'hiring-staffing': Users,
-  'hr-training': Briefcase,
-  'labor-compliance': Shield,
-  'executive-search': Briefcase,
-}
-
-const fadeUpVariants: Variants = {
-  hidden: { opacity: 0, y: 25 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
-}
+import { ArrowRight } from 'lucide-react'
 
 export default function Services() {
-  const [activeCategory, setActiveCategory] = useState<string>('all')
-
-  const fallbackAreas: Service[] = [
-    {
-      id: '1',
-      title: 'Hiring & Staffing',
-      slug: 'hiring-staffing',
-      category: 'Hiring Services',
-      innerImage: '/img/hr_hero_bg_1783707638359.png',
-      overview: 'We provide end-to-end recruitment solutions to help you find the best talent for your organization.'
-    },
-    {
-      id: '2',
-      title: 'HR Training',
-      slug: 'hr-training',
-      category: 'Training Services',
-      innerImage: '/img/hr_training_1783707657031.png',
-      overview: 'Empower your workforce with our comprehensive corporate training programs.'
-    },
-    {
-      id: '3',
-      title: 'Labor Compliance',
-      slug: 'labor-compliance',
-      category: 'Compliance Services',
-      innerImage: '/img/hr_about_us_1783707647467.png',
-      overview: 'Navigate complex labor laws seamlessly and ensure strict adherence to statutory compliance.'
-    },
-    {
-      id: '4',
-      title: 'Executive Search',
-      slug: 'executive-search',
-      category: 'Hiring Services',
-      innerImage: '/img/hr_hero_bg_1783707638359.png',
-      overview: 'Find visionary leaders to steer your company towards success.'
-    }
-  ]
-
-  const { data: apiAreas = [] } = useGetServicesQuery()
-  const publishedApiAreas = (apiAreas || []).filter((s) => s.status !== 'Draft')
-  const areas = publishedApiAreas.length > 0 ? publishedApiAreas : fallbackAreas
-
-  // Extract categories dynamically from services data
-  const categoriesList = useMemo(() => {
-    const map = new Map<string, { name: string; slug: string; count: number }>()
-
-    areas.forEach((s) => {
-      const catName = s.category || 'General Services'
-      const slug = slugifyCategory(catName)
-      const existing = map.get(slug)
-      if (existing) {
-        existing.count += 1
-      } else {
-        map.set(slug, { name: catName, slug, count: 1 })
-      }
-    })
-
-    return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name))
-  }, [areas])
-
-  // Filter services by selected category tab
-  const filteredServices = useMemo(() => {
-    if (activeCategory === 'all') return areas
-    return areas.filter((s) => {
-      const catSlug = slugifyCategory(s.category || 'General Services')
-      return catSlug === activeCategory
-    })
-  }, [areas, activeCategory])
-
   return (
-    <section className="py-16 md:py-20 bg-slate-50 border-t border-b border-slate-200/60" id="services">
+    <section className="py-20 lg:py-28 bg-sky-50/40 relative overflow-hidden">
       <Container>
-        {/* Header */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={fadeUpVariants}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
-            <Sparkles size={14} className="text-secondary" />
-            Our Practice & Services
-          </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
-            Comprehensive Corporate HR Solutions
-          </h2>
-          <p className="mt-4 text-slate-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            Providing tailored HR management, talent acquisition, labor compliance, and corporate training solutions for modern enterprises.
-          </p>
-        </motion.div>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Left Column: Heading & Description */}
+          <div className="lg:col-span-5 space-y-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[rgb(13_33_55)] leading-tight tracking-tight">
+              Discover what we do
+            </h2>
 
-        {/* Category Tabs Bar */}
-        {categoriesList.length > 0 && (
-          <div className="flex items-center justify-center gap-2.5 flex-wrap mb-12">
-            <button
-              onClick={() => setActiveCategory('all')}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
-                activeCategory === 'all'
-                  ? 'bg-primary text-white shadow-md shadow-primary/20 scale-105'
-                  : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
-              }`}
-            >
-              <span>All Services</span>
-              <span
-                className={`text-[10px] px-2 py-0.5 rounded-full ${
-                  activeCategory === 'all' ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-                }`}
-              >
-                {areas.length}
-              </span>
-            </button>
-
-            {categoriesList.map((cat) => {
-              const isActive = activeCategory === cat.slug
-              return (
-                <button
-                  key={cat.slug}
-                  onClick={() => setActiveCategory(cat.slug)}
-                  className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 flex items-center gap-2 ${
-                    isActive
-                      ? 'bg-primary text-white shadow-md shadow-primary/20 scale-105'
-                      : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
-                  }`}
-                >
-                  <span>{cat.name}</span>
-                  <span
-                    className={`text-[10px] px-2 py-0.5 rounded-full ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-600'
-                    }`}
-                  >
-                    {cat.count}
-                  </span>
-                </button>
-              )
-            })}
+            <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+              People Consulting&apos;s core services are designed to help organizations build strong leadership, navigate complexity, and accelerate long-term performance. Our partners bring firsthand expertise across major global sectors—from industrial manufacturing and technology to healthcare, consumer, financial services and the public sphere. We help clients anticipate industry shifts, build future-ready leadership, and seize opportunity in rapidly evolving markets.
+            </p>
           </div>
-        )}
 
-        {/* Services Card Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeCategory}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
-          >
-            {filteredServices.map((area, index) => {
-              const normalizedSlug = area.slug.replace(/[\u2013\u2014]/g, '-').toLowerCase()
-              const Icon =
-                iconMap[normalizedSlug] ||
-                Object.entries(iconMap).find(([key]) => normalizedSlug.startsWith(key))?.[1] ||
-                Scale
+          {/* Right Column: 2 Cards (Services & Industries) */}
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6 lg:gap-8">
+            
+            {/* Card 1: Services */}
+            <Link
+              href="/services"
+              className="group relative h-[380px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 block transform hover:-translate-y-1.5"
+            >
+              <Image
+                src="/img/capabilities_card.png"
+                alt="Services"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
+              
+              {/* Dark Gradient Overlay at Bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/40 to-transparent" />
 
-              const categoryName = area.category || 'General Services'
-              const categorySlug = slugifyCategory(categoryName)
+              {/* Bottom Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex items-center justify-between z-10">
+                <span className="text-white font-bold text-lg sm:text-xl tracking-wider uppercase drop-shadow">
+                  SERVICES
+                </span>
+                
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-all duration-300 shadow-lg">
+                  <ArrowRight size={20} className="transform group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </div>
+            </Link>
 
-              return (
-                <motion.div
-                  key={area.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className="group p-6 rounded-2xl border border-slate-200/80 bg-white hover:shadow-xl hover:border-primary/30 transition-all duration-300 transform hover:-translate-y-1 flex flex-col h-full relative"
-                >
-                  {/* Top Category Badge */}
-                  <div className="flex items-center justify-between gap-2 mb-4">
-                    <Link
-                      href={`/services/category/${categorySlug}`}
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-slate-100 group-hover:bg-primary/10 text-slate-600 group-hover:text-primary text-[11px] font-bold uppercase tracking-wider transition-colors"
-                    >
-                      <Layers size={12} className="text-secondary shrink-0" />
-                      <span className="line-clamp-1">{categoryName}</span>
-                    </Link>
+            {/* Card 2: Industries */}
+            <Link
+              href="/industries"
+              className="group relative h-[380px] sm:h-[420px] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 block transform hover:-translate-y-1.5"
+            >
+              <Image
+                src="/img/industries_card.png"
+                alt="Industries"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
 
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300 shrink-0">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                  </div>
+              {/* Dark Gradient Overlay at Bottom */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/40 to-transparent" />
 
-                  {/* Service Title */}
-                  <h3 className="text-lg font-bold text-primary mb-3 transition-colors leading-snug">
-                    {area.title}
-                  </h3>
+              {/* Bottom Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex items-center justify-between z-10">
+                <span className="text-white font-bold text-lg sm:text-xl tracking-wider uppercase drop-shadow">
+                  INDUSTRIES
+                </span>
 
-                  {/* Overview Text */}
-                  <div
-                    className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6 line-clamp-4 flex-1"
-                    dangerouslySetInnerHTML={{
-                      __html: area.overview
-                        ? area.overview.replace(/<[^>]*>?/gm, '').substring(0, 140) + '...'
-                        : '',
-                    }}
-                  />
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-all duration-300 shadow-lg">
+                  <ArrowRight size={20} className="transform group-hover:translate-x-0.5 transition-transform" />
+                </div>
+              </div>
+            </Link>
 
-                  {/* Bottom Action CTA */}
-                  <Link
-                    href={`/services/${area.slug}`}
-                    className="mt-auto inline-flex items-center justify-between w-full pt-4 border-t border-slate-100 text-secondary hover:text-primary font-bold transition-colors text-xs uppercase tracking-wider group/btn"
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Link>
-                </motion.div>
-              )
-            })}
-          </motion.div>
-        </AnimatePresence>
+          </div>
+
+        </div>
       </Container>
     </section>
   )

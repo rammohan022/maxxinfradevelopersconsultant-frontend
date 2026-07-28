@@ -3,57 +3,71 @@ import { Container } from "@/components/ui";
 
 const CareerHero = () => {
   return (
-    <section className="relative min-h-[520px] flex items-center bg-slate-50 border-b border-slate-100 overflow-hidden">
-      {/* Background decoration blobs */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] -z-0" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[80px] -z-0" />
+    <section className="relative py-12 lg:py-16 overflow-hidden bg-[rgb(13_33_55)] min-h-[380px] flex items-center">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/img/career-hero.png"
+          alt="Careers at People Consulting"
+          fill
+          priority
+          className="object-cover opacity-45"
+        />
+      </div>
 
-      <Container className="relative z-10 w-full py-16 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[rgb(13_33_55)]/95 via-[rgb(13_33_55)]/85 to-[rgb(13_33_55)]/65" />
 
-          {/* LEFT CONTENT */}
-          <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+      {/* Content */}
+      <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left">
+        <div className="max-w-3xl w-full text-left">
+          {/* Breadcrumb */}
+          <nav className="mb-4 flex items-center space-x-2 text-sm text-gray-300 font-medium">
+            <a
+              href="/"
+              className="transition-colors hover:text-white"
+            >
+              Home
+            </a>
+            <svg
+              className="h-3 w-3 text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 320 512"
+              aria-hidden="true"
+            >
+              <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+            </svg>
+            <span className="font-bold text-secondary">
               Careers
             </span>
+          </nav>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-5">
-              Build Your Career With Us
-            </h1>
+          {/* Heading */}
+          <h1 className="mb-4 font-bold text-2xl sm:text-3xl lg:text-4xl leading-tight text-white drop-shadow-md">
+            Build Your Career With Us
+          </h1>
 
-            <p className="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
-              Grow, learn, and create real impact in a consulting agency that values
-              integrity, excellence, and your professional development.
-            </p>
+          {/* Description */}
+          <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-gray-200 mb-8 drop-shadow-sm">
+            Grow, learn, and create real impact in a consulting agency that values
+            integrity, excellence, and your professional development.
+          </p>
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="#open-positions"
-                className="bg-secondary hover:bg-secondary-dark text-white px-6 py-3.5 rounded-lg font-semibold shadow-md transition hover:scale-[1.02] active:scale-[0.98]"
-              >
-                View Open Positions
-              </a>
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4">
+            <a
+              href="#open-positions"
+              className="bg-secondary hover:bg-secondary-dark text-white px-6 py-3 rounded-lg font-bold shadow-lg shadow-secondary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              View Open Positions
+            </a>
 
-              <a
-                href="#why-join-us"
-                className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-6 py-3.5 rounded-lg font-semibold transition"
-              >
-                Why Work With Us
-              </a>
-            </div>
-          </div>
-
-          {/* RIGHT IMAGE */}
-          <div className="relative hidden lg:block">
-            <div className="relative h-[420px] w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-200/60">
-              <Image
-                src="/img/career-hero.png"
-                alt="Consulting team collaborating in modern office"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
+            <a
+              href="#why-join-us"
+              className="border-2 border-white/80 text-white hover:bg-white hover:text-primary px-6 py-3 rounded-lg font-bold transition-all duration-300"
+            >
+              Why Work With Us
+            </a>
           </div>
         </div>
       </Container>

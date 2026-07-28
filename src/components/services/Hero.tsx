@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Container } from "@/components/ui";
 
 interface PracticeAreaHeroProps {
   title: string;
@@ -8,39 +9,48 @@ interface PracticeAreaHeroProps {
 
 const PracticeAreaHero = ({ title, subtitle }: PracticeAreaHeroProps) => {
   return (
-    <section className="relative py-16 lg:py-24 bg-gradient-to-b from-slate-100 via-white to-slate-50 border-b border-slate-200 flex items-center justify-center overflow-hidden">
-      {/* Background decoration blobs */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] -z-0" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[80px] -z-0" />
-
-      {/* ================= CONTENT ================= */}
-      <div className="relative z-10 mx-auto max-w-5xl text-center px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
-        <div className="text-slate-500 text-sm font-semibold mb-4 flex items-center justify-center space-x-2">
-          <Link href="/" className="hover:text-primary transition">
-            Home
-          </Link>
-          <span className="text-slate-400">&gt;</span>
-          <Link
-            href="/services"
-            className="hover:text-primary transition"
-          >
-            Our Services
-          </Link>
-        </div>
-
-        {/* Title */}
-        <h1 className="text-primary text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-6">
-          {title}
-        </h1>
-
-        {/* Subtitle */}
-        {subtitle && (
-          <p className="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
-            {subtitle}
-          </p>
-        )}
+    <section className="relative py-16 lg:py-24 overflow-hidden bg-[rgb(13_33_55)] flex items-center">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/img/practice-hero-bg-v2.png"
+          alt="Our Services Background"
+          fill
+          priority
+          className="object-cover opacity-50"
+        />
       </div>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[rgb(13_33_55)]/95 via-[rgb(13_33_55)]/85 to-[rgb(13_33_55)]/65" />
+
+      {/* Content */}
+      <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left">
+        <div className="max-w-3xl w-full text-left">
+          {/* Breadcrumb */}
+          <nav className="mb-4 flex items-center space-x-2 text-sm text-gray-300 font-medium">
+            <Link href="/" className="hover:text-white transition">
+              Home
+            </Link>
+            <span className="text-gray-400">&gt;</span>
+            <span className="font-bold text-secondary">
+              Our Services
+            </span>
+          </nav>
+
+          {/* Title */}
+          <h1 className="mb-4 text-white text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight drop-shadow-md">
+            {title}
+          </h1>
+
+          {/* Subtitle */}
+          {subtitle && (
+            <p className="max-w-2xl text-gray-200 text-base sm:text-lg leading-relaxed drop-shadow-sm">
+              {subtitle}
+            </p>
+          )}
+        </div>
+      </Container>
     </section>
   );
 };

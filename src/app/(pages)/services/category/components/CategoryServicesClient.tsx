@@ -38,23 +38,6 @@ export default function CategoryServicesClient() {
   const allServices = useMemo(() => (rawServices || []).filter((s) => s.status !== 'Draft'), [rawServices]);
   const { data: categories = [], isLoading: isCategoriesLoading } = useGetServiceCategoriesQuery();
 
-  // Find active category info
-  const activeCategoryObj = useMemo(() => {
-    return categories.find(
-      (c) => c.slug === rawCategorySlug || slugifyCategory(c.name) === rawCategorySlug
-    );
-  }, [categories, rawCategorySlug]);
-
-  const activeCategoryName = useMemo(() => {
-    if (activeCategoryObj) return activeCategoryObj.name;
-    // Fallback search across allServices category string
-    const matchingService = allServices.find(
-      (s) => s.category && slugifyCategory(s.category) === rawCategorySlug
-    );
-    if (matchingService?.category) return matchingService.category;
-    return unslugifyCategory(rawCategorySlug);
-  }, [activeCategoryObj, allServices, rawCategorySlug]);
-
   // Extract all distinct categories from backend services + serviceCategories table
   const availableCategories = useMemo(() => {
     const map = new Map<string, { name: string; slug: string; count: number }>();
@@ -80,16 +63,40 @@ export default function CategoryServicesClient() {
     return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
   }, [categories, allServices]);
 
+  // Default to first category if no rawCategorySlug is specified
+  const effectiveCategorySlug = useMemo(() => {
+    if (rawCategorySlug) return rawCategorySlug;
+    return availableCategories[0]?.slug || '';
+  }, [rawCategorySlug, availableCategories]);
+
+  // Find active category info
+  const activeCategoryObj = useMemo(() => {
+    return categories.find(
+      (c) => c.slug === effectiveCategorySlug || slugifyCategory(c.name) === effectiveCategorySlug
+    );
+  }, [categories, effectiveCategorySlug]);
+
+  const activeCategoryName = useMemo(() => {
+    if (activeCategoryObj) return activeCategoryObj.name;
+    // Fallback search across allServices category string
+    const matchingService = allServices.find(
+      (s) => s.category && slugifyCategory(s.category) === effectiveCategorySlug
+    );
+    if (matchingService?.category) return matchingService.category;
+    return unslugifyCategory(effectiveCategorySlug) || 'Services';
+  }, [activeCategoryObj, allServices, effectiveCategorySlug]);
+
   // Filter services belonging to this category
   const categoryServices = useMemo(() => {
+    if (!effectiveCategorySlug) return allServices;
     return allServices.filter((s) => {
       const serviceCatSlug = slugifyCategory(s.category || 'General Services');
       return (
-        serviceCatSlug === rawCategorySlug ||
+        serviceCatSlug === effectiveCategorySlug ||
         s.category?.toLowerCase().trim() === activeCategoryName.toLowerCase().trim()
       );
     });
-  }, [allServices, rawCategorySlug, activeCategoryName]);
+  }, [allServices, effectiveCategorySlug, activeCategoryName]);
 
   // Apply search filtering
   const filteredServices = useMemo(() => {
@@ -109,13 +116,28 @@ export default function CategoryServicesClient() {
       if (s.faqs && Array.isArray(s.faqs)) {
         s.faqs.forEach((faq) => {
           if (faq.question && faq.answer) {
-            faqs.push({ ...faq, serviceTitle: s.title });
+            faqs.push({
+              question: faq.question,
+              answer: faq.answer,
+              serviceTitle: s.title,
+            });
           }
         });
       }
     });
     return faqs;
   }, [categoryServices]);
+
+  if (isServicesLoading || isCategoriesLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="flex flex-col items-center gap-3 text-slate-500">
+          <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin" />
+          <span className="text-sm font-semibold">Loading services...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-slate-50 min-h-screen pb-12">
@@ -176,33 +198,27 @@ export default function CategoryServicesClient() {
         <Container className="py-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             {/* Category Filter Tabs */}
-            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 scroll-smooth">
-              <Link
-                href="/services"
-                className="px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors"
-              >
-                All Services
-              </Link>
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 scroll-smooth">
 
               {availableCategories.map((cat) => {
-                const isActive = cat.slug === rawCategorySlug;
+                const isActive = cat.slug === effectiveCategorySlug;
                 return (
                   <Link
                     key={cat.slug}
                     href={`/services/category/${cat.slug}`}
-                    className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
                       isActive
-                        ? 'bg-primary text-white shadow-md shadow-primary/20 scale-105'
+                        ? 'bg-primary text-white shadow-md shadow-primary/20'
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   >
                     <span>{cat.name}</span>
                     <span
-                      className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                      className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
                         isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
                       }`}
                     >
-                      {cat.count > 0 ? cat.count : categoryServices.length}
+                      {cat.count}
                     </span>
                   </Link>
                 );

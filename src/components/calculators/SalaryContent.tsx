@@ -115,28 +115,28 @@ export default function SalaryContent() {
             </thead>
             <tbody className="divide-y divide-slate-200 text-slate-600">
               <tr className="hover:bg-slate-50">
-                <td className="p-3 font-semibold text-slate-900">Basic & HRA</td>
+                <td className="p-3 font-semibold text-slate-700">Basic & HRA</td>
                 <td className="p-3 text-secondary font-bold">Yes</td>
                 <td className="p-3 text-secondary font-bold">Credited in In-Hand</td>
               </tr>
               <tr className="hover:bg-slate-50">
-                <td className="p-3 font-semibold text-slate-900">Performance Bonus</td>
+                <td className="p-3 font-semibold text-slate-700">Performance Bonus</td>
                 <td className="p-3 text-secondary font-bold">Yes</td>
                 <td className="p-3 text-slate-500 font-medium">Distributed Periodically / Annually</td>
               </tr>
               <tr className="hover:bg-slate-50">
-                <td className="p-3 font-semibold text-slate-900">Employer EPF Share</td>
+                <td className="p-3 font-semibold text-slate-700">Employer EPF Share</td>
                 <td className="p-3 text-secondary font-bold">Yes</td>
                 <td className="p-3 text-rose-500 font-bold">Deducted from CTC (EPFO Deposit)</td>
               </tr>
               <tr className="hover:bg-slate-50">
-                <td className="p-3 font-semibold text-slate-900">Employee EPF Share</td>
-                <td className="p-3 text-slate-400">Part of Gross</td>
+                <td className="p-3 font-semibold text-slate-700">Employee EPF Share</td>
+                <td className="p-3 text-slate-500 font-medium">Part of Gross</td>
                 <td className="p-3 text-rose-500 font-bold">Deducted from Monthly Gross</td>
               </tr>
               <tr className="hover:bg-slate-50">
-                <td className="p-3 font-semibold text-slate-900">Professional Tax (PT)</td>
-                <td className="p-3 text-slate-400">State Statutory Levy</td>
+                <td className="p-3 font-semibold text-slate-700">Professional Tax (PT)</td>
+                <td className="p-3 text-slate-500 font-medium">State Statutory Levy</td>
                 <td className="p-3 text-rose-500 font-bold">Deducted from Monthly Gross</td>
               </tr>
             </tbody>

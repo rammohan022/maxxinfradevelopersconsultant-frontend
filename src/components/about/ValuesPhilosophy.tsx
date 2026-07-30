@@ -76,7 +76,7 @@ const ValuesPhilosophy = () => {
               <div className="text-primary text-sm font-bold uppercase tracking-widest mb-4 border-l-4 border-primary pl-3">
                 Our Values
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+              <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
                 Built on Integrity, Excellence, and Trust
               </h2>
             </motion.div>

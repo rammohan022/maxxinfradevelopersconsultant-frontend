@@ -67,7 +67,7 @@ const RecognitionAwards = () => {
           <div className="text-primary text-sm font-bold uppercase tracking-widest mb-4">
             Recognition
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-6">
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
             Awards & Accolades
           </h2>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">

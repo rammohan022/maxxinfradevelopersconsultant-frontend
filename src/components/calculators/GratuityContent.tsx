@@ -135,17 +135,17 @@ export default function GratuityContent() {
             </thead>
             <tbody className="divide-y divide-slate-200 text-slate-600">
               <tr className="hover:bg-slate-50">
-                <td className="p-3 font-semibold text-slate-900">Government Employees (Central / State / Local)</td>
+                <td className="p-3 font-semibold text-slate-700">Government Employees (Central / State / Local)</td>
                 <td className="p-3 text-secondary font-bold">100% Tax-Exempt (Fully exempt under Income Tax Act)</td>
               </tr>
               <tr className="hover:bg-slate-50">
-                <td className="p-3 font-semibold text-slate-900">Private Sector Covered under Gratuity Act 1972</td>
+                <td className="p-3 font-semibold text-slate-700">Private Sector Covered under Gratuity Act 1972</td>
                 <td className="p-3 text-slate-700 font-medium">
                   Exempt up to minimum of: (1) Actual Gratuity, (2) Statutory Ceiling of ₹20 Lakhs, or (3) Formula Payout.
                 </td>
               </tr>
               <tr className="hover:bg-slate-50">
-                <td className="p-3 font-semibold text-slate-900">Private Sector Not Covered under Gratuity Act</td>
+                <td className="p-3 font-semibold text-slate-700">Private Sector Not Covered under Gratuity Act</td>
                 <td className="p-3 text-slate-700 font-medium">
                   Exempt up to minimum of: (1) Half month salary per year served, or (2) ₹20 Lakhs.
                 </td>

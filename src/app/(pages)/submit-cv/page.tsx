@@ -80,7 +80,7 @@ export default function SubmitCVPage() {
             <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">
               Join Our Network
             </span>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-primary leading-tight mb-6">
               Submit Your CV
             </h1>
             <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">

@@ -190,7 +190,7 @@ export default function CategoryServicesClient() {
               <span>Service Category</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4 tracking-tight uppercase drop-shadow-lg">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white leading-tight mb-4 tracking-tight drop-shadow-lg">
               {activeCategoryName}
             </h1>
 

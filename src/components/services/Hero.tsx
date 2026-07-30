@@ -40,7 +40,7 @@ const PracticeAreaHero = ({ title, subtitle, image = "/img/services_hero_bg_clea
           </nav>
 
           {/* Title */}
-          <h1 className="mb-4 text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight uppercase drop-shadow-lg">
+          <h1 className="mb-4 text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold tracking-tight leading-tight drop-shadow-lg">
             {title}
           </h1>
 

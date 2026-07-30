@@ -49,6 +49,7 @@ const navItems: NavItem[] = [
       { name: "Hero Banners", href: "/admin/banners" },
       { name: "Testimonials", href: "/admin/testimonials" },
       { name: "Media Library", href: "/admin/media" },
+      { name: "PDF Documents", href: "/admin/pdfs" },
     ],
   },
   {
@@ -130,7 +131,7 @@ const SideNav = () => {
 
   // Track open state for dropdown menus
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
-    "Website Content": pathname.startsWith("/admin/banners") || pathname.startsWith("/admin/testimonials") || pathname.startsWith("/admin/media"),
+    "Website Content": pathname.startsWith("/admin/banners") || pathname.startsWith("/admin/testimonials") || pathname.startsWith("/admin/media") || pathname.startsWith("/admin/pdfs"),
     Services: pathname.startsWith("/admin/services") || pathname.startsWith("/admin/service-categories"),
     Careers: pathname.startsWith("/admin/career") || pathname.startsWith("/admin/applications"),
     Blogs: pathname.startsWith("/admin/blogs") || pathname.startsWith("/admin/blog-categories"),

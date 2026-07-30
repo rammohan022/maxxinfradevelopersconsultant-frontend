@@ -83,6 +83,7 @@ export const baseApi = createApi({
     "SiteSettings",
     "Banner",
     "Media",
+    "Pdf",
     "ActivityLog",
   ],
   endpoints: () => ({}),

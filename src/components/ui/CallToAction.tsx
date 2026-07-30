@@ -7,7 +7,12 @@ const CTASection: React.FC = () => {
     return (
         <section
             id="cta-section"
-            className="relative overflow-hidden bg-gray-50 border-y border-gray-100 py-20"
+            className="relative overflow-hidden border-y border-gray-100 py-20"
+            style={{
+                backgroundImage: "url('/img/paper_texture_bg.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
         >
             {/* Background Image */}
             <div className="absolute inset-0 opacity-5">

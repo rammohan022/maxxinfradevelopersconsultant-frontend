@@ -61,7 +61,14 @@ export default function Footer() {
         title="People Consulting Location"
         className="grayscale opacity-90 transition-all hover:grayscale-0"
       />
-      <footer className="bg-white text-gray-900 border-t border-gray-100 pt-12 md:pt-12 pb-6 relative overflow-hidden">
+      <footer
+        className="text-gray-900 border-t border-gray-100 pt-12 md:pt-12 pb-6 relative overflow-hidden"
+        style={{
+          backgroundImage: "url('/img/paper_texture_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-5 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-100 via-transparent to-transparent pointer-events-none" />
         <Container className="relative z-10">

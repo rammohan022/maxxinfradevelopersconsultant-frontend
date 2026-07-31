@@ -43,12 +43,12 @@ const CareerHero = () => {
           </nav>
 
           {/* Heading */}
-          <h1 className="mb-4 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-4xl leading-tight text-white drop-shadow-md">
+          <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-4 drop-shadow-md">
             Build Your Career With Us
           </h1>
 
           {/* Description */}
-          <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-gray-200 mb-8 drop-shadow-sm">
+          <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl leading-relaxed mb-8 drop-shadow-sm">
             Grow, learn, and create real impact in a consulting agency that values
             integrity, excellence, and your professional development.
           </p>

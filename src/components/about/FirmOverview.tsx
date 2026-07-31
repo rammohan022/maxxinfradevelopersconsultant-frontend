@@ -25,7 +25,7 @@ const FirmOverview = () => {
               Leading HR & Recruitment Consulting Firm Serving Indian Businesses
             </h2>
 
-            <div className="space-y-6 text-slate-600 text-lg leading-relaxed mb-8">
+            <div className="space-y-6 text-slate-600 text-xs md:text-sm leading-relaxed mb-8">
               <p>
                 <strong>People Consulting</strong> is a premier human resources and talent acquisition agency dedicated to providing strategic, compliance-aligned, and result-driven workforce solutions across India. With a strong professional network and cross-disciplinary expertise, we cater to startups, scaling mid-market businesses, and large enterprise entities.
               </p>

@@ -141,10 +141,10 @@ export default function ActivityLogsAdminPage() {
       {/* Top Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b pb-4">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)] flex items-center gap-2">
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight flex items-center gap-2">
             <History className="text-secondary" size={24} /> Activity & Audit Logs
           </h1>
-          <p className="text-sm text-slate-500">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
             Real-time activity tracking of user actions, content updates, logins, and AI operations.
           </p>
         </div>

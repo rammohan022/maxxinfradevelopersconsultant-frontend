@@ -118,10 +118,10 @@ export default function Profile() {
     <>
       {/* Page Title */}
       <div className="mb-3">
-        <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">
+        <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
           Admin Profile
         </h1>
-        <p className="text-gray-500 text-sm">
+        <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
           View and update your personal information and password settings
         </p>
       </div>

@@ -26,11 +26,11 @@ const CTASection: React.FC = () => {
             </div>
             {/* Content */}
             <Container className="relative z-10 max-w-4xl text-center">
-                <h2 className="mb-6 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary">
+                <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
                     Empowering Your Business Through Top Talent.
                 </h2>
 
-                <p className="mb-8 text-xl leading-relaxed text-gray-600">
+                <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed mb-8">
                     We help organizations streamline their recruitment, training, and labor compliance processes. Partner with us to build high-performance workplaces and connect with industry-leading professionals.
                 </p>
 

@@ -37,11 +37,11 @@ const ContactHero: React.FC = () => {
           <span className="text-gray-300">Contact Us</span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-serif font-bold mb-6">
+        <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-6">
           Contact Us
         </h1>
 
-        <p className="text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl mx-auto leading-relaxed">
           We&apos;re here to provide expert legal counsel and representation.
           Reach out to discuss your legal needs with our experienced attorneys.
         </p>

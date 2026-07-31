@@ -87,7 +87,7 @@ const WhyChooseUs = () => {
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
             Why Leading Businesses Choose Us
           </h2>
-          <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed">
             We combine legal expertise with business intelligence to deliver
             exceptional value and results for our clients.
           </p>
@@ -115,11 +115,11 @@ const WhyChooseUs = () => {
                   <Icon className="w-7 h-7 text-red-700" strokeWidth={1.8} />
                 </div>
 
-                <h3 className="text-xl font-bold text-primary mb-4">
+                <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
                   {item.title}
                 </h3>
 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>

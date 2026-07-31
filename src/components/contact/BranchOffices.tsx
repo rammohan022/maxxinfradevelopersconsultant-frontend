@@ -25,10 +25,10 @@ const BranchOffices: React.FC = () => {
       <Container>
         {/* Heading */}
         <div className="mb-6">
-          <h2 className="mb-4 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">
             Our Other Offices
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
             Our nationwide presence to serve you better
           </p>
         </div>

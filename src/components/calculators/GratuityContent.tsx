@@ -79,7 +79,7 @@ export default function GratuityContent() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
             <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4 text-secondary" />
+              <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
               Tenure Rounding Rules
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -89,7 +89,7 @@ export default function GratuityContent() {
 
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
             <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4 text-secondary" />
+              <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
               5-Year Eligibility Criteria
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -99,21 +99,21 @@ export default function GratuityContent() {
 
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
             <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4 text-secondary" />
-              Maximum Tax Exemption Cap
+              <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
+              Maximum Gratuity Limit
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
-              As per current central tax laws, cumulative gratuity received across a professional career is tax-exempt up to a statutory ceiling of <strong>₹20 Lakhs</strong>.
+              As per the latest 2018 amendment, the maximum tax-free gratuity payable under the Act is capped at ₹20 Lakhs. Any voluntary payment over this limit is taxable.
             </p>
           </div>
 
           <div className="bg-slate-50 p-4 rounded-xl border border-slate-200">
             <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4 text-secondary" />
-              Ex-Gratia Payouts
+              <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
+              Employer Coverage Rules
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Any voluntary bonus or gratuity granted by an employer over the calculated statutory maximum is categorized as ex-gratia pay and is subject to applicable income tax.
+              The Payment of Gratuity Act applies to all mines, oilfields, plantations, ports, railways, companies, and shops employing 10 or more people on any day of the year.
             </p>
           </div>
         </div>
@@ -174,9 +174,8 @@ export default function GratuityContent() {
                     {faq.q}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-slate-500 transition-transform ${
-                      isOpen ? 'rotate-180 text-secondary' : ''
-                    }`}
+                    className={`w-4 h-4 text-slate-500 transition-transform ${isOpen ? 'rotate-180 text-secondary' : ''
+                      }`}
                   />
                 </button>
                 {isOpen && (

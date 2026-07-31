@@ -13,8 +13,8 @@ export default function CreateTermsPage() {
   return (
     <div>
       <div className="mb-3">
-        <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Create Terms & Conditions</h1>
-        <p className="text-gray-500 text-sm">Draft a new version of the terms and conditions</p>
+        <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Create Terms & Conditions</h1>
+        <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">Draft a new version of the terms and conditions</p>
       </div>
       <LegalForm type="terms" onSave={handleSave} isLoading={isLoading} />
     </div>

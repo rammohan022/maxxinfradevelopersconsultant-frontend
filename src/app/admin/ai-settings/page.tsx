@@ -58,10 +58,10 @@ export default function AiSettingsAdminPage() {
       {/* Top Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b pb-4">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)] flex items-center gap-2">
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight flex items-center gap-2">
             <Sparkles className="text-purple-600 animate-pulse" size={24} /> AI Configuration & Keys
           </h1>
-          <p className="text-sm text-slate-500">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
             Manage API keys for Google Gemini, OpenAI, and OpenRouter for AI content & SEO generation across the website.
           </p>
         </div>

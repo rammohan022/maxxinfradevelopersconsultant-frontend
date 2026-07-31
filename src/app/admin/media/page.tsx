@@ -73,8 +73,8 @@ export default function MediaLibraryPage() {
     <div className="space-y-5">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Central Media Library</h1>
-          <p className="text-sm text-slate-500">View, upload, reuse, and manage website images & files</p>
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Central Media Library</h1>
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">View, upload, reuse, and manage website images & files</p>
         </div>
 
         <div className="flex items-center gap-3">

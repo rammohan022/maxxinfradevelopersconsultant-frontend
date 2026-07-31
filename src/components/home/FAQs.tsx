@@ -34,10 +34,10 @@ export default function FAQs() {
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-3">
             FAQs
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
             Frequently Asked <span className="text-secondary">Questions</span>
           </h2>
-          <p className="mt-3 text-slate-600 text-sm sm:text-base">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed">
             Find answers to common questions about our search methodology, training modules, and compliance workflows.
           </p>
         </div>

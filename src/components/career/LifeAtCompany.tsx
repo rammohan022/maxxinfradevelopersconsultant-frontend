@@ -8,10 +8,10 @@ const LifeAtCompany = () => {
                     <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
                         Culture
                     </span>
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-10">
+                    <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-10">
                         Life at People Consulting
                     </h2>
-                    <p className="text-gray-600 text-lg max-w-3xl mb-12 leading-relaxed">
+                    <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-12">
                         We believe in teamwork, diversity, and a professional environment built on ethics and respect. Our people are our strength—whether you are starting your legal career or bringing years of experience, you will find a place where your contribution is valued and your growth is supported.
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

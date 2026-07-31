@@ -17,7 +17,7 @@ export default function EditTestimonialPage() {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-3 text-[rgb(13_33_55)]">Edit Testimonial</h1>
+            <h1 className="text-xl md:text-2xl font-bold mb-3 text-primary tracking-tight">Edit Testimonial</h1>
             <TestimonialForm initialData={testimonial} isEdit />
         </div>
     );

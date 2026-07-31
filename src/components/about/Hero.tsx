@@ -35,12 +35,12 @@ const HeroAbout = () => {
         </div>
 
         {/* Heading */}
-        <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight mb-6">
+        <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-6">
           A Trusted HR Consulting Partner with Decades of Excellence
         </h1>
 
         {/* Subtitle */}
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+        <p className="text-xs md:text-sm text-gray-300 mt-1 max-w-3xl mx-auto leading-relaxed">
           Delivering comprehensive talent and workforce solutions across India with unmatched
           expertise, integrity, and commitment
         </p>

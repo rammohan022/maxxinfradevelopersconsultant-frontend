@@ -80,10 +80,10 @@ export default function SubmitCVPage() {
             <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">
               Join Our Network
             </span>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-primary leading-tight mb-6">
+            <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
               Submit Your CV
             </h1>
-            <p className="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed">
               Connect with top employers and exciting career opportunities. Upload your resume and let our expert recruitment team match you with the perfect role.
             </p>
           </div>
@@ -96,7 +96,7 @@ export default function SubmitCVPage() {
           
           {/* Form Column */}
           <div className="lg:col-span-2 bg-white rounded-2xl shadow-xl border border-slate-200/60 p-8 md:p-10">
-            <h2 className="text-2xl font-bold text-primary mb-6">Application Details</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">Application Details</h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">

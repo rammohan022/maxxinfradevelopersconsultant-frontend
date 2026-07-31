@@ -43,7 +43,7 @@ export default function Blog() {
             Our Insights
           </span>
 
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
             Insights and Updates on HR and Talent Acquisition
           </h2>
         </motion.div>

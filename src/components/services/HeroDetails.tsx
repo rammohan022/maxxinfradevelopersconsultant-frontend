@@ -43,7 +43,7 @@ const HeroSection = ({ title, slug, innerImage }: HeroSectionProps) => {
         </div>
 
         {/* Title */}
-        <h1 className="mb-4 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white leading-tight">
+        <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-4 leading-tight">
           {title}
         </h1>
 

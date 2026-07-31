@@ -109,7 +109,7 @@ const OpenPosition = () => {
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
             Join Our Team
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-10">
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-10">
             Open Positions
           </h2>
 

@@ -62,8 +62,8 @@ export default function TestimonialListPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Testimonials</h1>
-          <p className="text-gray-500 text-sm">
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Testimonials</h1>
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
             Manage client testimonials displayed on website
           </p>
         </div>

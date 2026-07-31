@@ -92,10 +92,10 @@ export default function FeatureCards() {
     <section className="py-12 md:py-16 bg-white border-b border-gray-100 overflow-hidden">
       <Container>
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-4 leading-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">
             A leading HR service provider
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed">
             Join hands with People Consulting, your HR partner with a rich experience of over 5 years in collaborating with organizations. Our comprehensive end-to-end{" "}
             <a href="#" className="text-blue-600 hover:underline font-semibold">
               HR services

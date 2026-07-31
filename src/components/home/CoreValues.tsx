@@ -28,10 +28,10 @@ export default function CoreValues() {
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
             Our Core Values
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
             The principles that <span className="text-secondary">guide our decisions</span>
           </h2>
-          <p className="mt-4 text-slate-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed">
             We are committed to maintaining high standard deliverables, ensuring compliance, and delivering growth.
           </p>
         </div>
@@ -72,8 +72,8 @@ export default function CoreValues() {
                     <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-5">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="text-lg font-bold text-primary mb-2">{val.name}</h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">{val.desc}</p>
+                    <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5">{val.name}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">{val.desc}</p>
                   </div>
                 </SwiperSlide>
               )

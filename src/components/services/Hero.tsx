@@ -40,13 +40,13 @@ const PracticeAreaHero = ({ title, subtitle, image = "/img/services_hero_bg_clea
           </nav>
 
           {/* Title */}
-          <h1 className="mb-4 text-white text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold tracking-tight leading-tight drop-shadow-lg">
+          <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-4 drop-shadow-lg">
             {title}
           </h1>
 
           {/* Subtitle */}
           {subtitle && (
-            <p className="max-w-2xl text-gray-100 text-base sm:text-lg leading-relaxed font-normal drop-shadow-md">
+            <p className="text-xs md:text-sm text-gray-100 mt-1 max-w-3xl leading-relaxed font-normal drop-shadow-md">
               {subtitle}
             </p>
           )}

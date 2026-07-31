@@ -101,10 +101,10 @@ const ValuesPhilosophy = () => {
                       <Icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-primary mb-2">
+                      <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
                         {item.title}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-xs text-slate-600 leading-relaxed">
                         {item.description}
                       </p>
                     </div>

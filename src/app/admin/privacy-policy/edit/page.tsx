@@ -23,7 +23,7 @@ export default function EditPrivacyPolicyPage() {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-3">Edit Privacy Policy</h1>
+            <h1 className="text-xl md:text-2xl font-bold mb-3 text-primary tracking-tight">Edit Privacy Policy</h1>
             <LegalForm
                 type="privacy"
                 initialData={policy}

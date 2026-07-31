@@ -129,8 +129,8 @@ export default function BannersAdminPage() {
     <div className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Hero Banners Manager</h1>
-          <p className="text-sm text-slate-500">Manage homepage hero slides, titles, tags, text, and buttons</p>
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Hero Banners Manager</h1>
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">Manage homepage hero slides, titles, tags, text, and buttons</p>
         </div>
         <button
           onClick={() => handleOpenModal()}

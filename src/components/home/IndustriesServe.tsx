@@ -30,10 +30,10 @@ export default function IndustriesServe() {
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
             Industries We Serve
           </span>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
             Specialized recruitment across <span className="text-secondary">six core sectors</span>
           </h2>
-          <p className="mt-4 text-slate-600 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed">
             Our search team brings sector-specific compliance knowledge and deep candidate networks to deliver optimal placements.
           </p>
         </div>
@@ -74,8 +74,8 @@ export default function IndustriesServe() {
                     <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-primary mb-3">{ind.name}</h3>
-                    <p className="text-slate-600 text-sm sm:text-base leading-relaxed">{ind.desc}</p>
+                    <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5">{ind.name}</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">{ind.desc}</p>
                   </div>
                 </SwiperSlide>
               )

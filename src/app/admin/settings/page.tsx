@@ -110,8 +110,8 @@ export default function SiteSettingsPage() {
     <div className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Site Settings</h1>
-          <p className="text-sm text-slate-500">Manage branding, contact info, social links, and AI configuration</p>
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Site Settings</h1>
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">Manage branding, contact info, social links, and AI configuration</p>
         </div>
         <button
           onClick={handleSave}

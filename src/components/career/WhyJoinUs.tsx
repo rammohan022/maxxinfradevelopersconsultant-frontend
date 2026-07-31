@@ -48,7 +48,7 @@ const WhyJoinUs = () => {
         <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-2">
           Why Join Us
         </span>
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-12">
+        <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-12">
           Why Work With Us
         </h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -62,10 +62,10 @@ const WhyJoinUs = () => {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-5">
                   <Icon className="w-6 h-6" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-2">
+                <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed text-sm sm:text-base">{item.desc}</p>
+                <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
               </div>
             )
           })}

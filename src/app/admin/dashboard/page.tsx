@@ -38,10 +38,10 @@ const Dashboard = () => {
   return (
     <>
       <div className="mb-3">
-        <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">
+        <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
           CMS Dashboard
         </h1>
-        <p className="text-sm text-slate-500">
+        <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
           Manage leads, blogs, and services from one place
         </p>
       </div>

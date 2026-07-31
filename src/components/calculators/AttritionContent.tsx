@@ -40,41 +40,41 @@ export default function AttritionContent() {
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60 space-y-2">
-            <div className="flex items-center gap-2 text-primary font-bold text-sm">
+            <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               Competitive Compensation & CTC
-            </div>
-            <p className="text-slate-600 text-xs leading-relaxed">
+            </h4>
+            <p className="text-xs text-slate-600 leading-relaxed">
               Regularly benchmark salaries against market rates to prevent key talent loss to competitors.
             </p>
           </div>
 
           <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60 space-y-2">
-            <div className="flex items-center gap-2 text-primary font-bold text-sm">
+            <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               Career Growth & Upskilling
-            </div>
-            <p className="text-slate-600 text-xs leading-relaxed">
+            </h4>
+            <p className="text-xs text-slate-600 leading-relaxed">
               Provide continuous professional development, mentorship, and clear internal promotion pathways.
             </p>
           </div>
 
           <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60 space-y-2">
-            <div className="flex items-center gap-2 text-primary font-bold text-sm">
+            <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               Positive Workplace Culture
-            </div>
-            <p className="text-slate-600 text-xs leading-relaxed">
+            </h4>
+            <p className="text-xs text-slate-600 leading-relaxed">
               Maintain work-life balance, recognize achievements, and foster an inclusive environment.
             </p>
           </div>
 
           <div className="p-4 rounded-xl border border-slate-200 bg-slate-50/60 space-y-2">
-            <div className="flex items-center gap-2 text-primary font-bold text-sm">
+            <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-secondary shrink-0" />
               Structured Exit Interviews
-            </div>
-            <p className="text-slate-600 text-xs leading-relaxed">
+            </h4>
+            <p className="text-xs text-slate-600 leading-relaxed">
               Gather actionable feedback from departing staff to identify operational bottlenecks and culture gaps.
             </p>
           </div>

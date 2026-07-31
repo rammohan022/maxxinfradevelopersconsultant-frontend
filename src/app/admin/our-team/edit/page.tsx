@@ -17,7 +17,7 @@ export default function EditMemberPage() {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-3 text-[rgb(13_33_55)]">Edit Team Member</h1>
+            <h1 className="text-xl md:text-2xl font-bold mb-3 text-primary tracking-tight">Edit Team Member</h1>
             <MemberForm initialData={member} isEdit />
         </div>
     );

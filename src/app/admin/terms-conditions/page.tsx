@@ -31,8 +31,8 @@ export default function TermsConditionsPage() {
     <>
       <div className="flex justify-between items-center mb-3">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Terms & Conditions</h1>
-          <p className="text-gray-500 text-sm">Manage website terms and conditions</p>
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Terms & Conditions</h1>
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">Manage website terms and conditions</p>
         </div>
 
         <Link

@@ -13,11 +13,11 @@ export default function Services() {
           
           {/* Left Column: Heading & Description */}
           <div className="lg:col-span-5 space-y-6">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
               Discover what we do
             </h2>
 
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
+            <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed font-normal">
               People Consulting&apos;s core services are designed to help organizations build strong leadership, navigate complexity, and accelerate long-term performance. Our partners bring firsthand expertise across major global sectors—from industrial manufacturing and technology to healthcare, consumer, financial services and the public sphere. We help clients anticipate industry shifts, build future-ready leadership, and seize opportunity in rapidly evolving markets.
             </p>
           </div>

@@ -44,11 +44,11 @@ export default function SalaryContent() {
 
       {/* Key Elements Breakdown */}
       <section className="space-y-4">
-        <h3 className="text-xl font-bold text-primary">Core Components of an Indian Pay Package</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+        <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Core Components of an Indian Pay Package</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-[#fff5ee]/50 p-4 rounded-xl border border-secondary/20">
             <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4 text-secondary" />
+              <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
               Basic Pay
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -58,7 +58,7 @@ export default function SalaryContent() {
 
           <div className="bg-[#fff5ee]/50 p-4 rounded-xl border border-secondary/20">
             <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4 text-secondary" />
+              <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
               House Rent Allowance (HRA)
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -68,7 +68,7 @@ export default function SalaryContent() {
 
           <div className="bg-[#fff5ee]/50 p-4 rounded-xl border border-secondary/20">
             <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4 text-secondary" />
+              <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
               Provident Fund (EPF)
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -78,7 +78,7 @@ export default function SalaryContent() {
 
           <div className="bg-[#fff5ee]/50 p-4 rounded-xl border border-secondary/20">
             <h4 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-              <CheckCircle className="w-4 h-4 text-secondary" />
+              <CheckCircle className="w-4 h-4 text-secondary shrink-0" />
               Special & Flexible Allowances
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
@@ -182,9 +182,8 @@ export default function SalaryContent() {
                     {faq.q}
                   </span>
                   <ChevronDown
-                    className={`w-4 h-4 text-slate-500 transition-transform ${
-                      isOpen ? 'rotate-180 text-secondary' : ''
-                    }`}
+                    className={`w-4 h-4 text-slate-500 transition-transform ${isOpen ? 'rotate-180 text-secondary' : ''
+                      }`}
                   />
                 </button>
                 {isOpen && (

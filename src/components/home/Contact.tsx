@@ -81,11 +81,11 @@ export default function Contact() {
                 Contact Us
               </motion.span>
 
-              <motion.h2 variants={itemVariants} className="mb-4 text-2xl font-bold lg:text-3xl xl:text-4xl leading-tight text-primary">
+              <motion.h2 variants={itemVariants} className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">
                 Let us know your concern, we are happy to help you.
               </motion.h2>
 
-              <motion.p variants={itemVariants} className="mb-6 text-slate-600 text-base leading-relaxed">
+              <motion.p variants={itemVariants} className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-6">
                 We provide clear, practical recruitment and HR guidance. Our team is always
                 ready to assist you with your talent acquisition needs.
               </motion.p>
@@ -173,7 +173,7 @@ export default function Contact() {
               Contact Form
             </span>
 
-            <h2 className="mb-6 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
               Get A Flexible Schedule
             </h2>
 

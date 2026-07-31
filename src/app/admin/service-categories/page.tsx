@@ -142,8 +142,8 @@ export default function ServiceCategoriesListPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Service Categories</h1>
-          <p className="text-gray-500 text-sm">
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Service Categories</h1>
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
             Manage Service Categories used in dropdown menu selections on the Services creation form
           </p>
         </div>

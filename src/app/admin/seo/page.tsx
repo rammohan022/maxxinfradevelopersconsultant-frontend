@@ -283,10 +283,10 @@ export default function AdminSeoPage() {
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)] flex items-center gap-2">
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight flex items-center gap-2">
             <Globe className="text-secondary" /> No-Code SEO & Webmaster Suite
           </h1>
-          <p className="text-gray-500 text-sm">
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
             Self-serve SEO control center: Page Meta, Open Graph, GA4/GTM, 301 Redirects, Robots.txt & Sitemap
           </p>
         </div>

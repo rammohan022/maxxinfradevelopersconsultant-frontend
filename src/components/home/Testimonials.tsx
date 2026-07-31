@@ -103,7 +103,7 @@ export default function Testimonials() {
             Testimonials
           </span>
 
-          <h2 className="mt-4 sm:mt-6 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+          <h2 className="mt-4 sm:mt-6 text-xl md:text-2xl font-bold text-primary tracking-tight">
             Our Clients Trust Us for Reliable HR Solutions
           </h2>
         </motion.div>
@@ -125,7 +125,7 @@ export default function Testimonials() {
                   
                   {/* Testimonial Text */}
                   <div className="flex-1">
-                    <p className="text-base leading-relaxed text-gray-700 line-clamp-4 relative z-10 font-medium italic mb-6">
+                    <p className="text-xs text-slate-600 leading-relaxed line-clamp-4 relative z-10 italic mb-6">
                       &quot;{item.testimonialText}&quot;
                     </p>
                   </div>
@@ -152,7 +152,7 @@ export default function Testimonials() {
                         ))}
                       </div>
 
-                      <h4 className="text-base font-bold text-primary leading-tight">
+                      <h4 className="text-sm font-semibold text-primary mb-1 leading-tight">
                         {item.clientName}
                       </h4>
                       <p className="text-primary text-xs font-semibold uppercase tracking-wider mt-0.5">

@@ -74,13 +74,13 @@ export default function BlogCard({ post }: BlogCardProps) {
 
           {/* Title */}
           <Link href={`/blog/${post.slug}`}>
-            <h3 className="text-base sm:text-lg font-bold text-primary group-hover:text-secondary transition-colors line-clamp-2 leading-snug mb-2.5">
+            <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5 group-hover:text-secondary transition-colors line-clamp-2 leading-snug">
               {post.title}
             </h3>
           </Link>
 
           {/* Excerpt */}
-          <p className="text-slate-600 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-6 font-normal">
+          <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 mb-6">
             {cleanExcerpt ||
               "Stay informed with our latest research, legal updates, and strategic workforce insights."}
           </p>

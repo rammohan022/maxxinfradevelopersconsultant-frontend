@@ -41,11 +41,11 @@ const TermsHero = () => {
             </span>
           </nav>
 
-          <h1 className="mb-6 font-serif-heading text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white drop-shadow-lg">
+          <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-6 drop-shadow-lg">
             Terms & Conditions
           </h1>
 
-          <p className="max-w-2xl text-xl text-gray-200 leading-relaxed drop-shadow-md">
+          <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl leading-relaxed drop-shadow-md">
             Please read these terms carefully before using our website or
             engaging with our legal services.
           </p>

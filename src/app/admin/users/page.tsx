@@ -166,8 +166,8 @@ export default function AdminUsersPage() {
     <div className="space-y-5">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-[rgb(13_33_55)]">Team & Granular Permissions System</h1>
-          <p className="text-sm text-slate-500">Manage team accounts, roles, and module access permissions</p>
+          <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Team & Granular Permissions System</h1>
+          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">Manage team accounts, roles, and module access permissions</p>
         </div>
 
         <div className="flex items-center gap-3">

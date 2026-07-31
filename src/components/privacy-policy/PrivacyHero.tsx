@@ -45,12 +45,12 @@ const PrivacyHeroSection = () => {
           </nav>
 
           {/* Heading */}
-          <h1 className="mb-6 font-serif-heading text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold leading-tight text-white drop-shadow-lg">
+          <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-6 leading-tight drop-shadow-lg">
             Privacy Policy
           </h1>
 
           {/* Subtitle */}
-          <p className="max-w-2xl text-xl leading-relaxed text-gray-200 font-light drop-shadow-md">
+          <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl leading-relaxed drop-shadow-md">
             Your privacy is important to us. Learn how we collect, use, and
             safeguard your personal information.
           </p>

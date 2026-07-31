@@ -190,11 +190,11 @@ export default function CategoryServicesClient() {
               <span>Service Category</span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white leading-tight mb-4 tracking-tight drop-shadow-lg">
+            <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-4 drop-shadow-lg">
               {activeCategoryName}
             </h1>
 
-            <p className="text-gray-100 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl font-normal drop-shadow-md">
+            <p className="text-xs md:text-sm text-gray-100 mt-1 max-w-3xl leading-relaxed mb-8 font-normal drop-shadow-md">
               Explore our specialized consulting services under{' '}
               <span className="text-white font-bold">{activeCategoryName}</span>. Built to empower your organization with expert guidance, seamless compliance, and strategic excellence.
             </p>
@@ -385,12 +385,12 @@ export default function CategoryServicesClient() {
                   <div className="space-y-3 px-1 flex-1 flex flex-col justify-between">
                     <div className="space-y-2">
                       <Link href={`/services/${service.slug}`} className="block">
-                        <h3 className="text-xl font-bold text-sky-700 hover:text-primary transition-colors leading-snug">
+                        <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5 hover:text-secondary transition-colors leading-snug">
                           {service.title}
                         </h3>
                       </Link>
 
-                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-3 font-normal">
+                      <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
                         {service.overview
                           ? service.overview.replace(/<[^>]*>?/gm, '')
                           : 'Professional HR consulting and workforce compliance solutions for modern enterprises.'}

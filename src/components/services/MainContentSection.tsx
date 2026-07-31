@@ -81,7 +81,7 @@ export default function MainContentSection({
             {/* Overview */}
             {overview && (
               <div className="mb-12">
-                <h2 className="mb-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
+                <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
                   Overview
                 </h2>
                 <div className="mb-6 h-1 w-16 bg-red-700" />
@@ -108,7 +108,7 @@ export default function MainContentSection({
             {/* Services */}
             {services && services.length > 0 && (
               <div className="mb-12 border-l-4 border-red-700 bg-gray-50 p-6 sm:p-8">
-                <h3 className="mb-6 font-serif text-2xl font-semibold text-primary">
+                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
                   Key Areas of Service Include
                 </h3>
                 <ul className="space-y-3 text-gray-700">
@@ -125,7 +125,7 @@ export default function MainContentSection({
             {/* Approach */}
             {approach && (
               <div className="mb-12">
-                <h3 className="mb-2 font-serif text-2xl font-semibold text-primary">
+                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
                   Our Approach
                 </h3>
                 <div className="mb-6 h-1 w-16 bg-red-700" />
@@ -153,7 +153,7 @@ export default function MainContentSection({
             {/* FAQ */}
             {validFaqs.length > 0 && (
               <div className="mb-12">
-                <h3 className="mb-2 font-serif text-2xl font-semibold text-primary">
+                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
                   Frequently Asked Questions
                 </h3>
                 <div className="mb-6 h-1 w-16 bg-red-700" />

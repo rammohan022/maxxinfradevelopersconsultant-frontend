@@ -17,7 +17,7 @@ export default function EditServicePage() {
 
     return (
         <div>
-            <h1 className="text-2xl font-bold mb-3 text-[rgb(13_33_55)]">Edit Service</h1>
+            <h1 className="text-xl md:text-2xl font-bold mb-3 text-primary tracking-tight">Edit Service</h1>
             <ServiceForm initialData={area} isEdit />
         </div>
     );

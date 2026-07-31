@@ -124,7 +124,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-primary leading-tight mb-4"
+                className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4"
               >
                 {activeSlide.title}{' '}
                 {activeSlide.highlight && (
@@ -138,7 +138,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.4 }}
-                  className="text-base sm:text-lg text-slate-800 font-semibold mb-2"
+                  className="text-sm sm:text-base text-slate-800 font-semibold mb-2"
                 >
                   {activeSlide.desc}
                 </motion.p>
@@ -149,7 +149,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  className="text-sm sm:text-base text-slate-600 mb-8 max-w-xl leading-relaxed"
+                  className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mb-8 leading-relaxed"
                 >
                   {activeSlide.body}
                 </motion.p>

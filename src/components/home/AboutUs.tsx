@@ -74,16 +74,16 @@ export default function AboutUs() {
               About Us
             </span>
 
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary mb-6 leading-tight">
+            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
               Aligning Strategy With{' '}
               <span className="text-secondary">People & Culture</span>
             </h2>
 
-            <p className="text-slate-600 mb-6 text-sm sm:text-base leading-relaxed">
+            <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-6">
               <strong>People Consulting</strong> is a premier HR and Recruitment agency dedicated to providing strategic, solution-oriented talent acquisition and human resource management services. With a multidisciplinary approach and strong professional network, we cater to businesses and corporate entities across diverse sectors.
             </p>
 
-            <p className="text-slate-600 mb-8 text-sm sm:text-base leading-relaxed">
+            <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-8">
               We help organizations streamline their recruitment, training, and labor compliance processes. Our goal is to connect top talent with industry leaders, ensuring High Performance workplaces and long-term organizational success.
             </p>
 

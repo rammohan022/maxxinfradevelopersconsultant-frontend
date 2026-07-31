@@ -26,7 +26,7 @@ const TeamHeroSection = () => {
         </div>
 
         {/* Heading */}
-        <h1 className="mb-4 font-serif text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold text-white">
+        <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-4">
           Our People
         </h1>
 
@@ -34,7 +34,7 @@ const TeamHeroSection = () => {
         <div className="mx-auto mb-4 h-1 w-24 bg-maroon" />
 
         {/* Sub text */}
-        <p className="mx-auto max-w-3xl text-lg text-gray-200">
+        <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl mx-auto leading-relaxed">
           Excellence in Legal Practice Through Distinguished Professionals
         </p>
       </Container>

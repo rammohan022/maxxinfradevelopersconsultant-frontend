@@ -21,49 +21,49 @@ export default function Footer() {
   return (
     <footer>
       {/* 1. Pre-Footer Gradient Call-To-Action Block */}
-      <section className="py-10 md:py-12 text-slate-800 relative overflow-hidden bg-slate-50">
-        {/* Grayscale Background Wave Graphic */}
+      <section className="py-10 md:py-12 text-white relative overflow-hidden bg-slate-900">
+        {/* World Map Background Graphic */}
         <div 
-          className="absolute inset-0 opacity-[0.3] grayscale pointer-events-none" 
+          className="absolute inset-0 opacity-[0.7] pointer-events-none z-0" 
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1600&q=80')",
+            backgroundImage: "url('/img/footer-bg.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         />
-        {/* Light Brand Theme Overlay */}
-        <div className="absolute inset-0 bg-slate-100/50 z-0 pointer-events-none" />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-slate-950/70 z-0 pointer-events-none" />
 
         {/* Decorative Wave/Blobs */}
-        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-white/10 blur-3xl pointer-events-none" />
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
 
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Side: Pitch and Pill Badges */}
             <div className="lg:col-span-7 space-y-8">
-              <h2 className="text-lg md:text-xl lg:text-2xl font-normal tracking-tight text-primary leading-tight max-w-2xl">
+              <h2 className="text-lg md:text-xl lg:text-2xl font-normal tracking-tight text-white leading-tight max-w-2xl">
                 Contact People Consulting today and let&apos;s get started
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-6 pt-4">
                 {/* Email Pill */}
                 <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white relative z-10 shadow-md border-2 border-white after:content-[''] after:absolute after:right-[-6px] after:top-1/2 after:-translate-y-1/2 after:border-t-[6px] after:border-t-transparent after:border-b-[6px] after:border-b-transparent after:border-l-[8px] after:border-l-secondary">
+                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white relative z-10 shadow-md border-2 border-white/30 after:content-[''] after:absolute after:right-[-6px] after:top-1/2 after:-translate-y-1/2 after:border-t-[6px] after:border-t-transparent after:border-b-[6px] after:border-b-transparent after:border-l-[8px] after:border-l-secondary">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div className="bg-white text-slate-800 px-6 py-2.5 rounded-full text-xs sm:text-sm font-normal shadow-sm -ml-3 pl-6 border border-slate-150">
-                    <a href={`mailto:${email}`} className="hover:text-primary transition-colors">{email}</a>
+                  <div className="bg-white/10 backdrop-blur-md text-white px-6 py-2.5 rounded-full text-xs sm:text-sm font-normal shadow-sm -ml-3 pl-6 border border-white/15">
+                    <a href={`mailto:${email}`} className="hover:text-secondary transition-colors">{email}</a>
                   </div>
                 </div>
 
                 {/* Phone Pill */}
                 <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white relative z-10 shadow-md border-2 border-white after:content-[''] after:absolute after:right-[-6px] after:top-1/2 after:-translate-y-1/2 after:border-t-[6px] after:border-t-transparent after:border-b-[6px] after:border-b-transparent after:border-l-[8px] after:border-l-secondary">
+                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white relative z-10 shadow-md border-2 border-white/30 after:content-[''] after:absolute after:right-[-6px] after:top-1/2 after:-translate-y-1/2 after:border-t-[6px] after:border-t-transparent after:border-b-[6px] after:border-b-transparent after:border-l-[8px] after:border-l-secondary">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <div className="bg-white text-slate-800 px-6 py-2.5 rounded-full text-xs sm:text-sm font-normal shadow-sm -ml-3 pl-6 border border-slate-150">
-                    <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-primary transition-colors">{phone}</a>
+                  <div className="bg-white/10 backdrop-blur-md text-white px-6 py-2.5 rounded-full text-xs sm:text-sm font-normal shadow-sm -ml-3 pl-6 border border-white/15">
+                    <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-secondary transition-colors">{phone}</a>
                   </div>
                 </div>
               </div>

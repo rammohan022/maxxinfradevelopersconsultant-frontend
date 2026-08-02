@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Container } from '@/components/ui'
 import { motion } from 'framer-motion'
 import {
@@ -67,99 +68,17 @@ export default function Contact() {
       <Container className="relative">
         <div className="grid items-stretch lg:grid-cols-2 rounded-2xl overflow-hidden shadow">
           {/* Left Info */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={containerVariants}
-            className="bg-white border-r border-slate-100 p-6 sm:p-8 lg:p-10 text-slate-800 relative"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-[80px] -z-0" />
-
-            <div className="relative z-10">
-              <motion.span variants={itemVariants} className="mb-3 inline-block text-sm font-bold uppercase tracking-widest text-secondary border-l-4 border-secondary pl-3">
-                Contact Us
-              </motion.span>
-
-              <motion.h2 variants={itemVariants} className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">
-                Let us know your concern, we are happy to help you.
-              </motion.h2>
-
-              <motion.p variants={itemVariants} className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-6">
-                We provide clear, practical recruitment and HR guidance. Our team is always
-                ready to assist you with your talent acquisition needs.
-              </motion.p>
-
-              {/* Contact Details */}
-              <div className="mb-8 space-y-4">
-                {/* Phone */}
-                <motion.div variants={itemVariants} className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="h-4 w-4 text-secondary" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-secondary mb-1">
-                      Phone
-                    </p>
-                    <a
-                      href="tel:+918800177307"
-                      className="text-lg font-bold transition-colors hover:text-primary text-slate-700"
-                    >
-                      +91 8800177307
-                    </a>
-                  </div>
-                </motion.div>
-
-                {/* Email */}
-                <motion.div variants={itemVariants} className="flex items-start gap-5">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Mail className="h-4 w-4 text-secondary" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-wider text-secondary mb-1">
-                      E-mail
-                    </p>
-                    <a
-                      href="mailto:hello@peopleconsultings.com"
-                      className="text-base font-medium transition-colors hover:text-primary text-slate-700"
-                    >
-                      hello@peopleconsultings.com
-                    </a>
-                  </div>
-                </motion.div>
-
-                <motion.div variants={itemVariants} className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white border border-slate-200 text-secondary shadow-sm">
-                    <MapPin className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-400">Location</p>
-                    <p className="text-slate-800 font-medium text-base">
-                      India
-                    </p>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Social */}
-              <motion.div variants={itemVariants} className="pt-8 border-t border-slate-200">
-                <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-secondary">
-                  Follow Us
-                </p>
-                <div className="flex gap-3 text-slate-500">
-                  <a href="https://www.linkedin.com/company/people-consulting-services/" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="LinkedIn">
-                    <Linkedin className="h-4 w-4" />
-                  </a>
-                  <a href="https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoGl2" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="Instagram">
-                    <Instagram className="h-4 w-4" />
-                  </a>
-                  <a href="https://www.facebook.com/Weablywork" target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full bg-white border border-slate-200 transition-all hover:bg-primary hover:border-primary hover:text-white hover:-translate-y-1" aria-label="Facebook">
-                    <Facebook className="h-4 w-4" />
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+          {/* Left Column: Team Image */}
+          <div className="relative min-h-[350px] lg:min-h-full w-full overflow-hidden bg-slate-900">
+            <Image
+              src="/img/about-us.jpg"
+              alt="People Consulting Team"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+            <div className="absolute inset-0 bg-primary/15 mix-blend-multiply pointer-events-none" />
+          </div>
 
           {/* Right Form */}
           <motion.div

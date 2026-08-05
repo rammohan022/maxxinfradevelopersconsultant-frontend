@@ -145,16 +145,7 @@ export default function SiteSettingsPage() {
         >
           <Phone size={16} /> Contact Details
         </button>
-        <button
-          onClick={() => setActiveTab("social")}
-          className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 transition ${
-            activeTab === "social"
-              ? "border-secondary text-secondary"
-              : "border-transparent text-slate-500 hover:text-slate-700"
-          }`}
-        >
-          <Share2 size={16} /> Social Media Links
-        </button>
+
         <button
           onClick={() => setActiveTab("ai")}
           className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 transition ${
@@ -318,55 +309,7 @@ export default function SiteSettingsPage() {
           </div>
         )}
 
-        {activeTab === "social" && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium mb-1">LinkedIn URL</label>
-              <input
-                type="url"
-                value={socialLinks.linkedin}
-                onChange={(e) => setSocialLinks({ ...socialLinks, linkedin: e.target.value })}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Instagram URL</label>
-              <input
-                type="url"
-                value={socialLinks.instagram}
-                onChange={(e) => setSocialLinks({ ...socialLinks, instagram: e.target.value })}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Facebook URL</label>
-              <input
-                type="url"
-                value={socialLinks.facebook}
-                onChange={(e) => setSocialLinks({ ...socialLinks, facebook: e.target.value })}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">Twitter / X URL</label>
-              <input
-                type="url"
-                value={socialLinks.twitter}
-                onChange={(e) => setSocialLinks({ ...socialLinks, twitter: e.target.value })}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium mb-1">WhatsApp Contact Number / Link</label>
-              <input
-                type="text"
-                value={socialLinks.whatsapp}
-                onChange={(e) => setSocialLinks({ ...socialLinks, whatsapp: e.target.value })}
-                className="w-full border rounded-lg px-3 py-2 text-sm"
-              />
-            </div>
-          </div>
-        )}
+
       </form>
     </div>
   );

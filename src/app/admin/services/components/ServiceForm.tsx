@@ -44,7 +44,9 @@ export default function ServiceForm({
     const [contentImageFile, setContentImageFile] = useState<File | null>(null);
     const [contentImagePreview, setContentImagePreview] = useState<string>("");
 
-    const [services, setServices] = useState<string[]>([""]);
+    const [serviceCards, setServiceCards] = useState<Array<{ title: string; description?: string; items: string[] }>>([
+        { title: "", description: "", items: [""] }
+    ]);
     const [faqs, setFaqs] = useState([{ question: "", answer: "" }]);
 
     useEffect(() => {
@@ -61,7 +63,25 @@ export default function ServiceForm({
                 quoteText: initialData.quoteText || "",
                 quoteAuthor: initialData.quoteAuthor || "",
             });
-            setServices(initialData.services || [""]);
+            if (initialData.services) {
+                const parsed = Array.isArray(initialData.services)
+                    ? initialData.services.map((s: any) => {
+                        if (s && typeof s === 'object' && s.title !== undefined) {
+                            return {
+                                title: s.title || "",
+                                description: s.description || "",
+                                items: Array.isArray(s.items) ? s.items.map(String) : [],
+                            };
+                        }
+                        return {
+                            title: "",
+                            description: "",
+                            items: [String(s)],
+                        };
+                    })
+                    : [{ title: "", description: "", items: [""] }];
+                setServiceCards(parsed.length > 0 ? parsed : [{ title: "", description: "", items: [""] }]);
+            }
 
             // Defensive FAQ handling for potential backend inconsistency
             const initialFaqs = Array.isArray(initialData.faqs)
@@ -104,8 +124,8 @@ const slugify = (text: string) => {
         });
     };
 
-    const addService = () => setServices([...services, ""]);
-    const removeService = (index: number) => setServices(services.filter((_, i) => i !== index));
+    const addServiceCard = () => setServiceCards([...serviceCards, { title: "", description: "", items: [""] }]);
+    const removeServiceCard = (index: number) => setServiceCards(serviceCards.filter((_, i) => i !== index));
 
     const addFaq = () => setFaqs([...faqs, { question: "", answer: "" }]);
     const removeFaq = (index: number) => setFaqs(faqs.filter((_, i) => i !== index));
@@ -137,7 +157,14 @@ const slugify = (text: string) => {
         formData.append("approach", form.approach);
         formData.append("quoteText", form.quoteText);
         formData.append("quoteAuthor", form.quoteAuthor);
-        formData.append("services", JSON.stringify(services.filter((s) => s.trim() !== "")));
+        const filteredServices = serviceCards
+            .map(card => ({
+                title: card.title.trim(),
+                description: card.description?.trim() || "",
+                items: card.items.map(item => item.trim()).filter(item => item !== "")
+            }))
+            .filter(card => card.title !== "" || card.description !== "" || card.items.length > 0);
+        formData.append("services", JSON.stringify(filteredServices));
         formData.append("faqs", JSON.stringify(faqs.filter((f) => f.question.trim() && f.answer.trim())));
 
         if (imageFile) {
@@ -264,25 +291,95 @@ const slugify = (text: string) => {
                 </div>
             </section>
 
-            {/* Services */}
-            <section className="space-y-4 pb-4 border-b">
-                <h2 className="text-lg font-bold text-slate-800">Key Areas of Service</h2>
-                {services.map((item, i) => (
-                    <div key={i} className="flex gap-2">
-                        <input
-                            value={item}
-                            onChange={(e) => {
-                                const copy = [...services];
-                                copy[i] = e.target.value;
-                                setServices(copy);
-                            }}
-                            placeholder={`Service ${i + 1}`}
-                            className="flex-1 border rounded-lg px-3 py-2 text-sm"
-                        />
-                        <button type="button" onClick={() => removeService(i)} className="text-red-500 text-sm hover:underline">Remove</button>
-                    </div>
-                ))}
-                <button type="button" onClick={addService} className="text-sm text-secondary font-medium hover:underline">+ Add Service</button>
+            {/* Key Areas of Service (Cards Layout) */}
+            <section className="space-y-6 pb-6 border-b">
+                <div className="flex justify-between items-center">
+                    <h2 className="text-lg font-bold text-slate-800">Key Areas of Service (Cards Layout)</h2>
+                    <button type="button" onClick={addServiceCard} className="text-sm text-secondary font-semibold hover:underline">+ Add Card</button>
+                </div>
+                
+                <div className="space-y-4">
+                    {serviceCards.map((card, cardIndex) => (
+                        <div key={cardIndex} className="p-4 border rounded-xl bg-slate-50 space-y-3 relative group">
+                            <button 
+                                type="button" 
+                                onClick={() => removeServiceCard(cardIndex)} 
+                                className="absolute top-3 right-3 text-red-500 text-xs hover:underline"
+                            >
+                                Remove Card
+                            </button>
+                            
+                            <div className="max-w-md">
+                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Card Title</label>
+                                <input
+                                    value={card.title}
+                                    onChange={(e) => {
+                                        const copy = [...serviceCards];
+                                        copy[cardIndex].title = e.target.value;
+                                        setServiceCards(copy);
+                                    }}
+                                    placeholder="e.g. Talent Acquisition"
+                                    className="w-full border rounded-lg px-3 py-2 text-sm bg-white font-semibold"
+                                />
+                            </div>
+                            
+                            <div className="max-w-md">
+                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Card Description (Simple Paragraph - Optional)</label>
+                                <textarea
+                                    value={card.description || ""}
+                                    onChange={(e) => {
+                                        const copy = [...serviceCards];
+                                        copy[cardIndex].description = e.target.value;
+                                        setServiceCards(copy);
+                                    }}
+                                    placeholder="Enter a brief paragraph describing this service..."
+                                    rows={2}
+                                    className="w-full border rounded-lg px-3 py-2 text-sm bg-white resize-none"
+                                />
+                            </div>
+                            
+                            <div className="space-y-2">
+                                <label className="block text-xs font-bold text-slate-500 uppercase">Items / Bullet Points</label>
+                                {card.items.map((bullet, bulletIndex) => (
+                                    <div key={bulletIndex} className="flex gap-2 items-center">
+                                        <input
+                                            value={bullet}
+                                            onChange={(e) => {
+                                                const copy = [...serviceCards];
+                                                copy[cardIndex].items[bulletIndex] = e.target.value;
+                                                setServiceCards(copy);
+                                            }}
+                                            placeholder={`Bullet point ${bulletIndex + 1}`}
+                                            className="w-full border rounded-lg px-3 py-2 text-sm bg-white"
+                                        />
+                                        <button 
+                                            type="button" 
+                                            onClick={() => {
+                                                const copy = [...serviceCards];
+                                                copy[cardIndex].items = copy[cardIndex].items.filter((_, bi) => bi !== bulletIndex);
+                                                setServiceCards(copy);
+                                            }} 
+                                            className="text-red-500 text-xs hover:underline"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                ))}
+                                <button 
+                                    type="button" 
+                                    onClick={() => {
+                                        const copy = [...serviceCards];
+                                        copy[cardIndex].items.push("");
+                                        setServiceCards(copy);
+                                    }} 
+                                    className="text-xs text-secondary font-semibold hover:underline"
+                                >
+                                    + Add Item
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </section>
 
             {/* Approach */}

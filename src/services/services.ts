@@ -21,7 +21,7 @@ export interface Service {
   approach?: string;
   quoteText?: string;
   quoteAuthor?: string;
-  services?: string[];
+  services?: any[];
   faqs?: FAQ[];
   createdAt?: string;
   updatedAt?: string;
@@ -39,7 +39,7 @@ export interface CreateServiceDto {
   approach?: string;
   quoteText?: string;
   quoteAuthor?: string;
-  services?: string[];
+  services?: any[];
   faqs?: FAQ[];
 }
 

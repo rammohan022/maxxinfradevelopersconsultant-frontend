@@ -12,7 +12,7 @@ interface MainContentSectionProps {
   title?: string; // Added to auto-fill subject
   overview?: string;
   contentImage?: string;
-  services?: string[];
+  services?: any[];
   approach?: string;
   quoteText?: string;
   quoteAuthor?: string;
@@ -107,18 +107,58 @@ export default function MainContentSection({
 
             {/* Services */}
             {services && services.length > 0 && (
-              <div className="mb-12 border-l-4 border-red-700 bg-gray-50 p-6 sm:p-8">
-                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
+              <div className="mb-12">
+                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
                   Key Areas of Service Include
                 </h3>
-                <ul className="space-y-3 text-gray-700">
-                  {services.map((item, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <span className="mr-3 mt-2 h-2 w-2 rounded-full bg-red-700" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <div className="mb-6 h-1 w-16 bg-red-700" />
+                
+                {services[0] && typeof services[0] === 'object' && 'title' in services[0] ? (
+                  // Structured Cards Layout (from sketch)
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {(services as Array<{ title: string; description?: string; items: string[] }>).map((card, idx) => (
+                      <div 
+                        key={idx} 
+                        className="bg-orange-50/40 rounded-2xl border border-orange-100/60 p-6 hover:shadow-lg hover:border-secondary/30 transition-all duration-300 relative group"
+                      >
+                        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        
+                        <h4 className="text-base font-bold text-primary tracking-tight mb-4 border-b border-slate-100 pb-2.5">
+                          {card.title}
+                        </h4>
+
+                        {card.description && (
+                          <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                            {card.description}
+                          </p>
+                        )}
+                        
+                        {card.items && card.items.length > 0 && (
+                          <ul className="space-y-2.5 text-slate-650 text-sm">
+                            {card.items.map((item, itemIdx) => (
+                              <li key={itemIdx} className="flex items-start">
+                                <span className="mr-2.5 mt-2 h-1.5 w-1.5 rounded-full bg-secondary shrink-0" />
+                                <span className="leading-snug text-slate-700">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  // Fallback Bullet List Layout (For backwards compatibility)
+                  <div className="border-l-4 border-red-700 bg-gray-50 p-6 sm:p-8">
+                    <ul className="space-y-3 text-gray-700">
+                      {(services as string[]).map((item, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="mr-3 mt-2 h-2 w-2 rounded-full bg-red-700" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
 

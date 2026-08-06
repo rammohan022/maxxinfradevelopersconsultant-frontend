@@ -23,7 +23,7 @@ const LatestArticlesSection = () => {
       <Container>
         {/* Section Header */}
         <div className="mb-12 text-center max-w-2xl mx-auto">
-          <span className="inline-block text-primary font-bold text-xs uppercase tracking-widest mb-2">
+          <span className="inline-block text-primary font-bold text-xs tracking-widest mb-2">
             Articles & Insights
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
@@ -32,7 +32,7 @@ const LatestArticlesSection = () => {
         </div>
 
         {/* Blogs Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {blogs.map((post) => (
             <motion.div
               key={post.id}

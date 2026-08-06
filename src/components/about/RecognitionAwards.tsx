@@ -64,7 +64,7 @@ const RecognitionAwards = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <div className="text-primary text-sm font-bold uppercase tracking-widest mb-4">
+          <div className="text-primary text-sm font-bold tracking-widest mb-4">
             Recognition
           </div>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">

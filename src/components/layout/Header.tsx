@@ -328,7 +328,7 @@ export default function Header() {
                           <div className="grid grid-cols-2 gap-6">
                             {/* Column 1: Insights & Media */}
                             <div>
-                              <h4 className="text-xs font-bold uppercase tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
+                              <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
                                 <BookOpen size={14} className="text-secondary" />
                                 <span>Insights &amp; Media</span>
                               </h4>
@@ -346,7 +346,7 @@ export default function Header() {
 
                             {/* Column 2: Calculators */}
                             <div>
-                              <h4 className="text-xs font-bold uppercase tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
+                              <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
                                 <Calculator size={14} className="text-secondary" />
                                 <span>HR Calculators</span>
                               </h4>

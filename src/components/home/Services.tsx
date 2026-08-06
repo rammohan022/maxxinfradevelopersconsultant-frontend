@@ -43,8 +43,8 @@ export default function Services() {
 
               {/* Bottom Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex items-center justify-between z-10">
-                <span className="text-white font-bold text-lg sm:text-xl tracking-wider uppercase drop-shadow">
-                  SERVICES
+                <span className="text-white font-bold text-lg sm:text-xl tracking-wider drop-shadow">
+                  Services
                 </span>
                 
                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-all duration-300 shadow-lg">
@@ -71,8 +71,8 @@ export default function Services() {
 
               {/* Bottom Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 flex items-center justify-between z-10">
-                <span className="text-white font-bold text-lg sm:text-xl tracking-wider uppercase drop-shadow">
-                  INDUSTRIES
+                <span className="text-white font-bold text-lg sm:text-xl tracking-wider drop-shadow">
+                  Industries
                 </span>
 
                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-all duration-300 shadow-lg">

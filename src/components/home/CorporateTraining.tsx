@@ -39,7 +39,7 @@ export default function CorporateTraining() {
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
           {/* Programs Info */}
           <div className="lg:col-span-7">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
               Training Programs
             </span>
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">

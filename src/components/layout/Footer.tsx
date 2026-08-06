@@ -21,7 +21,7 @@ export default function Footer() {
   return (
     <footer>
       {/* 1. Pre-Footer Gradient Call-To-Action Block */}
-      <section className="py-10 md:py-12 text-white relative overflow-hidden bg-slate-900">
+      <section className="py-10 md:py-12 text-white relative overflow-hidden bg-gray-700">
         {/* World Map Background Graphic */}
         <div 
           className="absolute inset-0 opacity-[0.7] pointer-events-none z-0" 
@@ -32,11 +32,11 @@ export default function Footer() {
           }}
         />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-slate-950/70 z-0 pointer-events-none" />
+        <div className="absolute inset-0 bg-gray-800/70 z-0 pointer-events-none" />
 
         {/* Decorative Wave/Blobs */}
-        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-3xl pointer-events-none" />
+        <div className="absolute bottom-[-30%] right-[-10%] w-[500px] h-[500px] rounded-full bg-white/[0.02] blur-3xl pointer-events-none" />
 
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -84,11 +84,11 @@ export default function Footer() {
                 </div>
                 {/* Details */}
                 <div className="p-8 text-slate-800">
-                  <span className="text-[10px] font-bold text-slate-400 tracking-widest uppercase block mb-1">
-                    OFFICE
+                  <span className="text-[10px] font-bold text-slate-400 tracking-widest block mb-1">
+                    Office
                   </span>
-                  <h4 className="text-sm font-bold text-primary tracking-wide uppercase mb-4">
-                    PEOPLE CONSULTING
+                  <h4 className="text-sm font-bold text-primary tracking-wide mb-4">
+                    People Consulting
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-4">
                     243, 2nd Floor, Vipul Trade Centre,<br />

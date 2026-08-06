@@ -61,7 +61,7 @@ const ChairmanSection = () => {
                 <h3 className="mb-1 font-serif-heading text-2xl font-bold text-primary transition-colors">
                   Rajesh K. Mehta
                 </h3>
-                <p className="mb-4 text-sm font-semibold text-primary uppercase tracking-wider">
+                <p className="mb-4 text-sm font-semibold text-primary tracking-wider">
                   Chairman &amp; Founding Partner
                 </p>
 
@@ -100,7 +100,7 @@ const ChairmanSection = () => {
                 <h3 className="mb-1 font-serif-heading text-2xl font-bold text-primary transition-colors">
                   Priya Sharma
                 </h3>
-                <p className="mb-4 text-sm font-semibold text-primary uppercase tracking-wider">
+                <p className="mb-4 text-sm font-semibold text-primary tracking-wider">
                   Managing Partner
                 </p>
 
@@ -139,7 +139,7 @@ const ChairmanSection = () => {
                 <h3 className="mb-1 font-serif-heading text-2xl font-bold text-primary transition-colors">
                   Vikram Desai
                 </h3>
-                <p className="mb-4 text-sm font-semibold text-primary uppercase tracking-wider">
+                <p className="mb-4 text-sm font-semibold text-primary tracking-wider">
                   Managing Partner – Litigation
                 </p>
 
@@ -204,7 +204,7 @@ const ChairmanSection = () => {
                 <h3 className="mb-1 font-serif-heading text-xl font-bold text-primary transition-colors">
                   Anil Kumar
                 </h3>
-                <p className="mb-3 text-xs font-semibold text-primary uppercase tracking-wider">
+                <p className="mb-3 text-xs font-semibold text-primary tracking-wider">
                   Senior Partner
                 </p>
                 <p className="mb-5 text-sm leading-relaxed text-gray-600">
@@ -241,7 +241,7 @@ const ChairmanSection = () => {
                 <h3 className="mb-1 font-serif-heading text-xl font-bold text-primary transition-colors">
                   Meera Iyer
                 </h3>
-                <p className="mb-3 text-xs font-semibold text-primary uppercase tracking-wider">
+                <p className="mb-3 text-xs font-semibold text-primary tracking-wider">
                   Senior Partner
                 </p>
                 <p className="mb-5 text-sm leading-relaxed text-gray-600">
@@ -278,7 +278,7 @@ const ChairmanSection = () => {
                 <h3 className="mb-1 font-serif-heading text-xl font-bold text-primary transition-colors">
                   Sanjay Reddy
                 </h3>
-                <p className="mb-3 text-xs font-semibold text-primary uppercase tracking-wider">
+                <p className="mb-3 text-xs font-semibold text-primary tracking-wider">
                   Senior Partner
                 </p>
                 <p className="mb-5 text-sm leading-relaxed text-gray-600">
@@ -315,7 +315,7 @@ const ChairmanSection = () => {
                 <h3 className="mb-1 font-serif-heading text-xl font-bold text-primary transition-colors">
                   Kavita Nair
                 </h3>
-                <p className="mb-3 text-xs font-semibold text-primary uppercase tracking-wider">
+                <p className="mb-3 text-xs font-semibold text-primary tracking-wider">
                   Senior Partner
                 </p>
                 <p className="mb-5 text-sm leading-relaxed text-gray-600">

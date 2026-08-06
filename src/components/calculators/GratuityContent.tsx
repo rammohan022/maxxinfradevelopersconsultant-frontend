@@ -127,7 +127,7 @@ export default function GratuityContent() {
         </h3>
         <div className="overflow-x-auto pt-1">
           <table className="w-full text-xs md:text-sm text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
-            <thead className="bg-slate-100 text-slate-700 font-bold uppercase text-[11px] tracking-wider">
+            <thead className="bg-slate-100 text-slate-700 font-bold text-[11px] tracking-wider">
               <tr>
                 <th className="p-3 border border-slate-200">Employee Category</th>
                 <th className="p-3 border border-slate-200">Income Tax Exemption Status</th>

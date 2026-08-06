@@ -191,7 +191,7 @@ const StatsAchievements = () => {
       <Container className="relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-sm font-bold text-secondary uppercase tracking-widest border-l-4 border-secondary pl-3 inline-block mb-3">
+          <span className="text-sm font-bold text-secondary tracking-widest border-l-4 border-secondary pl-3 inline-block mb-3">
             Track Record
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">

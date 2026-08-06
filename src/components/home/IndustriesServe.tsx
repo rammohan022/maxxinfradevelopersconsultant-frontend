@@ -27,7 +27,7 @@ export default function IndustriesServe() {
     <section className="py-16 md:py-14 bg-slate-50 overflow-hidden" id="industries">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
             Industries We Serve
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">

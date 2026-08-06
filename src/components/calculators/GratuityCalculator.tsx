@@ -116,7 +116,7 @@ export default function GratuityCalculator() {
         <div className="lg:col-span-5 flex flex-col justify-center">
           <div className="bg-[#fef8f4] rounded-2xl p-8 border border-secondary/30 shadow-xs text-center space-y-6">
             <div>
-              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest block">
+              <span className="text-xs font-bold text-slate-500 tracking-widest block">
                 Total Gratuity Payable
               </span>
               <span className="text-3xl md:text-4xl font-extrabold text-secondary tracking-tight mt-3 block">

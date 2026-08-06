@@ -119,7 +119,7 @@ export default function IndustriesPage() {
             </nav>
 
             {/* Heading */}
-            <h1 className="mb-4 font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight text-white drop-shadow-md tracking-tight uppercase">
+            <h1 className="mb-4 font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight text-white drop-shadow-md tracking-tight">
               Industries We Serve
             </h1>
 
@@ -143,7 +143,7 @@ export default function IndustriesPage() {
       <section className="py-20 lg:py-28 bg-slate-50 relative overflow-hidden">
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
               Sector Expertise
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[rgb(13_33_55)] leading-tight tracking-tight">
@@ -178,7 +178,7 @@ export default function IndustriesPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent" />
                     
                     <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white z-10">
-                      <span className="text-xs font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-sm">
+                      <span className="text-xs font-bold tracking-widest px-3.5 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 shadow-sm">
                         {sector.tagline}
                       </span>
                     </div>

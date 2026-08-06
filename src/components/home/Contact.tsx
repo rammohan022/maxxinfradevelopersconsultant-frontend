@@ -88,7 +88,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="bg-white p-6 sm:p-8 lg:p-10 relative"
           >
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-3">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-3">
               Contact Form
             </span>
 
@@ -145,7 +145,7 @@ export default function Contact() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full rounded-lg bg-secondary py-3 font-bold text-white transition-colors hover:bg-secondary-dark shadow-lg shadow-secondary/20 uppercase tracking-widest mt-2 disabled:bg-gray-400"
+                className="w-full rounded-lg bg-secondary py-3 font-bold text-white transition-colors hover:bg-secondary-dark shadow-lg shadow-secondary/20 tracking-widest mt-2 disabled:bg-gray-400"
               >
                 {isSubmitting ? "Submitting..." : "Get An Appointment"}
               </motion.button>

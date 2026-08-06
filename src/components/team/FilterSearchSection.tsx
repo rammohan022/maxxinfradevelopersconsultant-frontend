@@ -35,7 +35,7 @@ const FilterSearchSection = ({
         >
           {/* Search by Name */}
           <div className="flex-1 w-full">
-            <label className="mb-2.5 block text-sm font-bold uppercase tracking-wider text-gray-700">
+            <label className="mb-2.5 block text-sm font-bold tracking-wider text-gray-700">
               Search by Name
             </label>
             <div className="relative group">
@@ -66,7 +66,7 @@ const FilterSearchSection = ({
 
           {/* Service */}
           <div className="flex-1 w-full">
-            <label className="mb-2.5 block text-sm font-bold uppercase tracking-wider text-gray-700">
+            <label className="mb-2.5 block text-sm font-bold tracking-wider text-gray-700">
               Service
             </label>
             <div className="relative">
@@ -90,7 +90,7 @@ const FilterSearchSection = ({
 
           {/* Location */}
           <div className="flex-1 w-full">
-            <label className="mb-2.5 block text-sm font-bold uppercase tracking-wider text-gray-700">
+            <label className="mb-2.5 block text-sm font-bold tracking-wider text-gray-700">
               Location
             </label>
             <div className="relative">
@@ -114,7 +114,7 @@ const FilterSearchSection = ({
             <button
               type="button"
               onClick={onReset}
-              className="w-full lg:w-auto rounded-xl bg-navy px-8 py-3.5 font-bold uppercase tracking-wider text-white transition-all duration-300 hover:bg-primary shadow-md hover:shadow-lg active:scale-95"
+              className="w-full lg:w-auto rounded-xl bg-navy px-8 py-3.5 font-bold tracking-wider text-white transition-all duration-300 hover:bg-primary shadow-md hover:shadow-lg active:scale-95"
             >
               Reset Filters
             </button>

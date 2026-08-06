@@ -38,7 +38,7 @@ export default function CaseStudy() {
           transition={{ duration: 0.6 }}
           className="text-center md:text-left max-w-3xl mb-12 sm:mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold tracking-widest mb-4">
             Case Studies
           </span>
 
@@ -77,7 +77,7 @@ export default function CaseStudy() {
               </div>
 
               <div className="px-6 pb-6 lg:px-8 lg:pb-8">
-                <Link href="#contact" className="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors group/link text-sm uppercase tracking-wider">
+                <Link href="#contact" className="inline-flex items-center text-primary font-semibold hover:text-primary-dark transition-colors group/link text-sm tracking-wider">
                   Read More
                   <span className="ml-2 group-hover/link:translate-x-1 transition-transform">→</span>
                 </Link>

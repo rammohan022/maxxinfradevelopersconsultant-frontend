@@ -77,7 +77,7 @@ export default function SubmitCVPage() {
         <div className="absolute inset-0 bg-primary/5 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none" />
         <Container className="relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">
+            <span className="text-primary font-bold tracking-widest text-sm mb-4 block">
               Join Our Network
             </span>
             <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
@@ -254,7 +254,7 @@ export default function SubmitCVPage() {
                <Briefcase className="w-10 h-10 text-secondary mb-4" />
                <h3 className="text-xl font-bold mb-3">500+ Active Jobs</h3>
                <p className="text-white/90 text-sm leading-relaxed mb-6">We are currently hiring for over 500 positions globally. Submit your profile today to get shortlisted.</p>
-               <a href="tel:+918800177307" className="inline-block text-sm font-bold text-white uppercase tracking-wider hover:text-secondary transition-colors border-b border-secondary pb-1">
+               <a href="tel:+918800177307" className="inline-block text-sm font-bold text-white tracking-wider hover:text-secondary transition-colors border-b border-secondary pb-1">
                  Call our Recruiters
                </a>
             </div>

@@ -34,7 +34,7 @@ export default function Attorneys() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-4xl mx-auto mb-12 sm:mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-3">
             Our Team
           </span>
 
@@ -70,7 +70,7 @@ export default function Attorneys() {
                 <h3 className="text-xl font-bold text-primary mb-1 transition-colors">
                   {m.fullName}
                 </h3>
-                <p className="text-primary font-semibold text-sm uppercase tracking-wider">{m.designation}</p>
+                <p className="text-primary font-semibold text-sm tracking-wider">{m.designation}</p>
               </div>
             </motion.div>
           ))}

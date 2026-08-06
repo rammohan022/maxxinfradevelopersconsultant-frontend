@@ -35,7 +35,7 @@ export default function Partners() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-2xl mx-auto mb-10 sm:mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-3">
             Our Partner
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight">
@@ -55,7 +55,7 @@ export default function Partners() {
               variants={itemVariants}
               whileHover={{ scale: 1.05, filter: "grayscale(0%)", y: -5 }}
               key={`${p.name}-${i}`}
-              className="w-28 h-14 sm:w-32 sm:h-16 lg:w-40 lg:h-20 rounded-xl border border-gray-100 bg-gray-50 flex items-center justify-center text-gray-400 font-bold text-sm sm:text-base uppercase tracking-wider filter grayscale opacity-70 hover:opacity-100 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
+              className="w-28 h-14 sm:w-32 sm:h-16 lg:w-40 lg:h-20 rounded-xl border border-gray-100 bg-gray-50 flex items-center justify-center text-gray-400 font-bold text-sm sm:text-base tracking-wider filter grayscale opacity-70 hover:opacity-100 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
             >
               Logo
             </motion.div>

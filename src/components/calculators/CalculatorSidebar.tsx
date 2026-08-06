@@ -48,7 +48,7 @@ export default function CalculatorSidebar({ currentPath }: { currentPath?: strin
       {/* Other Available Calculators List */}
       {otherCalculators.length > 0 && (
         <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-          <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
+          <h4 className="text-xs font-bold text-slate-500 tracking-wider mb-4 pb-2 border-b border-slate-100 flex items-center gap-2">
             <Calculator className="w-4 h-4 text-secondary" />
             Other HR Utilities
           </h4>

@@ -81,7 +81,7 @@ const WhyChooseUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="text-red-700 text-sm font-semibold uppercase tracking-wider mb-4">
+          <div className="text-red-700 text-sm font-semibold tracking-wider mb-4">
             Our Strengths
           </div>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">

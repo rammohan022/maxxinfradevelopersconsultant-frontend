@@ -73,7 +73,7 @@ const ValuesPhilosophy = () => {
               transition={{ duration: 0.5 }}
               className="mb-10 sm:mb-12"
             >
-              <div className="text-primary text-sm font-bold uppercase tracking-widest mb-4 border-l-4 border-primary pl-3">
+              <div className="text-primary text-sm font-bold tracking-widest mb-4 border-l-4 border-primary pl-3">
                 Our Values
               </div>
               <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">

@@ -106,7 +106,7 @@ export default function SalaryContent() {
         {/* Rephrased Salary Table */}
         <div className="overflow-x-auto pt-2">
           <table className="w-full text-xs md:text-sm text-left border-collapse border border-slate-200 rounded-xl overflow-hidden">
-            <thead className="bg-slate-100 text-slate-700 font-bold uppercase text-[11px] tracking-wider">
+            <thead className="bg-slate-100 text-slate-700 font-bold text-[11px] tracking-wider">
               <tr>
                 <th className="p-3 border border-slate-200">Pay Head</th>
                 <th className="p-3 border border-slate-200">Part of CTC?</th>

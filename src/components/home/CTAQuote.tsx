@@ -51,7 +51,7 @@ export default function CTAQuote() {
                 </p>
                 <div className="border-t border-white/20 pt-6">
                   <p className="font-bold text-xl mb-1">N.K. Singh</p>
-                  <p className="text-white/80 text-sm font-medium uppercase tracking-wider">Founder & Managing Director, People Consulting</p>
+                  <p className="text-white/80 text-sm font-medium tracking-wider">Founder & Managing Director, People Consulting</p>
                 </div>
               </div>
             </div>

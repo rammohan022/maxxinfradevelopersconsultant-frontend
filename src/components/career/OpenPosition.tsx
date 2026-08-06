@@ -106,7 +106,7 @@ const OpenPosition = () => {
     <>
       <section id="open-positions" className="py-14 lg:py-20 bg-gray-50">
         <Container>
-          <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
+          <span className="inline-block text-primary font-semibold text-sm tracking-wide mb-2">
             Join Our Team
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-10">

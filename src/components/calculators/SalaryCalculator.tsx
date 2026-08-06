@@ -234,7 +234,7 @@ export default function SalaryCalculator() {
             <div className="space-y-5">
               <div className="flex justify-between items-center pb-4 border-b border-secondary/20">
                 <div>
-                  <span className="text-xs font-bold text-slate-700 block uppercase tracking-wider">
+                  <span className="text-xs font-bold text-slate-700 block tracking-wider">
                     Monthly In-Hand Salary
                   </span>
                   <span className="text-xs text-slate-400 font-medium">(Take-Home Pay)</span>
@@ -277,7 +277,7 @@ export default function SalaryCalculator() {
               {/* Annual Summary Boxes */}
               <div className="pt-4 border-t border-secondary/20 grid grid-cols-2 gap-3 text-center">
                 <div className="bg-white p-3.5 rounded-xl border border-secondary/20 shadow-xs">
-                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+                  <p className="text-[11px] font-semibold text-slate-500 tracking-wider">
                     Annual Take-Home
                   </p>
                   <p className="text-sm font-bold text-secondary mt-1">
@@ -285,7 +285,7 @@ export default function SalaryCalculator() {
                   </p>
                 </div>
                 <div className="bg-white p-3.5 rounded-xl border border-secondary/20 shadow-xs">
-                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider">
+                  <p className="text-[11px] font-semibold text-slate-500 tracking-wider">
                     Annual Deductions
                   </p>
                   <p className="text-sm font-bold text-rose-500 mt-1">
@@ -298,7 +298,7 @@ export default function SalaryCalculator() {
 
           {/* Single Tone Component Distribution Bar */}
           <div className="bg-[#fef8f4] p-5 rounded-2xl border border-secondary/30 space-y-3">
-            <h3 className="text-xs font-bold text-primary uppercase tracking-wider flex items-center justify-between">
+            <h3 className="text-xs font-bold text-primary tracking-wider flex items-center justify-between">
               Salary Distribution
               <span className="text-slate-400 font-normal">100% CTC</span>
             </h3>

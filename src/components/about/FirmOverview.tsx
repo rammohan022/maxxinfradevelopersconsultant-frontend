@@ -17,7 +17,7 @@ const FirmOverview = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="text-primary text-sm font-bold uppercase tracking-widest mb-4 border-l-4 border-primary pl-3">
+            <div className="text-primary text-sm font-bold tracking-widest mb-4 border-l-4 border-primary pl-3">
               Who We Are
             </div>
 
@@ -46,7 +46,7 @@ const FirmOverview = () => {
 
               <Link
                 href="/services"
-                className="text-primary font-bold hover:text-primary-dark transition-colors flex items-center group uppercase tracking-wider text-sm"
+                className="text-primary font-bold hover:text-primary-dark transition-colors flex items-center group tracking-wider text-sm"
               >
                 <span>Explore Our Services</span>
                 <svg

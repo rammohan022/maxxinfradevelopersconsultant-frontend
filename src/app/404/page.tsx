@@ -30,7 +30,7 @@ export default function NotFoundPage() {
         {/* Back Home CTA Button */}
         <Link
           href="/"
-          className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:-translate-y-0.5 hover:shadow-lg uppercase tracking-wider text-sm"
+          className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-white font-bold py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:-translate-y-0.5 hover:shadow-lg tracking-wider text-sm"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Home

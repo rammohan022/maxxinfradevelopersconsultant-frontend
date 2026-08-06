@@ -99,7 +99,7 @@ export default function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
             Testimonials
           </span>
 
@@ -155,7 +155,7 @@ export default function Testimonials() {
                       <h4 className="text-sm font-semibold text-primary mb-1 leading-tight">
                         {item.clientName}
                       </h4>
-                      <p className="text-primary text-xs font-semibold uppercase tracking-wider mt-0.5">
+                      <p className="text-primary text-xs font-semibold tracking-wider mt-0.5">
                         {item.caseType}
                       </p>
                     </div>

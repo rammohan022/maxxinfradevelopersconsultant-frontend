@@ -28,6 +28,12 @@ import {
 
 const ITEMS_PER_PAGE = 12;
 
+// Convert ALL CAPS or mixed text to Title Case
+const toTitleCase = (str: string) =>
+  str
+    .toLowerCase()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+
 export default function CategoryServicesClient() {
   const params = useParams();
   const router = useRouter();
@@ -78,11 +84,11 @@ export default function CategoryServicesClient() {
     const activeCategoryObj = categories.find(
       (c) => c.slug === rawCategorySlug || slugifyCategory(c.name) === rawCategorySlug
     );
-    if (activeCategoryObj) return activeCategoryObj.name;
+    if (activeCategoryObj) return toTitleCase(activeCategoryObj.name);
     const matchingService = allServices.find(
       (s) => s.category && slugifyCategory(s.category) === rawCategorySlug
     );
-    if (matchingService?.category) return matchingService.category;
+    if (matchingService?.category) return toTitleCase(matchingService.category);
     return unslugifyCategory(rawCategorySlug) || 'Services';
   }, [rawCategorySlug, categories, allServices]);
 
@@ -185,7 +191,7 @@ export default function CategoryServicesClient() {
               )}
             </nav>
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-secondary text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-secondary text-xs font-bold tracking-widest mb-4 backdrop-blur-md">
               <Layers size={14} />
               <span>Service Category</span>
             </div>
@@ -309,7 +315,7 @@ export default function CategoryServicesClient() {
 
         {/* Loading State */}
         {isServicesLoading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[1, 2, 3].map((n) => (
               <div
                 key={n}
@@ -358,7 +364,7 @@ export default function CategoryServicesClient() {
 
         {/* Services Cards */}
         {!isServicesLoading && filteredServices.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
             {paginatedServices.map((service) => {
               const imageSrc = getImageUrl(service.innerImage);
 
@@ -399,7 +405,7 @@ export default function CategoryServicesClient() {
 
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-2 text-secondary hover:text-primary font-bold text-xs uppercase tracking-wider group/link transition-colors pt-1"
+                      className="inline-flex items-center gap-2 text-secondary hover:text-primary font-bold text-xs tracking-wider group/link transition-colors pt-1"
                     >
                       <span>Explore Service Details</span>
                       <ArrowRight size={14} className="transform group-hover/link:translate-x-1.5 transition-transform" />
@@ -454,7 +460,7 @@ export default function CategoryServicesClient() {
         <section className="py-16 bg-white border-t border-slate-200">
           <Container>
             <div className="text-center mb-12">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-50 border border-secondary/20 text-secondary text-xs font-bold uppercase tracking-widest mb-3">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-orange-50 border border-secondary/20 text-secondary text-xs font-bold tracking-widest mb-3">
                 <HelpCircle size={14} />
                 <span>Frequently Asked Questions</span>
               </span>
@@ -495,7 +501,7 @@ export default function CategoryServicesClient() {
                           <div className="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/60 pt-3">
                             <p>{faq.answer}</p>
                             {faq.serviceTitle && (
-                              <span className="inline-block mt-2 text-[11px] font-bold text-secondary uppercase tracking-wider">
+                              <span className="inline-block mt-2 text-[11px] font-bold text-secondary tracking-wider">
                                 Related Service: {faq.serviceTitle}
                               </span>
                             )}

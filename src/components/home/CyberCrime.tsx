@@ -20,7 +20,7 @@ export default function CyberCrime() {
   return (
     <section className="py-10 lg:py-14 bg-white">
       <Container>
-        <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
+        <span className="inline-block text-primary font-semibold text-sm tracking-wide mb-2">
           Areas of Expertise in Cyber Crime & Online Offences
         </span>
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary leading-tight mb-4">

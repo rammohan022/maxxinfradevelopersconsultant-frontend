@@ -5,7 +5,7 @@ const LifeAtCompany = () => {
         <>
             <section className="py-14 lg:py-20 bg-white">
                 <Container>
-                    <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wide mb-2">
+                    <span className="inline-block text-primary font-semibold text-sm tracking-wide mb-2">
                         Culture
                     </span>
                     <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-10">

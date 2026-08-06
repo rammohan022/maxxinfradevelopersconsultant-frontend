@@ -114,7 +114,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1, duration: 0.4 }}
-                  className="inline-block text-primary text-xs sm:text-sm font-bold mb-4 tracking-widest uppercase border-l-4 border-secondary pl-3 bg-slate-100/90 py-1 pr-3 rounded-r-md"
+                  className="inline-block text-primary text-xs sm:text-sm font-bold mb-4 tracking-widest border-l-4 border-secondary pl-3 bg-slate-100/90 py-1 pr-3 rounded-r-md"
                 >
                   {activeSlide.tag}
                 </motion.span>
@@ -207,7 +207,7 @@ export default function Hero() {
               transition={{ delay: 0.7 }}
               className="mt-8 pt-6 border-t border-slate-200/50 flex flex-wrap items-center gap-3"
             >
-              <span className="text-xs sm:text-sm font-bold text-slate-800 uppercase tracking-wider">Associated Portals:</span>
+              <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-wider">Associated Portals:</span>
               <div className="flex flex-wrap gap-2.5">
                 {externalLinks.map((link) => (
                   <a

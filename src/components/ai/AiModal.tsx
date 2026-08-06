@@ -251,7 +251,7 @@ export default function AiModal({
         {output && (
           <div className="space-y-3 bg-purple-50/60 border border-purple-200 rounded-xl p-4">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-purple-900 uppercase tracking-wider flex items-center gap-1.5">
+              <span className="text-xs font-bold text-purple-900 tracking-wider flex items-center gap-1.5">
                 <Sparkles size={14} className="text-purple-600" /> AI Result
               </span>
               <div className="flex gap-2">

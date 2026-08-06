@@ -39,7 +39,7 @@ export default function Blog() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold uppercase tracking-widest mb-3">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-3">
             Our Insights
           </span>
 
@@ -53,7 +53,7 @@ export default function Blog() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {latestBlogs.map((post) => (
             <motion.div variants={itemVariants} key={post.id}>
@@ -66,7 +66,7 @@ export default function Blog() {
         <div className="mt-12 text-center">
           <Link
             href="/blog"
-            className="inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition-all duration-300 text-xs sm:text-sm uppercase tracking-wider shadow-md hover:-translate-y-0.5 hover:shadow-lg"
+            className="inline-flex items-center justify-center bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-full transition-all duration-300 text-xs sm:text-sm tracking-wider shadow-md hover:-translate-y-0.5 hover:shadow-lg"
           >
             View All Insights
           </Link>

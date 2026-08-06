@@ -45,7 +45,7 @@ const WhyJoinUs = () => {
   return (
     <section id="why-join-us" className="py-14 lg:py-20 bg-slate-50">
       <Container>
-        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-widest mb-2">
+        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold tracking-widest mb-2">
           Why Join Us
         </span>
         <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-12">

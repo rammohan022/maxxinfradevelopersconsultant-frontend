@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/ui'
 import { useState, useRef, useEffect, useMemo } from 'react'
-import { ChevronDown, ChevronRight, Menu, X, Calculator, Briefcase, BookOpen, ExternalLink, ShieldCheck } from 'lucide-react'
+import { ChevronDown, ChevronRight, Menu, X, Calculator, Briefcase, BookOpen, ExternalLink, ShieldCheck, Activity } from 'lucide-react'
 import { useGetServicesQuery } from '@/services/services'
 import { useGetServiceCategoriesQuery } from '@/services/serviceCategory'
 import { useGetSiteSettingsQuery } from '@/services/siteSettings'
@@ -323,9 +323,9 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full right-0 mt-3 w-[480px] bg-white shadow-2xl border-t-2 border-primary rounded-xl overflow-hidden p-6 z-50"
+                          className="absolute top-full right-0 mt-3 w-[680px] bg-white shadow-2xl border-t-2 border-primary rounded-xl overflow-hidden p-6 z-50"
                         >
-                          <div className="grid grid-cols-2 gap-6">
+                          <div className="grid grid-cols-3 gap-6">
                             {/* Column 1: Insights & Media */}
                             <div>
                               <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
@@ -382,6 +382,24 @@ export default function Header() {
                                 >
                                   <ChevronRight size={14} className="text-secondary shrink-0" />
                                   <span>Attrition Rate Calculator</span>
+                                </Link>
+                              </div>
+                            </div>
+
+                            {/* Column 3: HR Metrics */}
+                            <div>
+                              <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
+                                <Activity size={14} className="text-secondary" />
+                                <span>HR Metrics</span>
+                              </h4>
+                              <div className="space-y-1">
+                                <Link
+                                  href="/hr-free-tools"
+                                  onClick={() => setResourceOpen(false)}
+                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                >
+                                  <ChevronRight size={14} className="text-secondary shrink-0" />
+                                  <span>Hr Metrics( for formulas)</span>
                                 </Link>
                               </div>
                             </div>
@@ -648,6 +666,17 @@ export default function Header() {
                             <Link href="/attrition-calculator" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
                               <ChevronRight size={12} className="text-secondary/50" />
                               <span>Attrition Rate Calculator</span>
+                            </Link>
+                          </div>
+
+                          {/* HR Metrics */}
+                          <div className="space-y-1">
+                            <div className="text-[11px] font-bold tracking-wide text-primary border-b border-secondary/30 pb-1 mb-1">
+                              HR Metrics
+                            </div>
+                            <Link href="/hr-free-tools" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                              <ChevronRight size={12} className="text-secondary/50" />
+                              <span>Hr Metrics( for formulas)</span>
                             </Link>
                           </div>
                         </div>

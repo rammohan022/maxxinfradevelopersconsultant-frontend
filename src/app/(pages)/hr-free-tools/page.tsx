@@ -3,9 +3,10 @@
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { Container } from "@/components/ui";
-import { Search, Download, CheckCircle2, FileText, FileSpreadsheet, File, Users, DollarSign, ShieldCheck, BookOpen, Activity, GraduationCap, Mail, ChevronRight, FolderOpen } from "lucide-react";
+import { Search, Download, CheckCircle2, FileText, FileSpreadsheet, File, Users, DollarSign, ShieldCheck, BookOpen, Activity, GraduationCap, Mail, ChevronRight, FolderOpen, ArrowRight, X } from "lucide-react";
 import { useGetPublicHrResourcesQuery } from "@/services/hrResources";
 import { useGetPublicHrResourceCategoriesQuery } from "@/services/hrResourceCategories";
+import { useCreateLeadMutation } from "@/services/lead";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 
 const ICON_MAP: Record<string, any> = {
@@ -42,6 +43,12 @@ export default function HrFreeToolsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("Newest First");
   const [visibleCount, setVisibleCount] = useState(12);
+
+  // Lead generation modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedResource, setSelectedResource] = useState<any>(null);
+  const [formData, setFormData] = useState({ fullName: "", email: "", phoneNumber: "" });
+  const [createLead, { isLoading: isSubmitting }] = useCreateLeadMutation();
 
   // Reset visible count when category or search changes
   React.useEffect(() => {
@@ -280,7 +287,10 @@ export default function HrFreeToolsPage() {
                     </p>
 
                     <button
-                      onClick={() => handleDownload(resource.fileUrl, resource.title)}
+                      onClick={() => {
+                        setSelectedResource(resource);
+                        setIsModalOpen(true);
+                      }}
                       className="w-full py-2.5 rounded-lg bg-primary/5 border border-primary/20 text-primary font-bold text-xs md:text-sm flex items-center justify-center gap-2 hover:bg-secondary hover:border-secondary hover:text-white transition-all relative z-10 mt-auto shadow-sm"
                     >
                       <Download className="w-4 h-4" />
@@ -304,30 +314,95 @@ export default function HrFreeToolsPage() {
             </>
           )}
 
-          {/* CTA Banner */}
-          <div className="mt-16 bg-slate-50 border border-slate-100 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
-            <div className="flex items-center gap-5 w-full md:w-auto">
-              <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center shrink-0 text-slate-600">
-                <FolderOpen className="w-6 h-6" />
+          {/* CTA Banner - Premium UI/UX Update (Light Version) */}
+          <div className="mt-16 relative overflow-hidden rounded-2xl bg-white border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            {/* Subtle light background glow/gradients */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-slate-300/20 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4 pointer-events-none" />
+            
+            <div className="relative p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="flex items-start md:items-center gap-6 w-full md:w-auto">
+                <div className="w-14 h-14 bg-white rounded-2xl border border-slate-100 shadow-sm flex items-center justify-center shrink-0 text-secondary">
+                  <FolderOpen className="w-7 h-7" />
+                </div>
+                <div>
+                  <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-1.5 tracking-tight">
+                    Can&apos;t find what you&apos;re looking for?
+                  </h3>
+                  <p className="text-sm text-slate-500 font-medium max-w-lg leading-relaxed">
+                    Explore more resources or get in touch with our HR experts.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-base md:text-lg font-bold text-primary mb-1">
-                  Can&apos;t find what you&apos;re looking for?
-                </h3>
-                <p className="text-xs md:text-sm text-slate-500 font-medium">
-                  Explore more resources or get in touch with our HR experts.
-                </p>
-              </div>
+              <a
+                href="/contact-us"
+                className="group w-full md:w-auto whitespace-nowrap px-8 py-3.5 bg-secondary text-white font-bold text-sm md:text-base rounded-xl hover:bg-orange-600 hover:shadow-[0_8px_20px_rgba(249,115,22,0.3)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                Talk to Our Experts 
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
             </div>
-            <a
-              href="/contact-us"
-              className="w-full md:w-auto whitespace-nowrap px-6 py-2.5 bg-white border border-primary/20 text-primary font-bold text-sm rounded-lg hover:bg-slate-50 hover:border-primary transition-all shadow-sm text-center"
-            >
-              Talk to Our Experts &rarr;
-            </a>
           </div>
         </Container>
       </section>
+
+      {/* Download Gate Modal */}
+      {isModalOpen && selectedResource && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200">
+            <div className="flex justify-between items-center p-5 border-b border-slate-100 bg-slate-50">
+              <h3 className="font-bold text-lg text-slate-800 flex items-center gap-2">
+                <Download className="w-5 h-5 text-secondary" /> Download Resource
+              </h3>
+              <button onClick={() => setIsModalOpen(false)} className="text-slate-400 hover:text-slate-700 transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <form 
+              onSubmit={async (e) => {
+                e.preventDefault();
+                try {
+                  await createLead({
+                    ...formData,
+                    subject: "Free HR Resource Download",
+                    message: `Downloaded HR Resource: ${selectedResource.title}`,
+                    source: "HR Free Tools",
+                  }).unwrap();
+                  handleDownload(selectedResource.fileUrl, selectedResource.title);
+                  setIsModalOpen(false);
+                  setFormData({ fullName: "", email: "", phoneNumber: "" });
+                } catch (error) {
+                  console.error("Failed to submit lead", error);
+                  handleDownload(selectedResource.fileUrl, selectedResource.title);
+                  setIsModalOpen(false);
+                }
+              }}
+              className="p-6 space-y-4"
+            >
+              <p className="text-sm text-slate-600 font-medium mb-4">
+                Please provide your details to download <strong className="text-primary">{selectedResource.title}</strong>.
+              </p>
+              
+              <div>
+                <label className="block text-sm font-bold text-slate-700 mb-1.5">Full Name <span className="text-rose-500">*</span></label>
+                <input required type="text" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors text-sm" placeholder="John Doe" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-slate-700 mb-1.5">Email Address <span className="text-rose-500">*</span></label>
+                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors text-sm" placeholder="john@company.com" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-slate-700 mb-1.5">Mobile Number <span className="text-rose-500">*</span></label>
+                <input required type="tel" value={formData.phoneNumber} onChange={e => setFormData({...formData, phoneNumber: e.target.value})} className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:bg-white focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors text-sm" placeholder="+91 9876543210" />
+              </div>
+              <button disabled={isSubmitting} type="submit" className="w-full mt-4 py-3 bg-secondary text-white font-bold rounded-xl hover:bg-orange-600 transition-colors disabled:opacity-70 flex justify-center items-center gap-2 shadow-sm shadow-secondary/20">
+                {isSubmitting ? "Processing..." : <>Download Now <Download className="w-4 h-4" /></>}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }

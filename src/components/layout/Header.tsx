@@ -341,6 +341,14 @@ export default function Header() {
                                   <ChevronRight size={14} className="text-secondary shrink-0" />
                                   <span>Blogs</span>
                                 </Link>
+                                <Link
+                                  href="/hr-free-tools"
+                                  onClick={() => setResourceOpen(false)}
+                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                >
+                                  <ChevronRight size={14} className="text-secondary shrink-0" />
+                                  <span>HR Free Tools</span>
+                                </Link>
                               </div>
                             </div>
 
@@ -617,6 +625,10 @@ export default function Header() {
                             <Link href="/blog" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
                               <ChevronRight size={12} className="text-secondary/50" />
                               <span>Blogs</span>
+                            </Link>
+                            <Link href="/hr-free-tools" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                              <ChevronRight size={12} className="text-secondary/50" />
+                              <span>HR Free Tools</span>
                             </Link>
                           </div>
 

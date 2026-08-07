@@ -89,7 +89,7 @@ export default function IndustriesPage() {
   return (
     <>
       {/* ================= 1. HERO ================= */}
-      <section className="relative py-16 lg:py-24 overflow-hidden bg-[rgb(13_33_55)] min-h-[420px] flex items-center">
+      <section className="relative py-16 lg:py-24 overflow-hidden bg-gray-900 min-h-[420px] flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -97,12 +97,12 @@ export default function IndustriesPage() {
             alt="Industries We Serve"
             fill
             priority
-            className="object-cover opacity-40"
+            className="object-cover"
           />
         </div>
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(13_33_55)]/95 via-[rgb(13_33_55)]/85 to-[rgb(13_33_55)]/65" />
+        {/* Solid Dark Gray Overlay with Opacity */}
+        <div className="absolute inset-0 bg-gray-900/70" />
 
         {/* Content */}
         <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left">

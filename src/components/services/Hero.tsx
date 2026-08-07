@@ -10,7 +10,7 @@ interface PracticeAreaHeroProps {
 
 const PracticeAreaHero = ({ title, subtitle, image = "/img/services_hero_bg_clean.png" }: PracticeAreaHeroProps) => {
   return (
-    <section className="relative py-16 lg:py-24 overflow-hidden bg-[rgb(13_33_55)] min-h-[400px] flex items-center">
+    <section className="relative py-16 lg:py-24 overflow-hidden bg-gray-900 min-h-[400px] flex items-center">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -18,12 +18,12 @@ const PracticeAreaHero = ({ title, subtitle, image = "/img/services_hero_bg_clea
           alt={title}
           fill
           priority
-          className="object-cover opacity-60"
+          className="object-cover"
         />
       </div>
 
-      {/* Heavy Left Gradient Overlay for Crystal Clear Legibility */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[rgb(13_33_55)]/95 via-[rgb(13_33_55)]/80 to-[rgb(13_33_55)]/50" />
+      {/* Solid Dark Gray Overlay with Opacity */}
+      <div className="absolute inset-0 bg-gray-900/70" />
 
       {/* Content */}
       <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left">

@@ -54,7 +54,7 @@ function BlogDetailsContent() {
     return (
         <>
             {/* ================= 1. HERO / PAGE HEADER ================= */}
-            <section className="relative min-h-[400px] overflow-hidden bg-navy flex flex-col justify-center">
+            <section className="relative min-h-[400px] overflow-hidden bg-gray-900 flex flex-col justify-center">
                 <div className="absolute inset-0">
                     <Image
                         src="/img/contact-hero-bg-v2.png"
@@ -64,7 +64,8 @@ function BlogDetailsContent() {
                         priority
                     />
                 </div>
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,28,46,0.9),rgba(15,28,46,0.6))]" />
+                {/* Solid Dark Gray Overlay with Opacity */}
+                <div className="absolute inset-0 bg-gray-900/70" />
                 <div className="relative z-10 mx-auto w-full max-w-7xl py-16 px-4 sm:px-5 lg:px-6">
                     <nav className="mb-6 flex items-center gap-2 text-sm text-gray-300" aria-label="Breadcrumb">
                         <Link href="/" className="transition hover:text-white">Home</Link>

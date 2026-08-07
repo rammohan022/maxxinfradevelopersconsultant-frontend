@@ -29,4 +29,5 @@ export const API_ENDPOINTS = {
     pdfs: "/pdfs",
     ai: "/ai",
     activityLogs: "/activity-logs",
+    hrResources: "/hr-resources",
 };

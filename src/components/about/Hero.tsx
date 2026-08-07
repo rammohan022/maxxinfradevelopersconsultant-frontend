@@ -4,10 +4,7 @@ import Link from "next/link";
 const HeroAbout = () => {
   return (
     <section
-      className="relative h-[500px] flex items-center justify-center overflow-hidden"
-      style={{
-        backgroundColor: "rgb(15 23 42 / var(--tw-bg-opacity, 1))",
-      }}
+      className="relative h-[500px] flex items-center justify-center overflow-hidden bg-gray-900"
     >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
@@ -16,8 +13,10 @@ const HeroAbout = () => {
           alt="Professional modern corporate office lobby with collaborating consultants and 'PEOPLE CONSULTING' branding on the wall"
           fill
           priority
-          className="object-cover opacity-30"
+          className="object-cover"
         />
+        {/* Solid Dark Gray Overlay with Opacity */}
+        <div className="absolute inset-0 bg-gray-900/70" />
       </div>
 
       {/* Content */}

@@ -150,6 +150,12 @@ export default function Footer() {
                 >
                   Contact Us
                 </Link>
+                <Link
+                  href="/hr-free-tools"
+                  className="px-5 py-2 rounded-full bg-white text-xs sm:text-sm font-semibold text-slate-700 hover:text-primary hover:border-primary/40 shadow-sm border border-slate-200/60 transition duration-300"
+                >
+                  HR Free Tools
+                </Link>
               </div>
 
               {/* Socials */}

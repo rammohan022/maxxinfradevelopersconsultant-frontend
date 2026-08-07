@@ -109,7 +109,8 @@ export default function LeadsPage() {
                 <th className="text-left px-3 py-2 whitespace-nowrap">Name</th>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Contact Info</th>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Subject</th>
-                <th className="text-left px-3 py-2 min-w-[300px]">Message</th>
+                <th className="text-left px-3 py-2 min-w-[200px]">Message</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap">Source</th>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Date</th>
                 <th className="text-center px-3 py-2 whitespace-nowrap">Actions</th>
               </tr>
@@ -141,8 +142,11 @@ export default function LeadsPage() {
                     <td className="px-3 py-2 italic text-slate-600">
                       {lead.subject || "No Subject"}
                     </td>
-                    <td className="px-3 py-2 text-slate-500 leading-relaxed max-w-[300px] truncate" title={lead.message}>
+                    <td className="px-3 py-2 text-slate-500 leading-relaxed max-w-[200px] truncate" title={lead.message}>
                       {lead.message}
+                    </td>
+                    <td className="px-3 py-2 text-xs font-medium text-slate-600 whitespace-nowrap">
+                      {lead.source || "N/A"}
                     </td>
                     <td className="px-3 py-2 whitespace-nowrap text-slate-500">
                       {new Date(lead.createdAt).toLocaleString([], { year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" })}

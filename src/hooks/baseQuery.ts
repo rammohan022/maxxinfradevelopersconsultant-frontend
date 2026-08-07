@@ -85,6 +85,8 @@ export const baseApi = createApi({
     "Media",
     "Pdf",
     "ActivityLog",
+    "HrResource",
+    "HrResourceCategory",
   ],
   endpoints: () => ({}),
 });

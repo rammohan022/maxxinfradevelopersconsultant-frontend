@@ -154,13 +154,13 @@ export default function CategoryServicesClient() {
   }
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-12">
+    <div className="bg-slate-50 min-h-screen">
       {/* HERO SECTION */}
-      <section className="relative py-16 lg:py-24 overflow-hidden bg-[rgb(13_33_55)] min-h-[380px] flex items-center">
+      <section className="relative py-16 lg:py-24 overflow-hidden bg-gray-900 min-h-[380px] flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/img/services_hero_bg_clean.png"
+            src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070"
             alt={activeCategoryName}
             fill
             priority
@@ -168,8 +168,8 @@ export default function CategoryServicesClient() {
           />
         </div>
 
-        {/* Dark Overlay with Heavy Left Gradient for Maximum Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(13_33_55)]/95 via-[rgb(13_33_55)]/80 to-[rgb(13_33_55)]/50" />
+        {/* Solid Dark Gray Overlay with Opacity */}
+        <div className="absolute inset-0 bg-gray-900/70" />
 
         {/* Content */}
         <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left">
@@ -232,17 +232,15 @@ export default function CategoryServicesClient() {
               {/* All Services Tab */}
               <Link
                 href="/services"
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
-                  !rawCategorySlug
-                    ? 'bg-primary text-white shadow-md shadow-primary/20'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                }`}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${!rawCategorySlug
+                  ? 'bg-primary text-white shadow-md shadow-primary/20'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  }`}
               >
                 <span>All Services</span>
                 <span
-                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                    !rawCategorySlug ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
-                  }`}
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${!rawCategorySlug ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
+                    }`}
                 >
                   {allServices.length}
                 </span>
@@ -254,17 +252,15 @@ export default function CategoryServicesClient() {
                   <Link
                     key={cat.slug}
                     href={`/services/category/${cat.slug}`}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${
-                      isActive
-                        ? 'bg-primary text-white shadow-md shadow-primary/20'
-                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                    }`}
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${isActive
+                      ? 'bg-primary text-white shadow-md shadow-primary/20'
+                      : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                      }`}
                   >
                     <span>{cat.name}</span>
                     <span
-                      className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                        isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
-                      }`}
+                      className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${isActive ? 'bg-white/20 text-white' : 'bg-slate-200 text-slate-600'
+                        }`}
                     >
                       {cat.count}
                     </span>
@@ -391,7 +387,10 @@ export default function CategoryServicesClient() {
                   <div className="space-y-3 px-1 flex-1 flex flex-col justify-between">
                     <div className="space-y-2">
                       <Link href={`/services/${service.slug}`} className="block">
-                        <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5 hover:text-secondary transition-colors leading-snug">
+                        <h3 
+                          className="font-semibold text-primary mb-1 hover:text-secondary transition-colors line-clamp-2 leading-snug"
+                          title={service.title}
+                        >
                           {service.title}
                         </h3>
                       </Link>
@@ -433,11 +432,10 @@ export default function CategoryServicesClient() {
               <button
                 key={pageNum}
                 onClick={() => setCurrentPage(pageNum)}
-                className={`w-10 h-10 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                  currentPage === pageNum
-                    ? 'bg-primary text-white shadow-md shadow-primary/20 scale-105'
-                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
-                }`}
+                className={`w-10 h-10 rounded-xl text-xs sm:text-sm font-bold transition-all ${currentPage === pageNum
+                  ? 'bg-primary text-white shadow-md shadow-primary/20 scale-105'
+                  : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
+                  }`}
               >
                 {pageNum}
               </button>
@@ -484,9 +482,8 @@ export default function CategoryServicesClient() {
                       <span>{faq.question}</span>
                       <ChevronDown
                         size={18}
-                        className={`text-slate-400 shrink-0 transition-transform duration-200 ${
-                          isOpen ? 'rotate-180 text-secondary' : ''
-                        }`}
+                        className={`text-slate-400 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-secondary' : ''
+                          }`}
                       />
                     </button>
 

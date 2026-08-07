@@ -15,13 +15,8 @@ const ContactHero: React.FC = () => {
           fill
           className="object-cover"
         />
-        {/* EXACT gradient from DevTools */}
-        <div
-          className="
-            absolute inset-0
-            bg-[linear-gradient(to_right,rgba(15,28,46,0.9),rgba(15,28,46,0.6))]
-          "
-        />
+        {/* Solid Dark Gray Overlay with Opacity */}
+        <div className="absolute inset-0 bg-gray-900/70" />
       </div>
 
       {/* Content */}

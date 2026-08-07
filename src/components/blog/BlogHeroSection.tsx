@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const BlogHeroSection = () => {
   return (
-    <section className="relative py-16 lg:py-24 overflow-hidden bg-[rgb(13_33_55)]">
+    <section className="relative py-16 lg:py-24 overflow-hidden bg-gray-900">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -11,12 +11,12 @@ const BlogHeroSection = () => {
           alt="People & HR Insights"
           fill
           priority
-          className="object-cover opacity-50"
+          className="object-cover"
         />
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[rgb(13_33_55)]/90 via-[rgb(13_33_55)]/80 to-[rgb(13_33_55)]/60" />
+      {/* Solid Dark Gray Overlay with Opacity */}
+      <div className="absolute inset-0 bg-gray-900/70" />
 
       {/* Content */}
       <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left">

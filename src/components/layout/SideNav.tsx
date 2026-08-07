@@ -53,6 +53,16 @@ const navItems: NavItem[] = [
     ],
   },
   {
+    name: "HR Tools",
+    icon: FolderOpen,
+    allowedRoles: ["admin", "hr"],
+    permissionKey: "hr_tools",
+    subItems: [
+      { name: "HR Free Tools", href: "/admin/hr-resources" },
+      { name: "HR Categories", href: "/admin/hr-resource-categories" },
+    ],
+  },
+  {
     name: "Services",
     icon: Layers,
     allowedRoles: ["admin"],
@@ -132,6 +142,7 @@ const SideNav = () => {
   // Track open state for dropdown menus
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
     "Website Content": pathname.startsWith("/admin/banners") || pathname.startsWith("/admin/testimonials") || pathname.startsWith("/admin/media") || pathname.startsWith("/admin/pdfs"),
+    "HR Tools": pathname.startsWith("/admin/hr-resources") || pathname.startsWith("/admin/hr-resource-categories"),
     Services: pathname.startsWith("/admin/services") || pathname.startsWith("/admin/service-categories"),
     Careers: pathname.startsWith("/admin/career") || pathname.startsWith("/admin/applications"),
     Blogs: pathname.startsWith("/admin/blogs") || pathname.startsWith("/admin/blog-categories"),

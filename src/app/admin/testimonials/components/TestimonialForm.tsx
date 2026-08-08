@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useCreateTestimonialMutation, useUpdateTestimonialMutation } from "@/services/testimonial";
 import toast from "react-hot-toast";
 import { getImageUrl } from "@/lib/utils/imageUtils";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 
 interface TestimonialFormProps {
     initialData?: any;
@@ -86,9 +87,9 @@ export default function TestimonialForm({
                 toast.success("Testimonial created successfully!");
             }
             router.push("/admin/testimonials");
-        } catch (err) {
+        } catch (err: any) {
             console.error("Failed to save testimonial:", err);
-            toast.error("Failed to save testimonial.");
+            toast.error(getErrorMessage(err));
         }
     };
 
@@ -115,12 +116,18 @@ export default function TestimonialForm({
                     ) : (
                         <div className="w-32 h-32 flex items-center justify-center border rounded-lg text-gray-400 text-sm flex-shrink-0">No Image</div>
                     )}
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        className="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
-                    />
+                    <div className="flex-1">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
+                        />
+                        <div className="flex flex-col gap-0.5 mt-2">
+                            <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
+                            <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 2MB</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -161,8 +168,13 @@ export default function TestimonialForm({
                     value={form.testimonialText}
                     onChange={handleChange}
                     placeholder="Enter what client said about our services..."
-                    className="w-full border rounded-lg px-3 py-2"
+                    className="w-full border rounded-lg px-3 py-2 resize-none"
+                    maxLength={1000}
                 />
+                <p className="text-[10px] text-slate-500 mt-1 flex justify-between">
+                    <span>Describe the testimonial briefly.</span>
+                    <span>{form.testimonialText.length}/1000</span>
+                </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-3">

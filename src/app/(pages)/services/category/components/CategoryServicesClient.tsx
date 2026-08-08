@@ -388,10 +388,10 @@ export default function CategoryServicesClient() {
                     <div className="space-y-2">
                       <Link href={`/services/${service.slug}`} className="block">
                         <h3 
-                          className="font-semibold text-primary mb-1 hover:text-secondary transition-colors line-clamp-2 leading-snug"
+                          className="font-semibold text-primary mb-1 hover:text-secondary transition-colors line-clamp-2 leading-snug capitalize"
                           title={service.title}
                         >
-                          {service.title}
+                          {service.title.toLowerCase()}
                         </h3>
                       </Link>
 

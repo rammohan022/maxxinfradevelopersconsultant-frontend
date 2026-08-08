@@ -11,6 +11,7 @@ import { Search, Upload, Copy, Trash2, Check, FileText, Image as ImageIcon } fro
 import toast from "react-hot-toast";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 import DeleteModal from "../components/DeleteModal";
 
 export default function MediaLibraryPage() {
@@ -37,8 +38,8 @@ export default function MediaLibraryPage() {
     try {
       await uploadMediaFile(formData).unwrap();
       toast.success("File uploaded to Media Library!");
-    } catch (err) {
-      toast.error("Failed to upload file.");
+    } catch (err: any) {
+      toast.error(getErrorMessage(err));
     }
   };
 
@@ -56,8 +57,8 @@ export default function MediaLibraryPage() {
       toast.success("Media file deleted!");
       if (selectedItem?.filename === deleteModal.filename) setSelectedItem(null);
       setDeleteModal({ isOpen: false, folder: "", filename: "" });
-    } catch (err) {
-      toast.error("Failed to delete media file.");
+    } catch (err: any) {
+      toast.error(getErrorMessage(err));
     }
   };
 
@@ -89,11 +90,14 @@ export default function MediaLibraryPage() {
             />
           </div>
 
-          <label className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-bold shadow cursor-pointer">
-            <Upload size={18} />
-            {isUploading ? "Uploading..." : "Upload Media"}
-            <input type="file" onChange={handleFileUpload} className="hidden" />
-          </label>
+          <div className="flex flex-col items-end">
+            <label className="flex items-center gap-2 bg-secondary text-white px-4 py-2 rounded-lg hover:bg-secondary-dark transition text-sm font-bold shadow cursor-pointer">
+              <Upload size={18} />
+              {isUploading ? "Uploading..." : "Upload Media"}
+              <input type="file" onChange={handleFileUpload} className="hidden" />
+            </label>
+            <p className="text-[10px] text-slate-500 mt-1">Max 2MB (Images) / 5MB (PDFs)</p>
+          </div>
         </div>
       </div>
 

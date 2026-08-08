@@ -7,6 +7,7 @@ import { useCreateServiceMutation, useUpdateServiceMutation } from "@/services/s
 import { useGetServiceCategoriesQuery } from "@/services/serviceCategory";
 import toast from "react-hot-toast";
 import Image from "next/image";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -185,7 +186,7 @@ const slugify = (text: string) => {
             router.push("/admin/services");
         } catch (err) {
             console.error("Failed to save service:", err);
-            toast.error("Failed to save service.");
+            toast.error(getErrorMessage(err));
         }
     };
 
@@ -258,6 +259,10 @@ const slugify = (text: string) => {
                             className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
                         />
                     </div>
+                    <div className="flex flex-col gap-0.5 mt-1 ml-[5rem]">
+                        <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
+                        <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 2MB</p>
+                    </div>
                 </div>
             </section>
 
@@ -287,6 +292,10 @@ const slugify = (text: string) => {
                             onChange={handleContentFileChange}
                             className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
                         />
+                    </div>
+                    <div className="flex flex-col gap-0.5 mt-1 ml-[6rem]">
+                        <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
+                        <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 2MB</p>
                     </div>
                 </div>
             </section>
@@ -335,7 +344,12 @@ const slugify = (text: string) => {
                                     placeholder="Enter a brief paragraph describing this service..."
                                     rows={2}
                                     className="w-full border rounded-lg px-3 py-2 text-sm bg-white resize-none"
+                                    maxLength={1000}
                                 />
+                                <p className="text-[10px] text-slate-500 mt-1 flex justify-between">
+                                    <span>Max 1000 characters.</span>
+                                    <span>{(card.description || "").length}/1000</span>
+                                </p>
                             </div>
                             
                             <div className="space-y-2">

@@ -1,9 +1,12 @@
-import {BlogHeroSection, LatestArticlesSection} from '@/components/blog'
-const Blog =()=>{
-    return(
+import { BlogHeroSection, LatestArticlesSection } from '@/components/blog'
+import CallToAction from '@/components/ui/CallToAction'
+
+const Blog = () => {
+    return (
         <>
-         <BlogHeroSection/>
-         <LatestArticlesSection/>
+            <BlogHeroSection />
+            <LatestArticlesSection />
+            <CallToAction />
         </>
     )
 }

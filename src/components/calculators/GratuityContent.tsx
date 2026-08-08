@@ -24,6 +24,14 @@ const gratuityFaqs = [
     q: 'What is an Ex-Gratia gratuity payment?',
     a: 'If an employer voluntarily pays an amount higher than the statutory ceiling (or higher than the calculated formula figure), the surplus portion is termed an "Ex-Gratia" payout. Ex-gratia payouts are fully taxable under head "Income from Salary".',
   },
+  {
+    q: 'How is gratuity calculated for employees not covered under the Act?',
+    a: 'For employees not covered under the Payment of Gratuity Act, the calculation is based on a half month\'s average salary for each completed year of service (15/30 * Average Salary of last 10 months * Years of Service).',
+  },
+  {
+    q: 'Can an employer deduct money from my gratuity?',
+    a: 'Generally, no. However, deductions can be made if the employee is terminated for willful omission, negligence causing damage to the employer\'s property, or any act involving moral turpitude.',
+  }
 ]
 
 export default function GratuityContent() {

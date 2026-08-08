@@ -14,6 +14,7 @@ import { getImageUrl } from "@/lib/utils/imageUtils";
 import DeleteModal from "../components/DeleteModal";
 import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 
 const fileTypes = ["PDF", "DOCX", "XLSX"];
 
@@ -138,7 +139,7 @@ export default function HrResourcesListPage() {
       setFormModal((prev) => ({ ...prev, isOpen: false }));
     } catch (err: any) {
       console.error("Form submit failed:", err);
-      toast.error("An error occurred during submission.");
+      toast.error(getErrorMessage(err));
     }
   };
 
@@ -369,9 +370,14 @@ export default function HrResourcesListPage() {
                   placeholder="Professional offer letter format for all roles."
                   value={formModal.description}
                   onChange={(e) => setFormModal((prev) => ({ ...prev, description: e.target.value }))}
-                  className="w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all text-slate-950 resize-y min-h-[80px]"
+                  className="w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all text-slate-950 min-h-[100px]"
+                  maxLength={1000}
                   required
                 />
+                <p className="text-[11px] text-slate-500 mt-1 flex justify-between">
+                  <span>Describe the resource briefly.</span>
+                  <span>{formModal.description.length}/1000</span>
+                </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -428,6 +434,10 @@ export default function HrResourcesListPage() {
                     <Check size={12} /> Current file exists. Uploading a new file will replace it.
                   </p>
                 )}
+                <div className="flex flex-col gap-0.5 mt-1">
+                  <p className="text-[11px] text-slate-500 font-medium">Supported formats: PDF, DOCX, XLSX</p>
+                  <p className="text-[11px] text-slate-500 font-medium">Maximum file size: 5MB</p>
+                </div>
               </div>
 
               {/* Actions */}

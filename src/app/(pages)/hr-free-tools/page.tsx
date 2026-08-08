@@ -326,7 +326,7 @@ export default function HrFreeToolsPage() {
                   <FolderOpen className="w-7 h-7" />
                 </div>
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-slate-800 mb-1.5 tracking-tight">
+                  <h3 className="text-lg md:text-xl font-bold text-primary mb-1.5 tracking-tight">
                     Can&apos;t find what you&apos;re looking for?
                   </h3>
                   <p className="text-sm text-slate-500 font-medium max-w-lg leading-relaxed">

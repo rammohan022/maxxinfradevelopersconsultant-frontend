@@ -6,7 +6,7 @@ export interface Career {
     title: string;
     department: string;
     location: string;
-    jobType: "Full-time" | "Part-time" | "Internship";
+    jobType: "Full-time" | "Part-time" | "Internship" | "Contract" | "Remote" | "Hybrid" | "On-site" | "Work From Home";
     experience: string;
     salary?: string;
     description: string;
@@ -20,7 +20,7 @@ export interface CreateCareerDto {
     title: string;
     department: string;
     location: string;
-    jobType: "Full-time" | "Part-time" | "Internship";
+    jobType: "Full-time" | "Part-time" | "Internship" | "Contract" | "Remote" | "Hybrid" | "On-site" | "Work From Home";
     experience: string;
     salary?: string;
     description: string;

@@ -10,7 +10,8 @@ import toast from "react-hot-toast";
 import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
-import { Sparkles, RefreshCw } from "lucide-react";
+import { Sparkles, Loader2, Save, RefreshCw } from "lucide-react";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 import AiModal, { AiToolType } from "@/components/ai/AiModal";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -128,12 +129,7 @@ export default function BlogForm({
       router.push("/admin/blogs");
     } catch (err: any) {
       console.error("Submit error:", err);
-      const errorMessage =
-        err?.data?.message ||
-        (Array.isArray(err?.data?.message) ? err.data.message.join(", ") : null) ||
-        err?.message ||
-        "Failed to save blog. Please check your input.";
-      toast.error(errorMessage);
+      toast.error(getErrorMessage(err));
     }
   };
 
@@ -261,6 +257,10 @@ export default function BlogForm({
                 className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none text-xs file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
               />
             </div>
+            <div className="flex flex-col gap-0.5 mt-1">
+              <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
+              <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 2MB</p>
+            </div>
           </div>
         </div>
 
@@ -291,7 +291,12 @@ export default function BlogForm({
                 placeholder="Enter meta description for search result snippet"
                 rows={1}
                 className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all resize-none"
+                maxLength={1000}
               />
+              <p className="text-[10px] text-slate-500 mt-1 flex justify-between">
+                <span>Max 1000 characters.</span>
+                <span>{metaDescription.length}/1000</span>
+              </p>
             </div>
           </div>
         </div>

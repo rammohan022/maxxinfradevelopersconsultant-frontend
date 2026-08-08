@@ -166,11 +166,28 @@ function BlogDetailsContent() {
                                     <ul className="space-y-4">
                                         {recentBlogsList.map((post) => (
                                             <li key={post.id}>
-                                                <Link href={`/blog/${post.slug || post.id}`} className="group block">
-                                                    <span className="font-medium text-slate-800 text-sm group-hover:text-primary transition line-clamp-2">{post.title}</span>
-                                                    <span className="text-xs text-gray-500 mt-0.5 block">
-                                                        {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-                                                    </span>
+                                                <Link href={`/blog/${post.slug || post.id}`} className="group flex gap-4 items-start">
+                                                    {post.blogImage && (
+                                                        <div className="relative w-16 h-16 shrink-0 rounded-md overflow-hidden bg-gray-100 border border-gray-200">
+                                                            <Image
+                                                                src={getImageUrl(post.blogImage)}
+                                                                alt={post.title}
+                                                                fill
+                                                                className="object-cover group-hover:scale-105 transition-transform"
+                                                            />
+                                                        </div>
+                                                    )}
+                                                    <div className="flex-1">
+                                                        <span className="font-medium text-slate-800 text-sm group-hover:text-primary transition line-clamp-2 leading-snug mb-1">{post.title}</span>
+                                                        {post.short && (
+                                                            <span className="text-xs text-slate-500 line-clamp-2 mb-1.5 leading-relaxed">
+                                                                {post.short}
+                                                            </span>
+                                                        )}
+                                                        <span className="text-[11px] text-gray-400 font-medium tracking-wider block">
+                                                            {new Date(post.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                                        </span>
+                                                    </div>
                                                 </Link>
                                             </li>
                                         ))}

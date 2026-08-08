@@ -12,6 +12,8 @@ import { getImageUrl } from "@/lib/utils/imageUtils";
 import DeleteModal from "../components/DeleteModal";
 import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
+import { slugifyCategory } from "@/lib/utils/slugUtils";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 
 export default function PdfsListPage() {
   const { data: pdfs = [], isLoading, isError } = useGetPdfsQuery();
@@ -69,9 +71,10 @@ export default function PdfsListPage() {
     });
   };
 
-  const handleCopyUrl = async (id: string, fileUrl?: string) => {
-    if (!fileUrl) return;
-    const fullUrl = getImageUrl(fileUrl);
+  const handleCopyUrl = async (id: string, fileUrl?: string, title?: string) => {
+    if (!fileUrl || !title) return;
+    const slug = slugifyCategory(title);
+    const fullUrl = `${window.location.origin}/pdf?doc=${slug}`;
     try {
       await navigator.clipboard.writeText(fullUrl);
       setCopiedId(id);
@@ -113,6 +116,7 @@ export default function PdfsListPage() {
       setFormModal((prev) => ({ ...prev, isOpen: false }));
     } catch (err: any) {
       console.error("Form submit failed:", err);
+      toast.error(getErrorMessage(err));
     }
   };
 
@@ -226,7 +230,7 @@ export default function PdfsListPage() {
                     <td className="p-4 text-slate-500 whitespace-nowrap">{item.order || 0}</td>
                     <td className="p-4 text-center whitespace-nowrap">
                       <button
-                        onClick={() => handleCopyUrl(item.id, item.fileUrl)}
+                        onClick={() => handleCopyUrl(item.id, item.fileUrl, item.title)}
                         className={`flex items-center gap-1.5 mx-auto px-2.5 py-1.5 rounded-lg text-xs font-semibold border transition ${
                           copiedId === item.id
                             ? "bg-emerald-50 text-emerald-700 border-emerald-200"
@@ -344,7 +348,10 @@ export default function PdfsListPage() {
                   className="w-full border rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all file:mr-3 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20"
                   required={formModal.mode === "create"}
                 />
-                <p className="text-xs text-slate-400 mt-1">Only PDF format is supported.</p>
+                <div className="flex flex-col gap-0.5 mt-1">
+                  <p className="text-[11px] text-slate-500 font-medium">Supported formats: PDF</p>
+                  <p className="text-[11px] text-slate-500 font-medium">Maximum file size: 5MB</p>
+                </div>
               </div>
 
               {/* Actions */}

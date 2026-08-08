@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useCreateMemberMutation, useUpdateMemberMutation } from "@/services/member";
 import toast from "react-hot-toast";
 import { getImageUrl } from "@/lib/utils/imageUtils";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 
 interface MemberFormProps {
     initialData?: any;
@@ -92,9 +93,9 @@ export default function MemberForm({
                 toast.success("Member created successfully!");
             }
             router.push("/admin/our-team");
-        } catch (err) {
+        } catch (err: any) {
             console.error("Failed to save member:", err);
-            toast.error("Failed to save member.");
+            toast.error(getErrorMessage(err));
         }
     };
 
@@ -125,12 +126,18 @@ export default function MemberForm({
                             No Image
                         </div>
                     )}
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                        className="flex-1 text-sm text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
-                    />
+                    <div className="flex-1">
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                            className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-3 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
+                        />
+                        <div className="flex flex-col gap-0.5 mt-2">
+                            <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
+                            <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 2MB</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -230,8 +237,13 @@ export default function MemberForm({
                     value={form.shortBio}
                     onChange={handleChange}
                     placeholder="Enter short bio details..."
-                    className="w-full border rounded-lg px-3 py-2"
+                    className="w-full border rounded-lg px-3 py-2 resize-none"
+                    maxLength={1000}
                 />
+                <p className="text-[10px] text-slate-500 mt-1 flex justify-between">
+                    <span>Describe the member briefly.</span>
+                    <span>{form.shortBio.length}/1000</span>
+                </p>
             </div>
 
             {/* Status */}

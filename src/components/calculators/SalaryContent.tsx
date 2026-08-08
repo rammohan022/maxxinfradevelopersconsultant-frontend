@@ -24,6 +24,14 @@ const originalFaqs = [
     q: 'Why is employer Provident Fund contribution deducted from CTC?',
     a: 'The employer EPF contribution (12% of basic pay) is paid by your company directly into your EPFO retirement account. Because it is a cost borne by the employer for your employment, companies count it as part of your overall CTC package even though it is not paid out in your monthly salary slip.',
   },
+  {
+    q: 'What is a Performance Bonus and how is it paid?',
+    a: 'A performance bonus (or variable pay) is linked to individual and company performance. It is part of your CTC but is usually paid annually, bi-annually, or quarterly instead of monthly. Since it\'s variable, the actual amount received might be less than what is projected in the CTC.',
+  },
+  {
+    q: 'How does Professional Tax (PT) affect my salary?',
+    a: 'Professional Tax is a state-level tax levied on salaried employees. The amount varies by state (usually around ₹200/month) and is deducted directly from your gross salary before calculating your final in-hand pay.',
+  }
 ]
 
 export default function SalaryContent() {

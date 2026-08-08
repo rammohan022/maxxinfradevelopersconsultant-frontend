@@ -5,6 +5,7 @@ import { User, Lock, Upload, Globe, Link2 } from "lucide-react";
 import { useGetProfileQuery, useUpdateProfileMutation, useChangePasswordMutation } from "@/services/auth";
 import toast from "react-hot-toast";
 import { getImageUrl } from "@/lib/utils/imageUtils";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 
 export default function Profile() {
   const [activeTab, setActiveTab] = useState<"profile" | "password">("profile");
@@ -83,9 +84,9 @@ export default function Profile() {
 
       await updateProfile(data).unwrap();
       toast.success("Profile updated successfully!");
-    } catch (err) {
+    } catch (err: any) {
       console.error("Update failed:", err);
-      toast.error("Failed to update profile.");
+      toast.error(getErrorMessage(err));
     }
   };
 
@@ -107,7 +108,7 @@ export default function Profile() {
       });
     } catch (err: any) {
       console.error("Password change failed:", err);
-      toast.error(err?.data?.message || "Failed to change password.");
+      toast.error(getErrorMessage(err));
     }
   };
 

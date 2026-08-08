@@ -8,6 +8,7 @@ import {
   useDeleteBannerMutation,
   Banner,
 } from "@/services/banners";
+import { getErrorMessage } from "@/lib/utils/apiUtils";
 import { Plus, Pencil, Trash2, Sliders, CheckCircle, XCircle } from "lucide-react";
 import toast from "react-hot-toast";
 import Image from "next/image";
@@ -107,9 +108,9 @@ export default function BannersAdminPage() {
         toast.success("Hero Banner created successfully!");
       }
       setModalOpen(false);
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
-      // baseQuery handles toast error notification
+      toast.error(getErrorMessage(err));
     }
   };
 
@@ -375,6 +376,10 @@ export default function BannersAdminPage() {
                   }}
                   className="w-full border rounded-lg px-3 py-1.5 text-xs"
                 />
+                <div className="flex flex-col gap-0.5 mt-1">
+                  <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
+                  <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 2MB</p>
+                </div>
               </div>
 
               <div className="flex justify-end gap-2 pt-3 border-t">

@@ -22,7 +22,7 @@ export default function CareerForm({
         title: "",
         department: "",
         location: "",
-        jobType: "" as "Full-time" | "Part-time" | "Internship",
+        jobType: "" as "Full-time" | "Part-time" | "Internship" | "Contract" | "Remote" | "Hybrid" | "On-site" | "Work From Home",
         experience: "",
         description: "",
         isActive: true,
@@ -136,6 +136,11 @@ export default function CareerForm({
                         <option value="Full-time">Full-time</option>
                         <option value="Part-time">Part-time</option>
                         <option value="Internship">Internship</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Hybrid">Hybrid</option>
+                        <option value="On-site">On-site</option>
+                        <option value="Work From Home">Work From Home</option>
                     </select>
                 </div>
             </div>

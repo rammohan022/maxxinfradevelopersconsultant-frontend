@@ -179,9 +179,9 @@ function BlogDetailsContent() {
                                                     )}
                                                     <div className="flex-1">
                                                         <span className="font-medium text-slate-800 text-sm group-hover:text-primary transition line-clamp-2 leading-snug mb-1">{post.title}</span>
-                                                        {post.short && (
+                                                        {post.metaDescription && (
                                                             <span className="text-xs text-slate-500 line-clamp-2 mb-1.5 leading-relaxed">
-                                                                {post.short}
+                                                                {post.metaDescription}
                                                             </span>
                                                         )}
                                                         <span className="text-[11px] text-gray-400 font-medium tracking-wider block">

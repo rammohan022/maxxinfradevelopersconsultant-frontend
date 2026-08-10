@@ -15,7 +15,16 @@ export async function generateStaticParams() {
       if (res.ok) {
         const data = await res.json();
         const apiSlugs = data.map((blog: any) => ({ slug: blog.slug || String(blog.id) }));
-        if (apiSlugs.length > 0) return apiSlugs;
+        
+        // Merge API slugs with fallback slugs to prevent "missing param" errors
+        const allSlugs = [...apiSlugs];
+        for (const fSlug of fallbackBlogs) {
+          if (!allSlugs.find(s => s.slug === fSlug)) {
+            allSlugs.push({ slug: fSlug });
+          }
+        }
+        
+        if (allSlugs.length > 0) return allSlugs;
       }
     }
   } catch (error) {

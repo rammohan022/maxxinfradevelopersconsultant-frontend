@@ -72,9 +72,9 @@ export default function Footer() {
             <div className="lg:col-span-6 flex justify-center lg:justify-end">
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-xl border border-slate-100 transform hover:-translate-y-1.5 transition-all duration-300">
                 {/* Top skyline image */}
-                <div className="relative h-28 w-full">
+                <div className="relative h-48 w-full">
                   <Image
-                    src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80"
+                    src="/img/footer.png"
                     alt="People Consulting Office Skyline"
                     fill
                     className="object-cover"

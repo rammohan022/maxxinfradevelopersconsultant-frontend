@@ -48,7 +48,6 @@ const navItems: NavItem[] = [
     subItems: [
       { name: "Hero Banners", href: "/admin/banners" },
       { name: "Testimonials", href: "/admin/testimonials" },
-      { name: "Media Library", href: "/admin/media" },
       { name: "PDF Documents", href: "/admin/pdfs" },
     ],
   },

@@ -31,8 +31,7 @@ export default function Footer() {
             backgroundPosition: "center",
           }}
         />
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gray-800/70 z-0 pointer-events-none" />
+        {/* Dark Overlay Removed */}
 
         {/* Decorative Wave/Blobs */}
         <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] rounded-full bg-white/[0.02] blur-3xl pointer-events-none" />
@@ -41,9 +40,9 @@ export default function Footer() {
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Side: Pitch and Pill Badges */}
-            <div className="lg:col-span-7 space-y-8">
-              <h2 className="text-lg md:text-xl lg:text-2xl font-normal tracking-tight text-white leading-tight max-w-2xl">
-                Contact People Consulting today and let&apos;s get started
+            <div className="lg:col-span-6 space-y-8">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight max-w-2xl">
+                Let&apos;s discuss how People Consulting can help you.
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-6 pt-4">
@@ -70,12 +69,12 @@ export default function Footer() {
             </div>
 
             {/* Right Side: Skyscraper Card */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-lg border border-slate-100 transform hover:-translate-y-1.5 transition-all duration-300">
+            <div className="lg:col-span-6 flex justify-center lg:justify-end">
+              <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-xl border border-slate-100 transform hover:-translate-y-1.5 transition-all duration-300">
                 {/* Top skyline image */}
                 <div className="relative h-28 w-full">
                   <Image
-                    src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80"
+                    src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80"
                     alt="People Consulting Office Skyline"
                     fill
                     className="object-cover"
@@ -84,23 +83,32 @@ export default function Footer() {
                 </div>
                 {/* Details */}
                 <div className="p-8 text-slate-800">
-                  <span className="text-[10px] font-bold text-slate-400 tracking-widest block mb-1">
-                    Office
+                  <span className="text-[10px] font-bold text-slate-400 tracking-widest block mb-3">
+                    Our Offices
                   </span>
-                  <h4 className="text-sm font-bold text-primary tracking-wide mb-4">
-                    People Consulting
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mb-4">
-                    243, 2nd Floor, Vipul Trade Centre,<br />
-                    Sector 48, Sohna Road,<br />
-                    Gurgaon, Haryana, India
-                  </p>
-                  <a
-                    href={`tel:${phone.replace(/\s+/g, '')}`}
-                    className="text-xs sm:text-sm font-bold text-sky-600 hover:text-primary transition-colors block border-t border-slate-100 pt-3"
-                  >
-                    {phone}
-                  </a>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="text-sm font-bold text-primary tracking-wide mb-2">
+                        Gurgaon
+                      </h4>
+                      <p className="text-xs sm:text-xs text-slate-600 leading-relaxed font-normal">
+                        243, 2nd Floor, Vipul Trade Centre,<br />
+                        Sector 48, Sohna Road,<br />
+                        Gurgaon, Haryana, India
+                      </p>
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-primary tracking-wide mb-2">
+                        Faridabad
+                      </h4>
+                      <p className="text-xs sm:text-xs text-slate-600 leading-relaxed font-normal">
+                        7th Floor, Tower 3, RPS 12th Avenue,<br />
+                        Main Mathura Road, Sector 27C,<br />
+                        Faridabad
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

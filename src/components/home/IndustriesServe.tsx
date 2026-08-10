@@ -24,7 +24,7 @@ export default function IndustriesServe() {
   const [nextEl, setNextEl] = useState<HTMLButtonElement | null>(null);
 
   return (
-    <section className="py-16 md:py-14 bg-slate-50 overflow-hidden" id="industries">
+    <section className="py-16 md:py-14 bg-white overflow-hidden" id="industries">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
@@ -83,13 +83,13 @@ export default function IndustriesServe() {
           </Swiper>
 
           {/* Custom Navigation Buttons */}
-          <button 
+          <button
             ref={setPrevEl}
             className="absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none"
           >
             <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
-          <button 
+          <button
             ref={setNextEl}
             className="absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none"
           >

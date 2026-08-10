@@ -7,23 +7,8 @@ const CTASection: React.FC = () => {
     return (
         <section
             id="cta-section"
-            className="relative overflow-hidden border-y border-gray-100 py-20"
-            style={{
-                backgroundImage: "url('/img/paper_texture_bg.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
+            className="relative overflow-hidden border-y border-gray-100 py-20 bg-gradient-to-br from-slate-50 to-slate-100"
         >
-            {/* Background Image */}
-            <div className="absolute inset-0 opacity-5">
-                <Image
-                    src="/img/hr_hero_bg_1783707638359.png"
-                    alt="abstract corporate office background, professional network and growth"
-                    fill
-                    priority
-                    className="object-cover"
-                />
-            </div>
             {/* Content */}
             <Container className="relative z-10 max-w-4xl text-center">
                 <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">

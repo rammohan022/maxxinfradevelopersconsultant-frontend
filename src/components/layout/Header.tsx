@@ -325,9 +325,9 @@ export default function Header() {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: 10 }}
                             transition={{ duration: 0.2 }}
-                            className="w-[900px] bg-white shadow-2xl border-t-2 border-primary rounded-xl overflow-hidden p-6"
+                            className="w-[750px] bg-white shadow-2xl border-t-2 border-primary rounded-xl overflow-hidden p-6"
                           >
-                            <div className="grid grid-cols-4 gap-6">
+                            <div className="grid grid-cols-3 gap-6">
                             {/* Column 1: Insights & Media */}
                             <div>
                               <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
@@ -342,6 +342,14 @@ export default function Header() {
                                 >
                                   <ChevronRight size={14} className="text-secondary shrink-0" />
                                   <span>Blogs</span>
+                                </Link>
+                                <Link
+                                  href="/hr-free-tools"
+                                  onClick={() => setResourceOpen(false)}
+                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                >
+                                  <ChevronRight size={14} className="text-secondary shrink-0" />
+                                  <span>HR Free Tools</span>
                                 </Link>
                               </div>
                             </div>
@@ -380,23 +388,6 @@ export default function Header() {
                               </div>
                             </div>
 
-                            {/* Column 3: HR Metrics */}
-                            <div>
-                              <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
-                                <Activity size={14} className="text-secondary" />
-                                <span>HR Metrics</span>
-                              </h4>
-                              <div className="space-y-1">
-                                <Link
-                                  href="/hr-free-tools"
-                                  onClick={() => setResourceOpen(false)}
-                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
-                                >
-                                  <ChevronRight size={14} className="text-secondary shrink-0" />
-                                  <span>Hr Metrics( for formulas)</span>
-                                </Link>
-                              </div>
-                            </div>
 
                             {/* Column 4: Compliance Calendar */}
                             <div>

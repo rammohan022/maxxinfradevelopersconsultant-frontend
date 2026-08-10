@@ -3,6 +3,7 @@ import BlogDetailsClient from '../components/BlogDetailsClient';
 const fallbackBlogs = [
   'how-to-hire-top-talent',
   'importance-of-compliance-in-hr',
+  'how-hr-solutions-are-transforming-modern-workforce-management',
 ]
 
 export async function generateStaticParams() {

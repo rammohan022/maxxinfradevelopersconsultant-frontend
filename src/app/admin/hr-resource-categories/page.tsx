@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import { Plus, Pencil, Trash2, X, Loader2, FolderOpen } from "lucide-react";
-import TopHeader from "@/app/admin/components/TopHeader";
 import AdminPagination from "@/app/admin/components/AdminPagination";
 import DeleteModal from "@/app/admin/components/DeleteModal";
 import toast from "react-hot-toast";
@@ -96,98 +95,95 @@ export default function AdminHrResourceCategoriesPage() {
       await deleteCategory(deleteModal.id).unwrap();
       toast.success("Category deleted successfully");
       setDeleteModal({ isOpen: false, id: "", name: "" });
-    } catch (error) {
-      toast.error("Failed to delete category");
+    } catch (error: any) {
+      toast.error(error?.data?.message || "Failed to delete category");
     }
   };
 
   return (
-    <div className="flex-1 bg-slate-50 min-h-screen">
-      <TopHeader />
-
-      <div className="p-4 md:p-6 lg:p-8 max-w-5xl mx-auto">
-        {/* Header Actions */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-          <input
-            type="text"
-            placeholder="Search categories..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="border px-4 py-2.5 rounded-lg w-full sm:w-72 outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all text-sm text-slate-950 shadow-sm"
-          />
-          <button
-            onClick={openCreateModal}
-            className="flex items-center gap-2 bg-secondary text-white px-5 py-2.5 rounded-lg hover:bg-secondary-dark transition shadow-sm font-semibold text-sm w-full sm:w-auto justify-center"
-          >
-            <Plus size={18} />
-            Add Category
-          </button>
-        </div>
-
-        {/* Table */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse min-w-[600px]">
-              <thead>
-                <tr className="bg-slate-50 text-slate-600 text-xs uppercase tracking-wider">
-                  <th className="p-4 font-bold border-b border-slate-200">Name</th>
-                  <th className="p-4 font-bold border-b border-slate-200 text-center">Actions</th>
-                </tr>
-              </thead>
-              <tbody className="text-sm text-slate-700 divide-y divide-slate-100">
-                {isLoading ? (
-                  <tr>
-                    <td colSpan={2} className="p-8 text-center">
-                      <Loader2 className="w-6 h-6 animate-spin text-secondary mx-auto" />
-                    </td>
-                  </tr>
-                ) : currentCategories.length === 0 ? (
-                  <tr>
-                    <td colSpan={2} className="p-8 text-center text-slate-500 flex flex-col items-center">
-                      <FolderOpen className="w-10 h-10 mb-2 text-slate-300" />
-                      No categories found.
-                    </td>
-                  </tr>
-                ) : (
-                  currentCategories.map((cat) => (
-                    <tr key={cat.id} className="hover:bg-slate-50/50 transition">
-                      <td className="p-4 font-medium text-slate-900">{cat.name}</td>
-                      <td className="p-4 text-center w-32">
-                        <div className="flex justify-center gap-2">
-                          <button
-                            onClick={() => openEditModal(cat)}
-                            className="text-slate-400 hover:text-secondary p-2 hover:bg-blue-50 rounded-lg transition"
-                            title="Edit Category"
-                          >
-                            <Pencil size={18} />
-                          </button>
-                          <button
-                            onClick={() => setDeleteModal({ isOpen: true, id: cat.id, name: cat.name })}
-                            className="text-slate-400 hover:text-red-600 p-2 hover:bg-red-50 rounded-lg transition"
-                            title="Delete Category"
-                          >
-                            <Trash2 size={18} />
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        {/* Pagination */}
-        <AdminPagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          setCurrentPage={setCurrentPage}
-          totalResults={filteredCategories.length}
-          indexOfFirst={indexOfFirstItem}
-          indexOfLast={indexOfLastItem}
+    <div className="flex-1 bg-slate-50">
+      {/* Header Actions */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <input
+          type="text"
+          placeholder="Search categories..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="border px-4 py-2.5 rounded-lg w-full sm:w-72 outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all text-sm text-slate-950 shadow-sm"
         />
+        <button
+          onClick={openCreateModal}
+          className="flex items-center gap-2 bg-secondary text-white px-5 py-2.5 rounded-lg hover:bg-secondary-dark transition shadow-sm font-semibold text-sm w-full sm:w-auto justify-center"
+        >
+          <Plus size={18} />
+          Add Category
+        </button>
       </div>
+
+      {/* Table */}
+      <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse min-w-[600px]">
+            <thead>
+              <tr className="bg-slate-50 text-slate-600 text-xs uppercase tracking-wider">
+                <th className="p-4 font-bold border-b border-slate-200">Name</th>
+                <th className="p-4 font-bold border-b border-slate-200 text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody className="text-sm text-slate-700 divide-y divide-slate-100">
+              {isLoading ? (
+                <tr>
+                  <td colSpan={2} className="p-8 text-center">
+                    <Loader2 className="w-6 h-6 animate-spin text-secondary mx-auto" />
+                  </td>
+                </tr>
+              ) : currentCategories.length === 0 ? (
+                <tr>
+                  <td colSpan={2} className="p-8 text-center text-slate-500 flex flex-col items-center">
+                    <FolderOpen className="w-10 h-10 mb-2 text-slate-300" />
+                    No categories found.
+                  </td>
+                </tr>
+              ) : (
+                currentCategories.map((cat) => (
+                  <tr key={cat.id} className="hover:bg-slate-50/50 transition">
+                    <td className="p-4 font-medium text-slate-900">{cat.name}</td>
+                    <td className="p-4 text-center w-32">
+                      <div className="flex justify-center gap-2">
+                        <button
+                          onClick={() => openEditModal(cat)}
+                          className="text-slate-400 hover:text-secondary p-2 hover:bg-blue-50 rounded-lg transition"
+                          title="Edit Category"
+                        >
+                          <Pencil size={18} />
+                        </button>
+                        <button
+                          onClick={() => setDeleteModal({ isOpen: true, id: cat.id, name: cat.name })}
+                          className="text-slate-400 hover:text-red-600 p-2 hover:bg-red-50 rounded-lg transition"
+                          title="Delete Category"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Pagination */}
+      <AdminPagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        setCurrentPage={setCurrentPage}
+        totalResults={filteredCategories.length}
+        indexOfFirst={indexOfFirstItem}
+        indexOfLast={indexOfLastItem}
+      />
+
 
       {/* Form Modal */}
       {formModal.isOpen && (

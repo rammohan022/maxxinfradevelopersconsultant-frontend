@@ -7,8 +7,18 @@ const CTASection: React.FC = () => {
     return (
         <section
             id="cta-section"
-            className="relative overflow-hidden border-y border-gray-100 py-20 bg-gradient-to-br from-slate-50 to-slate-100"
+            className="relative overflow-hidden border-y border-gray-100 py-20"
         >
+            {/* Background Image Texture */}
+            <div className="absolute inset-0 z-0 bg-slate-50">
+                <Image
+                    src="/img/crumpled_paper_texture.png"
+                    alt="CTA Background Texture"
+                    fill
+                    className="object-cover opacity-50 mix-blend-multiply"
+                />
+            </div>
+
             {/* Content */}
             <Container className="relative z-10 max-w-4xl text-center">
                 <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">

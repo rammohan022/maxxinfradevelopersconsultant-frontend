@@ -32,13 +32,22 @@ function formatTitleCase(str: string): string {
 }
 
 /* ================= DEFAULT NAV ITEMS ================= */
-const defaultNavItems = [
+type NavItem = {
+  label: string;
+  href: string;
+  mega?: boolean;
+  dropdown?: boolean;
+  resourceDropdown?: boolean;
+  complianceDropdown?: boolean;
+};
+
+const defaultNavItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about-us' },
   { label: 'Services', href: '/services', mega: true },
   { label: 'Careers', href: '#', dropdown: true },
   { label: 'Resources', href: '#', resourceDropdown: true },
-  { label: 'Compliance', href: '#', complianceDropdown: true },
+  { label: 'Compliance', href: '/compliance' },
 ]
 
 export default function Header() {
@@ -422,65 +431,7 @@ export default function Header() {
                 ) : item.complianceDropdown ? (
 
                   /* ================= COMPLIANCE LIBRARY DROPDOWN ================= */
-                  <div
-                    className="relative"
-                    onMouseEnter={() => setComplianceOpen(true)}
-                    onMouseLeave={() => setComplianceOpen(false)}
-                  >
-                    <div className="flex items-center gap-1 cursor-pointer">
-                      <span className="text-slate-800 hover:text-secondary font-semibold py-2 transition-colors">
-                        {formatTitleCase(item.label)}
-                      </span>
-                      <ChevronDown size={16} className={`text-slate-800 group-hover:text-secondary transition-all duration-300 ${complianceOpen ? 'rotate-180' : ''}`} />
-                    </div>
-
-                    <AnimatePresence>
-                      {complianceOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 mt-3 w-64 bg-white shadow-xl border-t-2 border-primary rounded-xl overflow-hidden z-50 p-2 max-h-80 overflow-y-auto [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full"
-                        >
-                          <div className="space-y-1">
-                            {websiteLinks && websiteLinks.length > 0 ? (
-                              websiteLinks.map((wLink) => (
-                                <a
-                                  key={wLink.id}
-                                  href={wLink.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  onClick={() => setComplianceOpen(false)}
-                                  className="flex items-center justify-between text-sm font-semibold text-slate-700 hover:text-secondary p-2 rounded-lg hover:bg-orange-50/50 transition-colors group/link"
-                                >
-                                  <div className="flex items-center gap-2 overflow-hidden">
-                                    <ChevronRight size={14} className="text-secondary shrink-0" />
-                                    <span className="truncate">{formatTitleCase(wLink.title)}</span>
-                                  </div>
-                                  <ExternalLink size={11} className="text-slate-400 group-hover/link:text-secondary shrink-0 ml-1" />
-                                </a>
-                              ))
-                            ) : (
-                              <a
-                                href="https://ablyworks.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setComplianceOpen(false)}
-                                className="flex items-center justify-between text-sm font-semibold text-slate-700 hover:text-secondary p-2 rounded-lg hover:bg-orange-50/50 transition-colors group/link"
-                              >
-                                <div className="flex items-center gap-2 overflow-hidden">
-                                  <ChevronRight size={14} className="text-secondary shrink-0" />
-                                  <span className="truncate">Ablyworks</span>
-                                </div>
-                                <ExternalLink size={11} className="text-slate-400 group-hover/link:text-secondary shrink-0 ml-1" />
-                              </a>
-                            )}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
+                  <div className="hidden"></div>
                 ) : (
                   /* ================= NORMAL LINK ================= */
                   <Link
@@ -713,64 +664,10 @@ export default function Header() {
                   </AnimatePresence>
                 </div>
 
-                {/* Mobile Compliance Library Accordion */}
-                <div className="rounded-lg overflow-hidden">
-                  <button
-                    className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:text-secondary hover:bg-orange-50/50 transition-colors"
-                    onClick={() => setMobileComplianceOpen(!mobileComplianceOpen)}
-                  >
-                    <span>Compliance Library</span>
-                    <motion.div animate={{ rotate: mobileComplianceOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-                      <ChevronDown size={20} className="text-gray-400" />
-                    </motion.div>
-                  </button>
-
-                  <AnimatePresence>
-                    {mobileComplianceOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        className="bg-gray-50/50"
-                      >
-                        <div className="px-6 py-3 ml-6 my-2 space-y-2 border-l-2 border-secondary/20 max-h-60 overflow-y-auto">
-                          {websiteLinks && websiteLinks.length > 0 ? (
-                            websiteLinks.map((wLink) => (
-                              <a
-                                key={wLink.id}
-                                href={wLink.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setMobileOpen(false)}
-                                className="flex items-center justify-between text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors"
-                              >
-                                <div className="flex items-center gap-2 overflow-hidden">
-                                  <ChevronRight size={12} className="text-secondary/50" />
-                                  <span className="truncate">{formatTitleCase(wLink.title)}</span>
-                                </div>
-                                <ExternalLink size={11} className="text-slate-400 shrink-0 ml-1" />
-                              </a>
-                            ))
-                          ) : (
-                            <a
-                              href="https://ablyworks.com/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              onClick={() => setMobileOpen(false)}
-                              className="flex items-center justify-between text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors"
-                            >
-                              <div className="flex items-center gap-2 overflow-hidden">
-                                <ChevronRight size={12} className="text-secondary/50" />
-                                <span className="truncate">Ablyworks</span>
-                              </div>
-                              <ExternalLink size={11} className="text-slate-400 shrink-0 ml-1" />
-                            </a>
-                          )}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                {/* Mobile Compliance Link */}
+                <Link href="/compliance" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:text-secondary hover:bg-orange-50/50 rounded-lg">
+                  {formatTitleCase(navItems.find((i) => i.href === '/compliance')?.label || 'Compliance')}
+                </Link>
 
                 <div className="p-4 pt-6 mt-2 border-t border-gray-100">
                   <Link

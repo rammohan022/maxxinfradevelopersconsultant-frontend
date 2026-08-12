@@ -141,7 +141,7 @@ export default function CompliancePage() {
               Our Compliance Services
             </h2>
             <p className="text-lg text-slate-600">
-              Comprehensive coverage across every stage of your business's regulatory journey.
+              Comprehensive coverage across every stage of your business&apos;s regulatory journey.
             </p>
           </div>
 
@@ -231,7 +231,7 @@ export default function CompliancePage() {
                 Track Every Filing, Deadline & Update in Real Time
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed font-medium pb-2">
-                Our compliance dashboard gives you complete visibility into your organization's statutory status — no more chasing spreadsheets or waiting on emails.
+                Our compliance dashboard gives you complete visibility into your organization&apos;s statutory status — no more chasing spreadsheets or waiting on emails.
               </p>
               
               <ul className="space-y-5">

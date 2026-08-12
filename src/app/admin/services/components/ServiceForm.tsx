@@ -133,6 +133,10 @@ const slugify = (text: string) => {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
+            if (file.size > 10 * 1024 * 1024) {
+                toast.error("Image size must be less than 10MB");
+                return;
+            }
             setImageFile(file);
             setPreview(URL.createObjectURL(file));
         }
@@ -141,6 +145,10 @@ const slugify = (text: string) => {
     const handleContentFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
+            if (file.size > 10 * 1024 * 1024) {
+                toast.error("Content Image size must be less than 10MB");
+                return;
+            }
             setContentImageFile(file);
             setContentImagePreview(URL.createObjectURL(file));
         }
@@ -261,7 +269,7 @@ const slugify = (text: string) => {
                     </div>
                     <div className="flex flex-col gap-0.5 mt-1 ml-[5rem]">
                         <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
-                        <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 2MB</p>
+                        <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 10MB</p>
                     </div>
                 </div>
             </section>
@@ -295,7 +303,7 @@ const slugify = (text: string) => {
                     </div>
                     <div className="flex flex-col gap-0.5 mt-1 ml-[6rem]">
                         <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
-                        <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 2MB</p>
+                        <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 10MB</p>
                     </div>
                 </div>
             </section>

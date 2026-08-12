@@ -57,9 +57,11 @@ export default function Testimonials() {
 
   const getVisibleCount = () => {
     if (typeof window !== 'undefined') {
-      return window.innerWidth < 768 ? 1 : 2;
+      if (window.innerWidth < 768) return 1;
+      if (window.innerWidth < 1024) return 2;
+      return 3;
     }
-    return 2;
+    return 3;
   };
 
   const visibleCount = getVisibleCount();
@@ -110,7 +112,7 @@ export default function Testimonials() {
 
         {/* Slider */}
         <div className="relative max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-10 transition-all duration-500 relative min-h-[300px]">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 transition-all duration-500 relative min-h-[280px]">
             <AnimatePresence mode="wait">
               {visibleTestimonials.map((item, i) => (
                 <motion.div
@@ -119,7 +121,7 @@ export default function Testimonials() {
                   animate={{ opacity: 1, x: 0, scale: 1 }}
                   exit={{ opacity: 0, x: -50, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="flex flex-col bg-white shadow-xl rounded-2xl p-6 sm:p-8 hover:shadow-primary/10 transition-all duration-300 relative"
+                  className="flex flex-col bg-white shadow-xl rounded-2xl p-5 sm:p-6 hover:shadow-primary/10 transition-all duration-300 relative"
                 >
                   <Quote className="absolute top-4 right-4 sm:top-6 sm:right-6 w-10 h-10 text-primary/10 -z-0" />
                   

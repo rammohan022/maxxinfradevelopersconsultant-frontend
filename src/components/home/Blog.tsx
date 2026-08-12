@@ -24,10 +24,10 @@ export default function Blog() {
 
   if (isLoading || isError || blogs.length === 0) return null;
 
-  // Show only last 3 blogs
+  // Show only last 4 blogs
   const latestBlogs = [...blogs]
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    .slice(0, 3);
+    .slice(0, 4);
 
   return (
     <section className="py-12 md:py-16 bg-slate-50">

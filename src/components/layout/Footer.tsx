@@ -23,8 +23,8 @@ export default function Footer() {
       {/* 1. Pre-Footer Gradient Call-To-Action Block */}
       <section className="py-10 md:py-12 text-white relative overflow-hidden bg-gray-700">
         {/* World Map Background Graphic */}
-        <div 
-          className="absolute inset-0 opacity-[0.7] pointer-events-none z-0" 
+        <div
+          className="absolute inset-0 opacity-[0.7] pointer-events-none z-0"
           style={{
             backgroundImage: "url('/img/footer-bg.png')",
             backgroundSize: "cover",
@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Side: Pitch and Pill Badges */}
             <div className="lg:col-span-6 space-y-8">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight max-w-2xl">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-primary leading-tight max-w-2xl">
                 Let&apos;s discuss how People Consulting can help you.
               </h2>
 
@@ -51,7 +51,7 @@ export default function Footer() {
                   <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white relative z-10 shadow-md border-2 border-white/30 after:content-[''] after:absolute after:right-[-6px] after:top-1/2 after:-translate-y-1/2 after:border-t-[6px] after:border-t-transparent after:border-b-[6px] after:border-b-transparent after:border-l-[8px] after:border-l-secondary">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md text-white px-6 py-2.5 rounded-full text-xs sm:text-sm font-normal shadow-sm -ml-3 pl-6 border border-white/15">
+                  <div className="bg-white/40 backdrop-blur-md text-primary px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm -ml-3 pl-6 border border-white/50">
                     <a href={`mailto:${email}`} className="hover:text-secondary transition-colors">{email}</a>
                   </div>
                 </div>
@@ -61,7 +61,7 @@ export default function Footer() {
                   <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white relative z-10 shadow-md border-2 border-white/30 after:content-[''] after:absolute after:right-[-6px] after:top-1/2 after:-translate-y-1/2 after:border-t-[6px] after:border-t-transparent after:border-b-[6px] after:border-b-transparent after:border-l-[8px] after:border-l-secondary">
                     <Phone className="w-5 h-5" />
                   </div>
-                  <div className="bg-white/10 backdrop-blur-md text-white px-6 py-2.5 rounded-full text-xs sm:text-sm font-normal shadow-sm -ml-3 pl-6 border border-white/15">
+                  <div className="bg-white/40 backdrop-blur-md text-primary px-6 py-2.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm -ml-3 pl-6 border border-white/50">
                     <a href={`tel:${phone.replace(/\s+/g, '')}`} className="hover:text-secondary transition-colors">{phone}</a>
                   </div>
                 </div>
@@ -72,7 +72,7 @@ export default function Footer() {
             <div className="lg:col-span-6 flex justify-center lg:justify-end">
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-xl border border-slate-100 transform hover:-translate-y-1.5 transition-all duration-300">
                 {/* Top skyline image */}
-                <div className="relative h-48 w-full">
+                <div className="relative h-52 w-full">
                   <Image
                     src="/img/footer.png"
                     alt="People Consulting Office Skyline"
@@ -83,10 +83,10 @@ export default function Footer() {
                 </div>
                 {/* Details */}
                 <div className="p-8 text-slate-800">
-                  <span className="text-[10px] font-bold text-slate-400 tracking-widest block mb-3">
+                  <span className="text-[10px] font-bold text-slate-500 tracking-widest block mb-3">
                     Our Offices
                   </span>
-                  
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <h4 className="text-sm font-bold text-primary tracking-wide mb-2">
@@ -119,8 +119,8 @@ export default function Footer() {
       {/* 2. Main Footer Bottom Bar */}
       <section className="bg-slate-50 py-4 border-t border-slate-200/60 relative overflow-hidden z-20">
         {/* Background Paper Texture Overlay */}
-        <div 
-          className="absolute inset-0 opacity-[0.20] pointer-events-none" 
+        <div
+          className="absolute inset-0 opacity-[0.20] pointer-events-none"
           style={{
             backgroundImage: "url('/img/paper_texture_bg.png')",
             backgroundSize: "cover",
@@ -129,8 +129,8 @@ export default function Footer() {
         />
         <Container>
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-            {/* Logo */}
-            <div className="flex items-center shrink-0">
+            {/* Logo and Copyright */}
+            <div className="flex items-center gap-4 shrink-0 flex-wrap justify-center sm:justify-start">
               <Link href="/" className="transition-opacity hover:opacity-90">
                 <Image
                   src="/img/logo.png"
@@ -140,6 +140,29 @@ export default function Footer() {
                   className="h-8 w-auto"
                 />
               </Link>
+              <div className="text-xs text-slate-500 font-medium border-l border-slate-300 pl-4 hidden sm:block">
+                © {new Date().getFullYear()} People Consulting. Developed by{' '}
+                <a
+                  href="https://webexbytes.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-slate-600 hover:text-primary transition-colors"
+                >
+                  webexbytes
+                </a>
+              </div>
+            </div>
+            {/* Mobile Copyright (shows only on very small screens) */}
+            <div className="text-xs text-slate-500 font-medium sm:hidden text-center w-full mt-2">
+              © {new Date().getFullYear()} People Consulting. Developed by{' '}
+              <a
+                href="https://webexbytes.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-slate-600 hover:text-primary transition-colors"
+              >
+                webexbytes
+              </a>
             </div>
 
             {/* Actions & Socials Bar */}
@@ -201,19 +224,6 @@ export default function Footer() {
                     <Instagram className="w-4 h-4" />
                   </a>
                 )}
-              </div>
-
-              {/* Copyright & Developed by */}
-              <div className="text-xs text-slate-500 font-medium whitespace-nowrap pl-2">
-                © {new Date().getFullYear()} People Consulting. Developed by{' '}
-                <a
-                  href="https://webexbytes.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-slate-600 hover:text-primary transition-colors"
-                >
-                  webexbytes
-                </a>
               </div>
             </div>
           </div>

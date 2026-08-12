@@ -337,92 +337,100 @@ export default function Header() {
                             className="w-[750px] bg-white shadow-2xl border-t-2 border-primary rounded-xl overflow-hidden p-6"
                           >
                             <div className="grid grid-cols-3 gap-6">
-                            {/* Column 1: Insights & Media */}
-                            <div>
-                              <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
-                                <BookOpen size={14} className="text-secondary" />
-                                <span>Insights &amp; Media</span>
-                              </h4>
-                              <div className="space-y-1">
-                                <Link
-                                  href="/blog"
-                                  onClick={() => setResourceOpen(false)}
-                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
-                                >
-                                  <ChevronRight size={14} className="text-secondary shrink-0" />
-                                  <span>Blogs</span>
-                                </Link>
-                                <Link
-                                  href="/hr-free-tools"
-                                  onClick={() => setResourceOpen(false)}
-                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
-                                >
-                                  <ChevronRight size={14} className="text-secondary shrink-0" />
-                                  <span>HR Free Tools</span>
-                                </Link>
+                              {/* Column 1: Insights & Media */}
+                              <div>
+                                <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
+                                  <BookOpen size={14} className="text-secondary" />
+                                  <span>Insights &amp; Media</span>
+                                </h4>
+                                <div className="space-y-1">
+                                  <Link
+                                    href="/blog"
+                                    onClick={() => setResourceOpen(false)}
+                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                  >
+                                    <ChevronRight size={14} className="text-secondary shrink-0" />
+                                    <span>Blogs</span>
+                                  </Link>
+                                  <Link
+                                    href="/hr-free-tools"
+                                    onClick={() => setResourceOpen(false)}
+                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                  >
+                                    <ChevronRight size={14} className="text-secondary shrink-0" />
+                                    <span>HR Free Tools</span>
+                                  </Link>
+                                  <Link
+                                    href="/hr-metrics"
+                                    onClick={() => setResourceOpen(false)}
+                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                  >
+                                    <ChevronRight size={14} className="text-secondary shrink-0" />
+                                    <span>HR Metrics</span>
+                                  </Link>
+                                </div>
+                              </div>
+
+                              {/* Column 2: Calculators */}
+                              <div>
+                                <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
+                                  <Calculator size={14} className="text-secondary" />
+                                  <span>HR Calculators</span>
+                                </h4>
+                                <div className="space-y-1">
+                                  <Link
+                                    href="/salary-calculator"
+                                    onClick={() => setResourceOpen(false)}
+                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                  >
+                                    <ChevronRight size={14} className="text-secondary shrink-0" />
+                                    <span>Salary Calculator</span>
+                                  </Link>
+                                  <Link
+                                    href="/gratuity-calculator"
+                                    onClick={() => setResourceOpen(false)}
+                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                  >
+                                    <ChevronRight size={14} className="text-secondary shrink-0" />
+                                    <span>Gratuity Calculator</span>
+                                  </Link>
+                                  <Link
+                                    href="/attrition-calculator"
+                                    onClick={() => setResourceOpen(false)}
+                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                  >
+                                    <ChevronRight size={14} className="text-secondary shrink-0" />
+                                    <span>Attrition Rate Calculator</span>
+                                  </Link>
+                                </div>
+                              </div>
+
+
+                              {/* Column 4: Compliance Calendar */}
+                              <div>
+                                <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
+                                  <Calendar size={14} className="text-secondary" />
+                                  <span>Compliance Calendar</span>
+                                </h4>
+                                <div className="space-y-1">
+                                  {pdfs.length > 0 ? (
+                                    pdfs.map((pdf) => (
+                                      <Link
+                                        key={pdf.id}
+                                        href={`/pdf?doc=${slugifyCategory(pdf.title)}`}
+                                        onClick={() => setResourceOpen(false)}
+                                        className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                      >
+                                        <ChevronRight size={14} className="text-secondary shrink-0" />
+                                        <span className="truncate">{formatTitleCase(pdf.title)}</span>
+                                      </Link>
+                                    ))
+                                  ) : (
+                                    <span className="text-xs text-slate-400 pl-2">No documents available</span>
+                                  )}
+                                </div>
                               </div>
                             </div>
-
-                            {/* Column 2: Calculators */}
-                            <div>
-                              <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
-                                <Calculator size={14} className="text-secondary" />
-                                <span>HR Calculators</span>
-                              </h4>
-                              <div className="space-y-1">
-                                <Link
-                                  href="/salary-calculator"
-                                  onClick={() => setResourceOpen(false)}
-                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
-                                >
-                                  <ChevronRight size={14} className="text-secondary shrink-0" />
-                                  <span>Salary Calculator</span>
-                                </Link>
-                                <Link
-                                  href="/gratuity-calculator"
-                                  onClick={() => setResourceOpen(false)}
-                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
-                                >
-                                  <ChevronRight size={14} className="text-secondary shrink-0" />
-                                  <span>Gratuity Calculator</span>
-                                </Link>
-                                <Link
-                                  href="/attrition-calculator"
-                                  onClick={() => setResourceOpen(false)}
-                                  className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
-                                >
-                                  <ChevronRight size={14} className="text-secondary shrink-0" />
-                                  <span>Attrition Rate Calculator</span>
-                                </Link>
-                              </div>
-                            </div>
-
-
-                            {/* Column 4: Compliance Calendar */}
-                            <div>
-                              <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
-                                <Calendar size={14} className="text-secondary" />
-                                <span>Compliance Calendar</span>
-                              </h4>
-                              <div className="space-y-1">
-                                {pdfs.length > 0 ? (
-                                  pdfs.map((pdf) => (
-                                    <Link
-                                      key={pdf.id}
-                                      href={`/pdf?doc=${slugifyCategory(pdf.title)}`}
-                                      onClick={() => setResourceOpen(false)}
-                                      className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
-                                    >
-                                      <ChevronRight size={14} className="text-secondary shrink-0" />
-                                      <span className="truncate">{formatTitleCase(pdf.title)}</span>
-                                    </Link>
-                                  ))
-                                ) : (
-                                  <span className="text-xs text-slate-400 pl-2">No documents available</span>
-                                )}
-                              </div>
-                            </div>
-                          </div>
                           </motion.div>
                         </div>
                       )}

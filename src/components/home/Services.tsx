@@ -7,10 +7,10 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Services() {
   return (
-    <section className="py-20 lg:py-28 bg-sky-50/40 relative overflow-hidden">
+    <section className="py-12 lg:py-18 bg-slate-100 relative overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
+
           {/* Left Column: Heading & Description */}
           <div className="lg:col-span-5 space-y-6">
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
@@ -24,7 +24,7 @@ export default function Services() {
 
           {/* Right Column: 2 Cards (Services & Industries) */}
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6 lg:gap-8">
-            
+
             {/* Card 1: Services */}
             <Link
               href="/services"
@@ -37,7 +37,7 @@ export default function Services() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
-              
+
               {/* Dark Gradient Overlay at Bottom */}
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-900/40 to-transparent" />
 
@@ -46,7 +46,7 @@ export default function Services() {
                 <span className="text-white font-bold text-lg sm:text-xl tracking-wider drop-shadow">
                   Services
                 </span>
-                
+
                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary transition-all duration-300 shadow-lg">
                   <ArrowRight size={20} className="transform group-hover:translate-x-0.5 transition-transform" />
                 </div>

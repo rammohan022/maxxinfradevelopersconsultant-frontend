@@ -65,70 +65,53 @@ export default function HRMetricsPage() {
         canonicalPath="/hr-metrics"
       />
 
-      {/* HERO SECTION */}
-      <section className="relative py-16 lg:py-24 overflow-hidden bg-gray-900 min-h-[400px] flex items-center border-b border-slate-200">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/img/team-hero-bg.png"
-            alt="HR Metrics"
-            fill
-            priority
-            className="object-cover opacity-60"
-          />
-        </div>
-        
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gray-900/70 z-0" />
-        
-        <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left mt-8">
-          <div className="max-w-3xl w-full text-left">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-[13px] text-gray-300 mb-4 flex-wrap font-medium">
-              <Link href="/" className="hover:text-white transition-colors">
-                Home
-              </Link>
-              <span className="text-gray-500">&gt;</span>
-              <span className="hover:text-white cursor-pointer transition-colors">
-                Resources
-              </span>
-              <span className="text-gray-500">&gt;</span>
-              <span className="font-bold text-white">HR Metrics</span>
-            </nav>
+      {/* HEADER SECTION */}
+      <div className="bg-slate-50/50 pt-10 pb-6 border-b border-slate-200">
+        <Container>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="max-w-3xl">
+              {/* Breadcrumb */}
+              <nav className="flex items-center gap-2 text-[11px] uppercase tracking-wider font-bold text-slate-500 mb-4">
+                <Link href="/" className="hover:text-primary transition-colors">
+                  Home
+                </Link>
+                <span>&gt;</span>
+                <span className="hover:text-primary cursor-pointer transition-colors">
+                  Resources
+                </span>
+                <span>&gt;</span>
+                <span className="text-secondary">HR Metrics</span>
+              </nav>
 
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-secondary text-xs font-bold tracking-widest mb-4 backdrop-blur-md">
-              <PieChart size={14} />
-              <span>HR METRICS</span>
+              <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
+                HR Metrics
+              </h1>
+              
+              <p className="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
+                Track, measure and improve your people performance with the most important HR metrics and formulas used by organizations.
+              </p>
             </div>
 
-            <h1 className="text-xl md:text-2xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
-              HR Metrics
-            </h1>
-            
-            <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl leading-relaxed mb-8 font-normal drop-shadow-md">
-              Track, measure and improve your people performance with the most important<br className="hidden md:block" /> HR metrics and formulas used by organizations.
-            </p>
-
-            <div className="relative max-w-md">
+            <div className="relative w-full md:w-80 lg:w-96 shrink-0">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none">
-                <Search className="h-[18px] w-[18px] text-slate-400" />
+                <Search className="h-4 w-4 text-slate-400" />
               </div>
               <input
                 type="text"
                 placeholder="Search for any HR metric..."
-                className="block w-full pl-10 pr-4 py-3 border border-white/20 rounded-xl bg-white/95 backdrop-blur-sm placeholder-slate-500 text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-[15px] shadow-lg"
+                className="block w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl bg-white placeholder-slate-400 text-slate-800 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-sm shadow-sm"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
           </div>
         </Container>
-      </section>
+      </div>
 
       {/* CATEGORIES SECTION */}
       <section className="py-12 bg-white border-b border-slate-100">
         <Container>
-          <h2 className="text-center font-bold text-2xl text-navy mb-8 tracking-tight">
+          <h2 className="text-center font-bold text-xl md:text-2xl text-primary mb-8 tracking-tight">
             Explore by Category
           </h2>
           <div className="flex flex-wrap justify-center gap-4">
@@ -140,8 +123,8 @@ export default function HRMetricsPage() {
                   key={cat.name}
                   onClick={() => handleCategoryChange(cat.name as MetricCategory)}
                   className={`flex flex-col items-center justify-center min-w-[100px] h-24 rounded-xl border transition-all duration-200 ${isActive
-                      ? 'border-primary/30 bg-primary/5 text-primary shadow-sm'
-                      : 'border-slate-200 bg-white text-slate-600 hover:border-primary/30 hover:bg-slate-50'
+                    ? 'border-primary/30 bg-primary/5 text-primary shadow-sm'
+                    : 'border-slate-200 bg-white text-slate-600 hover:border-primary/30 hover:bg-slate-50'
                     }`}
                 >
                   <Icon className={`h-6 w-6 mb-2 ${isActive ? 'text-primary' : 'text-slate-400'}`} />
@@ -162,7 +145,7 @@ export default function HRMetricsPage() {
             <div className="w-full lg:w-1/4 flex-shrink-0">
               <div className="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden sticky top-24">
                 <div className="px-5 py-4 bg-slate-100 border-b border-slate-200">
-                  <h3 className="font-bold text-navy text-sm">HR Metrics List</h3>
+                  <h3 className="font-bold text-primary text-sm">HR Metrics List</h3>
                 </div>
                 <div className="flex flex-col max-h-[60vh] overflow-y-auto">
                   {filteredMetrics.length > 0 ? (
@@ -173,8 +156,8 @@ export default function HRMetricsPage() {
                           key={metric.id}
                           onClick={() => setSelectedMetricId(metric.id)}
                           className={`flex items-center w-full px-5 py-3.5 text-left border-b border-slate-100 transition-colors ${isActive
-                              ? 'bg-primary text-white font-semibold'
-                              : 'bg-white text-slate-700 hover:bg-slate-50'
+                            ? 'bg-primary text-white font-semibold'
+                            : 'bg-white text-slate-700 hover:bg-slate-50'
                             }`}
                         >
                           <span className={`text-xs font-bold mr-3 rounded px-1.5 py-0.5 ${isActive ? 'bg-white/20' : 'bg-primary/10 text-primary'}`}>
@@ -204,7 +187,7 @@ export default function HRMetricsPage() {
                       <div className="bg-primary text-white text-lg font-bold h-12 w-12 rounded-lg flex items-center justify-center shadow-sm">
                         {selectedMetric.id}
                       </div>
-                      <h2 className="text-2xl md:text-3xl font-bold text-navy tracking-tight">
+                      <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
                         {selectedMetric.name}
                       </h2>
                     </div>
@@ -224,7 +207,7 @@ export default function HRMetricsPage() {
                       <FileText className="h-4 w-4" />
                       Formula
                     </div>
-                    <div className="font-semibold text-navy text-sm md:text-base">
+                    <div className="font-semibold text-primary text-sm md:text-base">
                       {selectedMetric.formula.split('=').map((part, index) => (
                         <span key={index}>
                           {part} {index === 0 ? <span className="mx-2">=</span> : null}
@@ -238,7 +221,7 @@ export default function HRMetricsPage() {
 
                     {/* Example */}
                     <div className="border border-slate-200 rounded-xl p-6">
-                      <div className="flex items-center gap-2 text-navy font-bold text-sm mb-3">
+                      <div className="flex items-center gap-2 text-primary font-bold text-sm mb-3">
                         <LayoutGrid className="h-4 w-4 text-primary" />
                         Example
                       </div>
@@ -254,7 +237,7 @@ export default function HRMetricsPage() {
 
                     {/* How to Interpret */}
                     <div className="border border-slate-200 rounded-xl p-6">
-                      <div className="flex items-center gap-2 text-navy font-bold text-sm mb-3">
+                      <div className="flex items-center gap-2 text-primary font-bold text-sm mb-3">
                         <Search className="h-4 w-4 text-primary" />
                         How to Interpret
                       </div>
@@ -274,20 +257,20 @@ export default function HRMetricsPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     {/* Industry Benchmark */}
                     <div className="border border-slate-200 rounded-xl p-6">
-                      <div className="flex items-center gap-2 text-navy font-bold text-sm mb-4">
+                      <div className="flex items-center gap-2 text-primary font-bold text-sm mb-4">
                         <TrendingUp className="h-4 w-4 text-primary" />
                         Industry Benchmark
                       </div>
                       <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm">
-                        <div><span className="text-slate-500 mr-1">Good:</span><span className="font-semibold text-navy">{selectedMetric.benchmark.good}</span></div>
-                        <div><span className="text-slate-500 mr-1">Average:</span><span className="font-semibold text-navy">{selectedMetric.benchmark.average}</span></div>
-                        <div><span className="text-slate-500 mr-1">High:</span><span className="font-semibold text-navy">{selectedMetric.benchmark.high}</span></div>
+                        <div><span className="text-slate-500 mr-1">Good:</span><span className="font-semibold text-primary">{selectedMetric.benchmark.good}</span></div>
+                        <div><span className="text-slate-500 mr-1">Average:</span><span className="font-semibold text-primary">{selectedMetric.benchmark.average}</span></div>
+                        <div><span className="text-slate-500 mr-1">High:</span><span className="font-semibold text-primary">{selectedMetric.benchmark.high}</span></div>
                       </div>
                     </div>
 
                     {/* Why It Matters */}
                     <div className="border border-slate-200 rounded-xl p-6">
-                      <div className="flex items-center gap-2 text-navy font-bold text-sm mb-3">
+                      <div className="flex items-center gap-2 text-primary font-bold text-sm mb-3">
                         <Clock className="h-4 w-4 text-primary" />
                         Why It Matters
                       </div>
@@ -299,7 +282,7 @@ export default function HRMetricsPage() {
 
                   {/* Related Metrics */}
                   <div className="border border-slate-200 rounded-xl p-6">
-                    <div className="flex items-center gap-2 text-navy font-bold text-sm mb-4">
+                    <div className="flex items-center gap-2 text-primary font-bold text-sm mb-4">
                       <LinkIcon className="h-4 w-4 text-primary" />
                       Related Metrics
                     </div>
@@ -318,7 +301,7 @@ export default function HRMetricsPage() {
                   <div className="text-slate-400 mb-4">
                     <Search className="h-12 w-12 mx-auto" />
                   </div>
-                  <h3 className="text-xl font-bold text-navy mb-2">No metric selected</h3>
+                  <h3 className="text-xl font-bold text-primary mb-2">No metric selected</h3>
                   <p className="text-slate-500">Please select a metric from the list to view its details.</p>
                 </div>
               )}

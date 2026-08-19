@@ -4,6 +4,7 @@ import {
   AboutUs,
   Services,
   IndustriesServe,
+  FeaturesHRMS,
   CoreValues,
   CorporateTraining,
   Testimonials,
@@ -21,6 +22,7 @@ export default function Home() {
       <AboutUs />
       <Services />
       <IndustriesServe />
+      <FeaturesHRMS />
       <CallToAction />
       <CoreValues />
       <CorporateTraining />

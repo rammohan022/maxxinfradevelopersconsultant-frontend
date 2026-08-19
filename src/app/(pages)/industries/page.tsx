@@ -135,16 +135,41 @@ export default function IndustriesPage() {
   return (
     <>
       {/* 1. HERO SECTION */}
-      <section className="bg-slate-50 pt-16 pb-20 border-b border-slate-200">
-        <Container>
-          <div className="max-w-4xl pt-8 pb-4">
-            <h4 className="text-secondary text-xs font-bold tracking-[0.2em] uppercase mb-4">
+      <section className="relative py-16 lg:py-24 overflow-hidden bg-gray-900 min-h-[400px] flex items-center border-b border-slate-200">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/img/industries_card.png"
+            alt="Industries Hero"
+            fill
+            priority
+            className="object-cover opacity-60"
+          />
+        </div>
+        
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gray-900/70 z-0" />
+        
+        <Container className="relative z-10 w-full flex h-full flex-col justify-center items-start text-left mt-8">
+          <div className="max-w-3xl w-full text-left">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-[13px] text-gray-300 mb-4 flex-wrap font-medium">
+              <Link href="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+              <span className="text-gray-500">&gt;</span>
+              <span className="font-bold text-white">Industries</span>
+            </nav>
+
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/20 text-secondary text-xs font-bold tracking-[0.2em] uppercase mb-4 backdrop-blur-md">
               Sector Directory — {industrySectors.length.toString().padStart(2, '0')} Industries
-            </h4>
-            <h1 className="text-xl md:text-2xl font-bold text-primary mb-2 tracking-tight">
+            </div>
+
+            <h1 className="text-xl md:text-2xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
               Workforce & compliance expertise, organized by industry.
             </h1>
-            <p className="text-sm md:text-base text-slate-500 max-w-3xl leading-relaxed">
+            
+            <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl leading-relaxed font-normal drop-shadow-md">
               Every sector hires differently and answers to different rules. Browse the directory to see how we staff and stay compliant within your world.
             </p>
           </div>
@@ -212,14 +237,14 @@ export default function IndustriesPage() {
 
                 {/* Title & Desc */}
                 <div className="flex items-baseline gap-4 mb-4">
-                  <span className="text-secondary font-bold text-xl md:text-2xl">
+                  <span className="text-secondary font-bold text-lg md:text-xl">
                     {(activeIdx + 1).toString().padStart(2, '0')}
                   </span>
-                  <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
+                  <h2 className="text-lg md:text-xl font-bold text-primary tracking-tight">
                     {activeSector.name}
                   </h2>
                 </div>
-                <p className="text-slate-500 text-sm md:text-base leading-relaxed mb-16 max-w-3xl">
+                <p className="text-slate-500 text-sm leading-relaxed mb-12 max-w-3xl">
                   {activeSector.desc}
                 </p>
 
@@ -229,13 +254,13 @@ export default function IndustriesPage() {
                     The Brief — What We Cover
                   </h4>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 mb-16">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-2 mb-16">
                     {activeSector.features.map((feature, fIdx) => (
-                      <div key={fIdx} className="flex items-start gap-4 border-b border-slate-100 pb-4">
-                        <span className="text-secondary font-mono text-[11px] font-bold pt-1 shrink-0">
+                      <div key={fIdx} className="group flex items-start gap-4 border-b border-slate-100 pb-3 pt-3 px-3 -mx-3 rounded-xl hover:bg-[#fff9f5] hover:border-transparent transition-all duration-300 cursor-default">
+                        <span className="text-secondary font-mono text-[11px] font-bold pt-1 shrink-0 group-hover:scale-110 transition-transform">
                           {(fIdx + 1).toString().padStart(2, '0')}
                         </span>
-                        <span className="text-primary text-sm font-medium leading-snug">
+                        <span className="text-primary text-sm font-medium leading-snug group-hover:text-secondary transition-colors">
                           {feature}
                         </span>
                       </div>

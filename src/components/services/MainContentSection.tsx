@@ -75,9 +75,9 @@ export default function MainContentSection({
   return (
     <section id="main-content-section" className="bg-white py-16">
       <Container>
-        <div className="flex flex-col gap-12 lg:flex-row">
+        <div className="w-full">
           {/* Primary Content */}
-          <div className="w-full lg:w-2/3">
+          <div className="w-full mb-16">
             {/* Overview */}
             {overview && (
               <div className="mb-12">
@@ -100,7 +100,7 @@ export default function MainContentSection({
                   alt={title || "Service Overview Image"}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  sizes="(max-width: 1024px) 100vw, 100vw"
                 />
               </div>
             )}
@@ -191,48 +191,79 @@ export default function MainContentSection({
             )}
 
             {/* FAQ */}
-            {validFaqs.length > 0 && (
-              <div className="mb-12">
-                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
-                  Frequently Asked Questions
-                </h3>
-                <div className="mb-6 h-1 w-16 bg-red-700" />
+            {(() => {
+              const commonFaqs = [
+                {
+                  question: "What recruitment services do you offer?",
+                  answer: "We offer end-to-end recruitment solutions including Executive Search, Headhunting, High-Volume Staffing, and temporary placements across IT, Finance, Healthcare, Manufacturing, and Corporate Service sectors.",
+                },
+                {
+                  question: "How does the corporate training curriculum get customized?",
+                  answer: "Our training advisors assess your specific organizational goals, compliance requirements, or leadership competency gaps first. Then, we design and deliver workshops online or on-site based on your schedule.",
+                },
+                {
+                  question: "Do you handle statutory compliance and payroll administration?",
+                  answer: "Yes. We manage monthly payroll processes, statutory compliance checks, employee benefits advisory, and ensure strict alignment with current labor law guidelines.",
+                },
+                {
+                  question: "How can we start our partnership with People Consulting?",
+                  answer: "You can book a free consultation directly through our website form, or connect with our advisors via WhatsApp/Phone call to discuss your recruitment or training needs.",
+                },
+              ];
+              
+              const displayFaqs = validFaqs.length > 0 ? validFaqs : commonFaqs;
+              
+              return (
+                <div className="mb-12 border-t border-slate-100 pt-12">
+                  <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
+                    Frequently Asked Questions
+                  </h3>
+                  <div className="mb-8 h-1 w-16 bg-secondary" />
 
-                {validFaqs.map((faq, idx) => (
-                  <div key={idx} className="mb-3 rounded border border-gray-200">
-                    <button
-                      onClick={() => toggleFaq(idx)}
-                      className="flex w-full items-center justify-between px-4 sm:px-6 py-4 text-left hover:bg-gray-50"
-                    >
-                      <span className="font-medium text-primary">
-                        {faq.question}
-                      </span>
-                      <span className="text-red-700">
-                        {openFaq === idx ? "−" : "+"}
-                      </span>
-                    </button>
+                  <div className="grid md:grid-cols-2 gap-4 sm:gap-5 items-start">
+                    {displayFaqs.map((faq, idx) => {
+                      const isOpen = openFaq === idx;
+                      return (
+                        <div
+                          key={idx}
+                          className="bg-white rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all overflow-hidden"
+                        >
+                          <button
+                            onClick={() => toggleFaq(idx)}
+                            className="w-full flex items-center justify-between px-5 py-4 text-left"
+                          >
+                            <span className="font-semibold text-primary text-sm sm:text-base pr-3 leading-snug">
+                              {faq.question}
+                            </span>
+                            <div className="w-7 h-7 rounded-md bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0 font-bold text-lg leading-none">
+                              {isOpen ? <span className="text-secondary">-</span> : <span className="text-slate-400">+</span>}
+                            </div>
+                          </button>
 
-                    {openFaq === idx && (
-                      <div className="bg-gray-50 px-4 sm:px-6 py-4 text-gray-700">
-                        {faq.answer}
-                      </div>
-                    )}
+                          {isOpen && (
+                            <div className="px-5 pb-4 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
+                              {faq.answer}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
-                ))}
-              </div>
-            )}
+                </div>
+              );
+            })()}
           </div>
 
-          {/* Sidebar */}
-          <aside className="w-full lg:w-1/3">
-            <div className="space-y-6 lg:sticky lg:top-24">
-              {/* Contact Form */}
-              <div className="border border-gray-200 bg-white p-6">
-                <h4 className="mb-4 font-semibold text-primary">
-                  Request a Consultation
-                </h4>
+          {/* Bottom Area: Contact Form & CTA */}
+          <div className="w-full max-w-2xl mx-auto space-y-8 pt-8 border-t border-slate-200">
+            {/* Contact Form */}
+            <div className="border border-gray-200 bg-white p-6 sm:p-8 rounded-xl shadow-sm">
+              <h4 className="mb-6 text-xl font-bold text-primary text-center">
+                Request a Consultation
+              </h4>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <input
                     type="text"
                     name="fullName"
@@ -240,7 +271,7 @@ export default function MainContentSection({
                     onChange={handleChange}
                     placeholder="Full Name"
                     required
-                    className="w-full rounded border border-gray-300 px-4 py-2 focus:border-red-700 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
                   />
                   <input
                     type="email"
@@ -249,8 +280,10 @@ export default function MainContentSection({
                     onChange={handleChange}
                     placeholder="Email Address"
                     required
-                    className="w-full rounded border border-gray-300 px-4 py-2 focus:border-red-700 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
                   />
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <input
                     type="tel"
                     name="phoneNumber"
@@ -258,7 +291,7 @@ export default function MainContentSection({
                     onChange={handleChange}
                     placeholder="Phone Number"
                     required
-                    className="w-full rounded border border-gray-300 px-4 py-2 focus:border-red-700 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
                   />
                   <input
                     type="text"
@@ -267,65 +300,40 @@ export default function MainContentSection({
                     onChange={handleChange}
                     placeholder="Subject"
                     required
-                    className="w-full rounded border border-gray-300 px-4 py-2 focus:border-red-700 focus:outline-none"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
                   />
-                  <textarea
-                    rows={3}
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Brief message"
-                    required
-                    className="w-full resize-none rounded border border-gray-300 px-4 py-2 focus:border-secondary focus:outline-none"
-                  />
-                  <div className="flex items-start gap-2.5 pt-1 pb-1">
-                    <input
-                      id="mc-consent"
-                      type="checkbox"
-                      required
-                      className="mt-0.5 h-4 w-4 text-secondary rounded border-gray-300 focus:ring-secondary accent-secondary cursor-pointer flex-shrink-0"
-                    />
-                    <label htmlFor="mc-consent" className="text-xs text-gray-600 leading-snug cursor-pointer select-none">
-                      I agree to the Terms of Service and Privacy Policy.
-                    </label>
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-secondary px-4 py-3 text-sm font-medium text-white transition hover:bg-secondary-dark disabled:bg-gray-400"
-                  >
-                    {isSubmitting ? "Submitting..." : "Submit"}
-                  </button>
-                </form>
-              </div>
-
-              {/* Search/Links placeholder */}
-              {/* <div className="border border-gray-200 bg-white p-6">
-                <h4 className="mb-4 font-semibold text-primary">Search</h4>
-                <input
-                  type="text"
-                  placeholder="Search services..."
-                  className="w-full rounded border border-gray-300 px-4 py-2 focus:border-red-700 focus:outline-none"
+                </div>
+                <textarea
+                  rows={4}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Brief message"
+                  required
+                  className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
                 />
-              </div> */}
-
-              {/* CTA */}
-              <div className="bg-navy p-6 text-white text-center">
-                <h4 className="mb-3 font-serif text-xl font-semibold">
-                  Need Expert Assistance?
-                </h4>
-                <p className="mb-4 text-sm text-gray-300">
-                  Our experts are ready to help.
-                </p>
-                <a
-                  href="/contact-us"
-                  className="block bg-secondary px-6 py-3 text-center font-medium transition hover:bg-secondary-dark"
+                <div className="flex items-start gap-3 pt-2 pb-2">
+                  <input
+                    id="mc-consent"
+                    type="checkbox"
+                    required
+                    className="mt-1 h-4 w-4 text-secondary rounded border-gray-300 focus:ring-secondary accent-secondary cursor-pointer flex-shrink-0"
+                  />
+                  <label htmlFor="mc-consent" className="text-sm text-gray-600 leading-snug cursor-pointer select-none">
+                    I agree to the Terms of Service and Privacy Policy.
+                  </label>
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-secondary px-4 py-4 text-sm font-bold text-white uppercase tracking-wider rounded-lg transition hover:bg-secondary-dark disabled:bg-gray-400"
                 >
-                  Contact Us
-                </a>
-              </div>
+                  {isSubmitting ? "Submitting..." : "Submit"}
+                </button>
+              </form>
             </div>
-          </aside>
+
+          </div>
         </div>
       </Container>
     </section>

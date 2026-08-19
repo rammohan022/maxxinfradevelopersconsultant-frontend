@@ -140,63 +140,38 @@ export default function Footer() {
                   className="h-8 w-auto"
                 />
               </Link>
-              <div className="text-xs text-slate-500 font-medium border-l border-slate-300 pl-4 hidden sm:block">
-                © {new Date().getFullYear()} People Consulting. Developed by{' '}
-                <a
-                  href="https://webexbytes.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-slate-600 hover:text-primary transition-colors"
-                >
-                  webexbytes
-                </a>
-              </div>
-            </div>
-            {/* Mobile Copyright (shows only on very small screens) */}
-            <div className="text-xs text-slate-500 font-medium sm:hidden text-center w-full mt-2">
-              © {new Date().getFullYear()} People Consulting. Developed by{' '}
-              <a
-                href="https://webexbytes.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-slate-600 hover:text-primary transition-colors"
-              >
-                webexbytes
-              </a>
             </div>
 
             {/* Actions & Socials Bar */}
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 flex-wrap justify-center lg:justify-end">
-              {/* Pills */}
               <div className="flex items-center gap-3">
                 <Link
                   href="/submit-cv"
-                  className="px-5 py-2 rounded-full bg-white text-xs sm:text-sm font-semibold text-slate-700 hover:text-primary hover:border-primary/40 shadow-sm border border-slate-200/60 transition duration-300"
+                  className="px-5 py-2 rounded-full bg-[#fff9f5] text-xs sm:text-sm font-semibold text-slate-700 hover:text-white hover:bg-secondary hover:border-secondary shadow-sm border border-orange-100 transition duration-300"
                 >
                   Submit CV
                 </Link>
                 <Link
                   href="/contact-us"
-                  className="px-5 py-2 rounded-full bg-white text-xs sm:text-sm font-semibold text-slate-700 hover:text-primary hover:border-primary/40 shadow-sm border border-slate-200/60 transition duration-300"
+                  className="px-5 py-2 rounded-full bg-[#fff9f5] text-xs sm:text-sm font-semibold text-slate-700 hover:text-white hover:bg-secondary hover:border-secondary shadow-sm border border-orange-100 transition duration-300"
                 >
                   Contact Us
                 </Link>
                 <Link
                   href="/hr-free-tools"
-                  className="px-5 py-2 rounded-full bg-white text-xs sm:text-sm font-semibold text-slate-700 hover:text-primary hover:border-primary/40 shadow-sm border border-slate-200/60 transition duration-300"
+                  className="px-5 py-2 rounded-full bg-[#fff9f5] text-xs sm:text-sm font-semibold text-slate-700 hover:text-white hover:bg-secondary hover:border-secondary shadow-sm border border-orange-100 transition duration-300"
                 >
                   HR Free Tools
                 </Link>
               </div>
 
-              {/* Socials */}
               <div className="flex items-center gap-3">
                 {linkedin && (
                   <a
                     href={linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-white border border-slate-200/60 shadow-sm flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition duration-300"
+                    className="w-8 h-8 rounded-full bg-[#fff9f5] border border-orange-100 shadow-sm flex items-center justify-center text-secondary hover:bg-secondary hover:text-white hover:border-secondary transition duration-300"
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="w-4 h-4" />
@@ -207,7 +182,7 @@ export default function Footer() {
                     href={facebook}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-white border border-slate-200/60 shadow-sm flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition duration-300"
+                    className="w-8 h-8 rounded-full bg-[#fff9f5] border border-orange-100 shadow-sm flex items-center justify-center text-secondary hover:bg-secondary hover:text-white hover:border-secondary transition duration-300"
                     aria-label="Facebook"
                   >
                     <Facebook className="w-4 h-4" />
@@ -218,13 +193,36 @@ export default function Footer() {
                     href={instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-white border border-slate-200/60 shadow-sm flex items-center justify-center text-slate-600 hover:bg-primary hover:text-white transition duration-300"
+                    className="w-8 h-8 rounded-full bg-[#fff9f5] border border-orange-100 shadow-sm flex items-center justify-center text-secondary hover:bg-secondary hover:text-white hover:border-secondary transition duration-300"
                     aria-label="Instagram"
                   >
                     <Instagram className="w-4 h-4" />
                   </a>
                 )}
               </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* 3. Legal/Copyright Bar */}
+      <section className="bg-white py-3 md:py-4 border-t border-slate-200 z-20 relative">
+        <Container>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] sm:text-xs font-medium text-slate-500">
+            <div className="text-center sm:text-left">
+              © {new Date().getFullYear()} People Consulting. All Rights Reserved. Developed by{' '}
+              <a
+                href="https://webexbytes.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-slate-600 hover:text-primary transition-colors"
+              >
+                webexbytes
+              </a>
+            </div>
+            <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
+              <Link href="/terms-and-conditions" className="hover:text-primary transition-colors cursor-pointer">Terms & Conditions</Link>
+              <Link href="/privacy-policy" className="hover:text-primary transition-colors cursor-pointer">Privacy Policy</Link>
             </div>
           </div>
         </Container>

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Container, CallToAction } from '@/components/ui'
 import { CheckCircle2, Building2, Factory, FileSignature, ShoppingCart, Activity, ShieldCheck, Briefcase, Landmark, FileText, BadgePercent, GraduationCap, Gavel, FileCheck, ArrowRight, Layers, BellRing, PieChart } from 'lucide-react'
+import { FAQs } from '@/components/home'
 import SeoHead from '@/components/seo/SeoHead'
 import ComplianceLinks from '@/components/compliance/ComplianceLinks'
 
@@ -200,7 +201,7 @@ export default function CompliancePage() {
               return (
                 <div 
                   key={index} 
-                  className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/60 hover:border-secondary/40 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300 group flex flex-col relative overflow-hidden"
+                  className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/60 hover:bg-[#fff9f5] hover:border-secondary/40 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300 group flex flex-col relative overflow-hidden"
                 >
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-secondary/5 to-transparent rounded-bl-full -z-10 transition-transform duration-500 group-hover:scale-150"></div>
                   <div className="w-14 h-14 bg-slate-50 border border-slate-100 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-300 shadow-sm">
@@ -348,7 +349,10 @@ export default function CompliancePage() {
       {/* ================= 4. COMPLIANCE LIBRARY ================= */}
       <ComplianceLinks />
 
-      {/* ================= 5. CTA ================= */}
+      {/* ================= 5. FAQs ================= */}
+      <FAQs />
+
+      {/* ================= 6. CTA ================= */}
       <CallToAction />
     </>
   )

@@ -17,6 +17,7 @@ import {
   Link as LinkIcon
 } from 'lucide-react';
 import { Container } from '@/components/ui';
+import { FAQs } from '@/components/home';
 import SeoHead from '@/components/seo/SeoHead';
 import { hrMetricsData, MetricCategory, HRMetric } from '@/data/hrMetrics';
 
@@ -310,6 +311,9 @@ export default function HRMetricsPage() {
           </div>
         </Container>
       </section>
+
+      {/* FAQs SECTION */}
+      <FAQs />
 
       {/* CTA SECTION */}
       <section className="py-16 bg-white">

@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Container, CallToAction } from '@/components/ui'
+import { FAQs } from '@/components/home'
 
 const industrySectors = [
   {
@@ -285,6 +286,9 @@ export default function IndustriesPage() {
           </div>
         </Container>
       </section>
+
+      {/* FAQs */}
+      <FAQs />
 
       {/* 4. CTA */}
       <CallToAction />

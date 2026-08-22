@@ -21,7 +21,7 @@ export default function Footer() {
   return (
     <footer>
       {/* 1. Pre-Footer Gradient Call-To-Action Block */}
-      <section className="py-10 md:py-12 text-white relative overflow-hidden bg-gray-700">
+      <section className="py-10 md:py-12 text-white relative overflow-hidden bg-[#3b5a7a]">
         {/* World Map Background Graphic */}
         <div
           className="absolute inset-0 opacity-[0.7] pointer-events-none z-0"
@@ -135,9 +135,9 @@ export default function Footer() {
                 <Image
                   src="/img/logo.png"
                   alt="People Consulting"
-                  width={200}
+                  width={300}
                   height={80}
-                  className="h-8 w-auto"
+                  className="h-10 w-auto"
                 />
               </Link>
             </div>

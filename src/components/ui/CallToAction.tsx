@@ -31,13 +31,13 @@ const CTASection: React.FC = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                    <button
-                        type="button"
+                    <a
+                        href="/contact-us"
                         className="flex items-center justify-center gap-2 rounded-lg bg-secondary px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-secondary-dark hover:shadow-xl"
                     >
-                        Contact Us
+                        Get an Expert
                         <CalendarDays className="h-5 w-5" />
-                    </button>
+                    </a>
 
                     <a
                         href="tel:+918800177307"

@@ -209,7 +209,7 @@ export default function Hero() {
             >
               <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-wider">Associated Portals:</span>
               <div className="flex flex-wrap gap-2.5">
-                {externalLinks.map((link) => (
+                {externalLinks.slice(0, 1).map((link) => (
                   <a
                     key={link.id}
                     href={link.url}

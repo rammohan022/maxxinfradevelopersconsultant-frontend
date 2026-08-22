@@ -115,7 +115,7 @@ export default function MainContentSection({
                 
                 {services[0] && typeof services[0] === 'object' && 'title' in services[0] ? (
                   // Structured Cards Layout (from sketch)
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {(services as Array<{ title: string; description?: string; items: string[] }>).map((card, idx) => (
                       <div 
                         key={idx} 

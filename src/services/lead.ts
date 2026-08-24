@@ -6,6 +6,7 @@ export interface Lead {
     fullName: string;
     email: string;
     phoneNumber: string;
+    company?: string;
     subject?: string;
     message: string;
     source?: string;
@@ -17,6 +18,7 @@ export interface CreateLeadDto {
     fullName: string;
     email: string;
     phoneNumber: string;
+    company?: string;
     subject?: string;
     message: string;
     source?: string;

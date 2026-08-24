@@ -4,19 +4,26 @@ import { useState } from "react";
 import { Container } from "@/components/ui";
 import Image from "next/image";
 import { useCreateLeadMutation } from "@/services/lead";
+import { useGetServicesQuery } from "@/services/services";
 import toast from "react-hot-toast";
 
 const ContactSection = () => {
     const [createLead, { isLoading: isSubmitting }] = useCreateLeadMutation();
+    const { data: services } = useGetServicesQuery();
+
+    const toTitleCase = (str: string) =>
+        str.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
         phoneNumber: "",
+        company: "",
         subject: "",
         message: "",
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
@@ -27,12 +34,14 @@ const ContactSection = () => {
         try {
             await createLead({ ...formData, source: typeof window !== "undefined" ? window.location.pathname : "" }).unwrap();
             toast.success("Enquiry submitted successfully! We'll get back to you soon.");
-            setFormData({ fullName: "", email: "", phoneNumber: "", subject: "", message: "" });
+            setFormData({ fullName: "", email: "", phoneNumber: "", company: "", subject: "", message: "" });
         } catch (err) {
             console.error("Submission error:", err);
             toast.error("Failed to submit enquiry. Please try again later.");
         }
     };
+
+    const inputClass = "w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-700 focus:border-transparent transition";
 
     return (
         <section className="py-16 bg-white">
@@ -60,71 +69,93 @@ const ContactSection = () => {
                             </p>
 
                             <form onSubmit={handleSubmit} className="space-y-3">
-                                {/* Full Name */}
-                                <div>
-                                    <label className="block text-xs font-semibold text-gray-700 mb-1">
-                                        Full Name *
-                                    </label>
-                                    <input
-                                        type="text"
-                                        name="fullName"
-                                        value={formData.fullName}
-                                        onChange={handleChange}
-                                        placeholder="Your Name"
-                                        required
-                                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-700 focus:border-transparent transition"
-                                    />
+                                {/* Row 1: Full Name + Email */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label className="block text-xs font-semibold text-gray-700 mb-1">
+                                            Full Name *
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="fullName"
+                                            value={formData.fullName}
+                                            onChange={handleChange}
+                                            placeholder="Your Name"
+                                            required
+                                            className={inputClass}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-semibold text-gray-700 mb-1">
+                                            Email Address *
+                                        </label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            placeholder="yourmail@gmail.com"
+                                            required
+                                            className={inputClass}
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Email */}
-                                <div>
-                                    <label className="block text-xs font-semibold text-gray-700 mb-1">
-                                        Email Address *
-                                    </label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        placeholder="yourmail@gmail.com"
-                                        required
-                                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-700 focus:border-transparent transition"
-                                    />
+                                {/* Row 2: Phone + Company */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div>
+                                        <label className="block text-xs font-semibold text-gray-700 mb-1">
+                                            Phone Number *
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            name="phoneNumber"
+                                            value={formData.phoneNumber}
+                                            onChange={handleChange}
+                                            placeholder="+91 98765 43210"
+                                            required
+                                            className={inputClass}
+                                        />
+                                    </div>
+                                    <div>
+                                        <label className="block text-xs font-semibold text-gray-700 mb-1">
+                                            Company
+                                        </label>
+                                        <input
+                                            type="text"
+                                            name="company"
+                                            value={formData.company}
+                                            onChange={handleChange}
+                                            placeholder="Your Company Name"
+                                            className={inputClass}
+                                        />
+                                    </div>
                                 </div>
 
-                                {/* Phone */}
+                                {/* Row 3: Service Dropdown (full row) */}
                                 <div>
                                     <label className="block text-xs font-semibold text-gray-700 mb-1">
-                                        Phone Number *
+                                        Service *
                                     </label>
-                                    <input
-                                        type="tel"
-                                        name="phoneNumber"
-                                        value={formData.phoneNumber}
-                                        onChange={handleChange}
-                                        placeholder="+91 98765 43210"
-                                        required
-                                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-700 focus:border-transparent transition"
-                                    />
-                                </div>
-
-                                {/* Subject */}
-                                <div>
-                                    <label className="block text-xs font-semibold text-gray-700 mb-1">
-                                        Subject *
-                                    </label>
-                                    <input
-                                        type="text"
+                                    <select
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
-                                        placeholder="HR Consulting / Recruitment Enquiry"
                                         required
-                                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-700 focus:border-transparent transition"
-                                    />
+                                        className={inputClass}
+                                    >
+                                        <option value="">-- Select a Service --</option>
+                                        {services && services
+                                            .filter((s) => s.status === "Published")
+                                            .map((service) => (
+                                                <option key={service.id} value={service.title}>
+                                                    {toTitleCase(service.title)}
+                                                </option>
+                                            ))}
+                                    </select>
                                 </div>
 
-                                {/* Message */}
+                                {/* Row 4: Message (full row) */}
                                 <div>
                                     <label className="block text-xs font-semibold text-gray-700 mb-1">
                                         Message *
@@ -136,22 +167,11 @@ const ContactSection = () => {
                                         onChange={handleChange}
                                         placeholder="Please describe your requirements in detail..."
                                         required
-                                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-red-700 focus:border-transparent transition"
+                                        className={inputClass}
                                     />
                                 </div>
 
-                                {/* Terms */}
-                                <div className="flex items-start gap-2.5 pt-1 pb-1">
-                                    <input
-                                        id="cf-consent"
-                                        type="checkbox"
-                                        required
-                                        className="mt-0.5 h-4 w-4 text-secondary rounded border-gray-300 focus:ring-secondary accent-secondary cursor-pointer flex-shrink-0"
-                                    />
-                                    <label htmlFor="cf-consent" className="text-xs text-gray-600 leading-snug cursor-pointer select-none">
-                                        I agree to the Terms of Service and Privacy Policy.
-                                    </label>
-                                </div>
+
 
                                 {/* Submit */}
                                 <button
@@ -167,7 +187,7 @@ const ContactSection = () => {
 
                 </div>
             </Container>
-        </section >
+        </section>
     );
 };
 

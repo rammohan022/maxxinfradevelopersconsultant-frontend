@@ -23,11 +23,12 @@ export default function LeadsPage() {
     name: "",
   });
 
-  const [viewModal, setViewModal] = useState<{ isOpen: boolean; message: string; subject: string; name: string; source?: string }>({
+  const [viewModal, setViewModal] = useState<{ isOpen: boolean; message: string; subject: string; name: string; company?: string; source?: string }>({
     isOpen: false,
     message: "",
     subject: "",
     name: "",
+    company: "",
     source: "",
   });
 
@@ -108,6 +109,7 @@ export default function LeadsPage() {
               <tr>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Name</th>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Contact Info</th>
+                <th className="text-left px-3 py-2 whitespace-nowrap">Company</th>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Subject</th>
                 <th className="text-left px-3 py-2 min-w-[200px]">Message</th>
                 <th className="text-left px-3 py-2 whitespace-nowrap">Source</th>
@@ -139,6 +141,9 @@ export default function LeadsPage() {
                       <div className="text-slate-600">{lead.email}</div>
                       <div className="text-slate-400 text-xs">{lead.phoneNumber}</div>
                     </td>
+                    <td className="px-3 py-2 text-slate-600 whitespace-nowrap">
+                      {lead.company || <span className="text-slate-300">—</span>}
+                    </td>
                     <td className="px-3 py-2 italic text-slate-600">
                       {lead.subject || "No Subject"}
                     </td>
@@ -154,7 +159,7 @@ export default function LeadsPage() {
 
                     <td className="px-3 py-2 text-center whitespace-nowrap">
                       <button
-                        onClick={() => setViewModal({ isOpen: true, message: lead.message, subject: lead.subject || "No Subject", name: lead.fullName, source: (lead as any).source })}
+                        onClick={() => setViewModal({ isOpen: true, message: lead.message, subject: lead.subject || "No Subject", name: lead.fullName, company: lead.company, source: (lead as any).source })}
                         className="text-slate-400 hover:text-secondary transition p-2 hover:bg-slate-50 rounded-lg mr-1"
                         title="View Full Message"
                       >
@@ -204,7 +209,7 @@ export default function LeadsPage() {
                 Enquiry from {viewModal.name}
               </h3>
               <button
-                onClick={() => setViewModal({ isOpen: false, message: "", subject: "", name: "", source: "" })}
+                onClick={() => setViewModal({ isOpen: false, message: "", subject: "", name: "", company: "", source: "" })}
                 className="text-slate-400 hover:text-slate-600 transition text-lg"
               >
                 ✕
@@ -213,8 +218,12 @@ export default function LeadsPage() {
             <div className="p-4 space-y-3">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Subject</span>
+                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Service</span>
                   <p className="text-sm font-medium text-slate-700 mt-0.5">{viewModal.subject}</p>
+                </div>
+                <div>
+                  <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Company</span>
+                  <p className="text-sm font-medium text-slate-700 mt-0.5">{viewModal.company || "—"}</p>
                 </div>
                 <div>
                   <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Source Page</span>
@@ -230,7 +239,7 @@ export default function LeadsPage() {
             </div>
             <div className="px-4 py-2.5 bg-slate-50 border-t border-slate-100 flex justify-end">
               <button
-                onClick={() => setViewModal({ isOpen: false, message: "", subject: "", name: "", source: "" })}
+                onClick={() => setViewModal({ isOpen: false, message: "", subject: "", name: "", company: "", source: "" })}
                 className="px-4 py-2 bg-[rgb(13_33_55)] hover:bg-[rgb(13_33_55)]/90 text-white rounded-lg text-sm font-semibold transition"
               >
                 Close

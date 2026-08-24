@@ -36,12 +36,13 @@ export default function MainContentSection({
     fullName: "",
     email: "",
     phoneNumber: "",
+    company: "",
     subject: title ? `Consultation: ${title}` : "General Enquiry",
     message: "",
   });
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -56,6 +57,7 @@ export default function MainContentSection({
         fullName: "",
         email: "",
         phoneNumber: "",
+        company: "",
         subject: title ? `Consultation: ${title}` : "General Enquiry",
         message: "",
       });
@@ -295,11 +297,10 @@ export default function MainContentSection({
                   />
                   <input
                     type="text"
-                    name="subject"
-                    value={formData.subject}
+                    name="company"
+                    value={formData.company}
                     onChange={handleChange}
-                    placeholder="Subject"
-                    required
+                    placeholder="Company Name"
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
                   />
                 </div>
@@ -312,17 +313,6 @@ export default function MainContentSection({
                   required
                   className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
                 />
-                <div className="flex items-start gap-3 pt-2 pb-2">
-                  <input
-                    id="mc-consent"
-                    type="checkbox"
-                    required
-                    className="mt-1 h-4 w-4 text-secondary rounded border-gray-300 focus:ring-secondary accent-secondary cursor-pointer flex-shrink-0"
-                  />
-                  <label htmlFor="mc-consent" className="text-sm text-gray-600 leading-snug cursor-pointer select-none">
-                    I agree to the Terms of Service and Privacy Policy.
-                  </label>
-                </div>
                 <button
                   type="submit"
                   disabled={isSubmitting}

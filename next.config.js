@@ -21,6 +21,21 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "api.peopleconsulting.co",
+        pathname: "/**",
+      },
+      {
+        protocol: "http",
+        hostname: "api.peopleconsulting.co",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "apipeopleconsulting.webexbytes.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "api.equityandlegalsolutions.com",
         pathname: "/**",
       },

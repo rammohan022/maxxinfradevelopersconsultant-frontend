@@ -71,16 +71,11 @@ export default function Footer() {
             {/* Right Side: Skyscraper Card */}
             <div className="lg:col-span-6 flex justify-center lg:justify-end">
               <div className="bg-white rounded-3xl shadow-2xl overflow-hidden w-full max-w-xl border border-slate-100 transform hover:-translate-y-1.5 transition-all duration-300">
-                {/* Top skyline image */}
-                <div className="relative h-32 w-full">
-                  <Image
-                    src="/img/footer.png"
-                    alt="People Consulting Office Skyline"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 33vw"
-                  />
-                </div>
+                <img
+                  src="/img/footer-img.png"
+                  alt="People Consulting Office Skyline"
+                  className="w-full h-auto block"
+                />
                 {/* Details */}
                 <div className="p-8 text-slate-800">
                   <span className="text-[10px] font-bold text-slate-500 tracking-widest block mb-3">

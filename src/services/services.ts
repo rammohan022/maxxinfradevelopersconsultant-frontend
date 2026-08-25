@@ -23,6 +23,10 @@ export interface Service {
   quoteAuthor?: string;
   services?: any[];
   faqs?: FAQ[];
+  whyTitle?: string;
+  whyFeatures?: { title: string; description: string }[];
+  benefitsTitle?: string;
+  benefitsCards?: { title: string; subtitle?: string; items: string[]; image?: string }[];
   createdAt?: string;
   updatedAt?: string;
 }
@@ -41,6 +45,10 @@ export interface CreateServiceDto {
   quoteAuthor?: string;
   services?: any[];
   faqs?: FAQ[];
+  whyTitle?: string;
+  whyFeatures?: { title: string; description: string }[];
+  benefitsTitle?: string;
+  benefitsCards?: { title: string; subtitle?: string; items: string[]; image?: string }[];
 }
 
 export const servicesApi = baseApi.injectEndpoints({

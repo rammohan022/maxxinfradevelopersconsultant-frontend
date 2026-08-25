@@ -30,7 +30,7 @@ export default function Blog() {
     .slice(0, 4);
 
   return (
-    <section className="py-12 md:py-16 bg-slate-50">
+    <section className="py-16 md:py-20 bg-white border-b border-slate-100/80">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

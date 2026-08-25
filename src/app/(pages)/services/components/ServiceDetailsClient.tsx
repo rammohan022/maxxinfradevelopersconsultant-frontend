@@ -44,6 +44,10 @@ export default function ServiceDetailsClient() {
                 quoteText={area.quoteText}
                 quoteAuthor={area.quoteAuthor}
                 faqs={area.faqs}
+                whyTitle={area.whyTitle}
+                whyFeatures={area.whyFeatures}
+                benefitsTitle={area.benefitsTitle}
+                benefitsCards={area.benefitsCards}
             />
         </>
     );

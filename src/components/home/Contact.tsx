@@ -54,7 +54,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="relative bg-gray-50 py-8 md:py-12 lg:py-16 overflow-hidden" id="contact">
+    <section className="relative bg-slate-50/80 py-16 md:py-20 overflow-hidden" id="contact">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 transform origin-top-right hidden lg:block" />
       <div
@@ -67,7 +67,6 @@ export default function Contact() {
 
       <Container className="relative">
         <div className="grid items-stretch lg:grid-cols-2 rounded-2xl overflow-hidden shadow">
-          {/* Left Info */}
           {/* Left Column: Team Image */}
           <div className="relative min-h-[350px] lg:min-h-full w-full overflow-hidden bg-slate-900">
             <Image

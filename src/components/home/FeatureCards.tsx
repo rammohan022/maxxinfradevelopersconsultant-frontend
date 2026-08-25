@@ -89,7 +89,7 @@ const partners = [
 
 export default function FeatureCards() {
   return (
-    <section className="py-12 md:py-16 bg-white border-b border-gray-100 overflow-hidden">
+    <section className="py-16 md:py-20 bg-slate-50 border-b border-slate-100/80 overflow-hidden">
       <Container>
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-14">
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">

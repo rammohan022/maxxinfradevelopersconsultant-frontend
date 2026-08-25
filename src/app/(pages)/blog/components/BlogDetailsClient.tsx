@@ -1,19 +1,51 @@
 "use client";
 
-import React, { Suspense } from 'react'
+import React, { Suspense, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Container } from '@/components/ui'
-import { Calendar, ArrowRight, Search, Loader2 } from 'lucide-react'
+import { Calendar, ArrowRight, Search, Loader2, Plus, Minus } from 'lucide-react'
 import { useGetBlogsQuery } from '@/services/blog'
 import { notFound, useParams } from 'next/navigation'
 import { getImageUrl } from '@/lib/utils/imageUtils'
+import { motion, AnimatePresence } from 'framer-motion'
 
 // Helper to strip HTML tags for the excerpt
 const stripHtml = (html: string) => {
     if (typeof window === 'undefined') return html.replace(/<[^>]*>?/gm, '');
     const doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || "";
+};
+
+const BlogFaqItem = ({ question, answer }: { question: string; answer: string }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    return (
+        <div className="bg-white rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all overflow-hidden">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex items-center justify-between px-5 py-4 text-left focus:outline-none"
+            >
+                <span className="font-semibold text-primary text-sm sm:text-base pr-3 leading-snug">{question}</span>
+                <div className="w-7 h-7 rounded-md bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0">
+                    {isOpen ? <Minus className="w-3.5 h-3.5 text-secondary" /> : <Plus className="w-3.5 h-3.5" />}
+                </div>
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        <div className="px-5 pb-4 text-slate-650 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
+                            {answer}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
 };
 
 function BlogDetailsContent() {
@@ -127,6 +159,19 @@ function BlogDetailsContent() {
                                 className="prose prose-lg max-w-none text-gray-700 mt-6 rich-text-content prose-headings:text-primary"
                                 dangerouslySetInnerHTML={{ __html: article.content }}
                             />
+
+                            {article.faqs && article.faqs.length > 0 && (
+                                <div className="mt-12 border-t border-gray-100 pt-8 space-y-6">
+                                    <h3 className="font-serif text-2xl font-bold text-primary">
+                                        Frequently Asked Questions
+                                    </h3>
+                                    <div className="space-y-4">
+                                        {article.faqs.map((faq, idx) => (
+                                            <BlogFaqItem key={idx} question={faq.question} answer={faq.answer} />
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </article>
 
                         {/* ================= 4. SIDEBAR ================= */}

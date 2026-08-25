@@ -278,7 +278,7 @@ const StatsAchievements = () => {
           </Swiper>
 
           {/* Custom Pagination Dots */}
-          <div className="swiper-pagination swiper-pagination-custom-stats !static mt-8" />
+          <div className="swiper-pagination swiper-pagination-custom-stats !static mt-8 flex justify-center items-center" />
 
           {/* Custom Navigation Buttons */}
           <button className="swiper-button-prev-stats absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none disabled:opacity-40 disabled:pointer-events-none">

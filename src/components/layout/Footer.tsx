@@ -42,7 +42,7 @@ export default function Footer() {
             {/* Left Side: Pitch and Pill Badges */}
             <div className="lg:col-span-6 space-y-8">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-primary leading-tight max-w-2xl">
-                Let&apos;s discuss how People Consulting can help you.
+                Let&apos;s discuss how <span className="text-secondary">People Consulting</span> can help you.
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-6 pt-4">
@@ -205,7 +205,7 @@ export default function Footer() {
         <Container>
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] sm:text-xs font-medium text-slate-500">
             <div className="text-center sm:text-left">
-              © {new Date().getFullYear()} People Consulting. All Rights Reserved. Developed by{' '}
+              © {new Date().getFullYear()} <span className="text-secondary">People Consulting</span>. All Rights Reserved. Developed by{' '}
               <a
                 href="https://webexbytes.com"
                 target="_blank"

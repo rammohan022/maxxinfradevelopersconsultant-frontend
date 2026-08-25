@@ -7,6 +7,7 @@ import { FAQ } from "@/services/services";
 import { useCreateLeadMutation } from "@/services/lead";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 import toast from "react-hot-toast";
+import { Check, CheckCircle2 } from "lucide-react";
 
 interface MainContentSectionProps {
   title?: string; // Added to auto-fill subject
@@ -17,6 +18,10 @@ interface MainContentSectionProps {
   quoteText?: string;
   quoteAuthor?: string;
   faqs?: FAQ[];
+  whyTitle?: string;
+  whyFeatures?: { title: string; description: string }[];
+  benefitsTitle?: string;
+  benefitsCards?: { title: string; subtitle?: string; items: string[]; image?: string }[];
 }
 
 export default function MainContentSection({
@@ -28,6 +33,10 @@ export default function MainContentSection({
   quoteText,
   quoteAuthor,
   faqs = [],
+  whyTitle,
+  whyFeatures = [],
+  benefitsTitle,
+  benefitsCards = [],
 }: MainContentSectionProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [createLead, { isLoading: isSubmitting }] = useCreateLeadMutation();
@@ -114,17 +123,17 @@ export default function MainContentSection({
                   Key Areas of Service Include
                 </h3>
                 <div className="mb-6 h-1 w-16 bg-red-700" />
-                
+
                 {services[0] && typeof services[0] === 'object' && 'title' in services[0] ? (
                   // Structured Cards Layout (from sketch)
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {(services as Array<{ title: string; description?: string; items: string[] }>).map((card, idx) => (
-                      <div 
-                        key={idx} 
+                      <div
+                        key={idx}
                         className="bg-orange-50/40 rounded-2xl border border-orange-100/60 p-6 hover:shadow-lg hover:border-secondary/30 transition-all duration-300 relative group"
                       >
                         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        
+
                         <h4 className="text-base font-bold text-primary tracking-tight mb-4 border-b border-slate-100 pb-2.5">
                           {card.title}
                         </h4>
@@ -134,7 +143,7 @@ export default function MainContentSection({
                             {card.description}
                           </p>
                         )}
-                        
+
                         {card.items && card.items.length > 0 && (
                           <ul className="space-y-2.5 text-slate-650 text-sm">
                             {card.items.map((item, itemIdx) => (
@@ -161,6 +170,96 @@ export default function MainContentSection({
                     </ul>
                   </div>
                 )}
+              </div>
+            )}
+
+            {/* Why Choose Section */}
+            {whyTitle && whyFeatures && whyFeatures.length > 0 && (
+              <div className="mb-16 mt-8">
+                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2 text-center animate-fade-in">
+                  {whyTitle}
+                </h3>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8">
+                  {whyFeatures.map((feature, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white mb-4 shadow-sm">
+                        <Check className="w-6 h-6 text-white" strokeWidth={3} />
+                      </div>
+                      <h4 className="text-base font-bold text-primary mb-2 leading-tight">
+                        {feature.title}
+                      </h4>
+                      <p className="text-sm text-slate-650 leading-relaxed">
+                        {feature.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Benefits Mockup Cards Section */}
+            {benefitsCards && benefitsCards.length > 0 && (
+              <div className="mb-16">
+                {benefitsTitle && (
+                  <>
+                    <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2 text-center">
+                      {benefitsTitle}
+                    </h3>
+                  </>
+                )}
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                  {benefitsCards.map((card, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-gradient-to-br from-slate-50 to-orange-50/20 border border-slate-200/80 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-350"
+                    >
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        {/* Left Column: Text & Bullets */}
+                        <div>
+                          <h4 className="text-lg md:text-xl font-bold text-primary mb-2 tracking-tight">
+                            {card.title}
+                          </h4>
+                          {card.subtitle && (
+                            <p className="text-xs text-slate-500 mb-4 font-semibold uppercase tracking-wider">
+                              {card.subtitle}
+                            </p>
+                          )}
+
+                          {card.items && card.items.length > 0 && (
+                            <ul className="space-y-3">
+                              {card.items.map((item, itemIdx) => (
+                                <li key={itemIdx} className="flex items-start">
+                                  <Check className="w-4 h-4 text-primary shrink-0 mr-2 mt-1" strokeWidth={3.5} />
+                                  <span className="text-sm text-slate-700 font-medium leading-relaxed">
+                                    {item}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                        </div>
+
+                        {/* Right Column: Mockup Image */}
+                        {card.image && (
+                          <div className="relative h-48 md:h-56 w-full rounded-xl overflow-hidden bg-white/60 border border-slate-100 flex items-center justify-center p-2 shadow-sm">
+                            <Image
+                              src={getImageUrl(card.image)}
+                              alt={card.title}
+                              fill
+                              className="object-contain p-2 hover:scale-[1.02] transition-transform duration-500"
+                              sizes="(max-width: 768px) 100vw, 25vw"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
 
@@ -212,9 +311,9 @@ export default function MainContentSection({
                   answer: "You can book a free consultation directly through our website form, or connect with our advisors via WhatsApp/Phone call to discuss your recruitment or training needs.",
                 },
               ];
-              
+
               const displayFaqs = validFaqs.length > 0 ? validFaqs : commonFaqs;
-              
+
               return (
                 <div className="mb-12 border-t border-slate-100 pt-12">
                   <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">

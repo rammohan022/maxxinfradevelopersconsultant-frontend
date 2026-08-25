@@ -45,7 +45,7 @@ const features = [
 
 export default function FeaturesHRMS() {
   return (
-    <section className="py-16 lg:py-24 bg-white relative overflow-hidden" id="hrms-features">
+    <section className="py-16 md:py-20 bg-slate-50/50 relative overflow-hidden border-b border-slate-100/80" id="hrms-features">
       <Container className="relative z-10">
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">

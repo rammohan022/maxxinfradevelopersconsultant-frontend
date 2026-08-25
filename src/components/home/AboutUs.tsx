@@ -39,7 +39,7 @@ const imageVariants: Variants = {
 
 export default function AboutUs() {
   return (
-    <section className="py-16 md:py-14 bg-white overflow-hidden" id="about">
+    <section className="py-16 md:py-20 bg-white overflow-hidden border-b border-slate-100/80" id="about">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 

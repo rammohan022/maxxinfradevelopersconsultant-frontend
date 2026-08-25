@@ -6,7 +6,7 @@ import { Monitor, AlertTriangle, MessageSquare, Network, ArrowRight } from 'luci
 
 export default function IndustriesServe() {
   return (
-    <section className="py-16 lg:py-14 bg-slate-50 relative overflow-hidden" id="industries">
+    <section className="py-16 md:py-20 bg-white relative overflow-hidden border-b border-slate-100/80" id="industries">
       {/* Dotted background pattern */}
       <div
         className="absolute inset-0 z-0 opacity-[0.15]"

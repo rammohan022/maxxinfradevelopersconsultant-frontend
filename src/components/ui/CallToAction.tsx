@@ -7,10 +7,10 @@ const CTASection: React.FC = () => {
     return (
         <section
             id="cta-section"
-            className="relative overflow-hidden border-y border-gray-100 py-20"
+            className="relative overflow-hidden border-b border-slate-100/80 py-16 md:py-20"
         >
             {/* Background Image Texture */}
-            <div className="absolute inset-0 z-0 bg-slate-50">
+            <div className="absolute inset-0 z-0 bg-white">
                 <Image
                     src="/img/crumpled_paper_texture.png"
                     alt="CTA Background Texture"

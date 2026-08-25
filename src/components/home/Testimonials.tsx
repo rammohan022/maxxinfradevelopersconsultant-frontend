@@ -88,7 +88,7 @@ export default function Testimonials() {
   const totalSlides = testimonials.length - visibleCount + 1;
 
   return (
-    <section className="py-12 md:py-16 lg:py-14 bg-gray-100 overflow-hidden relative">
+    <section className="py-16 md:py-20 bg-slate-50 border-b border-slate-100/80 overflow-hidden relative">
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-0" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-navy/5 rounded-full blur-3xl -z-0" />
 

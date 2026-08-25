@@ -54,6 +54,9 @@ export default function BlogForm({
   const [metaTitle, setMetaTitle] = useState(initialData?.metaTitle || "");
   const [metaDescription, setMetaDescription] = useState(initialData?.metaDescription || "");
 
+  // FAQs field state
+  const [faqs, setFaqs] = useState<{ question: string; answer: string }[]>([{ question: "", answer: "" }]);
+
   const [aiModal, setAiModal] = useState<{
     isOpen: boolean;
     tool: AiToolType;
@@ -90,6 +93,14 @@ export default function BlogForm({
       setPreview(initialData.blogImage || "");
       setMetaTitle(initialData.metaTitle || "");
       setMetaDescription(initialData.metaDescription || "");
+
+      const initialFaqs = Array.isArray(initialData.faqs)
+        ? initialData.faqs.map((f: any) => ({
+            question: f.question || "",
+            answer: f.answer || "",
+          }))
+        : [{ question: "", answer: "" }];
+      setFaqs(initialFaqs);
     }
   }, [initialData]);
 
@@ -100,6 +111,9 @@ export default function BlogForm({
       setPreview(URL.createObjectURL(file));
     }
   };
+
+  const addFaq = () => setFaqs([...faqs, { question: "", answer: "" }]);
+  const removeFaq = (index: number) => setFaqs(faqs.filter((_, i) => i !== index));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,6 +127,7 @@ export default function BlogForm({
     formData.append("displayOrder", displayOrder.toString());
     formData.append("metaTitle", metaTitle);
     formData.append("metaDescription", metaDescription);
+    formData.append("faqs", JSON.stringify(faqs.filter((f) => f.question.trim() && f.answer.trim())));
 
     if (imageFile) {
       formData.append("blogImage", imageFile);
@@ -331,6 +346,53 @@ export default function BlogForm({
               onChange={setContent}
               className="bg-white h-[250px] mb-12"
             />
+          </div>
+        </div>
+
+        {/* FAQs Section */}
+        <div className="border-t pt-4 space-y-4">
+          <h3 className="text-sm font-bold text-slate-800">Frequently Asked Questions (FAQs)</h3>
+          <div className="space-y-3">
+            {faqs.map((faq, i) => (
+              <div key={i} className="p-4 border rounded-lg bg-slate-50 space-y-2 relative">
+                <button
+                  type="button"
+                  onClick={() => removeFaq(i)}
+                  className="absolute top-3 right-3 text-red-500 text-xs font-semibold hover:underline"
+                >
+                  Remove
+                </button>
+                <input
+                  type="text"
+                  value={faq.question}
+                  onChange={(e) => {
+                    const copy = [...faqs];
+                    copy[i].question = e.target.value;
+                    setFaqs(copy);
+                  }}
+                  placeholder="Question"
+                  className="w-full border rounded-lg px-3 py-2 bg-white text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all"
+                />
+                <textarea
+                  value={faq.answer}
+                  onChange={(e) => {
+                    const copy = [...faqs];
+                    copy[i].answer = e.target.value;
+                    setFaqs(copy);
+                  }}
+                  rows={2}
+                  placeholder="Answer"
+                  className="w-full border rounded-lg px-3 py-2 bg-white text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all resize-none"
+                />
+              </div>
+            ))}
+            <button
+              type="button"
+              onClick={addFaq}
+              className="text-xs text-secondary font-bold hover:underline flex items-center gap-1"
+            >
+              + Add FAQ Question
+            </button>
           </div>
         </div>
 

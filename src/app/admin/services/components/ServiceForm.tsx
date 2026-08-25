@@ -38,6 +38,8 @@ export default function ServiceForm({
         approach: "",
         quoteText: "",
         quoteAuthor: "",
+        whyTitle: "",
+        benefitsTitle: "",
     });
     const [imageFile, setImageFile] = useState<File | null>(null);
     const [preview, setPreview] = useState<string>("");
@@ -49,6 +51,19 @@ export default function ServiceForm({
         { title: "", description: "", items: [""] }
     ]);
     const [faqs, setFaqs] = useState([{ question: "", answer: "" }]);
+
+    const [whyFeatures, setWhyFeatures] = useState<Array<{ title: string; description: string }>>([
+        { title: "", description: "" }
+    ]);
+    const [benefitsCards, setBenefitsCards] = useState<Array<{ title: string; subtitle?: string; items: string[]; image?: string }>>([
+        { title: "", subtitle: "", items: [""] },
+        { title: "", subtitle: "", items: [""] }
+    ]);
+
+    const [benefitsImage0File, setBenefitsImage0File] = useState<File | null>(null);
+    const [benefitsImage0Preview, setBenefitsImage0Preview] = useState<string>("");
+    const [benefitsImage1File, setBenefitsImage1File] = useState<File | null>(null);
+    const [benefitsImage1Preview, setBenefitsImage1Preview] = useState<string>("");
 
     useEffect(() => {
         if (initialData) {
@@ -63,6 +78,8 @@ export default function ServiceForm({
                 approach: initialData.approach || "",
                 quoteText: initialData.quoteText || "",
                 quoteAuthor: initialData.quoteAuthor || "",
+                whyTitle: initialData.whyTitle || "",
+                benefitsTitle: initialData.benefitsTitle || "",
             });
             if (initialData.services) {
                 const parsed = Array.isArray(initialData.services)
@@ -84,11 +101,49 @@ export default function ServiceForm({
                 setServiceCards(parsed.length > 0 ? parsed : [{ title: "", description: "", items: [""] }]);
             }
 
+            if (initialData.whyFeatures) {
+                const parsedWhy = Array.isArray(initialData.whyFeatures)
+                    ? initialData.whyFeatures.map((wf: any) => ({
+                        title: wf.title || "",
+                        description: wf.description || "",
+                    }))
+                    : [{ title: "", description: "" }];
+                setWhyFeatures(parsedWhy.length > 0 ? parsedWhy : [{ title: "", description: "" }]);
+            } else {
+                setWhyFeatures([{ title: "", description: "" }]);
+            }
+
+            if (initialData.benefitsCards) {
+                const parsedBenefits = Array.isArray(initialData.benefitsCards)
+                    ? initialData.benefitsCards.map((bc: any) => ({
+                        title: bc.title || "",
+                        subtitle: bc.subtitle || "",
+                        items: Array.isArray(bc.items) ? bc.items.map(String) : [],
+                        image: bc.image || "",
+                    }))
+                    : [
+                        { title: "", subtitle: "", items: [""] },
+                        { title: "", subtitle: "", items: [""] }
+                      ];
+                while (parsedBenefits.length < 2) {
+                    parsedBenefits.push({ title: "", subtitle: "", items: [""] });
+                }
+                setBenefitsCards(parsedBenefits);
+                if (parsedBenefits[0]?.image) setBenefitsImage0Preview(parsedBenefits[0].image);
+                if (parsedBenefits[1]?.image) setBenefitsImage1Preview(parsedBenefits[1].image);
+            } else {
+                setBenefitsCards([
+                    { title: "", subtitle: "", items: [""] },
+                    { title: "", subtitle: "", items: [""] }
+                ]);
+            }
+
             // Defensive FAQ handling for potential backend inconsistency
             const initialFaqs = Array.isArray(initialData.faqs)
                 ? initialData.faqs.map((f: any) => ({
                     question: typeof f === 'object' ? (f.question || "") : "",
-                    answer: typeof f === 'object' ? (f.answer || "") : ""
+                    answer: typeof f === 'object' ? (f.answer || "") :
+                    ""
                 })).filter((f: any) => f.question || f.answer)
                 : [];
 
@@ -128,6 +183,59 @@ const slugify = (text: string) => {
     const addServiceCard = () => setServiceCards([...serviceCards, { title: "", description: "", items: [""] }]);
     const removeServiceCard = (index: number) => setServiceCards(serviceCards.filter((_, i) => i !== index));
 
+    const addWhyFeature = () => setWhyFeatures([...whyFeatures, { title: "", description: "" }]);
+    const removeWhyFeature = (index: number) => setWhyFeatures(whyFeatures.filter((_, i) => i !== index));
+
+    const handleBenefitsCardChange = (cardIndex: number, field: string, value: any) => {
+        const copy = [...benefitsCards];
+        copy[cardIndex] = { ...copy[cardIndex], [field]: value };
+        setBenefitsCards(copy);
+    };
+
+    const handleBenefitsCardItemChange = (cardIndex: number, itemIndex: number, value: string) => {
+        const copy = [...benefitsCards];
+        const newItems = [...copy[cardIndex].items];
+        newItems[itemIndex] = value;
+        copy[cardIndex].items = newItems;
+        setBenefitsCards(copy);
+    };
+
+    const addBenefitsCardItem = (cardIndex: number) => {
+        const copy = [...benefitsCards];
+        copy[cardIndex].items = [...copy[cardIndex].items, ""];
+        setBenefitsCards(copy);
+    };
+
+    const removeBenefitsCardItem = (cardIndex: number, itemIndex: number) => {
+        const copy = [...benefitsCards];
+        copy[cardIndex].items = copy[cardIndex].items.filter((_, i) => i !== itemIndex);
+        setBenefitsCards(copy);
+    };
+
+    const handleBenefitsImage0Change = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (file.size > 10 * 1024 * 1024) {
+                toast.error("Image size must be less than 10MB");
+                return;
+            }
+            setBenefitsImage0File(file);
+            setBenefitsImage0Preview(URL.createObjectURL(file));
+        }
+    };
+
+    const handleBenefitsImage1Change = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (file.size > 10 * 1024 * 1024) {
+                toast.error("Image size must be less than 10MB");
+                return;
+            }
+            setBenefitsImage1File(file);
+            setBenefitsImage1Preview(URL.createObjectURL(file));
+        }
+    };
+
     const addFaq = () => setFaqs([...faqs, { question: "", answer: "" }]);
     const removeFaq = (index: number) => setFaqs(faqs.filter((_, i) => i !== index));
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -166,6 +274,9 @@ const slugify = (text: string) => {
         formData.append("approach", form.approach);
         formData.append("quoteText", form.quoteText);
         formData.append("quoteAuthor", form.quoteAuthor);
+        formData.append("whyTitle", form.whyTitle);
+        formData.append("benefitsTitle", form.benefitsTitle);
+
         const filteredServices = serviceCards
             .map(card => ({
                 title: card.title.trim(),
@@ -174,6 +285,25 @@ const slugify = (text: string) => {
             }))
             .filter(card => card.title !== "" || card.description !== "" || card.items.length > 0);
         formData.append("services", JSON.stringify(filteredServices));
+        
+        const filteredWhyFeatures = whyFeatures
+            .map(f => ({
+                title: f.title.trim(),
+                description: f.description.trim()
+            }))
+            .filter(f => f.title !== "" || f.description !== "");
+        formData.append("whyFeatures", JSON.stringify(filteredWhyFeatures));
+
+        const filteredBenefitsCards = benefitsCards
+            .map((card, idx) => ({
+                title: card.title.trim(),
+                subtitle: card.subtitle?.trim() || "",
+                items: card.items.map(item => item.trim()).filter(item => item !== ""),
+                image: card.image || ""
+            }))
+            .filter(card => card.title !== "" || card.subtitle !== "" || card.items.length > 0);
+        formData.append("benefitsCards", JSON.stringify(filteredBenefitsCards));
+
         formData.append("faqs", JSON.stringify(faqs.filter((f) => f.question.trim() && f.answer.trim())));
 
         if (imageFile) {
@@ -181,6 +311,12 @@ const slugify = (text: string) => {
         }
         if (contentImageFile) {
             formData.append("contentImage", contentImageFile);
+        }
+        if (benefitsImage0File) {
+            formData.append("benefitsImage0", benefitsImage0File);
+        }
+        if (benefitsImage1File) {
+            formData.append("benefitsImage1", benefitsImage1File);
         }
 
         try {
@@ -415,6 +551,188 @@ const slugify = (text: string) => {
                 <h2 className="text-lg font-bold text-slate-800">Client Quote</h2>
                 <textarea name="quoteText" rows={2} value={form.quoteText} onChange={handleChange} placeholder="Quote text..." className="w-full border rounded-lg px-3 py-2 text-sm" />
                 <input name="quoteAuthor" value={form.quoteAuthor} onChange={handleChange} placeholder="Author name & designation" className="w-full border rounded-lg px-3 py-2 text-sm" />
+            </section>
+
+            {/* Why Choose Section (6 Grid Features) */}
+            <section className="space-y-4 pb-4 border-b">
+                <h2 className="text-lg font-bold text-slate-800">Why Choose Section (Grid Features)</h2>
+                <div>
+                    <label className="block text-sm font-medium mb-1">Section Title</label>
+                    <input
+                        name="whyTitle"
+                        value={form.whyTitle}
+                        onChange={handleChange}
+                        placeholder="e.g. Why AddettoHR HRMS?"
+                        className="w-full border rounded-lg px-3 py-2 text-sm"
+                    />
+                </div>
+                <div className="space-y-3">
+                    <div className="flex justify-between items-center">
+                        <label className="block text-xs font-bold text-slate-500 uppercase">Features</label>
+                        <button type="button" onClick={addWhyFeature} className="text-xs text-secondary font-semibold hover:underline">+ Add Feature</button>
+                    </div>
+                    {whyFeatures.map((feat, idx) => (
+                        <div key={idx} className="p-3 border rounded-lg bg-slate-50 relative space-y-2">
+                            <button type="button" onClick={() => removeWhyFeature(idx)} className="absolute top-2 right-2 text-red-500 text-xs">Remove</button>
+                            <input
+                                value={feat.title}
+                                onChange={(e) => {
+                                    const copy = [...whyFeatures];
+                                    copy[idx].title = e.target.value;
+                                    setWhyFeatures(copy);
+                                }}
+                                placeholder={`Feature Title ${idx + 1} (e.g. All-in-One Platform)`}
+                                className="w-full border rounded-lg px-3 py-1.5 bg-white text-sm font-semibold"
+                            />
+                            <textarea
+                                value={feat.description}
+                                onChange={(e) => {
+                                    const copy = [...whyFeatures];
+                                    copy[idx].description = e.target.value;
+                                    setWhyFeatures(copy);
+                                }}
+                                placeholder="Feature Description (e.g. Manage all HR functions from a single, unified platform.)"
+                                rows={2}
+                                className="w-full border rounded-lg px-3 py-1.5 bg-white text-sm resize-none"
+                            />
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            {/* Benefits Section (Mockups Cards) */}
+            <section className="space-y-6 pb-6 border-b">
+                <h2 className="text-lg font-bold text-slate-800">Benefits Section (Mockups Cards)</h2>
+                <div>
+                    <label className="block text-sm font-medium mb-1">Section Main Title (Optional)</label>
+                    <input
+                        name="benefitsTitle"
+                        value={form.benefitsTitle}
+                        onChange={handleChange}
+                        placeholder="e.g. AddettoHR Solutions"
+                        className="w-full border rounded-lg px-3 py-2 text-sm"
+                    />
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Card 1 */}
+                    <div className="p-4 border rounded-xl bg-slate-50 space-y-3">
+                        <h3 className="text-sm font-bold text-slate-700 border-b pb-1">Benefits Card 1</h3>
+                        <div>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Title</label>
+                            <input
+                                value={benefitsCards[0]?.title || ""}
+                                onChange={(e) => handleBenefitsCardChange(0, "title", e.target.value)}
+                                placeholder="e.g. AddettoHR Analytics"
+                                className="w-full border rounded-lg px-3 py-2 text-sm bg-white font-semibold"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Subtitle</label>
+                            <input
+                                value={benefitsCards[0]?.subtitle || ""}
+                                onChange={(e) => handleBenefitsCardChange(0, "subtitle", e.target.value)}
+                                placeholder="e.g. Turn HR Data into Actionable Insights"
+                                className="w-full border rounded-lg px-3 py-2 text-sm bg-white"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="block text-xs font-bold text-slate-500 uppercase">Bullet Points</label>
+                            {(benefitsCards[0]?.items || []).map((item, itemIdx) => (
+                                <div key={itemIdx} className="flex gap-2 items-center">
+                                    <input
+                                        value={item}
+                                        onChange={(e) => handleBenefitsCardItemChange(0, itemIdx, e.target.value)}
+                                        placeholder={`Bullet point ${itemIdx + 1}`}
+                                        className="w-full border rounded-lg px-3 py-1.5 text-sm bg-white"
+                                    />
+                                    <button type="button" onClick={() => removeBenefitsCardItem(0, itemIdx)} className="text-red-500 text-xs hover:underline">Delete</button>
+                                </div>
+                            ))}
+                            <button type="button" onClick={() => addBenefitsCardItem(0)} className="text-xs text-secondary font-semibold hover:underline">+ Add Bullet Point</button>
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Card Mockup Image</label>
+                            <div className="flex items-center gap-3">
+                                {benefitsImage0Preview && (
+                                    <div className="relative w-16 h-12 rounded overflow-hidden border flex-shrink-0 bg-white">
+                                        <Image
+                                            src={getImageUrl(benefitsImage0Preview)}
+                                            alt="Card 1 Preview"
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+                                )}
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleBenefitsImage0Change}
+                                    className="w-full border rounded-lg px-2 py-1 text-xs bg-white"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Card 2 */}
+                    <div className="p-4 border rounded-xl bg-slate-50 space-y-3">
+                        <h3 className="text-sm font-bold text-slate-700 border-b pb-1">Benefits Card 2</h3>
+                        <div>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Title</label>
+                            <input
+                                value={benefitsCards[1]?.title || ""}
+                                onChange={(e) => handleBenefitsCardChange(1, "title", e.target.value)}
+                                placeholder="e.g. AddettoHR Mobile App"
+                                className="w-full border rounded-lg px-3 py-2 text-sm bg-white font-semibold"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Subtitle</label>
+                            <input
+                                value={benefitsCards[1]?.subtitle || ""}
+                                onChange={(e) => handleBenefitsCardChange(1, "subtitle", e.target.value)}
+                                placeholder="e.g. HR at Your Fingertips"
+                                className="w-full border rounded-lg px-3 py-2 text-sm bg-white"
+                            />
+                        </div>
+                        <div className="space-y-2">
+                            <label className="block text-xs font-bold text-slate-500 uppercase">Bullet Points</label>
+                            {(benefitsCards[1]?.items || []).map((item, itemIdx) => (
+                                <div key={itemIdx} className="flex gap-2 items-center">
+                                    <input
+                                        value={item}
+                                        onChange={(e) => handleBenefitsCardItemChange(1, itemIdx, e.target.value)}
+                                        placeholder={`Bullet point ${itemIdx + 1}`}
+                                        className="w-full border rounded-lg px-3 py-1.5 text-sm bg-white"
+                                    />
+                                    <button type="button" onClick={() => removeBenefitsCardItem(1, itemIdx)} className="text-red-500 text-xs hover:underline">Delete</button>
+                                </div>
+                            ))}
+                            <button type="button" onClick={() => addBenefitsCardItem(1)} className="text-xs text-secondary font-semibold hover:underline">+ Add Bullet Point</button>
+                        </div>
+                        <div>
+                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Card Mockup Image</label>
+                            <div className="flex items-center gap-3">
+                                {benefitsImage1Preview && (
+                                    <div className="relative w-16 h-12 rounded overflow-hidden border flex-shrink-0 bg-white">
+                                        <Image
+                                            src={getImageUrl(benefitsImage1Preview)}
+                                            alt="Card 2 Preview"
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+                                )}
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={handleBenefitsImage1Change}
+                                    className="w-full border rounded-lg px-2 py-1 text-xs bg-white"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             {/* FAQs */}

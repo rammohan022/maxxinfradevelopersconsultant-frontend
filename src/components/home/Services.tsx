@@ -7,8 +7,17 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Services() {
   return (
-    <section className="py-12 lg:py-18 bg-slate-100 relative overflow-hidden">
-      <Container>
+    <section className="py-16 md:py-20 bg-slate-50 relative overflow-hidden border-b border-slate-100/80">
+      {/* Background Paper Texture Overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.25] pointer-events-none z-0"
+        style={{
+          backgroundImage: "url('/img/paper_texture_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+      <Container className="relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* Left Column: Heading & Description */}

@@ -14,6 +14,7 @@ export interface BlogPost {
     metaDescription?: string;
     createdAt: string;
     updatedAt: string;
+    faqs?: { question: string; answer: string }[];
 }
 
 export interface CreateBlogDto {
@@ -26,6 +27,7 @@ export interface CreateBlogDto {
     blogImage?: File;
     metaTitle?: string;
     metaDescription?: string;
+    faqs?: string;
 }
 
 export interface UpdateBlogDto {
@@ -38,6 +40,7 @@ export interface UpdateBlogDto {
     blogImage?: File;
     metaTitle?: string;
     metaDescription?: string;
+    faqs?: string;
 }
 
 export const blogApi = baseApi.injectEndpoints({

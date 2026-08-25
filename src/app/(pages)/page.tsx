@@ -12,6 +12,7 @@ import {
   FAQs,
   Contact,
   FloatingButtons,
+  DemoModal,
 } from '@/components/home'
 import { CallToAction } from '@/components/ui'
 
@@ -32,6 +33,7 @@ export default function Home() {
       <FAQs />
       <Contact />
       <FloatingButtons />
+      <DemoModal />
     </>
   )
 }

@@ -47,6 +47,19 @@ export default function ServiceForm({
     const [contentImageFile, setContentImageFile] = useState<File | null>(null);
     const [contentImagePreview, setContentImagePreview] = useState<string>("");
 
+    const [contentBlocks, setContentBlocks] = useState<Array<{
+        title: string;
+        subtitle: string;
+        description: string;
+        points: Array<{ title: string; text: string }>;
+        buttonText: string;
+        buttonUrl: string;
+        imagePosition: 'left' | 'right';
+        image?: string;
+    }>>([]);
+    const [contentBlockFiles, setContentBlockFiles] = useState<{ [key: number]: File }>({});
+    const [contentBlockPreviews, setContentBlockPreviews] = useState<{ [key: number]: string }>({});
+
     const [serviceCards, setServiceCards] = useState<Array<{ title: string; description?: string; items: string[] }>>([
         { title: "", description: "", items: [""] }
     ]);
@@ -153,6 +166,39 @@ export default function ServiceForm({
             }
             if (initialData.contentImage) {
                 setContentImagePreview(initialData.contentImage);
+            }
+
+            if (initialData.contentBlocks && Array.isArray(initialData.contentBlocks) && initialData.contentBlocks.length > 0) {
+                const parsedBlocks = initialData.contentBlocks.map((b: any) => ({
+                    title: b.title || "",
+                    subtitle: b.subtitle || "",
+                    description: b.description || "",
+                    points: Array.isArray(b.points)
+                        ? b.points.map((pt: any) => typeof pt === 'object' ? { title: pt.title || "", text: pt.text || "" } : { title: "", text: String(pt) })
+                        : [],
+                    buttonText: b.buttonText || "",
+                    buttonUrl: b.buttonUrl || "",
+                    imagePosition: b.imagePosition === 'left' ? 'left' : 'right',
+                    image: b.image || "",
+                }));
+                setContentBlocks(parsedBlocks);
+                const previewsMap: { [key: number]: string } = {};
+                parsedBlocks.forEach((b: any, i: number) => {
+                    if (b.image) previewsMap[i] = b.image;
+                });
+                setContentBlockPreviews(previewsMap);
+            } else if (initialData.contentImage) {
+                setContentBlocks([{
+                    title: "",
+                    subtitle: "",
+                    description: "",
+                    points: [],
+                    buttonText: "",
+                    buttonUrl: "",
+                    imagePosition: 'right',
+                    image: initialData.contentImage,
+                }]);
+                setContentBlockPreviews({ 0: initialData.contentImage });
             }
         }
     }, [initialData]);
@@ -262,6 +308,70 @@ const slugify = (text: string) => {
         }
     };
 
+    const addContentBlock = () => {
+        setContentBlocks([
+            ...contentBlocks,
+            {
+                title: "",
+                subtitle: "",
+                description: "",
+                points: [{ title: "", text: "" }],
+                buttonText: "",
+                buttonUrl: "",
+                imagePosition: "right",
+                image: "",
+            }
+        ]);
+    };
+
+    const removeContentBlock = (index: number) => {
+        setContentBlocks(contentBlocks.filter((_, i) => i !== index));
+        const newFiles = { ...contentBlockFiles };
+        delete newFiles[index];
+        setContentBlockFiles(newFiles);
+        const newPreviews = { ...contentBlockPreviews };
+        delete newPreviews[index];
+        setContentBlockPreviews(newPreviews);
+    };
+
+    const handleContentBlockChange = (blockIndex: number, field: string, value: any) => {
+        const copy = [...contentBlocks];
+        copy[blockIndex] = { ...copy[blockIndex], [field]: value };
+        setContentBlocks(copy);
+    };
+
+    const addContentBlockPoint = (blockIndex: number) => {
+        const copy = [...contentBlocks];
+        copy[blockIndex].points = [...(copy[blockIndex].points || []), { title: "", text: "" }];
+        setContentBlocks(copy);
+    };
+
+    const removeContentBlockPoint = (blockIndex: number, pointIndex: number) => {
+        const copy = [...contentBlocks];
+        copy[blockIndex].points = copy[blockIndex].points.filter((_, i) => i !== pointIndex);
+        setContentBlocks(copy);
+    };
+
+    const handleContentBlockPointChange = (blockIndex: number, pointIndex: number, field: "title" | "text", value: string) => {
+        const copy = [...contentBlocks];
+        const newPoints = [...copy[blockIndex].points];
+        newPoints[pointIndex] = { ...newPoints[pointIndex], [field]: value };
+        copy[blockIndex].points = newPoints;
+        setContentBlocks(copy);
+    };
+
+    const handleContentBlockImageChange = (blockIndex: number, e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (file.size > 10 * 1024 * 1024) {
+                toast.error("Image size must be less than 10MB");
+                return;
+            }
+            setContentBlockFiles(prev => ({ ...prev, [blockIndex]: file }));
+            setContentBlockPreviews(prev => ({ ...prev, [blockIndex]: URL.createObjectURL(file) }));
+        }
+    };
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const formData = new FormData();
@@ -304,6 +414,22 @@ const slugify = (text: string) => {
             .filter(card => card.title !== "" || card.subtitle !== "" || card.items.length > 0);
         formData.append("benefitsCards", JSON.stringify(filteredBenefitsCards));
 
+        const filteredContentBlocks = contentBlocks
+            .map((b, idx) => ({
+                title: b.title.trim(),
+                subtitle: b.subtitle.trim(),
+                description: b.description.trim(),
+                points: (b.points || [])
+                    .map(pt => ({ title: pt.title?.trim() || "", text: pt.text?.trim() || "" }))
+                    .filter(pt => pt.title !== "" || pt.text !== ""),
+                buttonText: b.buttonText.trim(),
+                buttonUrl: b.buttonUrl.trim(),
+                imagePosition: b.imagePosition || "right",
+                image: b.image || "",
+            }))
+            .filter((b, idx) => b.title !== "" || b.subtitle !== "" || b.description !== "" || (b.points && b.points.length > 0) || b.buttonText !== "" || contentBlockPreviews[idx] || b.image);
+        formData.append("contentBlocks", JSON.stringify(filteredContentBlocks));
+
         formData.append("faqs", JSON.stringify(faqs.filter((f) => f.question.trim() && f.answer.trim())));
 
         if (imageFile) {
@@ -312,6 +438,14 @@ const slugify = (text: string) => {
         if (contentImageFile) {
             formData.append("contentImage", contentImageFile);
         }
+
+        Object.keys(contentBlockFiles).forEach(key => {
+            const index = parseInt(key, 10);
+            if (contentBlockFiles[index]) {
+                formData.append(`contentBlockImage${index}`, contentBlockFiles[index]);
+            }
+        });
+
         if (benefitsImage0File) {
             formData.append("benefitsImage0", benefitsImage0File);
         }
@@ -412,36 +546,210 @@ const slugify = (text: string) => {
 
             {/* Overview */}
             <section className="space-y-4 pb-10 border-b">
-                <h2 className="text-lg font-bold text-slate-800">Overview & Content Image</h2>
+                <h2 className="text-lg font-bold text-slate-800">Overview</h2>
                 <div className="h-[200px] mb-6">
                     <ReactQuill theme="snow" value={form.overview} onChange={(val) => setForm(p => ({ ...p, overview: val }))} className="bg-white h-[150px]" />
                 </div>
-                <div className="pt-8">
-                    <label className="block text-sm font-medium mb-1 text-slate-700">Overview Bottom Image (Content Image)</label>
-                    <p className="text-xs text-slate-500 mb-2">Displays right below the Overview section on the Service detail page.</p>
-                    <div className="flex items-center gap-4">
-                        {contentImagePreview && (
-                            <div className="relative w-20 h-16 rounded overflow-hidden border flex-shrink-0">
-                                <Image
-                                    src={getImageUrl(contentImagePreview)}
-                                    alt="Content Preview"
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-                        )}
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleContentFileChange}
-                            className="w-full border rounded-lg px-3 py-1.5 focus:ring-2 focus:ring-secondary outline-none text-sm file:mr-4 file:py-1 file:px-3 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
-                        />
+            </section>
+
+            {/* 2-Column Content / Feature Blocks (Col-6 Image + Col-6 Content) */}
+            <section className="space-y-6 pb-6 border-b">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <h2 className="text-lg font-bold text-slate-800">2-Column Feature / Content Blocks</h2>
+                        <p className="text-xs text-slate-500">Add customizable 2-column sections (Col-6 Image on Left or Right + Col-6 Title, Description, Highlight Points, and CTA Button).</p>
                     </div>
-                    <div className="flex flex-col gap-0.5 mt-1 ml-[6rem]">
-                        <p className="text-[10px] text-slate-500 font-medium">Supported formats: JPG, PNG, WebP</p>
-                        <p className="text-[10px] text-slate-500 font-medium">Maximum file size: 10MB</p>
-                    </div>
+                    <button
+                        type="button"
+                        onClick={addContentBlock}
+                        className="self-start sm:self-auto px-4 py-2 bg-secondary/10 text-secondary hover:bg-secondary hover:text-white rounded-lg text-xs font-bold transition-colors"
+                    >
+                        + Add Content Block
+                    </button>
                 </div>
+
+                {contentBlocks.length === 0 ? (
+                    <div className="p-8 border-2 border-dashed border-slate-200 rounded-2xl text-center bg-slate-50/50">
+                        <p className="text-sm font-semibold text-slate-600 mb-1">No feature / content blocks added yet</p>
+                        <p className="text-xs text-slate-400 mb-4">Add a 2-column block to showcase mockups, key takeaways, survey details, or points alongside an image.</p>
+                        <button
+                            type="button"
+                            onClick={addContentBlock}
+                            className="px-4 py-2 bg-secondary text-white rounded-lg text-xs font-bold hover:bg-secondary-dark transition-colors"
+                        >
+                            + Add First Content Block
+                        </button>
+                    </div>
+                ) : (
+                    <div className="space-y-6">
+                        {contentBlocks.map((block, blockIndex) => (
+                            <div key={blockIndex} className="p-5 sm:p-6 border border-slate-200 rounded-2xl bg-slate-50/70 space-y-5 relative shadow-xs">
+                                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 pb-3">
+                                    <div className="flex items-center gap-3">
+                                        <span className="w-6 h-6 rounded-full bg-secondary text-white text-xs font-bold flex items-center justify-center">
+                                            {blockIndex + 1}
+                                        </span>
+                                        <h3 className="text-sm font-bold text-slate-800">Content Block #{blockIndex + 1}</h3>
+                                    </div>
+                                    <div className="flex items-center gap-4">
+                                        <div className="flex items-center gap-2">
+                                            <label className="text-xs font-bold text-slate-600">Image Position:</label>
+                                            <select
+                                                value={block.imagePosition || "right"}
+                                                onChange={(e) => handleContentBlockChange(blockIndex, "imagePosition", e.target.value)}
+                                                className="border rounded-lg px-2.5 py-1 text-xs bg-white font-semibold text-slate-700 outline-none focus:ring-2 focus:ring-secondary/20"
+                                            >
+                                                <option value="right">Right Side (Text on Left)</option>
+                                                <option value="left">Left Side (Text on Right)</option>
+                                            </select>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => removeContentBlock(blockIndex)}
+                                            className="text-red-500 text-xs font-bold hover:underline"
+                                        >
+                                            Remove Block
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                    {/* Left Sub-column: Content Details */}
+                                    <div className="lg:col-span-7 space-y-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                            <div>
+                                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Badge / Tagline (Optional)</label>
+                                                <input
+                                                    value={block.subtitle}
+                                                    onChange={(e) => handleContentBlockChange(blockIndex, "subtitle", e.target.value)}
+                                                    placeholder="e.g. Employee Retention & Insights"
+                                                    className="w-full border rounded-lg px-3 py-2 text-sm bg-white"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Block Title</label>
+                                                <input
+                                                    value={block.title}
+                                                    onChange={(e) => handleContentBlockChange(blockIndex, "title", e.target.value)}
+                                                    placeholder="e.g. Collect Feedback. Understand Better."
+                                                    className="w-full border rounded-lg px-3 py-2 text-sm bg-white font-semibold"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Description</label>
+                                            <textarea
+                                                value={block.description}
+                                                onChange={(e) => handleContentBlockChange(blockIndex, "description", e.target.value)}
+                                                placeholder="Enter block description or summary..."
+                                                rows={3}
+                                                className="w-full border rounded-lg px-3 py-2 text-sm bg-white resize-none"
+                                            />
+                                        </div>
+
+                                        {/* Points / Bullets list */}
+                                        <div className="space-y-3 pt-1">
+                                            <div className="flex justify-between items-center">
+                                                <label className="block text-xs font-bold text-slate-500 uppercase">Points / Highlights (Optional)</label>
+                                                <button
+                                                    type="button"
+                                                    onClick={() => addContentBlockPoint(blockIndex)}
+                                                    className="text-xs text-secondary font-bold hover:underline"
+                                                >
+                                                    + Add Point
+                                                </button>
+                                            </div>
+
+                                            {(block.points || []).map((pt, ptIdx) => (
+                                                <div key={ptIdx} className="p-3 border border-slate-200/80 rounded-xl bg-white space-y-2 relative">
+                                                    <div className="flex items-center justify-between">
+                                                        <span className="text-[11px] font-bold text-slate-400 uppercase">Point #{ptIdx + 1}</span>
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => removeContentBlockPoint(blockIndex, ptIdx)}
+                                                            className="text-red-500 text-xs hover:underline"
+                                                        >
+                                                            Delete
+                                                        </button>
+                                                    </div>
+                                                    <input
+                                                        value={pt.title || ""}
+                                                        onChange={(e) => handleContentBlockPointChange(blockIndex, ptIdx, "title", e.target.value)}
+                                                        placeholder="Point Title (e.g. Understand, Analyze, Improve)"
+                                                        className="w-full border rounded-lg px-2.5 py-1.5 text-xs font-semibold bg-slate-50/50"
+                                                    />
+                                                    <textarea
+                                                        value={pt.text || ""}
+                                                        onChange={(e) => handleContentBlockPointChange(blockIndex, ptIdx, "text", e.target.value)}
+                                                        placeholder="Point Description (e.g. Discover the real reasons behind employee exits.)"
+                                                        rows={2}
+                                                        className="w-full border rounded-lg px-2.5 py-1.5 text-xs bg-slate-50/50 resize-none"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Button Action CTA */}
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-slate-200/60">
+                                            <div>
+                                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Button Text (Optional)</label>
+                                                <input
+                                                    value={block.buttonText}
+                                                    onChange={(e) => handleContentBlockChange(blockIndex, "buttonText", e.target.value)}
+                                                    placeholder="e.g. Schedule Consultation"
+                                                    className="w-full border rounded-lg px-3 py-1.5 text-xs bg-white"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-xs font-bold text-slate-500 uppercase mb-1">Button Link (Optional)</label>
+                                                <input
+                                                    value={block.buttonUrl}
+                                                    onChange={(e) => handleContentBlockChange(blockIndex, "buttonUrl", e.target.value)}
+                                                    placeholder="e.g. /contact-us or #lead-form"
+                                                    className="w-full border rounded-lg px-3 py-1.5 text-xs bg-white"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* Right Sub-column: Image Upload & Preview */}
+                                    <div className="lg:col-span-5 space-y-3 bg-white p-4 rounded-xl border border-slate-200">
+                                        <label className="block text-xs font-bold text-slate-700 uppercase">Block Image</label>
+                                        <p className="text-[11px] text-slate-500">Upload illustration, dashboard mockup, or infographic for this block.</p>
+                                        
+                                        {contentBlockPreviews[blockIndex] && (
+                                            <div className="relative w-full h-44 rounded-lg overflow-hidden border bg-slate-50">
+                                                <Image
+                                                    src={getImageUrl(contentBlockPreviews[blockIndex])}
+                                                    alt="Block Preview"
+                                                    fill
+                                                    className="object-contain p-2"
+                                                />
+                                            </div>
+                                        )}
+
+                                        <input
+                                            type="file"
+                                            accept="image/*"
+                                            onChange={(e) => handleContentBlockImageChange(blockIndex, e)}
+                                            className="w-full border rounded-lg px-2.5 py-1.5 text-xs bg-white file:mr-3 file:py-1 file:px-2.5 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-secondary/10 file:text-secondary hover:file:bg-secondary/20"
+                                        />
+                                        <p className="text-[10px] text-slate-400">Supported: JPG, PNG, WebP (Max: 10MB)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                        <button
+                            type="button"
+                            onClick={addContentBlock}
+                            className="w-full py-3 border-2 border-dashed border-secondary/30 text-secondary hover:bg-secondary/5 rounded-xl text-xs font-bold transition-colors"
+                        >
+                            + Add Another Content Block
+                        </button>
+                    </div>
+                )}
             </section>
 
             {/* Key Areas of Service (Cards Layout) */}

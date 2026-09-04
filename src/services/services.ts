@@ -8,6 +8,22 @@ export interface FAQ {
   answer: string;
 }
 
+export interface ServiceContentPoint {
+  title?: string;
+  text: string;
+}
+
+export interface ServiceContentBlock {
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  points?: ServiceContentPoint[];
+  buttonText?: string;
+  buttonUrl?: string;
+  imagePosition?: 'left' | 'right';
+  image?: string;
+}
+
 export interface Service {
   id: string;
   title: string;
@@ -17,6 +33,7 @@ export interface Service {
   position?: number;
   innerImage?: string;
   contentImage?: string;
+  contentBlocks?: ServiceContentBlock[];
   overview?: string;
   approach?: string;
   quoteText?: string;
@@ -39,6 +56,7 @@ export interface CreateServiceDto {
   position?: number;
   innerImage?: string;
   contentImage?: string;
+  contentBlocks?: ServiceContentBlock[];
   overview?: string;
   approach?: string;
   quoteText?: string;

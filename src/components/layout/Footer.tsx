@@ -42,7 +42,9 @@ export default function Footer() {
             {/* Left Side: Pitch and Pill Badges */}
             <div className="lg:col-span-6 space-y-8">
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-primary leading-tight max-w-2xl">
-                Let&apos;s discuss how <span className="text-secondary">People Consulting</span> can help you.
+                Let&apos;s discuss how <br />
+                <span className="text-secondary">People Consulting</span> <br />
+                can help you.
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-6 pt-4">

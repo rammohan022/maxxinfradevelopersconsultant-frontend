@@ -418,6 +418,8 @@ export default function Header() {
                                       <Link
                                         key={pdf.id}
                                         href={`/pdf?doc=${slugifyCategory(pdf.title)}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         onClick={() => setResourceOpen(false)}
                                         className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                                       >
@@ -657,7 +659,7 @@ export default function Header() {
                             </div>
                             {pdfs.length > 0 ? (
                               pdfs.map((pdf) => (
-                                <Link key={pdf.id} href={`/pdf?doc=${slugifyCategory(pdf.title)}`} onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                                <Link key={pdf.id} href={`/pdf?doc=${slugifyCategory(pdf.title)}`} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
                                   <ChevronRight size={12} className="text-secondary/50" />
                                   <span className="truncate">{formatTitleCase(pdf.title)}</span>
                                 </Link>

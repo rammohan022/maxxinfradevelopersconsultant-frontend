@@ -1,93 +1,80 @@
 'use client'
 
-import { useState } from "react"
 import { Container } from "@/components/ui"
-import { ShieldCheck, Flame, Users2, Award, ArrowLeft, ArrowRight } from "lucide-react"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Autoplay, Pagination, Navigation } from "swiper/modules"
 import { motion } from "framer-motion"
 
-import "swiper/css"
-import "swiper/css/pagination"
-
-const values = [
-  { name: "Integrity First", icon: ShieldCheck, desc: "Ethical frameworks guide all placements, advisory services, and billing practices without compromise." },
-  { name: "Excellence & Quality", icon: Award, desc: "We focus on candidate quality, strict background validation, and measurable corporate training results." },
-  { name: "Partnership Spirit", icon: Users2, desc: "We operate as an extension of your in-house teams, aligning our search parameters with your strategic vision." },
-  { name: "Continuous Evolution", icon: Flame, desc: "Adapting modern search technologies and dynamic training curriculum to match changing market realities." },
+const principles = [
+  {
+    number: "01.",
+    title: "Integrity First",
+    desc: "We uphold the highest ethical frameworks and statutory standards across all our advisory services, talent placements, and business partnerships. By maintaining complete transparency and confidentiality, we ensure our clients and candidates experience dependable, legally compliant, and trust-driven HR solutions."
+  },
+  {
+    number: "02.",
+    title: "Excellence & Quality",
+    desc: "We are committed to delivering top-tier HR services through meticulous candidate screening, verified background intelligence, and measurable corporate training programs. Our relentless dedication to excellence guarantees superior organizational performance aligned with fast-evolving industry demands."
+  },
+  {
+    number: "03.",
+    title: "Partnership Spirit",
+    desc: "We operate as an authentic, seamless extension of your internal leadership and HR teams. By aligning our recruitment strategies, modern digital tools, and statutory advisory with your overarching strategic vision, we forge long-term partnerships that foster enduring workforce growth."
+  }
 ]
 
 export default function CoreValues() {
-  const [prevEl, setPrevEl] = useState<HTMLButtonElement | null>(null);
-  const [nextEl, setNextEl] = useState<HTMLButtonElement | null>(null);
-
   return (
-    <section className="py-16 md:py-20 bg-slate-50 border-b border-slate-100/80 overflow-hidden" id="core-values">
-      <Container>
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
-            Our Core Values
-          </span>
-          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-            The principles that <span className="text-secondary">guide our decisions</span>
-          </h2>
-          <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed">
-            We are committed to maintaining high standard deliverables, ensuring compliance, and delivering growth.
-          </p>
-        </div>
+    <section className="relative bg-[#2b4376] text-white py-12 md:py-16 overflow-hidden" id="core-values">
+      {/* Top Center Arrow Notch */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[18px] border-l-transparent border-r-[18px] border-r-transparent border-t-[18px] border-t-white z-10" />
 
+      <Container>
+        {/* Section Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="relative px-4 sm:px-12"
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-14"
         >
-          <Swiper
-            modules={[Autoplay, Pagination, Navigation]}
-            loop={true}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true,
-            }}
-            navigation={{
-              nextEl: '.swiper-button-next-values',
-              prevEl: '.swiper-button-prev-values',
-            }}
-            pagination={{ clickable: true, dynamicBullets: true }}
-            spaceBetween={24}
-            breakpoints={{
-              0: { slidesPerView: 1 },
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 4 },
-            }}
-            className="pb-12"
-          >
-            {values.map((val) => {
-              const Icon = val.icon
-              return (
-                <SwiperSlide key={val.name}>
-                  <div className="p-6 rounded-2xl border border-slate-100 bg-white hover:shadow-lg transition-all duration-300 h-full flex flex-col min-h-[220px]">
-                    <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center mb-5">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5">{val.name}</h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">{val.desc}</p>
-                  </div>
-                </SwiperSlide>
-              )
-            })}
-          </Swiper>
-
-          {/* Custom Navigation Buttons */}
-          <button className="swiper-button-prev-values absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none">
-            <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
-          <button className="swiper-button-next-values absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-md border border-slate-100 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 focus:outline-none">
-            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-          </button>
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/20 bg-white/10 text-white text-xs font-bold tracking-widest mb-3">
+            Our Core Values
+          </span>
+          <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
+            The Principles That <span className="text-secondary">Guide Our Decisions</span>
+          </h2>
+          <p className="text-xs md:text-sm text-slate-200 mt-1.5 max-w-2xl mx-auto leading-relaxed">
+            We are committed to maintaining high standard deliverables, ensuring compliance, and delivering growth.
+          </p>
         </motion.div>
+
+        {/* 3 Columns Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
+          {principles.map((item, idx) => (
+            <motion.div
+              key={item.number}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: idx * 0.15 }}
+              className="flex flex-col"
+            >
+              {/* Number */}
+              <span className="text-2xl sm:text-3xl font-medium text-secondary tracking-tight block mb-2 select-none">
+                {item.number}
+              </span>
+
+              {/* Title */}
+              <h3 className="text-base sm:text-lg font-bold text-white mb-3 leading-snug">
+                {item.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
+                {item.desc}
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </Container>
     </section>
   )

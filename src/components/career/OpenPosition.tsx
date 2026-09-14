@@ -270,7 +270,7 @@ const OpenPosition = () => {
     <>
       <div id="open-positions" className="bg-slate-100/70">
         {/* ================= TOP SEARCH BAR ================= */}
-        <div className="bg-[#1e293b] py-6 px-4 border-b border-slate-700/80 shadow-inner">
+        <div className="bg-[#17233e] py-6 px-4 border-b border-primary/40 shadow-inner">
           <Container>
             <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-0 shadow-lg rounded-md overflow-hidden">
               <div className="relative flex-1 w-full flex items-center bg-white px-4 py-1">
@@ -295,7 +295,7 @@ const OpenPosition = () => {
               </div>
               <button
                 onClick={() => setCurrentPage(1)}
-                className="w-full sm:w-auto bg-[#00a2e8] hover:bg-[#008fcb] text-white font-bold text-sm px-7 py-3 flex items-center justify-center gap-1.5 transition duration-200 shrink-0 uppercase tracking-wider"
+                className="w-full sm:w-auto bg-secondary hover:bg-secondary-dark text-white font-bold text-sm px-7 py-3 flex items-center justify-center gap-1.5 transition duration-200 shrink-0 uppercase tracking-wider"
               >
                 <span>Search Jobs</span>
                 <ChevronRight className="w-4 h-4" strokeWidth={3} />
@@ -310,20 +310,20 @@ const OpenPosition = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* ================= LEFT COLUMN: FILTERS ================= */}
               <div className="lg:col-span-4">
-                <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-3 tracking-tight">
+                <h2 className="text-xl md:text-2xl font-bold text-primary mb-3 tracking-tight">
                   Filters
                 </h2>
 
-                <div className="bg-[#00a2e8] p-5 sm:p-6 rounded-sm shadow-md text-white space-y-4">
+                <div className="bg-primary p-5 sm:p-6 rounded-xl shadow-md text-white space-y-4 border border-primary-dark">
                   {/* Sort Order */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white">
+                    <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white/90">
                       Sort Order
                     </label>
                     <select
                       value={sortOrder}
                       onChange={(e) => setSortOrder(e.target.value)}
-                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-sm border-0 focus:outline-none focus:ring-2 focus:ring-sky-200 cursor-pointer"
+                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-secondary/50 cursor-pointer"
                     >
                       <option value="SELECT">SELECT</option>
                       <option value="NEWEST">Newest First</option>
@@ -335,13 +335,13 @@ const OpenPosition = () => {
 
                   {/* Work Model */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white">
+                    <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white/90">
                       Work Model
                     </label>
                     <select
                       value={workModel}
                       onChange={(e) => setWorkModel(e.target.value)}
-                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-sm border-0 focus:outline-none focus:ring-2 focus:ring-sky-200 cursor-pointer"
+                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-secondary/50 cursor-pointer"
                     >
                       {workModels.map((m) => (
                         <option key={m} value={m}>
@@ -353,13 +353,13 @@ const OpenPosition = () => {
 
                   {/* Industry */}
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white">
+                    <label className="block text-xs font-bold uppercase tracking-wider mb-1.5 text-white/90">
                       Industry
                     </label>
                     <select
                       value={department}
                       onChange={(e) => setDepartment(e.target.value)}
-                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-sm border-0 focus:outline-none focus:ring-2 focus:ring-sky-200 cursor-pointer"
+                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-secondary/50 cursor-pointer"
                     >
                       {departments.map((d) => (
                         <option key={d} value={d}>
@@ -371,13 +371,13 @@ const OpenPosition = () => {
 
                   {/* Location */}
                   <div className="space-y-2">
-                    <label className="block text-xs font-bold uppercase tracking-wider text-white">
+                    <label className="block text-xs font-bold uppercase tracking-wider text-white/90">
                       Location
                     </label>
                     <select
                       value={country}
                       onChange={(e) => setCountry(e.target.value)}
-                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-sm border-0 focus:outline-none focus:ring-2 focus:ring-sky-200 cursor-pointer"
+                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-secondary/50 cursor-pointer"
                     >
                       <option value="ALL">SELECT COUNTRY</option>
                       <option value="India">India</option>
@@ -385,7 +385,7 @@ const OpenPosition = () => {
                     <select
                       value={locationState}
                       onChange={(e) => setLocationState(e.target.value)}
-                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-sm border-0 focus:outline-none focus:ring-2 focus:ring-sky-200 cursor-pointer"
+                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-secondary/50 cursor-pointer"
                     >
                       <option value="ALL">SELECT STATE</option>
                       {stateOptions.map((s) => (
@@ -399,14 +399,14 @@ const OpenPosition = () => {
                       placeholder="CITY"
                       value={city}
                       onChange={(e) => setCity(e.target.value)}
-                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-sm border-0 focus:outline-none focus:ring-2 focus:ring-sky-200 placeholder-slate-400"
+                      className="w-full bg-white text-slate-800 text-xs font-medium px-3 py-2.5 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-secondary/50 placeholder-slate-400"
                     />
                   </div>
 
                   {/* Zip / Postal Code & Within */}
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider mb-1 text-white">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider mb-1 text-white/90">
                         Zip/Postal Code
                       </label>
                       <input
@@ -414,17 +414,17 @@ const OpenPosition = () => {
                         placeholder="ZIP/POSTAL CODE"
                         value={zipCode}
                         onChange={(e) => setZipCode(e.target.value)}
-                        className="w-full bg-white text-slate-800 text-xs px-2.5 py-2.5 rounded-sm border-0 focus:outline-none focus:ring-2 focus:ring-sky-200 placeholder-slate-400"
+                        className="w-full bg-white text-slate-800 text-xs px-2.5 py-2.5 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-secondary/50 placeholder-slate-400"
                       />
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold uppercase tracking-wider mb-1 text-white">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider mb-1 text-white/90">
                         Within
                       </label>
                       <select
                         value={radius}
                         onChange={(e) => setRadius(e.target.value)}
-                        className="w-full bg-white text-slate-800 text-xs px-2 py-2.5 rounded-sm border-0 focus:outline-none focus:ring-2 focus:ring-sky-200 cursor-pointer"
+                        className="w-full bg-white text-slate-800 text-xs px-2 py-2.5 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-secondary/50 cursor-pointer"
                       >
                         <option value="RADIUS">RADIUS</option>
                         <option value="10">10 km</option>
@@ -440,7 +440,7 @@ const OpenPosition = () => {
                     <button
                       type="button"
                       onClick={handleResetFilters}
-                      className="w-full bg-white/20 hover:bg-white/30 text-white font-bold text-xs py-2.5 rounded-sm border border-white/40 transition flex items-center justify-center gap-1.5 tracking-wider uppercase"
+                      className="w-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs py-2.5 rounded-lg border border-white/20 hover:border-secondary transition flex items-center justify-center gap-1.5 tracking-wider uppercase"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
                       <span>Reset Filters</span>
@@ -498,7 +498,7 @@ const OpenPosition = () => {
                               onClick={() => setCurrentPage(page)}
                               className={`px-3 py-1 text-xs font-bold rounded-sm border ${
                                 currentPage === page
-                                  ? "bg-[#00a2e8] text-white border-[#00a2e8]"
+                                  ? "bg-primary text-white border-primary"
                                   : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
                               }`}
                             >
@@ -537,7 +537,7 @@ const OpenPosition = () => {
                     </p>
                     <button
                       onClick={handleResetFilters}
-                      className="text-xs font-bold text-[#00a2e8] hover:underline uppercase tracking-wider"
+                      className="text-xs font-bold text-secondary hover:underline uppercase tracking-wider"
                     >
                       Clear all filters
                     </button>
@@ -547,12 +547,12 @@ const OpenPosition = () => {
                     {paginatedJobs.map((job) => (
                       <article
                         key={job.id}
-                        className="bg-white border border-slate-200/90 rounded-sm p-5 sm:p-6 shadow-xs hover:border-[#00a2e8] hover:shadow-md transition-all group"
+                        className="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 shadow-xs hover:border-primary/40 hover:shadow-md transition-all group"
                       >
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-2">
                           <h3
                             onClick={() => openApplyModal(job)}
-                            className="text-[#0082c8] group-hover:text-[#005a8c] font-bold text-base sm:text-lg leading-snug cursor-pointer transition-colors"
+                            className="text-primary group-hover:text-secondary font-bold text-base sm:text-lg leading-snug cursor-pointer transition-colors"
                           >
                             {job.title}
                           </h3>
@@ -619,7 +619,7 @@ const OpenPosition = () => {
                             onClick={() => setCurrentPage(page)}
                             className={`px-3 py-1 text-xs font-bold rounded-sm border ${
                               currentPage === page
-                                ? "bg-[#00a2e8] text-white border-[#00a2e8]"
+                                ? "bg-primary text-white border-primary"
                                 : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
                             }`}
                           >

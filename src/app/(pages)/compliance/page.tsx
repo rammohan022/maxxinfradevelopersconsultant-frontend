@@ -82,7 +82,7 @@ export default function CompliancePage() {
       />
 
       {/* ================= 1. HERO ================= */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[400px] flex items-center justify-center overflow-hidden border-b border-slate-200/80">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
@@ -132,7 +132,7 @@ export default function CompliancePage() {
       </section>
 
       {/* ================= 2. WHAT WE HANDLE ================= */}
-      <section className="py-16 md:py-14 bg-white relative">
+      <section className="py-16 md:py-20 lg:py-24 bg-white relative border-b border-slate-200/80">
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20 space-y-4">
             <p className="text-sm font-bold tracking-widest text-secondary uppercase">
@@ -176,7 +176,7 @@ export default function CompliancePage() {
       </section>
 
       {/* ================= 3. OUR SOLUTIONS ================= */}
-      <section className="py-16 md:py-14 bg-slate-50 relative overflow-hidden">
+      <section className="py-16 md:py-20 lg:py-24 bg-slate-50 relative overflow-hidden border-b border-slate-200/80">
         {/* Dynamic Background Pattern */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('/img/paper_texture_bg.png')] bg-repeat z-0"></div>
         <div className="absolute top-1/4 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] -z-10"></div>
@@ -219,7 +219,7 @@ export default function CompliancePage() {
       </section>
 
       {/* ================= 4. DASHBOARD PREVIEW ================= */}
-      <section className="py-16 md:py-14 bg-white">
+      <section className="py-16 md:py-20 lg:py-24 bg-white relative border-b border-slate-200/80">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
@@ -350,7 +350,7 @@ export default function CompliancePage() {
       <ComplianceLinks />
 
       {/* ================= 5. FAQs ================= */}
-      <FAQs />
+      <FAQs className="bg-slate-50" />
 
       {/* ================= 6. CTA ================= */}
       <CallToAction />

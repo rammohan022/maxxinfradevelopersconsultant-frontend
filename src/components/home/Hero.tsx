@@ -145,14 +145,13 @@ export default function Hero() {
               )}
 
               {activeSlide.body && (
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mb-8 leading-relaxed"
-                >
-                  {activeSlide.body}
-                </motion.p>
+                  className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mb-8 leading-relaxed [&_p]:mb-2 [&_p:last-child]:mb-0 [&_a]:text-secondary [&_a]:underline [&_strong]:text-slate-800"
+                  dangerouslySetInnerHTML={{ __html: activeSlide.body }}
+                />
               )}
 
               <motion.div

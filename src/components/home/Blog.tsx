@@ -53,7 +53,7 @@ export default function Blog() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
         >
           {latestBlogs.map((post) => (
             <motion.div variants={itemVariants} key={post.id}>

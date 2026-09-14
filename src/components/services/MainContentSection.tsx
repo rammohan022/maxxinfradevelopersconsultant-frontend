@@ -95,12 +95,12 @@ export default function MainContentSection({
             {/* Overview */}
             {overview && (
               <div className="mb-12">
-                <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
+                <h2 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2">
                   Overview
                 </h2>
-                <div className="mb-6 h-1 w-16 bg-red-700" />
+                <div className="mb-4 h-1 w-16 bg-red-700" />
                 <div
-                  className="leading-relaxed text-slate-700 rich-text-content space-y-4"
+                  className="leading-relaxed text-slate-600 rich-text-content space-y-3 text-xs sm:text-sm"
                   dangerouslySetInnerHTML={{ __html: overview }}
                 />
               </div>
@@ -108,7 +108,7 @@ export default function MainContentSection({
 
             {/* 2-Column Content / Feature Blocks */}
             {contentBlocks && contentBlocks.length > 0 ? (
-              <div className="space-y-12 mb-16">
+              <div className="space-y-8 mb-14">
                 {contentBlocks.map((block, idx) => {
                   const isImageLeft = block.imagePosition === "left";
                   const hasImage = Boolean(block.image);
@@ -117,49 +117,49 @@ export default function MainContentSection({
                   return (
                     <div
                       key={idx}
-                      className="bg-gradient-to-br from-slate-50/80 via-white to-orange-50/30 border border-slate-200/80 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm hover:shadow-md transition-all duration-300"
+                      className="bg-gradient-to-br from-slate-50/80 via-white to-orange-50/30 border border-slate-200/80 rounded-2xl p-5 sm:p-6 lg:p-7 shadow-sm hover:shadow-md transition-all duration-300"
                     >
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                         {/* Text & Points Column */}
                         <div
-                          className={`space-y-4 ${
+                          className={`space-y-3 ${
                             hasImage ? "lg:col-span-6" : "lg:col-span-12"
                           } ${
                             isImageLeft && hasImage ? "lg:order-2" : "lg:order-1"
                           }`}
                         >
                           {block.subtitle && (
-                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-100/80 border border-orange-200 text-secondary text-xs font-bold tracking-wider uppercase">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-orange-100/80 border border-orange-200 text-secondary text-[11px] font-bold tracking-wider uppercase">
                               {block.subtitle}
                             </span>
                           )}
 
                           {block.title && (
-                            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary tracking-tight leading-snug">
+                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary tracking-tight leading-snug">
                               {block.title}
                             </h3>
                           )}
 
                           {block.description && (
-                            <p className="text-slate-650 text-sm sm:text-base leading-relaxed">
+                            <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
                               {block.description}
                             </p>
                           )}
 
                           {hasPoints && (
-                            <div className="space-y-3.5 pt-2">
+                            <div className="space-y-2.5 pt-1.5">
                               {block.points!.map((pt, ptIdx) => (
-                                <div key={ptIdx} className="flex items-start gap-3 group">
-                                  <div className="w-7 h-7 rounded-lg bg-orange-50 border border-orange-200/80 text-secondary flex items-center justify-center shrink-0 mt-0.5 shadow-xs group-hover:bg-secondary group-hover:text-white transition-colors duration-200">
-                                    <CheckCircle2 className="w-4 h-4 text-inherit" strokeWidth={2.5} />
+                                <div key={ptIdx} className="flex items-start gap-2.5 group">
+                                  <div className="w-6 h-6 rounded-md bg-orange-50 border border-orange-200/80 text-secondary flex items-center justify-center shrink-0 mt-0.5 shadow-xs group-hover:bg-secondary group-hover:text-white transition-colors duration-200">
+                                    <CheckCircle2 className="w-3.5 h-3.5 text-inherit" strokeWidth={2.5} />
                                   </div>
                                   <div className="min-w-0">
                                     {pt.title && (
-                                      <h4 className="text-sm sm:text-base font-bold text-primary mb-0.5">
+                                      <h4 className="text-xs sm:text-sm font-bold text-primary mb-0.5">
                                         {pt.title}
                                       </h4>
                                     )}
-                                    <p className="text-xs sm:text-sm text-slate-650 leading-relaxed font-normal">
+                                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
                                       {pt.text}
                                     </p>
                                   </div>
@@ -169,13 +169,13 @@ export default function MainContentSection({
                           )}
 
                           {block.buttonText && (
-                            <div className="pt-3">
+                            <div className="pt-2">
                               <Link
                                 href={block.buttonUrl || "/contact-us"}
-                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-secondary hover:bg-secondary-dark text-white font-bold text-sm shadow-md shadow-secondary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-secondary hover:bg-secondary-dark text-white font-bold text-xs sm:text-sm shadow-sm shadow-secondary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                               >
                                 <span>{block.buttonText}</span>
-                                <ArrowRight className="w-4 h-4" />
+                                <ArrowRight className="w-3.5 h-3.5" />
                               </Link>
                             </div>
                           )}
@@ -188,7 +188,7 @@ export default function MainContentSection({
                               isImageLeft ? "lg:order-1" : "lg:order-2"
                             }`}
                           >
-                            <div className="relative w-full h-72 sm:h-80 md:h-96 rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-md group">
+                            <div className="relative w-full h-56 sm:h-64 md:h-72 rounded-xl overflow-hidden bg-white border border-slate-200 shadow-sm group">
                               <Image
                                 src={getImageUrl(block.image)}
                                 alt={block.title || "Service feature illustration"}
@@ -222,10 +222,10 @@ export default function MainContentSection({
             {/* Services */}
             {services && services.length > 0 && (
               <div className="mb-12">
-                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
+                <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2">
                   Key Areas of Service Include
                 </h3>
-                <div className="mb-6 h-1 w-16 bg-red-700" />
+                <div className="mb-4 h-1 w-16 bg-red-700" />
 
                 {services[0] && typeof services[0] === 'object' && 'title' in services[0] ? (
                   // Structured Cards Layout (from sketch)
@@ -233,25 +233,25 @@ export default function MainContentSection({
                     {(services as Array<{ title: string; description?: string; items: string[] }>).map((card, idx) => (
                       <div
                         key={idx}
-                        className="bg-orange-50/40 rounded-2xl border border-orange-100/60 p-6 hover:shadow-lg hover:border-secondary/30 transition-all duration-300 relative group"
+                        className="bg-orange-50/40 rounded-2xl border border-orange-100/60 p-5 hover:shadow-lg hover:border-secondary/30 transition-all duration-300 relative group"
                       >
                         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                        <h4 className="text-base font-bold text-primary tracking-tight mb-4 border-b border-slate-100 pb-2.5">
+                        <h4 className="text-sm sm:text-base font-bold text-primary tracking-tight mb-3 border-b border-slate-100 pb-2">
                           {card.title}
                         </h4>
 
                         {card.description && (
-                          <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-3">
                             {card.description}
                           </p>
                         )}
 
                         {card.items && card.items.length > 0 && (
-                          <ul className="space-y-2.5 text-slate-650 text-sm">
+                          <ul className="space-y-2 text-slate-600 text-xs sm:text-sm">
                             {card.items.map((item, itemIdx) => (
                               <li key={itemIdx} className="flex items-start">
-                                <span className="mr-2.5 mt-2 h-1.5 w-1.5 rounded-full bg-secondary shrink-0" />
+                                <span className="mr-2 mt-1.5 h-1.5 w-1.5 rounded-full bg-secondary shrink-0" />
                                 <span className="leading-snug text-slate-700">{item}</span>
                               </li>
                             ))}
@@ -279,23 +279,23 @@ export default function MainContentSection({
             {/* Why Choose Section */}
             {whyTitle && whyFeatures && whyFeatures.length > 0 && (
               <div className="mb-16 mt-8">
-                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2 text-center animate-fade-in">
+                <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2 text-center animate-fade-in">
                   {whyTitle}
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mt-6">
                   {whyFeatures.map((feature, idx) => (
                     <div
                       key={idx}
-                      className="bg-slate-50 border border-slate-100 rounded-2xl p-6 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
+                      className="bg-slate-50 border border-slate-100 rounded-2xl p-5 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-0.5"
                     >
-                      <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-white mb-4 shadow-sm">
-                        <Check className="w-6 h-6 text-white" strokeWidth={3} />
+                      <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white mb-3 shadow-sm">
+                        <Check className="w-5 h-5 text-white" strokeWidth={3} />
                       </div>
-                      <h4 className="text-base font-bold text-primary mb-2 leading-tight">
+                      <h4 className="text-sm sm:text-base font-bold text-primary mb-1.5 leading-tight">
                         {feature.title}
                       </h4>
-                      <p className="text-sm text-slate-650 leading-relaxed">
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         {feature.description}
                       </p>
                     </div>
@@ -309,36 +309,36 @@ export default function MainContentSection({
               <div className="mb-16">
                 {benefitsTitle && (
                   <>
-                    <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2 text-center">
+                    <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2 text-center">
                       {benefitsTitle}
                     </h3>
                   </>
                 )}
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
                   {benefitsCards.map((card, idx) => (
                     <div
                       key={idx}
-                      className="bg-gradient-to-br from-slate-50 to-orange-50/20 border border-slate-200/80 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all duration-350"
+                      className="bg-gradient-to-br from-slate-50 to-orange-50/20 border border-slate-200/80 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all duration-350"
                     >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
                         {/* Left Column: Text & Bullets */}
                         <div>
-                          <h4 className="text-lg md:text-xl font-bold text-primary mb-2 tracking-tight">
+                          <h4 className="text-base md:text-lg font-bold text-primary mb-1.5 tracking-tight">
                             {card.title}
                           </h4>
                           {card.subtitle && (
-                            <p className="text-xs text-slate-500 mb-4 font-semibold uppercase tracking-wider">
+                            <p className="text-[11px] text-slate-500 mb-3 font-semibold uppercase tracking-wider">
                               {card.subtitle}
                             </p>
                           )}
 
                           {card.items && card.items.length > 0 && (
-                            <ul className="space-y-3">
+                            <ul className="space-y-2.5">
                               {card.items.map((item, itemIdx) => (
                                 <li key={itemIdx} className="flex items-start">
-                                  <Check className="w-4 h-4 text-primary shrink-0 mr-2 mt-1" strokeWidth={3.5} />
-                                  <span className="text-sm text-slate-700 font-medium leading-relaxed">
+                                  <Check className="w-3.5 h-3.5 text-primary shrink-0 mr-2 mt-1" strokeWidth={3.5} />
+                                  <span className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
                                     {item}
                                   </span>
                                 </li>
@@ -369,12 +369,12 @@ export default function MainContentSection({
             {/* Approach */}
             {approach && (
               <div className="mb-12">
-                <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
+                <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2">
                   Our Approach
                 </h3>
-                <div className="mb-6 h-1 w-16 bg-red-700" />
+                <div className="mb-4 h-1 w-16 bg-red-700" />
                 <div
-                  className="leading-relaxed text-slate-700 rich-text-content space-y-4"
+                  className="leading-relaxed text-slate-600 rich-text-content space-y-3 text-xs sm:text-sm"
                   dangerouslySetInnerHTML={{ __html: approach }}
                 />
               </div>
@@ -382,12 +382,12 @@ export default function MainContentSection({
 
             {/* Quote */}
             {quoteText && (
-              <div className="mb-12 border-l-4 border-red-700 bg-navy p-6 sm:p-8 text-white">
-                <p className="mb-2 font-serif text-xl italic">
+              <div className="mb-12 border-l-4 border-red-700 bg-navy p-5 sm:p-6 text-white">
+                <p className="mb-2 font-serif text-base sm:text-lg italic">
                   “{quoteText}”
                 </p>
                 {quoteAuthor && (
-                  <p className="text-sm text-gray-300">
+                  <p className="text-xs sm:text-sm text-gray-300">
                     — {quoteAuthor}
                   </p>
                 )}
@@ -419,10 +419,10 @@ export default function MainContentSection({
 
               return (
                 <div className="mb-12 border-t border-slate-100 pt-12">
-                  <h3 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-2">
+                  <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2">
                     Frequently Asked Questions
                   </h3>
-                  <div className="mb-8 h-1 w-16 bg-secondary" />
+                  <div className="mb-6 h-1 w-16 bg-secondary" />
 
                   <div className="grid md:grid-cols-2 gap-4 sm:gap-5 items-start">
                     {displayFaqs.map((faq, idx) => {
@@ -434,18 +434,18 @@ export default function MainContentSection({
                         >
                           <button
                             onClick={() => toggleFaq(idx)}
-                            className="w-full flex items-center justify-between px-5 py-4 text-left"
+                            className="w-full flex items-center justify-between px-4 py-3.5 text-left"
                           >
-                            <span className="font-semibold text-primary text-sm sm:text-base pr-3 leading-snug">
+                            <span className="font-semibold text-primary text-xs sm:text-sm pr-3 leading-snug">
                               {faq.question}
                             </span>
-                            <div className="w-7 h-7 rounded-md bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0 font-bold text-lg leading-none">
+                            <div className="w-6 h-6 rounded-md bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0 font-bold text-base leading-none">
                               {isOpen ? <span className="text-secondary">-</span> : <span className="text-slate-400">+</span>}
                             </div>
                           </button>
 
                           {isOpen && (
-                            <div className="px-5 pb-4 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-3">
+                            <div className="px-4 pb-3.5 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-2.5">
                               {faq.answer}
                             </div>
                           )}
@@ -459,10 +459,10 @@ export default function MainContentSection({
           </div>
 
           {/* Bottom Area: Contact Form & CTA */}
-          <div className="w-full max-w-2xl mx-auto space-y-8 pt-8 border-t border-slate-200">
+          <div className="w-full max-w-2xl mx-auto space-y-6 pt-6 border-t border-slate-200">
             {/* Contact Form */}
-            <div className="border border-gray-200 bg-white p-6 sm:p-8 rounded-xl shadow-sm">
-              <h4 className="mb-6 text-xl font-bold text-primary text-center">
+            <div className="border border-gray-200 bg-white p-5 sm:p-6 rounded-xl shadow-sm">
+              <h4 className="mb-5 text-lg md:text-xl font-bold text-primary text-center">
                 Request a Consultation
               </h4>
 

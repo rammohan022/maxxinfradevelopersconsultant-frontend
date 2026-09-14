@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import {
   useGetBannersQuery,
   useCreateBannerMutation,
@@ -14,6 +15,23 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 import DeleteModal from "../components/DeleteModal";
+import "react-quill/dist/quill.snow.css";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
+const quillModules = {
+  toolbar: [
+    [{ header: [1, 2, 3, false] }],
+    ["bold", "italic", "underline"],
+    [{ color: [] }],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["link", "clean"],
+  ],
+};
+
+const stripHtml = (html?: string) => {
+  return html ? html.replace(/<[^>]*>?/gm, "") : "";
+};
 
 export default function BannersAdminPage() {
   const { data: banners = [], isLoading } = useGetBannersQuery();
@@ -185,7 +203,7 @@ export default function BannersAdminPage() {
                   </td>
                   <td className="p-3 max-w-xs">
                     <div className="font-semibold text-slate-700 text-xs truncate">{b.subtitle || "No subtitle"}</div>
-                    <div className="text-xs text-slate-500 line-clamp-1">{b.description || "No description"}</div>
+                    <div className="text-xs text-slate-500 line-clamp-1">{stripHtml(b.description) || "No description"}</div>
                   </td>
                   <td className="p-3 text-center font-semibold text-slate-600">{b.position || 1}</td>
                   <td className="p-3 text-center">
@@ -279,13 +297,16 @@ export default function BannersAdminPage() {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">Detailed Description Body</label>
-                <textarea
-                  rows={3}
-                  value={form.description}
-                  onChange={(e) => setForm({ ...form, description: e.target.value })}
-                  className="w-full border rounded-lg px-3 py-2 text-xs"
-                  placeholder="e.g. People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes."
-                />
+                <div className="bg-white min-h-[180px]">
+                  <ReactQuill
+                    theme="snow"
+                    modules={quillModules}
+                    value={form.description}
+                    onChange={(val) => setForm((prev) => ({ ...prev, description: val }))}
+                    placeholder="e.g. People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes."
+                    className="bg-white h-32 mb-12"
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-lg border">

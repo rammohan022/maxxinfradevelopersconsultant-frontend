@@ -203,23 +203,23 @@ export default function Footer() {
       </section>
 
       {/* 3. Legal/Copyright Bar */}
-      <section className="bg-white py-3 md:py-4 border-t border-slate-200 z-20 relative">
+      <section className="bg-primary py-3 md:py-4 border-t border-primary-dark/40 z-20 relative">
         <Container>
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] sm:text-xs font-medium text-slate-500">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] sm:text-xs font-medium text-white/85">
             <div className="text-center sm:text-left">
-              © {new Date().getFullYear()} <span className="text-secondary">People Consulting</span>. All Rights Reserved. Developed by{' '}
+              © {new Date().getFullYear()} <span className="text-secondary font-semibold">People Consulting</span>. All Rights Reserved. Developed by{' '}
               <a
                 href="https://webexbytes.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-slate-600 hover:text-primary transition-colors"
+                className="font-semibold text-white hover:text-secondary transition-colors"
               >
                 webexbytes
               </a>
             </div>
             <div className="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
-              <Link href="/terms-and-conditions" className="hover:text-primary transition-colors cursor-pointer">Terms & Conditions</Link>
-              <Link href="/privacy-policy" className="hover:text-primary transition-colors cursor-pointer">Privacy Policy</Link>
+              <Link href="/terms-and-conditions" className="hover:text-white transition-colors cursor-pointer">Terms & Conditions</Link>
+              <Link href="/privacy-policy" className="hover:text-white transition-colors cursor-pointer">Privacy Policy</Link>
             </div>
           </div>
         </Container>

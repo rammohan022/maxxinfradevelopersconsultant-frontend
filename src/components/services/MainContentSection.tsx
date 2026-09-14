@@ -129,13 +129,13 @@ export default function MainContentSection({
                           }`}
                         >
                           {block.subtitle && (
-                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-orange-100/80 border border-orange-200 text-secondary text-[11px] font-bold tracking-wider uppercase">
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-orange-100/80 border border-orange-200 text-secondary text-[10px] font-bold tracking-wider uppercase">
                               {block.subtitle}
                             </span>
                           )}
 
                           {block.title && (
-                            <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-primary tracking-tight leading-snug">
+                            <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight leading-snug">
                               {block.title}
                             </h3>
                           )}
@@ -147,19 +147,19 @@ export default function MainContentSection({
                           )}
 
                           {hasPoints && (
-                            <div className="space-y-2.5 pt-1.5">
+                            <div className="space-y-2 pt-1">
                               {block.points!.map((pt, ptIdx) => (
-                                <div key={ptIdx} className="flex items-start gap-2.5 group">
-                                  <div className="w-6 h-6 rounded-md bg-orange-50 border border-orange-200/80 text-secondary flex items-center justify-center shrink-0 mt-0.5 shadow-xs group-hover:bg-secondary group-hover:text-white transition-colors duration-200">
-                                    <CheckCircle2 className="w-3.5 h-3.5 text-inherit" strokeWidth={2.5} />
+                                <div key={ptIdx} className="flex items-start gap-2 group">
+                                  <div className="w-5 h-5 rounded-md bg-orange-50 border border-orange-200/80 text-secondary flex items-center justify-center shrink-0 mt-0.5 shadow-xs group-hover:bg-secondary group-hover:text-white transition-colors duration-200">
+                                    <CheckCircle2 className="w-3 h-3 text-inherit" strokeWidth={2.5} />
                                   </div>
                                   <div className="min-w-0">
                                     {pt.title && (
-                                      <h4 className="text-xs sm:text-sm font-bold text-primary mb-0.5">
+                                      <h4 className="text-xs sm:text-sm font-semibold text-primary mb-0.5">
                                         {pt.title}
                                       </h4>
                                     )}
-                                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                                    <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-normal">
                                       {pt.text}
                                     </p>
                                   </div>
@@ -169,13 +169,13 @@ export default function MainContentSection({
                           )}
 
                           {block.buttonText && (
-                            <div className="pt-2">
+                            <div className="pt-1.5">
                               <Link
                                 href={block.buttonUrl || "/contact-us"}
-                                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-secondary hover:bg-secondary-dark text-white font-bold text-xs sm:text-sm shadow-sm shadow-secondary/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-secondary hover:bg-secondary-dark text-white font-bold text-xs shadow-xs transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                               >
                                 <span>{block.buttonText}</span>
-                                <ArrowRight className="w-3.5 h-3.5" />
+                                <ArrowRight className="w-3 h-3" />
                               </Link>
                             </div>
                           )}

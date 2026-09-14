@@ -95,7 +95,7 @@ export default function MainContentSection({
             {/* Overview */}
             {overview && (
               <div className="mb-12">
-                <h2 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2">
+                <h2 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
                   Overview
                 </h2>
                 <div className="mb-4 h-1 w-16 bg-red-700" />
@@ -222,7 +222,7 @@ export default function MainContentSection({
             {/* Services */}
             {services && services.length > 0 && (
               <div className="mb-12">
-                <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2">
+                <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
                   Key Areas of Service Include
                 </h3>
                 <div className="mb-4 h-1 w-16 bg-red-700" />
@@ -279,7 +279,7 @@ export default function MainContentSection({
             {/* Why Choose Section */}
             {whyTitle && whyFeatures && whyFeatures.length > 0 && (
               <div className="mb-16 mt-8">
-                <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2 text-center animate-fade-in">
+                <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2 text-center animate-fade-in">
                   {whyTitle}
                 </h3>
 
@@ -309,7 +309,7 @@ export default function MainContentSection({
               <div className="mb-16">
                 {benefitsTitle && (
                   <>
-                    <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2 text-center">
+                    <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2 text-center">
                       {benefitsTitle}
                     </h3>
                   </>
@@ -324,7 +324,7 @@ export default function MainContentSection({
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
                         {/* Left Column: Text & Bullets */}
                         <div>
-                          <h4 className="text-base md:text-lg font-bold text-primary mb-1.5 tracking-tight">
+                          <h4 className="text-sm sm:text-base font-bold text-primary mb-1.5 tracking-tight">
                             {card.title}
                           </h4>
                           {card.subtitle && (
@@ -369,7 +369,7 @@ export default function MainContentSection({
             {/* Approach */}
             {approach && (
               <div className="mb-12">
-                <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2">
+                <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
                   Our Approach
                 </h3>
                 <div className="mb-4 h-1 w-16 bg-red-700" />
@@ -419,7 +419,7 @@ export default function MainContentSection({
 
               return (
                 <div className="mb-12 border-t border-slate-100 pt-12">
-                  <h3 className="text-lg md:text-xl font-bold text-primary tracking-tight mb-2">
+                  <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
                     Frequently Asked Questions
                   </h3>
                   <div className="mb-6 h-1 w-16 bg-secondary" />
@@ -462,7 +462,7 @@ export default function MainContentSection({
           <div className="w-full max-w-2xl mx-auto space-y-6 pt-6 border-t border-slate-200">
             {/* Contact Form */}
             <div className="border border-gray-200 bg-white p-5 sm:p-6 rounded-xl shadow-sm">
-              <h4 className="mb-5 text-lg md:text-xl font-bold text-primary text-center">
+              <h4 className="mb-4 text-base sm:text-lg font-bold text-primary text-center">
                 Request a Consultation
               </h4>
 

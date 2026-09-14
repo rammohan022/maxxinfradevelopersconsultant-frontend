@@ -196,7 +196,7 @@ export default function CategoryServicesClient() {
               <span>Service Category</span>
             </div>
 
-            <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-4 drop-shadow-lg">
+            <h1 className="text-white text-lg md:text-xl font-bold tracking-tight mb-3 drop-shadow-lg">
               {activeCategoryName}
             </h1>
 
@@ -300,7 +300,7 @@ export default function CategoryServicesClient() {
         {/* Results Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-primary">
+            <h2 className="text-base sm:text-lg font-bold text-primary">
               {activeCategoryName} Offerings
             </h2>
             <p className="text-slate-500 text-xs sm:text-sm mt-1">
@@ -388,7 +388,7 @@ export default function CategoryServicesClient() {
                     <div className="space-y-2">
                       <Link href={`/services/${service.slug}`} className="block">
                         <h3 
-                          className="font-semibold text-primary mb-1 hover:text-secondary transition-colors line-clamp-2 leading-snug capitalize"
+                          className="text-xs sm:text-sm font-bold text-primary mb-1 hover:text-secondary transition-colors line-clamp-2 leading-snug capitalize"
                           title={service.title}
                         >
                           {service.title.toLowerCase()}
@@ -462,7 +462,7 @@ export default function CategoryServicesClient() {
                 <HelpCircle size={14} />
                 <span>Frequently Asked Questions</span>
               </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary">
+              <h2 className="text-base sm:text-lg font-bold text-primary">
                 Common Questions about {activeCategoryName}
               </h2>
             </div>
@@ -477,7 +477,7 @@ export default function CategoryServicesClient() {
                   >
                     <button
                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                      className="w-full px-5 py-4 text-left flex items-center justify-between gap-3 font-semibold text-slate-800 text-sm sm:text-base hover:text-primary transition-colors leading-snug"
+                      className="w-full px-5 py-3.5 text-left flex items-center justify-between gap-3 font-semibold text-slate-800 text-xs sm:text-sm hover:text-primary transition-colors leading-snug"
                     >
                       <span>{faq.question}</span>
                       <ChevronDown

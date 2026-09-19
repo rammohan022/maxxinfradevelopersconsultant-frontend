@@ -328,7 +328,7 @@ export default function MainContentSection({
                             {card.title}
                           </h4>
                           {card.subtitle && (
-                            <p className="text-[11px] text-slate-500 mb-3 font-semibold uppercase tracking-wider">
+                            <p className="text-xs text-slate-500 mb-3 font-medium">
                               {card.subtitle}
                             </p>
                           )}

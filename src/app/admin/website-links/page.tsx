@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plus, Pencil, Trash2, Search, X, Loader2, Globe, ExternalLink } from "lucide-react";
+import Image from "next/image";
+import { Plus, Pencil, Trash2, Search, X, Loader2, Globe, ExternalLink, Upload, ImageIcon } from "lucide-react";
 import {
   useGetWebsiteLinksQuery,
   useCreateWebsiteLinkMutation,
   useUpdateWebsiteLinkMutation,
   useDeleteWebsiteLinkMutation,
 } from "@/services/websiteLink";
+import { getImageUrl } from "@/lib/utils/imageUtils";
 import DeleteModal from "../components/DeleteModal";
 import AdminPagination from "../components/AdminPagination";
 import toast from "react-hot-toast";
@@ -33,6 +35,9 @@ export default function WebsiteLinksListPage() {
     title: "",
     url: "",
     order: 0,
+    logo: "" as string | undefined,
+    logoFile: null as File | null,
+    logoPreview: "" as string,
   });
 
   const filteredLinks = (links || []).filter((item) =>
@@ -54,6 +59,9 @@ export default function WebsiteLinksListPage() {
       title: "",
       url: "",
       order: 0,
+      logo: undefined,
+      logoFile: null,
+      logoPreview: "",
     });
   };
 
@@ -65,7 +73,34 @@ export default function WebsiteLinksListPage() {
       title: item.title,
       url: item.url,
       order: item.order || 0,
+      logo: item.logo,
+      logoFile: null,
+      logoPreview: item.logo ? getImageUrl(item.logo) : "",
     });
+  };
+
+  const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (!file.type.startsWith("image/")) {
+        toast.error("Please upload an image file (PNG, JPG, SVG, WebP).");
+        return;
+      }
+      setFormModal((prev) => ({
+        ...prev,
+        logoFile: file,
+        logoPreview: URL.createObjectURL(file),
+      }));
+    }
+  };
+
+  const handleRemoveLogo = () => {
+    setFormModal((prev) => ({
+      ...prev,
+      logo: undefined,
+      logoFile: null,
+      logoPreview: "",
+    }));
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
@@ -76,21 +111,21 @@ export default function WebsiteLinksListPage() {
     }
 
     try {
+      const formData = new FormData();
+      formData.append("title", formModal.title.trim());
+      formData.append("url", formModal.url.trim());
+      formData.append("order", String(formModal.order || 0));
+      if (formModal.logoFile) {
+        formData.append("logo", formModal.logoFile);
+      }
+
       if (formModal.mode === "create") {
-        await createLink({
-          title: formModal.title,
-          url: formModal.url,
-          order: Number(formModal.order),
-        }).unwrap();
+        await createLink(formData).unwrap();
         toast.success("Website link created successfully!");
       } else {
         await updateLink({
           id: formModal.id,
-          data: {
-            title: formModal.title,
-            url: formModal.url,
-            order: Number(formModal.order),
-          },
+          data: formData,
         }).unwrap();
         toast.success("Website link updated successfully!");
       }
@@ -134,7 +169,7 @@ export default function WebsiteLinksListPage() {
         <div>
           <h1 className="text-xl md:text-2xl font-bold text-primary tracking-tight">Compliance Library</h1>
           <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl">
-            Manage external compliance/portal links displayed in the homepage Hero section
+            Manage external compliance/portal links displayed on the website
           </p>
         </div>
 
@@ -171,7 +206,7 @@ export default function WebsiteLinksListPage() {
           <table className="w-full text-sm">
             <thead className="bg-slate-50 text-slate-600">
               <tr>
-                <th className="p-4 text-left whitespace-nowrap">Title</th>
+                <th className="p-4 text-left whitespace-nowrap">Logo / Title</th>
                 <th className="p-4 text-left whitespace-nowrap">URL</th>
                 <th className="p-4 text-left whitespace-nowrap">Display Order</th>
                 <th className="p-4 text-center whitespace-nowrap">Actions</th>
@@ -189,9 +224,22 @@ export default function WebsiteLinksListPage() {
                 currentLinks.map((item) => (
                   <tr key={item.id} className="border-b hover:bg-slate-50 transition">
                     <td className="p-4 font-medium text-[rgb(13_33_55)]">
-                      <div className="flex items-center gap-2">
-                        <Globe className="text-slate-400 w-4 h-4" />
-                        {item.title}
+                      <div className="flex items-center gap-3">
+                        {item.logo ? (
+                          <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-slate-200 bg-white flex-shrink-0 flex items-center justify-center p-1 shadow-sm">
+                            <Image
+                              src={getImageUrl(item.logo)}
+                              alt={item.title}
+                              fill
+                              className="object-contain p-0.5"
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-9 h-9 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center text-slate-400 flex-shrink-0">
+                            <Globe size={18} />
+                          </div>
+                        )}
+                        <span className="font-semibold text-slate-800">{item.title}</span>
                       </div>
                     </td>
                     <td className="p-4 text-slate-500">
@@ -245,7 +293,7 @@ export default function WebsiteLinksListPage() {
       {/* Form Dialog Modal */}
       {formModal.isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden">
+          <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Header */}
             <div className="flex justify-between items-center border-b p-4">
               <h3 className="font-bold text-lg text-slate-800">
@@ -261,6 +309,51 @@ export default function WebsiteLinksListPage() {
 
             {/* Form */}
             <form onSubmit={handleFormSubmit} className="p-4 space-y-4">
+              {/* Logo Upload Field */}
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-1.5">
+                  Portal / Website Logo (Optional)
+                </label>
+                <div className="flex items-center gap-4">
+                  <div className="relative w-16 h-16 rounded-xl border-2 border-dashed border-slate-200 bg-slate-50 flex items-center justify-center overflow-hidden flex-shrink-0 group">
+                    {formModal.logoPreview ? (
+                      <>
+                        <Image
+                          src={formModal.logoPreview}
+                          alt="Logo preview"
+                          fill
+                          className="object-contain p-1.5"
+                        />
+                        <button
+                          type="button"
+                          onClick={handleRemoveLogo}
+                          className="absolute inset-0 bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                          title="Remove logo"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </>
+                    ) : (
+                      <ImageIcon size={24} className="text-slate-300" />
+                    )}
+                  </div>
+
+                  <div className="flex-1">
+                    <label className="inline-flex items-center gap-2 px-3.5 py-2 border border-slate-300 rounded-lg text-xs font-semibold text-slate-700 hover:bg-slate-50 cursor-pointer transition-all shadow-sm">
+                      <Upload size={14} className="text-secondary" />
+                      <span>{formModal.logoPreview ? "Change Logo" : "Upload Logo"}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleLogoChange}
+                        className="hidden"
+                      />
+                    </label>
+                    <p className="text-[11px] text-slate-400 mt-1">PNG, JPG, SVG, WebP up to 5MB</p>
+                  </div>
+                </div>
+              </div>
+
               <div>
                 <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Title <span className="text-red-500">*</span>

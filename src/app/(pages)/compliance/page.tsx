@@ -135,9 +135,11 @@ export default function CompliancePage() {
       <section className="py-16 md:py-20 lg:py-24 bg-white relative border-b border-slate-200/80">
         <Container>
           <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20 space-y-4">
-            <p className="text-sm font-bold tracking-widest text-secondary uppercase">
-              What We Handle
-            </p>
+            <div>
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
+                What We Handle
+              </span>
+            </div>
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
               Our Compliance Services
             </h2>
@@ -184,9 +186,11 @@ export default function CompliancePage() {
 
         <Container className="relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20 space-y-4">
-            <p className="text-sm font-bold tracking-widest text-secondary uppercase">
-              Our Solutions
-            </p>
+            <div>
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
+                Our Solutions
+              </span>
+            </div>
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
               Complete Compliance Management Under One Partner
             </h2>
@@ -225,9 +229,11 @@ export default function CompliancePage() {
             
             {/* Text Content */}
             <div className="lg:col-span-5 space-y-6">
-              <p className="text-sm font-bold tracking-widest text-secondary uppercase">
-                Compliance Dashboard
-              </p>
+              <div>
+                <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
+                  Compliance Dashboard
+                </span>
+              </div>
               <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
                 Track Every Filing, Deadline & Update in Real Time
               </h2>

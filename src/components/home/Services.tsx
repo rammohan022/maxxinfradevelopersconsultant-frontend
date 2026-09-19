@@ -32,11 +32,11 @@ export default function Services() {
             </span>
 
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-              Discover <span className="text-secondary">What We Do</span>
+              Discover <span className="text-secondary">How We Create Impact</span>
             </h2>
 
             <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-normal">
-              People Consulting&apos;s core services are designed to help organizations build strong leadership, navigate complexity, and accelerate long-term performance. Our partners bring firsthand expertise across major global sectors—from industrial manufacturing and technology to healthcare, consumer, financial services and the public sphere. We help clients anticipate industry shifts, build future-ready leadership, and seize opportunity in rapidly evolving markets.
+              We help organisations solve complex <strong className="text-slate-800 font-semibold">people and workforce challenges</strong> through integrated solutions across Workforce, Consulting, Talent Development, Compliance and HR Technology. Our focus is simple &mdash; <strong className="text-slate-800 font-semibold">practical solutions, stronger capabilities and measurable business impact</strong>.
             </p>
           </div>
 

@@ -149,7 +149,7 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.4 }}
-                  className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mb-8 leading-relaxed [&_p]:mb-2 [&_p:last-child]:mb-0 [&_a]:text-secondary [&_a]:underline [&_strong]:text-slate-800"
+                  className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mb-8 leading-relaxed rich-text-content [&_p]:mb-2 [&_p:last-child]:mb-0 [&_a]:text-secondary [&_a]:underline [&_strong]:text-slate-800 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-2 [&_li]:mb-1"
                   dangerouslySetInnerHTML={{ __html: activeSlide.body }}
                 />
               )}
@@ -207,16 +207,28 @@ export default function Hero() {
               className="mt-8 pt-6 border-t border-slate-200/50 flex flex-wrap items-center gap-3"
             >
               <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-wider">Associated Portals:</span>
-              <div className="flex flex-wrap gap-2.5">
-                {externalLinks.slice(0, 1).map((link) => (
+              <div className="flex flex-wrap gap-2.5 items-center">
+                {externalLinks.slice(0, 3).map((link) => (
                   <a
                     key={link.id}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-slate-100/80 hover:bg-primary hover:text-white px-3 py-1.5 rounded-md font-semibold text-slate-700 hover:scale-[1.02] active:scale-[0.98] transition-all text-xs border border-slate-200"
+                    title={link.title}
+                    className="bg-slate-100/80 hover:bg-white hover:border-slate-300 px-3 py-1.5 rounded-lg font-semibold text-slate-700 hover:scale-[1.03] active:scale-[0.98] transition-all text-xs border border-slate-200 inline-flex items-center justify-center shadow-sm"
                   >
-                    {link.title}
+                    {link.logo ? (
+                      <div className="relative h-6 w-20 sm:w-24">
+                        <Image
+                          src={getImageUrl(link.logo)}
+                          alt={link.title}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                    ) : (
+                      <span>{link.title}</span>
+                    )}
                   </a>
                 ))}
               </div>

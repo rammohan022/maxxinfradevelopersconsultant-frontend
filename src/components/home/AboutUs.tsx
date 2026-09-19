@@ -3,39 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Container } from "@/components/ui"
-import { motion, Variants } from "framer-motion"
-
-const bulletsLeft = [
-  "Strategic Talent Acquisition",
-  "Executive Search & Headhunting",
-  "HR Compliance & Labor Law",
-  "Payroll Management",
-]
-
-const bulletsRight = [
-  "Employee Engagement Programs",
-  "Corporate Training & Development",
-  "Performance Management Systems",
-  "Organizational Restructuring",
-]
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-}
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
-}
-
-const imageVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
-}
+import { motion } from "framer-motion"
 
 export default function AboutUs() {
   return (
@@ -70,22 +38,35 @@ export default function AboutUs() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
-              About Us
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
+              About People Consulting
             </span>
 
-            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
-              Aligning Strategy With{' '}
-              <span className="text-secondary">People & Culture</span>
+            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4 leading-snug">
+              We believe people drive organisations.{' '}
+              <span className="text-secondary">
+                We help businesses turn their people advantage into business advantage.
+              </span>
             </h2>
 
-            <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-6">
-              <strong>People Consulting</strong> is a premier HR and Recruitment agency dedicated to providing strategic, solution-oriented talent acquisition and human resource management services. With a multidisciplinary approach and strong professional network, we cater to businesses and corporate entities across diverse sectors.
-            </p>
+            <div className="space-y-3.5 text-xs md:text-sm text-slate-600 leading-relaxed mb-8">
+              <p>
+                For more than a decade, <strong>People Consulting</strong> has partnered with organisations across India to solve the people challenges that sit at the heart of business performance. We bring together <strong>people, expertise, technology and execution</strong> to help organisations build stronger and more future-ready businesses.
+              </p>
 
-            <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-8">
-              We help organizations streamline their recruitment, training, and labor compliance processes. Our goal is to connect top talent with industry leaders, ensuring High Performance workplaces and long-term organizational success.
-            </p>
+              <p>
+                Our capabilities span <strong>Workforce Solutions, HR Consulting &amp; Talent Advisory, Talent Development &amp; Capacity Building, Labour Compliance and HR Technology</strong>. But we don&apos;t look at these as separate services. We look at them as interconnected levers that shape how an organisation <strong>attracts talent, builds capability, manages risk, improves efficiency and performs</strong>.
+              </p>
+
+              <p>
+                Our philosophy is simple: <strong>understand the business first, challenge conventional thinking and create solutions that work in the real world.</strong> We combine seasoned HR expertise with <strong>Pragmatic Innovation, Continuous Learning and Strategic Partnership</strong> to turn complex people challenges into practical, scalable outcomes.
+              </p>
+
+              <p>
+                We work alongside our clients—not simply for them—as a <strong>Strategic People Partner</strong>, bringing clarity to decisions, capability to teams and technology to processes.{' '}
+                <strong>Because when people, processes and technology work in sync, businesses perform better.</strong>
+              </p>
+            </div>
 
             <Link
               href="/about-us"

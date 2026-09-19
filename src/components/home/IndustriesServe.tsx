@@ -1,8 +1,42 @@
 'use client'
 
-import Link from 'next/link'
 import { Container } from '@/components/ui'
-import { Monitor, AlertTriangle, MessageSquare, Network, ArrowRight } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
+
+const digilianceFeatures = [
+  {
+    title: "Centralized Dashboard",
+    desc: "Single-window view to track and manage all regulatory obligations.",
+  },
+  {
+    title: "Automated Alerts & Reminders",
+    desc: "Real-time alerts for upcoming statutory deadlines and filings.",
+  },
+  {
+    title: "Regulation Mapping",
+    desc: "Updated coverage for central, state, and sector-specific laws.",
+  },
+  {
+    title: "Customizable Workflows",
+    desc: "Tailored approval workflows and compliance verification processes.",
+  },
+  {
+    title: "Registers & Document Vault",
+    desc: "Cloud repository for challans, returns, licenses, and inspection logs.",
+  },
+  {
+    title: "Multi-Entity & Branch Tracking",
+    desc: "Unified governance across multiple branch locations and subsidiaries.",
+  },
+  {
+    title: "Audit Readiness Reports",
+    desc: "Instant compliance scorecards and one-click statutory registers.",
+  },
+  {
+    title: "Analytics & Risk Insights",
+    desc: "Actionable compliance health metrics and automated risk scoring.",
+  },
+]
 
 export default function IndustriesServe() {
   return (
@@ -17,87 +51,132 @@ export default function IndustriesServe() {
       />
 
       <Container className="relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-          {/* Left Column: Text, Image, Button */}
-          <div className="lg:col-span-6 space-y-8">
-            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-              <span className="text-secondary">Access to</span> India&apos;s first unified{' '}
-              <span className="text-secondary">Compliance Management Solution</span>
-            </h2>
+          {/* Left Column: Heading, Subtitle & Laptop Analytics Dashboard */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="space-y-3">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary tracking-tight">
+                <span className="text-secondary">Simplifying</span> Labour Law Compliance <br className="hidden sm:inline" />
+                <span>for your Business</span>
+              </h2>
+              <p className="text-xs md:text-sm text-slate-600 font-medium leading-relaxed">
+                <span className="text-primary font-semibold">All in one Platform:</span> Software, Compliance Management services, Registrations, Legal Advisory &amp; More &ndash; PAN India
+              </p>
+            </div>
 
-            <div className="relative w-full aspect-[16/10] mt-8 mb-6 group">
+            {/* Laptop Mockup with Compliance Analytics Dashboard */}
+            <div className="relative w-full aspect-[16/10] mt-6 group">
               {/* Laptop mock border */}
-              <div className="w-full h-full bg-white rounded-t-3xl rounded-b-md flex flex-col overflow-hidden border-8 border-b-[24px] border-slate-800 shadow-2xl relative">
+              <div className="w-full h-full bg-slate-900 rounded-t-2xl rounded-b-md flex flex-col overflow-hidden border-8 border-b-[20px] border-slate-800 shadow-2xl relative">
                 {/* Webcam dot */}
-                <div className="absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-slate-600 rounded-full"></div>
+                <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-slate-600 rounded-full z-20"></div>
 
-                <div className="bg-slate-100 h-6 w-full flex items-center px-3 gap-1.5 border-b border-slate-200 mt-4">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-400"></div>
+                {/* Browser top chrome */}
+                <div className="bg-slate-800 h-5 w-full flex items-center px-3 gap-1.5 border-b border-slate-700/80 z-10">
+                  <div className="w-2 h-2 rounded-full bg-red-400"></div>
+                  <div className="w-2 h-2 rounded-full bg-amber-400"></div>
+                  <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                  <div className="mx-auto text-[9px] text-slate-400 font-mono tracking-tight">app.digiliance.com/dashboard</div>
                 </div>
-                <div className="flex-1 bg-slate-50 flex flex-col items-center justify-center p-6 text-center text-slate-400 relative overflow-hidden">
-                  <Monitor size={48} className="mb-4 text-slate-300 group-hover:scale-110 transition-transform duration-500" />
-                  <span className="text-sm font-medium">Dashboard Interface</span>
-                  <span className="text-xs mt-2 text-slate-300">(Insert Dashboard Image Here)</span>
+
+                {/* Dashboard Screen */}
+                <div className="flex-1 bg-slate-900 text-white p-3 flex flex-col justify-between overflow-hidden relative select-none font-sans">
+                  {/* Dashboard Header Bar */}
+                  <div className="flex items-center justify-between pb-1.5 border-b border-slate-800">
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-4 h-4 rounded-md bg-secondary flex items-center justify-center text-white text-[9px] font-black">
+                        D
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-200">Digiliance &bull; Compliance Hub</span>
+                    </div>
+                    <span className="text-[8px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-1.5 py-0.5 rounded-full flex items-center gap-1">
+                      <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse"></span>
+                      Audit Ready (100%)
+                    </span>
+                  </div>
+
+                  {/* Stat Cards Row */}
+                  <div className="grid grid-cols-3 gap-1.5 my-1.5">
+                    <div className="bg-slate-800/80 border border-slate-700/60 rounded-lg p-1.5 text-center">
+                      <div className="text-[8px] text-slate-400">Total Filings</div>
+                      <div className="text-xs font-bold text-white">1,420</div>
+                      <div className="text-[7.5px] text-emerald-400">&uarr; 100% On-time</div>
+                    </div>
+                    <div className="bg-slate-800/80 border border-slate-700/60 rounded-lg p-1.5 text-center">
+                      <div className="text-[8px] text-slate-400">Health Score</div>
+                      <div className="text-xs font-bold text-secondary">99.8%</div>
+                      <div className="text-[7.5px] text-emerald-400">Low Risk</div>
+                    </div>
+                    <div className="bg-slate-800/80 border border-slate-700/60 rounded-lg p-1.5 text-center">
+                      <div className="text-[8px] text-slate-400">Acts Tracked</div>
+                      <div className="text-xs font-bold text-white">48/48</div>
+                      <div className="text-[7.5px] text-blue-400">PAN India</div>
+                    </div>
+                  </div>
+
+                  {/* Chart and Live List */}
+                  <div className="grid grid-cols-12 gap-1.5 items-stretch">
+                    {/* Mini Bar Chart */}
+                    <div className="col-span-7 bg-slate-800/60 border border-slate-700/60 rounded-lg p-1.5 flex flex-col justify-between">
+                      <div className="text-[8px] text-slate-400 font-medium">Monthly Statutory Filings</div>
+                      <div className="flex items-end justify-between gap-1 h-8 pt-1 px-1">
+                        {[45, 60, 75, 90, 85, 95, 100].map((val, i) => (
+                          <div key={i} className="flex-1 bg-gradient-to-t from-secondary to-orange-400 rounded-t-sm" style={{ height: `${val}%` }}></div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Quick Live Checklist */}
+                    <div className="col-span-5 bg-slate-800/60 border border-slate-700/60 rounded-lg p-1.5 flex flex-col justify-center space-y-1 text-[7.5px]">
+                      <div className="flex items-center gap-1 text-slate-300">
+                        <CheckCircle2 size={9} className="text-emerald-400 flex-shrink-0" />
+                        <span className="truncate">PF &amp; ESI Challans</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-slate-300">
+                        <CheckCircle2 size={9} className="text-emerald-400 flex-shrink-0" />
+                        <span className="truncate">Factory Returns</span>
+                      </div>
+                      <div className="flex items-center gap-1 text-slate-300">
+                        <CheckCircle2 size={9} className="text-emerald-400 flex-shrink-0" />
+                        <span className="truncate">Bonus &amp; Gratuity</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
+
               {/* Laptop base */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[110%] h-4 bg-slate-300 rounded-b-xl shadow-md border-t border-slate-400">
-                <div className="mx-auto w-32 h-1 bg-slate-400 rounded-b-md"></div>
+              <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[108%] h-3 bg-slate-300 rounded-b-xl shadow-md border-t border-slate-400">
+                <div className="mx-auto w-24 h-1 bg-slate-400 rounded-b-md"></div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 4 Feature Cards */}
-          <div className="lg:col-span-6 flex flex-col gap-4">
-            
-            {/* Card 1 */}
-            <div className="bg-white/90 backdrop-blur-sm border border-orange-200/70 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-2.5">
-                <Monitor className="text-secondary w-6 h-6 flex-shrink-0" />
-                <h3 className="font-semibold text-primary leading-tight">Centralized Dashboard</h3>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                View, track, and manage all regulatory obligations in one place.
-              </p>
+          {/* Right Column: 8 Short Feature Cards */}
+          <div className="lg:col-span-7">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5">
+              {digilianceFeatures.map((feat) => (
+                <div
+                  key={feat.title}
+                  className="p-3.5 sm:p-4 rounded-xl border border-slate-200/80 bg-white shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5 group"
+                >
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-xs sm:text-sm text-primary mb-0.5 leading-snug group-hover:text-secondary transition-colors">
+                        {feat.title}
+                      </h4>
+                      <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed font-normal">
+                        {feat.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            {/* Card 2 */}
-            <div className="bg-white/90 backdrop-blur-sm border border-orange-200/70 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-2.5">
-                <AlertTriangle className="text-secondary w-6 h-6 flex-shrink-0" />
-                <h3 className="font-semibold text-primary leading-tight">Automated Alerts & Reminders</h3>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Never miss a deadline with real-time notifications for upcoming filings.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="bg-white/90 backdrop-blur-sm border border-orange-200/70 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-2.5">
-                <MessageSquare className="text-secondary w-6 h-6 flex-shrink-0" />
-                <h3 className="font-semibold text-primary leading-tight">Regulation Mapping</h3>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Stay updated with central, state, and sector-specific compliance.
-              </p>
-            </div>
-
-            {/* Card 4 */}
-            <div className="bg-white/90 backdrop-blur-sm border border-orange-200/70 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
-              <div className="flex items-center gap-3 mb-2.5">
-                <Network className="text-secondary w-6 h-6 flex-shrink-0" />
-                <h3 className="font-semibold text-primary leading-tight">Customizable Workflows</h3>
-              </div>
-              <p className="text-sm text-slate-600 leading-relaxed">
-                Create organization-specific compliance workflows efficiently.
-              </p>
-            </div>
-
           </div>
+
         </div>
       </Container>
     </section>

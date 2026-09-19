@@ -5,6 +5,7 @@ export interface CreateWebsiteLinkDto {
     title: string;
     url: string;
     order?: number;
+    logo?: string;
 }
 
 export interface WebsiteLink extends CreateWebsiteLinkDto {
@@ -29,7 +30,7 @@ export const websiteLinkApi = baseApi.injectEndpoints({
             }),
             providesTags: (result, error, id) => [{ type: "WebsiteLink", id }],
         }),
-        createWebsiteLink: builder.mutation<WebsiteLink, CreateWebsiteLinkDto>({
+        createWebsiteLink: builder.mutation<WebsiteLink, FormData | CreateWebsiteLinkDto>({
             query: (body) => ({
                 url: API_ENDPOINTS.websiteLinks,
                 method: "POST",
@@ -37,7 +38,7 @@ export const websiteLinkApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["WebsiteLink"],
         }),
-        updateWebsiteLink: builder.mutation<WebsiteLink, { id: string; data: Partial<CreateWebsiteLinkDto> }>({
+        updateWebsiteLink: builder.mutation<WebsiteLink, { id: string; data: FormData | Partial<CreateWebsiteLinkDto> }>({
             query: ({ id, data }) => ({
                 url: `${API_ENDPOINTS.websiteLinks}/${id}`,
                 method: "PATCH",

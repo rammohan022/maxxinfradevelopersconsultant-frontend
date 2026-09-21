@@ -30,4 +30,5 @@ export const API_ENDPOINTS = {
     ai: "/ai",
     activityLogs: "/activity-logs",
     hrResources: "/hr-resources",
+    partners: "/partners",
 };

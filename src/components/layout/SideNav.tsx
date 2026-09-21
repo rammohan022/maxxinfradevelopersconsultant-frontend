@@ -47,6 +47,7 @@ const navItems: NavItem[] = [
     permissionKey: "banners",
     subItems: [
       { name: "Hero Banners", href: "/admin/banners" },
+      { name: "Client Logos", href: "/admin/partners" },
       { name: "Testimonials", href: "/admin/testimonials" },
       { name: "PDF Documents", href: "/admin/pdfs" },
     ],
@@ -140,7 +141,7 @@ const SideNav = () => {
 
   // Track open state for dropdown menus
   const [openMenus, setOpenMenus] = useState<Record<string, boolean>>({
-    "Website Content": pathname.startsWith("/admin/banners") || pathname.startsWith("/admin/testimonials") || pathname.startsWith("/admin/media") || pathname.startsWith("/admin/pdfs"),
+    "Website Content": pathname.startsWith("/admin/banners") || pathname.startsWith("/admin/partners") || pathname.startsWith("/admin/testimonials") || pathname.startsWith("/admin/media") || pathname.startsWith("/admin/pdfs"),
     "HR Tools": pathname.startsWith("/admin/hr-resources") || pathname.startsWith("/admin/hr-resource-categories"),
     Services: pathname.startsWith("/admin/services") || pathname.startsWith("/admin/service-categories"),
     Careers: pathname.startsWith("/admin/career") || pathname.startsWith("/admin/applications"),

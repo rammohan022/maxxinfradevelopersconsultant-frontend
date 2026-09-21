@@ -7,12 +7,30 @@ import { Calendar, FileText, CheckCircle2, Send } from "lucide-react"
 import { toast } from "react-hot-toast"
 
 const programs = [
-  { title: "Leadership & Strategic Management", desc: "Build cross-functional management capabilities and strategic vision." },
-  { title: "Statutory Compliance & Labor Law", desc: "Keep internal teams aligned with legal compliance updates." },
-  { title: "Diversity, Equity & Inclusion (DEI)", desc: "Foster inclusive culture, employee compliance, and trust." },
-  { title: "Performance & OKR Goal Alignment", desc: "Align team execution and track productivity metrics efficiently." },
-  { title: "Soft Skills & Team Communication", desc: "Enhance interpersonal collaboration, emotional intelligence, and synergy." },
-  { title: "POSH & Harassment Prevention", desc: "Ensure safe, respectful workplaces in compliance with statutory POSH laws." },
+  {
+    title: "Leadership Development",
+    desc: "Build confident leaders who can think strategically, inspire teams, and drive business results through effective leadership practices.",
+  },
+  {
+    title: "Behavioural & Interpersonal Skills",
+    desc: "Strengthen communication, collaboration, emotional intelligence, problem-solving, and workplace effectiveness through experiential learning.",
+  },
+  {
+    title: "Sales & Customer Excellence",
+    desc: "Equip sales teams with practical skills in consultative selling, negotiation, customer engagement, relationship building, and sales performance.",
+  },
+  {
+    title: "Functional & Business Skills",
+    desc: "Develop job-ready capabilities through practical training in Advanced Excel, Power BI, Finance for Non-Finance, and other business-critical skills.",
+  },
+  {
+    title: "Manager Development & Growth Mindset",
+    desc: "Enable managers to transition from individual contributors to effective people leaders while building accountability, adaptability, and a growth mindset.",
+  },
+  {
+    title: "HR, Labour Compliance & Team Building",
+    desc: "Build compliant, collaborative workplaces through HR and labour law training, workplace policies, and engaging offsite team-building experiences.",
+  },
 ]
 
 export default function CorporateTraining() {
@@ -36,18 +54,23 @@ export default function CorporateTraining() {
   return (
     <section className="py-16 md:py-20 bg-white border-b border-slate-100/80 text-slate-900" id="corporate-training">
       <Container>
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-stretch">
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Programs Info */}
           <div className="lg:col-span-7">
             <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
               Training Programs
             </span>
-            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
-              Corporate training programs tailored for <span className="text-secondary">workplace excellence</span>
+            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-3">
+              Corporate training programs designed for <span className="text-secondary">business impact</span>
             </h2>
-            <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-8">
-              We design and deliver interactive curriculum focused on building operational skills, understanding legal compliance updates, and fostering cross-functional leadership.
-            </p>
+            <div className="space-y-1 mb-8">
+              <p className="text-xs sm:text-sm font-semibold text-primary">
+                Transforming people capability into business performance
+              </p>
+              <p className="text-xs md:text-sm text-slate-600 max-w-3xl leading-relaxed">
+                We design and deliver practical, engaging learning experiences that build leadership capability, strengthen workplace behaviours, enhance functional skills, and enable teams to perform at their best.
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {programs.map((prog) => (
@@ -68,96 +91,81 @@ export default function CorporateTraining() {
           </div>
 
           {/* Form Card */}
-          <div className="lg:col-span-5 flex">
-            <div className="p-8 rounded-2xl border border-slate-200/80 bg-white shadow-2xl shadow-slate-200/80 w-full flex flex-col justify-between">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
+          <div className="lg:col-span-5">
+            <div className="p-6 sm:p-7 rounded-2xl border border-slate-200/90 bg-white shadow-xl shadow-slate-200/70 w-full">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
                   <Calendar className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-primary">Need Expert Assistance?</h3>
+                  <h3 className="text-base sm:text-lg font-bold text-primary">Need Expert Assistance?</h3>
                   <p className="text-xs text-slate-500">Book a personalized training demo for your team</p>
                 </div>
               </div>
 
-              <form onSubmit={handleSubmit} className="flex-1 flex flex-col justify-between gap-6">
-                <div className="space-y-4">
-                  <div>
-                    <label htmlFor="pf-name" className="block text-xs font-semibold text-slate-600 mb-1.5">Full Name</label>
-                    <input
-                      id="pf-name"
-                      type="text"
-                      required
-                      placeholder="Enter your name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-secondary transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="pf-email" className="block text-xs font-semibold text-slate-600 mb-1.5">Email Address</label>
-                    <input
-                      id="pf-email"
-                      type="email"
-                      required
-                      placeholder="Enter your work email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-secondary transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="pf-company" className="block text-xs font-semibold text-slate-600 mb-1.5">Company Name</label>
-                    <input
-                      id="pf-company"
-                      type="text"
-                      required
-                      placeholder="Enter company name"
-                      value={formData.company}
-                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-secondary transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="pf-message" className="block text-xs font-semibold text-slate-600 mb-1.5">Training Details</label>
-                    <textarea
-                      id="pf-message"
-                      required
-                      rows={3}
-                      placeholder="Describe your team's training requirements..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-secondary transition-colors resize-none"
-                    />
-                  </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <label htmlFor="pf-name" className="block text-xs font-semibold text-slate-600 mb-1">Full Name</label>
+                  <input
+                    id="pf-name"
+                    type="text"
+                    required
+                    placeholder="Enter your name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-secondary transition-colors"
+                  />
                 </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-start gap-2.5 pt-1 pb-1">
-                    <input
-                      id="pf-consent"
-                      type="checkbox"
-                      required
-                      className="mt-0.5 h-4 w-4 text-secondary rounded border-slate-300 focus:ring-secondary accent-secondary cursor-pointer flex-shrink-0"
-                    />
-                    <label htmlFor="pf-consent" className="text-xs text-slate-600 leading-snug cursor-pointer select-none">
-                      I agree to the Terms of Service and Privacy Policy.
-                    </label>
-                  </div>
-
+                <div>
+                  <label htmlFor="pf-email" className="block text-xs font-semibold text-slate-600 mb-1">Email Address</label>
+                  <input
+                    id="pf-email"
+                    type="email"
+                    required
+                    placeholder="Enter your work email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-secondary transition-colors"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="pf-company" className="block text-xs font-semibold text-slate-600 mb-1">Company Name</label>
+                  <input
+                    id="pf-company"
+                    type="text"
+                    required
+                    placeholder="Enter company name"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-secondary transition-colors"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="pf-message" className="block text-xs font-semibold text-slate-600 mb-1">Training Details</label>
+                  <textarea
+                    id="pf-message"
+                    required
+                    rows={3}
+                    placeholder="Describe your team's training requirements..."
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-secondary transition-colors resize-none"
+                  />
+                </div>
+                <div className="pt-2">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-3.5 px-6 rounded-xl bg-secondary hover:bg-secondary-dark text-white font-bold text-sm shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    className="w-full py-3 px-6 rounded-xl bg-secondary hover:bg-secondary-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
                   >
                     {loading ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     ) : (
-                    <>
-                      <span>Request Training Demo</span>
-                      <Send size={16} />
-                    </>
-                  )}
+                      <>
+                        <span>Request Training Demo</span>
+                        <Send size={15} />
+                      </>
+                    )}
                   </button>
                 </div>
               </form>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" fill="none" className="w-full h-auto">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&amp;family=Inter:wght@400;500;600;700&amp;display=swap');
+      .logo-digi { fill: #08529C; font-family: 'Montserrat', 'Inter', system-ui, sans-serif; font-weight: 900; font-size: 76px; letter-spacing: 0.02em; }
+      .logo-liance { fill: #0099FF; font-family: 'Montserrat', 'Inter', system-ui, sans-serif; font-weight: 900; font-size: 76px; letter-spacing: 0.02em; }
+      .sub-powered { fill: #222222; font-family: 'Inter', system-ui, sans-serif; font-weight: 400; font-size: 21px; }
+      .sub-spectra { fill: #222222; font-family: 'Montserrat', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: 0.08em; }
+      .tm-mark { fill: #0099FF; font-family: 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 22px; }
+    </style>
+  </defs>
+
+  <!-- D with inside dot -->
+  <g transform="translate(4, 10)">
+    <!-- D Outer & Inner -->
+    <path d="M 0 10 C 0 4.477 4.477 0 10 0 L 28 0 C 47.882 0 64 16.118 64 36 C 64 55.882 47.882 72 28 72 L 10 72 C 4.477 72 0 67.523 0 62 Z M 16 16 L 16 56 L 27 56 C 38.046 56 47 47.046 47 36 C 47 24.954 38.046 16 27 16 Z" fill="#08529C"/>
+    <!-- Center Dot in D -->
+    <circle cx="28" cy="36" r="6" fill="#08529C" />
+
+    <!-- I -->
+    <rect x="74" y="0" width="15" height="72" rx="4" fill="#08529C" />
+
+    <!-- G -->
+    <path d="M 148 23 C 144 14 135 8 122 8 C 103 8 93 21 93 36 C 93 51 103 64 122 64 C 137 64 145 56 147 46 L 123 46 C 120 46 118 44 118 41 L 118 35 C 118 32 120 30 123 30 L 157 30 C 160 30 162 32 162 35 L 162 48 C 162 61 146 76 122 76 C 94 76 76 58 76 36 C 76 14 94 -4 122 -4 C 142 -4 158 7 164 21 Z" transform="translate(14, 0)" fill="#08529C" />
+
+    <!-- I -->
+    <rect x="187" y="0" width="15" height="72" rx="4" fill="#08529C" />
+
+    <!-- L -->
+    <path d="M 212 4 C 212 1.8 213.8 0 216 0 L 227 0 C 229.2 0 231 1.8 231 4 L 231 56 L 253 56 C 255.2 56 257 57.8 257 60 L 257 68 C 257 70.2 255.2 72 253 72 L 216 72 C 213.8 72 212 70.2 212 68 Z" fill="#0099FF" />
+
+    <!-- I -->
+    <rect x="267" y="0" width="15" height="72" rx="4" fill="#0099FF" />
+
+    <!-- A (Lambda / Chevron stylized) -->
+    <path d="M 314 0 C 316.5 0 318.5 1.5 319.6 3.8 L 341 68 C 341.8 70.5 339.9 72 337.5 72 L 326 72 C 323.5 72 321.5 70.5 320.7 68.2 L 314 44 L 307.3 68.2 C 306.5 70.5 304.5 72 302 72 L 290.5 72 C 288.1 72 286.2 70.5 287 68 L 308.4 3.8 C 309.5 1.5 311.5 0 314 0 Z" fill="#0099FF" />
+
+    <!-- N -->
+    <path d="M 349 4 C 349 1.8 350.8 0 353 0 L 364 0 C 366 0 367.5 1 368.5 2.5 L 392 46 L 392 4 C 392 1.8 393.8 0 396 0 L 407 0 C 409.2 0 411 1.8 411 4 L 411 68 C 411 70.2 409.2 72 407 72 L 396 72 C 394 72 392.5 71 391.5 69.5 L 368 26 L 368 68 C 368 70.2 366.2 72 364 72 L 353 72 C 350.8 72 349 70.2 349 68 Z" fill="#0099FF" />
+
+    <!-- C -->
+    <path d="M 458 18 C 454 10 445 4 433 4 C 414 4 403 18 403 36 C 403 54 414 68 433 68 C 445 68 454 62 458 54 C 459.2 51.5 462 50.5 464.5 51.5 L 473 55.5 C 475.5 56.7 476.2 59.8 474.8 62.2 C 466.8 75.5 451 82 433 82 C 402 82 384 61 384 36 C 384 11 402 -10 433 -10 C 451 -10 466.8 -3.5 474.8 9.8 C 476.2 12.2 475.5 15.3 473 16.5 L 464.5 20.5 C 462 21.5 459.2 20.5 458 18 Z" transform="translate(30, 0)" fill="#0099FF" />
+
+    <!-- E -->
+    <path d="M 473 4 C 473 1.8 474.8 0 477 0 L 512 0 C 514.2 0 516 1.8 516 4 L 516 13 C 516 15.2 514.2 17 512 17 L 491 17 L 491 28 L 508 28 C 510.2 28 512 29.8 512 32 L 512 40 C 512 42.2 510.2 44 508 44 L 491 44 L 491 55 L 513 55 C 515.2 55 517 56.8 517 59 L 517 68 C 517 70.2 515.2 72 513 72 L 477 72 C 474.8 72 473 70.2 473 68 Z" fill="#0099FF" />
+
+    <!-- TM -->
+    <text x="522" y="16" class="tm-mark">TM</text>
+  </g>
+
+  <!-- Subtitle: powered by SPECTRA -->
+  <g transform="translate(300, 110)">
+    <text x="0" y="0" class="sub-powered">powered by</text>
+    <text x="110" y="0" class="sub-spectra">SPECTR</text>
+    <!-- Styled delta A in SPECTRA -->
+    <path d="M 207 -18 L 217 0 L 211 0 L 207 -8 L 203 0 L 197 0 Z" fill="#222222" />
+    <path d="M 207 -11 L 212 0 L 209 0 L 207 -4 Z" fill="#0099FF" />
+  </g>
+</svg>

@@ -1,5 +1,8 @@
-export const getErrorMessage = (error: any): string => {
-  if (!error) return "An unexpected error occurred.";
+export const getErrorMessage = (
+  error: any,
+  fallbackMessage: string = "An unexpected error occurred."
+): string => {
+  if (!error) return fallbackMessage;
 
   // RTK Query errors with structured data message
   if (error.data) {
@@ -49,5 +52,5 @@ export const getErrorMessage = (error: any): string => {
     return error;
   }
 
-  return "An unexpected error occurred.";
+  return fallbackMessage;
 };

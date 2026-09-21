@@ -5,36 +5,36 @@ import { CheckCircle2 } from 'lucide-react'
 
 const digilianceFeatures = [
   {
-    title: "Centralized Dashboard",
-    desc: "Single-window view to track and manage all regulatory obligations.",
+    title: "Centralised Dashboard",
+    desc: "Manage all your compliance activities, documents, deadlines, and status updates from one centralised dashboard for complete visibility and control.",
   },
   {
     title: "Automated Alerts & Reminders",
-    desc: "Real-time alerts for upcoming statutory deadlines and filings.",
+    desc: "Stay ahead of compliance deadlines with automated alerts and reminders for upcoming, pending, and overdue compliance activities.",
   },
   {
-    title: "Regulation Mapping",
-    desc: "Updated coverage for central, state, and sector-specific laws.",
+    title: "Track, Manage & Analyse",
+    desc: "Track compliance progress, manage tasks, and analyse compliance data to identify gaps, monitor performance, and make informed decisions.",
   },
   {
-    title: "Customizable Workflows",
-    desc: "Tailored approval workflows and compliance verification processes.",
+    title: "Unit / Branch / Location-Wise Compliance Management",
+    desc: "Manage compliance requirements across multiple units, branches, establishments, and locations with location-wise tracking and monitoring.",
   },
   {
-    title: "Registers & Document Vault",
-    desc: "Cloud repository for challans, returns, licenses, and inspection logs.",
+    title: "Establishment & Factory Compliance",
+    desc: "Simplify compliance management for establishments and factories by monitoring applicable requirements, records, registrations, and statutory obligations.",
   },
   {
-    title: "Multi-Entity & Branch Tracking",
-    desc: "Unified governance across multiple branch locations and subsidiaries.",
+    title: "Licensing & Registration Services",
+    desc: "Manage and monitor licences, registrations, renewals, and related compliance requirements to help keep your business legally compliant.",
   },
   {
-    title: "Audit Readiness Reports",
-    desc: "Instant compliance scorecards and one-click statutory registers.",
+    title: "Notice & Inspection Handling / Management",
+    desc: "Centralise notices, inspection-related records, actions, and follow-ups to ensure timely responses and better inspection preparedness.",
   },
   {
-    title: "Analytics & Risk Insights",
-    desc: "Actionable compliance health metrics and automated risk scoring.",
+    title: "Digital Compliance Library",
+    desc: "Access a centralised digital library of compliance documents, laws, rules, registers, formats, and reference materials whenever you need them.",
   },
 ]
 
@@ -56,7 +56,7 @@ export default function IndustriesServe() {
           {/* Left Column: Heading, Subtitle & Laptop Analytics Dashboard */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-3">
-              <h2 className="text-2xl md:text-3xl font-bold text-primary tracking-tight">
+              <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
                 <span className="text-secondary">Simplifying</span> Labour Law Compliance <br className="hidden sm:inline" />
                 <span>for your Business</span>
               </h2>

@@ -21,17 +21,29 @@ const FirmOverview = () => {
               Who We Are
             </div>
 
-            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
-              Leading HR & Recruitment Consulting Firm Serving Indian Businesses
+            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6 leading-snug">
+              We believe people drive organisations.{' '}
+              <span className="text-secondary">
+                We help businesses turn their people advantage into business advantage.
+              </span>
             </h2>
 
-            <div className="space-y-6 text-slate-600 text-xs md:text-sm leading-relaxed mb-8">
+            <div className="space-y-4 text-slate-600 text-xs md:text-sm leading-relaxed mb-8">
               <p>
-                <strong>People Consulting</strong> is a premier human resources and talent acquisition agency dedicated to providing strategic, compliance-aligned, and result-driven workforce solutions across India. With a strong professional network and cross-disciplinary expertise, we cater to startups, scaling mid-market businesses, and large enterprise entities.
+                For more than a decade, <strong>People Consulting</strong> has partnered with organisations across India to solve the people challenges that sit at the heart of business performance. We bring together <strong>people, expertise, technology and execution</strong> to help organisations build stronger and more future-ready businesses.
               </p>
 
               <p>
-                We advise domestic and international clients on building high-performance teams, streamlining payroll operations, and navigating statutory labor compliance guidelines with confidence and structural clarity.
+                Our capabilities span <strong>Workforce Solutions, HR Consulting &amp; Talent Advisory, Talent Development &amp; Capacity Building, Labour Compliance and HR Technology</strong>. But we don&apos;t look at these as separate services. We look at them as interconnected levers that shape how an organisation <strong>attracts talent, builds capability, manages risk, improves efficiency and performs</strong>.
+              </p>
+
+              <p>
+                Our philosophy is simple: <strong>understand the business first, challenge conventional thinking and create solutions that work in the real world.</strong> We combine seasoned HR expertise with <strong>Pragmatic Innovation, Continuous Learning and Strategic Partnership</strong> to turn complex people challenges into practical, scalable outcomes.
+              </p>
+
+              <p>
+                We work alongside our clients—not simply for them—as a <strong>Strategic People Partner</strong>, bringing clarity to decisions, capability to teams and technology to processes.{' '}
+                <strong>Because when people, processes and technology work in sync, businesses perform better.</strong>
               </p>
             </div>
 

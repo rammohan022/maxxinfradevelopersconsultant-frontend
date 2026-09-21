@@ -24,6 +24,8 @@ export interface SiteSettings {
   openaiApiKey?: string;
   openrouterApiKey?: string;
   defaultAiProvider?: string;
+  clientSectionTitle?: string;
+  clientSectionSubtitle?: string;
 }
 
 export const siteSettingsApi = baseApi.injectEndpoints({

@@ -10,6 +10,9 @@ export interface Testimonial {
     isActive: boolean;
     caseType: string;
     displayOrder: number;
+    clientRole?: string;
+    avatarBg?: string;
+    initials?: string;
     createdAt?: string;
     updatedAt?: string;
 }

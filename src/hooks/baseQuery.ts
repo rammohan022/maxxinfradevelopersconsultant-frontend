@@ -87,6 +87,7 @@ export const baseApi = createApi({
     "ActivityLog",
     "HrResource",
     "HrResourceCategory",
+    "Partner",
   ],
   endpoints: () => ({}),
 });

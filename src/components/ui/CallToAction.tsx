@@ -1,5 +1,5 @@
 import React from "react";
-import { CalendarDays, Phone } from "lucide-react";
+import Link from "next/link";
 import { Container } from "@/components/ui";
 
 const CTASection: React.FC = () => {
@@ -17,33 +17,38 @@ const CTASection: React.FC = () => {
                 }}
             />
 
-            {/* Content */}
+            {/* Content Container */}
             <Container className="relative z-10 max-w-4xl text-center">
-                <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6">
-                    Empowering Your Business Through Top Talent.
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-primary tracking-tight mb-4">
+                    Connect with us
                 </h2>
 
-                <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mx-auto leading-relaxed mb-8">
-                    We help organizations streamline their recruitment, training, and labor compliance processes. Partner with us to build high-performance workplaces and connect with industry-leading professionals.
+                <p className="text-xs sm:text-sm text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8 sm:mb-10 font-normal">
+                    Whether you&apos;re looking to hire, transform HR, build capabilities or strengthen compliance, we bring practical HR expertise and technology together to create measurable impact.
                 </p>
 
-                {/* CTA Buttons */}
-                <div className="flex flex-col justify-center gap-4 sm:flex-row">
-                    <a
-                        href="/contact-us"
-                        className="flex items-center justify-center gap-2 rounded-lg bg-secondary px-8 py-4 font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-secondary-dark hover:shadow-xl"
+                {/* 3 Action Buttons */}
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5 max-w-3xl mx-auto">
+                    <Link
+                        href="/career"
+                        className="w-full sm:w-auto flex-1 flex items-center justify-center rounded-xl bg-white border border-slate-200 px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-[#0284c7] shadow-sm hover:shadow-md hover:border-secondary hover:text-secondary transition-all duration-300 transform hover:-translate-y-0.5"
                     >
-                        Get an Expert
-                        <CalendarDays className="h-5 w-5" />
-                    </a>
+                        Looking for Job
+                    </Link>
 
-                    <a
-                        href="tel:+918800177307"
-                        className="flex items-center justify-center gap-2 rounded-lg bg-white border border-gray-200 px-8 py-4 font-semibold text-gray-700 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-50 hover:shadow-xl hover:text-navy"
+                    <Link
+                        href="/contact-us"
+                        className="w-full sm:w-auto flex-1 flex items-center justify-center rounded-xl bg-secondary px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-md hover:shadow-lg hover:bg-secondary-dark transition-all duration-300 transform hover:-translate-y-0.5"
                     >
-                        Connect With Us
-                        <Phone className="h-5 w-5" />
-                    </a>
+                        Get In Touch
+                    </Link>
+
+                    <Link
+                        href="/services"
+                        className="w-full sm:w-auto flex-1 flex items-center justify-center rounded-xl bg-white border border-slate-200 px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-[#0284c7] shadow-sm hover:shadow-md hover:border-secondary hover:text-secondary transition-all duration-300 transform hover:-translate-y-0.5"
+                    >
+                        HR Solutions
+                    </Link>
                 </div>
             </Container>
         </section>
@@ -51,3 +56,4 @@ const CTASection: React.FC = () => {
 };
 
 export default CTASection;
+

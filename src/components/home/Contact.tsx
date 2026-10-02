@@ -70,7 +70,7 @@ export default function Contact() {
           {/* Left Column: Team / Professional Discussion Image */}
           <div className="lg:col-span-6 relative min-h-[260px] lg:min-h-full w-full overflow-hidden bg-slate-900">
             <Image
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1000&auto=format&fit=crop&q=80"
+              src="/img/home-contact.png"
               alt="People Consulting Team Discussion"
               fill
               className="object-cover object-center"
@@ -87,12 +87,12 @@ export default function Contact() {
             transition={{ duration: 0.5 }}
             className="lg:col-span-6 p-6 sm:p-7 lg:p-8 bg-white relative flex flex-col justify-center"
           >
-            <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-[11px] font-bold tracking-wider uppercase mb-2 w-fit">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-2 w-fit">
               Contact Form
             </span>
 
             <h3 className="text-lg sm:text-xl font-bold text-primary tracking-tight mb-4">
-              Get A Flexible Schedule
+              Get In Touch
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-3.5 relative z-10">
@@ -175,7 +175,7 @@ export default function Contact() {
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <>
-                    <span>Get An Appointment</span>
+                    <span>Get An Expert</span>
                     <Send size={14} />
                   </>
                 )}

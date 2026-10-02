@@ -1,4 +1,4 @@
-'use client'
+  'use client'
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -89,12 +89,18 @@ export default function Hero() {
   return (
     <section className="relative min-h-[650px] lg:min-h-[700px] flex items-center bg-white overflow-hidden border-b border-slate-200">
       {/* Background Banner Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-right md:bg-center bg-no-repeat opacity-95 transition-all duration-700"
-        style={{
-          backgroundImage: `url(${activeSlide.image})`,
-        }}
-      />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <Image
+          src={activeSlide.image}
+          alt={activeSlide.title || "People Consulting Banner"}
+          fill
+          priority
+          quality={100}
+          unoptimized
+          className="object-cover object-right md:object-center opacity-95 transition-all duration-700"
+          sizes="100vw"
+        />
+      </div>
       {/* Gradient overlay to ensure text readability on mobile/tablet */}
       <div className="absolute inset-0 bg-white/90 md:bg-white/40 lg:bg-transparent z-0" />
 
@@ -208,7 +214,7 @@ export default function Hero() {
             >
               <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-wider">Associated Portals:</span>
               <div className="flex flex-wrap gap-2.5 items-center">
-                {externalLinks.slice(0, 3).map((link) => (
+                {externalLinks.slice(0, 1).map((link) => (
                   <a
                     key={link.id}
                     href={link.url}

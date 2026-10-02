@@ -252,12 +252,12 @@ const StatsAchievements = () => {
                       </div>
 
                       {/* Count Counter */}
-                      <div className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-1.5 tracking-tight">
+                      <div className="text-xl sm:text-2xl font-extrabold text-primary mb-1.5 tracking-tight">
                         <Counter value={stat.value} suffix={stat.suffix} />
                       </div>
 
                       {/* Label */}
-                      <h3 className="text-slate-800 text-xs sm:text-sm font-semibold leading-snug group-hover:text-primary transition-colors duration-300">
+                      <h3 className="text-primary text-xs sm:text-sm font-semibold leading-snug transition-colors duration-300">
                         {stat.label}
                       </h3>
                     </div>

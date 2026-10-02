@@ -24,6 +24,7 @@ export default function CareerForm({
         location: "",
         jobType: "" as "Full-time" | "Part-time" | "Internship" | "Contract" | "Remote" | "Hybrid" | "On-site" | "Work From Home",
         experience: "",
+        education: "",
         description: "",
         isActive: true,
     });
@@ -36,6 +37,7 @@ export default function CareerForm({
                 location: initialData.location || "",
                 jobType: initialData.jobType || "",
                 experience: initialData.experience || "",
+                education: initialData.education || "",
                 description: initialData.description || "",
                 isActive: initialData.isActive ?? true,
             });
@@ -145,20 +147,35 @@ export default function CareerForm({
                 </div>
             </div>
 
-            {/* Experience */}
-            <div>
-                <label className="block text-sm font-medium mb-1">
-                    Experience Required
-                </label>
-                <input
-                    type="text"
-                    name="experience"
-                    required
-                    placeholder="e.g. 2–5 years"
-                    value={form.experience}
-                    onChange={handleChange}
-                    className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
-                />
+            {/* Experience & Education */}
+            <div className="grid md:grid-cols-2 gap-5">
+                <div>
+                    <label className="block text-sm font-medium mb-1">
+                        Experience Required
+                    </label>
+                    <input
+                        type="text"
+                        name="experience"
+                        required
+                        placeholder="e.g. 2–5 years"
+                        value={form.experience}
+                        onChange={handleChange}
+                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
+                    />
+                </div>
+                <div>
+                    <label className="block text-sm font-medium mb-1">
+                        Education Required
+                    </label>
+                    <input
+                        type="text"
+                        name="education"
+                        placeholder="e.g. B.Tech / BCA / Graduate"
+                        value={form.education}
+                        onChange={handleChange}
+                        className="w-full border rounded-lg px-3 py-2 focus:ring-1 focus:ring-secondary outline-none"
+                    />
+                </div>
             </div>
 
             {/* Description */}

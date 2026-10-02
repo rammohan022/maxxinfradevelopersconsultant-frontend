@@ -44,15 +44,15 @@ const strengths = [
     description:
       "Our approach goes beyond theory, delivering actionable HR and learning solutions that can be applied directly in the workplace.",
     icon: Target,
-    iconBg: "bg-blue-50 text-blue-600 border border-blue-100",
-    barColor: "bg-blue-600",
+    iconBg: "bg-primary/10 text-primary border border-primary/20",
+    barColor: "bg-primary",
   },
   {
     title: "End-to-End People Expertise",
     description:
       "From talent acquisition and HR consulting to training, compliance, and team development, we support organisations across the people journey.",
     icon: Network,
-    iconBg: "bg-slate-100 text-slate-700 border border-slate-200",
+    iconBg: "bg-primary/10 text-primary border border-primary/20",
     barColor: "bg-secondary",
   },
   {
@@ -60,15 +60,15 @@ const strengths = [
     description:
       "We design engaging programs around your specific needs—from leadership and behavioural skills to sales, functional, and managerial development.",
     icon: GraduationCap,
-    iconBg: "bg-blue-50 text-blue-600 border border-blue-100",
-    barColor: "bg-blue-600",
+    iconBg: "bg-primary/10 text-primary border border-primary/20",
+    barColor: "bg-primary",
   },
   {
     title: "Experienced & Responsive Team",
     description:
       "We work closely with our clients, bringing hands-on expertise, clear communication, and responsive support to every engagement.",
     icon: UserCheck,
-    iconBg: "bg-slate-100 text-slate-700 border border-slate-200",
+    iconBg: "bg-primary/10 text-primary border border-primary/20",
     barColor: "bg-secondary",
   },
   {

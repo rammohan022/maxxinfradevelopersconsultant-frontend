@@ -98,7 +98,7 @@ export default function MainContentSection({
                 <h2 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
                   Overview
                 </h2>
-                <div className="mb-4 h-1 w-16 bg-red-700" />
+                <div className="mb-4 h-1 w-16 bg-secondary rounded-full" />
                 <div
                   className="leading-relaxed text-slate-600 rich-text-content space-y-3 text-xs sm:text-sm"
                   dangerouslySetInnerHTML={{ __html: overview }}
@@ -117,7 +117,7 @@ export default function MainContentSection({
                   return (
                     <div
                       key={idx}
-                      className="bg-gradient-to-br from-slate-50/80 via-white to-orange-50/30 border border-slate-200/80 rounded-2xl p-5 sm:p-6 lg:p-7 shadow-sm hover:shadow-md transition-all duration-300"
+                      className="bg-gradient-to-br from-slate-50/80 via-white to-[#f1f6fc] border border-slate-200/80 rounded-2xl p-5 sm:p-6 lg:p-7 shadow-sm hover:shadow-md transition-all duration-300"
                     >
                       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                         {/* Text & Points Column */}
@@ -225,7 +225,7 @@ export default function MainContentSection({
                 <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
                   Key Areas of Service Include
                 </h3>
-                <div className="mb-4 h-1 w-16 bg-red-700" />
+                <div className="mb-4 h-1 w-16 bg-secondary rounded-full" />
 
                 {services[0] && typeof services[0] === 'object' && 'title' in services[0] ? (
                   // Structured Cards Layout (from sketch)
@@ -233,11 +233,11 @@ export default function MainContentSection({
                     {(services as Array<{ title: string; description?: string; items: string[] }>).map((card, idx) => (
                       <div
                         key={idx}
-                        className="bg-orange-50/40 rounded-2xl border border-orange-100/60 p-5 hover:shadow-lg hover:border-secondary/30 transition-all duration-300 relative group"
+                        className="bg-[#f1f6fc] rounded-2xl border border-[#d6e3f4] p-5 hover:shadow-lg hover:border-secondary/40 transition-all duration-300 relative group"
                       >
                         <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                        <h4 className="text-sm sm:text-base font-bold text-primary tracking-tight mb-3 border-b border-slate-100 pb-2">
+                        <h4 className="text-sm sm:text-base font-bold text-primary tracking-tight mb-3 border-b border-slate-200/60 pb-2">
                           {card.title}
                         </h4>
 
@@ -262,11 +262,11 @@ export default function MainContentSection({
                   </div>
                 ) : (
                   // Fallback Bullet List Layout (For backwards compatibility)
-                  <div className="border-l-4 border-red-700 bg-gray-50 p-6 sm:p-8">
+                  <div className="border-l-4 border-secondary bg-[#f1f6fc] p-6 sm:p-8 rounded-r-xl">
                     <ul className="space-y-3 text-gray-700">
                       {(services as string[]).map((item, idx) => (
                         <li key={idx} className="flex items-start">
-                          <span className="mr-3 mt-2 h-2 w-2 rounded-full bg-red-700" />
+                          <span className="mr-3 mt-2 h-2 w-2 rounded-full bg-secondary" />
                           {item}
                         </li>
                       ))}
@@ -316,52 +316,85 @@ export default function MainContentSection({
                 )}
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-                  {benefitsCards.map((card, idx) => (
-                    <div
-                      key={idx}
-                      className="bg-gradient-to-br from-slate-50 to-orange-50/20 border border-slate-200/80 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md transition-all duration-350"
-                    >
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
-                        {/* Left Column: Text & Bullets */}
-                        <div>
-                          <h4 className="text-sm sm:text-base font-bold text-primary mb-1.5 tracking-tight">
-                            {card.title}
-                          </h4>
-                          {card.subtitle && (
-                            <p className="text-xs text-slate-500 mb-3 font-medium">
-                              {card.subtitle}
-                            </p>
-                          )}
+                  {benefitsCards.map((card, idx) => {
+                    const isOrange = idx % 2 === 1;
 
-                          {card.items && card.items.length > 0 && (
-                            <ul className="space-y-2.5">
-                              {card.items.map((item, itemIdx) => (
-                                <li key={itemIdx} className="flex items-start">
-                                  <Check className="w-3.5 h-3.5 text-primary shrink-0 mr-2 mt-1" strokeWidth={3.5} />
-                                  <span className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-                                    {item}
-                                  </span>
-                                </li>
-                              ))}
-                            </ul>
+                    return (
+                      <div
+                        key={idx}
+                        className={`relative overflow-hidden rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-xl transition-all duration-350 border ${
+                          isOrange
+                            ? "bg-gradient-to-br from-[#fff6ed] via-[#fffaf5] to-[#ffeedb] border-[#fed7aa] hover:border-secondary/60"
+                            : "bg-gradient-to-br from-[#edf4fc] via-[#f7faff] to-[#e4eef9] border-[#bcd3ee] hover:border-primary/50"
+                        }`}
+                      >
+                        {/* Top Accent Strip */}
+                        <div
+                          className={`absolute top-0 left-0 w-full h-1 ${
+                            isOrange
+                              ? "bg-gradient-to-r from-secondary to-secondary/40"
+                              : "bg-gradient-to-r from-primary to-primary/40"
+                          }`}
+                        />
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+                          {/* Left Column: Text & Bullets */}
+                          <div>
+                            <h4 className="text-base sm:text-lg font-bold text-primary mb-1.5 tracking-tight leading-snug">
+                              {card.title}
+                            </h4>
+                            {card.subtitle && (
+                              <p
+                                className={`text-xs mb-3.5 font-medium leading-relaxed ${
+                                  isOrange ? "text-secondary-dark" : "text-primary/75"
+                                }`}
+                              >
+                                {card.subtitle}
+                              </p>
+                            )}
+
+                            {card.items && card.items.length > 0 && (
+                              <ul className="space-y-2.5">
+                                {card.items.map((item, itemIdx) => (
+                                  <li key={itemIdx} className="flex items-start group/item">
+                                    <div
+                                      className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 mr-2.5 mt-0.5 border shadow-xs transition-colors duration-200 ${
+                                        isOrange
+                                          ? "bg-secondary/15 border-secondary/30 text-secondary group-hover/item:bg-secondary group-hover/item:text-white"
+                                          : "bg-primary/10 border-primary/25 text-primary group-hover/item:bg-primary group-hover/item:text-white"
+                                      }`}
+                                    >
+                                      <Check className="w-3 h-3 stroke-[3]" />
+                                    </div>
+                                    <span className="text-xs sm:text-sm text-slate-700 font-semibold leading-relaxed">
+                                      {item}
+                                    </span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+
+                          {/* Right Column: Mockup Image */}
+                          {card.image && (
+                            <div
+                              className={`relative h-52 sm:h-56 md:h-60 w-full rounded-xl overflow-hidden bg-white shadow-sm flex items-center justify-center p-2 hover:shadow-md transition-all border ${
+                                isOrange ? "border-[#fed7aa]" : "border-[#bcd3ee]"
+                              }`}
+                            >
+                              <Image
+                                src={getImageUrl(card.image)}
+                                alt={card.title}
+                                fill
+                                className="object-contain p-2 hover:scale-[1.03] transition-transform duration-500"
+                                sizes="(max-width: 768px) 100vw, 25vw"
+                              />
+                            </div>
                           )}
                         </div>
-
-                        {/* Right Column: Mockup Image */}
-                        {card.image && (
-                          <div className="relative h-48 md:h-56 w-full rounded-xl overflow-hidden bg-white/60 border border-slate-100 flex items-center justify-center p-2 shadow-sm">
-                            <Image
-                              src={getImageUrl(card.image)}
-                              alt={card.title}
-                              fill
-                              className="object-contain p-2 hover:scale-[1.02] transition-transform duration-500"
-                              sizes="(max-width: 768px) 100vw, 25vw"
-                            />
-                          </div>
-                        )}
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -372,7 +405,7 @@ export default function MainContentSection({
                 <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
                   Our Approach
                 </h3>
-                <div className="mb-4 h-1 w-16 bg-red-700" />
+                <div className="mb-4 h-1 w-16 bg-secondary rounded-full" />
                 <div
                   className="leading-relaxed text-slate-600 rich-text-content space-y-3 text-xs sm:text-sm"
                   dangerouslySetInnerHTML={{ __html: approach }}
@@ -382,7 +415,7 @@ export default function MainContentSection({
 
             {/* Quote */}
             {quoteText && (
-              <div className="mb-12 border-l-4 border-red-700 bg-navy p-5 sm:p-6 text-white">
+              <div className="mb-12 border-l-4 border-secondary bg-navy p-5 sm:p-6 text-white rounded-r-xl">
                 <p className="mb-2 font-serif text-base sm:text-lg italic">
                   “{quoteText}”
                 </p>
@@ -394,68 +427,45 @@ export default function MainContentSection({
               </div>
             )}
 
-            {/* FAQ */}
-            {(() => {
-              const commonFaqs = [
-                {
-                  question: "What recruitment services do you offer?",
-                  answer: "We offer end-to-end recruitment solutions including Executive Search, Headhunting, High-Volume Staffing, and temporary placements across IT, Finance, Healthcare, Manufacturing, and Corporate Service sectors.",
-                },
-                {
-                  question: "How does the corporate training curriculum get customized?",
-                  answer: "Our training advisors assess your specific organizational goals, compliance requirements, or leadership competency gaps first. Then, we design and deliver workshops online or on-site based on your schedule.",
-                },
-                {
-                  question: "Do you handle statutory compliance and payroll administration?",
-                  answer: "Yes. We manage monthly payroll processes, statutory compliance checks, employee benefits advisory, and ensure strict alignment with current labor law guidelines.",
-                },
-                {
-                  question: "How can we start our partnership with People Consulting?",
-                  answer: "You can book a free consultation directly through our website form, or connect with our advisors via WhatsApp/Phone call to discuss your recruitment or training needs.",
-                },
-              ];
+            {/* FAQ - Only rendered if added from CMS */}
+            {validFaqs && validFaqs.length > 0 && (
+              <div className="mb-12 border-t border-slate-100 pt-12">
+                <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
+                  Frequently Asked Questions
+                </h3>
+                <div className="mb-6 h-1 w-16 bg-secondary" />
 
-              const displayFaqs = validFaqs.length > 0 ? validFaqs : commonFaqs;
-
-              return (
-                <div className="mb-12 border-t border-slate-100 pt-12">
-                  <h3 className="text-base sm:text-lg font-bold text-primary tracking-tight mb-2">
-                    Frequently Asked Questions
-                  </h3>
-                  <div className="mb-6 h-1 w-16 bg-secondary" />
-
-                  <div className="grid md:grid-cols-2 gap-4 sm:gap-5 items-start">
-                    {displayFaqs.map((faq, idx) => {
-                      const isOpen = openFaq === idx;
-                      return (
-                        <div
-                          key={idx}
-                          className="bg-white rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all overflow-hidden"
+                <div className="grid md:grid-cols-2 gap-4 sm:gap-5 items-start">
+                  {validFaqs.map((faq, idx) => {
+                    const isOpen = openFaq === idx;
+                    return (
+                      <div
+                        key={idx}
+                        className="bg-white rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all overflow-hidden"
+                      >
+                        <button
+                          onClick={() => toggleFaq(idx)}
+                          className="w-full flex items-center justify-between px-4 py-3.5 text-left"
                         >
-                          <button
-                            onClick={() => toggleFaq(idx)}
-                            className="w-full flex items-center justify-between px-4 py-3.5 text-left"
-                          >
-                            <span className="font-semibold text-primary text-xs sm:text-sm pr-3 leading-snug">
-                              {faq.question}
-                            </span>
-                            <div className="w-6 h-6 rounded-md bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0 font-bold text-base leading-none">
-                              {isOpen ? <span className="text-secondary">-</span> : <span className="text-slate-400">+</span>}
-                            </div>
-                          </button>
+                          <span className="font-semibold text-primary text-xs sm:text-sm pr-3 leading-snug">
+                            {faq.question}
+                          </span>
+                          <div className="w-6 h-6 rounded-md bg-slate-50 flex items-center justify-center text-slate-500 flex-shrink-0 font-bold text-base leading-none">
+                            {isOpen ? <span className="text-secondary">-</span> : <span className="text-slate-400">+</span>}
+                          </div>
+                        </button>
 
-                          {isOpen && (
-                            <div className="px-4 pb-3.5 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-2.5">
-                              {faq.answer}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
+                        {isOpen && (
+                          <div className="px-4 pb-3.5 text-slate-600 text-xs sm:text-sm leading-relaxed border-t border-slate-100 pt-2.5">
+                            {faq.answer}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })()}
+              </div>
+            )}
           </div>
 
           {/* Bottom Area: Contact Form & CTA */}
@@ -475,7 +485,7 @@ export default function MainContentSection({
                     onChange={handleChange}
                     placeholder="Full Name"
                     required
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
                   />
                   <input
                     type="email"
@@ -484,7 +494,7 @@ export default function MainContentSection({
                     onChange={handleChange}
                     placeholder="Email Address"
                     required
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
                   />
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -495,7 +505,7 @@ export default function MainContentSection({
                     onChange={handleChange}
                     placeholder="Phone Number"
                     required
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
                   />
                   <input
                     type="text"
@@ -503,7 +513,7 @@ export default function MainContentSection({
                     value={formData.company}
                     onChange={handleChange}
                     placeholder="Company Name"
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-red-700 focus:outline-none focus:ring-1 focus:ring-red-700"
+                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
                   />
                 </div>
                 <textarea

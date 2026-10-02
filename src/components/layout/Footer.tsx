@@ -79,7 +79,7 @@ export default function Footer() {
                   className="w-full h-auto block"
                 />
                 {/* Details */}
-                <div className="p-8 text-slate-800">
+                <div className="p-8 text-primary">
                   <span className="text-[10px] font-bold text-slate-500 tracking-widest block mb-3">
                     Our Offices
                   </span>

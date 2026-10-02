@@ -50,7 +50,7 @@ const ContactSection = () => {
                     {/* Left side: Image */}
                     <div className="relative min-h-[400px] lg:h-auto w-full">
                         <Image
-                            src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80"
+                            src="/img/home-contact.png"
                             alt="Contact People Consulting"
                             fill
                             className="object-cover"

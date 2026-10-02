@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Container, CallToAction } from '@/components/ui'
-import { CheckCircle2, Building2, Factory, FileSignature, ShoppingCart, Activity, ShieldCheck, Briefcase, Landmark, FileText, BadgePercent, GraduationCap, Gavel, FileCheck, ArrowRight, Layers, BellRing, PieChart } from 'lucide-react'
+import { CheckCircle2, Building2, Factory, FileSignature, ShoppingCart, ShieldCheck, Briefcase, Landmark, FileText, BadgePercent, GraduationCap, Gavel, FileCheck, ArrowRight, Layers, BellRing, PieChart } from 'lucide-react'
 import { FAQs } from '@/components/home'
 import SeoHead from '@/components/seo/SeoHead'
 import ComplianceLinks from '@/components/compliance/ComplianceLinks'
@@ -229,119 +229,97 @@ export default function CompliancePage() {
             
             {/* Text Content */}
             <div className="lg:col-span-5 space-y-6">
-              <div>
+              <div className="flex items-center gap-2.5 flex-wrap">
                 <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
                   Compliance Dashboard
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-secondary/30 bg-secondary/10 text-secondary text-xs font-bold">
+                  Powered by Digiliance
                 </span>
               </div>
               <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
                 Track Every Filing, Deadline & Update in Real Time
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed font-medium pb-2">
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium pb-2">
                 Our compliance dashboard gives you complete visibility into your organization&apos;s statutory status — no more chasing spreadsheets or waiting on emails.
               </p>
               
-              <ul className="space-y-5">
+              <div className="space-y-3.5">
                 {[
                   { title: 'Real-time dashboards & visual reports', icon: PieChart },
                   { title: 'Track key compliance metrics at a glance', icon: Layers },
                   { title: 'Automated deadline reminders & alerts', icon: BellRing },
                   { title: 'Export filings & reports in multiple formats', icon: FileCheck },
                 ].map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-4 p-4 rounded-2xl hover:bg-slate-50 transition-colors duration-300 border border-transparent hover:border-slate-100">
-                    <div className="mt-0.5 bg-secondary/10 text-secondary rounded-xl p-2.5 shadow-sm">
-                      <item.icon size={22} strokeWidth={2.5} />
+                  <div
+                    key={idx}
+                    className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-xl bg-[#f8faff] border border-slate-200/90 hover:border-secondary/40 hover:bg-white hover:shadow-md transition-all duration-300 group cursor-default"
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-white transition-all duration-300 shadow-xs">
+                      <item.icon size={20} strokeWidth={2.2} />
                     </div>
-                    <span className="text-slate-700 font-bold text-base pt-2.5">{item.title}</span>
-                  </li>
+                    <span className="text-primary font-bold text-sm sm:text-base leading-snug group-hover:text-secondary transition-colors">
+                      {item.title}
+                    </span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
             
             {/* Dashboard Visual */}
             <div className="lg:col-span-7 relative">
               {/* Decorative Blobs */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-10 -left-10 w-60 h-60 bg-primary/10 rounded-full blur-3xl"></div>
+              <div className="absolute -top-10 -right-10 w-44 h-44 bg-secondary/20 rounded-full blur-2xl pointer-events-none"></div>
+              <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary/15 rounded-full blur-3xl pointer-events-none"></div>
               
-              <div className="relative bg-gradient-to-br from-primary to-slate-900 rounded-[2.5rem] p-6 sm:p-10 shadow-2xl overflow-visible border-4 border-slate-50 transform hover:scale-[1.02] transition-transform duration-500">
-                {/* Mock UI Header */}
-                <div className="flex gap-2 mb-6 ml-2">
-                  <div className="w-3.5 h-3.5 rounded-full bg-red-400 border border-red-500 shadow-sm"></div>
-                  <div className="w-3.5 h-3.5 rounded-full bg-amber-400 border border-amber-500 shadow-sm"></div>
-                  <div className="w-3.5 h-3.5 rounded-full bg-emerald-400 border border-emerald-500 shadow-sm"></div>
-                </div>
-
-                <div className="bg-slate-50 rounded-2xl overflow-hidden shadow-inner border border-white/20 relative backdrop-blur-sm">
-                  {/* Glass Header */}
-                  <div className="bg-white/90 backdrop-blur-md px-6 py-4 border-b border-slate-200/80 flex justify-between items-center sticky top-0 z-10">
-                    <span className="text-base font-extrabold text-slate-800 tracking-wide flex items-center gap-2">
-                      <Activity size={18} className="text-secondary" />
-                      Compliance Overview
-                    </span>
-                    <span className="text-xs font-bold bg-green-100 text-green-700 px-3 py-1 rounded-full">System Active</span>
+              {/* Device Window Frame */}
+              <div className="relative bg-slate-900 rounded-3xl sm:rounded-[2.5rem] p-4 sm:p-6 shadow-2xl overflow-visible border-4 border-slate-100/90 group transform hover:scale-[1.01] transition-transform duration-500">
+                {/* Browser Top Chrome */}
+                <div className="flex items-center justify-between gap-3 mb-4 px-2">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400 border border-red-500/50 shadow-xs"></div>
+                    <div className="w-3 h-3 rounded-full bg-amber-400 border border-amber-500/50 shadow-xs"></div>
+                    <div className="w-3 h-3 rounded-full bg-emerald-400 border border-emerald-500/50 shadow-xs"></div>
                   </div>
-                  
-                  {/* Dashboard Content */}
-                  <div className="p-6 sm:p-8 space-y-6">
-                    {/* Top Stats */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      {[
-                        { val: '1,248', label: 'Total Documents', color: 'text-primary' },
-                        { val: '98%', label: 'Compliance Rate', color: 'text-emerald-600' },
-                        { val: '99.8%', label: 'Filing Accuracy', color: 'text-blue-600' }
-                      ].map((stat, i) => (
-                        <div key={i} className="bg-white p-5 rounded-2xl border border-slate-100 text-center shadow-sm hover:shadow-md transition-shadow">
-                          <div className={`text-3xl font-extrabold mb-1.5 ${stat.color}`}>{stat.val}</div>
-                          <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">{stat.label}</div>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    {/* Charts Area */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                      {/* Bar Chart */}
-                      <div className="sm:col-span-2 bg-white p-5 rounded-2xl border border-slate-100 flex items-end justify-between h-48 pt-12 pb-6 px-6 shadow-sm">
-                        {[40, 60, 45, 80, 55, 75, 50, 90, 65].map((h, i) => (
-                          <div key={i} className="w-[8%] bg-gradient-to-t from-primary to-blue-400 rounded-t-md hover:opacity-80 cursor-pointer transition-all duration-300 group relative" style={{ height: `${h}%` }}>
-                            <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10 pointer-events-none">
-                              {h}%
-                            </div>
-                          </div>
-                        ))}
-                      </div>
 
-                      {/* Donut Chart */}
-                      <div className="sm:col-span-1 bg-white p-5 rounded-2xl border border-slate-100 flex flex-col items-center justify-center shadow-sm">
-                        <div className="relative w-24 h-24 rounded-full flex items-center justify-center mb-4">
-                          <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                            <path className="text-slate-100" strokeWidth="4" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                            <path className="text-secondary drop-shadow-md" strokeDasharray="76, 100" strokeWidth="4" strokeLinecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-                          </svg>
-                          <span className="absolute text-lg font-extrabold text-slate-800">76%</span>
-                        </div>
-                        <span className="text-[11px] font-bold text-slate-500 text-center uppercase tracking-widest">On Time Filings</span>
-                      </div>
-                    </div>
+                  <div className="flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-800/90 border border-slate-700/80 text-slate-300 text-[11px] sm:text-xs font-mono shadow-inner">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    app.digiliance.com/dashboard
+                  </div>
+
+                  <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-300 font-semibold tracking-wide">
+                    <span className="text-secondary font-extrabold tracking-wider">DIGILIANCE</span>
                   </div>
                 </div>
 
-                {/* Floating Elements */}
-                <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl shadow-slate-900/20 border border-slate-100 animate-bounce-slow">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                      <CheckCircle2 size={24} />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-slate-800">Audit Ready</div>
-                      <div className="text-xs text-slate-500 font-medium">All clear for Q3</div>
-                    </div>
+                {/* Real Digiliance Dashboard Screen Image */}
+                <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-white">
+                  <Image
+                    src="/img/dashbaord.jpeg"
+                    alt="Digiliance Statutory Compliance Management Dashboard"
+                    fill
+                    className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                  />
+                </div>
+
+                {/* Floating Bottom Badge */}
+                <div className="absolute -bottom-5 -left-4 sm:-bottom-6 sm:-left-6 bg-white p-3.5 sm:p-4 rounded-2xl shadow-xl shadow-slate-900/15 border border-slate-100 flex items-center gap-3 animate-bounce-slow z-20">
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 shrink-0 shadow-xs">
+                    <CheckCircle2 size={22} strokeWidth={2.5} />
+                  </div>
+                  <div>
+                    <div className="text-xs sm:text-sm font-bold text-primary">Audit Ready</div>
+                    <div className="text-[11px] text-slate-500 font-medium">All statutory records verified</div>
                   </div>
                 </div>
 
-                <div className="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl shadow-slate-900/20 border border-slate-100">
+                {/* Floating Top-Right Bell Alert */}
+                <div className="absolute -top-4 -right-4 sm:-top-5 sm:-right-5 bg-white p-3 sm:p-3.5 rounded-2xl shadow-xl shadow-slate-900/15 border border-slate-100 z-20">
                   <div className="relative">
-                    <BellRing size={28} className="text-secondary" />
+                    <BellRing size={24} className="text-secondary" />
+                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white animate-ping"></span>
                     <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
                   </div>
                 </div>

@@ -477,7 +477,7 @@ export default function CategoryServicesClient() {
                   >
                     <button
                       onClick={() => setOpenFaqIndex(isOpen ? null : index)}
-                      className="w-full px-5 py-3.5 text-left flex items-center justify-between gap-3 font-semibold text-slate-800 text-xs sm:text-sm hover:text-primary transition-colors leading-snug"
+                      className="w-full px-5 py-3.5 text-left flex items-center justify-between gap-3 font-semibold text-primary text-xs sm:text-sm hover:text-secondary transition-colors leading-snug"
                     >
                       <span>{faq.question}</span>
                       <ChevronDown

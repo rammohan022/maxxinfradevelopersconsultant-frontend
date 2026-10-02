@@ -24,10 +24,10 @@ export default function Blog() {
 
   if (isLoading || isError || blogs.length === 0) return null;
 
-  // Show only last 4 blogs
+  // Show only last 3 blogs
   const latestBlogs = [...blogs]
     .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    .slice(0, 4);
+    .slice(0, 3);
 
   return (
     <section className="py-16 md:py-20 bg-white border-b border-slate-100/80">
@@ -53,7 +53,7 @@ export default function Blog() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
         >
           {latestBlogs.map((post) => (
             <motion.div variants={itemVariants} key={post.id}>

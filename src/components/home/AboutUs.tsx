@@ -23,7 +23,7 @@ export default function AboutUs() {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-primary/5 rounded-full blur-3xl -z-10" />
 
             <Image
-              src="/img/hr_about_us_1783707647467.png"
+              src="/img/aboutus.jpg"
               alt="People Consulting"
               fill
               className="object-cover hover:scale-105 transition-transform duration-500"
@@ -43,15 +43,15 @@ export default function AboutUs() {
             </span>
 
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4 leading-snug">
-              We believe people drive organisations.{' '}
+              We believe people drive organisations. We help businesses turn their{' '}
               <span className="text-secondary">
-                We help businesses turn their people advantage into business advantage.
+                people advantage into business advantage.
               </span>
             </h2>
 
             <div className="space-y-3.5 text-xs md:text-sm text-slate-600 leading-relaxed mb-8">
               <p>
-                For more than a decade, <strong>People Consulting</strong> has partnered with organisations across India to solve the people challenges that sit at the heart of business performance. We bring together <strong>people, expertise, technology and execution</strong> to help organisations build stronger and more future-ready businesses.
+                For more than a decade, <strong>People Consulting</strong> has partnered with organisations across India to solve the people challenges that sit at the heart of business performance. We bring together <strong>people, expertise, technology and execution</strong> to help organisations build stronger and more future ready businesses.
               </p>
 
               <p>
@@ -63,7 +63,7 @@ export default function AboutUs() {
               </p>
 
               <p>
-                We work alongside our clients—not simply for them—as a <strong>Strategic People Partner</strong>, bringing clarity to decisions, capability to teams and technology to processes.{' '}
+                We work alongside our clients, not simply for them, as a <strong>Strategic People Partner</strong>, bringing clarity to decisions, capability to teams and technology to processes.{' '}
                 <strong>Because when people, processes and technology work in sync, businesses perform better.</strong>
               </p>
             </div>

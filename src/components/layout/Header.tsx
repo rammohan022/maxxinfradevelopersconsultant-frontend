@@ -206,13 +206,13 @@ export default function Header() {
                     <div className="flex items-center gap-1 cursor-pointer">
                       <Link
                         href={item.href!}
-                        className="text-slate-800 hover:text-secondary font-semibold py-2 transition-colors"
+                        className="text-primary hover:text-secondary font-semibold py-2 transition-colors"
                       >
                         {formatTitleCase(item.label)}
                       </Link>
                       <button
                         type="button"
-                        className="p-1 text-slate-800 group-hover:text-secondary transition-colors"
+                        className="p-1 text-primary group-hover:text-secondary transition-colors"
                       >
                         <ChevronDown size={16} className={`transition-transform duration-300 ${openDropdown ? 'rotate-180' : ''}`} />
                       </button>
@@ -247,7 +247,7 @@ export default function Header() {
                                           key={area.id}
                                           href={`/services/${area.slug}`}
                                           onClick={() => setOpenDropdown(false)}
-                                          className="group/link flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary transition-all duration-200"
+                                          className="group/link flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary transition-all duration-200"
                                         >
                                           <ChevronRight
                                             size={14}
@@ -275,10 +275,10 @@ export default function Header() {
                     onMouseLeave={() => setCareerOpen(false)}
                   >
                     <div className="flex items-center gap-1 cursor-pointer">
-                      <span className="text-slate-800 hover:text-secondary font-semibold py-2 transition-colors">
+                      <span className="text-primary hover:text-secondary font-semibold py-2 transition-colors">
                         {formatTitleCase(item.label)}
                       </span>
-                      <ChevronDown size={16} className={`text-slate-800 group-hover:text-secondary transition-all duration-300 ${careerOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown size={16} className={`text-primary group-hover:text-secondary transition-all duration-300 ${careerOpen ? 'rotate-180' : ''}`} />
                     </div>
 
                     <AnimatePresence>
@@ -294,7 +294,7 @@ export default function Header() {
                             <Link
                               href="/career"
                               onClick={() => setCareerOpen(false)}
-                              className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                              className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                             >
                               <ChevronRight size={14} className="text-secondary shrink-0" />
                               <span>Open Positions</span>
@@ -302,7 +302,7 @@ export default function Header() {
                             <Link
                               href="/submit-cv"
                               onClick={() => setCareerOpen(false)}
-                              className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                              className="flex items-center gap-2 px-3 py-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                             >
                               <ChevronRight size={14} className="text-secondary shrink-0" />
                               <span>Submit Your CV</span>
@@ -320,10 +320,10 @@ export default function Header() {
                     onMouseLeave={() => setResourceOpen(false)}
                   >
                     <div className="flex items-center gap-1 cursor-pointer">
-                      <span className="text-slate-800 hover:text-secondary font-semibold py-2 transition-colors">
+                      <span className="text-primary hover:text-secondary font-semibold py-2 transition-colors">
                         {formatTitleCase(item.label)}
                       </span>
-                      <ChevronDown size={16} className={`text-slate-800 group-hover:text-secondary transition-all duration-300 ${resourceOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown size={16} className={`text-primary group-hover:text-secondary transition-all duration-300 ${resourceOpen ? 'rotate-180' : ''}`} />
                     </div>
 
                     <AnimatePresence>
@@ -347,7 +347,7 @@ export default function Header() {
                                   <Link
                                     href="/blog"
                                     onClick={() => setResourceOpen(false)}
-                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                    className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                                   >
                                     <ChevronRight size={14} className="text-secondary shrink-0" />
                                     <span>Blogs</span>
@@ -355,7 +355,7 @@ export default function Header() {
                                   <Link
                                     href="/hr-free-tools"
                                     onClick={() => setResourceOpen(false)}
-                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                    className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                                   >
                                     <ChevronRight size={14} className="text-secondary shrink-0" />
                                     <span>HR Free Tools</span>
@@ -363,7 +363,7 @@ export default function Header() {
                                   <Link
                                     href="/hr-metrics"
                                     onClick={() => setResourceOpen(false)}
-                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                    className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                                   >
                                     <ChevronRight size={14} className="text-secondary shrink-0" />
                                     <span>HR Metrics</span>
@@ -381,7 +381,7 @@ export default function Header() {
                                   <Link
                                     href="/salary-calculator"
                                     onClick={() => setResourceOpen(false)}
-                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                    className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                                   >
                                     <ChevronRight size={14} className="text-secondary shrink-0" />
                                     <span>Salary Calculator</span>
@@ -389,7 +389,7 @@ export default function Header() {
                                   <Link
                                     href="/gratuity-calculator"
                                     onClick={() => setResourceOpen(false)}
-                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                    className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                                   >
                                     <ChevronRight size={14} className="text-secondary shrink-0" />
                                     <span>Gratuity Calculator</span>
@@ -397,7 +397,7 @@ export default function Header() {
                                   <Link
                                     href="/attrition-calculator"
                                     onClick={() => setResourceOpen(false)}
-                                    className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                    className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                                   >
                                     <ChevronRight size={14} className="text-secondary shrink-0" />
                                     <span>Attrition Rate Calculator</span>
@@ -406,11 +406,11 @@ export default function Header() {
                               </div>
 
 
-                              {/* Column 4: Compliance Calendar */}
+                              {/* Column 4: Compliance Library */}
                               <div>
                                 <h4 className="text-xs font-bold tracking-wide text-primary border-b-2 border-secondary/40 pb-1.5 mb-2.5 flex items-center gap-1.5">
                                   <Calendar size={14} className="text-secondary" />
-                                  <span>Compliance Calendar</span>
+                                  <span>Compliance Library</span>
                                 </h4>
                                 <div className="space-y-1">
                                   {pdfs.length > 0 ? (
@@ -421,7 +421,7 @@ export default function Header() {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         onClick={() => setResourceOpen(false)}
-                                        className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
+                                        className="flex items-center gap-2 text-sm font-semibold text-primary hover:text-secondary p-1.5 rounded-lg hover:bg-orange-50/50 transition-colors"
                                       >
                                         <ChevronRight size={14} className="text-secondary shrink-0" />
                                         <span className="truncate">{formatTitleCase(pdf.title)}</span>
@@ -446,7 +446,7 @@ export default function Header() {
                   /* ================= NORMAL LINK ================= */
                   <Link
                     href={item.href!}
-                    className="text-slate-800 hover:text-secondary font-semibold py-2 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-secondary hover:after:w-full after:transition-all after:duration-300"
+                    className="text-primary hover:text-secondary font-semibold py-2 transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-secondary hover:after:w-full after:transition-all after:duration-300"
                   >
                     {formatTitleCase(item.label)}
                   </Link>
@@ -467,7 +467,7 @@ export default function Header() {
 
           {/* ================= MOBILE TOGGLE ================= */}
           <button
-            className="lg:hidden p-2 text-slate-800 hover:text-primary transition-colors focus:outline-none"
+            className="lg:hidden p-2 text-primary hover:text-primary transition-colors focus:outline-none"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle Menu"
           >
@@ -492,22 +492,22 @@ export default function Header() {
               className="lg:hidden border-t border-gray-100 overflow-hidden"
             >
               <div className="py-4 space-y-2">
-                <Link href="/" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:text-secondary hover:bg-orange-50/50 rounded-lg">
+                <Link href="/" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-primary hover:text-secondary hover:bg-orange-50/50 rounded-lg">
                   {formatTitleCase(navItems.find((i) => i.href === '/')?.label || 'Home')}
                 </Link>
-                <Link href="/about-us" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:text-secondary hover:bg-orange-50/50 rounded-lg">
+                <Link href="/about-us" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-primary hover:text-secondary hover:bg-orange-50/50 rounded-lg">
                   {formatTitleCase(navItems.find((i) => i.href === '/about-us')?.label || 'About Us')}
                 </Link>
 
                 {/* Mobile Practice Accordion */}
                 <div className="rounded-lg overflow-hidden">
                   <button
-                    className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:text-secondary hover:bg-orange-50/50 transition-colors"
+                    className="w-full flex justify-between items-center font-semibold text-primary px-4 py-3 hover:text-secondary hover:bg-orange-50/50 transition-colors"
                     onClick={() => setMobilePracticeOpen(!mobilePracticeOpen)}
                   >
                     {formatTitleCase(navItems.find((i) => i.mega)?.label || 'Our Services')}
                     <motion.div animate={{ rotate: mobilePracticeOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-                      <ChevronDown size={20} className="text-gray-400" />
+                      <ChevronDown size={20} className="text-primary" />
                     </motion.div>
                   </button>
 
@@ -535,7 +535,7 @@ export default function Header() {
                                   <Link
                                     key={area.id}
                                     href={`/services/${area.slug}`}
-                                    className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1.5 transition-colors leading-snug"
+                                    className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1.5 transition-colors leading-snug"
                                     onClick={() => setMobileOpen(false)}
                                   >
                                     <ChevronRight size={12} className="text-secondary/50" />
@@ -554,12 +554,12 @@ export default function Header() {
                 {/* Mobile Careers Accordion */}
                 <div className="rounded-lg overflow-hidden">
                   <button
-                    className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:text-secondary hover:bg-orange-50/50 transition-colors"
+                    className="w-full flex justify-between items-center font-semibold text-primary px-4 py-3 hover:text-secondary hover:bg-orange-50/50 transition-colors"
                     onClick={() => setMobileCareerOpen(!mobileCareerOpen)}
                   >
                     <span>Careers</span>
                     <motion.div animate={{ rotate: mobileCareerOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-                      <ChevronDown size={20} className="text-gray-400" />
+                      <ChevronDown size={20} className="text-primary" />
                     </motion.div>
                   </button>
 
@@ -572,11 +572,11 @@ export default function Header() {
                         className="bg-gray-50/50"
                       >
                         <div className="px-6 py-3 ml-6 my-2 space-y-2 border-l-2 border-secondary/20">
-                          <Link href="/career" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                          <Link href="/career" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                             <ChevronRight size={12} className="text-secondary/50" />
                             <span>Open Positions</span>
                           </Link>
-                          <Link href="/submit-cv" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                          <Link href="/submit-cv" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                             <ChevronRight size={12} className="text-secondary/50" />
                             <span>Submit Your CV</span>
                           </Link>
@@ -589,12 +589,12 @@ export default function Header() {
                 {/* Mobile Resources Accordion */}
                 <div className="rounded-lg overflow-hidden">
                   <button
-                    className="w-full flex justify-between items-center font-semibold text-slate-800 px-4 py-3 hover:text-secondary hover:bg-orange-50/50 transition-colors"
+                    className="w-full flex justify-between items-center font-semibold text-primary px-4 py-3 hover:text-secondary hover:bg-orange-50/50 transition-colors"
                     onClick={() => setMobileResourceOpen(!mobileResourceOpen)}
                   >
                     <span>Resources</span>
                     <motion.div animate={{ rotate: mobileResourceOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
-                      <ChevronDown size={20} className="text-gray-400" />
+                      <ChevronDown size={20} className="text-primary" />
                     </motion.div>
                   </button>
 
@@ -612,11 +612,11 @@ export default function Header() {
                             <div className="text-[11px] font-bold tracking-wide text-primary border-b border-secondary/30 pb-1 mb-1">
                               Insights &amp; Media
                             </div>
-                            <Link href="/blog" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                            <Link href="/blog" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                               <ChevronRight size={12} className="text-secondary/50" />
                               <span>Blogs</span>
                             </Link>
-                            <Link href="/hr-free-tools" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                            <Link href="/hr-free-tools" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                               <ChevronRight size={12} className="text-secondary/50" />
                               <span>HR Free Tools</span>
                             </Link>
@@ -627,15 +627,15 @@ export default function Header() {
                             <div className="text-[11px] font-bold tracking-wide text-primary border-b border-secondary/30 pb-1 mb-1">
                               HR Calculators
                             </div>
-                            <Link href="/salary-calculator" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                            <Link href="/salary-calculator" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                               <ChevronRight size={12} className="text-secondary/50" />
                               <span>Salary Calculator</span>
                             </Link>
-                            <Link href="/gratuity-calculator" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                            <Link href="/gratuity-calculator" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                               <ChevronRight size={12} className="text-secondary/50" />
                               <span>Gratuity Calculator</span>
                             </Link>
-                            <Link href="/attrition-calculator" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                            <Link href="/attrition-calculator" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                               <ChevronRight size={12} className="text-secondary/50" />
                               <span>Attrition Rate Calculator</span>
                             </Link>
@@ -646,7 +646,7 @@ export default function Header() {
                             <div className="text-[11px] font-bold tracking-wide text-primary border-b border-secondary/30 pb-1 mb-1">
                               HR Metrics
                             </div>
-                            <Link href="/hr-free-tools" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                            <Link href="/hr-free-tools" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                               <ChevronRight size={12} className="text-secondary/50" />
                               <span>Hr Metrics( for formulas)</span>
                             </Link>
@@ -659,7 +659,7 @@ export default function Header() {
                             </div>
                             {pdfs.length > 0 ? (
                               pdfs.map((pdf) => (
-                                <Link key={pdf.id} href={`/pdf?doc=${slugifyCategory(pdf.title)}`} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-secondary py-1 transition-colors">
+                                <Link key={pdf.id} href={`/pdf?doc=${slugifyCategory(pdf.title)}`} target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)} className="flex items-center gap-2 text-sm font-medium text-primary hover:text-secondary py-1 transition-colors">
                                   <ChevronRight size={12} className="text-secondary/50" />
                                   <span className="truncate">{formatTitleCase(pdf.title)}</span>
                                 </Link>
@@ -675,7 +675,7 @@ export default function Header() {
                 </div>
 
                 {/* Mobile Compliance Link */}
-                <Link href="/compliance" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-slate-800 hover:text-secondary hover:bg-orange-50/50 rounded-lg">
+                <Link href="/compliance" onClick={() => setMobileOpen(false)} className="block px-4 py-3 font-semibold text-primary hover:text-secondary hover:bg-orange-50/50 rounded-lg">
                   {formatTitleCase(navItems.find((i) => i.href === '/compliance')?.label || 'Compliance')}
                 </Link>
 

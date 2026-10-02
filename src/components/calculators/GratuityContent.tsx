@@ -178,7 +178,7 @@ export default function GratuityContent() {
                   onClick={() => setOpenFaq(isOpen ? null : idx)}
                   className="w-full p-4 text-left flex justify-between items-center bg-slate-50/60 hover:bg-slate-100/80 transition-colors"
                 >
-                  <span className="text-sm font-semibold text-slate-800 pr-4">
+                  <span className="text-sm font-semibold text-primary pr-4">
                     {faq.q}
                   </span>
                   <ChevronDown

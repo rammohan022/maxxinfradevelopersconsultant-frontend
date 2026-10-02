@@ -30,20 +30,20 @@ const FirmOverview = () => {
 
             <div className="space-y-4 text-slate-600 text-xs md:text-sm leading-relaxed mb-8">
               <p>
-                For more than a decade, <strong>People Consulting</strong> has partnered with organisations across India to solve the people challenges that sit at the heart of business performance. We bring together <strong>people, expertise, technology and execution</strong> to help organisations build stronger and more future-ready businesses.
+                With over a decade of industry expertise, <strong>People Consulting</strong> partners with leading enterprises and high-growth businesses across India to address their core workforce challenges. We integrate <strong>strategic talent, modern technology, and disciplined execution</strong> to build agile, resilient, and forward-looking organizations.
               </p>
 
               <p>
-                Our capabilities span <strong>Workforce Solutions, HR Consulting &amp; Talent Advisory, Talent Development &amp; Capacity Building, Labour Compliance and HR Technology</strong>. But we don&apos;t look at these as separate services. We look at them as interconnected levers that shape how an organisation <strong>attracts talent, builds capability, manages risk, improves efficiency and performs</strong>.
+                Our comprehensive solutions encompass <strong>Workforce Solutions, Strategic HR Advisory, Talent Development, Regulatory Labour Compliance, and HR Technology</strong>. Rather than treating these as isolated functions, we align them into a unified ecosystem that empowers companies to <strong>attract top talent, cultivate high performance, mitigate organizational risk, and maximize operational efficiency</strong>.
               </p>
 
               <p>
-                Our philosophy is simple: <strong>understand the business first, challenge conventional thinking and create solutions that work in the real world.</strong> We combine seasoned HR expertise with <strong>Pragmatic Innovation, Continuous Learning and Strategic Partnership</strong> to turn complex people challenges into practical, scalable outcomes.
+                Our core approach centers on <strong>deeply understanding your business dynamics, rethinking legacy practices, and designing practical solutions that deliver measurable impact</strong>. By combining hands-on consulting expertise with <strong>pragmatic innovation and continuous learning</strong>, we convert complex human resource challenges into scalable growth opportunities.
               </p>
 
               <p>
-                We work alongside our clients—not simply for them—as a <strong>Strategic People Partner</strong>, bringing clarity to decisions, capability to teams and technology to processes.{' '}
-                <strong>Because when people, processes and technology work in sync, businesses perform better.</strong>
+                We serve as a dedicated <strong>Strategic People Partner</strong>, collaborating closely with leadership teams to bring clarity to decisions, strengthen workforce capabilities, and modernize HR processes.{' '}
+                <strong>When talented people, intelligent workflows, and modern technology operate in harmony, businesses achieve sustainable excellence.</strong>
               </p>
             </div>
 
@@ -85,7 +85,7 @@ const FirmOverview = () => {
 
             <div className="h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl relative group">
               <Image
-                src="/img/about-us.jpg"
+                src="/img/about-us-page.jpg"
                 alt="Professional human resource team in modern office"
                 fill
                 className="object-cover group-hover:scale-105 transition duration-700"
@@ -99,7 +99,7 @@ const FirmOverview = () => {
               whileInView={{ opacity: 1, y: 0, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ type: "spring", bounce: 0.5, delay: 0.3 }}
-              className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 bg-white border border-slate-200 text-slate-900 p-6 sm:p-8 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs backdrop-blur-sm"
+              className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 bg-white border border-slate-200 text-primary p-6 sm:p-8 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs backdrop-blur-sm"
             >
               <div className="text-4xl sm:text-5xl font-bold mb-1 sm:mb-2 text-primary">15+</div>
               <div className="text-slate-600 text-sm sm:text-base font-medium leading-tight">

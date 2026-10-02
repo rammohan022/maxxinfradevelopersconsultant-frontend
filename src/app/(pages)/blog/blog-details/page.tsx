@@ -211,7 +211,7 @@ function BlogDetailsContent() {
                                                         </div>
                                                     )}
                                                     <div className="flex-1">
-                                                        <span className="font-medium text-slate-800 text-sm group-hover:text-primary transition line-clamp-2 leading-snug mb-1">{post.title}</span>
+                                                        <span className="font-medium text-primary text-sm group-hover:text-secondary transition line-clamp-2 leading-snug mb-1">{post.title}</span>
                                                         {post.metaDescription && (
                                                             <span className="text-xs text-slate-500 line-clamp-2 mb-1.5 leading-relaxed">
                                                                 {post.metaDescription}
@@ -273,7 +273,7 @@ function BlogDetailsContent() {
                                             <span>{new Date(item.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                                         </div>
                                         <Link href={`/blog/blog-details?id=${item.slug || item.id}`} className="block group/title">
-                                            <h3 
+                                            <h3
                                                 className="font-semibold text-lg text-primary group-hover/title:text-secondary transition-colors line-clamp-2 leading-snug"
                                                 title={item.title}
                                             >
@@ -316,7 +316,7 @@ function BlogDetailsContent() {
                         href="/contact-us"
                         className="inline-block bg-secondary hover:bg-secondary-dark text-white px-8 py-4 rounded font-medium transition focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-navy"
                     >
-                        Contact Us
+                        Talk To Our Experts
                     </Link>
                 </Container>
             </section>

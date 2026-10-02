@@ -78,9 +78,9 @@ export default function HowItWorks() {
       <Container className="relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-14 md:mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-bold tracking-wider uppercase mb-3.5 shadow-sm">
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-3.5">
             How It Works
-          </div>
+          </span>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">
             Get Started in Minutes with Our <span className="text-secondary">Simple 5-Step Process</span>
           </h2>

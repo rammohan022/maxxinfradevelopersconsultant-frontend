@@ -11,7 +11,7 @@ const AboutPage = () => {
       <ValuesPhilosophy />
       <StatsAchievements />
       {/* <RecognitionAwards /> */}
-      <FAQs />
+      <FAQs category="About" />
       <CallToAction />
     </>
   );

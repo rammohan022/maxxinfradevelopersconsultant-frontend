@@ -23,7 +23,7 @@ export default function BlogCard({ post }: BlogCardProps) {
       {/* Top Image */}
       <Link
         href={`/blog/${post.slug}`}
-        className="relative h-44 sm:h-48 w-full bg-slate-100 overflow-hidden block"
+        className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden block"
       >
         <Image
           src={
@@ -33,7 +33,7 @@ export default function BlogCard({ post }: BlogCardProps) {
           alt={post.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </Link>
 
@@ -42,7 +42,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         {/* Title */}
         <Link href={`/blog/${post.slug}`} className="block mb-4">
           <h3
-            className="font-bold text-slate-900 text-sm sm:text-base group-hover:text-secondary transition-colors line-clamp-3 leading-snug"
+            className="font-bold text-primary text-sm sm:text-base group-hover:text-secondary transition-colors line-clamp-3 leading-snug"
             title={post.title}
           >
             {post.title}

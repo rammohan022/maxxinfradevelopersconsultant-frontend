@@ -125,7 +125,7 @@ export default function AttritionContent() {
                   onClick={() => setOpenFaq(isOpen ? null : idx)}
                   className="w-full text-left p-4 md:p-5 flex items-start justify-between gap-4 focus:outline-none"
                 >
-                  <span className={`font-semibold text-sm md:text-base ${isOpen ? 'text-secondary' : 'text-slate-800'}`}>
+                  <span className={`font-semibold text-sm md:text-base ${isOpen ? 'text-secondary' : 'text-primary'}`}>
                     {faq.q}
                   </span>
                   <ChevronDown 

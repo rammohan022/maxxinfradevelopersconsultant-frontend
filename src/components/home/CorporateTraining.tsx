@@ -52,7 +52,7 @@ export default function CorporateTraining() {
   }
 
   return (
-    <section className="py-16 md:py-20 bg-white border-b border-slate-100/80 text-slate-900" id="corporate-training">
+    <section className="py-16 md:py-20 bg-white border-b border-slate-100/80 text-primary" id="corporate-training">
       <Container>
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Programs Info */}

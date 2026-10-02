@@ -137,9 +137,9 @@ export default function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-4xl mx-auto mb-14 md:mb-16"
         >
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-bold tracking-wider uppercase mb-3.5 shadow-sm">
-            Loved By Teams
-          </div>
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-3.5">
+            Loved by Teams
+          </span>
 
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">
             Why People Choose <span className="text-secondary">People Consulting</span>
@@ -180,7 +180,7 @@ export default function Testimonials() {
 
                       {/* Testimonial Text */}
                       <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal mb-6">
-                        &quot;{item.testimonialText}&quot;
+                        {item.testimonialText}
                       </p>
                     </div>
 

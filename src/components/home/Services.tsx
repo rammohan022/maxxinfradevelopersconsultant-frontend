@@ -36,7 +36,7 @@ export default function Services() {
             </h2>
 
             <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-normal">
-              We help organisations solve complex <strong className="text-slate-800 font-semibold">people and workforce challenges</strong> through integrated solutions across Workforce, Consulting, Talent Development, Compliance and HR Technology. Our focus is simple &mdash; <strong className="text-slate-800 font-semibold">practical solutions, stronger capabilities and measurable business impact</strong>.
+              We help organisations solve complex <strong className="text-primary font-semibold">people and workforce challenges</strong> through integrated solutions across Workforce, Consulting, Talent Development, Compliance and HR Technology. Our focus is simple &mdash; <strong className="text-primary font-semibold">practical solutions, stronger capabilities and measurable business impact</strong>.
             </p>
           </div>
 

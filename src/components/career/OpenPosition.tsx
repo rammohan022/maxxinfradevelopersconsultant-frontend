@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Container } from "@/components/ui";
 import { useState, useMemo, useEffect } from "react";
 import {
@@ -454,7 +455,7 @@ const OpenPosition = () => {
                 {/* Header Row: Total count + Pagination */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-3 border-b border-slate-200">
                   <div className="text-sm text-slate-600 font-medium">
-                    <span className="text-2xl font-extrabold text-slate-900 mr-1.5">
+                    <span className="text-2xl font-extrabold text-primary mr-1.5">
                       {filteredPositions.length}
                     </span>{" "}
                     Current Openings
@@ -550,18 +551,25 @@ const OpenPosition = () => {
                         className="bg-white border border-slate-200/90 rounded-xl p-5 sm:p-6 shadow-xs hover:border-primary/40 hover:shadow-md transition-all group"
                       >
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-2">
-                          <h3
-                            onClick={() => openApplyModal(job)}
-                            className="text-primary group-hover:text-secondary font-bold text-base sm:text-lg leading-snug cursor-pointer transition-colors"
-                          >
-                            {job.title}
-                          </h3>
-                          <button
-                            onClick={() => openApplyModal(job)}
-                            className="shrink-0 inline-flex items-center gap-1.5 text-xs font-bold text-white bg-secondary hover:bg-secondary-dark px-4 py-1.5 rounded transition shadow-sm self-start"
-                          >
-                            Apply
-                          </button>
+                          <Link href={`/careers/${job.id}`}>
+                            <h3 className="text-primary hover:text-secondary font-bold text-base sm:text-lg leading-snug cursor-pointer transition-colors">
+                              {job.title}
+                            </h3>
+                          </Link>
+                          <div className="flex items-center gap-2 shrink-0 self-start">
+                            <Link
+                              href={`/careers/${job.id}`}
+                              className="inline-flex items-center gap-1 text-xs font-semibold text-slate-700 hover:text-secondary bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded transition"
+                            >
+                              View Details
+                            </Link>
+                            <button
+                              onClick={() => openApplyModal(job)}
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-secondary hover:bg-secondary-dark px-4 py-1.5 rounded transition shadow-sm"
+                            >
+                              Apply
+                            </button>
+                          </div>
                         </div>
 
                         {/* Meta info row */}
@@ -589,12 +597,29 @@ const OpenPosition = () => {
                               </span>
                             </>
                           )}
+                          {job.education && (
+                            <>
+                              <span className="text-slate-300">|</span>
+                              <span className="text-slate-600">
+                                Edu: {job.education}
+                              </span>
+                            </>
+                          )}
                         </div>
 
                         {/* Excerpt / Description */}
                         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
                           {job.description}
                         </p>
+                        <div className="mt-2.5">
+                          <Link
+                            href={`/careers/${job.id}`}
+                            className="inline-flex items-center gap-1 text-xs font-bold text-secondary hover:underline"
+                          >
+                            Read Full Job Description
+                            <ChevronRight className="w-3.5 h-3.5" />
+                          </Link>
+                        </div>
                       </article>
                     ))}
                   </div>
@@ -698,6 +723,7 @@ const OpenPosition = () => {
                     <p className="text-sm text-gray-600 mt-0.5">
                       {selectedJob.location} · {selectedJob.jobType} ·{" "}
                       {selectedJob.experience}
+                      {selectedJob.education ? ` · ${selectedJob.education}` : ""}
                     </p>
                   </div>
                   <form onSubmit={handleApplySubmit} className="space-y-4">

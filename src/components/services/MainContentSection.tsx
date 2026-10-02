@@ -415,7 +415,7 @@ export default function MainContentSection({
 
             {/* Quote */}
             {quoteText && (
-              <div className="mb-12 border-l-4 border-secondary bg-navy p-5 sm:p-6 text-white rounded-r-xl">
+              <div className="mb-12 border-l-4 border-secondary bg-primary p-5 sm:p-6 text-white rounded-r-xl shadow-md">
                 <p className="mb-2 font-serif text-base sm:text-lg italic">
                   “{quoteText}”
                 </p>

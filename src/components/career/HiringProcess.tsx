@@ -21,12 +21,14 @@ const hiringSteps = [
         <>
           <section className="py-14 lg:py-20 bg-white">
                 <Container>
-                  <span className="inline-block text-primary font-semibold text-sm tracking-wide mb-2">
-                    How We Hire
-                  </span>
-                  <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-12">
-                    Our Hiring Process
-                  </h2>
+                  <div className="text-center max-w-2xl mx-auto mb-12">
+                    <span className="inline-block text-primary font-semibold text-sm tracking-wide mb-2">
+                      How We Hire
+                    </span>
+                    <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
+                      Our Hiring Process
+                    </h2>
+                  </div>
                   <div className="relative">
                     <div
                       className="hidden md:block absolute left-[12%] right-[12%] top-7 h-px bg-gray-200 z-0"
@@ -40,7 +42,7 @@ const hiringSteps = [
                             key={item.step}
                             className="flex flex-col md:flex-1 md:items-center md:text-center"
                           >
-                            <div className="w-14 h-14 rounded-full bg-navy text-white flex items-center justify-center font-bold font-serif-heading text-lg mb-4 shrink-0 mx-auto">
+                            <div className="w-14 h-14 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg mb-4 shrink-0 mx-auto shadow-md ring-4 ring-primary/15 border-2 border-white">
                               {item.step}
                             </div>
                             <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-3 shrink-0 mx-auto">

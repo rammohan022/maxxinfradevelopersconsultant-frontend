@@ -672,7 +672,7 @@ const OpenPosition = () => {
       {/* ================= APPLY MODAL ================= */}
       {applyModalOpen && selectedJob && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/60 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm"
           onClick={closeApplyModal}
           role="dialog"
           aria-modal="true"
@@ -689,7 +689,7 @@ const OpenPosition = () => {
               <button
                 type="button"
                 onClick={closeApplyModal}
-                className="p-2 text-gray-500 hover:text-navy rounded focus:outline-none focus:ring-2 focus:ring-secondary"
+                className="p-2 text-gray-500 hover:text-primary rounded focus:outline-none focus:ring-2 focus:ring-secondary"
                 aria-label="Close"
               >
                 <X className="w-5 h-5" />
@@ -719,7 +719,7 @@ const OpenPosition = () => {
               ) : (
                 <>
                   <div className="mb-6 rounded-lg bg-gray-50 border border-gray-100 px-4 py-3">
-                    <p className="font-semibold text-navy">{selectedJob.title}</p>
+                    <p className="font-semibold text-primary">{selectedJob.title}</p>
                     <p className="text-sm text-gray-600 mt-0.5">
                       {selectedJob.location} · {selectedJob.jobType} ·{" "}
                       {selectedJob.experience}

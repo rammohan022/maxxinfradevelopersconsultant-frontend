@@ -5,14 +5,14 @@ import { motion } from "framer-motion"
 
 export default function CTAQuote() {
   return (
-    <section className="py-10 lg:py-14 bg-navy text-white relative overflow-hidden">
+    <section className="py-10 lg:py-14 bg-[#1e2a4a] text-white relative overflow-hidden">
       <div
         className="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay"
         style={{
           backgroundImage: 'url(/img/hr_hero_bg_1783707638359.png)',
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1e2a4a] via-[#1e2a4a]/90 to-[#1e2a4a]/40" />
 
       <Container className="relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">

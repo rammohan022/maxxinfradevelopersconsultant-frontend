@@ -72,6 +72,7 @@ const navItems: NavItem[] = [
     subItems: [
       { name: "All Services", href: "/admin/services" },
       { name: "Categories", href: "/admin/service-categories" },
+      { name: "Compliance Services", href: "/admin/compliance-services" },
     ],
   },
   {

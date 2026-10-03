@@ -5,39 +5,7 @@ import { CheckCircle2, Building2, Factory, FileSignature, ShoppingCart, ShieldCh
 import { FAQs } from '@/components/home'
 import SeoHead from '@/components/seo/SeoHead'
 import ComplianceLinks from '@/components/compliance/ComplianceLinks'
-
-const complianceServices = [
-  {
-    title: 'Establishment Compliance',
-    desc: 'Ensuring full compliance across shops, offices, and commercial establishments nationwide.',
-    img: '/img/capabilities_card.png',
-  },
-  {
-    title: 'Factory Compliance',
-    desc: 'Comprehensive factory law compliance ensuring operational safety and regulatory adherence.',
-    img: '/img/manufacturing_industry.png',
-  },
-  {
-    title: 'Licensing & Registration Services',
-    desc: 'End-to-end business licensing and statutory registrations across all jurisdictions.',
-    img: '/img/practice-details-bg.png',
-  },
-  {
-    title: 'Trade & Retail Compliance',
-    desc: 'Regulatory support for trade licenses, shop establishments, and retail-specific statutory needs.',
-    img: '/img/finance_industry.png',
-  },
-  {
-    title: 'Digital Compliance Tracking',
-    desc: 'Technology-enabled monitoring of filings, deadlines, and regulatory updates in real time.',
-    img: '/img/tech_industry.png',
-  },
-  {
-    title: 'Compliance Audits & Reporting',
-    desc: 'Periodic audits and detailed reporting to keep your organization always audit-ready.',
-    img: '/img/about-us.jpg',
-  },
-]
+import ComplianceServicesSlider from '@/components/compliance/ComplianceServicesSlider'
 
 const complianceSolutions = [
   {
@@ -82,18 +50,18 @@ export default function CompliancePage() {
       />
 
       {/* ================= 1. HERO ================= */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden border-b border-slate-200/80">
+      <section className="relative min-h-[460px] py-16 sm:py-20 flex items-center justify-center overflow-hidden border-b border-slate-200/80">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/img/practice-hero-bg-v2.png"
+            src="/img/about-hero-bg-v3.png"
             alt="Corporate Compliance Background"
             fill
             className="object-cover"
             priority
           />
           {/* Solid Dark Gray Overlay with Opacity */}
-          <div className="absolute inset-0 bg-gray-900/70" />
+          <div className="absolute inset-0 bg-gray-950/75" />
         </div>
 
         {/* Content */}
@@ -109,7 +77,7 @@ export default function CompliancePage() {
             <span className="text-gray-300">Compliance</span>
           </div>
 
-          <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-6">
+          <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-4">
             End-to-End Labour Law & Statutory Compliance Management
           </h1>
 
@@ -119,63 +87,26 @@ export default function CompliancePage() {
             partner, every regulation covered.
           </p>
 
-          <div className="pt-8">
+          {/* 2 CTA Buttons */}
+          <div className="pt-8 flex flex-wrap items-center justify-center gap-4">
             <Link
-              href="/contact-us"
-              className="inline-flex items-center gap-2 bg-secondary hover:bg-secondary-dark text-white px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-300 shadow-md hover:-translate-y-0.5"
+              href="/contact-us?service=compliance-health-check"
+              className="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-secondary-dark text-white px-6 py-3 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 shadow-md hover:-translate-y-0.5"
             >
-              <span>Talk to Our Experts</span>
-              <ArrowRight size={16} />
+              <span>Book a Free Compliance Health Check</span>
+            </Link>
+            <Link
+              href="#compliance-services"
+              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/40 px-6 py-3 rounded-lg font-semibold text-xs sm:text-sm backdrop-blur-sm transition-all duration-300 shadow-md hover:-translate-y-0.5"
+            >
+              <span>Explore Our Services</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ================= 2. WHAT WE HANDLE ================= */}
-      <section className="py-16 md:py-20 lg:py-24 bg-white relative border-b border-slate-200/80">
-        <Container>
-          <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20 space-y-4">
-            <div>
-              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
-                What We Handle
-              </span>
-            </div>
-            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-              Our Compliance Services
-            </h2>
-            <p className="text-lg text-slate-600">
-              Comprehensive coverage across every stage of your business&apos;s regulatory journey.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {complianceServices.map((service, index) => (
-              <div 
-                key={index} 
-                className="group bg-white rounded-3xl overflow-hidden shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-secondary/20 transition-all duration-500 border border-slate-100 flex flex-col transform hover:-translate-y-2"
-              >
-                <div className="relative h-56 w-full overflow-hidden">
-                  <Image
-                    src={service.img}
-                    alt={service.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500"></div>
-                </div>
-                <div className="p-8 flex flex-col flex-grow items-center text-center relative bg-white">
-                  <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-white">
-                    <ShieldCheck size={32} className="text-secondary" />
-                  </div>
-                  <h3 className="font-semibold text-primary mt-6 mb-2 group-hover:text-secondary transition-colors duration-300">{service.title}</h3>
-                  <p className="text-xs text-slate-600 mb-8 flex-grow leading-relaxed">{service.desc}</p>
-
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {/* ================= 2. WHAT WE HANDLE (CMS + SWIPER SLIDER) ================= */}
+      <ComplianceServicesSlider />
 
       {/* ================= 3. OUR SOLUTIONS ================= */}
       <section className="py-16 md:py-20 lg:py-24 bg-slate-50 relative overflow-hidden border-b border-slate-200/80">

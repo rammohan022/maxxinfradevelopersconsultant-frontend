@@ -3,21 +3,31 @@
 import { Container } from "@/components/ui"
 import { motion } from "framer-motion"
 
-const principles = [
+const spiceValues = [
   {
-    number: "01.",
-    title: "Integrity First",
-    desc: "We uphold the highest ethical frameworks and statutory standards across all our advisory services, talent placements, and business partnerships. By maintaining complete transparency and confidentiality, we ensure our clients and candidates experience dependable, legally compliant, and trust-driven HR solutions."
+    letter: "S",
+    title: "Strategic Partnership",
+    desc: "Working as a trusted extension of our clients' business and HR teams"
   },
   {
-    number: "02.",
-    title: "Excellence & Quality",
-    desc: "We are committed to delivering top-tier HR services through meticulous candidate screening, verified background intelligence, and measurable corporate training programs. Our relentless dedication to excellence guarantees superior organizational performance aligned with fast-evolving industry demands."
+    letter: "P",
+    title: "Pragmatic Innovation",
+    desc: "Using practical ideas, technology and new approaches to solve real business problems"
   },
   {
-    number: "03.",
-    title: "Partnership Spirit",
-    desc: "We operate as an authentic, seamless extension of your internal leadership and HR teams. By aligning our recruitment strategies, modern digital tools, and statutory advisory with your overarching strategic vision, we forge long-term partnerships that foster enduring workforce growth."
+    letter: "I",
+    title: "Integrity",
+    desc: "Transparency, confidentiality, ethics and doing the right thing"
+  },
+  {
+    letter: "C",
+    title: "Continuous Learning",
+    desc: "Staying ahead of evolving talent practices, technology, regulations and business needs"
+  },
+  {
+    letter: "E",
+    title: "Excellence",
+    desc: "Commitment to quality, accuracy, speed and measurable outcomes"
   }
 ]
 
@@ -36,44 +46,48 @@ export default function CoreValues() {
           transition={{ duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-10 sm:mb-14"
         >
-          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/20 bg-white/10 text-white text-xs font-bold tracking-widest mb-3">
-            Our Core Values
+          <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-white/20 bg-white/10 text-white text-xs font-bold tracking-widest mb-3 backdrop-blur-sm">
+            S.P.I.C.E. — Our Core Values
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-white tracking-tight">
             The Principles That <span className="text-secondary">Guide Our Decisions</span>
           </h2>
-          <p className="text-xs md:text-sm text-slate-200 mt-1.5 max-w-2xl mx-auto leading-relaxed">
-            We are committed to maintaining high standard deliverables, ensuring compliance, and delivering growth.
+          <p className="text-xs md:text-sm text-slate-200 mt-2.5 max-w-3xl mx-auto leading-relaxed">
+            Our <span className="text-secondary font-bold tracking-wider">SPICE</span> is our commitment to building <strong className="text-white font-semibold">Strategic Partnerships</strong>, driving <strong className="text-white font-semibold">Pragmatic Innovation</strong>, operating with <strong className="text-white font-semibold">Integrity</strong>, embracing <strong className="text-white font-semibold">Continuous Learning</strong>, and delivering <strong className="text-white font-semibold">Excellence</strong>.
           </p>
         </motion.div>
 
-        {/* 3 Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {principles.map((item, idx) => (
-            <motion.div
-              key={item.number}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className="flex flex-col"
-            >
-              {/* Number */}
-              <span className="text-2xl sm:text-3xl font-medium text-secondary tracking-tight block mb-2 select-none">
-                {item.number}
-              </span>
+        {/* 5 S.P.I.C.E. Cards Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5 max-w-7xl mx-auto">
+          {spiceValues.map((item, idx) => {
+            return (
+              <motion.div
+                key={item.letter}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="group relative flex flex-col justify-between bg-white/5 hover:bg-white/[0.09] border border-white/10 hover:border-secondary/50 rounded-2xl p-5 sm:p-6 transition-all duration-300 backdrop-blur-sm hover:-translate-y-1.5 shadow-lg hover:shadow-2xl"
+              >
+                <div>
+                  {/* Letter Monogram */}
+                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-secondary font-black text-2xl shadow-inner group-hover:bg-secondary group-hover:text-white transition-colors duration-300 mb-4">
+                    {item.letter}
+                  </div>
 
-              {/* Title */}
-              <h3 className="text-base sm:text-lg font-bold text-white mb-3 leading-snug">
-                {item.title}
-              </h3>
+                  {/* Core Value Title */}
+                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-secondary transition-colors">
+                    {item.title}
+                  </h3>
 
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-normal">
-                {item.desc}
-              </p>
-            </motion.div>
-          ))}
+                  {/* What it represents */}
+                  <p className="text-xs text-slate-200 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </Container>
     </section>

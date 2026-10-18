@@ -28,11 +28,8 @@ import {
 
 const ITEMS_PER_PAGE = 12;
 
-// Convert ALL CAPS or mixed text to Title Case
-const toTitleCase = (str: string) =>
-  str
-    .toLowerCase()
-    .replace(/\b\w/g, (char) => char.toUpperCase());
+// Preserve exact text format as entered in admin
+const toTitleCase = (str: string) => str || '';
 
 export default function CategoryServicesClient() {
   const params = useParams();
@@ -388,10 +385,10 @@ export default function CategoryServicesClient() {
                     <div className="space-y-2">
                       <Link href={`/services/${service.slug}`} className="block">
                         <h3 
-                          className="text-xs sm:text-sm font-bold text-primary mb-1 hover:text-secondary transition-colors line-clamp-2 leading-snug capitalize"
+                          className="text-xs sm:text-sm font-bold text-primary mb-1 hover:text-secondary transition-colors line-clamp-2 leading-snug"
                           title={service.title}
                         >
-                          {service.title.toLowerCase()}
+                          {service.title}
                         </h3>
                       </Link>
 

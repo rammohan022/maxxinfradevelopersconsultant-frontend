@@ -16,19 +16,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { slugifyCategory } from '@/lib/utils/slugUtils'
 
 /* ================= TITLE CASE HELPER ================= */
+// Preserve exact format (uppercase, lowercase, capitalize) as entered in admin
 function formatTitleCase(str: string): string {
   if (!str) return ''
   return str
-    .toLowerCase()
-    .split(' ')
-    .map((word) => {
-      const cleanWord = word.replace(/[^a-zA-Z]/g, '').toUpperCase()
-      if (['HR', 'SEO', 'RPO', 'CV', 'IT', 'AI'].includes(cleanWord)) {
-        return word.toUpperCase()
-      }
-      return word.charAt(0).toUpperCase() + word.slice(1)
-    })
-    .join(' ')
 }
 
 /* ================= DEFAULT NAV ITEMS ================= */

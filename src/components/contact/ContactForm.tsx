@@ -11,8 +11,7 @@ const ContactSection = () => {
     const [createLead, { isLoading: isSubmitting }] = useCreateLeadMutation();
     const { data: services } = useGetServicesQuery();
 
-    const toTitleCase = (str: string) =>
-        str.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
+    const toTitleCase = (str: string) => str || '';
 
     const [formData, setFormData] = useState({
         fullName: "",

@@ -37,8 +37,8 @@ const HeroSection = ({ title, slug, innerImage }: HeroSectionProps) => {
             Our Services
           </Link>
           <span className="text-gray-400">&gt;</span>
-          <span className="text-white capitalize">
-            {slug.replace(/[-\u2013\u2014]/g, " ")}
+          <span className="text-white">
+            {title || slug.replace(/[-\u2013\u2014]/g, " ")}
           </span>
         </div>
 

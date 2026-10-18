@@ -49,7 +49,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="relative bg-slate-50/70 py-14 md:py-16 overflow-hidden border-b border-slate-100/80" id="contact">
+    <section className="relative bg-slate-50/70 py-16 md:py-20 scroll-mt-20 overflow-hidden border-b border-slate-100/80" id="contact">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform origin-top-right hidden lg:block pointer-events-none" />
 

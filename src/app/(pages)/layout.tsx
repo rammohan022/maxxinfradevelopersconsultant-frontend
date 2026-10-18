@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { TopBar, Header, Footer } from "@/components/layout";
 import DynamicSeo from "@/components/seo/DynamicSeo";
+import { FloatingButtons } from "@/components/home";
 
 export const metadata: Metadata = {
   title: "People Consulting",
@@ -23,6 +24,7 @@ export default function PageLayout({
           {children}
         </main>
         <Footer />
+        <FloatingButtons />
       </>
   );
 }

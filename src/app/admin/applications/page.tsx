@@ -194,7 +194,25 @@ const ApplicationsListPage = () => {
                         <td colSpan={6} className="p-4">
                           <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm max-w-4xl mx-auto space-y-4">
                             <h4 className="font-bold text-slate-800 text-base border-b pb-2">Application Details</h4>
-                            <div className="grid md:grid-cols-2 gap-4">
+                            <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-4">
+                              {app.currentCtc && (
+                                <div>
+                                  <span className="text-xs text-slate-500 uppercase tracking-wider block font-semibold">Current Annual CTC</span>
+                                  <span className="text-slate-800 text-sm font-semibold">{app.currentCtc}</span>
+                                </div>
+                              )}
+                              {app.currentLocation && (
+                                <div>
+                                  <span className="text-xs text-slate-500 uppercase tracking-wider block font-semibold">Current Location</span>
+                                  <span className="text-slate-700 text-sm">{app.currentLocation}</span>
+                                </div>
+                              )}
+                              {app.preferredLocation && (
+                                <div>
+                                  <span className="text-xs text-slate-500 uppercase tracking-wider block font-semibold">Preferred Location</span>
+                                  <span className="text-slate-700 text-sm">{app.preferredLocation}</span>
+                                </div>
+                              )}
                               {app.experience && (
                                 <div>
                                   <span className="text-xs text-slate-500 uppercase tracking-wider block font-semibold">Total Experience</span>

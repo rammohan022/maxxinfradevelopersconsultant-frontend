@@ -108,6 +108,18 @@ export default function JobDetailsClient() {
       (form.elements.namedItem("apply-phone") as HTMLInputElement).value
     );
     formData.append(
+      "currentCtc",
+      (form.elements.namedItem("apply-ctc") as HTMLInputElement).value
+    );
+    const currLoc = (form.elements.namedItem("apply-current-location") as HTMLInputElement)?.value;
+    if (currLoc) {
+      formData.append("currentLocation", currLoc);
+    }
+    const prefLoc = (form.elements.namedItem("apply-preferred-location") as HTMLInputElement)?.value;
+    if (prefLoc) {
+      formData.append("preferredLocation", prefLoc);
+    }
+    formData.append(
       "message",
       (form.elements.namedItem("apply-message") as HTMLTextAreaElement).value
     );
@@ -519,7 +531,7 @@ export default function JobDetailsClient() {
       {/* ================= APPLY MODAL ================= */}
       {applyModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in duration-200 max-h-[92vh] flex flex-col">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden animate-in fade-in zoom-in duration-200 max-h-[92vh] flex flex-col">
             {/* Header */}
             <div className="flex justify-between items-center p-5 border-b border-slate-100 bg-slate-50/80 shrink-0">
               <div>
@@ -584,26 +596,24 @@ export default function JobDetailsClient() {
                   </div>
 
                   <form onSubmit={handleApplySubmit} className="space-y-4">
-                    {/* Full Name */}
-                    <div>
-                      <label
-                        htmlFor="apply-name"
-                        className="block text-xs font-bold text-slate-700 mb-1.5"
-                      >
-                        Full Name <span className="text-rose-500">*</span>
-                      </label>
-                      <input
-                        id="apply-name"
-                        name="apply-name"
-                        type="text"
-                        required
-                        placeholder="Enter your full name"
-                        className="w-full border border-slate-200 px-3.5 py-2.5 text-sm rounded-xl focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary transition-colors"
-                      />
-                    </div>
-
-                    {/* Email and Phone */}
+                    {/* Full Name & Email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          htmlFor="apply-name"
+                          className="block text-xs font-bold text-slate-700 mb-1.5"
+                        >
+                          Full Name <span className="text-rose-500">*</span>
+                        </label>
+                        <input
+                          id="apply-name"
+                          name="apply-name"
+                          type="text"
+                          required
+                          placeholder="Enter your full name"
+                          className="w-full border border-slate-200 px-3.5 py-2.5 text-sm rounded-xl focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary transition-colors"
+                        />
+                      </div>
                       <div>
                         <label
                           htmlFor="apply-email"
@@ -620,6 +630,10 @@ export default function JobDetailsClient() {
                           className="w-full border border-slate-200 px-3.5 py-2.5 text-sm rounded-xl focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary transition-colors"
                         />
                       </div>
+                    </div>
+
+                    {/* Mobile Number & Current Annual CTC */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label
                           htmlFor="apply-phone"
@@ -633,6 +647,56 @@ export default function JobDetailsClient() {
                           type="tel"
                           required
                           placeholder="+91"
+                          className="w-full border border-slate-200 px-3.5 py-2.5 text-sm rounded-xl focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="apply-ctc"
+                          className="block text-xs font-bold text-slate-700 mb-1.5"
+                        >
+                          Current Annual CTC <span className="text-rose-500">*</span>
+                        </label>
+                        <input
+                          id="apply-ctc"
+                          name="apply-ctc"
+                          type="text"
+                          required
+                          placeholder="e.g. 10 LPA or ₹10,00,000"
+                          className="w-full border border-slate-200 px-3.5 py-2.5 text-sm rounded-xl focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary transition-colors"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Current & Preferred Location */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          htmlFor="apply-current-location"
+                          className="block text-xs font-bold text-slate-700 mb-1.5"
+                        >
+                          Current Location <span className="text-slate-400 font-normal">(Optional)</span>
+                        </label>
+                        <input
+                          id="apply-current-location"
+                          name="apply-current-location"
+                          type="text"
+                          placeholder="e.g. Delhi NCR, Mumbai"
+                          className="w-full border border-slate-200 px-3.5 py-2.5 text-sm rounded-xl focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary transition-colors"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="apply-preferred-location"
+                          className="block text-xs font-bold text-slate-700 mb-1.5"
+                        >
+                          Preferred Location <span className="text-slate-400 font-normal">(Optional)</span>
+                        </label>
+                        <input
+                          id="apply-preferred-location"
+                          name="apply-preferred-location"
+                          type="text"
+                          placeholder="e.g. Noida, Bangalore, Remote"
                           className="w-full border border-slate-200 px-3.5 py-2.5 text-sm rounded-xl focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary transition-colors"
                         />
                       </div>

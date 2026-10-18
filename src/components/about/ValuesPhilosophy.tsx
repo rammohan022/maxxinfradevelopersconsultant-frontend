@@ -57,7 +57,7 @@ const ValuesPhilosophy = () => {
           >
             <Image
               src="/img/values-philosophy.png"
-              alt="Diverse HR consulting team collaboration in modern office"
+              alt="Diverse HR professionals collaborating on recruitment and labour law compliance"
               fill
               className="object-cover group-hover:scale-105 transition duration-700"
             />

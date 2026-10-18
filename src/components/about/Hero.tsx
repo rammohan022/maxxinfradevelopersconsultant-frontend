@@ -10,7 +10,7 @@ const HeroAbout = () => {
       <div className="absolute inset-0 z-0">
         <Image
           src="/img/about-hero-bg-v3.png"
-          alt="Professional modern corporate office lobby with collaborating consultants and 'PEOPLE CONSULTING' branding on the wall"
+          alt="People Consulting team providing HR compliance and recruitment consulting services"
           fill
           priority
           className="object-cover"
@@ -35,13 +35,12 @@ const HeroAbout = () => {
 
         {/* Heading */}
         <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-6">
-          A Trusted HR Consulting Partner with Decades of Excellence
+          A Trusted Partner for HR Compliance, Recruitment &amp; Talent Management
         </h1>
 
         {/* Subtitle */}
         <p className="text-xs md:text-sm text-gray-300 mt-1 max-w-3xl mx-auto leading-relaxed">
-          Delivering comprehensive talent and workforce solutions across India with unmatched
-          expertise, integrity, and commitment
+          From HR compliance services and labour law compliance services to recruitment consulting and talent management, People Consulting helps businesses across India build compliant, high-performing teams.
         </p>
       </div>
     </section>

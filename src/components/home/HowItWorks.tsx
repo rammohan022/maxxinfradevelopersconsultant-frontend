@@ -63,14 +63,14 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section
-      className="py-16 md:py-20 bg-gradient-to-b from-[#fff7f0] via-[#fffbf7] to-[#fff3e8] relative overflow-hidden border-b border-orange-100/80"
+      className="py-16 md:py-20 bg-white relative overflow-hidden border-b border-slate-100/80"
       id="how-it-works"
     >
       {/* Background soft decorative dotted grid */}
       <div
-        className="absolute inset-0 z-0 opacity-[0.12] pointer-events-none"
+        className="absolute inset-0 z-0 opacity-[0.15] pointer-events-none"
         style={{
-          backgroundImage: 'radial-gradient(#f58235 1.5px, transparent 1.5px)',
+          backgroundImage: 'radial-gradient(#94a3b8 1.5px, transparent 1.5px)',
           backgroundSize: '24px 24px',
         }}
       />
@@ -92,7 +92,7 @@ export default function HowItWorks() {
         {/* 5 Steps Desktop Staggered / Mobile Grid Flow */}
         <div className="relative mb-12 md:mb-16">
           {/* Horizontal Track Line for large screens */}
-          <div className="hidden lg:block absolute top-1/2 left-12 right-12 h-0.5 border-t-2 border-dashed border-orange-200/90 -translate-y-1/2 z-0" />
+          <div className="hidden lg:block absolute top-1/2 left-12 right-12 h-0.5 border-t-2 border-dashed border-slate-200/90 -translate-y-1/2 z-0" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4 relative z-10">
             {steps.map((item, idx) => {
@@ -121,7 +121,7 @@ export default function HowItWorks() {
                   )}
 
                   {/* Step Card */}
-                  <div className="w-full bg-white rounded-2xl p-5 sm:p-6 border border-orange-100/90 shadow-[0_4px_20px_rgba(245,130,53,0.06)] hover:shadow-[0_12px_28px_rgba(245,130,53,0.12)] hover:border-secondary/40 transition-all duration-300 flex flex-col items-center text-center group relative hover:-translate-y-1">
+                  <div className="w-full bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-md hover:shadow-xl hover:border-secondary/40 transition-all duration-300 flex flex-col items-center text-center group relative hover:-translate-y-1">
                     {/* Mobile/Tablet Step Number Pill */}
                     <div className="lg:hidden absolute top-3 right-3 w-6 h-6 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center">
                       {item.step}

@@ -12,7 +12,6 @@ import {
   Blog,
   FAQs,
   Contact,
-  FloatingButtons,
   DemoModal,
 } from '@/components/home'
 import { CallToAction } from '@/components/ui'
@@ -26,7 +25,14 @@ export default function Home() {
       <IndustriesServe />
       <FeaturesHRMS />
       <HowItWorks />
-      <CallToAction />
+      <CallToAction
+        badge="Connect with us"
+        title="Let’s Build Better Workplaces Together"
+        description="Whether you need reliable HR Consulting services, expert labour law compliance services, strategic recruitment consulting partner, or effective corporate training services, we bring together HR expertise, practical solutions and technology to help your organisation streamline HR operations, strengthen compliance and achieve sustainable business growth."
+        buttons={[
+          { label: "Connect With Us", href: "/contact-us", primary: true },
+        ]}
+      />
       <CoreValues />
       <CorporateTraining />
       <Testimonials />
@@ -34,7 +40,6 @@ export default function Home() {
       <FeatureCards />
       <FAQs />
       <Contact />
-      <FloatingButtons />
       <DemoModal />
     </>
   )

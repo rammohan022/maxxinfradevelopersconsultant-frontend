@@ -42,7 +42,7 @@ const digilianceFeatures = [
 
 export default function IndustriesServe() {
   return (
-    <section className="py-16 md:py-20 bg-white relative overflow-hidden border-b border-slate-100/80" id="industries">
+    <section className="py-12 md:py-16 bg-white relative overflow-hidden border-b border-slate-100/80" id="industries">
       {/* Dotted background pattern */}
       <div
         className="absolute inset-0 z-0 opacity-[0.15]"
@@ -54,38 +54,37 @@ export default function IndustriesServe() {
 
       <Container className="relative z-10">
         {/* Top: Centered Heading, Subtitle & Button */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-3.5">
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-7 space-y-2.5">
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-            <span className="text-secondary">Simplifying</span> Labour Law Compliance <br className="hidden sm:inline" />
-            <span>for your Business</span>
+            <span className="text-secondary">Simplifying</span> HR Compliance &amp; Labour Law Compliance services
           </h2>
           <p className="text-xs md:text-sm text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto">
-            <span className="text-primary font-semibold">All in one Platform:</span> Software, Compliance Management services, Registrations, Legal Advisory &amp; More &ndash; PAN India
+            Integrated HR compliance services and labour law compliance services to support any scale of business across India.
           </p>
-          <div className="pt-1.5 flex items-center justify-center">
+          <div className="pt-1 flex items-center justify-center">
             <Link
               href="/compliance"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-secondary text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-secondary-dark shadow-md hover:shadow-secondary/25 transition-all duration-300 transform hover:-translate-y-0.5 group"
+              className="inline-flex items-center gap-2 px-5 py-2 bg-secondary text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-secondary-dark shadow-md hover:shadow-secondary/25 transition-all duration-300 transform hover:-translate-y-0.5 group"
             >
-              Explore Compliance
+              Explore Our Services
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </div>
 
-        {/* Large Centered Laptop Mockup with Compliance Dashboard */}
-        <div className="relative w-full max-w-4xl lg:max-w-5xl mx-auto aspect-[16/10] my-8 sm:my-10 group">
+        {/* Centered Laptop Mockup with Compliance Dashboard - Sized to fit comfortably in viewport with heading */}
+        <div className="relative w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-[700px] mx-auto aspect-[16/10] my-5 sm:my-6 group">
           {/* Laptop mock border */}
-          <div className="w-full h-full bg-slate-900 rounded-t-2xl sm:rounded-t-3xl rounded-b-md flex flex-col overflow-hidden border-8 sm:border-[10px] border-b-[18px] sm:border-b-[24px] border-slate-800 shadow-2xl relative">
+          <div className="w-full h-full bg-slate-900 rounded-t-xl sm:rounded-t-2xl rounded-b-md flex flex-col overflow-hidden border-[6px] sm:border-8 border-b-[14px] sm:border-b-[18px] border-slate-800 shadow-xl relative">
             {/* Webcam dot */}
-            <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-slate-600 rounded-full z-20"></div>
+            <div className="absolute top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-slate-600 rounded-full z-20"></div>
 
             {/* Browser top chrome */}
-            <div className="bg-slate-800 h-6 sm:h-7 w-full flex items-center px-3 sm:px-4 gap-1.5 border-b border-slate-700/80 z-10 shrink-0">
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-red-400"></div>
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-amber-400"></div>
-              <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-green-400"></div>
-              <div className="mx-auto text-[9px] sm:text-xs text-slate-400 font-mono tracking-tight">app.digiliance.com/dashboard</div>
+            <div className="bg-slate-800 h-5 sm:h-6 w-full flex items-center px-3 sm:px-4 gap-1.5 border-b border-slate-700/80 z-10 shrink-0">
+              <div className="w-2 h-2 rounded-full bg-red-400"></div>
+              <div className="w-2 h-2 rounded-full bg-amber-400"></div>
+              <div className="w-2 h-2 rounded-full bg-green-400"></div>
+              <div className="mx-auto text-[9px] sm:text-[11px] text-slate-400 font-mono tracking-tight">app.digiliance.com/dashboard</div>
             </div>
 
             {/* Dashboard Screen Image */}
@@ -101,8 +100,8 @@ export default function IndustriesServe() {
           </div>
 
           {/* Laptop base */}
-          <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 -translate-x-1/2 w-[108%] h-3 sm:h-4 bg-slate-300 rounded-b-xl sm:rounded-b-2xl shadow-lg border-t border-slate-400">
-            <div className="mx-auto w-28 sm:w-36 h-1 sm:h-1.5 bg-slate-400 rounded-b-md"></div>
+          <div className="absolute -bottom-2.5 sm:-bottom-3 left-1/2 -translate-x-1/2 w-[106%] h-2.5 sm:h-3 bg-slate-300 rounded-b-lg sm:rounded-b-xl shadow-md border-t border-slate-400">
+            <div className="mx-auto w-24 sm:w-28 h-1 bg-slate-400 rounded-b-md"></div>
           </div>
         </div>
 

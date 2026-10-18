@@ -22,28 +22,27 @@ const FirmOverview = () => {
             </div>
 
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6 leading-snug">
-              We believe people drive organisations.{' '}
+              We Believe People Drive Organisations.{' '}
               <span className="text-secondary">
-                We help businesses turn their people advantage into business advantage.
+                We Help You Turn Your People Advantage into Business Advantage.
               </span>
             </h2>
 
             <div className="space-y-4 text-slate-600 text-xs md:text-sm leading-relaxed mb-8">
               <p>
-                With over a decade of industry expertise, <strong>People Consulting</strong> partners with leading enterprises and high-growth businesses across India to address their core workforce challenges. We integrate <strong>strategic talent, modern technology, and disciplined execution</strong> to build agile, resilient, and forward-looking organizations.
+                With over a decade of experience, People Consulting is an HR consulting firm that partners with enterprises and fast-growing businesses across India. We offer HR compliance services, labour law compliance services, recruitment consulting services, and talent management services under one roof, so you don’t have to manage multiple vendors for your workforce needs.
               </p>
 
               <p>
-                Our comprehensive solutions encompass <strong>Workforce Solutions, Strategic HR Advisory, Talent Development, Regulatory Labour Compliance, and HR Technology</strong>. Rather than treating these as isolated functions, we align them into a unified ecosystem that empowers companies to <strong>attract top talent, cultivate high performance, mitigate organizational risk, and maximize operational efficiency</strong>.
+                Our labour law compliance services keep your business aligned with central and state regulations, reducing the risk of penalties, audits, and disputes. Our HR compliance services cover policies, statutory documentation, and day-to-day HR processes, so your teams can focus on growth.
               </p>
 
               <p>
-                Our core approach centers on <strong>deeply understanding your business dynamics, rethinking legacy practices, and designing practical solutions that deliver measurable impact</strong>. By combining hands-on consulting expertise with <strong>pragmatic innovation and continuous learning</strong>, we convert complex human resource challenges into scalable growth opportunities.
+                On the hiring side, our recruitment consulting services connect you with the right talent for leadership, mid-level, and volume roles. Our talent management services then help you develop, engage, and retain that talent over the long term.
               </p>
 
               <p>
-                We serve as a dedicated <strong>Strategic People Partner</strong>, collaborating closely with leadership teams to bring clarity to decisions, strengthen workforce capabilities, and modernize HR processes.{' '}
-                <strong>When talented people, intelligent workflows, and modern technology operate in harmony, businesses achieve sustainable excellence.</strong>
+                We work as a Strategic People Partner. We understand your business, simplify complex HR and compliance challenges, and build practical solutions that deliver measurable results.
               </p>
             </div>
 
@@ -86,7 +85,7 @@ const FirmOverview = () => {
             <div className="h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl relative group">
               <Image
                 src="/img/about-us-page.jpg"
-                alt="Professional human resource team in modern office"
+                alt="HR consulting team at People Consulting discussing talent management solutions"
                 fill
                 className="object-cover group-hover:scale-105 transition duration-700"
               />

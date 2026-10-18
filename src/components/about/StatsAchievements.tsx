@@ -195,10 +195,10 @@ const StatsAchievements = () => {
             Track Record
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-            Some Statistics
+            Our Track Record in <span className="text-secondary">HR, Compliance &amp; Talent Management</span>
           </h2>
           <p className="text-slate-600 mt-4 text-sm sm:text-base leading-relaxed">
-            Our measurable impact and extensive experience in delivering strategic HR, leadership development, and organizational growth solutions.
+            Our experience across HR advisory, talent management, and workforce solutions has helped organisations build stronger people practices and reduce risk.
           </p>
         </div>
 

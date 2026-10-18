@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Container, CallToAction } from '@/components/ui'
@@ -6,6 +7,36 @@ import { FAQs } from '@/components/home'
 import SeoHead from '@/components/seo/SeoHead'
 import ComplianceLinks from '@/components/compliance/ComplianceLinks'
 import ComplianceServicesSlider from '@/components/compliance/ComplianceServicesSlider'
+
+export const metadata: Metadata = {
+  title: 'Labour Law Compliance Services in India | People Consulting',
+  description:
+    'End-to-end labour law compliance services, statutory compliance services and establishment compliance for businesses in India. Book a free health check.',
+  openGraph: {
+    title: 'Labour Law & Statutory Compliance Services | People Consulting',
+    description:
+      'Labour law consultancy and statutory compliance management covering PF, ESIC, LWF, PT, TDS and establishment compliance, all under one partner.',
+    url: 'https://peopleconsultings.com/compliance',
+    siteName: 'People Consulting',
+    images: [
+      {
+        url: 'https://peopleconsultings.com/img/about-hero-bg-v3.png',
+        alt: 'Labour law compliance services and statutory compliance management by People Consulting',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Labour Law & Statutory Compliance Services | People Consulting',
+    description:
+      'Labour law consultancy and statutory compliance management covering PF, ESIC, LWF, PT, TDS and establishment compliance, all under one partner.',
+    images: ['https://peopleconsultings.com/img/about-hero-bg-v3.png'],
+  },
+  alternates: {
+    canonical: 'https://peopleconsultings.com/compliance',
+  },
+}
 
 const complianceSolutions = [
   {
@@ -44,9 +75,14 @@ export default function CompliancePage() {
   return (
     <>
       <SeoHead
-        title="Compliance Management | People Consulting"
-        description="End-to-End Labour Law & Statutory Compliance Management."
+        title="Labour Law Compliance Services in India | People Consulting"
+        description="End-to-end labour law compliance services, statutory compliance services and establishment compliance for businesses in India. Book a free health check."
+        ogTitle="Labour Law & Statutory Compliance Services | People Consulting"
+        ogDescription="Labour law consultancy and statutory compliance management covering PF, ESIC, LWF, PT, TDS and establishment compliance, all under one partner."
+        twitterTitle="Labour Law & Statutory Compliance Services | People Consulting"
+        twitterDescription="Labour law consultancy and statutory compliance management covering PF, ESIC, LWF, PT, TDS and establishment compliance, all under one partner."
         canonicalPath="/compliance"
+        image="/img/about-hero-bg-v3.png"
       />
 
       {/* ================= 1. HERO ================= */}
@@ -55,7 +91,7 @@ export default function CompliancePage() {
         <div className="absolute inset-0">
           <Image
             src="/img/about-hero-bg-v3.png"
-            alt="Corporate Compliance Background"
+            alt="Labour law compliance services and statutory compliance management by People Consulting"
             fill
             className="object-cover"
             priority
@@ -78,13 +114,11 @@ export default function CompliancePage() {
           </div>
 
           <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-4">
-            End-to-End Labour Law & Statutory Compliance Management
+            End-to-End Labour Law & Statutory Compliance Services
           </h1>
 
           <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl mx-auto leading-relaxed">
-            From establishment registrations to monthly statutory filings, we manage the full compliance
-            lifecycle for your business — so your team can focus on growth, not paperwork. One
-            partner, every regulation covered.
+            From establishment registrations to monthly statutory filings, People Consulting manages the full labour law compliance lifecycle for your business, so your team can focus on growth, not paperwork. One partner, every regulation covered.
           </p>
 
           {/* 2 CTA Buttons */}
@@ -123,10 +157,10 @@ export default function CompliancePage() {
               </span>
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-              Complete Compliance Management Under One Partner
+              Complete Statutory Compliance Services Under One Partner
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              We act as your extended compliance team, managing all statutory filings, documentation, and government interactions.
+              We act as your extended compliance team, managing all statutory filings, documentation, and government interactions as part of our labour law consultancy and compliance management services.
             </p>
           </div>
 
@@ -227,7 +261,7 @@ export default function CompliancePage() {
                 <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-white">
                   <Image
                     src="/img/dashbaord.jpeg"
-                    alt="Digiliance Statutory Compliance Management Dashboard"
+                    alt="Digiliance dashboard for tracking statutory compliance filings and deadlines"
                     fill
                     className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
                     priority
@@ -268,7 +302,15 @@ export default function CompliancePage() {
       <FAQs className="bg-slate-50" />
 
       {/* ================= 6. CTA ================= */}
-      <CallToAction />
+      <CallToAction
+        title="Let's Keep Your Business Fully Compliant"
+        description="Whether you need labour law compliance services, statutory compliance management, or expert labour law consultancy, People Consulting is ready to help. Book a free compliance health check today."
+        buttons={[
+          { label: "Get In Touch", href: "/contact-us", primary: true },
+          { label: "HR Solutions", href: "/services" },
+          { label: "Looking for Job", href: "/career" },
+        ]}
+      />
     </>
   )
 }

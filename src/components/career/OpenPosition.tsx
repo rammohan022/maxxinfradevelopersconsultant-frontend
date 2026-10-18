@@ -143,6 +143,18 @@ const OpenPosition = () => {
       (form.elements.namedItem("apply-phone") as HTMLInputElement).value
     );
     formData.append(
+      "currentCtc",
+      (form.elements.namedItem("apply-ctc") as HTMLInputElement).value
+    );
+    const currLoc = (form.elements.namedItem("apply-current-location") as HTMLInputElement)?.value;
+    if (currLoc) {
+      formData.append("currentLocation", currLoc);
+    }
+    const prefLoc = (form.elements.namedItem("apply-preferred-location") as HTMLInputElement)?.value;
+    if (prefLoc) {
+      formData.append("preferredLocation", prefLoc);
+    }
+    formData.append(
       "message",
       (form.elements.namedItem("apply-message") as HTMLTextAreaElement).value
     );
@@ -763,7 +775,7 @@ const OpenPosition = () => {
                       </div>
                     </div>
 
-                    {/* Row 2: Phone and Resume */}
+                    {/* Row 2: Phone and Current Annual CTC */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
                         <label
@@ -783,23 +795,75 @@ const OpenPosition = () => {
                       </div>
                       <div>
                         <label
-                          htmlFor="apply-resume"
+                          htmlFor="apply-ctc"
                           className="mb-1.5 block text-sm font-medium text-gray-700"
                         >
-                          Resume / CV *
+                          Current Annual CTC *
                         </label>
                         <input
-                          id="apply-resume"
-                          name="apply-resume"
-                          type="file"
+                          id="apply-ctc"
+                          name="apply-ctc"
+                          type="text"
                           required
-                          accept=".pdf,.doc,.docx"
-                          className="w-full border border-gray-300 px-4 py-1 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:bg-secondary/10 file:text-secondary file:font-medium file:cursor-pointer"
+                          placeholder="e.g. 10 LPA or ₹10,00,000"
+                          className="w-full border border-gray-300 px-4 py-2 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
                         />
-                        <p className="mt-1 text-[10px] text-gray-500">
-                          PDF or DOC, max 5MB
-                        </p>
                       </div>
+                    </div>
+
+                    {/* Row 3: Current Location and Preferred Location */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label
+                          htmlFor="apply-current-location"
+                          className="mb-1.5 block text-sm font-medium text-gray-700"
+                        >
+                          Current Location <span className="text-gray-400 font-normal">(Optional)</span>
+                        </label>
+                        <input
+                          id="apply-current-location"
+                          name="apply-current-location"
+                          type="text"
+                          placeholder="e.g. Delhi NCR, Mumbai"
+                          className="w-full border border-gray-300 px-4 py-2 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
+                        />
+                      </div>
+                      <div>
+                        <label
+                          htmlFor="apply-preferred-location"
+                          className="mb-1.5 block text-sm font-medium text-gray-700"
+                        >
+                          Preferred Location <span className="text-gray-400 font-normal">(Optional)</span>
+                        </label>
+                        <input
+                          id="apply-preferred-location"
+                          name="apply-preferred-location"
+                          type="text"
+                          placeholder="e.g. Noida, Bangalore, Remote"
+                          className="w-full border border-gray-300 px-4 py-2 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Row 4: Resume */}
+                    <div>
+                      <label
+                        htmlFor="apply-resume"
+                        className="mb-1.5 block text-sm font-medium text-gray-700"
+                      >
+                        Resume / CV *
+                      </label>
+                      <input
+                        id="apply-resume"
+                        name="apply-resume"
+                        type="file"
+                        required
+                        accept=".pdf,.doc,.docx"
+                        className="w-full border border-gray-300 px-4 py-1 text-sm rounded transition focus:border-secondary focus:outline-none focus:ring-1 focus:ring-secondary file:mr-4 file:py-1 file:px-3 file:rounded file:border-0 file:bg-secondary/10 file:text-secondary file:font-medium file:cursor-pointer"
+                      />
+                      <p className="mt-1 text-[10px] text-gray-500">
+                        PDF or DOC, max 5MB
+                      </p>
                     </div>
 
                     {/* Row 3: Cover Letter */}

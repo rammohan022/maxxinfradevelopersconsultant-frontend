@@ -11,6 +11,9 @@ export interface JobApplication {
     jobId?: string;
     experience?: string;
     industry?: string;
+    currentCtc?: string;
+    currentLocation?: string;
+    preferredLocation?: string;
     status?: string;
     createdAt: string;
     updatedAt: string;
@@ -25,6 +28,9 @@ export interface CreateJobApplicationDto {
     jobId?: string;
     experience?: string;
     industry?: string;
+    currentCtc?: string;
+    currentLocation?: string;
+    preferredLocation?: string;
 }
 
 export const jobApplicationApi = baseApi.injectEndpoints({

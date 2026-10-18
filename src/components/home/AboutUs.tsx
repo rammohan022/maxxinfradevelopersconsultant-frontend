@@ -43,28 +43,24 @@ export default function AboutUs() {
             </span>
 
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4 leading-snug">
-              We believe people drive organisations. We help businesses turn their{' '}
-              <span className="text-secondary">
-                people advantage into business advantage.
-              </span>
+              Your Strategic People Partner for <span className="text-secondary">Business Growth</span>
             </h2>
 
             <div className="space-y-3.5 text-xs md:text-sm text-slate-600 leading-relaxed mb-8">
               <p>
-                For more than a decade, <strong>People Consulting</strong> has partnered with organisations across India to solve the people challenges that sit at the heart of business performance. We bring together <strong>people, expertise, technology and execution</strong> to help organisations build stronger and more future ready businesses.
+                People Consulting is a people-focused consulting firm supporting organisations with recruitment, HR advisory, workforce development through our training services and Labour law compliance. With over a decade of industry expertise, we work with businesses to address people-related challenges through structured processes, practical insights and tailored HR solutions.
               </p>
 
               <p>
-                Our capabilities span <strong>Workforce Solutions, HR Consulting &amp; Talent Advisory, Talent Development &amp; Capacity Building, Labour Compliance and HR Technology</strong>. But we don&apos;t look at these as separate services. We look at them as interconnected levers that shape how an organisation <strong>attracts talent, builds capability, manages risk, improves efficiency and performs</strong>.
+                Our HR advisory services help organisations strengthen HR processes and documentation, while our labour law compliance services support the management of applicable statutory obligations. Through our recruitment consulting services, we help businesses identify suitable talent, improve hiring processes and build capable teams.
               </p>
 
               <p>
-                Our philosophy is simple: <strong>understand the business first, challenge conventional thinking and create solutions that work in the real world.</strong> We combine seasoned HR expertise with <strong>Pragmatic Innovation, Continuous Learning and Strategic Partnership</strong> to turn complex people challenges into practical, scalable outcomes.
+                We also provide talent management services that focus on employee development, leadership capabilities and workforce effectiveness.
               </p>
 
               <p>
-                We work alongside our clients, not simply for them, as a <strong>Strategic People Partner</strong>, bringing clarity to decisions, capability to teams and technology to processes.{' '}
-                <strong>Because when people, processes and technology work in sync, businesses perform better.</strong>
+                Our goal is to help businesses manage their people more effectively, improve operational efficiency and build a workforce prepared for long-term success.
               </p>
             </div>
 

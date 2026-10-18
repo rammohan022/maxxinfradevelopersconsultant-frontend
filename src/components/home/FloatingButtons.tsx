@@ -1,13 +1,32 @@
 'use client'
 
 import { Phone } from "lucide-react"
+import { useGetAdminProfileQuery } from "@/services/auth"
+import { useGetSiteSettingsQuery } from "@/services/siteSettings"
 
 export default function FloatingButtons() {
+  const { data: adminProfile } = useGetAdminProfileQuery()
+  const { data: siteSettings } = useGetSiteSettingsQuery()
+
+  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 8800177307"
+  const phoneClean = phone.replace(/\s+/g, '')
+
+  // WhatsApp link: prioritize settings whatsapp link if provided, otherwise build wa.me link with digits
+  const whatsappCustom = siteSettings?.socialLinks?.whatsapp?.trim()
+  const rawDigits = phone.replace(/\D/g, '')
+  const whatsappDigits = rawDigits.length === 10 ? `91${rawDigits}` : (rawDigits || '918800177307')
+
+  const whatsappUrl = whatsappCustom
+    ? (whatsappCustom.startsWith('http') ? whatsappCustom : `https://wa.me/${whatsappCustom.replace(/\D/g, '')}`)
+    : `https://wa.me/${whatsappDigits}`
+
+  const callUrl = `tel:${phoneClean || '+918800177307'}`
+
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/919999999999"
+        href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contact us on WhatsApp"
@@ -27,7 +46,7 @@ export default function FloatingButtons() {
 
       {/* Call Button */}
       <a
-        href="tel:+919999999999"
+        href={callUrl}
         aria-label="Call Us"
         className="w-12 h-12 sm:w-14 sm:h-14 bg-secondary hover:bg-secondary-dark text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group relative"
       >

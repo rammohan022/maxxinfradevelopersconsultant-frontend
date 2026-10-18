@@ -9,16 +9,18 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/ui";
 import { useGetAdminProfileQuery } from "@/services/auth";
+import { useGetSiteSettingsQuery } from "@/services/siteSettings";
 
 export default function TopBar() {
   const { data: adminProfile } = useGetAdminProfileQuery();
+  const { data: siteSettings } = useGetSiteSettingsQuery();
 
-  const email = adminProfile?.email || "hello@peopleconsultings.com";
-  const phone = adminProfile?.phoneNumber || "+91 8800177307";
-  const facebook = adminProfile?.facebookUrl || "#";
-  const linkedin = adminProfile?.linkedinUrl || "https://www.linkedin.com/company/people-consulting-services/";
-  const instagram = adminProfile?.instagramUrl || "https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoGl2";
-  const twitter = adminProfile?.twitterUrl || "";
+  const email = siteSettings?.contactEmail || adminProfile?.email || "hello@peopleconsultings.com";
+  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 8800177307";
+  const facebook = siteSettings?.socialLinks?.facebook || adminProfile?.facebookUrl || "#";
+  const linkedin = siteSettings?.socialLinks?.linkedin || adminProfile?.linkedinUrl || "https://www.linkedin.com/company/people-consulting-services/";
+  const instagram = siteSettings?.socialLinks?.instagram || adminProfile?.instagramUrl || "https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoGl2";
+  const twitter = siteSettings?.socialLinks?.twitter || adminProfile?.twitterUrl || "";
 
   return (
     <div className="bg-secondary text-white py-2.5 text-sm hidden lg:block">

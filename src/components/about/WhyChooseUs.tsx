@@ -9,6 +9,7 @@ import {
   GraduationCap,
   UserCheck,
   Handshake,
+  ShieldCheck,
 } from "lucide-react";
 
 const containerVariants: Variants = {
@@ -32,49 +33,49 @@ const cardVariants: Variants = {
 
 const strengths = [
   {
-    title: "Client-Centric Approach",
+    title: "Compliance-First Approach",
     description:
-      "We take time to understand your business, people, and challenges to create practical solutions aligned with your organisation's goals.",
-    icon: Users,
+      "Our HR compliance services and labour law compliance services are built to keep you audit-ready, covering registrations, returns, statutory records, and regulatory updates.",
+    icon: ShieldCheck,
     iconBg: "bg-orange-50 text-secondary border border-orange-100",
     barColor: "bg-secondary",
   },
   {
-    title: "Practical, Business-Focused Solutions",
+    title: "Client-Centric Recruitment Consulting",
     description:
-      "Our approach goes beyond theory, delivering actionable HR and learning solutions that can be applied directly in the workplace.",
-    icon: Target,
+      "We take time to understand your culture, roles, and goals before we hire. Our recruitment consulting services focus on quality, speed, and long-term fit.",
+    icon: Users,
     iconBg: "bg-primary/10 text-primary border border-primary/20",
     barColor: "bg-primary",
   },
   {
     title: "End-to-End People Expertise",
     description:
-      "From talent acquisition and HR consulting to training, compliance, and team development, we support organisations across the people journey.",
+      "From recruitment and HR advisory to compliance and training, we support the entire employee lifecycle through one connected team.",
     icon: Network,
     iconBg: "bg-primary/10 text-primary border border-primary/20",
     barColor: "bg-secondary",
   },
   {
-    title: "Customised Learning & Development",
+    title: "Talent Management That Drives Performance",
     description:
-      "We design engaging programs around your specific needs—from leadership and behavioural skills to sales, functional, and managerial development.",
-    icon: GraduationCap,
+      "Our talent management services include leadership development, succession planning, performance management, and employee engagement.",
+    icon: Target,
     iconBg: "bg-primary/10 text-primary border border-primary/20",
     barColor: "bg-primary",
   },
   {
-    title: "Experienced & Responsive Team",
+    title: "Practical, Business-Focused Solutions",
     description:
-      "We work closely with our clients, bringing hands-on expertise, clear communication, and responsive support to every engagement.",
-    icon: UserCheck,
+      "We go beyond theory. Every solution is actionable and built around how your business actually works.",
+    icon: GraduationCap,
     iconBg: "bg-primary/10 text-primary border border-primary/20",
     barColor: "bg-secondary",
   },
   {
-    title: "Long-Term Partnership",
+    title: "Responsive Team, Long-Term Partnership",
     description:
-      "We believe in building lasting relationships—not just delivering one-time solutions. Our focus is on creating sustainable value for your people and business.",
+      "We believe in lasting relationships, not one-time engagements. You get clear communication and dependable support at every stage.",
     icon: Handshake,
     iconBg: "bg-orange-50 text-secondary border border-orange-100",
     barColor: "bg-secondary",
@@ -113,11 +114,10 @@ const WhyChooseUs = () => {
           </div>
 
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">
-            The People Consulting <span className="text-secondary">Difference</span>
+            Why Businesses Choose Us for <span className="text-secondary">HR Compliance and Recruitment Consulting</span>
           </h2>
           <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-2xl mx-auto leading-relaxed">
-            We bring together HR expertise, practical thinking, and people-first solutions to help
-            organisations build stronger teams and achieve better business outcomes.
+            We combine HR expertise, regulatory knowledge, and people-first thinking to help organisations hire better, stay compliant, and grow stronger teams.
           </p>
         </motion.div>
 

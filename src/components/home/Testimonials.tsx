@@ -142,11 +142,10 @@ export default function Testimonials() {
           </span>
 
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4">
-            Why People Choose <span className="text-secondary">People Consulting</span>
+            Trusted for HR, Recruitment &amp; <span className="text-secondary">Compliance Solutions</span>
           </h2>
           <p className="text-xs md:text-sm text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            From fast-growing startups to established companies, teams trust People Consulting to deliver
-            practical, reliable HR and people solutions that create lasting impact.
+            From fast-growing startups to established organisations, businesses choose People Consulting for reliable HR Consulting, labour law compliance, HR compliance, recruitment consulting services, and talent management services. We focus on understanding business needs and delivering practical, people-centric solutions that strengthen teams, simplify HR processes and support long-term growth.
           </p>
         </motion.div>
 

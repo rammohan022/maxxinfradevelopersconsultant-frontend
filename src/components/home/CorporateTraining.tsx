@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react"
+import Link from "next/link"
 import { Container } from "@/components/ui"
 import { motion } from "framer-motion"
 import { Calendar, FileText, CheckCircle2, Send } from "lucide-react"
@@ -61,15 +62,23 @@ export default function CorporateTraining() {
               Training Programs
             </span>
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-3">
-              Corporate training programs designed for <span className="text-secondary">business impact</span>
+              Corporate Training programs that drive <span className="text-secondary">business performance</span>
             </h2>
-            <div className="space-y-1 mb-8">
-              <p className="text-xs sm:text-sm font-semibold text-primary">
-                Transforming people capability into business performance
+            <div className="space-y-2 mb-8">
+              <p className="text-xs sm:text-sm font-bold text-secondary tracking-wide">
+                Building Skills. Strengthening Teams. Enabling Growth.
               </p>
               <p className="text-xs md:text-sm text-slate-600 max-w-3xl leading-relaxed">
-                We design and deliver practical, engaging learning experiences that build leadership capability, strengthen workplace behaviours, enhance functional skills, and enable teams to perform at their best.
+                We deliver practical, engaging corporate training programs that enhance employee skills, develop leadership capabilities and improve workplace performance. Our approach combines functional, soft skills development, Competency development with effective talent management strategies to help organisations build stronger teams, improve productivity and achieve business goals. From employee development to workplace effectiveness, we help businesses create a culture of continuous learning and growth.
               </p>
+              <div className="pt-2">
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 bg-secondary text-white text-xs sm:text-sm font-semibold rounded-xl hover:bg-secondary-dark shadow-md hover:shadow-secondary/25 transition-all duration-300 transform hover:-translate-y-0.5"
+                >
+                  Explore Training Programs
+                </Link>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

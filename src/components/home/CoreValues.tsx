@@ -33,9 +33,9 @@ const spiceValues = [
 
 export default function CoreValues() {
   return (
-    <section className="relative bg-[#2b4376] text-white py-12 md:py-16 overflow-hidden" id="core-values">
-      {/* Top Center Arrow Notch */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[18px] border-l-transparent border-r-[18px] border-r-transparent border-t-[18px] border-t-white z-10" />
+    <section className="relative bg-[#2b4376] text-white py-14 md:py-18 overflow-hidden" id="core-values">
+      {/* Top Center Arrow Notch pointing down from CTA */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[18px] border-l-transparent border-r-[18px] border-r-transparent border-t-[18px] border-t-[#f1f6fc] z-10" />
 
       <Container>
         {/* Section Heading */}
@@ -67,21 +67,21 @@ export default function CoreValues() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative flex flex-col justify-between bg-white/5 hover:bg-white/[0.09] border border-white/10 hover:border-secondary/50 rounded-2xl p-5 sm:p-6 transition-all duration-300 backdrop-blur-sm hover:-translate-y-1.5 shadow-lg hover:shadow-2xl"
+                className="group relative flex flex-col justify-between bg-[#f1f6fc] hover:bg-white border border-blue-100 hover:border-secondary/60 rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-1.5 shadow-md hover:shadow-xl"
               >
                 <div>
                   {/* Letter Monogram */}
-                  <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-secondary font-black text-2xl shadow-inner group-hover:bg-secondary group-hover:text-white transition-colors duration-300 mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-white border border-blue-200/80 flex items-center justify-center text-secondary font-black text-2xl shadow-xs group-hover:bg-secondary group-hover:text-white transition-colors duration-300 mb-4">
                     {item.letter}
                   </div>
 
                   {/* Core Value Title */}
-                  <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-secondary transition-colors">
+                  <h3 className="text-base font-bold text-primary mb-2 leading-snug group-hover:text-secondary transition-colors">
                     {item.title}
                   </h3>
 
                   {/* What it represents */}
-                  <p className="text-xs text-slate-200 leading-relaxed font-normal">
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </div>

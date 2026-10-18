@@ -56,13 +56,9 @@ export default function Contact() {
       <Container className="relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <div className="inline-flex items-center gap-1.5 text-secondary text-xs sm:text-sm font-bold tracking-wide mb-1.5">
-            <span>Discuss Your Requirements</span>
-            <span>&rarr;</span>
-          </div>
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
-            Tell us what your organisation needs, and our experts will help you explore the right HR, training, and people solutions.
-          </p>
+          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
+            Contact <span className="text-secondary">Us</span>
+          </h2>
         </div>
 
         {/* Compact Card */}
@@ -91,9 +87,12 @@ export default function Contact() {
               Contact Form
             </span>
 
-            <h3 className="text-lg sm:text-xl font-bold text-primary tracking-tight mb-4">
-              Get In Touch
+            <h3 className="text-lg sm:text-xl font-bold text-primary tracking-tight mb-1.5">
+              Discuss Your Requirements
             </h3>
+            <p className="text-xs text-slate-600 mb-4 leading-relaxed font-normal">
+              Tell us what your organisation needs, and our experts will help you explore the right HR, training, and people solutions.
+            </p>
 
             <form onSubmit={handleSubmit} className="space-y-3.5 relative z-10">
               {/* Name */}

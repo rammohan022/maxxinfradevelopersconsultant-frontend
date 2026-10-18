@@ -97,10 +97,10 @@ export default function ComplianceServicesSlider() {
               </span>
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-              Our Compliance Services
+              Our Labour Law Compliance Services
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-              Comprehensive coverage across every stage of your business&apos;s regulatory journey.
+              Comprehensive coverage across every stage of your business&apos;s regulatory journey, from labour law compliance in HR to day-to-day statutory filings.
             </p>
           </div>
 

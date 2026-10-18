@@ -27,17 +27,43 @@ export default function Services() {
           {/* Left Column: Heading & Description in a clean card */}
           <div className="lg:col-span-5 bg-white/85 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-white shadow-xl shadow-slate-200/60 space-y-6">
             <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
-              <Sparkles size={13} className="text-secondary" />
-              <span>Our Capabilities</span>
+              <span>✧ Our Capabilities</span>
             </span>
 
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-              Discover <span className="text-secondary">How We Create Impact</span>
+              Empowering Businesses with <span className="text-secondary">Integrated HR &amp; Compliance Solutions</span>
             </h2>
 
-            <p className="text-xs md:text-sm text-slate-600 leading-relaxed font-normal">
-              We help organisations solve complex <strong className="text-primary font-semibold">people and workforce challenges</strong> through integrated solutions across Workforce, Consulting, Talent Development, Compliance and HR Technology. Our focus is simple &mdash; <strong className="text-primary font-semibold">practical solutions, stronger capabilities and measurable business impact</strong>.
-            </p>
+            <div className="space-y-3 text-xs md:text-sm text-slate-600 leading-relaxed font-normal">
+              <p>
+                We help organisations simplify complex workforce challenges through reliable:
+              </p>
+              <ul className="space-y-1.5 pl-1 font-medium text-slate-700">
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
+                  <span>HR Consulting</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
+                  <span>HR compliance services</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
+                  <span>Labour law compliance services, and</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
+                  <span>Recruitment consulting services</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
+                  <span>Talent Management</span>
+                </li>
+              </ul>
+              <p className="pt-1">
+                Our integrated approach helps businesses to attract the right talent, strengthen workforce capabilities and improve HR operations. From regulatory compliance to recruitment and talent development, we deliver practical, business-focused solutions that support organisational growth, reduce compliance risks and drive measurable impact.
+              </p>
+            </div>
           </div>
 
           {/* Right Column: 2 Cards (Services & Industries) */}

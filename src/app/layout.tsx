@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 // Force Next.js rebuild
 import { Inter } from "next/font/google";
 import "./globals.css";
-import "react-quill/dist/quill.snow.css";
+import "react-quill-new/dist/quill.snow.css";
 import { ReduxProvider } from "@/store/provider";
 import ToastProvider from "@/components/ui/ToastProvider";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";

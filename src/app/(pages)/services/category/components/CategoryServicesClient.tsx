@@ -39,20 +39,63 @@ export default function CategoryServicesClient() {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+  const [visibleFaqCount, setVisibleFaqCount] = useState(10);
 
   // Fetch services and categories
   const { data: rawServices = [], isLoading: isServicesLoading } = useGetServicesQuery();
-  const allServices = useMemo(() => (rawServices || []).filter((s) => s.status !== 'Draft'), [rawServices]);
   const { data: categories = [], isLoading: isCategoriesLoading } = useGetServiceCategoriesQuery();
 
-  // Reset page number on filter or search change
+  // Sort and filter services: published only, ordered by category position and service position
+  const allServices = useMemo(() => {
+    const list = (rawServices || []).filter((s) => s.status !== 'Draft');
+    const categoryPositionMap = (categories || []).reduce<Record<string, number>>((acc, cat, idx) => {
+      const pos = typeof cat.position === 'number' ? cat.position : idx;
+      acc[cat.name] = pos;
+      acc[cat.name.toLowerCase().trim()] = pos;
+      if (cat.slug) acc[cat.slug] = pos;
+      acc[slugifyCategory(cat.name)] = pos;
+      return acc;
+    }, {});
+
+    return [...list].sort((a, b) => {
+      const catA = a.category || 'General Services';
+      const catB = b.category || 'General Services';
+      const posCatA =
+        categoryPositionMap[catA] ??
+        categoryPositionMap[catA.toLowerCase().trim()] ??
+        categoryPositionMap[slugifyCategory(catA)] ??
+        999;
+      const posCatB =
+        categoryPositionMap[catB] ??
+        categoryPositionMap[catB.toLowerCase().trim()] ??
+        categoryPositionMap[slugifyCategory(catB)] ??
+        999;
+      if (posCatA !== posCatB) {
+        return posCatA - posCatB;
+      }
+      return (a.position ?? 0) - (b.position ?? 0);
+    });
+  }, [rawServices, categories]);
+
+  // Reset page number and FAQ count on filter or search change
   useEffect(() => {
     setCurrentPage(1);
+    setVisibleFaqCount(10);
   }, [rawCategorySlug, searchTerm]);
 
-  // Extract all distinct categories from backend services + serviceCategories table
+  // Extract all distinct categories sorted by position to match the Header dropdown
   const availableCategories = useMemo(() => {
     const map = new Map<string, { name: string; slug: string; count: number }>();
+
+    // Map category positions
+    const categoryPositionMap = (categories || []).reduce<Record<string, number>>((acc, cat, idx) => {
+      const pos = typeof cat.position === 'number' ? cat.position : idx;
+      acc[cat.name] = pos;
+      acc[cat.name.toLowerCase().trim()] = pos;
+      if (cat.slug) acc[cat.slug] = pos;
+      acc[slugifyCategory(cat.name)] = pos;
+      return acc;
+    }, {});
 
     // Add from service-categories table
     categories.forEach((cat) => {
@@ -72,7 +115,22 @@ export default function CategoryServicesClient() {
       }
     });
 
-    return Array.from(map.values()).sort((a, b) => a.name.localeCompare(b.name));
+    return Array.from(map.values()).sort((a, b) => {
+      const posA =
+        categoryPositionMap[a.name] ??
+        categoryPositionMap[a.name.toLowerCase().trim()] ??
+        categoryPositionMap[a.slug] ??
+        999;
+      const posB =
+        categoryPositionMap[b.name] ??
+        categoryPositionMap[b.name.toLowerCase().trim()] ??
+        categoryPositionMap[b.slug] ??
+        999;
+      if (posA !== posB) {
+        return posA - posB;
+      }
+      return a.name.localeCompare(b.name);
+    });
   }, [categories, allServices]);
 
   // Active Category Name
@@ -138,6 +196,11 @@ export default function CategoryServicesClient() {
     });
     return faqs;
   }, [categoryServices]);
+
+  // Sliced FAQs for progressive "Load More" pagination (10 initial, +10 on each load more)
+  const visibleFaqs = useMemo(() => {
+    return categoryFaqs.slice(0, visibleFaqCount);
+  }, [categoryFaqs, visibleFaqCount]);
 
   if (isServicesLoading || isCategoriesLoading) {
     return (
@@ -221,15 +284,14 @@ export default function CategoryServicesClient() {
 
       {/* CATEGORY SWITCHER & SEARCH BAR */}
       <section className="bg-white border-b border-slate-200 sticky top-[72px] z-30 shadow-sm">
-        <Container className="py-4">
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            {/* Category Filter Tabs */}
-            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-2 scroll-smooth">
-
+        <Container className="py-3 sm:py-3.5">
+          <div className="flex flex-col gap-2.5 sm:gap-3">
+            {/* Row 1: Category Filter Tabs - Full Row */}
+            <div className="flex items-center gap-2 overflow-x-auto sm:flex-wrap no-scrollbar py-1 scroll-smooth w-full">
               {/* All Services Tab */}
               <Link
                 href="/services"
-                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${!rawCategorySlug
+                className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 shrink-0 ${!rawCategorySlug
                   ? 'bg-primary text-white shadow-md shadow-primary/20'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                   }`}
@@ -249,7 +311,7 @@ export default function CategoryServicesClient() {
                   <Link
                     key={cat.slug}
                     href={`/services/category/${cat.slug}`}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 ${isActive
+                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 flex items-center gap-2 shrink-0 ${isActive
                       ? 'bg-primary text-white shadow-md shadow-primary/20'
                       : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                       }`}
@@ -266,27 +328,34 @@ export default function CategoryServicesClient() {
               })}
             </div>
 
-            {/* Search Input */}
-            <div className="relative min-w-[260px] lg:max-w-xs shrink-0">
-              <Search
-                size={16}
-                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
-              />
-              <input
-                type="text"
-                placeholder={`Search in ${activeCategoryName}...`}
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-full text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
-              />
-              {searchTerm && (
-                <button
-                  onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600"
-                >
-                  Clear
-                </button>
-              )}
+            {/* Row 2: Search Input & Results Summary */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pt-2 border-t border-slate-100">
+              <div className="text-xs text-slate-500 font-medium hidden sm:block">
+                Showing <strong className="text-primary">{filteredServices.length}</strong> of {categoryServices.length} services in <span className="font-bold text-secondary">{activeCategoryName}</span>
+              </div>
+
+              {/* Search Input */}
+              <div className="relative w-full sm:w-80 lg:w-96 shrink-0 sm:ml-auto">
+                <Search
+                  size={16}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+                />
+                <input
+                  type="text"
+                  placeholder={`Search in ${activeCategoryName}...`}
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-10 py-1.5 sm:py-2 bg-slate-50 border border-slate-200 rounded-full text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition"
+                />
+                {searchTerm && (
+                  <button
+                    onClick={() => setSearchTerm('')}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </Container>
@@ -403,7 +472,7 @@ export default function CategoryServicesClient() {
                       href={`/services/${service.slug}`}
                       className="inline-flex items-center gap-2 text-secondary hover:text-primary font-bold text-xs tracking-wider group/link transition-colors pt-1"
                     >
-                      <span>Explore Service Details</span>
+                      <span>Read More</span>
                       <ArrowRight size={14} className="transform group-hover/link:translate-x-1.5 transition-transform" />
                     </Link>
                   </div>
@@ -465,7 +534,7 @@ export default function CategoryServicesClient() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-4.5 sm:gap-5 items-start">
-              {categoryFaqs.map((faq, index) => {
+              {visibleFaqs.map((faq, index) => {
                 const isOpen = openFaqIndex === index;
                 return (
                   <div
@@ -507,6 +576,25 @@ export default function CategoryServicesClient() {
                 );
               })}
             </div>
+
+            {/* Load More FAQs Button */}
+            {visibleFaqCount < categoryFaqs.length && (
+              <div className="mt-10 text-center">
+                <button
+                  type="button"
+                  onClick={() => setVisibleFaqCount((prev) => prev + 10)}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full bg-primary hover:bg-primary-dark text-white text-xs sm:text-sm font-bold shadow-md hover:shadow-lg transition-all duration-200 active:scale-95"
+                >
+                  <span>Load More FAQs</span>
+                  <span className="text-[11px] bg-white/20 px-2 py-0.5 rounded-full font-bold">
+                    +{Math.min(10, categoryFaqs.length - visibleFaqCount)}
+                  </span>
+                </button>
+                <p className="text-xs text-slate-400 mt-2 font-medium">
+                  Showing {visibleFaqs.length} of {categoryFaqs.length} questions
+                </p>
+              </div>
+            )}
           </Container>
         </section>
       )}

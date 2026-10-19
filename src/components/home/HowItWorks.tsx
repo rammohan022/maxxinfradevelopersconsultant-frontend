@@ -121,15 +121,15 @@ export default function HowItWorks() {
                   )}
 
                   {/* Step Card */}
-                  <div className="w-full bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/80 shadow-md hover:shadow-xl hover:border-secondary/40 transition-all duration-300 flex flex-col items-center text-center group relative hover:-translate-y-1">
+                  <div className="w-full bg-[#f0f5fb] hover:bg-white/80 rounded-2xl p-5 sm:p-6 border border-blue-100/80 shadow-sm hover:shadow-xl hover:border-secondary/40 transition-all duration-300 flex flex-col items-center text-center group relative hover:-translate-y-1">
                     {/* Mobile/Tablet Step Number Pill */}
                     <div className="lg:hidden absolute top-3 right-3 w-6 h-6 rounded-full bg-primary text-white text-[10px] font-bold flex items-center justify-center">
                       {item.step}
                     </div>
 
                     {/* Icon Box */}
-                    <div className="w-11 h-11 rounded-xl bg-blue-50/90 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-sm">
-                      <Icon className="w-5 h-5 stroke-[1.75]" />
+                    <div className="w-11 h-11 rounded-xl bg-primary text-white flex items-center justify-center mb-4 group-hover:bg-secondary transition-all duration-300 shadow-md">
+                      <Icon className="w-5 h-5 stroke-[2] text-white" />
                     </div>
 
                     {/* Step Tag */}

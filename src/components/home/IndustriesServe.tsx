@@ -73,9 +73,9 @@ export default function IndustriesServe() {
         </div>
 
         {/* Centered Laptop Mockup with Compliance Dashboard - Sized to fit comfortably in viewport with heading */}
-        <div className="relative w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-[700px] mx-auto aspect-[16/10] my-5 sm:my-6 group">
+        <div className="relative w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-[700px] mx-auto my-5 sm:my-6 group">
           {/* Laptop mock border */}
-          <div className="w-full h-full bg-slate-900 rounded-t-xl sm:rounded-t-2xl rounded-b-md flex flex-col overflow-hidden border-[6px] sm:border-8 border-b-[14px] sm:border-b-[18px] border-slate-800 shadow-xl relative">
+          <div className="w-full bg-slate-900 rounded-t-xl sm:rounded-t-2xl rounded-b-md flex flex-col overflow-hidden border-[6px] sm:border-8 border-b-[14px] sm:border-b-[18px] border-slate-800 shadow-xl relative">
             {/* Webcam dot */}
             <div className="absolute top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-slate-600 rounded-full z-20"></div>
 
@@ -88,12 +88,12 @@ export default function IndustriesServe() {
             </div>
 
             {/* Dashboard Screen Image */}
-            <div className="relative flex-1 w-full bg-white overflow-hidden">
+            <div className="relative w-full aspect-[16/9] bg-white overflow-hidden">
               <Image
                 src="/img/dashbaord.jpeg"
                 alt="Digiliance Compliance Dashboard"
                 fill
-                className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                className="object-cover object-left-top origin-top-left group-hover:scale-[1.02] transition-transform duration-500"
                 priority
               />
             </div>

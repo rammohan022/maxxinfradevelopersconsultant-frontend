@@ -138,7 +138,7 @@ function BlogDetailsContent() {
                             </div>
 
                             <div
-                                className="prose prose-lg max-w-none text-gray-700 mt-6"
+                                className="prose prose-lg max-w-none text-gray-700 mt-6 rich-text-content prose-headings:text-primary overflow-x-auto"
                                 dangerouslySetInnerHTML={{ __html: article.content }}
                             />
 

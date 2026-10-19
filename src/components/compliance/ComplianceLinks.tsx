@@ -19,7 +19,7 @@ export default function ComplianceLinks() {
     <section className="py-16 md:py-14 bg-slate-50 border-t border-slate-200/60">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold mb-4">
             Compliance Library
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">

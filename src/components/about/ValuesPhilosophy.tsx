@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { Container } from "@/components/ui";
-import { ShieldCheck, Users, Award } from "lucide-react";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -27,19 +26,34 @@ const itemVariants: Variants = {
 const ValuesPhilosophy = () => {
   const values = [
     {
-      title: "Integrity & Ethics",
-      description: "At People Consulting, integrity is the foundation of our operations. We conduct every search and advisory mandate with honesty, transparency, and strict adherence to professional ethics.",
-      icon: ShieldCheck,
+      letter: "S",
+      title: "Strategic Partnership",
+      description:
+        "Working as a trusted extension of our clients' business and HR teams",
     },
     {
-      title: "Diversity & Inclusion",
-      description: "We reflect the diversity of the businesses we serve, actively promoting inclusive recruitment methodologies to source the best minds and build balanced teams.",
-      icon: Users,
+      letter: "P",
+      title: "Pragmatic Innovation",
+      description:
+        "Using practical ideas, technology and new approaches to solve real business problems",
     },
     {
-      title: "Excellence & Growth",
-      description: "We are committed to delivering exceptional HR solutions, focusing on continuous learning, operational accountability, and strategic alignment in an ever-changing regulatory and talent landscape.",
-      icon: Award,
+      letter: "I",
+      title: "Integrity",
+      description:
+        "Transparency, confidentiality, ethics and doing the right thing",
+    },
+    {
+      letter: "C",
+      title: "Continuous Learning",
+      description:
+        "Staying ahead of evolving talent practices, technology, regulations and business needs",
+    },
+    {
+      letter: "E",
+      title: "Excellence",
+      description:
+        "Commitment to quality, accuracy, speed and measurable outcomes",
     },
   ];
 
@@ -71,9 +85,9 @@ const ValuesPhilosophy = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5 }}
-              className="mb-10 sm:mb-12"
+              className="mb-8 sm:mb-10"
             >
-              <div className="text-primary text-sm font-bold tracking-widest mb-4 border-l-4 border-primary pl-3">
+              <div className="text-primary text-sm font-bold tracking-widest mb-3 border-l-4 border-primary pl-3">
                 Our Values
               </div>
               <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
@@ -86,31 +100,27 @@ const ValuesPhilosophy = () => {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0.1 }}
-              className="space-y-6 sm:space-y-8"
+              className="space-y-4 sm:space-y-5"
             >
-              {values.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <motion.div
-                    variants={itemVariants}
-                    key={item.title}
-                    className="flex gap-4 sm:gap-6 items-start"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5">
-                        {item.title}
-                      </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                );
-              })}
+              {values.map((item) => (
+                <motion.div
+                  variants={itemVariants}
+                  key={item.letter}
+                  className="flex gap-4 sm:gap-5 items-start group"
+                >
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-secondary/10 text-secondary font-black text-xl sm:text-2xl flex items-center justify-center flex-shrink-0 border border-secondary/20 shadow-xs group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
+                    {item.letter}
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-primary mb-1 flex items-center gap-1.5 text-sm sm:text-base group-hover:text-secondary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </div>

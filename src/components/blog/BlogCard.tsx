@@ -19,11 +19,11 @@ interface BlogCardProps {
 
 export default function BlogCard({ post }: BlogCardProps) {
   return (
-    <article className="bg-white rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group h-full">
+    <article className="bg-white rounded-xl border border-slate-200/80 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col overflow-hidden group h-full w-full">
       {/* Top Image */}
       <Link
         href={`/blog/${post.slug}`}
-        className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden block"
+        className="relative aspect-[16/9] w-full bg-slate-100 overflow-hidden block shrink-0"
       >
         <Image
           src={
@@ -42,7 +42,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         {/* Title */}
         <Link href={`/blog/${post.slug}`} className="block mb-4">
           <h3
-            className="font-bold text-primary text-sm sm:text-base group-hover:text-secondary transition-colors line-clamp-3 leading-snug"
+            className="font-bold text-primary text-sm sm:text-base group-hover:text-secondary transition-colors line-clamp-3 leading-snug min-h-[2.75rem] sm:min-h-[3.75rem]"
             title={post.title}
           >
             {post.title}
@@ -50,7 +50,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         </Link>
 
         {/* Read More Button */}
-        <div>
+        <div className="mt-auto">
           <Link
             href={`/blog/${post.slug}`}
             className="inline-flex items-center justify-center bg-secondary hover:bg-secondary-dark text-white font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded transition-all duration-200 shadow-sm hover:shadow"

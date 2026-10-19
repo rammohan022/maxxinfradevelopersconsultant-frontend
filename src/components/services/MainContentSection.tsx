@@ -100,7 +100,7 @@ export default function MainContentSection({
                 </h2>
                 <div className="mb-4 h-1 w-16 bg-secondary rounded-full" />
                 <div
-                  className="leading-relaxed text-slate-600 rich-text-content space-y-3 text-xs sm:text-sm"
+                  className="leading-relaxed text-slate-600 rich-text-content space-y-3 text-xs sm:text-sm overflow-x-auto"
                   dangerouslySetInnerHTML={{ __html: overview }}
                 />
               </div>

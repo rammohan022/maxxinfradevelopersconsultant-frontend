@@ -10,8 +10,7 @@ import Image from "next/image";
 import { getErrorMessage } from "@/lib/utils/apiUtils";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
+import RichTextEditor from "../../components/RichTextEditor";
 
 interface ServiceFormProps {
     initialData?: any;
@@ -547,8 +546,13 @@ const slugify = (text: string) => {
             {/* Overview */}
             <section className="space-y-4 pb-10 border-b">
                 <h2 className="text-lg font-bold text-slate-800">Overview</h2>
-                <div className="h-[200px] mb-6">
-                    <ReactQuill theme="snow" value={form.overview} onChange={(val) => setForm(p => ({ ...p, overview: val }))} className="bg-white h-[150px]" />
+                <div className="mb-6">
+                    <RichTextEditor
+                        value={form.overview}
+                        onChange={(val) => setForm(p => ({ ...p, overview: val }))}
+                        placeholder="Write comprehensive service overview..."
+                        minHeight="240px"
+                    />
                 </div>
             </section>
 

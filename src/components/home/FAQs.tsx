@@ -81,7 +81,7 @@ export default function FAQs({
     <section className={`py-16 md:py-20 lg:py-24 border-b border-slate-200/80 ${className}`} id="faqs">
       <Container>
         <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold tracking-widest mb-3">
+          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold mb-3">
             {displayTag}
           </span>
           <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">

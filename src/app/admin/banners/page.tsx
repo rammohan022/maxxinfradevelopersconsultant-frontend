@@ -15,9 +15,9 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 import DeleteModal from "../components/DeleteModal";
-import "react-quill/dist/quill.snow.css";
+import "react-quill-new/dist/quill.snow.css";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 
 const quillModules = {
   toolbar: [

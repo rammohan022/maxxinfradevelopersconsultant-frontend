@@ -7,14 +7,12 @@ import { useCreateBlogMutation, useUpdateBlogMutation } from "@/services/blog";
 import { useGetBlogCategoriesQuery } from "@/services/blogCategory";
 import { useGenerateBlogMutation } from "@/services/ai";
 import toast from "react-hot-toast";
-import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
 import { getImageUrl } from "@/lib/utils/imageUtils";
 import { Sparkles, Loader2, Save, RefreshCw } from "lucide-react";
 import { getErrorMessage } from "@/lib/utils/apiUtils";
 import AiModal, { AiToolType } from "@/components/ai/AiModal";
-
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+import RichTextEditor from "../../components/RichTextEditor";
 
 interface BlogFormProps {
   initialData?: any;
@@ -339,12 +337,12 @@ export default function BlogForm({
               )}
             </button>
           </div>
-          <div className="bg-white min-h-[320px]">
-            <ReactQuill
-              theme="snow"
+          <div className="mb-6">
+            <RichTextEditor
               value={content}
               onChange={setContent}
-              className="bg-white h-[250px] mb-12"
+              placeholder="Write your comprehensive blog article here..."
+              minHeight="380px"
             />
           </div>
         </div>

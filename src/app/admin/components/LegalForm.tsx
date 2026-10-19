@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-import "react-quill/dist/quill.snow.css";
+import RichTextEditor from "./RichTextEditor";
 
 import { showSuccess, showError } from "@/lib/utils/toast";
 
@@ -89,12 +88,12 @@ export default function LegalForm({
 
             <div>
                 <label className="block text-sm font-medium mb-2">Content</label>
-                <div className="bg-white min-h-[400px]">
-                    <ReactQuill
-                        theme="snow"
+                <div className="mb-6">
+                    <RichTextEditor
                         value={form.content}
                         onChange={(val) => setForm(p => ({ ...p, content: val }))}
-                        className="bg-white h-[350px] mb-12"
+                        placeholder="Write legal policy content here..."
+                        minHeight="350px"
                     />
                 </div>
             </div>

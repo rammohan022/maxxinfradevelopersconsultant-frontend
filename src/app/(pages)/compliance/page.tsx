@@ -2,11 +2,13 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Container, CallToAction } from '@/components/ui'
-import { CheckCircle2, Building2, Factory, FileSignature, ShoppingCart, ShieldCheck, Briefcase, Landmark, FileText, BadgePercent, GraduationCap, Gavel, FileCheck, ArrowRight, Layers, BellRing, PieChart } from 'lucide-react'
+import { CheckCircle2, Building2, Factory, FileSignature, ShoppingCart, ShieldCheck, Briefcase, Landmark, FileText, BadgePercent, GraduationCap, Gavel, FileCheck, ArrowRight, Layers, BellRing, PieChart, Store } from 'lucide-react'
 import { FAQs } from '@/components/home'
 import SeoHead from '@/components/seo/SeoHead'
 import ComplianceLinks from '@/components/compliance/ComplianceLinks'
 import ComplianceServicesSlider from '@/components/compliance/ComplianceServicesSlider'
+import ComplianceDashboardSection from '@/components/compliance/ComplianceDashboardSection'
+import ComplianceSimplificationSection from '@/components/compliance/ComplianceSimplificationSection'
 
 export const metadata: Metadata = {
   title: 'Labour Law Compliance Services in India | People Consulting',
@@ -40,34 +42,44 @@ export const metadata: Metadata = {
 
 const complianceSolutions = [
   {
-    icon: Briefcase,
-    title: 'Provident Fund (PF)',
-    desc: 'Employee enrolment, KYC, ECR filing, challans, transfers, withdrawals, statutory records, inspections, and department coordination.',
-  },
-  {
-    icon: Building2,
-    title: 'ESIC Compliance',
-    desc: 'Employee registration, e-Pehchan, monthly filings, contribution management, inspections, and statutory documentation.',
-  },
-  {
     icon: Landmark,
-    title: 'Labour Welfare Fund (LWF)',
-    desc: 'State-wise enrolment, contribution filings, challans, employee records, and statutory compliance management.',
+    title: 'Central Act Compliances (PF, ESIC, Gratuity, POSH Act etc.)',
+    desc: 'We manage all your central labour law requirements, including PF, ESIC, Gratuity and POSH Act. Timely filings and accurate records keep your business penalty-free and audit-ready.',
   },
   {
-    icon: FileText,
-    title: 'Professional Tax (PT)',
-    desc: 'Registration, employee enrolment, return filing, challans, and statutory record management.',
+    icon: Factory,
+    title: 'Factory Act Compliances',
+    desc: 'We handle every Factory Act requirement, from licences and returns to registers and inspections. Your workplace stays compliant, safe and inspection-ready at all times.',
+  },
+  {
+    icon: Store,
+    title: 'Shop Act Compliances',
+    desc: 'We take care of Shops and Establishments Act registrations, renewals and statutory records. Stay compliant with state-specific rules without the paperwork burden.',
+  },
+  {
+    icon: FileCheck,
+    title: 'New Labour Code Implementation',
+    desc: 'We help you move smoothly to the new Labour Codes with a clear gap analysis and a practical action plan. Your policies, payroll and records get updated so you stay compliant from day one.',
   },
   {
     icon: BadgePercent,
-    title: 'Payroll Tax (TDS)',
-    desc: 'Investment validation, Form 24Q, quarterly returns, Form 16 generation, and payroll tax documentation.',
+    title: 'LWF & P.Tax Compliance',
+    desc: 'We manage Labour Welfare Fund and Professional Tax calculations, payments and returns across states. Every deadline is tracked, so you never miss a due date or pay a penalty.',
   },
   {
-    icon: Gavel,
-    title: 'Government Liaison Support',
-    desc: 'Support for notices, inspections, documentation, and communication with statutory authorities whenever required.',
+    icon: PieChart,
+    title: 'Digiliance – Compliance Management Software',
+    desc: 'Digiliance is our compliance management software that tracks due dates, documents and filings in one dashboard. It gives you real-time visibility and automated alerts across all your locations.',
+  },
+  {
+    icon: FileSignature,
+    title: 'Registrations and License Management',
+    desc: 'We handle new registrations, licence applications, renewals and amendments from start to finish. Our team makes sure every licence stays valid and up to date.',
+  },
+  {
+    icon: Building2,
+    title: 'Factory and Establishment Setup Support',
+    desc: 'We guide you through the complete setup of your factory or establishment, from registrations to statutory approvals. Start your operations faster with the right compliance foundation in place.',
   },
 ]
 
@@ -152,32 +164,34 @@ export default function CompliancePage() {
         <Container className="relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-16 lg:mb-20 space-y-4">
             <div>
-              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold">
                 Our Solutions
               </span>
             </div>
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
               Complete Statutory Compliance Services Under One Partner
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xs md:text-sm text-slate-600 max-w-3xl mx-auto leading-relaxed">
               We act as your extended compliance team, managing all statutory filings, documentation, and government interactions as part of our labour law consultancy and compliance management services.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {complianceSolutions.map((solution, index) => {
               const Icon = solution.icon;
               return (
                 <div 
                   key={index} 
-                  className="bg-white p-8 rounded-3xl shadow-sm border border-slate-200/60 hover:bg-[#fff9f5] hover:border-secondary/40 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300 group flex flex-col relative overflow-hidden"
+                  className="bg-white p-5 sm:p-6 lg:p-5 xl:p-6 rounded-3xl shadow-sm border border-slate-200/60 hover:bg-[#fff9f5] hover:border-secondary/40 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300 group flex flex-col relative overflow-hidden h-full"
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-secondary/5 to-transparent rounded-bl-full -z-10 transition-transform duration-500 group-hover:scale-150"></div>
-                  <div className="w-14 h-14 bg-slate-50 border border-slate-100 text-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-300 shadow-sm">
-                    <Icon size={26} strokeWidth={2} />
+                  <div className="absolute top-0 right-0 w-28 h-28 bg-gradient-to-br from-secondary/5 to-transparent rounded-bl-full -z-10 transition-transform duration-500 group-hover:scale-150"></div>
+                  <div className="w-12 h-12 bg-slate-50 border border-slate-100 text-primary rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-300 shadow-sm shrink-0">
+                    <Icon size={24} strokeWidth={2} />
                   </div>
-                  <h3 className="font-semibold text-primary mb-2 group-hover:text-secondary transition-colors duration-300">{solution.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                  <h3 className="font-bold text-sm sm:text-[15px] text-primary mb-2 group-hover:text-secondary transition-colors duration-300 leading-snug">
+                    {solution.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed font-normal">
                     {solution.desc}
                   </p>
                 </div>
@@ -187,113 +201,11 @@ export default function CompliancePage() {
         </Container>
       </section>
 
-      {/* ================= 4. DASHBOARD PREVIEW ================= */}
-      <section className="py-16 md:py-20 lg:py-24 bg-white relative border-b border-slate-200/80">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
-            {/* Text Content */}
-            <div className="lg:col-span-5 space-y-6">
-              <div className="flex items-center gap-2.5 flex-wrap">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest">
-                  Compliance Dashboard
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-secondary/30 bg-secondary/10 text-secondary text-xs font-bold">
-                  Powered by Digiliance
-                </span>
-              </div>
-              <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-                Track Every Filing, Deadline & Update in Real Time
-              </h2>
-              <p className="text-sm md:text-base text-slate-600 leading-relaxed font-medium pb-2">
-                Our compliance dashboard gives you complete visibility into your organization&apos;s statutory status — no more chasing spreadsheets or waiting on emails.
-              </p>
-              
-              <div className="space-y-3.5">
-                {[
-                  { title: 'Real-time dashboards & visual reports', icon: PieChart },
-                  { title: 'Track key compliance metrics at a glance', icon: Layers },
-                  { title: 'Automated deadline reminders & alerts', icon: BellRing },
-                  { title: 'Export filings & reports in multiple formats', icon: FileCheck },
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-xl bg-[#f8faff] border border-slate-200/90 hover:border-secondary/40 hover:bg-white hover:shadow-md transition-all duration-300 group cursor-default"
-                  >
-                    <div className="w-11 h-11 rounded-xl bg-secondary/10 text-secondary border border-secondary/20 flex items-center justify-center shrink-0 group-hover:bg-secondary group-hover:text-white transition-all duration-300 shadow-xs">
-                      <item.icon size={20} strokeWidth={2.2} />
-                    </div>
-                    <span className="text-primary font-bold text-sm sm:text-base leading-snug group-hover:text-secondary transition-colors">
-                      {item.title}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Dashboard Visual */}
-            <div className="lg:col-span-7 relative">
-              {/* Decorative Blobs */}
-              <div className="absolute -top-10 -right-10 w-44 h-44 bg-secondary/20 rounded-full blur-2xl pointer-events-none"></div>
-              <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-primary/15 rounded-full blur-3xl pointer-events-none"></div>
-              
-              {/* Device Window Frame */}
-              <div className="relative bg-slate-900 rounded-3xl sm:rounded-[2.5rem] p-4 sm:p-6 shadow-2xl overflow-visible border-4 border-slate-100/90 group transform hover:scale-[1.01] transition-transform duration-500">
-                {/* Browser Top Chrome */}
-                <div className="flex items-center justify-between gap-3 mb-4 px-2">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400 border border-red-500/50 shadow-xs"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-400 border border-amber-500/50 shadow-xs"></div>
-                    <div className="w-3 h-3 rounded-full bg-emerald-400 border border-emerald-500/50 shadow-xs"></div>
-                  </div>
+      {/* ================= 4. HOW WE SIMPLIFY HR & COMPLIANCE FOR YOU ================= */}
+      <ComplianceSimplificationSection />
 
-                  <div className="flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-800/90 border border-slate-700/80 text-slate-300 text-[11px] sm:text-xs font-mono shadow-inner">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    app.digiliance.com/dashboard
-                  </div>
-
-                  <div className="hidden sm:flex items-center gap-1.5 text-xs text-slate-300 font-semibold tracking-wide">
-                    <span className="text-secondary font-extrabold tracking-wider">DIGILIANCE</span>
-                  </div>
-                </div>
-
-                {/* Real Digiliance Dashboard Screen Image */}
-                <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-white">
-                  <Image
-                    src="/img/dashbaord.jpeg"
-                    alt="Digiliance dashboard for tracking statutory compliance filings and deadlines"
-                    fill
-                    className="object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 55vw"
-                  />
-                </div>
-
-                {/* Floating Bottom Badge */}
-                <div className="absolute -bottom-5 -left-4 sm:-bottom-6 sm:-left-6 bg-white p-3.5 sm:p-4 rounded-2xl shadow-xl shadow-slate-900/15 border border-slate-100 flex items-center gap-3 animate-bounce-slow z-20">
-                  <div className="w-10 h-10 sm:w-11 sm:h-11 bg-emerald-100 rounded-xl flex items-center justify-center text-emerald-600 shrink-0 shadow-xs">
-                    <CheckCircle2 size={22} strokeWidth={2.5} />
-                  </div>
-                  <div>
-                    <div className="text-xs sm:text-sm font-bold text-primary">Audit Ready</div>
-                    <div className="text-[11px] text-slate-500 font-medium">All statutory records verified</div>
-                  </div>
-                </div>
-
-                {/* Floating Top-Right Bell Alert */}
-                <div className="absolute -top-4 -right-4 sm:-top-5 sm:-right-5 bg-white p-3 sm:p-3.5 rounded-2xl shadow-xl shadow-slate-900/15 border border-slate-100 z-20">
-                  <div className="relative">
-                    <BellRing size={24} className="text-secondary" />
-                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white animate-ping"></span>
-                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white"></span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
+      {/* ================= 5. DASHBOARD PREVIEW & FEATURES (FAQ ACCORDION) ================= */}
+      <ComplianceDashboardSection />
 
       {/* ================= 4. COMPLIANCE LIBRARY ================= */}
       <ComplianceLinks />

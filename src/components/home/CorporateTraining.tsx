@@ -6,6 +6,7 @@ import { Container } from "@/components/ui"
 import { motion } from "framer-motion"
 import { Calendar, FileText, CheckCircle2, Send } from "lucide-react"
 import { toast } from "react-hot-toast"
+import { useCreateLeadMutation } from "@/services/lead"
 
 const programs = [
   {
@@ -35,21 +36,33 @@ const programs = [
 ]
 
 export default function CorporateTraining() {
-  const [formData, setFormData] = useState({ name: "", email: "", company: "", message: "" })
-  const [loading, setLoading] = useState(false)
+  const [createLead, { isLoading: isSubmitting }] = useCreateLeadMutation()
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", company: "", message: "" })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.name || !formData.email || !formData.company || !formData.message) {
-      toast.error("Please fill in all fields.")
+      toast.error("Please fill in all required fields.")
       return
     }
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
+
+    try {
+      await createLead({
+        fullName: formData.name,
+        email: formData.email,
+        phoneNumber: formData.phone || "Not provided",
+        company: formData.company,
+        subject: "Corporate Training Demo Request",
+        message: formData.message,
+        source: typeof window !== "undefined" ? window.location.pathname + "#corporate-training" : "/#corporate-training",
+      }).unwrap()
+
       toast.success("Demo request submitted successfully! Our team will get in touch shortly.")
-      setFormData({ name: "", email: "", company: "", message: "" })
-    }, 1200)
+      setFormData({ name: "", email: "", phone: "", company: "", message: "" })
+    } catch (err) {
+      console.error("Training demo request failed:", err)
+      toast.error("Failed to submit request. Please try again later.")
+    }
   }
 
   return (
@@ -138,6 +151,17 @@ export default function CorporateTraining() {
                   />
                 </div>
                 <div>
+                  <label htmlFor="pf-phone" className="block text-xs font-semibold text-slate-600 mb-1">Phone Number</label>
+                  <input
+                    id="pf-phone"
+                    type="tel"
+                    placeholder="Enter contact number"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:border-secondary transition-colors"
+                  />
+                </div>
+                <div>
                   <label htmlFor="pf-company" className="block text-xs font-semibold text-slate-600 mb-1">Company Name</label>
                   <input
                     id="pf-company"
@@ -164,10 +188,10 @@ export default function CorporateTraining() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    disabled={loading}
-                    className="w-full py-3 px-6 rounded-xl bg-secondary hover:bg-secondary-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01] active:scale-[0.99]"
+                    disabled={isSubmitting}
+                    className="w-full py-3 px-6 rounded-xl bg-secondary hover:bg-secondary-dark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg flex items-center justify-center gap-2 transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-75"
                   >
-                    {loading ? (
+                    {isSubmitting ? (
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                     ) : (
                       <>

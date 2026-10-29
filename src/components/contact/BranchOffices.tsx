@@ -14,7 +14,7 @@ const branches: Branch[] = [
     city: 'Faridabad',
     address:
       '7th Floor, Tower 3, RPS 12th Avenue,\nMain Mathura Road, Sector 27C, Faridabad',
-    email: 'hello@peopleconsultings.com',
+    email: 'hello@peopleconsulting.co',
     phone: '+91 8800177307',
   },
 ]

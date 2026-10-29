@@ -59,14 +59,14 @@ const CTASection: React.FC<CallToActionProps> = ({
                 </p>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-5 max-w-3xl mx-auto">
+                <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 max-w-2xl mx-auto">
                     {buttons.map((btn, idx) => {
                         if (btn.primary) {
                             return (
                                 <Link
                                     key={idx}
                                     href={btn.href}
-                                    className="w-full sm:w-auto flex-1 flex items-center justify-center rounded-xl bg-secondary px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-md hover:shadow-lg hover:bg-secondary-dark transition-all duration-300 transform hover:-translate-y-0.5"
+                                    className="inline-flex items-center justify-center rounded-lg bg-secondary px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-white shadow-sm hover:shadow-md hover:bg-secondary-dark transition-all duration-300 transform hover:-translate-y-0.5"
                                 >
                                     {btn.label}
                                 </Link>
@@ -76,7 +76,7 @@ const CTASection: React.FC<CallToActionProps> = ({
                             <Link
                                 key={idx}
                                 href={btn.href}
-                                className="w-full sm:w-auto flex-1 flex items-center justify-center rounded-xl bg-white border border-slate-200 px-6 py-3.5 sm:py-4 text-sm sm:text-base font-semibold text-[#0284c7] shadow-sm hover:shadow-md hover:border-secondary hover:text-secondary transition-all duration-300 transform hover:-translate-y-0.5"
+                                className="inline-flex items-center justify-center rounded-lg bg-white border border-slate-200 px-6 sm:px-8 py-2.5 sm:py-3 text-xs sm:text-sm font-semibold text-[#0284c7] shadow-sm hover:shadow-md hover:border-secondary hover:text-secondary transition-all duration-300 transform hover:-translate-y-0.5"
                             >
                                 {btn.label}
                             </Link>

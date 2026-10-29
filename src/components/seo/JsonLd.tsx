@@ -21,7 +21,7 @@ export function OrganizationJsonLd() {
       "addressCountry": "IN"
     },
     "telephone": "+91-8800177307",
-    "email": "hello@peopleconsultings.com",
+    "email": "hello@peopleconsulting.co",
     "priceRange": "$$",
     "sameAs": [
       "https://www.linkedin.com/company/people-consulting-services/",

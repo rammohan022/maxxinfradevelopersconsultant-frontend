@@ -12,7 +12,7 @@ export default function Footer() {
   const { data: adminProfile } = useGetAdminProfileQuery()
   const { data: siteSettings } = useGetSiteSettingsQuery()
 
-  const email = siteSettings?.contactEmail || adminProfile?.email || "hello@peopleconsultings.com";
+  const email = siteSettings?.contactEmail || adminProfile?.email || "hello@peopleconsulting.co";
   const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 8800177307";
   const facebook = siteSettings?.socialLinks?.facebook || adminProfile?.facebookUrl || "#";
   const linkedin = siteSettings?.socialLinks?.linkedin || adminProfile?.linkedinUrl || "https://www.linkedin.com/company/people-consulting-services/";

@@ -12,7 +12,8 @@ import {
   Phone, 
   ShieldCheck, 
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Car
 } from "lucide-react";
 import { Container } from "@/components/ui";
 import { PROPERTIES, PROPERTY_CATEGORIES } from "@/data/properties";
@@ -129,21 +130,33 @@ export default function FeaturedProperties() {
 
                 {/* Specs */}
                 <div className="grid grid-cols-3 gap-2 py-3 border-y border-slate-100 text-slate-700 text-xs mb-4">
-                  {prop.beds && (
-                    <div className="flex items-center gap-1.5">
-                      <Bed size={14} className="text-slate-400" />
-                      <span>{prop.beds} Beds</span>
+                  {prop.beds ? (
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <Bed size={14} className="text-slate-400 shrink-0" />
+                      <span className="truncate">{prop.beds} Beds</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <Car size={14} className="text-slate-400 shrink-0" />
+                      <span className="truncate">{prop.roadWidth || "30 ft."}</span>
                     </div>
                   )}
-                  {prop.baths && (
-                    <div className="flex items-center gap-1.5">
-                      <Bath size={14} className="text-slate-400" />
-                      <span>{prop.baths} Baths</span>
+
+                  {prop.baths ? (
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <Bath size={14} className="text-slate-400 shrink-0" />
+                      <span className="truncate">{prop.baths} Baths</span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <ShieldCheck size={14} className="text-emerald-600 shrink-0" />
+                      <span className="truncate">Freehold</span>
                     </div>
                   )}
-                  <div className="flex items-center gap-1.5">
-                    <Maximize2 size={14} className="text-slate-400" />
-                    <span className="truncate">{prop.area}</span>
+
+                  <div className="flex items-center gap-1.5 min-w-0">
+                    <Maximize2 size={14} className="text-slate-400 shrink-0" />
+                    <span className="truncate" title={prop.area}>{prop.area}</span>
                   </div>
                 </div>
 

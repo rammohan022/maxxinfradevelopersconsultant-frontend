@@ -167,49 +167,73 @@ export default function PropertyDetailsPage() {
               </div>
 
               {/* Quick Specs Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-5 border-y border-slate-100 text-slate-700 text-sm">
-                {property.beds && (
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-primary">
-                      <Bed size={20} />
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 py-5 border-y border-slate-100 text-slate-700">
+                {property.beds ? (
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-white shadow-xs text-primary flex items-center justify-center shrink-0 border border-slate-100">
+                      <Bed size={18} />
                     </div>
-                    <div>
-                      <p className="text-xs text-slate-400">Bedrooms</p>
-                      <p className="font-bold">{property.beds} BHK</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">Bedrooms</p>
+                      <p className="font-bold text-slate-900 text-xs sm:text-sm truncate">{property.beds} BHK</p>
                     </div>
                   </div>
-                )}
+                ) : null}
 
-                {property.baths && (
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-primary">
-                      <Bath size={20} />
+                {property.baths ? (
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-white shadow-xs text-primary flex items-center justify-center shrink-0 border border-slate-100">
+                      <Bath size={18} />
                     </div>
-                    <div>
-                      <p className="text-xs text-slate-400">Bathrooms</p>
-                      <p className="font-bold">{property.baths} Baths</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">Bathrooms</p>
+                      <p className="font-bold text-slate-900 text-xs sm:text-sm truncate">{property.baths} Baths</p>
                     </div>
                   </div>
-                )}
+                ) : null}
 
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-primary">
-                    <Maximize2 size={20} />
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-3 min-w-0">
+                  <div className="w-10 h-10 rounded-lg bg-white shadow-xs text-primary flex items-center justify-center shrink-0 border border-slate-100">
+                    <Maximize2 size={18} />
                   </div>
-                  <div>
-                    <p className="text-xs text-slate-400">Plot / Built Area</p>
-                    <p className="font-bold truncate">{property.area}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">Plot / Built Area</p>
+                    <p className="font-bold text-slate-900 text-xs sm:text-sm truncate" title={property.area}>{property.area}</p>
                   </div>
                 </div>
 
-                {property.roadWidth && (
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-primary">
-                      <Car size={20} />
+                {property.roadWidth ? (
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-white shadow-xs text-primary flex items-center justify-center shrink-0 border border-slate-100">
+                      <Car size={18} />
                     </div>
-                    <div>
-                      <p className="text-xs text-slate-400">Road Width</p>
-                      <p className="font-bold">{property.roadWidth}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">Road Width</p>
+                      <p className="font-bold text-slate-900 text-xs sm:text-sm truncate" title={property.roadWidth}>{property.roadWidth}</p>
+                    </div>
+                  </div>
+                ) : null}
+
+                {!property.beds && (
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-white shadow-xs text-primary flex items-center justify-center shrink-0 border border-slate-100">
+                      <Calendar size={18} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">Possession</p>
+                      <p className="font-bold text-slate-900 text-xs sm:text-sm truncate">{property.possession}</p>
+                    </div>
+                  </div>
+                )}
+
+                {!property.baths && (
+                  <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-3 min-w-0">
+                    <div className="w-10 h-10 rounded-lg bg-white shadow-xs text-emerald-600 flex items-center justify-center shrink-0 border border-slate-100">
+                      <ShieldCheck size={18} />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">Registry Title</p>
+                      <p className="font-bold text-slate-900 text-xs sm:text-sm truncate">100% Verified</p>
                     </div>
                   </div>
                 )}

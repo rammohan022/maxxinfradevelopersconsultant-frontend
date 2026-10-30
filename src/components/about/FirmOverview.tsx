@@ -3,11 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { CheckCircle2, ShieldCheck, Award, Users } from "lucide-react";
 
 const FirmOverview = () => {
   return (
-    <section id="firm-overview" className="py-16 md:py-20 lg:py-14 bg-white overflow-hidden">
+    <section id="firm-overview" className="py-16 md:py-20 bg-white overflow-hidden">
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* LEFT CONTENT */}
@@ -17,94 +18,82 @@ const FirmOverview = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <div className="text-primary text-sm font-bold tracking-widest mb-4 border-l-4 border-primary pl-3">
-              Who We Are
+            <div className="text-secondary text-xs font-bold tracking-widest uppercase mb-3 flex items-center gap-2">
+              <span className="w-8 h-0.5 bg-secondary"></span> Who We Are
             </div>
 
-            <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-6 leading-snug">
-              We Believe People Drive Organisations.{' '}
-              <span className="text-secondary">
-                We Help You Turn Your People Advantage into Business Advantage.
-              </span>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight mb-6 leading-snug">
+              Transforming Real Estate with Trust, Integrity &amp;{" "}
+              <span className="text-secondary">Direct Developer Value.</span>
             </h2>
 
-            <div className="space-y-4 text-slate-600 text-xs md:text-sm leading-relaxed mb-8">
+            <div className="space-y-4 text-slate-600 text-sm leading-relaxed mb-8">
               <p>
-                With over a decade of experience, People Consulting is an HR consulting firm that partners with enterprises and fast-growing businesses across India. We offer HR compliance services, labour law compliance services, recruitment consulting services, and talent management services under one roof, so you don’t have to manage multiple vendors for your workforce needs.
+                <strong>Maxx Infra Developers &amp; Consultant</strong> is a premier property development and advisory firm headquartered in Lucknow, with prominent projects across key highway growth corridors including Deva Road, Shaheed Path, Sultanpur Road, Outer Ring Road (Kisan Path), and the flagship Goyala City integrated township.
               </p>
 
               <p>
-                Our labour law compliance services keep your business aligned with central and state regulations, reducing the risk of penalties, audits, and disputes. Our HR compliance services cover policies, statutory documentation, and day-to-day HR processes, so your teams can focus on growth.
+                Unlike conventional brokers, we operate with an end-to-end transparent developer model: <strong>100% legally verified titles</strong>, direct mutation assistance, zero hidden brokerage, and complete civil engineering oversight on all construction.
               </p>
 
               <p>
-                On the hiring side, our recruitment consulting services connect you with the right talent for leadership, mid-level, and volume roles. Our talent management services then help you develop, engage, and retain that talent over the long term.
+                From affordable 2 BHK and 3 BHK modern row houses to customized 4 BHK duplex villas and high-appreciation freehold residential plots, we empower home seekers and investors to secure prime properties with peace of mind.
               </p>
+            </div>
 
-              <p>
-                We work as a Strategic People Partner. We understand your business, simplify complex HR and compliance challenges, and build practical solutions that deliver measurable results.
-              </p>
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                <div className="text-2xl font-black text-primary">500+</div>
+                <div className="text-xs text-slate-500 font-medium mt-1">Happy Families Settled</div>
+              </div>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
+                <div className="text-2xl font-black text-secondary">100%</div>
+                <div className="text-xs text-slate-500 font-medium mt-1">Verified Titles &amp; Registry</div>
+              </div>
             </div>
 
             {/* CTA */}
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-wrap items-center gap-4">
               <Link
-                href="/contact-us"
-                className="bg-secondary text-white px-8 py-3.5 rounded-lg font-bold hover:bg-secondary-dark transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                href="/contact"
+                className="bg-primary text-white px-7 py-3.5 rounded-xl font-bold hover:bg-primary-dark transition-all shadow-md text-xs uppercase tracking-wider"
               >
-                Contact Us
+                Schedule Site Visit
               </Link>
 
               <Link
-                href="/services"
-                className="text-primary font-bold hover:text-primary-dark transition-colors flex items-center group tracking-wider text-sm"
+                href="/properties"
+                className="text-primary font-bold hover:text-secondary transition-colors text-xs uppercase tracking-wider flex items-center gap-1.5"
               >
-                <span>Explore Our Services</span>
-                <svg
-                  className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  fill="currentColor"
-                  viewBox="0 0 448 512"
-                  aria-hidden="true"
-                >
-                  <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h306.7L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" />
-                </svg>
+                Browse Properties &rarr;
               </Link>
             </div>
           </motion.div>
 
           {/* RIGHT IMAGE */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="relative mt-8 lg:mt-0"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative"
           >
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-primary/5 rounded-full blur-3xl -z-10" />
-
-            <div className="h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl relative group">
+            <div className="relative h-[420px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
               <Image
-                src="/img/about-us-page.jpg"
-                alt="HR consulting team at People Consulting discussing talent management solutions"
+                src="/img/properties/villa_luxury.jpg"
+                alt="Maxx Infra Modern Construction"
                 fill
-                className="object-cover group-hover:scale-105 transition duration-700"
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-60" />
-            </div>
-
-            {/* EXPERIENCE BADGE */}
-            <motion.div
-              initial={{ opacity: 0, y: 20, rotate: -5 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-              viewport={{ once: true }}
-              transition={{ type: "spring", bounce: 0.5, delay: 0.3 }}
-              className="absolute -bottom-6 -left-6 sm:-bottom-8 sm:-left-8 bg-white border border-slate-200 text-primary p-6 sm:p-8 rounded-2xl shadow-xl max-w-[200px] sm:max-w-xs backdrop-blur-sm"
-            >
-              <div className="text-4xl sm:text-5xl font-bold mb-1 sm:mb-2 text-primary">15+</div>
-              <div className="text-slate-600 text-sm sm:text-base font-medium leading-tight">
-                Years of Consulting Excellence
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
+              
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-white/95 backdrop-blur-md shadow-lg border border-white">
+                <p className="text-xs font-bold uppercase text-secondary tracking-wider">Our Commitment</p>
+                <h4 className="text-sm font-extrabold text-slate-900 mt-1">
+                  &ldquo;Clear Land, Quality Construction, On-Time Possession.&rdquo;
+                </h4>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </Container>

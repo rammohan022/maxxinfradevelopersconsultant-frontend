@@ -1,26 +1,19 @@
-'use client'
+'use client';
 
-import { Phone } from "lucide-react"
-import { useGetAdminProfileQuery } from "@/services/auth"
-import { useGetSiteSettingsQuery } from "@/services/siteSettings"
+import { Phone } from "lucide-react";
+import { useGetAdminProfileQuery } from "@/services/auth";
+import { useGetSiteSettingsQuery } from "@/services/siteSettings";
 
 export default function FloatingButtons() {
-  const { data: adminProfile } = useGetAdminProfileQuery()
-  const { data: siteSettings } = useGetSiteSettingsQuery()
+  const { data: adminProfile } = useGetAdminProfileQuery();
+  const { data: siteSettings } = useGetSiteSettingsQuery();
 
-  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 8800177307"
-  const phoneClean = phone.replace(/\s+/g, '')
+  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 83031 45434";
+  const phoneClean = phone.replace(/\s+/g, '');
 
-  // WhatsApp link: prioritize settings whatsapp link if provided, otherwise build wa.me link with digits
-  const whatsappCustom = siteSettings?.socialLinks?.whatsapp?.trim()
-  const rawDigits = phone.replace(/\D/g, '')
-  const whatsappDigits = rawDigits.length === 10 ? `91${rawDigits}` : (rawDigits || '918800177307')
-
-  const whatsappUrl = whatsappCustom
-    ? (whatsappCustom.startsWith('http') ? whatsappCustom : `https://wa.me/${whatsappCustom.replace(/\D/g, '')}`)
-    : `https://wa.me/${whatsappDigits}`
-
-  const callUrl = `tel:${phoneClean || '+918800177307'}`
+  const whatsappMessage = encodeURIComponent("Hello Maxx Infra, I am interested in exploring verified properties in Lucknow / NCR.");
+  const whatsappUrl = `https://wa.me/918303145434?text=${whatsappMessage}`;
+  const callUrl = `tel:${phoneClean || '+918303145434'}`;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
@@ -29,7 +22,7 @@ export default function FloatingButtons() {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Contact us on WhatsApp"
+        aria-label="Chat on WhatsApp"
         className="w-12 h-12 sm:w-14 sm:h-14 bg-[#25D366] hover:bg-[#20ba5a] text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group relative"
       >
         <svg
@@ -48,13 +41,13 @@ export default function FloatingButtons() {
       <a
         href={callUrl}
         aria-label="Call Us"
-        className="w-12 h-12 sm:w-14 sm:h-14 bg-secondary hover:bg-secondary-dark text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group relative"
+        className="w-12 h-12 sm:w-14 sm:h-14 bg-primary hover:bg-primary-dark text-white rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group relative border-2 border-secondary"
       >
-        <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
+        <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
         <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-xs px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md">
-          Call Now
+          Call +91 83031 45434
         </span>
       </a>
     </div>
-  )
+  );
 }

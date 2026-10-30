@@ -3,9 +3,11 @@
 import Link from "next/link";
 import {
   Facebook,
-  Twitter,
-  Linkedin,
   Instagram,
+  Youtube,
+  Phone,
+  Mail,
+  MapPin
 } from "lucide-react";
 import { Container } from "@/components/ui";
 import { useGetAdminProfileQuery } from "@/services/auth";
@@ -15,57 +17,54 @@ export default function TopBar() {
   const { data: adminProfile } = useGetAdminProfileQuery();
   const { data: siteSettings } = useGetSiteSettingsQuery();
 
-  const email = siteSettings?.contactEmail || adminProfile?.email || "hello@peopleconsulting.co";
-  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 8800177307";
-  const facebook = siteSettings?.socialLinks?.facebook || adminProfile?.facebookUrl || "#";
-  const linkedin = siteSettings?.socialLinks?.linkedin || adminProfile?.linkedinUrl || "https://www.linkedin.com/company/people-consulting-services/";
-  const instagram = siteSettings?.socialLinks?.instagram || adminProfile?.instagramUrl || "https://www.instagram.com/peopleconsultco?igsh=bGNkZzVoeDNoGl2";
-  const twitter = siteSettings?.socialLinks?.twitter || adminProfile?.twitterUrl || "";
+  const email = siteSettings?.contactEmail || adminProfile?.email || "contact@maxxinfradevelopersconsultant.com";
+  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 83031 45434";
+  const facebook = siteSettings?.socialLinks?.facebook || "https://facebook.com";
+  const instagram = siteSettings?.socialLinks?.instagram || "https://instagram.com";
+  const youtube = "https://youtube.com";
 
   return (
-    <div className="bg-secondary text-white py-2.5 text-sm hidden lg:block">
+    <div className="bg-primary-dark text-slate-200 py-2 text-xs hidden lg:block border-b border-white/10">
       <Container className="flex justify-between items-center">
-
-        {/* Left: Email & Phone */}
-        <div className="flex gap-6 font-medium">
+        {/* Left: Location & Contact */}
+        <div className="flex items-center gap-6 font-medium">
+          <span className="flex items-center gap-1.5 text-slate-300">
+            <MapPin size={13} className="text-secondary" />
+            Deva Road, Outer Ring Road, Lucknow &amp; NCR
+          </span>
           <a
             href={`mailto:${email}`}
-            className="hover:text-white/80 transition"
+            className="flex items-center gap-1.5 hover:text-secondary transition text-slate-300"
           >
+            <Mail size={13} className="text-secondary" />
             {email}
           </a>
           <a
             href={`tel:${phone.replace(/\s+/g, '')}`}
-            className="hover:text-white/80 transition"
+            className="flex items-center gap-1.5 font-bold text-white hover:text-secondary transition"
           >
+            <Phone size={13} className="text-secondary" />
             {phone}
           </a>
         </div>
 
-        {/* Right: Social Icons */}
+        {/* Right: Badge & Socials */}
         <div className="flex items-center gap-4">
-          {linkedin && (
-            <Link href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition" aria-label="LinkedIn">
-              <Linkedin size={16} strokeWidth={1.8} />
+          <span className="text-[11px] font-semibold text-secondary uppercase tracking-wider bg-secondary/15 px-2.5 py-0.5 rounded-full border border-secondary/20">
+            Zero Brokerage • 100% Verified Titles
+          </span>
+          <div className="flex items-center gap-3 ml-2">
+            <Link href={facebook} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition" aria-label="Facebook">
+              <Facebook size={14} />
             </Link>
-          )}
-          {instagram && (
-            <Link href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition" aria-label="Instagram">
-              <Instagram size={16} strokeWidth={1.8} />
+            <Link href={instagram} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition" aria-label="Instagram">
+              <Instagram size={14} />
             </Link>
-          )}
-          {facebook && (
-            <Link href={facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition" aria-label="Facebook">
-              <Facebook size={16} strokeWidth={1.8} />
+            <Link href={youtube} target="_blank" rel="noopener noreferrer" className="hover:text-secondary transition" aria-label="YouTube">
+              <Youtube size={14} />
             </Link>
-          )}
-          {twitter && (
-            <Link href={twitter} target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition" aria-label="Twitter">
-              <Twitter size={16} strokeWidth={1.8} />
-            </Link>
-          )}
+          </div>
         </div>
-
       </Container>
     </div>
   );

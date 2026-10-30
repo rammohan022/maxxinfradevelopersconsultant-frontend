@@ -1,13 +1,11 @@
-
 import type { Metadata } from "next";
 import { TopBar, Header, Footer } from "@/components/layout";
-import DynamicSeo from "@/components/seo/DynamicSeo";
 import { FloatingButtons } from "@/components/home";
 
 export const metadata: Metadata = {
-  title: "People Consulting",
+  title: "Maxx Infra Developers & Consultant",
   description:
-    "Leading consulting firm. Corporate, Financial, Legal, and Strategic consulting services. Call +91 8800177307.",
+    "Leading real estate and infrastructure developers in Lucknow & NCR. Luxury villas, row houses, and residential plots. Call +91 83031 45434.",
 };
 
 export default function PageLayout({
@@ -16,15 +14,14 @@ export default function PageLayout({
   children: React.ReactNode;
 }) {
   return (
-      <>
-        <DynamicSeo />
-        <TopBar />
-        <Header />
-        <main className="w-full">
-          {children}
-        </main>
-        <Footer />
-        <FloatingButtons />
-      </>
+    <>
+      <TopBar />
+      <Header />
+      <main className="w-full">
+        {children}
+      </main>
+      <Footer />
+      <FloatingButtons />
+    </>
   );
 }

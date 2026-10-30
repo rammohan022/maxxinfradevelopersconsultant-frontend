@@ -1,44 +1,45 @@
 import React from "react";
-import Image from "next/image"
+import Image from "next/image";
+import Link from "next/link";
+import { ShieldCheck } from "lucide-react";
 
 const ContactHero: React.FC = () => {
   return (
     <section
       id="hero-section"
-      className="relative h-[400px] flex items-center justify-center"
+      className="relative h-[380px] flex items-center justify-center overflow-hidden bg-primary"
     >
       {/* Background Image */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0">
         <Image
-          src="/img/contact-hero-bg-v2.png"
-          alt="modern, bright corporate office interior with professional business consulting environment"
+          src="/img/hero/real_estate_hero.jpg"
+          alt="Contact Maxx Infra Developers & Consultant"
           fill
           className="object-cover"
         />
-        {/* Solid Dark Gray Overlay with Opacity */}
-        <div className="absolute inset-0 bg-gray-900/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/90" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-4xl text-center text-white px-4 sm:px-6 lg:px-8">
-        <div className="mb-4 text-sm font-medium tracking-wider">
-          <a
-            href="/"
-            className="hover:text-maroon transition-colors"
-          >
+        <div className="mb-4 text-xs font-semibold tracking-wider flex items-center justify-center space-x-2 text-slate-300">
+          <Link href="/" className="hover:text-secondary transition-colors">
             Home
-          </a>
-          <span className="mx-3">/</span>
-          <span className="text-gray-300">Contact Us</span>
+          </Link>
+          <span>/</span>
+          <span className="text-secondary">Contact Us</span>
         </div>
 
-        <h1 className="text-white text-xl md:text-2xl font-bold tracking-tight mb-6">
-          Contact Us
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/20 text-secondary text-xs font-bold uppercase tracking-wider mb-3 border border-secondary/30">
+          <ShieldCheck size={14} /> Free Site Visit &amp; Consultancy
+        </div>
+
+        <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight mb-3">
+          Get in Touch with Our Real Estate Experts
         </h1>
 
-        <p className="text-xs md:text-sm text-gray-200 mt-1 max-w-3xl mx-auto leading-relaxed">
-          We&apos;re here to provide expert legal counsel and representation.
-          Reach out to discuss your legal needs with our experienced attorneys.
+        <p className="text-xs md:text-sm text-slate-200 max-w-2xl mx-auto leading-relaxed">
+          Planning to buy a verified home, villa, row house, or residential plot in Lucknow or NCR? Schedule a free site tour or request a direct callback from our project consultants.
         </p>
       </div>
     </section>

@@ -1,4 +1,5 @@
-import CareerDetailsPage from "../../careers/[id]/page";
-export { metadata } from "../../careers/[id]/page";
+import JobDetailsClient from "@/components/career/JobDetailsClient";
 
-export default CareerDetailsPage;
+export default function CareerDetailsPage() {
+  return <JobDetailsClient />;
+}

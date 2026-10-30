@@ -16,15 +16,15 @@ export interface CallToActionProps {
 }
 
 const defaultButtons: CTAButton[] = [
-    { label: "Looking for Job", href: "/career" },
-    { label: "Get In Touch", href: "/contact-us", primary: true },
-    { label: "HR Solutions", href: "/services" },
+    { label: "Book Free Site Visit", href: "/contact", primary: true },
+    { label: "Explore Properties", href: "/properties" },
+    { label: "Home Loan Help", href: "/loan" },
 ];
 
 const CTASection: React.FC<CallToActionProps> = ({
     badge,
-    title = "Connect with us",
-    description = "Whether you're looking to hire, transform HR, build capabilities or strengthen compliance, we bring practical HR expertise and technology together to create measurable impact.",
+    title = "Find Your Dream Home with Maxx Infra Developers",
+    description = "100% verified registry titles, direct developer prices, and complimentary cab site tours across Lucknow & NCR.",
     buttons = defaultButtons,
 }) => {
     return (

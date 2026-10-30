@@ -1,188 +1,182 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { Container } from '@/components/ui'
-import { motion } from 'framer-motion'
-import { ChevronDown, Send } from 'lucide-react'
-import { useCreateLeadMutation } from '@/services/lead'
-import toast from 'react-hot-toast'
+import { useState } from 'react';
+import { Container } from '@/components/ui';
+import { motion } from 'framer-motion';
+import { ChevronDown, Send, Phone, MapPin, Mail, ShieldCheck, Calendar } from 'lucide-react';
+import { useCreateLeadMutation } from '@/services/lead';
+import toast from 'react-hot-toast';
 
-const serviceCategories = [
-  "HR Consulting & Advisory",
-  "Talent Acquisition & Staffing",
-  "Corporate Training & Leadership Development",
-  "Payroll Management & Processing",
-  "Labour Law & Statutory Compliance",
-  "HRMS & Software Solutions (PeopleX)",
-  "Executive Search",
-  "Other Enquiries",
-]
+const propertyCategories = [
+  "2 BHK / 3 BHK Modern Row House",
+  "Luxury Duplex Villa",
+  "Goyala City Township Plot",
+  "Gated Society Residential Plot",
+  "Independent Builder Floor",
+  "Free Site Visit with Cab Facility",
+  "Home Loan & Banking Consultation",
+  "Other Property Inquiry",
+];
 
 export default function Contact() {
-  const [createLead, { isLoading: isSubmitting }] = useCreateLeadMutation()
+  const [createLead, { isLoading: isSubmitting }] = useCreateLeadMutation();
   const [form, setForm] = useState({
     fullName: '',
     email: '',
     phoneNumber: '',
-    subject: '',
+    subject: propertyCategories[0],
     message: '',
-  })
+  });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (!form.subject) {
-      toast.error("Please select a service category.")
-      return
+    e.preventDefault();
+    if (!form.fullName || !form.phoneNumber) {
+      toast.error("Please enter your name and contact number.");
+      return;
     }
     try {
       await createLead({
         ...form,
-        source: typeof window !== "undefined" ? window.location.pathname : "",
-      }).unwrap()
-      toast.success("Enquiry submitted successfully! We'll get back to you soon.")
-      setForm({ fullName: '', email: '', phoneNumber: '', subject: '', message: '' })
+        email: form.email || "lead@maxxinfradevelopersconsultant.com",
+        source: typeof window !== "undefined" ? window.location.pathname : "Homepage Lead Form",
+      }).unwrap();
+      toast.success("Enquiry submitted successfully! Our consultant will call you shortly.");
+      setForm({ fullName: '', email: '', phoneNumber: '', subject: propertyCategories[0], message: '' });
     } catch (err) {
-      console.error('Submission error:', err)
-      toast.error('Failed to submit enquiry. Please try again later.')
+      console.error('Submission error:', err);
+      toast.error('Failed to submit enquiry. Please call us directly at +91 83031 45434.');
     }
-  }
+  };
 
   return (
-    <section className="relative bg-slate-50/70 py-16 md:py-20 scroll-mt-20 overflow-hidden border-b border-slate-100/80" id="contact">
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 transform origin-top-right hidden lg:block pointer-events-none" />
-
+    <section className="relative bg-slate-50 py-16 md:py-24 scroll-mt-20 overflow-hidden" id="contact">
       <Container className="relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-          <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight">
-            Contact <span className="text-secondary">Us</span>
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+            Book Site Visit
+          </span>
+          <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">
+            Schedule Free Cab Site Inspection
           </h2>
+          <p className="text-xs md:text-sm text-slate-600 mt-2">
+            Inspect multiple projects with our senior engineers. Complimentary cab pickup &amp; drop available across Lucknow.
+          </p>
         </div>
 
-        {/* Compact Card */}
-        <div className="max-w-5xl mx-auto grid items-stretch lg:grid-cols-12 rounded-2xl overflow-hidden shadow-xl border border-slate-200/90 bg-white">
-          {/* Left Column: Team / Professional Discussion Image */}
-          <div className="lg:col-span-6 relative min-h-[260px] lg:min-h-full w-full overflow-hidden bg-slate-900">
-            <Image
-              src="/img/home-contact.png"
-              alt="People Consulting Team Discussion"
-              fill
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
-          </div>
-
-          {/* Right Form: Compact Height */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="lg:col-span-6 p-6 sm:p-7 lg:p-8 bg-white relative flex flex-col justify-center"
-          >
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-2 w-fit">
-              Contact Form
+        <div className="max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-slate-100 grid md:grid-cols-12 gap-8 items-center">
+          {/* Left Contact Info */}
+          <div className="md:col-span-5 bg-primary text-white p-7 rounded-2xl space-y-5">
+            <span className="text-xs font-bold uppercase tracking-wider text-secondary block">
+              Direct Desk
             </span>
-
-            <h3 className="text-lg sm:text-xl font-bold text-primary tracking-tight mb-1.5">
-              Discuss Your Requirements
+            <h3 className="text-xl font-extrabold leading-snug">
+              Have Questions? Talk to an Expert
             </h3>
-            <p className="text-xs text-slate-600 mb-4 leading-relaxed font-normal">
-              Tell us what your organisation needs, and our experts will help you explore the right HR, training, and people solutions.
+            <p className="text-xs text-slate-300 leading-relaxed">
+              We provide transparent developer rates, zero brokerage, and immediate mutation assistance.
             </p>
 
-            <form onSubmit={handleSubmit} className="space-y-3.5 relative z-10">
-              {/* Name */}
+            <div className="space-y-4 pt-2 text-xs text-slate-200">
+              <div className="flex items-start gap-2.5">
+                <MapPin size={16} className="text-secondary shrink-0 mt-0.5" />
+                <span>Deva Road, Outer Ring Road (Kisan Path), Lucknow, UP</span>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Phone size={16} className="text-secondary shrink-0" />
+                <a href="tel:+918303145434" className="text-white hover:text-secondary font-bold">
+                  +91 83031 45434
+                </a>
+              </div>
+              <div className="flex items-center gap-2.5">
+                <Mail size={16} className="text-secondary shrink-0" />
+                <span>contact@maxxinfradevelopersconsultant.com</span>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-secondary font-semibold">
+              <ShieldCheck size={16} /> 100% Certified Clear Titles
+            </div>
+          </div>
+
+          {/* Right Form */}
+          <div className="md:col-span-7">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Your Full Name *</label>
                 <input
                   type="text"
-                  placeholder="Your Name"
                   required
+                  placeholder="e.g. Anand Mishra"
                   value={form.fullName}
                   onChange={(e) => setForm({ ...form, fullName: e.target.value })}
-                  className="w-full rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 outline-none transition-all duration-200 focus:bg-white focus:border-secondary focus:ring-2 focus:ring-secondary/10 placeholder:text-slate-400 font-normal text-xs sm:text-sm text-slate-800"
+                  className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800"
                 />
               </div>
 
-              {/* Email */}
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  required
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="w-full rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 outline-none transition-all duration-200 focus:bg-white focus:border-secondary focus:ring-2 focus:ring-secondary/10 placeholder:text-slate-400 font-normal text-xs sm:text-sm text-slate-800"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Phone / WhatsApp *</label>
+                  <input
+                    type="tel"
+                    required
+                    placeholder="+91 9876543210"
+                    value={form.phoneNumber}
+                    onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })}
+                    className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Email (Optional)</label>
+                  <input
+                    type="email"
+                    placeholder="name@example.com"
+                    value={form.email}
+                    onChange={(e) => setForm({ ...form, email: e.target.value })}
+                    className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800"
+                  />
+                </div>
               </div>
 
-              {/* Phone */}
               <div>
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  value={form.phoneNumber}
-                  onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })}
-                  className="w-full rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 outline-none transition-all duration-200 focus:bg-white focus:border-secondary focus:ring-2 focus:ring-secondary/10 placeholder:text-slate-400 font-normal text-xs sm:text-sm text-slate-800"
-                />
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Property Type / Service</label>
+                <div className="relative">
+                  <select
+                    value={form.subject}
+                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                    className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent bg-white text-slate-800 appearance-none pr-8"
+                  >
+                    {propertyCategories.map((cat, idx) => (
+                      <option key={idx} value={cat}>{cat}</option>
+                    ))}
+                  </select>
+                  <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none" />
+                </div>
               </div>
 
-              {/* Service Dropdown */}
-              <div className="relative">
-                <select
-                  required
-                  value={form.subject}
-                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  className={`w-full rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2.5 outline-none transition-all duration-200 focus:bg-white focus:border-secondary focus:ring-2 focus:ring-secondary/10 text-xs sm:text-sm appearance-none cursor-pointer pr-10 font-normal ${
-                    !form.subject ? 'text-slate-400' : 'text-slate-800 font-medium'
-                  }`}
-                >
-                  <option value="" disabled>
-                    Subject / Service Required
-                  </option>
-                  {serviceCategories.map((cat) => (
-                    <option key={cat} value={cat} className="text-slate-800">
-                      {cat}
-                    </option>
-                  ))}
-                </select>
-                <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-              </div>
-
-              {/* Message */}
               <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Special Requirements / Preferred Date</label>
                 <textarea
-                  placeholder="Tell us about your requirements..."
                   rows={2}
+                  placeholder="e.g. Looking for ready to move 2 BHK row house under 50 Lakhs. Need site visit this Sunday."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full resize-none rounded-xl bg-slate-50 border border-slate-200 px-3.5 py-2 outline-none transition-all duration-200 focus:bg-white focus:border-secondary focus:ring-2 focus:ring-secondary/10 placeholder:text-slate-400 font-normal text-xs sm:text-sm text-slate-800"
+                  className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800"
                 />
               </div>
-              {/* Submit */}
-              <motion.button
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
+
+              <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full rounded-xl bg-secondary py-2.5 font-bold text-white text-xs sm:text-sm transition-colors hover:bg-secondary-dark shadow-md hover:shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 disabled:bg-slate-400"
+                className="w-full py-3.5 px-4 rounded-xl bg-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-primary-dark transition shadow-md flex items-center justify-center gap-2"
               >
-                {isSubmitting ? (
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  <>
-                    <span>Get An Expert</span>
-                    <Send size={14} />
-                  </>
-                )}
-              </motion.button>
+                <Send size={14} className="text-secondary" />
+                {isSubmitting ? "Submitting Inquiry..." : "Submit Inquiry & Book Cab"}
+              </button>
             </form>
-          </motion.div>
+          </div>
         </div>
       </Container>
     </section>
-  )
+  );
 }

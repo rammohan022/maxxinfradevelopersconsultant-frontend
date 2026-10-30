@@ -1,247 +1,171 @@
-  'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { Container } from '@/components/ui'
-import { motion, AnimatePresence, Variants } from 'framer-motion'
-import { useGetWebsiteLinksQuery } from '@/services/websiteLink'
-import { useGetBannersQuery } from '@/services/banners'
-import { getImageUrl } from '@/lib/utils/imageUtils'
-
-const defaultSlides = [
-  {
-    tag: 'HR & RECRUITMENT',
-    title: "Aligning Strategy With",
-    highlight: 'People & Culture',
-    subtitle: '',
-    desc: 'Increasing your competitive advantage',
-    body: 'People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes. We help organizations become High Performance workplaces.',
-    ctaText: 'Explore Services',
-    ctaLink: '/services',
-    secondaryCtaText: 'Learn More',
-    secondaryCtaLink: '/about-us',
-    image: '/img/recruitment_banner.png',
-  },
-  {
-    tag: 'TALENT ACQUISITION',
-    title: 'Connecting Top Talent With',
-    highlight: 'Industry Leaders',
-    subtitle: '',
-    desc: '500+ Active Jobs across all sectors',
-    body: 'Our recruitment strategy focuses on clarity, structure, and navigating a wide range of market conditions to match the right candidates with the right employers effectively.',
-    ctaText: 'View Openings',
-    ctaLink: '/career',
-    secondaryCtaText: 'Learn More',
-    secondaryCtaLink: '/about-us',
-    image: '/img/recruitment_banner.png',
-  },
-  {
-    tag: 'CORPORATE TRAINING',
-    title: 'Excellence Through',
-    highlight: 'People',
-    subtitle: '',
-    desc: 'Comprehensive HR Training & Development',
-    body: 'Everything we do is driven by our mission to build a better world by helping organizations become Great Employers to work for all, through comprehensive training and compliance frameworks.',
-    ctaText: 'Contact Us',
-    ctaLink: '/contact-us',
-    secondaryCtaText: 'Learn More',
-    secondaryCtaLink: '/about-us',
-    image: '/img/recruitment_banner.png',
-  },
-]
-
-import Image from 'next/image'
-
-const slideVariants: Variants = {
-  enter: { opacity: 0, x: -30 },
-  center: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: 30 },
-}
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { 
+  Building2, 
+  MapPin, 
+  Search, 
+  ShieldCheck, 
+  Sparkles, 
+  Phone, 
+  CheckCircle2, 
+  ArrowRight,
+  Compass,
+  Home as HomeIcon
+} from "lucide-react";
+import { Container } from "@/components/ui";
+import { PROPERTY_CATEGORIES, POPULAR_LOCALITIES } from "@/data/properties";
 
 export default function Hero() {
-  const { data: externalLinks = [] } = useGetWebsiteLinksQuery()
-  const { data: apiBanners = [] } = useGetBannersQuery({ activeOnly: true })
-  const [current, setCurrent] = useState(0)
+  const router = useRouter();
+  const [category, setCategory] = useState("All");
+  const [location, setLocation] = useState("All Locations");
+  const [budget, setBudget] = useState("All");
 
-  const activeSlides = apiBanners.length > 0
-    ? apiBanners.map((b) => ({
-        tag: b.tag || 'HR & RECRUITMENT',
-        title: b.title,
-        highlight: b.highlight || '',
-        subtitle: b.subtitle || '',
-        desc: b.subtitle || '',
-        body: b.description || b.subtitle || 'People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes.',
-        ctaText: b.ctaText || 'Explore Services',
-        ctaLink: b.ctaLink || '/services',
-        secondaryCtaText: b.secondaryCtaText || 'Learn More',
-        secondaryCtaLink: b.secondaryCtaLink || '/about-us',
-        image: b.image ? getImageUrl(b.image) : '/img/recruitment_banner.png',
-      }))
-    : defaultSlides;
-
-  useEffect(() => {
-    const t = setInterval(() => setCurrent((c) => (c + 1) % activeSlides.length), 6000)
-    return () => clearInterval(t)
-  }, [activeSlides.length])
-
-  const activeSlide = activeSlides[current] || activeSlides[0]
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const query = new URLSearchParams();
+    if (category !== "All") query.set("category", category);
+    if (location !== "All Locations") query.set("location", location);
+    if (budget !== "All") query.set("budget", budget);
+    router.push(`/properties?${query.toString()}`);
+  };
 
   return (
-    <section className="relative min-h-[650px] lg:min-h-[700px] flex items-center bg-white overflow-hidden border-b border-slate-200">
-      {/* Background Banner Image */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="relative bg-primary text-white overflow-hidden min-h-[580px] lg:min-h-[660px] flex items-center">
+      {/* Background Imagery with Subtle Vignette */}
+      <div className="absolute inset-0 z-0">
         <Image
-          src={activeSlide.image}
-          alt={activeSlide.title || "People Consulting Banner"}
+          src="/img/hero/real_estate_hero.jpg"
+          alt="Luxury Homes & Plots in Lucknow"
           fill
           priority
-          quality={100}
-          unoptimized
-          className="object-cover object-right md:object-center opacity-95 transition-all duration-700"
-          sizes="100vw"
+          className="object-cover object-center scale-105"
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/95 via-primary/85 to-primary-dark/75" />
       </div>
-      {/* Gradient overlay to ensure text readability on mobile/tablet */}
-      <div className="absolute inset-0 bg-white/90 md:bg-white/40 lg:bg-transparent z-0" />
 
-      <Container className="relative w-full py-16 lg:py-14 z-10">
-        <div className="max-w-xl lg:max-w-2xl flex flex-col justify-center min-h-[400px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={current}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-            >
-              {activeSlide.tag && (
-                <motion.span
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1, duration: 0.4 }}
-                  className="inline-block text-primary text-xs sm:text-sm font-bold mb-4 tracking-widest border-l-4 border-secondary pl-3 bg-slate-100/90 py-1 pr-3 rounded-r-md"
+      <Container className="relative z-10 py-16 lg:py-24">
+        <div className="max-w-3xl">
+          {/* Tag Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-xs font-bold uppercase tracking-wider mb-5">
+            <ShieldCheck size={16} /> 100% Verified Titles &amp; Zero Brokerage
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight mb-5">
+            Find Your Dream Property in <span className="text-secondary">Lucknow &amp; NCR</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl mb-8">
+            Handpicked modern row houses, luxury duplex villas, independent builder floors, and gated society plots. Direct developer pricing, immediate mutation, and bank home loan support.
+          </p>
+
+          {/* Search Card */}
+          <div className="bg-white/95 backdrop-blur-md rounded-3xl p-5 md:p-6 shadow-2xl border border-white/20 text-slate-800">
+            <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
+              {/* Category */}
+              <div>
+                <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                  Property Type
+                </label>
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-800 focus:outline-none focus:border-primary bg-white"
                 >
-                  {activeSlide.tag}
-                </motion.span>
-              )}
-
-              <motion.h1
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4"
-              >
-                {activeSlide.title}{' '}
-                {activeSlide.highlight && (
-                  <span className="text-secondary">{activeSlide.highlight}</span>
-                )}{' '}
-                {activeSlide.subtitle}
-              </motion.h1>
-
-              {activeSlide.desc && (
-                <motion.p
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3, duration: 0.4 }}
-                  className="text-sm sm:text-base text-slate-800 font-semibold mb-2"
-                >
-                  {activeSlide.desc}
-                </motion.p>
-              )}
-
-              {activeSlide.body && (
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.4 }}
-                  className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl mb-8 leading-relaxed rich-text-content [&_p]:mb-2 [&_p:last-child]:mb-0 [&_a]:text-secondary [&_a]:underline [&_strong]:text-slate-800 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-2 [&_ol]:list-decimal [&_ol]:pl-5 [&_ol]:mb-2 [&_li]:mb-1"
-                  dangerouslySetInnerHTML={{ __html: activeSlide.body }}
-                />
-              )}
-
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.4 }}
-                className="flex flex-wrap gap-3 sm:gap-4"
-              >
-                {activeSlide.ctaText && activeSlide.ctaLink && (
-                  <Link
-                    href={activeSlide.ctaLink}
-                    className="bg-secondary hover:bg-secondary-dark text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block shadow-md hover:shadow-secondary/20 hover:-translate-y-0.5"
-                  >
-                    {activeSlide.ctaText}
-                  </Link>
-                )}
-                {activeSlide.secondaryCtaText && activeSlide.secondaryCtaLink && (
-                  <Link
-                    href={activeSlide.secondaryCtaLink}
-                    className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg font-semibold transition-all duration-300 inline-block bg-white"
-                  >
-                    {activeSlide.secondaryCtaText}
-                  </Link>
-                )}
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Slide Indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="flex gap-2 mt-12 mb-2"
-          >
-            {activeSlides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`h-2 rounded-full transition-all duration-300 ${i === current ? 'bg-secondary w-8' : 'bg-slate-300 w-3 hover:bg-slate-400'
-                  }`}
-                aria-label={`Slide ${i + 1}`}
-              />
-            ))}
-          </motion.div>
-
-          {/* Associated Portals/Links */}
-          {externalLinks && externalLinks.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="mt-8 pt-6 border-t border-slate-200/50 flex flex-wrap items-center gap-3"
-            >
-              <span className="text-xs sm:text-sm font-bold text-slate-800 tracking-wider">Associated Portals:</span>
-              <div className="flex flex-wrap gap-2.5 items-center">
-                {externalLinks.slice(0, 1).map((link) => (
-                  <a
-                    key={link.id}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={link.title}
-                    className="bg-slate-100/80 hover:bg-white hover:border-slate-300 px-3 py-1.5 rounded-lg font-semibold text-slate-700 hover:scale-[1.03] active:scale-[0.98] transition-all text-xs border border-slate-200 inline-flex items-center justify-center shadow-sm"
-                  >
-                    {link.logo ? (
-                      <div className="relative h-6 w-20 sm:w-24">
-                        <Image
-                          src={getImageUrl(link.logo)}
-                          alt={link.title}
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                    ) : (
-                      <span>{link.title}</span>
-                    )}
-                  </a>
-                ))}
+                  {PROPERTY_CATEGORIES.map((c) => (
+                    <option key={c} value={c}>{c === "All" ? "All Types" : c}</option>
+                  ))}
+                </select>
               </div>
-            </motion.div>
-          )}
+
+              {/* Locality */}
+              <div>
+                <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                  Locality
+                </label>
+                <select
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-800 focus:outline-none focus:border-primary bg-white"
+                >
+                  {POPULAR_LOCALITIES.map((loc) => (
+                    <option key={loc} value={loc}>{loc}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Budget */}
+              <div>
+                <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+                  Budget Range
+                </label>
+                <select
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-800 focus:outline-none focus:border-primary bg-white"
+                >
+                  <option value="All">Any Budget</option>
+                  <option value="under-30l">Under ₹30 Lakhs</option>
+                  <option value="30l-60l">₹30 Lakhs - ₹60 Lakhs</option>
+                  <option value="60l-1cr">₹60 Lakhs - ₹1 Crore</option>
+                  <option value="above-1cr">Above ₹1 Crore</option>
+                </select>
+              </div>
+
+              {/* Search Button */}
+              <div>
+                <button
+                  type="submit"
+                  className="w-full py-3 px-5 rounded-xl bg-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-primary-dark transition shadow-lg flex items-center justify-center gap-2"
+                >
+                  <Search size={15} className="text-secondary" /> Search Properties
+                </button>
+              </div>
+            </form>
+          </div>
+
+          {/* Quick Stats Banner below search */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-6 border-t border-white/10 text-white">
+            <div className="flex items-center gap-2.5">
+              <CheckCircle2 size={18} className="text-secondary shrink-0" />
+              <div>
+                <div className="text-lg font-black leading-none">500+</div>
+                <div className="text-[11px] text-slate-300 mt-1">Families Settled</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5">
+              <CheckCircle2 size={18} className="text-secondary shrink-0" />
+              <div>
+                <div className="text-lg font-black leading-none">100%</div>
+                <div className="text-[11px] text-slate-300 mt-1">Clear Titles</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5">
+              <CheckCircle2 size={18} className="text-secondary shrink-0" />
+              <div>
+                <div className="text-lg font-black leading-none">0%</div>
+                <div className="text-[11px] text-slate-300 mt-1">Brokerage Fee</div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5">
+              <CheckCircle2 size={18} className="text-secondary shrink-0" />
+              <div>
+                <div className="text-lg font-black leading-none">Free Cab</div>
+                <div className="text-[11px] text-slate-300 mt-1">Site Visits</div>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
-    </section>
-  )
+    </div>
+  );
 }

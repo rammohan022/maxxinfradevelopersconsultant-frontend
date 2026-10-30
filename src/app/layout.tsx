@@ -9,8 +9,8 @@ import ToastProvider from "@/components/ui/ToastProvider";
 import { OrganizationJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
-  title: "People Consulting | Top Corporate HR & Staffing Solutions",
-  description: "People Consulting provides trusted HR consulting, talent recruitment, executive search, labor compliance, and payroll management solutions.",
+  title: "Maxx Infra Developers & Consultant | Property in Lucknow & NCR | Buy, Sell & Invest",
+  description: "Buy, sell or invest in verified property in Lucknow & NCR — builder floors, luxury duplex villas, modern row houses, and residential plots. Zero brokerage, transparent pricing from Maxx Infra Developers & Consultant.",
   verification: {
     google: "kDrfjBxMbe8b1BGHnyanot_utxDors7rPGLK8mgJkjA",
   },

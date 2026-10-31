@@ -13,24 +13,31 @@ import {
   ShieldCheck, 
   ArrowRight,
   CheckCircle2,
-  Car
+  Car,
+  Key,
+  Home as HomeIcon
 } from "lucide-react";
 import { Container } from "@/components/ui";
 import { PROPERTIES, PROPERTY_CATEGORIES } from "@/data/properties";
 
 export default function FeaturedProperties() {
-  const [activeTab, setActiveTab] = useState("All");
+  const [purposeTab, setPurposeTab] = useState<"All" | "Buy" | "Rent">("All");
+  const [categoryTab, setCategoryTab] = useState<string>("All");
+
+  const buyCount = PROPERTIES.filter((p) => p.purpose === "Buy").length;
+  const rentCount = PROPERTIES.filter((p) => p.purpose === "Rent").length;
 
   const filtered = PROPERTIES.filter((p) => {
-    if (activeTab === "All") return true;
-    return p.category === activeTab;
+    const matchPurpose = purposeTab === "All" || p.purpose === purposeTab;
+    const matchCat = categoryTab === "All" || p.category === categoryTab;
+    return matchPurpose && matchCat;
   }).slice(0, 6);
 
   return (
     <section className="py-16 md:py-24 bg-white">
       <Container>
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-1">
               Handpicked Portfolios
@@ -51,21 +58,70 @@ export default function FeaturedProperties() {
           </Link>
         </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap gap-2 mb-10">
-          {PROPERTY_CATEGORIES.map((cat) => (
+        {/* Filter Bar: Buy vs Rent Filter + Categories */}
+        <div className="bg-slate-50 rounded-2xl p-4 md:p-5 border border-slate-100 mb-10 space-y-4">
+          {/* Primary Purpose Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2">
             <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
+              onClick={() => setPurposeTab("All")}
               className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition ${
-                activeTab === cat
+                purposeTab === "All"
                   ? "bg-primary text-white shadow-md"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  : "bg-white text-slate-600 hover:bg-slate-200 border border-slate-200/60"
               }`}
             >
-              {cat}
+              All Listings ({PROPERTIES.length})
             </button>
-          ))}
+            <button
+              onClick={() => setPurposeTab("Buy")}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center gap-1.5 ${
+                purposeTab === "Buy"
+                  ? "bg-primary text-white shadow-md"
+                  : "bg-white text-slate-600 hover:bg-slate-200 border border-slate-200/60"
+              }`}
+            >
+              <HomeIcon size={14} className={purposeTab === "Buy" ? "text-secondary" : ""} />
+              For Sale / Buy ({buyCount})
+            </button>
+            <button
+              onClick={() => setPurposeTab("Rent")}
+              className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center gap-1.5 ${
+                purposeTab === "Rent"
+                  ? "bg-secondary text-primary-dark shadow-md font-extrabold"
+                  : "bg-white text-slate-600 hover:bg-slate-200 border border-slate-200/60"
+              }`}
+            >
+              <Key size={14} />
+              For Rent ({rentCount})
+            </button>
+
+            <Link
+              href="/#sell-rent-section"
+              className="ml-auto text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3.5 py-2 rounded-xl transition flex items-center gap-1.5"
+            >
+              + Sell / Rent Out Property
+            </Link>
+          </div>
+
+          {/* Secondary Category Pills */}
+          <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-slate-200/60">
+            <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mr-2 hidden sm:inline">
+              Type:
+            </span>
+            {PROPERTY_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setCategoryTab(cat)}
+                className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
+                  categoryTab === cat
+                    ? "bg-primary text-white shadow-xs font-bold"
+                    : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200/50"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Property Grid */}

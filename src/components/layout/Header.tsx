@@ -59,8 +59,8 @@ export default function Header() {
     },
     { label: "Buy", href: "/properties?purpose=Buy" },
     { label: "Rent", href: "/properties?purpose=Rent" },
-    { label: "Sell With Us", href: "/#sell-rent-section" },
-    { label: "About Us", href: "/about" },
+    { label: "Sell", href: "/#sell-rent-section" },
+    { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -68,38 +68,38 @@ export default function Header() {
     <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
       scrolled ? "bg-white/95 backdrop-blur-md shadow-md py-3" : "bg-white py-4 border-b border-slate-100"
     }`}>
-      <Container className="flex items-center justify-between">
+      <Container className="flex items-center justify-between gap-4 max-w-[1440px]">
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-primary text-secondary flex items-center justify-center font-black shadow-md group-hover:scale-105 transition-transform">
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+          <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-primary text-secondary flex items-center justify-center font-black shadow-md group-hover:scale-105 transition-transform shrink-0">
             <Building2 size={24} className="text-secondary" />
           </div>
           <div>
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-1.5 whitespace-nowrap">
               <span className="text-lg md:text-xl font-black text-primary tracking-tight">MAXX</span>
               <span className="text-lg md:text-xl font-black text-secondary tracking-tight">INFRA</span>
             </div>
-            <span className="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest block -mt-1">
+            <span className="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest block -mt-1 whitespace-nowrap">
               Developers &amp; Consultant
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
+        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-6 2xl:gap-7">
           {navLinks.map((item) => (
             <div
               key={item.label}
-              className="relative"
+              className="relative shrink-0"
               onMouseEnter={() => item.dropdown && setPropertiesDropdown(true)}
               onMouseLeave={() => item.dropdown && setPropertiesDropdown(false)}
             >
               <Link
                 href={item.href}
-                className="flex items-center gap-1 text-xs uppercase tracking-wider font-bold text-slate-700 hover:text-primary transition py-2 whitespace-nowrap"
+                className="flex items-center gap-1 text-[11px] xl:text-xs uppercase tracking-wider font-bold text-slate-700 hover:text-primary transition py-2 whitespace-nowrap shrink-0"
               >
                 {item.label}
-                {item.dropdown && <ChevronDown size={14} className="text-slate-400" />}
+                {item.dropdown && <ChevronDown size={14} className="text-slate-400 shrink-0" />}
               </Link>
 
               {/* Dropdown Menu */}
@@ -112,7 +112,7 @@ export default function Header() {
                       onClick={() => setPropertiesDropdown(false)}
                       className="block p-2.5 rounded-xl hover:bg-slate-50 transition group/sub"
                     >
-                      <div className="text-xs font-bold text-slate-800 group-hover/sub:text-primary">
+                      <div className="text-xs font-bold text-slate-800 group-hover/sub:text-primary whitespace-nowrap">
                         {sub.label}
                       </div>
                       <div className="text-[11px] text-slate-400 mt-0.5">
@@ -127,22 +127,24 @@ export default function Header() {
         </nav>
 
         {/* Right CTA Actions */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-2.5 xl:gap-4 shrink-0">
           <a
             href={`tel:${phone.replace(/\s+/g, '')}`}
-            className="flex items-center gap-2 text-xs font-bold text-slate-800 hover:text-primary transition"
+            className="flex items-center gap-2 text-xs font-bold text-slate-800 hover:text-primary transition shrink-0 whitespace-nowrap"
+            title={`Call ${phone}`}
           >
-            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-primary">
+            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-primary shrink-0 hover:bg-slate-200 transition">
               <Phone size={14} />
             </div>
-            <span>{phone}</span>
+            <span className="hidden xl:inline whitespace-nowrap">{phone}</span>
           </a>
 
           <Link
             href="/contact"
-            className="px-5 py-2.5 rounded-xl bg-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-primary-dark transition shadow-md flex items-center gap-1.5"
+            className="px-3.5 xl:px-5 py-2 xl:py-2.5 rounded-xl bg-primary text-white text-[11px] xl:text-xs font-bold uppercase tracking-wider hover:bg-primary-dark transition shadow-md flex items-center gap-1.5 whitespace-nowrap shrink-0"
           >
-            <Calendar size={14} className="text-secondary" /> Book Site Visit
+            <Calendar size={14} className="text-secondary shrink-0" />
+            <span className="whitespace-nowrap">Book Site Visit</span>
           </Link>
         </div>
 

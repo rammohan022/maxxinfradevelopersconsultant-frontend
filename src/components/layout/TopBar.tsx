@@ -25,7 +25,7 @@ export default function TopBar() {
 
   return (
     <div className="bg-primary-dark text-slate-200 py-2 text-xs hidden lg:block border-b border-white/10">
-      <Container className="flex justify-between items-center">
+      <Container className="flex justify-between items-center whitespace-nowrap">
         {/* Left: Location & Contact */}
         <div className="flex items-center gap-6 font-medium">
           <span className="flex items-center gap-1.5 text-slate-300">

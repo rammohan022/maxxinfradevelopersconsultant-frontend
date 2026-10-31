@@ -60,7 +60,6 @@ export default function Header() {
     { label: "Buy", href: "/properties?purpose=Buy" },
     { label: "Rent", href: "/properties?purpose=Rent" },
     { label: "Sell With Us", href: "/#sell-rent-section" },
-    { label: "Home Loan", href: "/loan" },
     { label: "About Us", href: "/about" },
     { label: "Contact", href: "/contact" },
   ];
@@ -97,7 +96,7 @@ export default function Header() {
             >
               <Link
                 href={item.href}
-                className="flex items-center gap-1 text-xs uppercase tracking-wider font-bold text-slate-700 hover:text-primary transition py-2"
+                className="flex items-center gap-1 text-xs uppercase tracking-wider font-bold text-slate-700 hover:text-primary transition py-2 whitespace-nowrap"
               >
                 {item.label}
                 {item.dropdown && <ChevronDown size={14} className="text-slate-400" />}

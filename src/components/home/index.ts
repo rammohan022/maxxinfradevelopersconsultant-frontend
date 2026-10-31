@@ -2,6 +2,7 @@ export { default as Hero } from './Hero';
 export { default as GoyalaCitySpotlight } from './GoyalaCitySpotlight';
 export { default as FeaturedProperties } from './FeaturedProperties';
 export { default as PropertyCategories } from './PropertyCategories';
+export { default as SellRentSection } from './SellRentSection';
 export { default as EmiCalculatorSection } from './EmiCalculatorSection';
 export { default as LocationsSection } from './LocationsSection';
 export { default as Testimonials } from './Testimonials';

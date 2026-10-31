@@ -1,2 +1,5 @@
-import ContactPage from '../contact/page';
-export default ContactPage;
+import { redirect } from "next/navigation";
+
+export default function ContactUsPage() {
+  redirect("/contact");
+}

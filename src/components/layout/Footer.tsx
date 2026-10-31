@@ -90,9 +90,24 @@ export default function Footer() {
             {/* Col 2: Property Categories */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-                Properties
+                Buy, Rent &amp; Sell
               </h4>
               <ul className="space-y-2.5 text-xs text-slate-400">
+                <li>
+                  <Link href="/properties?purpose=Buy" className="text-slate-200 hover:text-secondary font-semibold transition">
+                    Properties For Sale (Buy)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/properties?purpose=Rent" className="text-slate-200 hover:text-secondary font-semibold transition">
+                    Properties For Rent
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#sell-rent-section" className="text-slate-200 hover:text-secondary font-semibold transition">
+                    Sell / Lease Your Property
+                  </Link>
+                </li>
                 <li>
                   <Link href="/properties/goyala-city-township" className="hover:text-secondary transition">
                     Goyala City Township
@@ -109,18 +124,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?category=Builder+Floor" className="hover:text-secondary transition">
-                    Independent Builder Floors
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/properties?category=Plots" className="hover:text-secondary transition">
-                    Gated Society Plots
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/properties" className="hover:text-secondary transition">
-                    Ready to Move Properties
+                  <Link href="/loan" className="hover:text-secondary transition">
+                    Home Loan Calculator
                   </Link>
                 </li>
               </ul>

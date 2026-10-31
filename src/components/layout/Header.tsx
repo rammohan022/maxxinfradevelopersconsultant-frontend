@@ -43,23 +43,26 @@ export default function Header() {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
     { 
       label: "Properties", 
       href: "/properties",
       dropdown: true,
       subItems: [
-        { label: "All Properties", href: "/properties", desc: "View all verified listings" },
-        { label: "Goyala City Township", href: "/properties/goyala-city-township", desc: "Master-planned residential plots & villas" },
-        { label: "Modern Row Houses", href: "/properties?category=Row+House", desc: "Ready to move 2 & 3 BHK homes" },
-        { label: "Luxury Duplex Villas", href: "/properties?category=Villas", desc: "Premium 4 BHK villas in gated enclaves" },
-        { label: "Independent Builder Floors", href: "/properties?category=Builder+Floor", desc: "Stilt + 4 elevations with elevator" },
-        { label: "Gated Society Plots", href: "/properties?category=Plots", desc: "Freehold plots near Ring Road" },
+        { label: "All Properties", href: "/properties", desc: "Explore all verified listings" },
+        { label: "Buy Properties", href: "/properties?purpose=Buy", desc: "Plots, villas, row houses & floors for sale" },
+        { label: "Rent Properties", href: "/properties?purpose=Rent", desc: "Verified flats, villas & commercial spaces for rent" },
+        { label: "Goyala City Township", href: "/properties/goyala-city-township", desc: "Integrated gated township plots & villas" },
+        { label: "Modern Row Houses", href: "/properties?category=Row+House", desc: "Ready to move 2 & 3 BHK gated homes" },
+        { label: "Luxury Duplex Villas", href: "/properties?category=Villas", desc: "Premium 3 & 4 BHK villas in prime enclaves" },
+        { label: "List Property (Sell/Rent)", href: "/#sell-rent-section", desc: "Zero listing fees for owners & developers" },
       ]
     },
-    { label: "Services", href: "/services" },
+    { label: "Buy", href: "/properties?purpose=Buy" },
+    { label: "Rent", href: "/properties?purpose=Rent" },
+    { label: "Sell With Us", href: "/#sell-rent-section" },
     { label: "Home Loan", href: "/loan" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "About Us", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -84,7 +87,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-7">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-7">
           {navLinks.map((item) => (
             <div
               key={item.label}

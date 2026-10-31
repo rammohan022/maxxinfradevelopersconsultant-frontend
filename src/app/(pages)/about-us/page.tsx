@@ -1,2 +1,5 @@
-import AboutPage from '../about/page';
-export default AboutPage;
+import { redirect } from "next/navigation";
+
+export default function AboutUsPage() {
+  redirect("/about");
+}

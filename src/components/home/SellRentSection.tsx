@@ -214,30 +214,17 @@ export default function SellRentSection() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                  <div>
-                    <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
-                      Expected Selling Price
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="e.g. ₹55 Lakhs"
-                      value={formData.expectedPrice}
-                      onChange={(e) => setFormData({ ...formData, expectedPrice: e.target.value })}
-                      className="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:border-primary bg-white text-slate-800"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">Email (Optional)</label>
-                    <input
-                      type="email"
-                      placeholder="name@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:border-primary bg-white text-slate-800"
-                    />
-                  </div>
+                <div>
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                    Expected Selling Price
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. ₹55 Lakhs"
+                    value={formData.expectedPrice}
+                    onChange={(e) => setFormData({ ...formData, expectedPrice: e.target.value })}
+                    className="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:border-primary bg-white text-slate-800"
+                  />
                 </div>
 
                 <div>

@@ -63,7 +63,11 @@ export default function MainContentSection({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await createLead({ ...formData, source: typeof window !== "undefined" ? window.location.pathname : "" }).unwrap();
+      await createLead({
+        ...formData,
+        email: "lead@maxxinfradevelopersconsultant.com",
+        source: typeof window !== "undefined" ? window.location.pathname : "",
+      }).unwrap();
       toast.success("Enquiry submitted successfully!");
       setFormData({
         fullName: "",
@@ -488,31 +492,22 @@ export default function MainContentSection({
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
                   />
                   <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Email Address"
-                    required
-                    className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
-                  />
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <input
                     type="tel"
                     name="phoneNumber"
                     value={formData.phoneNumber}
                     onChange={handleChange}
-                    placeholder="Phone Number"
+                    placeholder="Phone Number (Call / WhatsApp)"
                     required
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
                   />
+                </div>
+                <div>
                   <input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    placeholder="Company Name"
+                    placeholder="Company / Organization Name (Optional)"
                     className="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-secondary focus:outline-none focus:ring-2 focus:ring-secondary/20"
                   />
                 </div>

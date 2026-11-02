@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Container } from '@/components/ui';
 import { motion } from 'framer-motion';
-import { ChevronDown, Send, Phone, MapPin, Mail, ShieldCheck, Calendar } from 'lucide-react';
+import { ChevronDown, Send, Phone, MapPin, ShieldCheck, Calendar } from 'lucide-react';
 import { useCreateLeadMutation } from '@/services/lead';
 import toast from 'react-hot-toast';
 
@@ -92,10 +92,6 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Mail size={16} className="text-secondary shrink-0" />
-                <span>contact@maxxinfradevelopersconsultant.com</span>
-              </div>
             </div>
 
             <div className="pt-4 border-t border-white/10 flex items-center gap-2 text-xs text-secondary font-semibold">
@@ -118,29 +114,16 @@ export default function Contact() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Phone / WhatsApp *</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="+91 9876543210"
-                    value={form.phoneNumber}
-                    onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Email (Optional)</label>
-                  <input
-                    type="email"
-                    placeholder="name@example.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800"
-                  />
-                </div>
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Phone / WhatsApp Number *</label>
+                <input
+                  type="tel"
+                  required
+                  placeholder="+91 9876543210"
+                  value={form.phoneNumber}
+                  onChange={(e) => setForm({ ...form, phoneNumber: e.target.value })}
+                  className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800"
+                />
               </div>
 
               <div>

@@ -355,17 +355,6 @@ export default function PropertyDetailsPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Email Address</label>
-                    <input
-                      type="email"
-                      placeholder="e.g. rahul@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-primary"
-                    />
-                  </div>
-
-                  <div>
                     <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Preferred Date</label>
                     <input
                       type="date"

@@ -13,11 +13,11 @@ interface SeoHeadProps {
   twitterDescription?: string;
 }
 
-const siteUrl = "https://peopleconsultings.com";
-const defaultTitle = "People Consulting | Top Corporate HR & Staffing Solutions";
+const siteUrl = "https://maxxinfradevelopersconsultant.com";
+const defaultTitle = "Maxx Infra Developers & Consultant | Buy, Sell & Resell Property in Lucknow S.C.R";
 const defaultDescription =
-  "People Consulting provides trusted HR consulting, talent recruitment, executive search, labor compliance, and payroll management solutions.";
-const defaultImage = `${siteUrl}/img/logo.png`;
+  "Maxx Infra Developers & Consultant: Buy, sell, and resell verified plots, villas, modern row houses, and builder floors in Lucknow S.C.R with zero brokerage.";
+const defaultImage = `${siteUrl}/img/hero/real_estate_hero.jpg`;
 
 export default function SeoHead({
   title = defaultTitle,
@@ -32,7 +32,7 @@ export default function SeoHead({
   twitterDescription,
 }: SeoHeadProps) {
   const fullUrl = `${siteUrl}${canonicalPath.startsWith("/") ? canonicalPath : "/" + canonicalPath}`;
-  const metaTitle = title.includes("People Consulting") ? title : `${title} | People Consulting`;
+  const metaTitle = title.includes("Maxx Infra") ? title : `${title} | Maxx Infra Developers & Consultant`;
   const effectiveOgTitle = ogTitle || metaTitle;
   const effectiveOgDescription = ogDescription || description;
   const effectiveTwitterTitle = twitterTitle || effectiveOgTitle;

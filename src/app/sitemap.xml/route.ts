@@ -21,7 +21,7 @@ export async function GET() {
   } catch (err) {
     console.error("Failed to generate sitemap.xml:", err);
     return new NextResponse(
-      `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://peopleconsultings.com</loc></url></urlset>`,
+      `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://maxxinfradevelopersconsultant.com</loc></url></urlset>`,
       {
         headers: { "Content-Type": "application/xml; charset=utf-8" },
       }

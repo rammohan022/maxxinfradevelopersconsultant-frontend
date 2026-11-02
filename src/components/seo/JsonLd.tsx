@@ -1,32 +1,30 @@
 import React from "react";
 
-const siteUrl = "https://peopleconsultings.com";
+const siteUrl = "https://maxxinfradevelopersconsultant.com";
 
-// 🏢 Organization & ProfessionalService Schema
+// 🏢 Organization & RealEstateAgent Schema
 export function OrganizationJsonLd() {
   const schema = {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "People Consulting",
+    "@type": "RealEstateAgent",
+    "name": "Maxx Infra Developers & Consultant",
     "url": siteUrl,
     "logo": `${siteUrl}/img/logo.png`,
-    "image": `${siteUrl}/img/logo.png`,
-    "description": "Leading Corporate HR Consulting, Executive Search, Talent Acquisition, Labor Compliance, and Corporate Training Firm.",
+    "image": `${siteUrl}/img/hero/real_estate_hero.jpg`,
+    "description": "Leading real estate developers and consultants in Lucknow S.C.R. Buy, sell, and resell luxury villas, modern row houses, and residential plots.",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "243, 2nd Floor, Vipul Trade Centre, Sector 48, Sohna Road",
-      "addressLocality": "Gurgaon",
-      "addressRegion": "Haryana",
-      "postalCode": "122018",
+      "streetAddress": "G-1 Shivani Arcade, Deva Road, Opp. Axis Bank",
+      "addressLocality": "Lucknow",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "226028",
       "addressCountry": "IN"
     },
-    "telephone": "+91-8800177307",
-    "email": "hello@peopleconsulting.co",
-    "priceRange": "$$",
+    "telephone": "+91-7905145968",
+    "priceRange": "₹₹",
     "sameAs": [
-      "https://www.linkedin.com/company/people-consulting-services/",
-      "https://www.instagram.com/peopleconsultco",
-      "https://facebook.com"
+      "https://facebook.com",
+      "https://instagram.com"
     ]
   };
 

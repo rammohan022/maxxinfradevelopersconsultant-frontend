@@ -21,7 +21,7 @@ export async function GET() {
   } catch (err) {
     console.error("Failed to fetch robots.txt:", err);
     return new NextResponse(
-      `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /login\n\nSitemap: https://peopleconsultings.com/sitemap.xml`,
+      `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /login\n\nSitemap: https://maxxinfradevelopersconsultant.com/sitemap.xml`,
       {
         headers: { "Content-Type": "text/plain; charset=utf-8" },
       }

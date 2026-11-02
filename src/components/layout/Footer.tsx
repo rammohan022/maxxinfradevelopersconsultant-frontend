@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Container } from '@/components/ui';
-import { Mail, Phone, MapPin, Building2, ShieldCheck, Clock, Facebook, Instagram, Youtube, ArrowRight } from 'lucide-react';
+import { Phone, MapPin, Building2, ShieldCheck, Clock, Facebook, Instagram, Youtube, ArrowRight } from 'lucide-react';
 import { useGetAdminProfileQuery } from '@/services/auth';
 import { useGetSiteSettingsQuery } from '@/services/siteSettings';
 
@@ -10,7 +10,6 @@ export default function Footer() {
   const { data: adminProfile } = useGetAdminProfileQuery();
   const { data: siteSettings } = useGetSiteSettingsQuery();
 
-  const email = siteSettings?.contactEmail || adminProfile?.email || "contact@maxxinfradevelopersconsultant.com";
   const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 79051 45968";
   const phone2 = "+91 63861 00070";
 
@@ -187,12 +186,6 @@ export default function Footer() {
                     </a>
                   </div>
                 </div>
-                <p className="flex items-center gap-2">
-                  <Mail size={15} className="text-secondary shrink-0" />
-                  <a href={`mailto:${email}`} className="hover:text-secondary truncate">
-                    {email}
-                  </a>
-                </p>
                 <p className="flex items-center gap-2">
                   <Clock size={15} className="text-secondary shrink-0" />
                   <span>Open: Mon - Sun (9 AM - 7:30 PM)</span>

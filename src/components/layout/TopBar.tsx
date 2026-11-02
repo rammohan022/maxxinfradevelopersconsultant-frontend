@@ -6,18 +6,14 @@ import {
   Instagram,
   Youtube,
   Phone,
-  Mail,
   MapPin
 } from "lucide-react";
 import { Container } from "@/components/ui";
-import { useGetAdminProfileQuery } from "@/services/auth";
 import { useGetSiteSettingsQuery } from "@/services/siteSettings";
 
 export default function TopBar() {
-  const { data: adminProfile } = useGetAdminProfileQuery();
   const { data: siteSettings } = useGetSiteSettingsQuery();
 
-  const email = siteSettings?.contactEmail || adminProfile?.email || "contact@maxxinfradevelopersconsultant.com";
   const phone1 = "+91 79051 45968";
   const phone2 = "+91 63861 00070";
   const facebook = siteSettings?.socialLinks?.facebook || "https://facebook.com";
@@ -33,13 +29,6 @@ export default function TopBar() {
             <MapPin size={13} className="text-secondary" />
             G-1 Shivani Arcade, Deva Road, Opp. Axis Bank, Lucknow
           </span>
-          <a
-            href={`mailto:${email}`}
-            className="flex items-center gap-1.5 hover:text-secondary transition text-slate-300"
-          >
-            <Mail size={13} className="text-secondary" />
-            {email}
-          </a>
           <div className="flex items-center gap-2 text-white">
             <Phone size={13} className="text-secondary" />
             <a

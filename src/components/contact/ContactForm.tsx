@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useCreateLeadMutation } from "@/services/lead";
 import { PROPERTY_CATEGORIES, POPULAR_LOCALITIES } from "@/data/properties";
 import toast from "react-hot-toast";
-import { Phone, Mail, MapPin, Calendar, Clock, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Phone, MapPin, Calendar, Clock, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 const ContactSection = () => {
   const [createLead, { isLoading: isSubmitting }] = useCreateLeadMutation();
@@ -114,16 +114,6 @@ const ContactSection = () => {
 
                 <div className="flex items-start gap-3.5">
                   <div className="w-9 h-9 rounded-xl bg-white/10 text-secondary flex items-center justify-center shrink-0">
-                    <Mail size={18} />
-                  </div>
-                  <div>
-                    <span className="font-bold text-white block">Email:</span>
-                    <span className="text-slate-300">contact@maxxinfradevelopersconsultant.com</span>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5">
-                  <div className="w-9 h-9 rounded-xl bg-white/10 text-secondary flex items-center justify-center shrink-0">
                     <Clock size={18} />
                   </div>
                   <div>
@@ -181,18 +171,6 @@ const ContactSection = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Email (Optional)</label>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="e.g. ramesh@example.com"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={inputClass}
-                  />
-                </div>
-
-                <div>
                   <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Interested Property</label>
                   <select
                     name="propertyType"
@@ -205,20 +183,20 @@ const ContactSection = () => {
                     ))}
                   </select>
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Preferred Locality</label>
-                <select
-                  name="preferredLocation"
-                  value={formData.preferredLocation}
-                  onChange={handleChange}
-                  className={inputClass}
-                >
-                  {POPULAR_LOCALITIES.filter(l => l !== "All Locations").map((l) => (
-                    <option key={l} value={l}>{l}</option>
-                  ))}
-                </select>
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Preferred Locality</label>
+                  <select
+                    name="preferredLocation"
+                    value={formData.preferredLocation}
+                    onChange={handleChange}
+                    className={inputClass}
+                  >
+                    {POPULAR_LOCALITIES.filter(l => l !== "All Locations").map((loc) => (
+                      <option key={loc} value={loc}>{loc}</option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div>

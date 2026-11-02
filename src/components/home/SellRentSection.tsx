@@ -176,7 +176,7 @@ export default function SellRentSection() {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 9876543210"
+                      placeholder="+91 79051 45968"
                       value={formData.phoneNumber}
                       onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                       className="w-full px-3 py-2 text-xs border border-slate-200 rounded-xl focus:outline-none focus:border-primary bg-white text-slate-800"

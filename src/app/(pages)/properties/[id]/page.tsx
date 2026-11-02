@@ -354,7 +354,7 @@ export default function PropertyDetailsPage() {
                     <input
                       type="tel"
                       required
-                      placeholder="e.g. +91 9876543210"
+                      placeholder="e.g. +91 79051 45968"
                       value={formData.phoneNumber}
                       onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-800 focus:outline-none focus:border-primary"

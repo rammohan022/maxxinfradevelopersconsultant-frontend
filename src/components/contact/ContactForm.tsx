@@ -161,7 +161,7 @@ const ContactSection = () => {
                     type="tel"
                     name="phoneNumber"
                     required
-                    placeholder="e.g. +91 9876543210"
+                    placeholder="e.g. +91 79051 45968"
                     value={formData.phoneNumber}
                     onChange={handleChange}
                     className={inputClass}

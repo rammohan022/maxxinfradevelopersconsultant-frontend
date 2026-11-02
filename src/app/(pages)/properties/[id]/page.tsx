@@ -310,6 +310,8 @@ export default function PropertyDetailsPage() {
                   <video
                     src={property.videoUrl}
                     controls
+                    playsInline
+                    preload="metadata"
                     className="w-full h-full object-contain"
                   />
                 </div>

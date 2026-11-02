@@ -66,15 +66,15 @@ export default function GoyalaCitySpotlight() {
               </div>
             </div>
 
-            {/* Pricing Callout */}
+            {/* Township Highlights Callout (Price Removed) */}
             <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-between">
               <div>
-                <span className="text-xs uppercase tracking-wider text-slate-400 block font-semibold">Plots &amp; Villas Starting From</span>
-                <span className="text-2xl md:text-3xl font-black text-secondary">₹18,50,000</span>
+                <span className="text-xs uppercase tracking-wider text-slate-400 block font-semibold">Master Planned Township</span>
+                <span className="text-xl md:text-2xl font-black text-white">Residential Plots &amp; Luxury Villas</span>
               </div>
 
-              <span className="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                Immediate Possession
+              <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
+                Immediate Possession &amp; Registry
               </span>
             </div>
 
@@ -98,13 +98,21 @@ export default function GoyalaCitySpotlight() {
           {/* Right Media Column: Video & Gallery preview */}
           <div className="lg:col-span-6 space-y-4">
             {/* Embedded Drone / Project Video */}
-            <div className="relative rounded-2xl overflow-hidden bg-black shadow-2xl border border-white/20 aspect-video">
+            <div className="relative rounded-2xl overflow-hidden bg-black shadow-2xl border border-white/20 aspect-video group">
               <video
-                src="/img/Goyala City-.mp4"
+                src="/img/goyala-city.mp4"
                 controls
+                autoPlay
+                muted
+                loop
+                playsInline
                 poster="/img/projects/goyala-site-1.jpeg"
                 className="w-full h-full object-cover"
-              />
+              >
+                <source src="/img/goyala-city.mp4" type="video/mp4" />
+                <source src="/img/Goyala%20City-.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
 
             {/* Project Image Thumbnails */}

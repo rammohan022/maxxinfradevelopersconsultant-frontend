@@ -1,18 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui";
 import { 
-  Building2, 
-  MapPin, 
-  ShieldCheck, 
   CheckCircle2, 
-  Play, 
-  FileText, 
   Sparkles, 
-  ArrowRight,
-  Phone
+  ArrowRight
 } from "lucide-react";
 
 export default function GoyalaCitySpotlight() {
@@ -113,22 +106,6 @@ export default function GoyalaCitySpotlight() {
                 <source src="/img/Goyala%20City-.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-            </div>
-
-            {/* Project Image Thumbnails */}
-            <div className="grid grid-cols-4 gap-3">
-              <div className="relative h-20 rounded-xl overflow-hidden border border-white/10">
-                <Image src="/img/projects/goyala-site-2.jpeg" alt="Site road" fill className="object-cover" />
-              </div>
-              <div className="relative h-20 rounded-xl overflow-hidden border border-white/10">
-                <Image src="/img/projects/goyala-site-3.jpeg" alt="Development" fill className="object-cover" />
-              </div>
-              <div className="relative h-20 rounded-xl overflow-hidden border border-white/10">
-                <Image src="/img/projects/goyala-layout-1.jpeg" alt="Township layout" fill className="object-cover" />
-              </div>
-              <div className="relative h-20 rounded-xl overflow-hidden border border-white/10">
-                <Image src="/img/projects/goyala-brochure.jpeg" alt="Brochure" fill className="object-cover" />
-              </div>
             </div>
           </div>
         </div>

@@ -71,18 +71,14 @@ export default function Header() {
       <Container className="flex items-center justify-between gap-4 max-w-[1440px]">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-          <div className="w-10 h-10 md:w-11 md:h-11 rounded-xl bg-primary text-secondary flex items-center justify-center font-black shadow-md group-hover:scale-105 transition-transform shrink-0">
-            <Building2 size={24} className="text-secondary" />
-          </div>
-          <div>
-            <div className="flex items-center gap-1.5 whitespace-nowrap">
-              <span className="text-lg md:text-xl font-black text-primary tracking-tight">MAXX</span>
-              <span className="text-lg md:text-xl font-black text-secondary tracking-tight">INFRA</span>
-            </div>
-            <span className="text-[9px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest block -mt-1 whitespace-nowrap">
-              Developers &amp; Consultant
-            </span>
-          </div>
+          <Image
+            src="/img/logo-horizontal.png"
+            alt="Maxx Infra Developers & Consultant"
+            width={240}
+            height={56}
+            className="h-11 sm:h-12 md:h-14 w-auto object-contain group-hover:scale-102 transition-transform"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}

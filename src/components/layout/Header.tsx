@@ -43,13 +43,12 @@ export default function Header() {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
     { 
-      label: "Properties", 
+      label: "Buy Property", 
       href: "/properties",
       dropdown: true,
       subItems: [
-        { label: "All Properties", href: "/properties", desc: "Explore all verified listings" },
+        { label: "All Properties for Sale", href: "/properties", desc: "Explore all verified listings for sale" },
         { label: "Goyala City Township", href: "/properties/goyala-city-township", desc: "Integrated gated township plots & villas" },
         { label: "Modern Row Houses", href: "/properties?category=Row+House", desc: "Ready to move 2 & 3 BHK gated homes" },
         { label: "Luxury Duplex Villas", href: "/properties?category=Villas", desc: "Premium 3 & 4 BHK villas in prime enclaves" },
@@ -57,6 +56,8 @@ export default function Header() {
         { label: "Gated Society Plots", href: "/properties?category=Plots", desc: "Clear-title residential plots near Kisan Path" },
       ]
     },
+    { label: "Sell Property", href: "/#sell-property" },
+    { label: "About Us", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Contact Us", href: "/contact" },
   ];
@@ -83,7 +84,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-7">
           {navLinks.map((item) => (
             <div
               key={item.label}

@@ -18,35 +18,29 @@ import {
   CheckCircle2,
   CalendarCheck,
   Car,
-  Key,
   Home as HomeIcon,
-  Sparkles
+  BadgePercent
 } from "lucide-react";
 import { Container } from "@/components/ui";
-import { PROPERTIES, PROPERTY_CATEGORIES, POPULAR_LOCALITIES, PROPERTY_PURPOSES } from "@/data/properties";
+import { PROPERTIES, PROPERTY_CATEGORIES, POPULAR_LOCALITIES } from "@/data/properties";
 
 function PropertiesContent() {
   const searchParams = useSearchParams();
-  const initialPurpose = searchParams?.get("purpose") || "All";
   const initialCategory = searchParams?.get("category") || "All";
   const initialLocation = searchParams?.get("location") || "All Locations";
 
-  const [selectedPurpose, setSelectedPurpose] = useState(initialPurpose);
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedLocality, setSelectedLocality] = useState(initialLocation);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState<"featured" | "price-asc" | "price-desc">("featured");
 
   useEffect(() => {
-    if (searchParams?.get("purpose")) setSelectedPurpose(searchParams.get("purpose")!);
     if (searchParams?.get("category")) setSelectedCategory(searchParams.get("category")!);
     if (searchParams?.get("location")) setSelectedLocality(searchParams.get("location")!);
   }, [searchParams]);
 
   const filteredProperties = useMemo(() => {
     return PROPERTIES.filter((prop) => {
-      const matchPurpose =
-        selectedPurpose === "All" || prop.purpose === selectedPurpose;
       const matchCategory =
         selectedCategory === "All" || prop.category === selectedCategory;
       const matchLocality =
@@ -59,16 +53,13 @@ function PropertiesContent() {
         prop.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (prop.subtitle && prop.subtitle.toLowerCase().includes(searchQuery.toLowerCase()));
 
-      return matchPurpose && matchCategory && matchLocality && matchQuery;
+      return matchCategory && matchLocality && matchQuery;
     }).sort((a, b) => {
       if (sortBy === "price-asc") return a.priceNumeric - b.priceNumeric;
       if (sortBy === "price-desc") return b.priceNumeric - a.priceNumeric;
       return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
     });
-  }, [selectedPurpose, selectedCategory, selectedLocality, searchQuery, sortBy]);
-
-  const buyCount = useMemo(() => PROPERTIES.filter(p => p.purpose === "Buy").length, []);
-  const rentCount = useMemo(() => PROPERTIES.filter(p => p.purpose === "Rent").length, []);
+  }, [selectedCategory, selectedLocality, searchQuery, sortBy]);
 
   return (
     <div className="bg-[#f8fafc] min-h-screen pb-20">
@@ -77,7 +68,7 @@ function PropertiesContent() {
         <div className="absolute inset-0 opacity-15">
           <Image
             src="/img/hero/real_estate_hero.jpg"
-            alt="Maxx Infra Properties"
+            alt="Maxx Infra Properties for Sale"
             fill
             className="object-cover"
             priority
@@ -87,13 +78,13 @@ function PropertiesContent() {
         
         <Container className="relative z-10 text-center max-w-4xl">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/20 text-secondary text-sm font-semibold tracking-wide uppercase mb-4 border border-secondary/30">
-            <ShieldCheck size={16} /> Buy • Sell • Rent • Zero Brokerage
+            <ShieldCheck size={16} /> 100% Verified Titles • Property Buy &amp; Sale • Zero Brokerage
           </span>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Properties for Sale &amp; Rent in Lucknow &amp; NCR
+            Verified Properties for Sale in Lucknow &amp; NCR
           </h1>
           <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto">
-            Discover verified luxury duplexes, modern row houses, independent builder floors, and residential plots available for immediate purchase or lease.
+            Discover verified luxury duplexes, modern row houses, independent builder floors, and residential plots available for immediate purchase &amp; registry.
           </p>
         </Container>
       </div>
@@ -101,46 +92,19 @@ function PropertiesContent() {
       {/* Filter and Search Bar */}
       <Container className="-mt-8 relative z-20">
         <div className="bg-white rounded-3xl shadow-xl p-5 md:p-6 border border-slate-100">
-          {/* Main Purpose Switcher */}
-          <div className="flex flex-wrap items-center gap-2 mb-5 pb-4 border-b border-slate-100">
-            <button
-              onClick={() => setSelectedPurpose("All")}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition ${
-                selectedPurpose === "All"
-                  ? "bg-primary text-white shadow-md"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              All Listings ({PROPERTIES.length})
-            </button>
-            <button
-              onClick={() => setSelectedPurpose("Buy")}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center gap-1.5 ${
-                selectedPurpose === "Buy"
-                  ? "bg-primary text-white shadow-md"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              <HomeIcon size={14} className={selectedPurpose === "Buy" ? "text-secondary" : ""} />
-              For Sale / Buy ({buyCount})
-            </button>
-            <button
-              onClick={() => setSelectedPurpose("Rent")}
-              className={`px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition flex items-center gap-1.5 ${
-                selectedPurpose === "Rent"
-                  ? "bg-secondary text-primary-dark shadow-md font-extrabold"
-                  : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-              }`}
-            >
-              <Key size={14} />
-              For Rent ({rentCount})
-            </button>
+          {/* Main Action Bar */}
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-5 pb-4 border-b border-slate-100">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-xs font-bold uppercase tracking-wider text-primary px-3 py-1.5 rounded-xl bg-primary/10">
+                Homes &amp; Plots for Sale
+              </span>
+            </div>
 
             <Link
-              href="/#sell-rent-section"
-              className="ml-auto text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-4 py-2.5 rounded-xl transition flex items-center gap-1.5"
+              href="/#sell-property"
+              className="text-xs font-bold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-4 py-2 rounded-xl transition flex items-center gap-1.5 ml-auto"
             >
-              + Want to Sell or Rent Out?
+              <BadgePercent size={14} /> + Sell Your Property
             </Link>
           </div>
 
@@ -227,7 +191,7 @@ function PropertiesContent() {
                     : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                 }`}
               >
-                {cat}
+                {cat === "All" ? `All Properties (${PROPERTIES.length})` : cat}
               </button>
             ))}
           </div>
@@ -238,12 +202,11 @@ function PropertiesContent() {
       <Container className="mt-10">
         <div className="flex justify-between items-center mb-6">
           <p className="text-sm font-medium text-slate-600">
-            Showing <span className="font-bold text-slate-900">{filteredProperties.length}</span> verified properties {selectedPurpose !== "All" && `for ${selectedPurpose}`}
+            Showing <span className="font-bold text-slate-900">{filteredProperties.length}</span> verified properties for sale
           </p>
-          {(selectedPurpose !== "All" || selectedCategory !== "All" || selectedLocality !== "All Locations" || searchQuery) && (
+          {(selectedCategory !== "All" || selectedLocality !== "All Locations" || searchQuery) && (
             <button
               onClick={() => {
-                setSelectedPurpose("All");
                 setSelectedCategory("All");
                 setSelectedLocality("All Locations");
                 setSearchQuery("");
@@ -260,7 +223,7 @@ function PropertiesContent() {
             <Building2 className="mx-auto text-slate-300 mb-4" size={48} />
             <h3 className="text-lg font-bold text-slate-800 mb-2">No matching properties found</h3>
             <p className="text-sm text-slate-500 mb-6">
-              Try adjusting your category, purpose, or locality filters, or reach out to our team for custom property options.
+              Try adjusting your category or locality filters, or reach out to our team for custom property options.
             </p>
             <Link
               href="/contact"
@@ -288,12 +251,8 @@ function PropertiesContent() {
                   
                   {/* Top Badges */}
                   <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow ${
-                      prop.purpose === "Rent"
-                        ? "bg-secondary text-primary-dark font-black"
-                        : "bg-primary text-white"
-                    }`}>
-                      {prop.purpose === "Rent" ? "FOR RENT" : "FOR SALE"}
+                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow bg-primary text-white">
+                      FOR SALE
                     </span>
                     <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-black/60 text-white backdrop-blur-sm">
                       {prop.category}
@@ -310,15 +269,13 @@ function PropertiesContent() {
                   <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end text-white">
                     <div>
                       <span className="text-xs uppercase tracking-wider text-slate-300 block font-medium">
-                        {prop.purpose === "Rent" ? "Monthly Rent" : "Price"}
+                        Price
                       </span>
                       <span className="text-2xl font-black tracking-tight text-white">{prop.price}</span>
                     </div>
-                    {prop.furnishing && (
-                      <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/20 backdrop-blur-sm text-secondary">
-                        {prop.furnishing}
-                      </span>
-                    )}
+                    <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/20 backdrop-blur-sm text-secondary">
+                      Zero Brokerage
+                    </span>
                   </div>
                 </div>
 
@@ -360,7 +317,7 @@ function PropertiesContent() {
                     ) : (
                       <div className="flex items-center gap-1.5 min-w-0">
                         <ShieldCheck size={15} className="text-emerald-600 shrink-0" />
-                        <span className="truncate">{prop.purpose === "Rent" ? "Verified" : "Freehold"}</span>
+                        <span className="truncate">Freehold</span>
                       </div>
                     )}
 
@@ -386,7 +343,7 @@ function PropertiesContent() {
                       href={`/properties/${prop.id}`}
                       className="flex-1 py-2.5 px-3 rounded-xl bg-primary text-white text-xs font-bold text-center hover:bg-primary-dark transition flex items-center justify-center gap-1.5 shadow-sm"
                     >
-                      {prop.purpose === "Rent" ? "Rental Details" : "View Details"} <ArrowRight size={14} />
+                      View Details &amp; Site Visit <ArrowRight size={14} />
                     </Link>
                     <a
                       href="tel:+918303145434"

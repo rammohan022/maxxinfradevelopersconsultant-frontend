@@ -90,22 +90,17 @@ export default function Footer() {
             {/* Col 2: Property Categories */}
             <div>
               <h4 className="text-xs font-bold uppercase tracking-wider text-white mb-4">
-                Buy, Rent &amp; Sell
+                Property Buy &amp; Sell
               </h4>
               <ul className="space-y-2.5 text-xs text-slate-400">
                 <li>
-                  <Link href="/properties?purpose=Buy" className="text-slate-200 hover:text-secondary font-semibold transition">
+                  <Link href="/properties" className="text-slate-200 hover:text-secondary font-semibold transition">
                     Properties For Sale (Buy)
                   </Link>
                 </li>
                 <li>
-                  <Link href="/properties?purpose=Rent" className="text-slate-200 hover:text-secondary font-semibold transition">
-                    Properties For Rent
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/#sell-rent-section" className="text-slate-200 hover:text-secondary font-semibold transition">
-                    Sell / Lease Your Property
+                  <Link href="/#sell-property" className="text-slate-200 hover:text-secondary font-semibold transition">
+                    Sell Your Property
                   </Link>
                 </li>
                 <li>

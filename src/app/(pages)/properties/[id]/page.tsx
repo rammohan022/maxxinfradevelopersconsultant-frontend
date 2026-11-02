@@ -112,10 +112,8 @@ export default function PropertyDetailsPage() {
                   priority
                 />
                 <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                  <span className={`px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow ${
-                    property.purpose === "Rent" ? "bg-secondary text-primary-dark font-black" : "bg-primary text-white"
-                  }`}>
-                    {property.purpose === "Rent" ? "FOR RENT" : "FOR SALE"}
+                  <span className="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow bg-primary text-white">
+                    FOR SALE
                   </span>
                   <span className="px-3 py-1 rounded-full text-xs font-semibold bg-black/60 text-white backdrop-blur-sm shadow">
                     {property.category}
@@ -169,7 +167,7 @@ export default function PropertyDetailsPage() {
 
                 <div className="text-left md:text-right">
                   <span className="text-xs text-slate-400 font-medium uppercase tracking-wider block">
-                    {property.purpose === "Rent" ? "Monthly Rent" : "Total Price"}
+                    Total Price
                   </span>
                   <span className="text-3xl font-black text-primary">{property.price}</span>
                   <span className="text-xs text-emerald-600 block font-semibold mt-0.5">
@@ -321,15 +319,13 @@ export default function PropertyDetailsPage() {
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100">
                 <div className="mb-4">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/20 text-secondary text-xs font-bold uppercase tracking-wider mb-2">
-                    <Calendar size={14} /> {property.purpose === "Rent" ? "Rental Viewing" : "Free Site Visit"}
+                    <Calendar size={14} /> Free Site Visit
                   </span>
                   <h3 className="text-xl font-extrabold text-slate-900">
-                    {property.purpose === "Rent" ? "Schedule Rental Viewing" : "Schedule a Free Site Inspection"}
+                    Schedule a Free Site Inspection
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    {property.purpose === "Rent"
-                      ? "Direct landlord & developer rental assistance with verified lease agreement."
-                      : "Complimentary cab pickup & drop facility available across Lucknow for verified buyers."}
+                    Complimentary cab pickup &amp; drop facility available across Lucknow for verified buyers.
                   </p>
                 </div>
 
@@ -384,7 +380,7 @@ export default function PropertyDetailsPage() {
                     disabled={isLoading}
                     className="w-full py-3 px-4 rounded-xl bg-primary text-white text-xs font-bold tracking-wide uppercase hover:bg-primary-dark transition shadow-md flex items-center justify-center gap-2"
                   >
-                    {isLoading ? "Submitting..." : property.purpose === "Rent" ? "Request Rental Visit Now" : "Book Site Visit Now"}
+                    {isLoading ? "Submitting..." : "Book Site Visit Now"}
                   </button>
                 </form>
 
@@ -408,50 +404,27 @@ export default function PropertyDetailsPage() {
                 </div>
               </div>
 
-              {/* Callout: Home Loan for Buy vs Listing Assistance for Rent */}
-              {property.purpose === "Rent" ? (
-                <div className="bg-gradient-to-br from-slate-900 to-primary text-white rounded-2xl p-6 shadow-md">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-secondary/20 text-secondary flex items-center justify-center">
-                      <ShieldCheck size={22} />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm">Want to Rent Out Your Property?</h4>
-                      <p className="text-xs text-slate-300">Fast Corporate Tenant Placement</p>
-                    </div>
+              {/* Callout: Home Loan */}
+              <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-6 shadow-md">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-secondary/20 text-secondary flex items-center justify-center">
+                    <Calculator size={22} />
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                    List your home, flat or commercial space with Maxx Infra. We provide verified tenants, legal rent agreement drafting, and hassle-free management.
-                  </p>
-                  <Link
-                    href="/#sell-rent-section"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline"
-                  >
-                    List Your Property For Rent →
-                  </Link>
-                </div>
-              ) : (
-                <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-6 shadow-md">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-xl bg-secondary/20 text-secondary flex items-center justify-center">
-                      <Calculator size={22} />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm">Need a Home Loan?</h4>
-                      <p className="text-xs text-slate-300">SBI, HDFC & PNB Approved</p>
-                    </div>
+                  <div>
+                    <h4 className="font-bold text-sm">Need a Home Loan?</h4>
+                    <p className="text-xs text-slate-300">SBI, HDFC & PNB Approved</p>
                   </div>
-                  <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                    Get up to 90% funding with quick sanction and lowest interest rates. Our loan desk handles all paperwork for free.
-                  </p>
-                  <Link
-                    href="/loan"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline"
-                  >
-                    Calculate EMI & Check Eligibility →
-                  </Link>
                 </div>
-              )}
+                <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                  Get up to 90% funding with quick sanction and lowest interest rates. Our loan desk handles all paperwork for free.
+                </p>
+                <Link
+                  href="/loan"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:underline"
+                >
+                  Calculate EMI & Check Eligibility →
+                </Link>
+              </div>
             </div>
           </div>
         </div>

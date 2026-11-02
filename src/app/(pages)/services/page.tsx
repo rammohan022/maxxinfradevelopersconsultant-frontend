@@ -68,7 +68,7 @@ const realEstateServices = [
     icon: Compass,
     title: "Strategic Property Investment Advisory",
     subtitle: "High ROI Corridors in Lucknow & NCR",
-    description: "Expert guidance on high-growth corridors along Outer Ring Road (Kisan Path), Shaheed Path, Deva Road, and Sultanpur Road to maximize capital appreciation and rental yield.",
+    description: "Expert guidance on high-growth corridors along Outer Ring Road (Kisan Path), Shaheed Path, Deva Road, and Sultanpur Road to maximize capital appreciation and long-term asset value.",
     features: [
       "In-depth market rate & trend analysis",
       "Government infrastructure impact assessment",

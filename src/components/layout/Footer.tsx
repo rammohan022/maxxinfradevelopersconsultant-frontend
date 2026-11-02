@@ -105,6 +105,11 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/properties?category=Resell+Plots" className="hover:text-secondary transition text-slate-200 font-semibold">
+                    Verified Resell Plots (Lucknow)
+                  </Link>
+                </li>
+                <li>
                   <Link href="/properties?category=Plots" className="hover:text-secondary transition">
                     Aravali Green City Plots
                   </Link>

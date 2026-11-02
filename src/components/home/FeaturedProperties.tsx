@@ -24,8 +24,11 @@ export default function FeaturedProperties() {
   const [categoryTab, setCategoryTab] = useState<string>("All");
 
   const filtered = PROPERTIES.filter((p) => {
-    return categoryTab === "All" || p.category === categoryTab;
-  }).slice(0, 6);
+    if (categoryTab === "All") return true;
+    if (categoryTab === "Resell Plots") return p.dealType === "Resale";
+    if (categoryTab === "Plots") return p.category === "Plots";
+    return p.category === categoryTab;
+  }).slice(0, 9);
 
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -96,13 +99,18 @@ export default function FeaturedProperties() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
                 {/* Badges */}
-                <div className="absolute top-3 left-3 flex gap-2">
+                <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                   <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-primary text-white shadow">
                     FOR SALE
                   </span>
                   <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-secondary text-primary-dark shadow">
                     {prop.category}
                   </span>
+                  {prop.dealType === "Resale" && (
+                    <span className="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500 text-slate-950 shadow">
+                      RESALE
+                    </span>
+                  )}
                 </div>
 
                 <div className="absolute top-3 right-3">

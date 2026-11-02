@@ -42,7 +42,12 @@ function PropertiesContent() {
   const filteredProperties = useMemo(() => {
     return PROPERTIES.filter((prop) => {
       const matchCategory =
-        selectedCategory === "All" || prop.category === selectedCategory;
+        selectedCategory === "All" ||
+        (selectedCategory === "Resell Plots"
+          ? prop.dealType === "Resale"
+          : selectedCategory === "Plots"
+          ? prop.category === "Plots"
+          : prop.category === selectedCategory);
       const matchLocality =
         selectedLocality === "All Locations" ||
         prop.locality.toLowerCase().includes(selectedLocality.toLowerCase()) ||
@@ -51,7 +56,8 @@ function PropertiesContent() {
         !searchQuery.trim() ||
         prop.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         prop.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (prop.subtitle && prop.subtitle.toLowerCase().includes(searchQuery.toLowerCase()));
+        (prop.subtitle && prop.subtitle.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (prop.dealType === "Resale" && (searchQuery.toLowerCase().includes("resell") || searchQuery.toLowerCase().includes("resale")));
 
       return matchCategory && matchLocality && matchQuery;
     }).sort((a, b) => {
@@ -257,6 +263,11 @@ function PropertiesContent() {
                     <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-black/60 text-white backdrop-blur-sm">
                       {prop.category}
                     </span>
+                    {prop.dealType === "Resale" && (
+                      <span className="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500 text-slate-950 shadow">
+                        RESALE
+                      </span>
+                    )}
                   </div>
 
                   <div className="absolute top-3 right-3">

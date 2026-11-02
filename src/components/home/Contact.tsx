@@ -8,6 +8,7 @@ import { useCreateLeadMutation } from '@/services/lead';
 import toast from 'react-hot-toast';
 
 const propertyCategories = [
+  "Verified Resell Plots (Him City / Samrat / Goyala / Surya Vihar)",
   "Sai Yash Residency Flat (2/3 BHK - Ayodhya Road)",
   "Eiffel Palm Vista Flat (2/3 BHK - Deva Road)",
   "Aravali Green City Plot (Badel, Barabanki)",

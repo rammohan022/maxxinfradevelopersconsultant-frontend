@@ -118,6 +118,11 @@ export default function PropertyDetailsPage() {
                   <span className="px-3 py-1 rounded-full text-xs font-semibold bg-black/60 text-white backdrop-blur-sm shadow">
                     {property.category}
                   </span>
+                  {property.dealType === "Resale" && (
+                    <span className="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500 text-slate-950 shadow">
+                      VERIFIED RESALE PLOT
+                    </span>
+                  )}
                   {property.furnishing && (
                     <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-600 text-white shadow">
                       {property.furnishing}

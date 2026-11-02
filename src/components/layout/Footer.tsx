@@ -104,6 +104,16 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/properties?category=Flats" className="hover:text-secondary transition text-slate-200 font-semibold">
+                    2 &amp; 3 BHK Flats (Sai Yash &amp; Eiffel)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/properties?category=Plots" className="hover:text-secondary transition">
+                    Aravali Green City Plots
+                  </Link>
+                </li>
+                <li>
                   <Link href="/properties/goyala-city-township" className="hover:text-secondary transition">
                     Goyala City Township
                   </Link>
@@ -132,6 +142,11 @@ export default function Footer() {
                 Prime Locations
               </h4>
               <ul className="space-y-2.5 text-xs text-slate-400">
+                <li>
+                  <Link href="/properties?location=Ayodhya+Road" className="hover:text-secondary transition text-slate-200 font-semibold">
+                    Ayodhya Road (NH-27) &amp; Badel
+                  </Link>
+                </li>
                 <li>
                   <Link href="/properties?location=Deva+Road" className="hover:text-secondary transition">
                     Deva Road Corridor

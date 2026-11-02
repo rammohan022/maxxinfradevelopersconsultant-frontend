@@ -50,11 +50,12 @@ export default function Header() {
       dropdown: true,
       subItems: [
         { label: "All Properties for Sale", href: "/properties", desc: "Explore all verified listings for sale" },
+        { label: "2 & 3 BHK Flats & Apartments", href: "/properties?category=Flats", desc: "Sai Yash Residency & Eiffel Palm Vista" },
+        { label: "Gated Residential Plots", href: "/properties?category=Plots", desc: "Aravali Green City & Highway plotting" },
         { label: "Goyala City Township", href: "/properties/goyala-city-township", desc: "Integrated gated township plots & villas" },
         { label: "Modern Row Houses", href: "/properties?category=Row+House", desc: "Ready to move 2 & 3 BHK gated homes" },
         { label: "Luxury Duplex Villas", href: "/properties?category=Villas", desc: "Premium 3 & 4 BHK villas in prime enclaves" },
         { label: "Independent Builder Floors", href: "/properties?category=Builder+Floor", desc: "Stilt + 4 elevations with reserved parking" },
-        { label: "Gated Society Plots", href: "/properties?category=Plots", desc: "Clear-title residential plots near Kisan Path" },
       ]
     },
     { label: "Sell Property", href: "/#sell-property" },

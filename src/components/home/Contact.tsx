@@ -8,9 +8,12 @@ import { useCreateLeadMutation } from '@/services/lead';
 import toast from 'react-hot-toast';
 
 const propertyCategories = [
+  "Sai Yash Residency Flat (2/3 BHK - Ayodhya Road)",
+  "Eiffel Palm Vista Flat (2/3 BHK - Deva Road)",
+  "Aravali Green City Plot (Badel, Barabanki)",
+  "Goyala City Township Plot / Villa",
   "2 BHK / 3 BHK Modern Row House",
   "Luxury Duplex Villa",
-  "Goyala City Township Plot",
   "Gated Society Residential Plot",
   "Independent Builder Floor",
   "Free Site Visit with Cab Facility",

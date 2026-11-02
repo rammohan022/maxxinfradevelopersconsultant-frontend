@@ -5,6 +5,20 @@ import { ArrowRight, Building, Home, LandPlot, MapPin } from "lucide-react";
 
 const categories = [
   {
+    title: "2 & 3 BHK Luxury Flats",
+    count: "Sai Yash & Eiffel Palm",
+    image: "/img/properties/prop_5.jpeg",
+    link: "/properties?category=Flats",
+    description: "Ready & ongoing 2 & 3 BHK flats at Anora Kala (Ayodhya Rd) & Deva Rd from ₹65 Lakh."
+  },
+  {
+    title: "Gated Residential Plots",
+    count: "Aravali Green & Highway Sites",
+    image: "/img/properties/plots_land.jpg",
+    link: "/properties?category=Plots",
+    description: "Clear-title freehold plots on Ayodhya Road (Badel, Barabanki) & Kisan Path from ₹14.5 Lakh."
+  },
+  {
     title: "Modern Row Houses",
     count: "15+ Ready Units",
     image: "/img/properties/row_house.jpg",
@@ -25,13 +39,6 @@ const categories = [
     link: "/properties?category=Builder+Floor",
     description: "Stilt + 4 elevations with automatic elevator, reserved stilt parking & luxury woodwork."
   },
-  {
-    title: "Gated Society Plots",
-    count: "50+ Clear Title Plots",
-    image: "/img/properties/plots_land.jpg",
-    link: "/properties?category=Plots",
-    description: "Freehold residential plots near Kisan Path & Outer Ring Road with immediate registry."
-  },
 ];
 
 export default function PropertyCategories() {
@@ -50,7 +57,7 @@ export default function PropertyCategories() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {categories.map((cat, idx) => (
             <Link
               key={idx}

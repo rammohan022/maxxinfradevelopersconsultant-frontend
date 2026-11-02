@@ -178,14 +178,14 @@ export default function PropertyDetailsPage() {
 
               {/* Quick Specs Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 py-5 border-y border-slate-100 text-slate-700">
-                {property.beds ? (
+                {property.configuration || property.beds ? (
                   <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center gap-3 min-w-0">
                     <div className="w-10 h-10 rounded-lg bg-white shadow-xs text-primary flex items-center justify-center shrink-0 border border-slate-100">
                       <Bed size={18} />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">Bedrooms</p>
-                      <p className="font-bold text-slate-900 text-xs sm:text-sm truncate">{property.beds} BHK</p>
+                      <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider truncate">Configuration</p>
+                      <p className="font-bold text-slate-900 text-xs sm:text-sm truncate">{property.configuration || `${property.beds} BHK`}</p>
                     </div>
                   </div>
                 ) : null}

@@ -2,7 +2,8 @@ export interface Property {
   id: string;
   title: string;
   subtitle?: string;
-  category: 'Villas' | 'Row House' | 'Builder Floor' | 'Plots' | 'Township';
+  category: 'Villas' | 'Row House' | 'Builder Floor' | 'Plots' | 'Township' | 'Flats';
+  configuration?: string;
   price: string;
   priceNumeric: number;
   location: string;
@@ -27,6 +28,137 @@ export interface Property {
 }
 
 export const PROPERTIES: Property[] = [
+  {
+    id: "sai-yash-residency-ayodhya-road",
+    title: "Sai Yash Residency Apartments",
+    subtitle: "2 BHK & 3 BHK Luxury Apartments on Ayodhya Road (NH-27)",
+    category: "Flats",
+    configuration: "2 & 3 BHK Available",
+    price: "₹65,00,000 Onwards",
+    priceNumeric: 6500000,
+    location: "Anora Kala, Ayodhya Road (NH-27), Lucknow",
+    locality: "Ayodhya Road",
+    beds: 2,
+    baths: 2,
+    area: "1,180 - 1,620 sq.ft.",
+    roadWidth: "45 ft. Highway Access",
+    possession: "Ready to Move",
+    purpose: "Buy",
+    featured: true,
+    reraApproved: true,
+    bankApproved: true,
+    image: "/img/properties/prop_2.jpeg",
+    gallery: [
+      "/img/properties/prop_2.jpeg",
+      "/img/properties/prop_3.jpeg",
+      "/img/properties/prop_7.jpeg",
+      "/img/properties/interior_living.jpg",
+      "/img/properties/interior_kitchen.jpg",
+    ],
+    description: "Sai Yash Residency is an elite residential apartment complex situated at Anora Kala on Ayodhya Road (NH-27), Lucknow. Offering modern 2 BHK and 3 BHK luxury flats starting at ₹65 Lakh. Features high-speed automatic elevators, 100% power backup provision, covered stilt and basement parking, 24x7 security surveillance, and unmatched connectivity to Kisan Path (Outer Ring Road) and Gomti Nagar.",
+    amenities: [
+      "2 BHK & 3 BHK Spacious Layouts",
+      "High-Speed Automatic Elevators",
+      "Dedicated Covered Car Parking",
+      "24x7 Power Backup Provision",
+      "Multi-Tier Gated Security & CCTV",
+      "Modern Community Hall & Terrace Garden",
+      "24hr Water Supply & Rainwater Harvesting",
+    ],
+    highlights: [
+      "Located at Anora Kala, Ayodhya Road (NH-27)",
+      "Starting Price ₹65 Lakh Onwards",
+      "2 BHK & 3 BHK Configurations Available",
+      "5 Min to Outer Ring Road (Kisan Path) & BBD",
+      "Approved for immediate bank home loans",
+    ],
+  },
+  {
+    id: "eiffel-palm-vista-deva-road",
+    title: "Eiffel Palm Vista",
+    subtitle: "2 BHK & 3 BHK Premium Modern Living on Deva Road",
+    category: "Flats",
+    configuration: "2 & 3 BHK Available",
+    price: "₹75,00,000 Onwards",
+    priceNumeric: 7500000,
+    location: "Deva Road, Near Baba Nahar, Lucknow",
+    locality: "Deva Road",
+    beds: 3,
+    baths: 2,
+    area: "1,250 - 1,780 sq.ft.",
+    roadWidth: "40 ft. Wide Sector Road",
+    possession: "Ready to Move",
+    purpose: "Buy",
+    featured: true,
+    reraApproved: true,
+    bankApproved: true,
+    image: "/img/properties/prop_5.jpeg",
+    gallery: [
+      "/img/properties/prop_5.jpeg",
+      "/img/properties/prop_6.jpeg",
+      "/img/properties/prop_9.jpeg",
+      "/img/properties/interior_living.jpg",
+      "/img/properties/interior_kitchen.jpg",
+    ],
+    description: "Eiffel Palm Vista is a signature modern residential community situated on Deva Road near Baba Nahar, Lucknow. Boasting thoughtfully engineered 2 BHK and 3 BHK spacious luxury apartments starting at ₹75 Lakh. Equipped with world-class community facilities, lush green landscaped gardens, 40 ft. wide internal access roads, round-the-clock security, and immediate reach to the thriving Deva Road commercial market.",
+    amenities: [
+      "2 BHK & 3 BHK Premium Units",
+      "Modern Club Facility & Children Play Zone",
+      "Landscaped Green Parks & Walking Tracks",
+      "Dedicated Covered & Visitor Parking",
+      "24x7 CCTV Surveillance & Controlled Entry",
+      "Dual Passenger Elevators & Firefighting Setup",
+      "Direct 40 ft. Wide Road Connectivity",
+    ],
+    highlights: [
+      "Prime Deva Road location near Baba Nahar",
+      "Starting Price ₹75 Lakh Onwards",
+      "2 BHK & 3 BHK Luxury Options",
+      "Fast connectivity to Kisan Path & Chinhat",
+      "Bank home loan assistance up to 90%",
+    ],
+  },
+  {
+    id: "aravali-green-city-barabanki-badel",
+    title: "Aravali Green City — Barabanki Badel",
+    subtitle: "Gated Freehold Residential Plots on Lucknow - Ayodhya Road",
+    category: "Plots",
+    price: "₹1,450 / sq.ft. (₹14.5 Lakh Onwards)",
+    priceNumeric: 1450000,
+    location: "At Ayodhya - Lucknow Road, Badel, Barabanki",
+    locality: "Ayodhya Road",
+    area: "1,000 - 2,500 sq.ft.",
+    roadWidth: "30 & 40 ft. Wide",
+    possession: "Immediate Registry & Mutation",
+    purpose: "Buy",
+    featured: true,
+    reraApproved: true,
+    bankApproved: true,
+    image: "/img/properties/plots_land.jpg",
+    gallery: [
+      "/img/properties/plots_land.jpg",
+      "/img/projects/goyala-site-2.jpeg",
+      "/img/projects/goyala-site-4.jpeg",
+      "/img/properties/prop_8.jpeg",
+    ],
+    description: "Aravali Green City is a prestigious mega residential plotting development located at Badel on the prime Lucknow - Ayodhya 4-lane highway corridor (Barabanki). Offering 100% freehold, clear-title residential plots in versatile dimensions (1,000, 1,200, 1,500, 2,000 & 2,500 sq.ft.). Complete with 30 & 40 ft. wide internal concrete boulevards, electricity transformer lines, underground drainage, green landscaped parks, and instant registry with guaranteed dakhil-kharij (mutation).",
+    amenities: [
+      "30 ft. & 40 ft. Wide Internal Boulevards",
+      "Immediate Registry & Instant Possession",
+      "Clear Title with Guaranteed Dakhil-Kharij",
+      "Dedicated Electric Transformer & Street Lights",
+      "Underground Drainage System",
+      "Lush Green Central Park & Plantation",
+      "Grand Gated Entrance with 24x7 Security",
+    ],
+    highlights: [
+      "Direct highway access on Ayodhya - Lucknow Road",
+      "Site at Badel, Barabanki — High Capital Growth",
+      "Residential plots starting from ₹14.5 Lakh",
+      "100% Freehold Land with zero litigation",
+      "Direct booking through Maxx Infra Developers",
+    ],
+  },
   {
     id: "goyala-city-township",
     title: "Goyala City — Signature Integrated Township",
@@ -353,11 +485,12 @@ export const PROPERTIES: Property[] = [
 
 export const PROPERTY_CATEGORIES = [
   "All",
-  "Township",
-  "Villas",
-  "Row House",
-  "Builder Floor",
+  "Flats",
   "Plots",
+  "Row House",
+  "Villas",
+  "Builder Floor",
+  "Township",
 ];
 
 export const PROPERTY_PURPOSES = [
@@ -367,7 +500,9 @@ export const PROPERTY_PURPOSES = [
 
 export const POPULAR_LOCALITIES = [
   "All Locations",
+  "Ayodhya Road",
   "Deva Road",
+  "Barabanki",
   "Gomti Nagar Extension",
   "Shaheed Path",
   "Sultanpur Road",

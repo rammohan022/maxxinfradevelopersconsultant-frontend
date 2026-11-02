@@ -84,7 +84,7 @@ function PropertiesContent() {
             Properties for Buy, Sell &amp; Resell in Lucknow S.C.R
           </h1>
           <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto">
-            Discover verified luxury duplexes, modern row houses, independent builder floors, and residential plots available for immediate purchase &amp; registry in Lucknow S.C.R.
+            Discover verified 2 &amp; 3 BHK apartments, freehold residential plots, luxury duplexes, modern row houses, and builder floors available for immediate purchase &amp; registry in Lucknow S.C.R.
           </p>
         </Container>
       </div>
@@ -297,7 +297,12 @@ function PropertiesContent() {
 
                   {/* Quick Specs */}
                   <div className="grid grid-cols-3 gap-2 py-3 border-y border-slate-100 text-slate-700 text-xs mb-4">
-                    {prop.beds ? (
+                    {prop.configuration ? (
+                      <div className="flex items-center gap-1.5 min-w-0">
+                        <Bed size={15} className="text-secondary shrink-0" />
+                        <span className="truncate font-semibold text-slate-800">{prop.configuration}</span>
+                      </div>
+                    ) : prop.beds ? (
                       <div className="flex items-center gap-1.5 min-w-0">
                         <Bed size={15} className="text-slate-400 shrink-0" />
                         <span className="truncate">{prop.beds} Beds</span>

@@ -73,7 +73,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl mb-8">
-            Your trusted destination to buy, sell, and resell verified plots, modern row houses, luxury duplex villas, and builder floors in Lucknow S.C.R (State Capital Region) with zero brokerage.
+            Your trusted destination to buy, sell, and resell verified 2 &amp; 3 BHK apartments, freehold plots, modern row houses, and luxury villas across Lucknow S.C.R with zero brokerage.
           </p>
 
           {/* Purpose Toggle Tabs + Search Card */}

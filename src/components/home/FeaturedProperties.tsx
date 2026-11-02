@@ -141,7 +141,12 @@ export default function FeaturedProperties() {
 
                 {/* Specs */}
                 <div className="grid grid-cols-3 gap-2 py-3 border-y border-slate-100 text-slate-700 text-xs mb-4">
-                  {prop.beds ? (
+                  {prop.configuration ? (
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <Bed size={14} className="text-secondary shrink-0" />
+                      <span className="truncate font-semibold text-slate-800">{prop.configuration}</span>
+                    </div>
+                  ) : prop.beds ? (
                     <div className="flex items-center gap-1.5 min-w-0">
                       <Bed size={14} className="text-slate-400 shrink-0" />
                       <span className="truncate">{prop.beds} Beds</span>

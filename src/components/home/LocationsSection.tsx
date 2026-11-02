@@ -4,11 +4,19 @@ import { MapPin, TrendingUp, Building, ArrowRight } from "lucide-react";
 
 const corridors = [
   {
-    name: "Deva Road & Outer Ring Road",
-    tag: "High Growth & Ready Homes",
-    growth: "+22% Annually",
-    description: "Home to modern row houses and gated colonies 2 minutes from Kisan Path. Near D-Mart, Crown Mall, and Chinhat.",
-    propertiesCount: "18+ Available",
+    name: "Ayodhya Road (NH-27) & Barabanki Corridor",
+    tag: "Sai Yash Residency & Aravali Green City",
+    growth: "+32% Annually",
+    description: "Fastest appreciating corridor. Home to Sai Yash Residency luxury apartments at Anora Kala and Aravali Green City plots at Badel, Barabanki.",
+    propertiesCount: "Flats & Plots Ready",
+    link: "/properties?location=Ayodhya+Road"
+  },
+  {
+    name: "Deva Road & Baba Nahar Corridor",
+    tag: "Eiffel Palm Vista & Modern Homes",
+    growth: "+24% Annually",
+    description: "Home to Eiffel Palm Vista apartments (near Baba Nahar), ready row houses, and gated societies 2 minutes from Kisan Path.",
+    propertiesCount: "Flats & Villas Ready",
     link: "/properties?location=Deva+Road"
   },
   {
@@ -26,14 +34,6 @@ const corridors = [
     description: "Prestigious zone near Ekana International Stadium, Phoenix Palassio Mall, top hospitals, and corporate IT parks.",
     propertiesCount: "10+ Luxury Floors",
     link: "/properties?location=Gomti+Nagar"
-  },
-  {
-    name: "Sultanpur Road & Royal Garden Enclave",
-    tag: "Executive Duplex Villas",
-    growth: "+24% Annually",
-    description: "Fast-developing residential corridor with ready 4 BHK duplex villas and gated family colonies.",
-    propertiesCount: "8+ Villas",
-    link: "/properties?location=Sultanpur+Road"
   },
 ];
 

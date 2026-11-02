@@ -27,7 +27,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   const { data: siteSettings } = useGetSiteSettingsQuery();
-  const phone = siteSettings?.contactPhone || "+91 79051 45968";
+  const phone = "+91 79051 45968";
   const phone2 = "+91 63861 00070";
 
   useEffect(() => {

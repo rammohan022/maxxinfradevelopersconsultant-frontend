@@ -44,7 +44,7 @@ export default function Contact() {
       setForm({ fullName: '', email: '', phoneNumber: '', subject: propertyCategories[0], message: '' });
     } catch (err) {
       console.error('Submission error:', err);
-      toast.error('Failed to submit enquiry. Please call us directly at +91 83031 45434.');
+      toast.error('Failed to submit enquiry. Please call us directly at +91 79051 45968.');
     }
   };
 
@@ -79,13 +79,18 @@ export default function Contact() {
             <div className="space-y-4 pt-2 text-xs text-slate-200">
               <div className="flex items-start gap-2.5">
                 <MapPin size={16} className="text-secondary shrink-0 mt-0.5" />
-                <span>Deva Road, Outer Ring Road (Kisan Path), Lucknow, UP</span>
+                <span>G-1 Shivani Arcade, Deva Road, Opp. Axis Bank, Lucknow, UP</span>
               </div>
-              <div className="flex items-center gap-2.5">
-                <Phone size={16} className="text-secondary shrink-0" />
-                <a href="tel:+918303145434" className="text-white hover:text-secondary font-bold">
-                  +91 83031 45434
-                </a>
+              <div className="flex items-start gap-2.5">
+                <Phone size={16} className="text-secondary shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <a href="tel:+917905145968" className="text-white hover:text-secondary font-bold block">
+                    +91 79051 45968
+                  </a>
+                  <a href="tel:+916386100070" className="text-slate-300 hover:text-secondary font-bold block">
+                    +91 63861 00070
+                  </a>
+                </div>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail size={16} className="text-secondary shrink-0" />

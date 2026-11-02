@@ -27,7 +27,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
 
   const { data: siteSettings } = useGetSiteSettingsQuery();
-  const phone = siteSettings?.contactPhone || "+91 83031 45434";
+  const phone = siteSettings?.contactPhone || "+91 79051 45968";
+  const phone2 = "+91 63861 00070";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -125,17 +126,27 @@ export default function Header() {
         </nav>
 
         {/* Right CTA Actions */}
-        <div className="hidden lg:flex items-center gap-2.5 xl:gap-4 shrink-0">
-          <a
-            href={`tel:${phone.replace(/\s+/g, '')}`}
-            className="flex items-center gap-2 text-xs font-bold text-slate-800 hover:text-primary transition shrink-0 whitespace-nowrap"
-            title={`Call ${phone}`}
-          >
-            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-primary shrink-0 hover:bg-slate-200 transition">
-              <Phone size={14} />
-            </div>
-            <span className="hidden xl:inline whitespace-nowrap">{phone}</span>
-          </a>
+        <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
+          <div className="flex items-center gap-2">
+            <a
+              href={`tel:${phone.replace(/\s+/g, '')}`}
+              className="flex items-center gap-1.5 text-xs font-bold text-slate-800 hover:text-primary transition shrink-0 whitespace-nowrap"
+              title={`Call ${phone}`}
+            >
+              <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-primary shrink-0 hover:bg-slate-200 transition">
+                <Phone size={14} />
+              </div>
+              <span className="hidden xl:inline whitespace-nowrap">{phone}</span>
+            </a>
+            <span className="text-slate-300 hidden xl:inline">/</span>
+            <a
+              href={`tel:${phone2.replace(/\s+/g, '')}`}
+              className="hidden 2xl:inline text-xs font-bold text-slate-600 hover:text-primary transition whitespace-nowrap"
+              title={`Call ${phone2}`}
+            >
+              {phone2}
+            </a>
+          </div>
 
           <Link
             href="/contact"
@@ -206,7 +217,7 @@ export default function Header() {
             </Link>
 
             <a
-              href="https://wa.me/918303145434?text=Hello%20Maxx%20Infra,%20I%20am%20looking%20for%20property%20details."
+              href="https://wa.me/917905145968?text=Hello%20Maxx%20Infra,%20I%20am%20looking%20for%20property%20details."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center flex items-center justify-center gap-2"

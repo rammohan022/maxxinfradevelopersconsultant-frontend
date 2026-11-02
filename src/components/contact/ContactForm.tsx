@@ -54,7 +54,7 @@ const ContactSection = () => {
       });
     } catch (err) {
       console.error("Submission error:", err);
-      toast.error("Failed to submit enquiry. Please call us at +91 83031 45434 directly.");
+      toast.error("Failed to submit enquiry. Please call us at +91 79051 45968 directly.");
     }
   };
 
@@ -93,7 +93,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <span className="font-bold text-white block">Main Office:</span>
-                    <span className="text-slate-300">Deva Road, Outer Ring Road (Kisan Path), Lucknow, Uttar Pradesh</span>
+                    <span className="text-slate-300">G-1 Shivani Arcade, Deva Road, Opp. Axis Bank, Lucknow, Uttar Pradesh</span>
                   </div>
                 </div>
 
@@ -103,11 +103,11 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <span className="font-bold text-white block">Phone / WhatsApp:</span>
-                    <a href="tel:+918303145434" className="text-secondary font-semibold hover:underline block">
-                      +91 83031 45434
+                    <a href="tel:+917905145968" className="text-secondary font-semibold hover:underline block">
+                      +91 79051 45968
                     </a>
-                    <a href="tel:+918800177307" className="text-slate-300 hover:underline block">
-                      +91 88001 77307
+                    <a href="tel:+916386100070" className="text-slate-300 hover:underline block">
+                      +91 63861 00070
                     </a>
                   </div>
                 </div>

@@ -78,13 +78,13 @@ function PropertiesContent() {
         
         <Container className="relative z-10 text-center max-w-4xl">
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/20 text-secondary text-sm font-semibold tracking-wide uppercase mb-4 border border-secondary/30">
-            <ShieldCheck size={16} /> 100% Verified Titles • Property Buy &amp; Sale • Zero Brokerage
+            <ShieldCheck size={16} /> 100% Verified Titles • Buy, Sell &amp; Resell • Lucknow S.C.R
           </span>
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Verified Properties for Sale in Lucknow &amp; NCR
+            Properties for Buy, Sell &amp; Resell in Lucknow S.C.R
           </h1>
           <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto">
-            Discover verified luxury duplexes, modern row houses, independent builder floors, and residential plots available for immediate purchase &amp; registry.
+            Discover verified luxury duplexes, modern row houses, independent builder floors, and residential plots available for immediate purchase &amp; registry in Lucknow S.C.R.
           </p>
         </Container>
       </div>
@@ -346,9 +346,9 @@ function PropertiesContent() {
                       View Details &amp; Site Visit <ArrowRight size={14} />
                     </Link>
                     <a
-                      href="tel:+918303145434"
+                      href="tel:+917905145968"
                       className="p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:text-primary hover:border-primary transition flex items-center justify-center"
-                      title="Call Consultant"
+                      title="Call Consultant (+91 79051 45968)"
                     >
                       <Phone size={15} />
                     </a>

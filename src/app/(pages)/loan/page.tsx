@@ -71,7 +71,7 @@ export default function LoanPage() {
         loanNeeded: "₹40 Lakhs",
       });
     } catch {
-      toast.error("Failed to submit. Please call +91 8303145434 directly.");
+      toast.error("Failed to submit. Please call +91 79051 45968 directly.");
     }
   };
 

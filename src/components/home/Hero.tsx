@@ -51,7 +51,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-0">
         <Image
           src="/img/hero/real_estate_hero.jpg"
-          alt="Buy & Sell Properties in Lucknow & NCR"
+          alt="Buy, Sell & Resell Properties in Lucknow S.C.R"
           fill
           priority
           className="object-cover object-center scale-105"
@@ -63,17 +63,17 @@ export default function Hero() {
         <div className="max-w-3xl">
           {/* Tag Pill */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-xs font-bold uppercase tracking-wider mb-5">
-            <ShieldCheck size={16} /> 100% Verified Titles • Property Buy &amp; Sale • Zero Brokerage
+            <ShieldCheck size={16} /> 100% Verified Titles • Buy, Sell &amp; Resell • Lucknow S.C.R
           </div>
 
           {/* Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight mb-5">
-            Buy &amp; Sell Property in <span className="text-secondary">Lucknow &amp; NCR</span>
+            Buy, Sell &amp; Resell Property in <span className="text-secondary">Lucknow S.C.R</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl mb-8">
-            Your single trusted destination to purchase verified villas, modern row houses, and gated township plots — or sell your property directly to genuine buyers with zero brokerage.
+            Your trusted destination to buy, sell, and resell verified plots, modern row houses, luxury duplex villas, and builder floors in Lucknow S.C.R (State Capital Region) with zero brokerage.
           </p>
 
           {/* Purpose Toggle Tabs + Search Card */}

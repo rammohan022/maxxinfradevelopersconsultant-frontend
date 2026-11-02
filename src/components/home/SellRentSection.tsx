@@ -60,7 +60,7 @@ export default function SellRentSection() {
         propertyDetails: "",
       });
     } catch {
-      toast.error("Failed to submit. Please call us directly at +91 83031 45434.");
+      toast.error("Failed to submit. Please call us directly at +91 79051 45968.");
     }
   };
 
@@ -76,11 +76,11 @@ export default function SellRentSection() {
               </span>
 
               <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Want to <span className="text-secondary">Sell</span> Your Property in Lucknow?
+                Want to <span className="text-secondary">Sell or Resell</span> Your Property in Lucknow S.C.R?
               </h2>
 
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Partner with Maxx Infra Developers &amp; Consultant. We connect your property directly with genuine, pre-qualified buyers across Lucknow &amp; NCR — ensuring rapid deal closure at maximum market value with complete legal safety and zero brokerage.
+                Partner with Maxx Infra Developers &amp; Consultant. We connect your property directly with genuine, pre-qualified buyers across Lucknow S.C.R — ensuring rapid deal closure at maximum market value with complete legal safety and zero brokerage.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
@@ -125,12 +125,20 @@ export default function SellRentSection() {
                 </div>
               </div>
 
-              <div className="pt-2 flex items-center gap-3">
+              <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-bold">
+                <span className="text-slate-500">Call For Free Property Valuation:</span>
                 <a
-                  href="tel:+918303145434"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-primary hover:text-secondary transition"
+                  href="tel:+917905145968"
+                  className="inline-flex items-center gap-1.5 text-primary hover:text-secondary transition"
                 >
-                  <Phone size={15} className="text-secondary" /> Call For Free Property Valuation: +91 83031 45434
+                  <Phone size={14} className="text-secondary" /> +91 79051 45968
+                </a>
+                <span className="text-slate-300">/</span>
+                <a
+                  href="tel:+916386100070"
+                  className="inline-flex items-center gap-1.5 text-primary hover:text-secondary transition"
+                >
+                  +91 63861 00070
                 </a>
               </div>
             </div>

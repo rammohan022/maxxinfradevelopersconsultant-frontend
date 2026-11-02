@@ -37,7 +37,7 @@ export default function FeaturedProperties() {
               Handpicked Portfolios
             </span>
             <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-              Featured Properties for Sale
+              Featured Properties in Lucknow S.C.R
             </h2>
             <p className="text-xs md:text-sm text-slate-500 mt-2 max-w-xl">
               100% legally pre-verified titles, direct developer prices, and instant registry in Lucknow’s fastest-growing corridors.
@@ -190,9 +190,9 @@ export default function FeaturedProperties() {
                     View Details <ArrowRight size={14} />
                   </Link>
                   <a
-                    href="tel:+918303145434"
+                    href="tel:+917905145968"
                     className="p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:text-primary hover:border-primary transition flex items-center justify-center"
-                    title="Call Consultant"
+                    title="Call Consultant (+91 79051 45968)"
                   >
                     <Phone size={15} />
                   </a>

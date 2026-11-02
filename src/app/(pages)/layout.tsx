@@ -5,7 +5,7 @@ import { FloatingButtons } from "@/components/home";
 export const metadata: Metadata = {
   title: "Maxx Infra Developers & Consultant",
   description:
-    "Leading real estate and infrastructure developers in Lucknow & NCR. Luxury villas, row houses, and residential plots. Call +91 83031 45434.",
+    "Leading real estate developers & consultants in Lucknow S.C.R. Buy, sell & resell luxury villas, row houses, and residential plots. Office: G-1 Shivani Arcade, Deva Road, Opp. Axis Bank, Lucknow. Call +91 79051 45968 / +91 63861 00070.",
 };
 
 export default function PageLayout({

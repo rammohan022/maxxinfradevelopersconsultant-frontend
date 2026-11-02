@@ -8,12 +8,12 @@ export default function FloatingButtons() {
   const { data: adminProfile } = useGetAdminProfileQuery();
   const { data: siteSettings } = useGetSiteSettingsQuery();
 
-  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 83031 45434";
-  const phoneClean = phone.replace(/\s+/g, '');
+  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 79051 45968";
+  const phoneClean = "917905145968";
 
-  const whatsappMessage = encodeURIComponent("Hello Maxx Infra, I am interested in exploring verified properties in Lucknow / NCR.");
-  const whatsappUrl = `https://wa.me/918303145434?text=${whatsappMessage}`;
-  const callUrl = `tel:${phoneClean || '+918303145434'}`;
+  const whatsappMessage = encodeURIComponent("Hello Maxx Infra, I am interested in exploring verified properties in Lucknow S.C.R.");
+  const whatsappUrl = `https://wa.me/917905145968?text=${whatsappMessage}`;
+  const callUrl = `tel:+917905145968`;
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
@@ -33,7 +33,7 @@ export default function FloatingButtons() {
           <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 001.333 4.993L2 22l5.233-1.371a9.936 9.936 0 004.777 1.224h.005c5.505 0 9.986-4.477 9.988-9.98C22 6.476 17.518 2 12.012 2zm6.073 14.258c-.265.743-1.534 1.348-2.106 1.433-.515.076-1.185.138-3.413-.78-2.855-1.178-4.663-4.085-4.805-4.275-.143-.19-1.143-1.524-1.143-2.909 0-1.385.722-2.062.98-2.336.257-.273.562-.34.75-.34h.536c.17 0 .393-.064.616.483.224.546.76 1.854.823 1.983.064.13.106.278.02.447-.085.17-.128.277-.255.426-.128.15-.265.337-.38.455-.127.13-.26.27-.112.52.148.25.656 1.08 1.41 1.75.972.863 1.792 1.13 2.046 1.258.255.128.404.106.553-.064.148-.17.638-.742.808-1 .17-.257.34-.214.574-.128.233.085 1.488.701 1.743.828.255.128.425.19.49.3.064.106.064.616-.2 1.359z" />
         </svg>
         <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-xs px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md">
-          Chat on WhatsApp
+          Chat on WhatsApp (+91 79051 45968)
         </span>
       </a>
 
@@ -45,7 +45,7 @@ export default function FloatingButtons() {
       >
         <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-secondary" />
         <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-slate-900 text-white text-xs px-2.5 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap shadow-md">
-          Call +91 83031 45434
+          Call +91 79051 45968 / +91 63861 00070
         </span>
       </a>
     </div>

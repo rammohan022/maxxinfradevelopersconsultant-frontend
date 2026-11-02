@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Us | Maxx Infra Developers & Consultant',
     description:
-      'Book a free site inspection for villas, row houses, and plots in Lucknow and NCR. Call +91 83031 45434.',
+      'Book a free site inspection for villas, row houses, and plots in Lucknow S.C.R. Office: G-1 Shivani Arcade, Deva Road, Opp. Axis Bank, Lucknow. Call +91 79051 45968 / +91 63861 00070.',
     url: 'https://maxxinfradevelopersconsultant.com/contact',
     siteName: 'Maxx Infra Developers & Consultant',
     type: 'website',

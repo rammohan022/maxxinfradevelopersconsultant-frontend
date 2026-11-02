@@ -12,18 +12,18 @@ type Branch = {
 
 const branches: Branch[] = [
   {
-    city: 'Lucknow (Head Office)',
-    tag: 'Main Sales & Project Office',
-    address: 'Deva Road, Near Outer Ring Road (Kisan Path), Lucknow, Uttar Pradesh - 226028',
+    city: 'Lucknow Main Office',
+    tag: 'Main Sales & Consultation Desk',
+    address: 'G-1 Shivani Arcade, Deva Road, Opp. Axis Bank, Lucknow, Uttar Pradesh',
     email: 'contact@maxxinfradevelopersconsultant.com',
-    phone: '+91 83031 45434',
+    phone: '+91 79051 45968 / +91 63861 00070',
   },
   {
-    city: 'NCR Regional Office',
-    tag: 'Township & Project Desk',
-    address: 'Near Goyala City Corridor, Delhi NCR',
-    email: 'ncr@maxxinfradevelopersconsultant.com',
-    phone: '+91 88001 77307',
+    city: 'Goyala City Township Desk',
+    tag: 'Project Site Office',
+    address: 'Goyala City Township, Outer Ring Road (Kisan Path) Corridor, Lucknow S.C.R',
+    email: 'contact@maxxinfradevelopersconsultant.com',
+    phone: '+91 79051 45968',
   },
 ];
 

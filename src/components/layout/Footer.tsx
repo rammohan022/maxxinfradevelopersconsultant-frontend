@@ -11,7 +11,8 @@ export default function Footer() {
   const { data: siteSettings } = useGetSiteSettingsQuery();
 
   const email = siteSettings?.contactEmail || adminProfile?.email || "contact@maxxinfradevelopersconsultant.com";
-  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 83031 45434";
+  const phone = siteSettings?.contactPhone || adminProfile?.phoneNumber || "+91 79051 45968";
+  const phone2 = "+91 63861 00070";
 
   return (
     <footer className="bg-primary-dark text-slate-300">
@@ -173,14 +174,19 @@ export default function Footer() {
               <div className="space-y-3 text-xs text-slate-400">
                 <p className="flex items-start gap-2">
                   <MapPin size={15} className="text-secondary shrink-0 mt-0.5" />
-                  <span>Deva Road, Outer Ring Road (Kisan Path), Lucknow, Uttar Pradesh</span>
+                  <span>G-1 Shivani Arcade, Deva Road, Opp. Axis Bank, Lucknow, Uttar Pradesh</span>
                 </p>
-                <p className="flex items-center gap-2">
-                  <Phone size={15} className="text-secondary shrink-0" />
-                  <a href={`tel:${phone.replace(/\s+/g, '')}`} className="text-white hover:text-secondary font-semibold">
-                    {phone}
-                  </a>
-                </p>
+                <div className="flex items-start gap-2">
+                  <Phone size={15} className="text-secondary shrink-0 mt-0.5" />
+                  <div className="space-y-0.5">
+                    <a href={`tel:${phone.replace(/\s+/g, '')}`} className="text-white hover:text-secondary font-semibold block">
+                      {phone}
+                    </a>
+                    <a href={`tel:${phone2.replace(/\s+/g, '')}`} className="text-slate-300 hover:text-secondary font-semibold block">
+                      {phone2}
+                    </a>
+                  </div>
+                </div>
                 <p className="flex items-center gap-2">
                   <Mail size={15} className="text-secondary shrink-0" />
                   <a href={`mailto:${email}`} className="hover:text-secondary truncate">

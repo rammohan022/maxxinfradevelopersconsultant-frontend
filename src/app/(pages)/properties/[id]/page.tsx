@@ -71,7 +71,7 @@ export default function PropertyDetailsPage() {
         message: ""
       });
     } catch (err) {
-      toast.error("Unable to submit. Please call directly at +91 8303145434");
+      toast.error("Unable to submit. Please call directly at +91 79051 45968");
     }
   };
 
@@ -386,15 +386,23 @@ export default function PropertyDetailsPage() {
 
                 {/* Direct Action Contacts */}
                 <div className="mt-6 pt-6 border-t border-slate-100 space-y-3">
-                  <a
-                    href="tel:+918303145434"
-                    className="w-full py-2.5 px-4 rounded-xl border border-primary text-primary hover:bg-primary hover:text-white transition text-xs font-bold flex items-center justify-center gap-2"
-                  >
-                    <Phone size={15} /> Call: +91 83031 45434
-                  </a>
+                  <div className="grid grid-cols-2 gap-2">
+                    <a
+                      href="tel:+917905145968"
+                      className="py-2.5 px-2 rounded-xl border border-primary text-primary hover:bg-primary hover:text-white transition text-[11px] font-bold flex items-center justify-center gap-1.5"
+                    >
+                      <Phone size={13} /> 79051 45968
+                    </a>
+                    <a
+                      href="tel:+916386100070"
+                      className="py-2.5 px-2 rounded-xl border border-primary text-primary hover:bg-primary hover:text-white transition text-[11px] font-bold flex items-center justify-center gap-1.5"
+                    >
+                      <Phone size={13} /> 63861 00070
+                    </a>
+                  </div>
 
                   <a
-                    href={`https://wa.me/918303145434?text=Hello%20Maxx%20Infra,%20I%20am%20interested%20in%20${encodeURIComponent(property.title)}`}
+                    href={`https://wa.me/917905145968?text=Hello%20Maxx%20Infra,%20I%20am%20interested%20in%20${encodeURIComponent(property.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full py-2.5 px-4 rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition text-xs font-bold flex items-center justify-center gap-2"

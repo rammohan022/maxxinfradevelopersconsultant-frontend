@@ -161,7 +161,7 @@ export default function PropertyDetailsPage() {
                       {property.subtitle}
                     </span>
                   )}
-                  <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 mt-1">
+                  <h1 className="text-xl sm:text-2xl md:text-[28px] font-bold text-slate-900 mt-1">
                     {property.title}
                   </h1>
                   <p className="flex items-center gap-1.5 text-sm text-slate-500 mt-2">

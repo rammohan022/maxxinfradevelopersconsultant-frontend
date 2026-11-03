@@ -49,7 +49,7 @@ export default function PropertyCategories() {
           <span className="text-xs font-bold uppercase tracking-widest text-secondary">
             Explore By Segment
           </span>
-          <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 mt-2">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight mt-2">
             Tailored Housing Options for Every Family
           </h2>
           <p className="text-xs md:text-sm text-slate-600 mt-2">

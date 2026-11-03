@@ -46,7 +46,7 @@ export default function LocationsSection() {
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-1">
               Prime Investment Zones
             </span>
-            <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
               Lucknow’s Top Real Estate Hotspots
             </h2>
             <p className="text-xs md:text-sm text-slate-600 mt-2 max-w-xl">

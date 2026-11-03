@@ -75,7 +75,7 @@ export default function SellRentSection() {
                 <TrendingUp size={14} /> Owner Services • Sell Your Property
               </span>
 
-              <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight leading-snug">
                 Want to <span className="text-secondary">Sell or Resell</span> Your Property in Lucknow S.C.R?
               </h2>
 

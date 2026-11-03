@@ -39,7 +39,7 @@ export default function FeaturedProperties() {
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-1">
               Handpicked Portfolios
             </span>
-            <h2 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">
               Featured Properties in Lucknow S.C.R
             </h2>
             <p className="text-xs md:text-sm text-slate-500 mt-2 max-w-xl">

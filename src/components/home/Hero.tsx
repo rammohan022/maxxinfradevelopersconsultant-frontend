@@ -70,7 +70,7 @@ export default function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-white leading-tight mb-5">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight mb-4">
             Buy, Sell &amp; Resell Property in <span className="text-secondary">Lucknow S.C.R</span>
           </h1>
 

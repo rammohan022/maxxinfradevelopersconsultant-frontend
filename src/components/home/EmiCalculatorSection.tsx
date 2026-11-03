@@ -29,7 +29,7 @@ export default function EmiCalculatorSection() {
               <span className="text-xs font-bold uppercase tracking-widest text-secondary flex items-center gap-2">
                 <Calculator size={15} /> Financial Planning
               </span>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 leading-snug">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-slate-900 leading-snug tracking-tight">
                 Calculate Your Home Loan EMI with Ease
               </h2>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">

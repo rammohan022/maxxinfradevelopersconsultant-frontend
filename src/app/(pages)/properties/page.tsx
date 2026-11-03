@@ -85,7 +85,7 @@ function PropertiesContent() {
           <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/20 text-secondary text-sm font-semibold tracking-wide uppercase mb-4 border border-secondary/30">
             <ShieldCheck size={16} /> 100% Verified Titles • Buy, Sell &amp; Resell • Lucknow S.C.R
           </span>
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-3">
             Properties for Buy, Sell &amp; Resell in Lucknow S.C.R
           </h1>
           <p className="text-base md:text-lg text-slate-300 max-w-2xl mx-auto">

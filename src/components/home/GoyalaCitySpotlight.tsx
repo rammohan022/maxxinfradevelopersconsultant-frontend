@@ -23,7 +23,7 @@ export default function GoyalaCitySpotlight() {
               <Sparkles size={14} /> Signature Master Township Project
             </div>
 
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold tracking-tight leading-snug">
               Goyala City — <span className="text-secondary">Integrated Gated Living</span>
             </h2>
 
@@ -63,7 +63,7 @@ export default function GoyalaCitySpotlight() {
             <div className="p-5 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 flex items-center justify-between">
               <div>
                 <span className="text-xs uppercase tracking-wider text-slate-400 block font-semibold">Master Planned Township</span>
-                <span className="text-xl md:text-2xl font-black text-white">Residential Plots &amp; Luxury Villas</span>
+                <span className="text-base sm:text-lg font-bold text-white">Residential Plots &amp; Luxury Villas</span>
               </div>
 
               <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">

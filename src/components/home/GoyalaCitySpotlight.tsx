@@ -89,7 +89,7 @@ export default function GoyalaCitySpotlight() {
           </div>
 
           {/* Right Media Column: Video & Gallery preview */}
-          <div className="lg:col-span-6 space-y-4">
+          <div className="lg:col-span-6 space-y-3">
             {/* Embedded Drone / Project Video */}
             <div className="relative rounded-2xl overflow-hidden bg-black shadow-2xl border border-white/20 aspect-video group">
               <video
@@ -107,6 +107,44 @@ export default function GoyalaCitySpotlight() {
                 Your browser does not support the video tag.
               </video>
             </div>
+
+            {/* Real On-site Photos Preview (Surya Vihar Phase 4 & Goyla City) */}
+            <div className="grid grid-cols-4 gap-2 pt-1">
+              {[
+                { src: "/img/projects/goyala-surya-vihar-1.jpg", alt: "Goyla City Entry & Surya Vihar Phase 4 Access" },
+                { src: "/img/projects/goyala-surya-vihar-2.jpg", alt: "5,000 Sq.Ft. Plot & Multi-Story Buildings" },
+                { src: "/img/projects/goyala-surya-vihar-3.jpg", alt: "Wide Access Road & Concrete Demarcations" },
+                { src: "/img/projects/goyala-surya-vihar-4.jpg", alt: "Grand Plot Boundaries & Green Surroundings" },
+              ].map((item, idx) => (
+                <Link
+                  key={idx}
+                  href="/properties/goyala-city-surya-vihar-resell-plot-5000"
+                  className="relative aspect-video rounded-lg overflow-hidden border border-white/20 hover:border-secondary transition group block"
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover group-hover:scale-110 transition duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition" />
+                </Link>
+              ))}
+            </div>
+
+            {/* Special Resale Plot Callout */}
+            <Link
+              href="/properties/goyala-city-surya-vihar-resell-plot-5000"
+              className="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/10 hover:border-secondary/40 hover:bg-white/10 transition text-xs"
+            >
+              <div className="flex items-center gap-2 text-slate-200">
+                <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+                <span><strong>Available Now:</strong> 5,000 Sq. ft. Goyla City — Near Surya Vihar Phase 4</span>
+              </div>
+              <span className="text-secondary font-bold flex items-center gap-1">
+                View Plot &rarr;
+              </span>
+            </Link>
           </div>
         </div>
       </Container>

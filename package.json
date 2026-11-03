@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "node -e \"try{require('fs').rmSync('.next/cache',{recursive:true,force:true})}catch(e){}\" && NODE_OPTIONS=\"--max-old-space-size=2048\" next build",
-    "start": "next start",
+    "start": "next start -p 3010",
     "lint": "next lint"
   },
   "dependencies": {

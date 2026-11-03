@@ -26,6 +26,7 @@ export interface Property {
   amenities: string[];
   highlights: string[];
   videoUrl?: string;
+  videoUrl2?: string;
 }
 
 export const PROPERTIES: Property[] = [
@@ -355,6 +356,54 @@ export const PROPERTIES: Property[] = [
     ],
   },
   {
+    id: "aravali-green-city-township",
+    title: "Aravali Green City — Multi-Story Towers & Integrated Township",
+    subtitle: "Modern Multi-Building High-Rise Towers & Highway Gated Plots",
+    category: "Township",
+    price: "Price on Request",
+    priceNumeric: 0,
+    location: "Ayodhya Highway Near Police Aawas Colony, Badel, Barabanki",
+    locality: "Ayodhya Road",
+    area: "1,000 - 2,500 sq.ft. (Plots) & 2/3 BHK Towers",
+    roadWidth: "30 & 40 ft. Wide Boulevards",
+    possession: "Immediate Possession & Registry",
+    purpose: "Buy",
+    featured: true,
+    reraApproved: true,
+    bankApproved: true,
+    image: "/img/projects/aravali-multistory-towers.jpg",
+    videoUrl: "/img/aravali-2.mp4",
+    videoUrl2: "/video/aravali.mp4",
+    gallery: [
+      "/img/projects/aravali-multistory-towers.jpg",
+      "/img/projects/aravali-site-1.jpg",
+      "/img/properties/plots_land.jpg",
+      "/img/projects/goyala-site-2.jpeg",
+      "/img/projects/goyala-site-4.jpeg",
+      "/img/properties/prop_8.jpeg",
+    ],
+    description: "Aravali Green City is a landmark integrated master-planned township strategically situated directly on Ayodhya Highway Near Police Aawas Colony, Badel (Barabanki). Designed as a comprehensive modern destination, it features majestic multi-story residential towers with luxury apartments alongside clear-title freehold residential plots (1,000 to 2,500 sq.ft.). Equipped with 40-foot and 30-foot wide internal concrete boulevards, dedicated electric transformers, underground drainage, central landscaped parks, 24x7 security, and instant registry with guaranteed dakhil-kharij (mutation). Free doorstep cab site visits available from our head office at G-1 Shivani Arcade Dewa Road, Opp. Axis Bank- Lucknow.",
+    amenities: [
+      "Multi-Story High-Rise Residential Towers",
+      "Direct Ayodhya Highway 4-Lane Frontage",
+      "30 ft. & 40 ft. Wide Internal Boulevards",
+      "Immediate Registry & Guaranteed Dakhil-Kharij",
+      "Dedicated High-Capacity Electric Transformer",
+      "Underground Sewage & Drainage System",
+      "Lush Green Landscaped Central Park",
+      "24x7 Multi-Tier Gated Security",
+      "Bank Loan Assistance Up to 90%",
+      "Free Cab Visit from Shivani Arcade Office",
+    ],
+    highlights: [
+      "Prime Ayodhya Highway Near Police Aawas Colony, Badel",
+      "Multi-Building High-Rise Towers & Gated Society Plots",
+      "Full on-site video walkthrough & drone inspection",
+      "100% Freehold Land with zero litigation",
+      "Off.: G-1 Shivani Arcade Dewa Road, Opp. Axis Bank- Lucknow",
+    ],
+  },
+  {
     id: "aravali-green-city-barabanki-badel",
     title: "Aravali Green City — Barabanki Badel",
     subtitle: "Gated Freehold Plots on Ayodhya Highway Near Police Aawas Colony",
@@ -370,16 +419,20 @@ export const PROPERTIES: Property[] = [
     featured: true,
     reraApproved: true,
     bankApproved: true,
-    image: "/img/properties/plots_land.jpg",
-    videoUrl: "/video/aravali.mp4",
+    image: "/img/projects/aravali-multistory-towers.jpg",
+    videoUrl: "/img/aravali-2.mp4",
+    videoUrl2: "/video/aravali.mp4",
     gallery: [
+      "/img/projects/aravali-multistory-towers.jpg",
+      "/img/projects/aravali-site-1.jpg",
       "/img/properties/plots_land.jpg",
       "/img/projects/goyala-site-2.jpeg",
       "/img/projects/goyala-site-4.jpeg",
       "/img/properties/prop_8.jpeg",
     ],
-    description: "Aravali Green City is a prestigious mega residential plotting project situated directly on Ayodhya Highway Near Police Aawas Colony, Badel (Barabanki). Offering 100% freehold clear-title residential plots in versatile dimensions (1,000, 1,200, 1,500, 2,000 & 2,500 sq.ft.). Complete with 30 & 40 ft. wide internal concrete boulevards, dedicated electric transformers, underground drainage, green landscaped parks, and instant registry with guaranteed dakhil-kharij (mutation). Free doorstep cab inspection available from our head office at G-1 Shivani Arcade Dewa Road, Opp. Axis Bank- Lucknow.",
+    description: "Aravali Green City is a prestigious mega residential plotting project situated directly on Ayodhya Highway Near Police Aawas Colony, Badel (Barabanki). Offering 100% freehold clear-title residential plots in versatile dimensions (1,000, 1,200, 1,500, 2,000 & 2,500 sq.ft.) alongside modern multi-story residential towers. Complete with 30 & 40 ft. wide internal concrete boulevards, dedicated electric transformers, underground drainage, green landscaped parks, and instant registry with guaranteed dakhil-kharij (mutation). Free doorstep cab inspection available from our head office at G-1 Shivani Arcade Dewa Road, Opp. Axis Bank- Lucknow.",
     amenities: [
+      "Multi-Building Residential Complex",
       "Direct Ayodhya Highway Frontage",
       "30 ft. & 40 ft. Wide Internal Boulevards",
       "Immediate Registry & Instant Possession",
@@ -391,8 +444,8 @@ export const PROPERTIES: Property[] = [
     ],
     highlights: [
       "Ayodhya Highway Near Police Aawas Colony, Badel",
+      "Multi-Building Towers & Gated Plots",
       "Full on-site video walkthrough & drone inspection",
-      "Gated society residential plots with instant registry",
       "100% Freehold Land with zero litigation",
       "Off.: G-1 Shivani Arcade Dewa Road, Opp. Axis Bank- Lucknow",
     ],

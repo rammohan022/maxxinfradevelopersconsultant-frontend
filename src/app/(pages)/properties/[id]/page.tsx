@@ -305,7 +305,7 @@ export default function PropertyDetailsPage() {
             {/* Video Walkthrough (if available) */}
             {property.videoUrl && (
               <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-                <h2 className="text-xl font-bold text-slate-900 mb-4">Video Walkthrough & Site Drone Footage</h2>
+                <h2 className="text-xl font-bold text-slate-900 mb-4">Video Walkthrough &amp; Site Footage</h2>
                 <div className="rounded-xl overflow-hidden bg-black aspect-video">
                   <video
                     src={property.videoUrl}
@@ -315,6 +315,20 @@ export default function PropertyDetailsPage() {
                     className="w-full h-full object-contain"
                   />
                 </div>
+                {property.videoUrl2 && (
+                  <div className="mt-6 pt-6 border-t border-slate-100">
+                    <h3 className="text-sm font-bold text-slate-800 mb-3">Additional Project Walkthrough</h3>
+                    <div className="rounded-xl overflow-hidden bg-black aspect-video">
+                      <video
+                        src={property.videoUrl2}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>

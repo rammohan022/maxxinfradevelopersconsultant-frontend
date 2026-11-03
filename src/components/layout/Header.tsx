@@ -44,6 +44,7 @@ export default function Header() {
         { label: "Gated Residential Plots", href: "/properties?category=Plots", desc: "Aravali Green City & Highway plotting" },
         { label: "Verified Resell Plots", href: "/properties?category=Resell+Plots", desc: "Him City, Samrat City, Goyala & Surya Vihar" },
         { label: "Goyala City Township", href: "/properties/goyala-city-township", desc: "Integrated gated township plots & villas" },
+        { label: "Aravali Green City Township", href: "/properties/aravali-green-city-township", desc: "Multi-story towers & Ayodhya Highway plots" },
         { label: "Modern Row Houses", href: "/properties?category=Row+House", desc: "Ready to move 2 & 3 BHK gated homes" },
         { label: "Luxury Duplex Villas", href: "/properties?category=Villas", desc: "Premium 3 & 4 BHK villas in prime enclaves" },
         { label: "Independent Builder Floors", href: "/properties?category=Builder+Floor", desc: "Stilt + 4 elevations with reserved parking" },

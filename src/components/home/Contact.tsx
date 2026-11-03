@@ -53,9 +53,9 @@ export default function Contact() {
   };
 
   return (
-    <section className="relative bg-slate-50 py-16 md:py-24 scroll-mt-20 overflow-hidden" id="contact">
+    <section className="relative bg-slate-50 py-8 md:py-12 scroll-mt-20 overflow-hidden" id="contact">
       <Container className="relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-6">
           <span className="text-xs font-bold uppercase tracking-widest text-secondary">
             Book Site Visit
           </span>

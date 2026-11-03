@@ -12,13 +12,13 @@ import {
 
 export default function AravaliSpotlight() {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-950 via-slate-900 to-primary-dark text-white overflow-hidden relative border-t border-white/5">
+    <section className="py-8 md:py-12 bg-gradient-to-b from-slate-950 via-slate-900 to-primary-dark text-white overflow-hidden relative border-t border-white/5">
       {/* Decorative background glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/15 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/40 rounded-full blur-3xl pointer-events-none" />
 
       <Container className="relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Media Column: Video Player & Location Card */}
           <div className="lg:col-span-6 order-1 space-y-4">
             <div className="relative rounded-2xl overflow-hidden bg-black shadow-2xl border border-white/20 aspect-video group">

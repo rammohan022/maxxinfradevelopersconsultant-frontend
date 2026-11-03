@@ -49,7 +49,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="relative bg-primary text-white overflow-hidden min-h-[600px] lg:min-h-[680px] flex items-center">
+    <div className="relative bg-primary text-white overflow-hidden min-h-[500px] lg:min-h-[560px] flex items-center">
       {/* Background Imagery with Subtle Vignette */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -62,7 +62,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-primary-dark/95 via-primary/85 to-primary-dark/75" />
       </div>
 
-      <Container className="relative z-10 py-16 lg:py-24">
+      <Container className="relative z-10 py-10 lg:py-14">
         <div className="max-w-3xl">
           {/* Tag Pill */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-xs font-bold uppercase tracking-wider mb-5">

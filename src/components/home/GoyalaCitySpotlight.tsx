@@ -10,13 +10,13 @@ import {
 
 export default function GoyalaCitySpotlight() {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-slate-900 via-primary-dark to-slate-900 text-white overflow-hidden relative">
+    <section className="py-8 md:py-12 bg-gradient-to-b from-slate-900 via-primary-dark to-slate-900 text-white overflow-hidden relative">
       {/* Decorative background glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/30 rounded-full blur-3xl pointer-events-none" />
 
       <Container className="relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Text Column */}
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-xs font-bold uppercase tracking-wider">

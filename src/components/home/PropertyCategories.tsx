@@ -43,9 +43,9 @@ const categories = [
 
 export default function PropertyCategories() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50">
+    <section className="py-8 md:py-12 bg-slate-50">
       <Container>
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-secondary">
             Explore By Segment
           </span>

@@ -65,7 +65,7 @@ export default function SellRentSection() {
   };
 
   return (
-    <section id="sell-property" className="py-16 md:py-24 bg-white scroll-mt-20">
+    <section id="sell-property" className="py-8 md:py-12 bg-white scroll-mt-20">
       <div id="sell-rent-section" className="scroll-mt-20">
         <Container>
           <div className="grid lg:grid-cols-12 gap-10 items-center">

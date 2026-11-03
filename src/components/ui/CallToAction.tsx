@@ -30,7 +30,7 @@ const CTASection: React.FC<CallToActionProps> = ({
     return (
         <section
             id="cta-section"
-            className="relative overflow-hidden border-b border-slate-200/80 py-16 md:py-20 bg-[#f1f6fc]"
+            className="relative overflow-hidden border-b border-slate-200/80 py-8 md:py-12 bg-[#f1f6fc]"
         >
             {/* Subtle Pattern Grid */}
             <div

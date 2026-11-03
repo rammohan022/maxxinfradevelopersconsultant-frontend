@@ -91,9 +91,9 @@ export default function Testimonials() {
   const item = testimonials[current];
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-8 md:py-12 bg-white">
       <Container>
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <div className="text-center max-w-2xl mx-auto mb-6">
           <span className="text-xs font-bold uppercase tracking-widest text-secondary">
             Verified Experiences
           </span>

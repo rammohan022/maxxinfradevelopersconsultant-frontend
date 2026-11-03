@@ -69,7 +69,7 @@ function PropertiesContent() {
   return (
     <div className="bg-[#f8fafc] min-h-screen pb-20">
       {/* Header Banner */}
-      <div className="relative bg-primary text-white py-16 md:py-24 overflow-hidden">
+      <div className="relative bg-primary text-white py-8 md:py-12 overflow-hidden">
         <div className="absolute inset-0 opacity-15">
           <Image
             src="/img/hero/real_estate_hero.jpg"

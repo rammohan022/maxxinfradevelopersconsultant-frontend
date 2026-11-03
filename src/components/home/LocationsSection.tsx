@@ -39,9 +39,9 @@ const corridors = [
 
 export default function LocationsSection() {
   return (
-    <section className="py-16 md:py-24 bg-slate-50">
+    <section className="py-8 md:py-12 bg-slate-50">
       <Container>
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-1">
               Prime Investment Zones

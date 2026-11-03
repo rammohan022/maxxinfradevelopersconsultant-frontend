@@ -20,9 +20,9 @@ export default function EmiCalculatorSection() {
   const totalInterest = totalPayment - amount;
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-8 md:py-12 bg-white">
       <Container>
-        <div className="bg-slate-50 rounded-3xl p-6 md:p-12 border border-slate-100">
+        <div className="bg-slate-50 rounded-3xl p-6 md:p-8 border border-slate-100">
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             {/* Left Description */}
             <div className="lg:col-span-5 space-y-5">

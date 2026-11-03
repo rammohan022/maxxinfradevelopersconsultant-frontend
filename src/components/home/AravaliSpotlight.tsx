@@ -19,8 +19,8 @@ export default function AravaliSpotlight() {
 
       <Container className="relative z-10">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
-          {/* Left Media Column: Video Player */}
-          <div className="lg:col-span-6 order-1">
+          {/* Left Media Column: Video Player & Location Card */}
+          <div className="lg:col-span-6 order-1 space-y-4">
             <div className="relative rounded-2xl overflow-hidden bg-black shadow-2xl border border-white/20 aspect-video group">
               <video
                 src="/video/aravali.mp4"
@@ -37,11 +37,22 @@ export default function AravaliSpotlight() {
             </div>
 
             {/* Video Caption */}
-            <div className="mt-3 flex items-center justify-between text-xs text-slate-400 px-1">
+            <div className="flex items-center justify-between text-xs text-slate-400 px-1">
               <span className="flex items-center gap-1.5 font-medium text-slate-300">
                 <ShieldCheck size={14} className="text-secondary" /> Actual On-Site Video Walkthrough
               </span>
               <span>Ayodhya Highway • Badel, Barabanki</span>
+            </div>
+
+            {/* Location Tag Pill moved to Video side bottom */}
+            <div className="space-y-1.5 bg-white/5 border border-white/10 rounded-2xl p-4 backdrop-blur-sm">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white">
+                <MapPin size={16} className="text-rose-500 shrink-0" />
+                <span>Ayodhya Highway Near Police Aawas Colony, Badel (Barabanki)</span>
+              </div>
+              <p className="text-[11px] text-slate-400 pl-6">
+                Official Desk: G-1 Shivani Arcade Dewa Road, Opp. Axis Bank- Lucknow
+              </p>
             </div>
           </div>
 
@@ -54,17 +65,6 @@ export default function AravaliSpotlight() {
             <h2 className="text-2xl sm:text-3xl lg:text-[34px] font-bold tracking-tight leading-snug">
               Aravali Green City — <span className="text-secondary">Ayodhya Highway Plots</span>
             </h2>
-
-            {/* Location Tag Pill */}
-            <div className="space-y-1.5 bg-white/5 border border-white/10 rounded-2xl p-3.5 sm:p-4 backdrop-blur-sm">
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-white">
-                <MapPin size={16} className="text-rose-500 shrink-0" />
-                <span>Ayodhya Highway Near Police Aawas Colony, Badel (Barabanki)</span>
-              </div>
-              <p className="text-[11px] text-slate-400 pl-6">
-                Official Desk: G-1 Shivani Arcade Dewa Road, Opp. Axis Bank- Lucknow
-              </p>
-            </div>
 
             <p className="text-sm md:text-base text-slate-300 leading-relaxed">
               Explore prime verified freehold residential plots located directly on the Lucknow - Ayodhya 4-lane national highway. <strong>Aravali Green City</strong> features wide 40-foot and 30-foot internal boulevards, high-capacity electric transformers, underground drainage, and immediate registry with guaranteed dakhil-kharij (mutation).

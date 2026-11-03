@@ -9,14 +9,14 @@ const categories = [
     count: "Sai Yash & Eiffel Palm",
     image: "/img/properties/prop_5.jpeg",
     link: "/properties?category=Flats",
-    description: "Ready & ongoing 2 & 3 BHK flats at Anora Kala (Ayodhya Rd) & Deva Rd from ₹65 Lakh."
+    description: "Ready & ongoing 2 & 3 BHK flats at Anora Kala (Ayodhya Rd) & Deva Rd with modern amenities."
   },
   {
     title: "Gated Residential Plots",
     count: "Aravali Green & Highway Sites",
     image: "/img/properties/plots_land.jpg",
     link: "/properties?category=Plots",
-    description: "Clear-title freehold plots on Ayodhya Road (Badel, Barabanki) & Kisan Path from ₹14.5 Lakh."
+    description: "Clear-title freehold plots on Ayodhya Road (Badel, Barabanki) & Kisan Path corridor."
   },
   {
     title: "Modern Row Houses",

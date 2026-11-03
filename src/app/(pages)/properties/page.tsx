@@ -32,7 +32,7 @@ function PropertiesContent() {
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [selectedLocality, setSelectedLocality] = useState(initialLocation);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState<"featured" | "price-asc" | "price-desc">("featured");
+  const [sortBy, setSortBy] = useState<"featured" | "name">("featured");
 
   useEffect(() => {
     if (searchParams?.get("category")) setSelectedCategory(searchParams.get("category")!);
@@ -61,8 +61,7 @@ function PropertiesContent() {
 
       return matchCategory && matchLocality && matchQuery;
     }).sort((a, b) => {
-      if (sortBy === "price-asc") return a.priceNumeric - b.priceNumeric;
-      if (sortBy === "price-desc") return b.priceNumeric - a.priceNumeric;
+      if (sortBy === "name") return a.title.localeCompare(b.title);
       return (b.featured ? 1 : 0) - (a.featured ? 1 : 0);
     });
   }, [selectedCategory, selectedLocality, searchQuery, sortBy]);
@@ -179,8 +178,7 @@ function PropertiesContent() {
                 className="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-primary text-slate-800 bg-white"
               >
                 <option value="featured">Featured First</option>
-                <option value="price-asc">Price: Low to High</option>
-                <option value="price-desc">Price: High to Low</option>
+                <option value="name">Property Name (A-Z)</option>
               </select>
             </div>
           </div>
@@ -276,15 +274,17 @@ function PropertiesContent() {
                     </span>
                   </div>
 
-                  {/* Price overlay on bottom */}
+                  {/* Trust overlay on bottom */}
                   <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end text-white">
-                    <div>
-                      <span className="text-xs uppercase tracking-wider text-slate-300 block font-medium">
-                        Price
+                    <div className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/15">
+                      <span className="text-[10px] uppercase tracking-wider text-amber-400 block font-bold">
+                        Registry Title
                       </span>
-                      <span className="text-2xl font-black tracking-tight text-white">{prop.price}</span>
+                      <span className="text-xs font-black text-white">
+                        100% Pre-Verified
+                      </span>
                     </div>
-                    <span className="text-[11px] font-bold px-2 py-0.5 rounded bg-white/20 backdrop-blur-sm text-secondary">
+                    <span className="text-[10px] font-extrabold px-2.5 py-1.5 rounded-lg bg-secondary text-primary-dark shadow">
                       Zero Brokerage
                     </span>
                   </div>

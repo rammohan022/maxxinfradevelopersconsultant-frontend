@@ -150,7 +150,7 @@ export default function Contact() {
                 <label className="block text-xs font-bold text-slate-700 uppercase mb-1">Special Requirements / Preferred Date</label>
                 <textarea
                   rows={2}
-                  placeholder="e.g. Looking for ready to move 2 BHK row house under 50 Lakhs. Need site visit this Sunday."
+                  placeholder="e.g. Looking for ready to move 2 BHK flat or resale plot. Need free cab site visit this Sunday."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="w-full px-3.5 py-2.5 text-xs border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent text-slate-800"

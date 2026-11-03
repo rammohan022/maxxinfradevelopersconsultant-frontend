@@ -24,7 +24,7 @@ const defaultButtons: CTAButton[] = [
 const CTASection: React.FC<CallToActionProps> = ({
     badge,
     title = "Find Your Dream Home with Maxx Infra Developers",
-    description = "100% verified registry titles, direct developer prices, and complimentary cab site tours across Lucknow & NCR.",
+    description = "100% verified registry titles, direct developer deals, and complimentary cab site tours across Lucknow & NCR.",
     buttons = defaultButtons,
 }) => {
     return (

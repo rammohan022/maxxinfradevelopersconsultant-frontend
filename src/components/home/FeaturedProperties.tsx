@@ -43,7 +43,7 @@ export default function FeaturedProperties() {
               Featured Properties in Lucknow S.C.R
             </h2>
             <p className="text-xs md:text-sm text-slate-500 mt-2 max-w-xl">
-              100% legally pre-verified titles, direct developer prices, and instant registry in Lucknow’s fastest-growing corridors.
+              100% legally pre-verified titles, direct developer deals, and instant registry in Lucknow’s fastest-growing corridors.
             </p>
           </div>
 
@@ -119,13 +119,17 @@ export default function FeaturedProperties() {
                   </span>
                 </div>
 
-                {/* Price tag */}
+                {/* Trust overlay on bottom */}
                 <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end text-white">
-                  <div>
-                    <span className="text-[11px] uppercase tracking-wider text-slate-300 block font-medium">Price</span>
-                    <span className="text-2xl font-black text-white">{prop.price}</span>
+                  <div className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/15">
+                    <span className="text-[10px] uppercase tracking-wider text-amber-400 block font-bold">
+                      Registry Title
+                    </span>
+                    <span className="text-xs font-black text-white">
+                      100% Pre-Verified
+                    </span>
                   </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-white/20 backdrop-blur-sm text-secondary">
+                  <span className="text-[10px] font-extrabold px-2.5 py-1.5 rounded-lg bg-secondary text-primary-dark shadow">
                     Zero Brokerage
                   </span>
                 </div>

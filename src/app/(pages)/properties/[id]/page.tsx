@@ -41,7 +41,7 @@ export default function PropertyDetailsPage() {
     fullName: "",
     phoneNumber: "",
     email: "",
-    message: `I am interested in ${property?.title} (${property?.price}). Please arrange a site visit.`
+    message: `I am interested in ${property?.title}. Please arrange a site visit.`
   });
 
   const [createLead, { isLoading }] = useCreateLeadMutation();
@@ -172,11 +172,11 @@ export default function PropertyDetailsPage() {
 
                 <div className="text-left md:text-right">
                   <span className="text-xs text-slate-400 font-medium uppercase tracking-wider block">
-                    Total Price
+                    Zero Brokerage Deal
                   </span>
-                  <span className="text-3xl font-black text-primary">{property.price}</span>
+                  <span className="text-2xl md:text-3xl font-black text-primary">Pre-Verified</span>
                   <span className="text-xs text-emerald-600 block font-semibold mt-0.5">
-                    {property.deposit ? property.deposit : "100% Verified Title & Zero Brokerage"}
+                    {property.deposit ? property.deposit : "100% Verified Title & Instant Registry"}
                   </span>
                 </div>
               </div>

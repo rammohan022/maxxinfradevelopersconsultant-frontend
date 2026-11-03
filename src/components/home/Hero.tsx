@@ -24,15 +24,18 @@ export default function Hero() {
   const router = useRouter();
   const [category, setCategory] = useState("All");
   const [location, setLocation] = useState("All Locations");
-  const [budget, setBudget] = useState("All");
+  const [dealType, setDealType] = useState("All");
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const query = new URLSearchParams();
     query.set("purpose", "Buy");
-    if (category !== "All") query.set("category", category);
+    if (dealType !== "All") {
+      query.set("category", dealType);
+    } else if (category !== "All") {
+      query.set("category", category);
+    }
     if (location !== "All Locations") query.set("location", location);
-    if (budget !== "All") query.set("budget", budget);
     router.push(`/properties?${query.toString()}`);
   };
 
@@ -131,21 +134,20 @@ export default function Hero() {
                 </select>
               </div>
 
-              {/* Budget */}
+              {/* Deal Type */}
               <div>
                 <label className="block text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-1.5">
-                  Purchase Budget
+                  Deal Type
                 </label>
                 <select
-                  value={budget}
-                  onChange={(e) => setBudget(e.target.value)}
+                  value={dealType}
+                  onChange={(e) => setDealType(e.target.value)}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-medium text-slate-800 focus:outline-none focus:border-primary bg-white"
                 >
-                  <option value="All">Any Budget</option>
-                  <option value="under-30l">Under ₹30 Lakhs</option>
-                  <option value="30l-60l">₹30 Lakhs - ₹60 Lakhs</option>
-                  <option value="60l-1cr">₹60 Lakhs - ₹1 Crore</option>
-                  <option value="above-1cr">Above ₹1 Crore</option>
+                  <option value="All">All Deals &amp; Plots</option>
+                  <option value="Resell Plots">Verified Resale Plots</option>
+                  <option value="Plots">Highway Gated Plots</option>
+                  <option value="Flats">2 &amp; 3 BHK Luxury Flats</option>
                 </select>
               </div>
 

@@ -63,24 +63,24 @@ export default function Hero() {
       </div>
 
       <Container className="relative z-10 py-10 lg:py-14">
-        <div className="max-w-3xl">
+        <div className="max-w-4xl mx-auto text-center">
           {/* Tag Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-xs font-bold uppercase tracking-wider mb-5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/20 text-secondary border border-secondary/30 text-xs font-bold uppercase tracking-wider mb-4 mx-auto">
             <ShieldCheck size={16} /> 100% Verified Titles • Buy, Sell &amp; Resell • Lucknow S.C.R
           </div>
 
           {/* Headline */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight mb-3 mx-auto">
             Buy, Sell &amp; Resell Property in <span className="text-secondary">Lucknow S.C.R</span>
           </h1>
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl mb-8">
+          <p className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed max-w-2xl mx-auto mb-8">
             Your trusted destination to buy, sell, and resell verified 2 &amp; 3 BHK apartments, freehold plots, modern row houses, and luxury villas across Lucknow S.C.R with zero brokerage.
           </p>
 
           {/* Purpose Toggle Tabs + Search Card */}
-          <div className="bg-white/95 backdrop-blur-md rounded-3xl p-5 md:p-6 shadow-2xl border border-white/20 text-slate-800">
+          <div className="bg-white/95 backdrop-blur-md rounded-3xl p-5 md:p-6 shadow-2xl border border-white/20 text-slate-800 text-left">
             {/* Top Purpose Switcher */}
             <div className="flex flex-wrap items-center gap-2 mb-5 pb-4 border-b border-slate-200">
               <button

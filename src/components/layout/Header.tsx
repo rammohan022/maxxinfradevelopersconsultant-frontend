@@ -4,29 +4,19 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Container } from "@/components/ui";
-import { 
-  Building2, 
-  ChevronDown, 
-  Menu, 
-  X, 
-  Phone, 
-  Calendar, 
-  ShieldCheck, 
-  MapPin, 
-  Home, 
-  Layers, 
-  Landmark, 
-  Calculator,
+import {
+  ChevronDown,
+  Menu,
+  X,
+  Phone,
+  Calendar,
   MessageCircle
 } from "lucide-react";
-import { useGetSiteSettingsQuery } from "@/services/siteSettings";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [propertiesDropdown, setPropertiesDropdown] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  const { data: siteSettings } = useGetSiteSettingsQuery();
   const phone = "+91 79051 45968";
   const phone2 = "+91 63861 00070";
 
@@ -44,8 +34,8 @@ export default function Header() {
 
   const navLinks = [
     { label: "Home", href: "/" },
-    { 
-      label: "Buy Property", 
+    {
+      label: "Buy Property",
       href: "/properties",
       dropdown: true,
       subItems: [
@@ -61,14 +51,13 @@ export default function Header() {
     },
     { label: "Sell Property", href: "/#sell-property" },
     { label: "About Us", href: "/about" },
-    { label: "Services", href: "/services" },
+    // { label: "Services", href: "/services" },
     { label: "Contact Us", href: "/contact" },
   ];
 
   return (
-    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-      scrolled ? "bg-white/95 backdrop-blur-md shadow-md py-3" : "bg-white py-4 border-b border-slate-100"
-    }`}>
+    <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-md py-3" : "bg-white py-4 border-b border-slate-100"
+      }`}>
       <Container className="flex items-center justify-between gap-4 max-w-[1440px]">
         {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group shrink-0">

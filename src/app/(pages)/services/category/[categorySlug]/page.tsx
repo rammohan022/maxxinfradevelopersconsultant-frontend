@@ -19,8 +19,14 @@ export async function generateStaticParams() {
       
       // Fetch both service-categories and services to extract all category slugs
       const [categoriesRes, servicesRes] = await Promise.all([
-        fetch(`${cleanBaseUrl}/service-categories`, { next: { revalidate: 3600 } }),
-        fetch(`${cleanBaseUrl}/services`, { next: { revalidate: 3600 } }),
+        fetch(`${cleanBaseUrl}/service-categories`, {
+          next: { revalidate: 3600 },
+          signal: AbortSignal.timeout(2000),
+        }),
+        fetch(`${cleanBaseUrl}/services`, {
+          next: { revalidate: 3600 },
+          signal: AbortSignal.timeout(2000),
+        }),
       ]);
 
       const slugsSet = new Set<string>();

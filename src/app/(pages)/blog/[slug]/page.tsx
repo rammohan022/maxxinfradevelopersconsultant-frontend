@@ -11,7 +11,9 @@ export async function generateStaticParams() {
     const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
     if (baseUrl) {
       const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
-      const res = await fetch(`${cleanBaseUrl}/blogs`);
+      const res = await fetch(`${cleanBaseUrl}/blogs`, {
+        signal: AbortSignal.timeout(2000),
+      });
       if (res.ok) {
         const data = await res.json();
         const apiSlugs = data.map((blog: any) => ({ slug: blog.slug || String(blog.id) }));

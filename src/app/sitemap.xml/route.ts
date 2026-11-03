@@ -7,6 +7,7 @@ export async function GET() {
   try {
     const res = await fetch(`${backendUrl}/seo/sitemap.xml`, {
       cache: "no-store",
+      signal: AbortSignal.timeout(1500),
     });
     if (!res.ok) {
       throw new Error(`Backend error: ${res.statusText}`);

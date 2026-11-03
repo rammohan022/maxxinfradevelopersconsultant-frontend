@@ -30,7 +30,7 @@ export default function AravaliSpotlight() {
                 muted
                 loop
                 playsInline
-                poster="/img/projects/aravali-multistory-towers.jpg"
+                poster="/img/projects/aravali-towers-real.jpg"
                 className="w-full h-full object-cover"
               >
                 <source src="/img/aravali-2.mp4" type="video/mp4" />

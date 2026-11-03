@@ -251,29 +251,8 @@ function PropertiesContent() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10" />
                   
-                  {/* Top Badges */}
-                  <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
-                    <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow bg-primary text-white">
-                      FOR SALE
-                    </span>
-                    <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-black/60 text-white backdrop-blur-sm">
-                      {prop.category}
-                    </span>
-                    {prop.dealType === "Resale" && (
-                      <span className="px-2.5 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-500 text-slate-950 shadow">
-                        RESALE
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-600 text-white shadow">
-                      {prop.possession}
-                    </span>
-                  </div>
-
                   {/* Trust overlay on bottom */}
                   <div className="absolute bottom-3 left-3 right-3 flex justify-between items-end text-white">
                     <div className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md border border-white/15">

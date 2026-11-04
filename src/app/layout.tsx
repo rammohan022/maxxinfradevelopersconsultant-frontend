@@ -34,6 +34,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Self-healing ChunkLoadError handler for zero-downtime post-deployment */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+              function handleChunkFail(err) {
+                var msg = (err && (err.message || (err.reason && err.reason.message) || String(err))) || '';
+                if (/Loading chunk|ChunkLoadError|CSS_CHUNK_LOAD_FAILED/i.test(msg)) {
+                  var k = 'maxx_chunk_reload_lock';
+                  var last = sessionStorage.getItem(k);
+                  var now = Date.now();
+                  if (!last || now - parseInt(last, 10) > 8000) {
+                    sessionStorage.setItem(k, String(now));
+                    window.location.reload();
+                  }
+                }
+              }
+              window.addEventListener('error', handleChunkFail, true);
+              window.addEventListener('unhandledrejection', handleChunkFail);
+            })();`,
+          }}
+        />
         {/* Google Tag Manager */}
         <Script
           id="google-tag-manager"

@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
+  cleanDistDir: false,
   eslint: {
     ignoreDuringBuilds: true,
   },

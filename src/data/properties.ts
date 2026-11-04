@@ -260,11 +260,11 @@ export const PROPERTIES: Property[] = [
     featured: true,
     reraApproved: true,
     bankApproved: true,
-    image: "/img/projects/goyala-site-2.jpeg",
+    image: "/img/projects/him-estate-plot-6400.jpg",
     gallery: [
-      "/img/projects/goyala-site-2.jpeg",
+      "/img/projects/him-estate-plot-6400.jpg",
       "/img/properties/plots_land.jpg",
-      "/img/projects/goyala-site-4.jpeg",
+      "/img/properties/prop_8.jpeg",
     ],
     description: "Rare 6,400 sq.ft. expansive estate-sized resale plot positioned inside the prestigious Him Estate near EuroKids School, Deva Road corridor, Lucknow. Boasting 30 ft. wide access roads, clear rectangular geometry, and upscale residential surroundings with top schools and infrastructure in immediate vicinity. Direct registry and undisputed ownership.",
     amenities: [

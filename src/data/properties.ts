@@ -299,11 +299,11 @@ export const PROPERTIES: Property[] = [
     featured: true,
     reraApproved: true,
     bankApproved: true,
-    image: "/img/projects/goyala-site-5.jpeg",
+    image: "/img/projects/vasundhara-enclave-plot-2600.jpg",
     gallery: [
-      "/img/projects/goyala-site-5.jpeg",
+      "/img/projects/vasundhara-enclave-plot-2600.jpg",
       "/img/properties/plots_land.jpg",
-      "/img/projects/goyala-site-1.jpeg",
+      "/img/properties/prop_8.jpeg",
     ],
     description: "Premium 2,600 sq.ft. residential resale plot located in Vasundhara Enclave directly on The Woods Apartment Road, Deva Road, Lucknow. Perfect location surrounded by luxury apartments and upscale villas. Features 30 ft. wide interlocking concrete roads, underground drainage, security gate, and immediate construction readiness.",
     amenities: [

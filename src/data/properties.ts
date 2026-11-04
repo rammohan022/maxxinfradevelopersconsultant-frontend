@@ -47,11 +47,10 @@ export const PROPERTIES: Property[] = [
     featured: true,
     reraApproved: true,
     bankApproved: true,
-    image: "/img/properties/plots_land.jpg",
+    image: "/img/projects/him-city-part2-corner-plot-3000.jpg",
     gallery: [
+      "/img/projects/him-city-part2-corner-plot-3000.jpg",
       "/img/properties/plots_land.jpg",
-      "/img/projects/goyala-site-2.jpeg",
-      "/img/projects/goyala-site-3.jpeg",
       "/img/properties/prop_8.jpeg",
     ],
     description: "Exceptional 3,000 sq.ft. corner resale plot in the highly reputed Him City Part-2 colony near Baba Hospital, Deva Road, Lucknow. Benefiting from two-side open wide road access (30 ft. and 25 ft.), clear demarcations, fully developed residential surroundings with electricity, water and drainage connections. 100% Freehold clear-title with immediate registry and possession.",

@@ -5,39 +5,32 @@ import { ArrowRight, Building, Home, LandPlot, MapPin } from "lucide-react";
 
 const categories = [
   {
-    title: "2 & 3 BHK Luxury Flats",
-    count: "Sai Yash & Eiffel Palm",
-    image: "/img/properties/prop_5.jpeg",
-    link: "/properties?category=Flats",
-    description: "Ready & ongoing 2 & 3 BHK flats at Anora Kala (Ayodhya Rd) & Deva Rd with modern amenities."
+    title: "Gated Residential Plots",
+    count: "Him City, Him Estate & Aravali",
+    image: "/img/projects/him-city-part2-corner-plot-3000.jpg",
+    link: "/properties?category=Plots",
+    description: "Clear-title freehold residential plots on Deva Road & Ayodhya Highway corridor with spot registry."
   },
   {
-    title: "Gated Residential Plots",
-    count: "Aravali Green & Highway Sites",
-    image: "/img/properties/plots_land.jpg",
-    link: "/properties?category=Plots",
-    description: "Clear-title freehold plots on Ayodhya Road (Badel, Barabanki) & Kisan Path corridor."
+    title: "Verified Resell Plots",
+    count: "Him City, Him Estate, Vasundhara",
+    image: "/img/projects/vasundhara-enclave-plot-2600.jpg",
+    link: "/properties?category=Resell+Plots",
+    description: "Ready-to-build corner & road-facing resale plots in fully developed colonies with immediate possession."
   },
   {
     title: "Modern Row Houses",
-    count: "15+ Ready Units",
-    image: "/img/properties/row_house.jpg",
+    count: "Om Sai Vishnu Vihar & Him City",
+    image: "/img/projects/om-sai-vishnu-vihar-house-front.jpg",
     link: "/properties?category=Row+House",
-    description: "2 & 3 BHK contemporary row houses with private car porches and independent terraces."
+    description: "Ready-to-move 2 BHK independent modern houses with covered car porches and designer elevations."
   },
   {
-    title: "Luxury Duplex Villas",
-    count: "8+ Premium Villas",
-    image: "/img/properties/villa_luxury.jpg",
-    link: "/properties?category=Villas",
-    description: "Grand 4 BHK duplex villas with double-height ceilings, modular kitchens & en-suite baths."
-  },
-  {
-    title: "Independent Builder Floors",
-    count: "12+ Verified Floors",
-    image: "/img/properties/builder_floor.jpg",
-    link: "/properties?category=Builder+Floor",
-    description: "Stilt + 4 elevations with automatic elevator, reserved stilt parking & luxury woodwork."
+    title: "Integrated Townships",
+    count: "Aravali Green City & Goyala City",
+    image: "/img/projects/aravali-towers-real.jpg",
+    link: "/properties?category=Township",
+    description: "Mega gated townships featuring multi-story residential towers, wide concrete boulevards, parks & complete infrastructure."
   },
 ];
 
@@ -57,7 +50,7 @@ export default function PropertyCategories() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {categories.map((cat, idx) => (
             <Link
               key={idx}

@@ -80,7 +80,7 @@ const FirmOverview = () => {
           >
             <div className="relative h-[420px] md:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border border-slate-100">
               <Image
-                src="/img/properties/villa_luxury.jpg"
+                src="/img/projects/om-sai-vishnu-vihar-house-front.jpg"
                 alt="Maxx Infra Modern Construction"
                 fill
                 className="object-cover"

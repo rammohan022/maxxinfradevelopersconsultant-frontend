@@ -3,6 +3,7 @@ import {
   PropertyCategories,
   GoyalaCitySpotlight,
   AravaliSpotlight,
+  ApartmentsSpotlight,
   FeaturedProperties,
   SellRentSection,
   EmiCalculatorSection,
@@ -19,6 +20,7 @@ export default function Home() {
       <PropertyCategories />
       <GoyalaCitySpotlight />
       <AravaliSpotlight />
+      <ApartmentsSpotlight />
       <FeaturedProperties />
       <SellRentSection />
       <EmiCalculatorSection />

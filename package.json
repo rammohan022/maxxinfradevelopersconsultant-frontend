@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node -e \"try{require('fs').rmSync('.next/cache',{recursive:true,force:true})}catch(e){}\" && NODE_OPTIONS=\"--max-old-space-size=2048\" next build",
+    "build": "node -e \"try{const fs=require('fs'),cp=require('child_process');fs.rmSync('.next/cache',{recursive:true,force:true});if(fs.existsSync('.next/static/chunks')){fs.mkdirSync('.chunks_bak',{recursive:true});cp.execSync('cp -r .next/static/chunks/* .chunks_bak/ || true');}}catch(e){}\" && NODE_OPTIONS=\"--max-old-space-size=2048\" next build && node -e \"try{const fs=require('fs'),cp=require('child_process');if(fs.existsSync('.chunks_bak')){cp.execSync('cp -rn .chunks_bak/* .next/static/chunks/ || true');fs.rmSync('.chunks_bak',{recursive:true,force:true});}}catch(e){}\"",
     "start": "next start -p 3010",
     "lint": "next lint"
   },

@@ -11,22 +11,25 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("Unhandled UI Error Caught by Error Boundary:", error);
-
     // Auto-heal chunk load errors: happens after deployment when old chunk hashes are replaced on disk
-    if (
+    const isChunkError =
       error?.message?.includes("Loading chunk") ||
       error?.name === "ChunkLoadError" ||
-      error?.message?.includes("ChunkLoadError")
-    ) {
+      error?.message?.includes("ChunkLoadError") ||
+      error?.message?.includes("CSS_CHUNK_LOAD_FAILED");
+
+    if (isChunkError) {
       const reloadKey = "chunk_reload_lock";
       const lastReload = sessionStorage.getItem(reloadKey);
       const now = Date.now();
-      if (!lastReload || now - parseInt(lastReload, 10) > 10000) {
+      if (!lastReload || now - parseInt(lastReload, 10) > 4000) {
         sessionStorage.setItem(reloadKey, String(now));
         window.location.reload();
+        return;
       }
     }
+
+    console.error("Unhandled UI Error Caught by Error Boundary:", error);
   }, [error]);
 
   const handleRefresh = () => {

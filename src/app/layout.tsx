@@ -39,12 +39,13 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `(function(){
               function handleChunkFail(err) {
-                var msg = (err && (err.message || (err.reason && err.reason.message) || String(err))) || '';
-                if (/Loading chunk|ChunkLoadError|CSS_CHUNK_LOAD_FAILED/i.test(msg)) {
+                var targetSrc = (err && err.target && (err.target.src || err.target.href)) || '';
+                var msg = (err && (err.message || (err.reason && (err.reason.message || err.reason.name)) || String(err))) || '';
+                if (/Loading chunk|ChunkLoadError|CSS_CHUNK_LOAD_FAILED/i.test(msg) || /_next\\/static\\/chunks/i.test(targetSrc)) {
                   var k = 'maxx_chunk_reload_lock';
                   var last = sessionStorage.getItem(k);
                   var now = Date.now();
-                  if (!last || now - parseInt(last, 10) > 8000) {
+                  if (!last || now - parseInt(last, 10) > 4000) {
                     sessionStorage.setItem(k, String(now));
                     window.location.reload();
                   }

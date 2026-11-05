@@ -5,6 +5,13 @@ import { ArrowRight, Building, Home, LandPlot, MapPin } from "lucide-react";
 
 const categories = [
   {
+    title: "Modern Flats & Apartments",
+    count: "Eiffel Palm & Sai Yash",
+    image: "/img/projects/eiffel-palm-vista-facade.jpg",
+    link: "/properties?category=Flats",
+    description: "Ready 2 BHK & 3 BHK luxury flats on Deva Road & Ayodhya Road with elevators, parking & video tour."
+  },
+  {
     title: "Gated Residential Plots",
     count: "Him City, Him Estate & Aravali",
     image: "/img/projects/him-city-part2-corner-plot-3000.jpg",
@@ -50,7 +57,7 @@ export default function PropertyCategories() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {categories.map((cat, idx) => (
             <Link
               key={idx}

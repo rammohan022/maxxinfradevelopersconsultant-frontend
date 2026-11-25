@@ -96,7 +96,7 @@ export function JobPostingJsonLd({ job }: { job: any }) {
     "employmentType": job.jobType?.toUpperCase().replace("-", "_") || "FULL_TIME",
     "hiringOrganization": {
       "@type": "Organization",
-      "name": "People Consulting",
+      "name": "Maxx Infra Developers & Consultant",
       "sameAs": siteUrl,
       "logo": `${siteUrl}/img/logo.png`
     },
@@ -104,8 +104,8 @@ export function JobPostingJsonLd({ job }: { job: any }) {
       "@type": "Place",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": job.location || "Gurgaon",
-        "addressRegion": "Haryana",
+        "addressLocality": job.location || "Lucknow",
+        "addressRegion": "Uttar Pradesh",
         "addressCountry": "IN"
       }
     }
@@ -133,11 +133,11 @@ export function ArticleJsonLd({ article }: { article: any }) {
     "dateModified": article.updatedAt || article.createdAt || new Date().toISOString(),
     "author": {
       "@type": "Organization",
-      "name": "People Consulting HR Experts"
+      "name": "Maxx Infra Developers & Consultant Team"
     },
     "publisher": {
       "@type": "Organization",
-      "name": "People Consulting",
+      "name": "Maxx Infra Developers & Consultant",
       "logo": {
         "@type": "ImageObject",
         "url": `${siteUrl}/img/logo.png`

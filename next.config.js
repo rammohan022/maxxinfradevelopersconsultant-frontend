@@ -28,12 +28,12 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "api.peopleconsulting.co",
+        hostname: "api.maxxinfradevelopersconsultant.com",
         pathname: "/**",
       },
       {
-        protocol: "http",
-        hostname: "api.peopleconsulting.co",
+        protocol: "https",
+        hostname: "maxxinfradevelopersconsultant.com",
         pathname: "/**",
       },
       {

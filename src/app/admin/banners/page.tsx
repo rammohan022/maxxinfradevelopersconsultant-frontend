@@ -84,7 +84,7 @@ export default function BannersAdminPage() {
         title: "Aligning Strategy With",
         highlight: "People & Culture",
         subtitle: "Increasing your competitive advantage",
-        description: "People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes. We help organizations become High Performance workplaces.",
+        description: "Maxx Infra Developers & Consultant is your trusted partner for premium residential plots, luxury duplex villas, and modern row houses in Lucknow S.C.R with zero brokerage assurance.",
         ctaText: "Explore Services",
         ctaLink: "/services",
         secondaryCtaText: "Learn More",
@@ -303,7 +303,7 @@ export default function BannersAdminPage() {
                     modules={quillModules}
                     value={form.description}
                     onChange={(val) => setForm((prev) => ({ ...prev, description: val }))}
-                    placeholder="e.g. People Consulting has long established a reputation for helping organizations streamline their recruitment, training, and labor compliance processes."
+                    placeholder="e.g. Maxx Infra Developers & Consultant is your trusted partner for premium residential plots and villas in Lucknow."
                     className="bg-white h-32 mb-12"
                   />
                 </div>

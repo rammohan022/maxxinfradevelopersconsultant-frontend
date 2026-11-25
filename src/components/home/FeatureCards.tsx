@@ -91,7 +91,7 @@ export default function FeatureCards() {
 
   const title = siteSettings?.clientSectionTitle || "A leading HR service provider";
   const subtitle = siteSettings?.clientSectionSubtitle ||
-    "Join hands with People Consulting, your HR partner with a rich experience of over 5 years in collaborating with organizations. Our comprehensive end-to-end HR services and solutions are driven by deep domain expertise, ensuring you get the best support for your HR needs";
+    "Join hands with Maxx Infra Developers & Consultant, your trusted property partner with deep expertise in Lucknow & NCR real estate.";
 
   return (
     <section className="py-16 md:py-20 bg-slate-50 border-b border-slate-100/80 overflow-hidden">

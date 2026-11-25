@@ -113,14 +113,14 @@ export default function AdminSeoPage() {
 
   // Global Settings Form State
   const [globalForm, setGlobalForm] = useState({
-    siteName: "People Consulting",
-    siteUrl: "https://peopleconsultings.com",
+    siteName: "Maxx Infra Developers & Consultant",
+    siteUrl: "https://maxxinfradevelopersconsultant.com",
     gaMeasurementId: "",
     gtmId: "",
     googleSiteVerification: "",
     bingSiteVerification: "",
     facebookPixelId: "",
-    twitterHandle: "@peopleconsultco",
+    twitterHandle: "",
     robotsTxtContent: `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /login`,
     headScripts: "",
     bodyScripts: "",
@@ -129,14 +129,14 @@ export default function AdminSeoPage() {
   useEffect(() => {
     if (globalSeo) {
       setGlobalForm({
-        siteName: globalSeo.siteName || "People Consulting",
-        siteUrl: globalSeo.siteUrl || "https://peopleconsultings.com",
+        siteName: globalSeo.siteName || "Maxx Infra Developers & Consultant",
+        siteUrl: globalSeo.siteUrl || "https://maxxinfradevelopersconsultant.com",
         gaMeasurementId: globalSeo.gaMeasurementId || "",
         gtmId: globalSeo.gtmId || "",
         googleSiteVerification: globalSeo.googleSiteVerification || "",
         bingSiteVerification: globalSeo.bingSiteVerification || "",
         facebookPixelId: globalSeo.facebookPixelId || "",
-        twitterHandle: globalSeo.twitterHandle || "@peopleconsultco",
+        twitterHandle: globalSeo.twitterHandle || "",
         robotsTxtContent: globalSeo.robotsTxtContent || `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /login`,
         headScripts: globalSeo.headScripts || "",
         bodyScripts: globalSeo.bodyScripts || "",
@@ -502,7 +502,7 @@ export default function AdminSeoPage() {
                 <label className="block text-xs font-bold text-slate-700 mb-1">Twitter Handle</label>
                 <input
                   type="text"
-                  placeholder="@peopleconsultco"
+                  placeholder="@maxxinfradev"
                   value={globalForm.twitterHandle}
                   onChange={(e) => setGlobalForm((p) => ({ ...p, twitterHandle: e.target.value }))}
                   className="w-full border rounded-lg px-3 py-2 text-sm bg-white outline-none focus:ring-2 focus:ring-secondary/20"

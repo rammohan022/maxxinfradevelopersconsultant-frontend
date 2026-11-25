@@ -335,7 +335,7 @@ export default function JobDetailsClient() {
               <div className="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-sm">
                 <h3 className="text-base sm:text-lg font-bold text-primary mb-4 flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-secondary" />
-                  Why Work With People Consulting?
+                  Why Work With Maxx Infra Developers & Consultant?
                 </h3>
                 <div className="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-600">
                   <div className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100">

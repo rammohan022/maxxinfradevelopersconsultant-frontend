@@ -44,7 +44,7 @@ export default function SiteSettingsPage() {
   useEffect(() => {
     if (settings) {
       setForm({
-        siteName: settings.siteName || "People Consulting",
+        siteName: settings.siteName || "Maxx Infra Developers & Consultant",
         contactPhone: settings.contactPhone || "",
         contactEmail: settings.contactEmail || "",
         officeAddress: settings.officeAddress || "",

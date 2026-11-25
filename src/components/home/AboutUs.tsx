@@ -24,7 +24,7 @@ export default function AboutUs() {
 
             <Image
               src="/img/aboutus.jpg"
-              alt="People Consulting"
+              alt="Maxx Infra Developers & Consultant"
               fill
               className="object-cover hover:scale-105 transition-transform duration-500"
               priority
@@ -39,16 +39,16 @@ export default function AboutUs() {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest mb-4">
-              About People Consulting
+              About Maxx Infra Developers & Consultant
             </span>
 
             <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-4 leading-snug">
-              Your Strategic People Partner for <span className="text-secondary">Business Growth</span>
+              Your Trusted Real Estate Partner for <span className="text-secondary">Property in Lucknow</span>
             </h2>
 
             <div className="space-y-3.5 text-xs md:text-sm text-slate-600 leading-relaxed mb-8">
               <p>
-                People Consulting is a people-focused consulting firm supporting organisations with recruitment, HR advisory, workforce development through our training services and Labour law compliance. With over a decade of industry expertise, we work with businesses to address people-related challenges through structured processes, practical insights and tailored HR solutions.
+                Maxx Infra Developers & Consultant is a leading real estate development and consultancy firm committed to delivering verified, high-value properties in Lucknow S.C.R and NCR. We offer premium residential plots, luxury duplex villas, and modern row houses with zero brokerage.
               </p>
 
               <p>

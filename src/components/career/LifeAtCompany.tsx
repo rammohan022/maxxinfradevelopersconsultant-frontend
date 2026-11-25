@@ -9,10 +9,10 @@ const LifeAtCompany = () => {
                         Culture
                     </span>
                     <h2 className="text-xl md:text-2xl font-bold text-primary tracking-tight mb-10">
-                        Life at People Consulting
+                        Life at Maxx Infra Developers & Consultant
                     </h2>
                     <p className="text-xs md:text-sm text-slate-600 mt-1 max-w-3xl leading-relaxed mb-12">
-                        We believe in teamwork, diversity, and a professional environment built on ethics and respect. Our people are our strength—whether you are starting your legal career or bringing years of experience, you will find a place where your contribution is valued and your growth is supported.
+                        We believe in teamwork, transparency, and a professional environment built on client satisfaction and integrity. Our team is our strength—whether you are beginning your real estate career or bringing years of domain experience, you will find a place where your contribution is valued and your career growth is accelerated.
                     </p>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {[
@@ -27,7 +27,7 @@ const LifeAtCompany = () => {
                             >
                                 <Image
                                     src={src}
-                                    alt="Life at People Consulting"
+                                    alt="Life at Maxx Infra Developers & Consultant"
                                     fill
                                     className="object-cover"
                                     sizes="(max-width: 768px) 50vw, 25vw"

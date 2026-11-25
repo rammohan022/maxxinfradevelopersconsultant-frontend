@@ -38,7 +38,7 @@ export default function PartnersAdminPage() {
     if (siteSettings) {
       setSectionForm({
         title: siteSettings.clientSectionTitle || "A leading HR service provider",
-        subtitle: siteSettings.clientSectionSubtitle || "Join hands with People Consulting, your HR partner with a rich experience of over 5 years in collaborating with organizations. Our comprehensive end-to-end HR services and solutions are driven by deep domain expertise, ensuring you get the best support for your HR needs",
+        subtitle: siteSettings.clientSectionSubtitle || "Join hands with Maxx Infra Developers & Consultant, your trusted property partner with deep expertise in Lucknow & NCR real estate.",
       });
     }
   }, [siteSettings]);

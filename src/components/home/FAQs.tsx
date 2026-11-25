@@ -20,8 +20,8 @@ const fallbackFaqs = [
     answer: "Yes. We manage monthly payroll processes, statutory compliance checks, employee benefits advisory, and ensure strict alignment with current labor law guidelines.",
   },
   {
-    question: "How can we start our partnership with People Consulting?",
-    answer: "You can book a free consultation directly through our website form, or connect with our advisors via WhatsApp/Phone call to discuss your recruitment or training needs.",
+    question: "How can we start our partnership with Maxx Infra Developers & Consultant?",
+    answer: "You can book a free site consultation directly through our website form, or connect with our property advisors via WhatsApp or phone call to discuss your property requirements and site visits.",
   },
 ]
 
@@ -36,20 +36,20 @@ interface FAQsProps {
 
 const defaultAboutFaqs = [
   {
-    question: "What is the core vision and mission of People Consulting?",
-    answer: "Our mission is to help organizations build agile, resilient, and forward-looking workplaces by integrating strategic talent solutions, advanced HR technology, and disciplined compliance execution.",
+    question: "What is the core vision and mission of Maxx Infra Developers & Consultant?",
+    answer: "Our mission is to provide transparent, trusted, and zero-brokerage real estate solutions across Lucknow S.C.R and NCR, helping buyers and investors find their ideal homes, luxury villas, and high-yield plots.",
   },
   {
-    question: "How long has People Consulting been delivering HR & compliance services?",
-    answer: "With over a decade of dedicated industry expertise, we have partnered with hundreds of leading enterprises, mid-market businesses, and startups across India.",
+    question: "How long has Maxx Infra Developers & Consultant been in the real estate sector?",
+    answer: "With extensive real estate experience in Lucknow and NCR, we have successfully assisted hundreds of buyers in purchasing verified residential plots, luxury duplex villas, and builder floors.",
   },
   {
-    question: "What core practice areas does People Consulting specialize in?",
-    answer: "We deliver end-to-end people solutions across five key pillars: Workforce Solutions & Headhunting, Strategic HR Advisory, Talent Development & Corporate Training, Labour Law Compliance, and HR Technology.",
+    question: "What core practice areas does Maxx Infra Developers & Consultant specialize in?",
+    answer: "We deliver end-to-end real estate solutions: Luxury Duplex Villas, Modern Row Houses, Residential Plots, Builder Floors, Free Site Visits with Cab Facility, and Transparent Resale/Investment Consulting.",
   },
   {
-    question: "Where are People Consulting’s corporate and branch offices located?",
-    answer: "Our main corporate office is located in Faridabad (NCR) with a nationwide network of branch offices, compliance associates, and recruitment partners operating across PAN India.",
+    question: "Where are Maxx Infra Developers & Consultant’s offices located?",
+    answer: "Our primary office is located at G-1 Shivani Arcade, Deva Road, Opp. Axis Bank, Lucknow - 226028.",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function FAQs({
   const fallbackList = isAbout ? defaultAboutFaqs : fallbackFaqs;
   const displayFaqs = apiFaqs && apiFaqs.length > 0 ? apiFaqs : fallbackList;
 
-  const displayTag = tag || (isAbout ? "About People Consulting" : "FAQs");
+  const displayTag = tag || (isAbout ? "About Maxx Infra Developers & Consultant" : "FAQs");
   const displayTitle = title || "Frequently Asked";
   const displayHighlight = highlight || "Questions";
   const displaySubtitle =

@@ -67,7 +67,7 @@ const Login = () => {
         <div className="flex justify-center mb-4">
           <Image
             src="/img/logo.png"
-            alt="People Consulting"
+            alt="Maxx Infra Developers & Consultant"
             width={250}
             height={100}
             priority

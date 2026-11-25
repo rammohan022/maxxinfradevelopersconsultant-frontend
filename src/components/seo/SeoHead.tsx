@@ -48,7 +48,7 @@ export default function SeoHead({
 
       {/* Open Graph / Facebook / LinkedIn */}
       <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="People Consulting" />
+      <meta property="og:site_name" content="Maxx Infra Developers & Consultant" />
       <meta property="og:title" content={effectiveOgTitle} />
       <meta property="og:description" content={effectiveOgDescription} />
       <meta property="og:url" content={fullUrl} />

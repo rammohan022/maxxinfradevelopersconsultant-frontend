@@ -38,11 +38,6 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "apipeopleconsulting.webexbytes.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
         hostname: "api.equityandlegalsolutions.com",
         pathname: "/**",
       },
